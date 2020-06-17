@@ -35,6 +35,8 @@ data from cleared tissues.
 
 * [TubeMap](https://christophkirst.github.io/ClearMap2Documentation/docs/html/tubemap.html),
 
+  ![TubeMap](docs/images/TubeMap_graph_movie_small.gif)
+
 
 *ClearMap* has been designed to analyze O(TB) 3d datasets obtained 
 via light sheet microscopy from iDISCO+ cleared tissue samples 
