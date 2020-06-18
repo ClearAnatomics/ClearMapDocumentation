@@ -1,0 +1,1071 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ClearMap.Analysis.Graphs.GraphProcessing &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/clearmap.js"></script>
+    <script src="../../../../_static/clearmap_sidebar.js"></script>
+    <script src="../../../../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../../../../home.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../../../../home.html">Home</a></li>
+     <li class="link-list"><a href="../../../../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../../../../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+       <li><a href="../../../../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../../../../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../../../../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../../../../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../../../../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../../../../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../../../../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../../../../cellmap.html">
+            <img src="../../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../../../../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../../../../tubemap.html">
+            <img src="../../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../../../../media.html#gallery"> Gallery</a></h3>
+          <a href="../../../../media.html#gallery">
+            <img src="../../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../../../../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../../../../media.html#videos">   
+            <img src="../../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <h1>Source code for ClearMap.Analysis.Graphs.GraphProcessing</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python2</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">GraphProcessing</span>
+<span class="sd">===============</span>
+
+<span class="sd">Module providing tools to create and manipulate graphs. Functions include graph</span>
+<span class="sd">construction from skeletons, simplification, reduction and clean-up of graphs.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Analysis.Graphs.GraphGt</span> <span class="k">as</span> <span class="nn">ggt</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Topology.Topology3d</span> <span class="k">as</span> <span class="nn">t3d</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing</span> <span class="k">as</span> <span class="nn">ap</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Utils.Timer</span> <span class="k">as</span> <span class="nn">tmr</span><span class="p">;</span>
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Graphs from skeletons</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="graph_from_skeleton"><a class="viewcode-back" href="../../../../Api/ClearMap.Analysis.Graphs.GraphProcessing.html#ClearMap.Analysis.Graphs.GraphProcessing.graph_from_skeleton">[docs]</a><span class="k">def</span> <span class="nf">graph_from_skeleton</span><span class="p">(</span><span class="n">skeleton</span><span class="p">,</span> <span class="n">points</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">radii</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">vertex_coordinates</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+                        <span class="n">check_border</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">delete_border</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Converts a binary skeleton image to a graph-tool graph.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  skeleton : array</span>
+<span class="sd">    Source with 2d/3d binary skeleton.</span>
+<span class="sd">  points : array</span>
+<span class="sd">    List of skeleton points as 1d indices of flat skeleton array (optional to save processing time).</span>
+<span class="sd">  radii  : array</span>
+<span class="sd">    List of radii associated with each vertex.</span>
+<span class="sd">  vertex_coordinates : bool</span>
+<span class="sd">    If True, store coordiantes of the vertices / edges.</span>
+<span class="sd">  check_border : bool</span>
+<span class="sd">    If True, check if the boder is empty. The algorithm reuqires this.</span>
+<span class="sd">  delete_border : bool</span>
+<span class="sd">    If True, delete the border.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    If True, print progress information.</span>
+<span class="sd">    </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  graph : Graph class</span>
+<span class="sd">    The graph corresponding to the skeleton. </span>
+<span class="sd">    </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  Edges are detected between neighbouring foreground pixels using 26-connectivty.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">skeleton</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">skeleton</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">delete_border</span><span class="p">:</span>
+    <span class="n">skeleton</span> <span class="o">=</span> <span class="n">t3d</span><span class="o">.</span><span class="n">delete_border</span><span class="p">(</span><span class="n">skeleton</span><span class="p">);</span>
+    <span class="n">check_border</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">check_border</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">t3d</span><span class="o">.</span><span class="n">check_border</span><span class="p">(</span><span class="n">skeleton</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The skeleton array needs to have no points on the border!&#39;</span><span class="p">);</span>  
+
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">();</span>
+    <span class="n">timer_all</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">();</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Graph from skeleton calculation initialize.!&#39;</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">points</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">skeleton</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">array</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Point list generation&#39;</span><span class="p">);</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">reset</span><span class="p">();</span>
+  
+  <span class="c1">#create graph</span>
+  <span class="n">n_vertices</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="n">g</span> <span class="o">=</span> <span class="n">ggt</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">n_vertices</span><span class="o">=</span><span class="n">n_vertices</span><span class="p">,</span> <span class="n">directed</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+  <span class="n">g</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">skeleton</span><span class="o">.</span><span class="n">shape</span><span class="p">;</span>
+    
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph initialized with </span><span class="si">%d</span><span class="s1"> vertices&#39;</span> <span class="o">%</span> <span class="n">n_vertices</span><span class="p">);</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">reset</span><span class="p">();</span>
+  
+  <span class="c1">#detect edges</span>
+  <span class="n">edges_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">);</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">o</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t3d</span><span class="o">.</span><span class="n">orientations</span><span class="p">()):</span>
+    <span class="c1"># calculate off set</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">o</span><span class="p">))</span><span class="o">-</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">skeleton</span><span class="o">.</span><span class="n">strides</span><span class="p">)</span> 
+    <span class="n">edges</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">neighbours</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">offset</span><span class="p">);</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">edges_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">edges_all</span><span class="p">,</span> <span class="n">edges</span><span class="p">]);</span>
+      
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> edges with orientation </span><span class="si">%d</span><span class="s1">/13 found&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">edges</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">));</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">reset</span><span class="p">();</span>
+  
+  <span class="k">if</span> <span class="n">edges_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">edges_all</span><span class="p">);</span>
+    
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Added </span><span class="si">%d</span><span class="s1"> edges to graph&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">edges_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">reset</span><span class="p">();</span>
+
+  <span class="k">if</span> <span class="n">vertex_coordinates</span><span class="p">:</span>
+    <span class="n">vertex_coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">skeleton</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">skeleton</span><span class="o">.</span><span class="n">order</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">set_vertex_coordinates</span><span class="p">(</span><span class="n">vertex_coordinates</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">radii</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">set_vertex_radius</span><span class="p">(</span><span class="n">radii</span><span class="p">);</span>  
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer_all</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Skeleton to Graph&#39;</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="n">g</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="graph_to_skeleton"><a class="viewcode-back" href="../../../../Api/ClearMap.Analysis.Graphs.GraphProcessing.html#ClearMap.Analysis.Graphs.GraphProcessing.graph_to_skeleton">[docs]</a><span class="k">def</span> <span class="nf">graph_to_skeleton</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Create a binary skeleton from a graph.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">graph</span><span class="o">.</span><span class="n">has_edge_geometry</span><span class="p">():</span>
+    <span class="n">coordinates</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_coordinates</span><span class="p">();</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">coordinates</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_geometry</span><span class="p">(</span><span class="s1">&#39;coordinates&#39;</span><span class="p">);</span>
+    <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">coordinates</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">shape</span><span class="p">;</span>
+    <span class="k">if</span> <span class="n">shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">));</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">);</span>
+  
+  <span class="n">shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">sink</span><span class="p">);</span>
+
+  <span class="n">coordinates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
+  <span class="n">sink</span><span class="p">[</span><span class="n">coordinates</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+      
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Graph CleanUp</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="mean_vertex_coordinates"><a class="viewcode-back" href="../../../../Api/ClearMap.Analysis.Graphs.GraphProcessing.html#ClearMap.Analysis.Graphs.GraphProcessing.mean_vertex_coordinates">[docs]</a><span class="k">def</span> <span class="nf">mean_vertex_coordinates</span><span class="p">(</span><span class="n">coordinates</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span></div>
+
+
+<div class="viewcode-block" id="clean_graph"><a class="viewcode-back" href="../../../../Api/ClearMap.Analysis.Graphs.GraphProcessing.html#ClearMap.Analysis.Graphs.GraphProcessing.clean_graph">[docs]</a><span class="k">def</span> <span class="nf">clean_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">remove_self_loops</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">remove_isolated_vertices</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+                <span class="n">vertex_mappings</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;coordinates&#39;</span> <span class="p">:</span> <span class="n">mean_vertex_coordinates</span><span class="p">,</span> 
+                                   <span class="s1">&#39;radii&#39;</span>       <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">},</span>
+                <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Remove all cliques to get pure branch structure of a graph.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  graph : Graph </span>
+<span class="sd">    The graph to clean up.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    If True, prin progress information.</span>
+<span class="sd">    </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  graph : Graph </span>
+<span class="sd">    A graph removed of all cliques.</span>
+<span class="sd">  </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  cliques are replaced by a single vertex connecting to all non-clique neighbours </span>
+<span class="sd">  The center coordinate is used for that vertex as the coordinate.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">();</span>
+    <span class="n">timer_all</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">();</span>
+  
+  <span class="c1"># find branch points</span>
+  <span class="n">n_vertices</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">;</span>
+  <span class="n">degrees</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_degrees</span><span class="p">();</span>
+    
+  <span class="n">branches</span> <span class="o">=</span> <span class="n">degrees</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">;</span>
+  <span class="n">n_branch_points</span> <span class="o">=</span> <span class="n">branches</span><span class="o">.</span><span class="n">sum</span><span class="p">();</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph cleaning: found </span><span class="si">%d</span><span class="s1"> branch points among </span><span class="si">%d</span><span class="s1"> vertices&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_branch_points</span><span class="p">,</span> <span class="n">n_vertices</span><span class="p">));</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">reset</span><span class="p">();</span>
+  
+  <span class="k">if</span> <span class="n">n_branch_points</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">graph</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+  
+  <span class="c1"># detect &#39;cliques&#39;, i.e. connected components of branch points</span>
+  <span class="n">gb</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">sub_graph</span><span class="p">(</span><span class="n">vertex_filter</span><span class="o">=</span><span class="n">branches</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  <span class="n">components</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">gb</span><span class="o">.</span><span class="n">label_components</span><span class="p">(</span><span class="n">return_vertex_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="c1">#note: graph_tools components of a view is a property map of the full graph</span>
+  <span class="n">components</span><span class="p">[</span><span class="n">branches</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> 
+  
+  <span class="c1"># group components</span>
+  <span class="n">components</span> <span class="o">=</span> <span class="n">_group_labels</span><span class="p">(</span><span class="n">components</span><span class="p">);</span>
+  
+  <span class="c1">#note: graph_tools components of a view is a property map of the full graph</span>
+  <span class="c1">#note: remove the indices of the non branch nodes</span>
+  <span class="n">components</span> <span class="o">=</span> <span class="n">components</span><span class="p">[</span><span class="mi">1</span><span class="p">:];</span>  
+  
+  <span class="n">clique_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">counts</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="n">n_cliques</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">clique_ids</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph cleaning: detected </span><span class="si">%d</span><span class="s1"> cliques of branch points&#39;</span> <span class="o">%</span> <span class="n">n_cliques</span><span class="p">);</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">reset</span><span class="p">();</span>
+  
+  <span class="c1"># remove cliques</span>
+  <span class="n">g</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+  <span class="n">g</span><span class="o">.</span><span class="n">add_vertex</span><span class="p">(</span><span class="n">n_cliques</span><span class="p">);</span>
+  
+  <span class="c1">#mappings</span>
+  <span class="n">properties</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="n">mappings</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">vertex_mappings</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+      <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_properties</span><span class="p">:</span>
+        <span class="n">mappings</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">vertex_mappings</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+        <span class="n">properties</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_property</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+  
+  <span class="n">vertex_filter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_vertices</span> <span class="o">+</span> <span class="n">n_cliques</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">)</span>  
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ci</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">clique_ids</span><span class="p">):</span>
+    <span class="n">vi</span> <span class="o">=</span> <span class="n">n_vertices</span> <span class="o">+</span> <span class="n">i</span><span class="p">;</span>
+    <span class="n">cc</span> <span class="o">=</span> <span class="n">components</span><span class="p">[</span><span class="n">ci</span><span class="p">];</span>
+    
+    <span class="c1">#remove clique vertices </span>
+    <span class="n">vertex_filter</span><span class="p">[</span><span class="n">cc</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+    
+    <span class="c1"># get neighbours </span>
+    <span class="n">neighbours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">graph</span><span class="o">.</span><span class="n">vertex_neighbours</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cc</span><span class="p">])</span>
+    <span class="n">neighbours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">neighbours</span><span class="p">),</span> <span class="n">cc</span><span class="p">);</span>
+    
+    <span class="c1"># connect to new node</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">([[</span><span class="n">n</span><span class="p">,</span> <span class="n">vi</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">neighbours</span><span class="p">]);</span>
+    
+    <span class="c1">#map properties</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">mappings</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+      <span class="n">g</span><span class="o">.</span><span class="n">set_vertex_property</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">mappings</span><span class="p">[</span><span class="n">k</span><span class="p">](</span><span class="n">properties</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">cc</span><span class="p">]),</span> <span class="n">vertex</span><span class="o">=</span><span class="n">vi</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">%</span> <span class="mi">10000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph cleaning: reducing </span><span class="si">%d</span><span class="s1"> / </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_cliques</span><span class="p">));</span>
+  
+  <span class="c1">#generate new graph</span>
+  <span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">sub_graph</span><span class="p">(</span><span class="n">vertex_filter</span><span class="o">=</span><span class="n">vertex_filter</span><span class="p">);</span>
+    
+  <span class="k">if</span> <span class="n">remove_self_loops</span><span class="p">:</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">remove_self_loops</span><span class="p">();</span>
+    
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph cleaning: removed </span><span class="si">%d</span><span class="s1"> cliques of branch points from </span><span class="si">%d</span><span class="s1"> to </span><span class="si">%d</span><span class="s1"> nodes and </span><span class="si">%d</span><span class="s1"> to </span><span class="si">%d</span><span class="s1"> edges&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_cliques</span><span class="p">,</span> <span class="n">graph</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">,</span> <span class="n">graph</span><span class="o">.</span><span class="n">n_edges</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">n_edges</span><span class="p">));</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">reset</span><span class="p">();</span>
+  
+  <span class="c1"># remove isolated vertices</span>
+  <span class="k">if</span> <span class="n">remove_isolated_vertices</span><span class="p">:</span>
+    <span class="n">non_isolated</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">vertex_degrees</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">sub_graph</span><span class="p">(</span><span class="n">vertex_filter</span> <span class="o">=</span> <span class="n">non_isolated</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph cleaning: Removed </span><span class="si">%d</span><span class="s1"> isolated nodes&#39;</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">non_isolated</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">());</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">reset</span><span class="p">();</span>
+    
+    <span class="k">del</span> <span class="n">non_isolated</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer_all</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph cleaning: cleaned graph has </span><span class="si">%d</span><span class="s1"> nodes and </span><span class="si">%d</span><span class="s1"> edges&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">,</span> <span class="n">g</span><span class="o">.</span><span class="n">n_edges</span><span class="p">));</span>
+  
+  <span class="k">return</span> <span class="n">g</span><span class="p">;</span></div>
+  
+
+<span class="k">def</span> <span class="nf">_group_labels</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper grouping labels in a 1d array.&quot;&quot;&quot;</span>
+  <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">array</span><span class="p">);</span>
+  <span class="n">arr</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+  <span class="n">dif</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dif</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">res</span>
+
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Grapch reduction</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="reduce_graph"><a class="viewcode-back" href="../../../../Api/ClearMap.Analysis.Graphs.GraphProcessing.html#ClearMap.Analysis.Graphs.GraphProcessing.reduce_graph">[docs]</a><span class="k">def</span> <span class="nf">reduce_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">vertex_to_edge_mappings</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;radii&#39;</span>  <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">},</span> 
+                        <span class="n">edge_to_edge_mappings</span>   <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;length&#39;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">},</span>
+                        <span class="n">edge_geometry</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">edge_length</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">edge_geometry_vertex_properties</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">,</span> <span class="s1">&#39;radii&#39;</span><span class="p">],</span>
+                        <span class="n">edge_geometry_edge_properties</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">return_maps</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Reduce graph by replacing all vertices with degree two.&quot;&quot;&quot;</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">();</span>
+    <span class="n">timer_all</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">();</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Graph reduction: initialized.&#39;</span><span class="p">);</span>
+  
+  <span class="c1">#ensure conditions for precessing step are fullfiled  </span>
+  <span class="k">if</span> <span class="n">graph</span><span class="o">.</span><span class="n">is_view</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot process on graph view, prune graph before graph reduction.&#39;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">vertex_indices</span><span class="p">())</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">vertex_iterator</span><span class="p">()</span><span class="o">.</span><span class="n">next</span><span class="p">())</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Graph vertices not ordered!&#39;</span><span class="p">)</span>
+  
+  <span class="c1">#copy graph</span>
+  <span class="n">g</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+  
+  <span class="c1">#find non branching points, i.e. vertices with deg 2    </span>
+  <span class="n">branch_points</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">vertex_degrees</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">non_branch_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">branch_points</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="n">branch_points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">branch_points</span><span class="p">)</span>
+  <span class="n">branch_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">branch_points</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="n">n_non_branch_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">non_branch_ids</span><span class="p">);</span>
+  <span class="n">n_branch_points</span>     <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">branch_ids</span><span class="p">);</span>
+  <span class="k">del</span> <span class="n">branch_points</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph reduction: Found </span><span class="si">%d</span><span class="s1"> branching and </span><span class="si">%d</span><span class="s1"> non-branching nodes&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_branch_points</span><span class="p">,</span> <span class="n">n_non_branch_points</span><span class="p">));</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">reset</span><span class="p">();</span>
+  
+  <span class="c1">#mappings</span>
+  <span class="k">if</span> <span class="n">edge_to_edge_mappings</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">edge_to_edge_mappings</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">if</span> <span class="n">vertex_to_edge_mappings</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">vertex_to_edge_mappings</span> <span class="o">=</span> <span class="p">{};</span>
+  
+  <span class="k">if</span> <span class="n">edge_length</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;length&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">edge_to_edge_mappings</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+      <span class="n">edge_to_edge_mappings</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">;</span>
+    <span class="k">if</span> <span class="s1">&#39;length&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edge_properties</span><span class="p">:</span>
+      <span class="n">g</span><span class="o">.</span><span class="n">add_edge_property</span><span class="p">(</span><span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">n_edges</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">));</span>
+  
+  <span class="n">edge_to_edge</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="n">edge_properties</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="n">edge_lists</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">edge_to_edge_mappings</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+      <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edge_properties</span><span class="p">:</span>
+        <span class="n">edge_to_edge</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">edge_to_edge_mappings</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+        <span class="n">edge_properties</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">edge_property_map</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+        <span class="n">edge_lists</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="n">edge_to_edge_keys</span> <span class="o">=</span> <span class="n">edge_to_edge</span><span class="o">.</span><span class="n">keys</span><span class="p">();</span>
+  
+  <span class="n">vertex_to_edge</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="n">vertex_properties</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="n">vertex_lists</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">vertex_to_edge_mappings</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+      <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">vertex_properties</span><span class="p">:</span>
+        <span class="n">vertex_to_edge</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">vertex_to_edge_mappings</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+        <span class="n">vertex_properties</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">vertex_property_map</span><span class="p">(</span><span class="n">k</span><span class="p">);</span>
+        <span class="n">vertex_lists</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="n">vertex_to_edge_keys</span> <span class="o">=</span> <span class="n">vertex_to_edge</span><span class="o">.</span><span class="n">keys</span><span class="p">();</span>
+  
+  <span class="c1">#edge geometry</span>
+  <span class="n">calculate_vertex_to_vertex_map</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+  <span class="n">calculate_edge_to_edge_map</span>     <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+  <span class="n">calculate_edge_to_vertex_map</span>   <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">edge_geometry</span><span class="p">:</span>
+    <span class="n">calculate_edge_to_vertex_map</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+    <span class="n">reduced_edge_to_vertex_map</span> <span class="o">=</span> <span class="p">[];</span>
+  
+  <span class="k">if</span> <span class="n">return_maps</span><span class="p">:</span>
+    <span class="n">calculate_vertex_to_vertex_map</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+    <span class="n">reduced_vertex_to_vertex_map</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="n">calculate_edge_to_vertex_map</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+    <span class="n">reduced_edge_to_vertex_map</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="n">calculate_edge_to_edge_map</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+    <span class="n">reduced_edge_to_edge_map</span> <span class="o">=</span> <span class="p">[];</span>
+  
+  <span class="k">if</span> <span class="n">edge_geometry_edge_properties</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">calculate_edge_to_edge_map</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+    <span class="n">reduced_edge_to_edge_map</span> <span class="o">=</span> <span class="p">[];</span>
+  
+  <span class="k">if</span> <span class="n">edge_geometry_vertex_properties</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">edge_geometry_vertex_properties</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">if</span> <span class="n">edge_geometry_edge_properties</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">edge_geometry_edge_properties</span> <span class="o">=</span> <span class="p">[];</span>
+  
+  <span class="c1">#direct edges between branch points</span>
+  <span class="n">edge_list</span> <span class="o">=</span> <span class="p">[];</span> 
+  <span class="n">checked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">n_edges</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">);</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">branch_ids</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">vertex_edges_iterator</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">target</span><span class="p">()</span><span class="o">.</span><span class="n">out_degree</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">eid</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">edge_index</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">checked</span><span class="p">[</span><span class="n">eid</span><span class="p">]:</span>
+          <span class="n">checked</span><span class="p">[</span><span class="n">eid</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+          <span class="n">vertex_ids</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">source</span><span class="p">()),</span> <span class="nb">int</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">target</span><span class="p">())];</span>
+          <span class="n">edge_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vertex_ids</span><span class="p">);</span>
+          <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">edge_to_edge_keys</span><span class="p">:</span>
+            <span class="n">edge_lists</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge_to_edge</span><span class="p">[</span><span class="n">k</span><span class="p">]([</span><span class="n">edge_properties</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">e</span><span class="p">]]));</span>
+          <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">vertex_to_edge_keys</span><span class="p">:</span>
+            <span class="n">vv</span> <span class="o">=</span> <span class="n">vertex_properties</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+            <span class="n">vv</span> <span class="o">=</span> <span class="p">[</span><span class="n">vv</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">source</span><span class="p">()],</span> <span class="n">vv</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">target</span><span class="p">()]];</span>
+            <span class="n">vertex_lists</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vertex_to_edge</span><span class="p">[</span><span class="n">k</span><span class="p">](</span><span class="n">vv</span><span class="p">));</span>
+          
+          <span class="k">if</span> <span class="n">calculate_edge_to_vertex_map</span><span class="p">:</span>
+            <span class="n">reduced_edge_to_vertex_map</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vertex_ids</span><span class="p">);</span>
+          
+          <span class="k">if</span> <span class="n">calculate_edge_to_edge_map</span><span class="p">:</span>
+            <span class="n">reduced_edge_to_edge_map</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">e</span><span class="p">]);</span>
+          
+    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">250000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph reduction: Scanned </span><span class="si">%d</span><span class="s1">/</span><span class="si">%d</span><span class="s1"> branching nodes, found </span><span class="si">%d</span><span class="s1"> branches&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_branch_points</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)));</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph reduction: Scanned </span><span class="si">%d</span><span class="s1">/</span><span class="si">%d</span><span class="s1"> branching nodes, found </span><span class="si">%d</span><span class="s1"> branches&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_branch_points</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)));</span>
+  
+  <span class="c1">#reduce non-direct edges</span>
+  <span class="n">checked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">);</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">non_branch_ids</span><span class="p">):</span>    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">checked</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+      <span class="c1"># extract branch </span>
+      <span class="n">checked</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+      <span class="n">vertex</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">vertex</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+      <span class="n">vertices</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">endpoints</span><span class="p">,</span> <span class="n">isolated_loop</span> <span class="o">=</span> <span class="n">_graph_branch</span><span class="p">(</span><span class="n">vertex</span><span class="p">);</span>
+      <span class="c1">#print([int(vv) for vv in vertices], [[int(ee.source()), int(ee.target())] for ee in edges], endpoints, isolated_loop)</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">isolated_loop</span><span class="p">:</span>
+        <span class="n">vertices_ids</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">vv</span><span class="p">)</span> <span class="k">for</span> <span class="n">vv</span> <span class="ow">in</span> <span class="n">vertices</span><span class="p">];</span>
+        <span class="n">checked</span><span class="p">[</span><span class="n">vertices_ids</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+        <span class="n">edge_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">ep</span><span class="p">)</span> <span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="n">endpoints</span><span class="p">]);</span>
+        
+        <span class="c1">#mappings</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">edge_to_edge</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+          <span class="n">ep</span> <span class="o">=</span> <span class="n">edge_properties</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+          <span class="n">edge_lists</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge_to_edge</span><span class="p">[</span><span class="n">k</span><span class="p">]([</span><span class="n">ep</span><span class="p">[</span><span class="n">e</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">]))</span>
+        
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">vertex_to_edge</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+          <span class="n">vp</span> <span class="o">=</span> <span class="n">vertex_properties</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>          
+          <span class="n">vertex_lists</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vertex_to_edge</span><span class="p">[</span><span class="n">k</span><span class="p">]([</span><span class="n">vp</span><span class="p">[</span><span class="n">vv</span><span class="p">]</span> <span class="k">for</span> <span class="n">vv</span> <span class="ow">in</span> <span class="n">vertices</span><span class="p">]));</span>
+        
+        <span class="c1">#if edge_geometry is not None:</span>
+        <span class="c1">#  branch_start.append(index_pos);</span>
+        <span class="c1">#  index_pos += len(vertices_ids);</span>
+        <span class="c1">#  branch_end.append(index_pos);</span>
+          
+        <span class="k">if</span> <span class="n">calculate_edge_to_vertex_map</span><span class="p">:</span>
+          <span class="n">reduced_edge_to_vertex_map</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vertices_ids</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="n">calculate_edge_to_edge_map</span><span class="p">:</span>
+          <span class="n">reduced_edge_to_edge_map</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edges</span><span class="p">);</span>
+      
+    <span class="k">if</span> <span class="n">verbose</span> <span class="ow">and</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">250000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph reduction: Scanned </span><span class="si">%d</span><span class="s1">/</span><span class="si">%d</span><span class="s1"> non-branching nodes found </span><span class="si">%d</span><span class="s1"> branches&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_non_branch_points</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)));</span>     
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph reduction: Scanned </span><span class="si">%d</span><span class="s1">/</span><span class="si">%d</span><span class="s1"> non-branching nodes found </span><span class="si">%d</span><span class="s1"> branches&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_non_branch_points</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)));</span>
+  
+  <span class="c1">#reduce graph</span>
+  
+  <span class="c1">#redefine branch edges</span>
+  <span class="n">gr</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">sub_graph</span><span class="p">(</span><span class="n">edge_filter</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">n_edges</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">));</span>
+  <span class="n">gr</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">edge_list</span><span class="p">);</span>
+  
+  <span class="c1">#determine edge ordering</span>
+  <span class="n">edge_order</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">edge_indices</span><span class="p">();</span>
+  
+  <span class="c1"># remove non-branching points </span>
+  <span class="k">if</span> <span class="n">calculate_vertex_to_vertex_map</span><span class="p">:</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">add_vertex_property</span><span class="p">(</span><span class="s1">&#39;_vertex_id_&#39;</span><span class="p">,</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_indices</span><span class="p">());</span>
+  <span class="n">gr</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">sub_graph</span><span class="p">(</span><span class="n">vertex_filter</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">checked</span><span class="p">));</span>
+  <span class="k">if</span> <span class="n">calculate_vertex_to_vertex_map</span><span class="p">:</span>
+    <span class="n">reduced_vertex_to_vertex_map</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">vertex_property</span><span class="p">(</span><span class="s1">&#39;_vertex_id_&#39;</span><span class="p">);</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">remove_vertex_property</span><span class="p">(</span><span class="s1">&#39;_vertex_id_&#39;</span><span class="p">);</span>
+
+  <span class="c1"># maps</span>
+  <span class="k">if</span> <span class="n">calculate_edge_to_vertex_map</span><span class="p">:</span>
+    <span class="n">reduced_edge_to_vertex_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">reduced_edge_to_vertex_map</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)[</span><span class="n">edge_order</span><span class="p">];</span>    
+  <span class="k">if</span> <span class="n">calculate_edge_to_edge_map</span><span class="p">:</span>
+    <span class="n">reduced_edge_to_edge_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">reduced_edge_to_edge_map</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)[</span><span class="n">edge_order</span><span class="p">];</span> 
+  
+  <span class="c1"># add edge properties</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">edge_to_edge_keys</span><span class="p">:</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">define_edge_property</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">edge_lists</span><span class="p">[</span><span class="n">k</span><span class="p">])[</span><span class="n">edge_order</span><span class="p">]);</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">vertex_to_edge_keys</span><span class="p">:</span>
+    <span class="n">gr</span><span class="o">.</span><span class="n">define_edge_property</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vertex_lists</span><span class="p">[</span><span class="n">k</span><span class="p">])[</span><span class="n">edge_order</span><span class="p">]);</span>
+  
+  
+  <span class="k">if</span> <span class="n">edge_geometry</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">branch_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">reduced_edge_to_vertex_map</span><span class="p">);</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">reduced_edge_to_vertex_map</span><span class="p">];</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">indices</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span><span class="o">.</span><span class="n">T</span><span class="p">;</span>
+    
+    <span class="c1">#branch_start = np.array(branch_start);</span>
+    <span class="c1">#branch_end   = np.array(branch_end);    </span>
+    <span class="c1">#vertex properties</span>
+    <span class="c1">#indices = np.array([branch_start, branch_end]).T;</span>
+    <span class="c1">#indices = indices[edge_order];</span>
+    <span class="n">indices_use</span> <span class="o">=</span> <span class="n">indices</span><span class="p">;</span>
+    
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">edge_geometry_vertex_properties</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">vertex_properties</span><span class="p">:</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">vertex_property</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">branch_indices</span><span class="p">];</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">set_edge_geometry</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="n">indices_use</span><span class="p">);</span>
+        <span class="n">indices_use</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+    
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">edge_geometry_edge_properties</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edge_properties</span><span class="p">:</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">edge_property_map</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+        <span class="c1">#there is one edge less than vertices in each reduced edge !</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[[</span><span class="n">values</span><span class="p">[</span><span class="n">e</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">edge</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">values</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]]</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">reduced_edge_to_edge_map</span><span class="p">];</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">set_edge_geometry</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;edge_&#39;</span> <span class="o">+</span> <span class="n">p</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="n">indices_use</span><span class="p">);</span>
+        <span class="n">indices_use</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">calculate_edge_to_edge_map</span><span class="p">:</span>
+    <span class="n">reduced_edge_to_edge_map</span> <span class="o">=</span> <span class="p">[[</span><span class="n">g</span><span class="o">.</span><span class="n">edge_index</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">edge</span><span class="p">]</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">reduced_edge_to_edge_map</span><span class="p">]</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer_all</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Graph reduction: Graph reduced from </span><span class="si">%d</span><span class="s1"> to </span><span class="si">%d</span><span class="s1"> nodes and </span><span class="si">%d</span><span class="s1"> to </span><span class="si">%d</span><span class="s1"> edges&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">,</span> <span class="n">graph</span><span class="o">.</span><span class="n">n_edges</span><span class="p">,</span> <span class="n">gr</span><span class="o">.</span><span class="n">n_edges</span><span class="p">));</span>
+  
+  <span class="k">if</span> <span class="n">return_maps</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">gr</span><span class="p">,</span> <span class="p">(</span><span class="n">reduced_vertex_to_vertex_map</span><span class="p">,</span> <span class="n">reduced_edge_to_vertex_map</span><span class="p">,</span> <span class="n">reduced_edge_to_edge_map</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">gr</span><span class="p">;</span></div>
+
+
+<span class="k">def</span> <span class="nf">_graph_branch</span><span class="p">(</span><span class="n">v0</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper to follow a branch in a graph consisting of a chain of vertices of degree 2.&quot;&quot;&quot;</span>
+
+  <span class="n">edges_v0</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">v0</span><span class="o">.</span><span class="n">out_edges</span><span class="p">()];</span>
+  <span class="k">assert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges_v0</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+  
+  <span class="n">vertices_1</span><span class="p">,</span> <span class="n">edges_1</span><span class="p">,</span> <span class="n">endpoint_1</span> <span class="o">=</span> <span class="n">_follow_branch</span><span class="p">(</span><span class="n">edges_v0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v0</span><span class="p">);</span>
+  <span class="k">if</span> <span class="n">endpoint_1</span> <span class="o">!=</span> <span class="n">v0</span><span class="p">:</span>
+    <span class="n">vertices_2</span><span class="p">,</span> <span class="n">edges_2</span><span class="p">,</span> <span class="n">endpoint_2</span> <span class="o">=</span> <span class="n">_follow_branch</span><span class="p">(</span><span class="n">edges_v0</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v0</span><span class="p">);</span>
+    
+    <span class="n">vertices_1</span><span class="o">.</span><span class="n">reverse</span><span class="p">();</span>
+    <span class="n">vertices_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v0</span><span class="p">);</span>
+    <span class="n">vertices_1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">vertices_2</span><span class="p">);</span> 
+
+    <span class="n">edges_1</span><span class="o">.</span><span class="n">reverse</span><span class="p">();</span>
+    <span class="n">edges_1</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">edges_2</span><span class="p">);</span>
+    <span class="n">isolated_loop</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">endpoint_2</span> <span class="o">=</span> <span class="n">v0</span><span class="p">;</span>
+    <span class="n">isolated_loop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+    
+  <span class="k">return</span> <span class="p">(</span><span class="n">vertices_1</span><span class="p">,</span> <span class="n">edges_1</span><span class="p">,</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">endpoint_1</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">endpoint_2</span><span class="p">)],</span> <span class="n">isolated_loop</span><span class="p">);</span>
+
+
+<span class="k">def</span> <span class="nf">_follow_branch</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">v0</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper to follow branch from vertex v0 in direction of edge e.&quot;&quot;&quot;</span>
+  <span class="c1">#argument v0 to prevent infinte loops for isolated closed loops</span>
+  <span class="n">edges</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="p">];</span>
+  
+  <span class="n">v</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">target</span><span class="p">();</span>
+  <span class="n">vertices</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="p">];</span>
+  
+  <span class="k">while</span> <span class="n">v</span><span class="o">.</span><span class="n">out_degree</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">v</span> <span class="o">!=</span> <span class="n">v0</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">e_new</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">out_edges</span><span class="p">():</span>
+      <span class="k">if</span> <span class="n">e_new</span> <span class="o">!=</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">e_new</span><span class="p">;</span>
+    <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">target</span><span class="p">();</span>
+    <span class="n">vertices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">v</span><span class="p">);</span>
+
+
+
+<div class="viewcode-block" id="expand_graph_length"><a class="viewcode-back" href="../../../../Api/ClearMap.Analysis.Graphs.GraphProcessing.html#ClearMap.Analysis.Graphs.GraphProcessing.expand_graph_length">[docs]</a><span class="k">def</span> <span class="nf">expand_graph_length</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span><span class="n">length</span> <span class="o">=</span> <span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="n">return_edge_mapping</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Expand a reduced graph to a full graph.&quot;&quot;&quot;</span>  
+  <span class="c1">#data</span>
+  <span class="n">ec</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_connectivity</span><span class="p">();</span>
+  
+  <span class="n">vertex_lengths</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_property</span><span class="p">(</span><span class="n">length</span><span class="p">);</span>
+  <span class="n">edge_lengths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">vertex_lengths</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    
+  <span class="c1">#construct graph</span>
+  <span class="n">new_edges</span> <span class="o">=</span> <span class="n">edge_lengths</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="c1"># edges to create</span>
+  <span class="n">n_vertices</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">n_vertices</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">vertex_lengths</span> <span class="o">-</span> <span class="mi">2</span><span class="p">));</span>
+  <span class="n">g</span> <span class="o">=</span> <span class="n">ggt</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">n_vertices</span><span class="o">=</span><span class="n">n_vertices</span><span class="p">);</span>
+  
+  <span class="c1">#construct edges</span>
+  <span class="n">offset</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">;</span>
+  <span class="n">new_starts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">edge_lengths</span><span class="p">[</span><span class="n">new_edges</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]);</span>
+  <span class="n">new_ends</span>   <span class="o">=</span> <span class="n">new_starts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">new_starts</span> <span class="o">=</span> <span class="n">new_starts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+  
+  <span class="n">new_to_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">new_ends</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">new_ends</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+  <span class="n">split</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">new_ends</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">;</span>
+  <span class="n">split</span><span class="p">[</span><span class="n">new_ends</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+  <span class="n">new_to_new</span> <span class="o">=</span> <span class="n">new_to_new</span><span class="p">[</span><span class="n">split</span><span class="p">];</span>
+    
+  <span class="n">new_starts</span> <span class="o">+=</span> <span class="n">offset</span><span class="p">;</span>
+  <span class="n">new_ends</span>   <span class="o">+=</span> <span class="n">offset</span><span class="p">;</span>
+  <span class="n">new_to_new</span> <span class="o">+=</span> <span class="n">offset</span><span class="p">;</span>
+  
+  <span class="n">existing_to_existing</span> <span class="o">=</span> <span class="n">ec</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">new_edges</span><span class="p">)];</span>
+  <span class="n">existing_to_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ec</span><span class="p">[</span><span class="n">new_edges</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">new_starts</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">;</span>
+  <span class="n">new_to_existing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">new_ends</span><span class="p">,</span> <span class="n">ec</span><span class="p">[</span><span class="n">new_edges</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">;</span>
+  
+  <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">existing_to_existing</span><span class="p">,</span> <span class="n">existing_to_new</span><span class="p">,</span> <span class="n">new_to_new</span><span class="p">,</span> <span class="n">new_to_existing</span><span class="p">]);</span>
+  
+  <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">edges</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">return_edge_mapping</span><span class="p">:</span>
+    <span class="c1">#edge order in new graph</span>
+    <span class="n">reorder</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">edge_indices</span><span class="p">();</span>
+    
+    <span class="c1"># mapping[new_edge_id] = old_edge_id</span>
+    <span class="n">existing_edges_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">new_edges</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">new_edges_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">new_edges</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span>
+              <span class="p">[</span><span class="n">existing_edges_id</span><span class="p">,</span> <span class="c1">#existing edges</span>
+               <span class="n">new_edges_id</span><span class="p">,</span> <span class="c1">#existing to new</span>
+               <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">new_edges_id</span><span class="p">,</span> <span class="n">new_ends</span> <span class="o">-</span> <span class="n">new_starts</span><span class="p">),</span> <span class="c1">#new to new</span>
+               <span class="n">new_edges_id</span><span class="p">]);</span> <span class="c1"># new to existing;</span>
+               
+    <span class="n">mapping</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">[</span><span class="n">reorder</span><span class="p">];</span>
+    
+    <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="n">mapping</span><span class="p">;</span>
+  
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">g</span><span class="p">;</span></div>
+  
+  
+  
+<div class="viewcode-block" id="expand_graph"><a class="viewcode-back" href="../../../../Api/ClearMap.Analysis.Graphs.GraphProcessing.html#ClearMap.Analysis.Graphs.GraphProcessing.expand_graph">[docs]</a><span class="k">def</span> <span class="nf">expand_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+   <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">();</span> </div>
+<span class="c1">#  if not graph.has_edge_geometry():</span>
+<span class="c1">#    return graph.copy();</span>
+<span class="c1">#  </span>
+<span class="c1">#  #calculate nodes of expanded graph</span>
+<span class="c1">#  lengths = graph.edge_geometry_lengths() - 2;</span>
+<span class="c1">#  n_add_vertices = np.sum(lengths);</span>
+<span class="c1">#  </span>
+<span class="c1">#  g = graph.copy();</span>
+<span class="c1">#  g.add_vertex(n_add_vertices);</span>
+<span class="c1">#  g.remove_edge_geometry();</span>
+<span class="c1">#  </span>
+<span class="c1">#  # re link edges and add vertex properties</span>
+<span class="c1">#  #current_vertex = </span>
+<span class="c1">#  #for e in graph.edge_iterator():</span>
+<span class="c1">#    </span>
+<span class="c1">#  </span>
+<span class="c1">#  #for name in graph.edge_geometry_names:</span>
+<span class="c1">#    </span>
+<span class="c1">#  graph.edge_geometry(&#39;coordinates&#39;);</span>
+
+
+
+
+
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Label Tracing</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="trace_vertex_label"><a class="viewcode-back" href="../../../../Api/ClearMap.Analysis.Graphs.GraphProcessing.html#ClearMap.Analysis.Graphs.GraphProcessing.trace_vertex_label">[docs]</a><span class="k">def</span> <span class="nf">trace_vertex_label</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">vertex_label</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">dilation_steps</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_iterations</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">pass_label</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Traces label within a graph.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  vertex_label : array</span>
+<span class="sd">    Start label.</span>
+<span class="sd">  condition : function(graph, vertex)</span>
+<span class="sd">    A function determining if the vertex should be added to the labels.</span>
+<span class="sd">  steps : int</span>
+<span class="sd">    Number edges to jump to find new neighbours.  Default is 1.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  vertex_label : array </span>
+<span class="sd">    The traced label.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="n">vertex_label</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+  <span class="n">not_checked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">label</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">max_iterations</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">max_iterations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">;</span>
+  
+  <span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">while</span> <span class="n">iteration</span> <span class="o">&lt;</span> <span class="n">max_iterations</span><span class="p">:</span>
+    <span class="n">label_dilated</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_dilate_binary</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="n">dilation_steps</span><span class="p">);</span>
+    <span class="n">label_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_xor</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">label_dilated</span><span class="p">);</span>
+    <span class="n">label_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">label_new</span><span class="p">,</span> <span class="n">not_checked</span><span class="p">);</span>
+    <span class="n">vertices_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">label_new</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="c1">#print(label.sum(), label_dilated.sum(), label_new.sum())</span>
+    <span class="c1">#print(vertices_new)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vertices_new</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">pass_label</span><span class="p">:</span>
+        <span class="n">current_label</span> <span class="o">=</span> <span class="n">label</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vertices_new</span><span class="p">:</span>
+          <span class="k">if</span> <span class="n">condition</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">current_label</span><span class="p">):</span>
+            <span class="n">label</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+          <span class="n">not_checked</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vertices_new</span><span class="p">:</span>
+          <span class="k">if</span> <span class="n">condition</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+            <span class="n">label</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+          <span class="n">not_checked</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+    <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+
+      
+  <span class="k">return</span> <span class="n">label</span><span class="p">;</span></div>
+
+
+
+
+
+
+
+<div class="viewcode-block" id="trace_edge_label"><a class="viewcode-back" href="../../../../Api/ClearMap.Analysis.Graphs.GraphProcessing.html#ClearMap.Analysis.Graphs.GraphProcessing.trace_edge_label">[docs]</a><span class="k">def</span> <span class="nf">trace_edge_label</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">edge_label</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">max_iterations</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dilation_steps</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">pass_label</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Traces label within a graph.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  edge_label : array</span>
+<span class="sd">    Start label.</span>
+<span class="sd">  condition : function(graph, vertex)</span>
+<span class="sd">    A function determining if the vertex should be added to the labels.</span>
+<span class="sd">  steps : int</span>
+<span class="sd">    Number edges to jump to find new neighbours.  Default is 1.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  edge_label : array </span>
+<span class="sd">    The traced label.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">edge_graph</span><span class="p">,</span> <span class="n">edge_map</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_graph</span><span class="p">(</span><span class="n">return_edge_map</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  <span class="n">traced</span> <span class="o">=</span> <span class="n">trace_vertex_label</span><span class="p">(</span><span class="n">edge_graph</span><span class="p">,</span> <span class="n">edge_label</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">max_iterations</span><span class="o">=</span><span class="n">max_iterations</span><span class="p">,</span> <span class="n">dilation_steps</span><span class="o">=</span><span class="n">dilation_steps</span><span class="p">,</span> <span class="n">pass_label</span><span class="o">=</span><span class="n">pass_label</span><span class="p">);</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">traced</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">);</span>
+  <span class="n">label</span><span class="p">[</span><span class="n">edge_map</span><span class="p">]</span> <span class="o">=</span> <span class="n">traced</span><span class="p">;</span> <span class="c1">#TODO: check if initial label need to be reordered too ?</span>
+  <span class="k">return</span> <span class="n">label</span><span class="p">;</span></div>
+  
+<span class="c1">#  label = edge_label.copy();</span>
+<span class="c1">#  not_checked = np.logical_not(label);  </span>
+<span class="c1">#  while True:</span>
+<span class="c1">#    label_dilated = graph.edge_dilate_binary(label, steps=steps);</span>
+<span class="c1">#    label_new = np.logical_xor(label, label_dilated);</span>
+<span class="c1">#    label_new = np.logical_and(label_new, not_checked);</span>
+<span class="c1">#    edges_new = np.where(label_new)[0];</span>
+<span class="c1">#    #print(label.sum(), label_dilated.sum(), label_new.sum())</span>
+<span class="c1">#    #print(vertices_new)</span>
+<span class="c1">#    if len(edges_new) == 0:</span>
+<span class="c1">#      break;</span>
+<span class="c1">#    else:</span>
+<span class="c1">#      for e in edges_new:</span>
+<span class="c1">#        if condition(graph, e):</span>
+<span class="c1">#          label[e] = True;</span>
+<span class="c1">#        not_checked[e] = False;</span>
+<span class="c1">#      </span>
+<span class="c1">#  return label;</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tests</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Tests.Files</span> <span class="k">as</span> <span class="nn">tf</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Analysis.Graphs.GraphProcessing</span> <span class="k">as</span> <span class="nn">gp</span>
+  <span class="c1">#reload(gp)</span>
+
+  <span class="n">skeleton</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;skeleton&#39;</span><span class="p">);</span>
+  
+  <span class="c1">#import ClearMap.Visualization.Plot3d as p3d</span>
+  <span class="c1">#p3d.plot(skeleton)</span>
+
+  <span class="c1">#reload(gp)</span>
+  <span class="n">g</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">graph_from_skeleton</span><span class="p">(</span><span class="n">skeleton</span><span class="p">)</span>
+
+  <span class="n">g</span><span class="o">.</span><span class="n">vertex_coordinates</span><span class="p">()</span>
+  
+  <span class="n">s</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">graph_to_skeleton</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+  <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">s</span><span class="o">==</span><span class="n">skeleton</span><span class="p">)</span>
+
+
+  <span class="n">gc</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">clean_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+    
+  
+  <span class="n">gr</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">reduce_graph</span><span class="p">(</span><span class="n">gc</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  
+  
+  <span class="n">gr2</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+  
+  <span class="n">gr2</span><span class="o">.</span><span class="n">set_edge_geometry_type</span><span class="p">(</span><span class="s1">&#39;edge&#39;</span><span class="p">)</span>
+  
+  
+  <span class="n">l</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">edge_geometry_lengths</span><span class="p">();</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+  
+  <span class="n">g</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">ggt</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">n_vertices</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
+  <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]]));</span>
+  <span class="n">g</span><span class="o">.</span><span class="n">set_vertex_coordinates</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">));</span>
+  
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">p3d</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot_graph_line</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+  
+  <span class="n">gc</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">clean_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span> 
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot_graph_line</span><span class="p">(</span><span class="n">gc</span><span class="p">)</span>
+  
+  <span class="n">gr</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">reduce_graph</span><span class="p">(</span><span class="n">gc</span><span class="p">,</span> <span class="n">edge_geometry</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="c1">#gr.set_edge_geometry(0.1*np.ones(gr.edge_geometry(as_list=False).shape[0]), &#39;radii&#39;)</span>
+
+
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">p3d</span>
+  <span class="n">vertex_colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+  <span class="n">vertex_colors</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot_graph_mesh</span><span class="p">(</span><span class="n">gr</span><span class="p">,</span> <span class="n">default_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertex_colors</span><span class="o">=</span><span class="n">vertex_colors</span><span class="p">)</span>
+  
+  <span class="n">eg</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">edge_geometry</span><span class="p">(</span><span class="n">as_list</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+  <span class="n">egs</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">eg</span><span class="p">;</span>
+  <span class="n">gr</span><span class="o">.</span><span class="n">set_edge_geometry</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;coordinates&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">egs</span><span class="p">)</span>
+    
+  <span class="c1">#tracing</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">p3d</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Analysis.Graphs.GraphProcessing</span> <span class="k">as</span> <span class="nn">gp</span>
+  
+  <span class="n">g</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">ggt</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">n_vertices</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
+  <span class="n">g</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="p">]]));</span>
+  <span class="n">g</span><span class="o">.</span><span class="n">set_vertex_coordinates</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">));</span>
+  <span class="n">g</span><span class="o">.</span><span class="n">set_vertex_radii</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.02</span><span class="p">)</span>
+  <span class="n">vertex_colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">g</span><span class="o">.</span><span class="n">vertex_radii</span><span class="p">()]</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">;</span> <span class="n">vertex_colors</span> <span class="o">=</span> <span class="n">vertex_colors</span> <span class="o">/</span> <span class="n">vertex_colors</span><span class="o">.</span><span class="n">max</span><span class="p">();</span> <span class="n">vertex_colors</span><span class="p">[:,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot_graph_mesh</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">default_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertex_colors</span><span class="o">=</span><span class="n">vertex_colors</span><span class="p">)</span>
+  
+  <span class="k">def</span> <span class="nf">condition</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">vertex</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_radii</span><span class="p">(</span><span class="n">vertex</span><span class="o">=</span><span class="n">vertex</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;condition, vertex=</span><span class="si">%d</span><span class="s1">, radius=</span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">vertex</span><span class="p">,</span><span class="n">r</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">r</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mf">0.02</span><span class="p">;</span>
+  
+  <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">);</span>
+  <span class="n">label</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+  <span class="n">traced</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">trace_vertex_label</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">condition</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">traced</span><span class="p">)</span>  
+
+  <span class="n">vertex_colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])[</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">traced</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)]</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot_graph_mesh</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">default_radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vertex_colors</span><span class="o">=</span><span class="n">vertex_colors</span><span class="p">)</span>
+  
+  <span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span><span class="p">;</span>
+  <span class="n">reload</span><span class="p">(</span><span class="n">gp</span><span class="p">)</span>
+  
+  
+  <span class="c1"># edge tracing</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Analysis.Graphs.GraphGt</span> <span class="k">as</span> <span class="nn">ggt</span>
+  <span class="n">edges</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">]];</span>
+  <span class="n">g</span> <span class="o">=</span> <span class="n">ggt</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">edges</span><span class="o">=</span><span class="n">edges</span><span class="p">)</span>
+  
+  <span class="n">l</span><span class="p">,</span><span class="n">m</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">edge_graph</span><span class="p">(</span><span class="n">return_edge_map</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">);</span>
+  <span class="n">label</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+  
+  <span class="kn">import</span> <span class="nn">ClearMap.Analysis.Graphs.GraphProcessing</span> <span class="k">as</span> <span class="nn">gp</span>
+  
+  <span class="k">def</span> <span class="nf">condition</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">edge</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;condition, edge=</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">edge</span><span class="p">,))</span>
+    <span class="k">return</span> <span class="kc">True</span><span class="p">;</span>
+  
+  <span class="n">traced</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">trace_edge_label</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">condition</span><span class="p">);</span>     
+  <span class="nb">print</span><span class="p">(</span><span class="n">traced</span><span class="p">)</span>
+  
+  <span class="c1"># expansion of edge lengths</span>
+  
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Tests.Files</span> <span class="k">as</span> <span class="nn">tf</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Analysis.Graphs.GraphProcessing</span> <span class="k">as</span> <span class="nn">gp</span>
+  
+  <span class="n">graph</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">ggt</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="n">n_vertices</span><span class="o">=</span><span class="mi">5</span><span class="p">);</span>
+  <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">]]);</span>
+  <span class="n">graph</span><span class="o">.</span><span class="n">add_edge_property</span><span class="p">(</span><span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+  
+  <span class="n">e</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">expand_graph_length</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+  
+  <span class="kn">import</span> <span class="nn">graph_tool.draw</span> <span class="k">as</span> <span class="nn">gd</span>
+  <span class="n">pos</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">ggt</span><span class="o">.</span><span class="n">vertex_property_map_to_python</span><span class="p">(</span><span class="n">gd</span><span class="o">.</span><span class="n">sfdp_layout</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">base</span><span class="p">))</span>
+  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">();</span>
+  <span class="kn">import</span> <span class="nn">matplotlib.collections</span>  <span class="k">as</span> <span class="nn">mc</span>
+
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.Color</span> <span class="k">as</span> <span class="nn">col</span>
+  <span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">col</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]])</span>
+
+  <span class="n">ec</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">edge_connectivity</span><span class="p">();</span>
+  <span class="n">lines</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">ec</span><span class="p">];</span>
+  <span class="n">cols</span>  <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">m</span><span class="p">];</span>
+  <span class="n">lc</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">LineCollection</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cols</span><span class="p">);</span>
+  
+  <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">();</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">add_collection</span><span class="p">(</span><span class="n">lc</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">autoscale</span><span class="p">()</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  
+  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pos</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">pos</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+  <span class="n">p</span> <span class="o">=</span><span class="n">pos</span><span class="p">[:</span><span class="n">graph</span><span class="o">.</span><span class="n">n_vertices</span><span class="p">]</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">p</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">p</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../../../../overview.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

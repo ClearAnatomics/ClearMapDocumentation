@@ -1,0 +1,860 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>StitchingWobbly &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/clearmap.js"></script>
+    <script src="../_static/clearmap_sidebar.js"></script>
+    <script src="../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tracking" href="ClearMap.Alignment.Stitching.Tracking.html" />
+    <link rel="prev" title="StitchingRigid" href="ClearMap.Alignment.Stitching.StitchingRigid.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../home.html"><img src="../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../home.html">Home</a></li>
+     <li class="link-list"><a href="../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ClearMap.Alignment.Stitching.Tracking.html" title="Tracking"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ClearMap.Alignment.Stitching.StitchingRigid.html" title="StitchingRigid"
+             accesskey="P">previous</a> |</li>
+       <li><a href="../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../api.html" >ClearMap</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="ClearMap.Alignment.html" >Alignment</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="ClearMap.Alignment.Stitching.html" accesskey="U">Stitching</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../media.html">News and Media</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">ClearMap</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ClearMap.Alignment.html">Alignment</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ClearMap.Alignment.Annotation.html">Annotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ClearMap.Alignment.Elastix.html">Elastix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ClearMap.Alignment.Resampling.html">Resampling</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="ClearMap.Alignment.Stitching.html">Stitching</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ClearMap.Alignment.Stitching.StitchingRigid.html">StitchingRigid</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">StitchingWobbly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ClearMap.Alignment.Stitching.Tracking.html">Tracking</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Analysis.html">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Compile.html">Compile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Environment.html">Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.External.html">External</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.IO.html">IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.ImageProcessing.html">ImageProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.ParallelProcessing.html">ParallelProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Tests.html">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Visualization.html">Visualization</a></li>
+</ul>
+</li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ClearMap.Alignment.Stitching.StitchingRigid.html"
+                        title="previous chapter">StitchingRigid</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ClearMap.Alignment.Stitching.Tracking.html"
+                        title="next chapter">Tracking</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Api/ClearMap.Alignment.Stitching.StitchingWobbly.rst"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../cellmap.html">
+            <img src="../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../tubemap.html">
+            <img src="../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../media.html#gallery"> Gallery</a></h3>
+          <a href="../media.html#gallery">
+            <img src="../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../media.html#videos">   
+            <img src="../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <div class="section" id="stitchingwobbly">
+<h1>StitchingWobbly<a class="headerlink" href="#stitchingwobbly" title="Permalink to this headline">¶</a></h1>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
+<span class="target" id="module-ClearMap.Alignment.Stitching.StitchingWobbly"></span><p>Wobbly stitching module handles the alginment of large volumetric data sets.</p>
+<p>The module alings stacks allowing them to wobble around a wobble axis, i.e.
+due to oscillatory movements during image aquisition.</p>
+<dl class="class">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.Verbose">
+<em class="property">class </em><code class="sig-name descname">Verbose</code><span class="sig-paren">(</span><em class="sig-param">verbose=True</em>, <em class="sig-param">save=None</em>, <em class="sig-param">directory=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#Verbose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.Verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.Verbose.copy">
+<code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#Verbose.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.Verbose.copy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.Verbose.create_directory">
+<code class="sig-name descname">create_directory</code><span class="sig-paren">(</span><em class="sig-param">prefix=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#Verbose.create_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.Verbose.create_directory" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.Verbose.full_filename">
+<code class="sig-name descname">full_filename</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#Verbose.full_filename"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.Verbose.full_filename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.Verbose.has_flag">
+<code class="sig-name descname">has_flag</code><span class="sig-paren">(</span><em class="sig-param">flag</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#Verbose.has_flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.Verbose.has_flag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.Verbose.flags">
+<code class="sig-name descname">flags</code><em class="property"> = {'figure': 4, 'save': 2}</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.Verbose.flags" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment">
+<em class="property">class </em><code class="sig-name descname">WobblyAlignment</code><span class="sig-paren">(</span><em class="sig-param">pre=None</em>, <em class="sig-param">post=None</em>, <em class="sig-param">shifts=None</em>, <em class="sig-param">displacements=None</em>, <em class="sig-param">qualities=None</em>, <em class="sig-param">status=None</em>, <em class="sig-param">axis=2</em>, <em class="sig-param">shift=None</em>, <em class="sig-param">displacement=None</em>, <em class="sig-param">quality=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.Alignment.Stitching.StitchingRigid.html#ClearMap.Alignment.Stitching.StitchingRigid.Alignment" title="ClearMap.Alignment.Stitching.StitchingRigid.Alignment"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMap.Alignment.Stitching.StitchingRigid.Alignment</span></code></a></p>
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.align_wobbly_axis">
+<code class="sig-name descname">align_wobbly_axis</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.align_wobbly_axis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.align_wobbly_axis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.coordinate_to_local">
+<code class="sig-name descname">coordinate_to_local</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.coordinate_to_local"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.coordinate_to_local" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.displacement_at_coordinate">
+<code class="sig-name descname">displacement_at_coordinate</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.displacement_at_coordinate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.displacement_at_coordinate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.fix_unaligned">
+<code class="sig-name descname">fix_unaligned</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.fix_unaligned"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.fix_unaligned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Linearly interpolate between unaligned coordinates</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.overlay_mip_wobbly">
+<code class="sig-name descname">overlay_mip_wobbly</code><span class="sig-paren">(</span><em class="sig-param">overlap=True</em>, <em class="sig-param">mip_axis=None</em>, <em class="sig-param">percentile=98</em>, <em class="sig-param">normalize=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.overlay_mip_wobbly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.overlay_mip_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.overlay_wobbly">
+<code class="sig-name descname">overlay_wobbly</code><span class="sig-paren">(</span><em class="sig-param">overlap=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.overlay_wobbly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.overlay_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.plot_mip_wobbly">
+<code class="sig-name descname">plot_mip_wobbly</code><span class="sig-paren">(</span><em class="sig-param">overlap=True</em>, <em class="sig-param">mip_axis=None</em>, <em class="sig-param">percentile=98</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.plot_mip_wobbly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.plot_mip_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.plot_overlay_wobbly">
+<code class="sig-name descname">plot_overlay_wobbly</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.plot_overlay_wobbly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.plot_overlay_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.quality_at_coordinate">
+<code class="sig-name descname">quality_at_coordinate</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.quality_at_coordinate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.quality_at_coordinate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.set_status_at_coordinate">
+<code class="sig-name descname">set_status_at_coordinate</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em>, <em class="sig-param">status</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.set_status_at_coordinate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.set_status_at_coordinate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.smooth_displacements">
+<code class="sig-name descname">smooth_displacements</code><span class="sig-paren">(</span><em class="sig-param">min_quality=-inf</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.smooth_displacements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.smooth_displacements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.status_at_coordinate">
+<code class="sig-name descname">status_at_coordinate</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.status_at_coordinate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.status_at_coordinate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.valids">
+<code class="sig-name descname">valids</code><span class="sig-paren">(</span><em class="sig-param">min_quality=-inf</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyAlignment.valids"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.valids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.ALIGNED">
+<code class="sig-name descname">ALIGNED</code><em class="property"> = 2</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.ALIGNED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.FIXED">
+<code class="sig-name descname">FIXED</code><em class="property"> = 3</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.FIXED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.INVALID">
+<code class="sig-name descname">INVALID</code><em class="property"> = -1</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.INVALID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.MEASURED">
+<code class="sig-name descname">MEASURED</code><em class="property"> = 1</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.MEASURED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.NOMINIMA">
+<code class="sig-name descname">NOMINIMA</code><em class="property"> = -4</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.NOMINIMA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.NOSIGNAL">
+<code class="sig-name descname">NOSIGNAL</code><em class="property"> = -5</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.NOSIGNAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.UNALIGNED">
+<code class="sig-name descname">UNALIGNED</code><em class="property"> = -3</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.UNALIGNED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.UNTRACED">
+<code class="sig-name descname">UNTRACED</code><em class="property"> = -2</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.UNTRACED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.VALID">
+<code class="sig-name descname">VALID</code><em class="property"> = 0</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.VALID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.displacements">
+<em class="property">property </em><code class="sig-name descname">displacements</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.displacements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.lower_coordinate">
+<em class="property">property </em><code class="sig-name descname">lower_coordinate</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.lower_coordinate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.shifts">
+<em class="property">property </em><code class="sig-name descname">shifts</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.shifts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.status_to_description">
+<code class="sig-name descname">status_to_description</code><em class="property"> = {-5: 'no signal', -4: 'no minima', -3: 'unaligned', -2: 'untraced', -1: 'invalid', 0: 'valid', 1: 'measured', 2: 'aligned', 3: 'fixed'}</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.status_to_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.upper_coordinate">
+<em class="property">property </em><code class="sig-name descname">upper_coordinate</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyAlignment.upper_coordinate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout">
+<em class="property">class </em><code class="sig-name descname">WobblyLayout</code><span class="sig-paren">(</span><em class="sig-param">sources=None</em>, <em class="sig-param">expression=None</em>, <em class="sig-param">tile_axes=None</em>, <em class="sig-param">tile_shape=None</em>, <em class="sig-param">tile_positions=None</em>, <em class="sig-param">positions=None</em>, <em class="sig-param">overlaps=None</em>, <em class="sig-param">alignments=None</em>, <em class="sig-param">axis=2</em>, <em class="sig-param">position=None</em>, <em class="sig-param">shape=None</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">order=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyLayout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.Alignment.Stitching.StitchingRigid.html#ClearMap.Alignment.Stitching.StitchingRigid.TiledLayout" title="ClearMap.Alignment.Stitching.StitchingRigid.TiledLayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMap.Alignment.Stitching.StitchingRigid.TiledLayout</span></code></a></p>
+<p>Layout to handle stitching of wobbly sources.</p>
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.alignment_info">
+<code class="sig-name descname">alignment_info</code><span class="sig-paren">(</span><em class="sig-param">tile_position</em>, <em class="sig-param">coordinate</em>, <em class="sig-param">plot=True</em>, <em class="sig-param">use_displacements=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyLayout.alignment_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.alignment_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gathers all alignment info for a slice of a certain tile.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.layouts_along_axis_wobbly">
+<code class="sig-name descname">layouts_along_axis_wobbly</code><span class="sig-paren">(</span><em class="sig-param">coordinates=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyLayout.layouts_along_axis_wobbly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.layouts_along_axis_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of Layouts representing the placed wobbly sources in each wobbly-axis slice of this layout.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>coordinates<span class="classifier">list of ints, all, or None</span></dt><dd><p>The positions of the slices along the wobble axis. If all or None take all possible slices.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>slices<span class="classifier">list of SlicedLayout classes</span></dt><dd><p>The layouts in each wobble-axis-plane.</p>
+</dd>
+</dl>
+<p class="rubric">Note</p>
+<p>The slices layouts can be used for stitching of the wobbly stacks.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.plot_wobble">
+<code class="sig-name descname">plot_wobble</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyLayout.plot_wobble"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.plot_wobble" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.set_positions">
+<code class="sig-name descname">set_positions</code><span class="sig-paren">(</span><em class="sig-param">positions</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyLayout.set_positions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.set_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the positions of all wobbly slices and sources.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.slice_along_axis_wobbly">
+<code class="sig-name descname">slice_along_axis_wobbly</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblyLayout.slice_along_axis_wobbly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.slice_along_axis_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a layout corresponding to a slice along the wobble axis in this layout.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>coordinate<span class="classifier">int</span></dt><dd><p>The coordinate at which to take the slice.</p>
+</dd>
+<dt>axis<span class="classifier">int</span></dt><dd><p>The axis to take the slice in.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>layout<span class="classifier">Layout class</span></dt><dd><p>The sliced layout.</p>
+</dd>
+</dl>
+<p class="rubric">Note</p>
+<p>The underlying sources are converted to virtual for parallel stitching.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.lower_wobbly">
+<em class="property">property </em><code class="sig-name descname">lower_wobbly</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.lower_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the lower position of the entire layout.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>lower<span class="classifier">tuple of ints</span></dt><dd><p>The lower position of the full layout.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.origin_wobbly">
+<em class="property">property </em><code class="sig-name descname">origin_wobbly</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.origin_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.shape_wobbly">
+<em class="property">property </em><code class="sig-name descname">shape_wobbly</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.shape_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.upper_wobbly">
+<em class="property">property </em><code class="sig-name descname">upper_wobbly</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblyLayout.upper_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the upper position of the entire layout.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>upper<span class="classifier">tuple of ints</span></dt><dd><p>The upper position of the full layout.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource">
+<em class="property">class </em><code class="sig-name descname">WobblySource</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">wobble=None</em>, <em class="sig-param">status=None</em>, <em class="sig-param">axis=2</em>, <em class="sig-param">position=None</em>, <em class="sig-param">tile_position=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.Alignment.Stitching.StitchingRigid.html#ClearMap.Alignment.Stitching.StitchingRigid.Source" title="ClearMap.Alignment.Stitching.StitchingRigid.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMap.Alignment.Stitching.StitchingRigid.Source</span></code></a></p>
+<p>Class to handle source data and positions of wobbly stacks.</p>
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.array_wobbly">
+<code class="sig-name descname">array_wobbly</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.array_wobbly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.array_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the array in the wobbly form with zeros at empty positions.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>array<span class="classifier">array</span></dt><dd><p>The data of the array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.coordinate_from_local">
+<code class="sig-name descname">coordinate_from_local</code><span class="sig-paren">(</span><em class="sig-param">local_coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.coordinate_from_local"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.coordinate_from_local" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a local wobble axis coordiante to the non-local coordinate.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>local_coordinate<span class="classifier">int</span></dt><dd><p>The local coordiante within the source.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>coordiante<span class="classifier">int</span></dt><dd><p>The non-local coordiante.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.coordinate_to_local">
+<code class="sig-name descname">coordinate_to_local</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.coordinate_to_local"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.coordinate_to_local" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a wobble axis coordinate to the a local coordinate wrt to the sources origin.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>coordinate<span class="classifier">int</span></dt><dd><p>The non-local coordinate.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>loacl_coordinate<span class="classifier">int</span></dt><dd><p>The local coordinate within this source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.fix_isolated">
+<code class="sig-name descname">fix_isolated</code><span class="sig-paren">(</span><em class="sig-param">exclude_borders=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.fix_isolated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.fix_isolated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fix the positons of isolated slices.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.is_valid">
+<code class="sig-name descname">is_valid</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.is_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.is_valid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.position_at_coordinate">
+<code class="sig-name descname">position_at_coordinate</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.position_at_coordinate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.position_at_coordinate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the wobbly position of the source at the specified coordinate along the wobble axis.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>coordinate<span class="classifier">int</span></dt><dd><p>The coordinate along the wobble axis.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>position<span class="classifier">tuple of int.</span></dt><dd><p>The non-local position of the specified coordainte slice.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.set_invalid">
+<code class="sig-name descname">set_invalid</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.set_invalid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.set_invalid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.set_isolated">
+<code class="sig-name descname">set_isolated</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.set_isolated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.set_isolated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.set_status_at_coordinate">
+<code class="sig-name descname">set_status_at_coordinate</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em>, <em class="sig-param">status</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.set_status_at_coordinate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.set_status_at_coordinate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.smooth_positions">
+<code class="sig-name descname">smooth_positions</code><span class="sig-paren">(</span><em class="sig-param">smooth={'method': 'window'</em>, <em class="sig-param">'window': 'bartlett'</em>, <em class="sig-param">'window_length': 10}</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.smooth_positions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.smooth_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.status_at_coordinate">
+<code class="sig-name descname">status_at_coordinate</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.status_at_coordinate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.status_at_coordinate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.wobble_at_coordinate">
+<code class="sig-name descname">wobble_at_coordinate</code><span class="sig-paren">(</span><em class="sig-param">coordinate</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.wobble_at_coordinate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.wobble_at_coordinate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the wobbly position of the source at the specified coordinate along the wobble axis.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>coordinate<span class="classifier">int</span></dt><dd><p>The coordinate along the wobble axis.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>position<span class="classifier">tuple of int.</span></dt><dd><p>The non-local position of the specified coordainte slice.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.wobble_from_positions">
+<code class="sig-name descname">wobble_from_positions</code><span class="sig-paren">(</span><em class="sig-param">positions</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#WobblySource.wobble_from_positions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.wobble_from_positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.FIXED">
+<code class="sig-name descname">FIXED</code><em class="property"> = 2</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.FIXED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.INVALID">
+<code class="sig-name descname">INVALID</code><em class="property"> = -1</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.INVALID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.ISOLATED">
+<code class="sig-name descname">ISOLATED</code><em class="property"> = -2</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.ISOLATED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.VALID">
+<code class="sig-name descname">VALID</code><em class="property"> = 0</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.VALID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.axis">
+<em class="property">property </em><code class="sig-name descname">axis</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.axis" title="Permalink to this definition">¶</a></dt>
+<dd><p>The axis along which the source is assumed to be wobbly.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>axis<span class="classifier">int</span></dt><dd><p>The wobble axes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.coordinate">
+<em class="property">property </em><code class="sig-name descname">coordinate</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.coordinate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.height">
+<em class="property">property </em><code class="sig-name descname">height</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.lower_wobbly">
+<em class="property">property </em><code class="sig-name descname">lower_wobbly</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.lower_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd><p>The lower corner of the wobbly source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>lower<span class="classifier">tuple of int</span></dt><dd><p>The coordinates of the lower corner of the source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of this source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>name<span class="classifier">str</span></dt><dd><p>Name of this source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.positions">
+<em class="property">property </em><code class="sig-name descname">positions</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>The positions of the lower corners of all slices along the wobble axis.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>positions<span class="classifier">array</span></dt><dd><p>The coordinates of the lower corner of the slices along the wobble axis.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.status">
+<em class="property">property </em><code class="sig-name descname">status</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>The status of each slice of this source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>status<span class="classifier">array of ints</span></dt><dd><p>The status for each position along the wobble axes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.status_to_description">
+<code class="sig-name descname">status_to_description</code><em class="property"> = {-2: 'isolated', -1: 'invalid', 0: 'valid', 2: 'fixed'}</em><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.status_to_description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.upper_wobbly">
+<em class="property">property </em><code class="sig-name descname">upper_wobbly</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.upper_wobbly" title="Permalink to this definition">¶</a></dt>
+<dd><p>The upper corner of the source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>upper<span class="classifier">tuple of int</span></dt><dd><p>The coordinates of the upper corner of the source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.valids">
+<em class="property">property </em><code class="sig-name descname">valids</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.valids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.wdim">
+<em class="property">property </em><code class="sig-name descname">wdim</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.wdim" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.wobble">
+<em class="property">property </em><code class="sig-name descname">wobble</code><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.WobblySource.wobble" title="Permalink to this definition">¶</a></dt>
+<dd><p>The wobblyness of this source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>wobble<span class="classifier">array of ints</span></dt><dd><p>The deviations from the source position along the wobble axes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.align_layout">
+<code class="sig-name descname">align_layout</code><span class="sig-paren">(</span><em class="sig-param">layout</em>, <em class="sig-param">axis_range=None</em>, <em class="sig-param">max_shifts=10</em>, <em class="sig-param">axis_mip=None</em>, <em class="sig-param">validate=None</em>, <em class="sig-param">prepare='normalization'</em>, <em class="sig-param">validate_slice=None</em>, <em class="sig-param">prepare_slice=None</em>, <em class="sig-param">find_shifts='minimization'</em>, <em class="sig-param">verbose=False</em>, <em class="sig-param">processes=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#align_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.align_layout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.align_wobbly_axis">
+<code class="sig-name descname">align_wobbly_axis</code><span class="sig-paren">(</span><em class="sig-param">source1</em>, <em class="sig-param">source2</em>, <em class="sig-param">axis=2</em>, <em class="sig-param">axis_range=None</em>, <em class="sig-param">max_shifts=10</em>, <em class="sig-param">axis_mip=None</em>, <em class="sig-param">validate=None</em>, <em class="sig-param">prepare='normalization'</em>, <em class="sig-param">validate_slice=None</em>, <em class="sig-param">prepare_slice=None</em>, <em class="sig-param">find_shifts='minimization'</em>, <em class="sig-param">with_errors=False</em>, <em class="sig-param">with_overlaps=False</em>, <em class="sig-param">verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#align_wobbly_axis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.align_wobbly_axis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create shifts along the wobble axis, estimate smooth shifts and mark invalid slices, accounts for jumps in minima using multiple minima.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.detect_local_minima">
+<code class="sig-name descname">detect_local_minima</code><span class="sig-paren">(</span><em class="sig-param">error</em>, <em class="sig-param">distance=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#detect_local_minima"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.detect_local_minima" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.fix_isolated">
+<code class="sig-name descname">fix_isolated</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">exclude_borders=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#fix_isolated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.fix_isolated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fix the positons of isolated slices.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.fix_unaligned">
+<code class="sig-name descname">fix_unaligned</code><span class="sig-paren">(</span><em class="sig-param">displacements</em>, <em class="sig-param">status</em>, <em class="sig-param">qualities</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#fix_unaligned"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.fix_unaligned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Linearly interpolate between unaligned coordinates</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.inspect_align_layout">
+<code class="sig-name descname">inspect_align_layout</code><span class="sig-paren">(</span><em class="sig-param">alignment</em>, <em class="sig-param">verbose</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#inspect_align_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.inspect_align_layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the infomration saved during a align_layout.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>errors<span class="classifier">array</span></dt><dd><p>The error landscape for each slice.</p>
+</dd>
+<dt>minima<span class="classifier">array</span></dt><dd><p>Coordinates of the detected minima</p>
+</dd>
+<dt>trajectories<span class="classifier">list</span></dt><dd><p>List of coordaintes of the detected trajectories.</p>
+</dd>
+<dt>trajectories_optimal<span class="classifier">list</span></dt><dd><p>List of the optimal trajectories.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.place_layout">
+<code class="sig-name descname">place_layout</code><span class="sig-paren">(</span><em class="sig-param">layout</em>, <em class="sig-param">min_quality=None</em>, <em class="sig-param">method='optimization'</em>, <em class="sig-param">smooth=None</em>, <em class="sig-param">smooth_optimized=None</em>, <em class="sig-param">fix_isolated=True</em>, <em class="sig-param">lower_to_origin=True</em>, <em class="sig-param">processes=None</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#place_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.place_layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Place a layout with the WobblyAlignments.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.prepare_normalization">
+<code class="sig-name descname">prepare_normalization</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">clip=None</em>, <em class="sig-param">normalize=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#prepare_normalization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.prepare_normalization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.shifts_from_minimization">
+<code class="sig-name descname">shifts_from_minimization</code><span class="sig-paren">(</span><em class="sig-param">errors</em>, <em class="sig-param">status</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#shifts_from_minimization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.shifts_from_minimization" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.shifts_from_tracing">
+<code class="sig-name descname">shifts_from_tracing</code><span class="sig-paren">(</span><em class="sig-param">errors</em>, <em class="sig-param">status</em>, <em class="sig-param">cutoff=None</em>, <em class="sig-param">new_trajectory_cost=None</em>, <em class="sig-param">minima='local_minima'</em>, <em class="sig-param">verbose=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#shifts_from_tracing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.shifts_from_tracing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.smooth_binary">
+<code class="sig-name descname">smooth_binary</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">width=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#smooth_binary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.smooth_binary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove displacements smaller than a certain width.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.smooth_displacements">
+<code class="sig-name descname">smooth_displacements</code><span class="sig-paren">(</span><em class="sig-param">displacements</em>, <em class="sig-param">valids</em>, <em class="sig-param">method='window'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#smooth_displacements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.smooth_displacements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smooth displacements in valid regions.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.smooth_positions">
+<code class="sig-name descname">smooth_positions</code><span class="sig-paren">(</span><em class="sig-param">positions</em>, <em class="sig-param">valids</em>, <em class="sig-param">method='window'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#smooth_positions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.smooth_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smooth positions in valid regions.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.smooth_window">
+<code class="sig-name descname">smooth_window</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">window_length=10</em>, <em class="sig-param">window='bartlett'</em>, <em class="sig-param">binary=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#smooth_window"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.smooth_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolutional smoothing filter</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.stitch_layout">
+<code class="sig-name descname">stitch_layout</code><span class="sig-paren">(</span><em class="sig-param">layout</em>, <em class="sig-param">sink</em>, <em class="sig-param">method='interpolation'</em>, <em class="sig-param">processes=None</em>, <em class="sig-param">verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#stitch_layout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.stitch_layout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stitches the wobbly sources in a wobbly layout.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>layout: WobblyLayout class</dt><dd><p>The layout of the stacks to stitch.</p>
+</dd>
+<dt>method<span class="classifier">‘interpolation’, ‘max’, ‘min’, ‘mean’</span></dt><dd><p>The method to use to stitch the sources.</p>
+</dd>
+<dt>processes<span class="classifier">int or ‘serial’</span></dt><dd><p>Number of processor to use for parallel processing, if ‘serial’ process in serial.</p>
+</dd>
+<dt>verbose<span class="classifier">bool</span></dt><dd><p>If True, print progress information.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>layout<span class="classifier">Layout</span></dt><dd><p>The layout with updated z-alignments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.validate_foreground">
+<code class="sig-name descname">validate_foreground</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">valid_range=(800</em>, <em class="sig-param">None)</em>, <em class="sig-param">size=None</em>, <em class="sig-param">fraction=None</em>, <em class="sig-param">verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#validate_foreground"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.validate_foreground" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Stitching.StitchingWobbly.verbose_has_flag">
+<code class="sig-name descname">verbose_has_flag</code><span class="sig-paren">(</span><em class="sig-param">verbose</em>, <em class="sig-param">flag</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Stitching/StitchingWobbly.html#verbose_has_flag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Stitching.StitchingWobbly.verbose_has_flag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../overview.html"><img src="../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

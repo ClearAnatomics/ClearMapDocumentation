@@ -1,0 +1,969 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ClearMap.Alignment.Annotation &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/clearmap.js"></script>
+    <script src="../../../_static/clearmap_sidebar.js"></script>
+    <script src="../../../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../../../home.html"><img src="../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../../../home.html">Home</a></li>
+     <li class="link-list"><a href="../../../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../../../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+       <li><a href="../../../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../../../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../../../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../../../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../../../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../../../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../../../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../../../cellmap.html">
+            <img src="../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../../../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../../../tubemap.html">
+            <img src="../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../../../media.html#gallery"> Gallery</a></h3>
+          <a href="../../../media.html#gallery">
+            <img src="../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../../../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../../../media.html#videos">   
+            <img src="../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <h1>Source code for ClearMap.Alignment.Annotation</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Annotation</span>
+<span class="sd">==========</span>
+
+<span class="sd">Module to handle label and annotation info from Allen Brain Atlas (v2).</span>
+<span class="sd"> </span>
+<span class="sd">Notes</span>
+<span class="sd">-----      </span>
+<span class="sd">  - The files containting annotation information is assumed to be in the path </span>
+<span class="sd">    stored in :const:`atlas_path`, which defaults to the resource path </span>
+<span class="sd">    :const:`ClearMap.Settings.resources_path`.</span>
+<span class="sd">    </span>
+<span class="sd">  - The annotation file is assumed to be &#39;annotation_25_full.nrrd&#39;</span>
+<span class="sd">    but can be set via :const:`default_annotation_file`.</span>
+
+<span class="sd">  - The mapping between labels and brain area information is assumed to be in </span>
+<span class="sd">    the &#39;annotation.json&#39; file but the location can be set</span>
+<span class="sd">    via :const:`default_label_file`.     </span>
+<span class="sd">      </span>
+<span class="sd">References</span>
+<span class="sd">----------</span>
+<span class="sd">  - `Allen Brain Atlas &lt;http://mouse.brain-map.org/static/atlas&gt;`_  </span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">collections</span> 
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Settings</span> <span class="k">as</span> <span class="nn">settings</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">ClearMap.IO.FileUtils</span> <span class="k">as</span> <span class="nn">fu</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Alignment.Resampling</span> <span class="k">as</span> <span class="nn">res</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Utils.HierarchicalDict</span> <span class="k">as</span> <span class="nn">hdict</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Visualization.Color</span> <span class="k">as</span> <span class="nn">col</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Atlas Structures</span>
+<span class="c1">###############################################################################</span>
+
+<span class="c1">#TODO: move to settings ?</span>
+<span class="n">atlas_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">resources_path</span><span class="p">,</span> <span class="s1">&#39;Atlas&#39;</span><span class="p">);</span>
+<span class="sd">&quot;&quot;&quot;Default path to atlas infomration.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">default_annotation_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">atlas_path</span><span class="p">,</span> <span class="s1">&#39;ABA_25um_annotation.tif&#39;</span><span class="p">);</span>
+<span class="sd">&quot;&quot;&quot;Default volumetric annotated image file.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">  This file is by default the Allen brain annotated mouse atlas with 25um </span>
+<span class="sd">  isotropic resolution.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">fu</span><span class="o">.</span><span class="n">uncompress</span><span class="p">(</span><span class="n">default_annotation_file</span><span class="p">)</span>
+
+
+<span class="n">default_reference_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">atlas_path</span><span class="p">,</span> <span class="s1">&#39;ABA_25um_reference.tif&#39;</span><span class="p">);</span>
+<span class="sd">&quot;&quot;&quot;Default volumetric annotated image file.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">  This file is by default the Allen brain annotated mouse atlas with 25um </span>
+<span class="sd">  isotropic resolution.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">fu</span><span class="o">.</span><span class="n">uncompress</span><span class="p">(</span><span class="n">default_reference_file</span><span class="p">)</span>
+
+
+<span class="n">default_distance_to_surface_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">atlas_path</span><span class="p">,</span> <span class="s1">&#39;ABA_25um_distance_to_surface.tif&#39;</span><span class="p">);</span>
+<span class="sd">&quot;&quot;&quot;Default volumetric annotated image file.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">  This file is by default the Allen brain annotated mouse atlas with 25um </span>
+<span class="sd">  isotropic resolution.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">fu</span><span class="o">.</span><span class="n">uncompress</span><span class="p">(</span><span class="n">default_distance_to_surface_file</span><span class="p">)</span>
+
+
+<span class="n">default_label_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">atlas_path</span><span class="p">,</span> <span class="s1">&#39;ABA_annotation.json&#39;</span><span class="p">);</span>
+<span class="sd">&quot;&quot;&quot;Default list of labels and region names in the annotated image.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">  This file is by default the labels for the Allen brain annotated mouse </span>
+<span class="sd">  atlas with 25um isotropic resolution.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">default_extra_label</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">182305696</span><span class="p">,</span> <span class="mi">453</span><span class="p">,</span> <span class="s1">&#39;No label&#39;</span><span class="p">,</span> <span class="s1">&#39;NoL&#39;</span><span class="p">),</span> 
+               <span class="p">(</span><span class="mi">182305712</span><span class="p">,</span> <span class="mi">453</span><span class="p">,</span> <span class="s1">&#39;No label&#39;</span><span class="p">,</span> <span class="s1">&#39;NoL&#39;</span><span class="p">),</span> 
+               <span class="p">(</span><span class="mi">312782560</span><span class="p">,</span> <span class="mi">315</span><span class="p">,</span> <span class="s1">&#39;No label&#39;</span><span class="p">,</span> <span class="s1">&#39;NoL&#39;</span><span class="p">),</span> 
+               <span class="p">(</span><span class="mi">312782592</span><span class="p">,</span> <span class="mi">453</span><span class="p">,</span> <span class="s1">&#39;No label&#39;</span><span class="p">,</span> <span class="s1">&#39;NoL&#39;</span><span class="p">),</span> 
+               <span class="p">(</span><span class="mi">312782656</span><span class="p">,</span> <span class="mi">315</span><span class="p">,</span> <span class="s1">&#39;No label&#39;</span><span class="p">,</span> <span class="s1">&#39;NoL&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">526157184</span><span class="p">,</span> <span class="mi">993</span><span class="p">,</span> <span class="s1">&#39;No label&#39;</span><span class="p">,</span> <span class="s1">&#39;NoL&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">526322272</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s1">&#39;No label&#39;</span><span class="p">,</span> <span class="s1">&#39;NoL&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">527696992</span><span class="p">,</span> <span class="mi">315</span><span class="p">,</span> <span class="s1">&#39;No label&#39;</span><span class="p">,</span> <span class="s1">&#39;NoL&#39;</span><span class="p">)];</span>
+<span class="sd">&quot;&quot;&quot;Additional label not in the Allen Brain Atlas label but in the atlas image.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">  The form is a list of tuples, each tuple has the form </span>
+<span class="sd">  (atlas id, parent id, name, acronym).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+
+
+
+<div class="viewcode-block" id="Label"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Label">[docs]</a><span class="k">class</span> <span class="nc">Label</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Class holding information of an individual Atlas label.&quot;&quot;&quot;</span>
+  
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">children</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">children</span><span class="p">;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span><span class="p">;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">level</span><span class="p">;</span>
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+  
+  <span class="nd">@property</span>  
+  <span class="k">def</span> <span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">];</span>
+    
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">level</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">];</span>
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">];</span>
+  
+<div class="viewcode-block" id="Label.color"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Label.color">[docs]</a>  <span class="k">def</span> <span class="nf">color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">col</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;rgb&#39;</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+  
+  <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+    
+  <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+  
+<div class="viewcode-block" id="Label.write"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Label.write">[docs]</a>  <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_children</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ident</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="n">ident</span><span class="o">=</span><span class="n">ident</span><span class="p">,</span> <span class="n">with_children</span><span class="o">=</span><span class="n">with_children</span><span class="p">);</span></div>
+  
+<div class="viewcode-block" id="Label.info"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Label.info">[docs]</a>  <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_children</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ident</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ident</span><span class="o">=</span><span class="n">ident</span><span class="p">,</span> <span class="n">with_children</span><span class="o">=</span><span class="n">with_children</span><span class="p">));</span></div>
+  
+  <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ident</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">with_children</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">ident</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">ident</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    
+    <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>      
+    <span class="k">if</span> <span class="n">with_children</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+      <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="n">ident</span><span class="o">=</span><span class="n">ident</span> <span class="o">+</span> <span class="s1">&#39;  &#39;</span><span class="p">);</span>
+
+    <span class="n">h</span> <span class="o">=</span> <span class="n">ident</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">ident</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">;</span>
+   
+    <span class="n">s</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">hdict</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="n">ident</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">s</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="n">s</span><span class="p">;</span>
+  
+  <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ident</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">with_children</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="n">ident</span><span class="o">=</span><span class="n">ident</span><span class="p">,</span> <span class="n">with_children</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span></div>
+
+
+
+<div class="viewcode-block" id="Annotation"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation">[docs]</a><span class="k">class</span> <span class="nc">Annotation</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Class that holds information of the annotated regions.&quot;&quot;&quot;</span>    
+     
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">extra_label</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">annotation_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>  
+    <span class="sd">&quot;&quot;&quot;Initialization</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    label_file : str</span>
+<span class="sd">      File with label infomration in json format.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">label_file</span><span class="o">=</span><span class="n">label_file</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="n">extra_label</span><span class="p">,</span> <span class="n">annotation_file</span><span class="o">=</span><span class="n">annotation_file</span><span class="p">);</span>
+  
+  
+<div class="viewcode-block" id="Annotation.initialize"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.initialize">[docs]</a>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">extra_label</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">annotation_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>  
+    <span class="c1"># read json file </span>
+    <span class="k">if</span> <span class="n">label_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">label_file</span> <span class="o">=</span> <span class="n">default_label_file</span><span class="p">;</span>
+    <span class="k">if</span> <span class="n">annotation_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">annotation_file</span> <span class="o">=</span> <span class="n">default_annotation_file</span><span class="p">;</span>
+    <span class="k">if</span> <span class="n">extra_label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">extra_label</span> <span class="o">=</span> <span class="n">default_extra_label</span><span class="p">;</span>     
+    <span class="k">if</span> <span class="n">extra_label</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">]:</span>   <span class="c1">#add nodes for missing labels</span>
+      <span class="n">extra_label</span> <span class="o">=</span> <span class="p">[];</span>
+     
+    <span class="bp">self</span><span class="o">.</span><span class="n">label_file</span> <span class="o">=</span> <span class="n">label_file</span><span class="p">;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">annotation_file</span> <span class="o">=</span> <span class="n">annotation_file</span><span class="p">;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">extra_label</span> <span class="o">=</span> <span class="n">extra_label</span><span class="p">;</span>
+    
+    <span class="c1">#initialze label tree    </span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">label_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">dfile</span><span class="p">:</span>
+      <span class="n">aba_json</span> <span class="o">=</span> <span class="n">dfile</span><span class="o">.</span><span class="n">read</span><span class="p">();</span>
+      <span class="n">dfile</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+    <span class="n">aba</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">aba_json</span><span class="p">)</span>
+
+    <span class="n">root</span> <span class="o">=</span> <span class="n">aba</span><span class="p">[</span><span class="s1">&#39;msg&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialze_tree</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+
+    <span class="c1">#maxgraph = max(self.get_list(&#39;graph_order&#39;));</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">extra_label</span><span class="p">:</span>
+      <span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+      <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">);</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+      <span class="n">data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+      <span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+      <span class="n">data</span><span class="p">[</span><span class="s1">&#39;acronym&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">l</span><span class="p">;</span>
+      <span class="n">data</span><span class="p">[</span><span class="s1">&#39;parent_structure_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+      <span class="n">data</span><span class="p">[</span><span class="s1">&#39;graph_order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+      <span class="n">data</span><span class="p">[</span><span class="s1">&#39;atlas_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+      <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Label</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="n">children</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">level</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">));</span>
+    
+    <span class="c1">#initialize generic id      </span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_structures</span><span class="p">));</span>      
+    
+    <span class="c1">#initialize color label</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">colors_hex</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">(</span><span class="s1">&#39;color_hex_triplet&#39;</span><span class="p">);</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">colors_rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">col</span><span class="o">.</span><span class="n">hex_to_rgb</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors_hex</span><span class="p">]);</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="s1">&#39;rgb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors_rgb</span> <span class="p">);</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span><span class="s1">&#39;color_order&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_structures</span><span class="p">));</span>  
+    
+    <span class="c1">#initialize lookup tables</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">structures</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">(</span><span class="kc">None</span><span class="p">);</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ids</span>        <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">labels</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">(</span><span class="s1">&#39;atlas_id&#39;</span><span class="p">);</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">names</span>      <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">acronyms</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">(</span><span class="s1">&#39;acronym&#39;</span><span class="p">);</span></div>
+  
+  
+<div class="viewcode-block" id="Annotation.initialze_tree"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.initialze_tree">[docs]</a>  <span class="k">def</span> <span class="nf">initialze_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span>  <span class="p">{</span> <span class="n">key</span> <span class="p">:</span> <span class="n">root</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">]},</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="p">);</span>
+    <span class="n">label</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">initialze_tree</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">label</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">level</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">root</span><span class="p">[</span><span class="s1">&#39;children&#39;</span><span class="p">]];</span>
+    <span class="k">return</span> <span class="n">label</span><span class="p">;</span></div>
+  
+  
+<div class="viewcode-block" id="Annotation.get_list"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.get_list">[docs]</a>  <span class="k">def</span> <span class="nf">get_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">;</span>
+    
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[];</span>
+    
+    <span class="k">if</span> <span class="n">level</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">n</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+      <span class="k">while</span> <span class="n">n</span><span class="o">.</span><span class="n">level</span> <span class="o">&gt;</span> <span class="n">level</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">parent</span><span class="p">;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">n</span> <span class="o">=</span> <span class="n">node</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+      <span class="n">l</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">(</span><span class="n">node</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="p">));</span>
+    
+    <span class="k">return</span> <span class="n">l</span><span class="p">;</span></div>
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">n_structures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">());</span>
+  
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">max_level</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">(</span><span class="s1">&#39;level&#39;</span><span class="p">));</span>
+  
+  
+<div class="viewcode-block" id="Annotation.get_hierarchical_dictionary"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.get_hierarchical_dictionary">[docs]</a>  <span class="k">def</span> <span class="nf">get_hierarchical_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">;</span>
+    
+    <span class="n">d</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span><span class="p">;</span>
+    <span class="n">d</span><span class="p">[</span><span class="s1">&#39;children&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get_hierarchical_dictionary</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">];</span>
+ 
+    <span class="k">return</span> <span class="n">d</span><span class="p">;</span></div>
+  
+  
+<div class="viewcode-block" id="Annotation.get_dictionary"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.get_dictionary">[docs]</a>  <span class="k">def</span> <span class="nf">get_dictionary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ordered</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">;</span>
+    
+    <span class="n">keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">);</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="n">ordered</span><span class="p">:</span>
+      <span class="n">d</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{</span> <span class="n">k</span> <span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">vals</span><span class="p">)};</span>
+    
+    <span class="k">return</span> <span class="n">d</span><span class="p">;</span></div>
+    
+  
+<div class="viewcode-block" id="Annotation.get_map"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.get_map">[docs]</a>  <span class="k">def</span> <span class="nf">get_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dictionary</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="p">);</span>
+    
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">());</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">);</span>
+    <span class="n">m</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">())]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">());</span>
+    
+    <span class="k">return</span> <span class="n">m</span><span class="p">;</span></div>
+  
+  
+<div class="viewcode-block" id="Annotation.add_data"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.add_data">[docs]</a>  <span class="k">def</span> <span class="nf">add_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_list</span><span class="p">();</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span><span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+      <span class="n">n</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span></div>
+  
+  
+<div class="viewcode-block" id="Annotation.convert_label"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.convert_label">[docs]</a>  <span class="k">def</span> <span class="nf">convert_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">value</span>  <span class="o">=</span> <span class="s1">&#39;graph_order&#39;</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;map&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;map&#39;</span><span class="p">]:</span>
+      <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_map</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="p">);</span>
+      <span class="k">return</span> <span class="n">m</span><span class="p">[</span><span class="n">label</span><span class="p">];</span>       
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dictionary</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="p">);</span>
+      <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">,</span> <span class="n">otypes</span><span class="o">=</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]])])(</span><span class="n">label</span><span class="p">);</span></div>
+ 
+  
+<div class="viewcode-block" id="Annotation.label_to_color"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.label_to_color">[docs]</a>  <span class="k">def</span> <span class="nf">label_to_color</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">as_int</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">int_type</span> <span class="o">=</span> <span class="s1">&#39;uint8&#39;</span><span class="p">):</span>
+      <span class="n">cm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colors_rgb</span><span class="p">;</span>
+      <span class="n">cm</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span><span class="n">as_int</span><span class="o">=</span><span class="n">as_int</span><span class="p">,</span> <span class="n">int_type</span><span class="o">=</span><span class="n">int_type</span><span class="p">);</span>
+      <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s1">&#39;order&#39;</span> <span class="ow">or</span> <span class="n">level</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">);</span>
+      <span class="k">return</span> <span class="n">cm</span><span class="p">[</span><span class="n">label</span><span class="p">];</span></div>
+  
+<div class="viewcode-block" id="Annotation.find"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.find">[docs]</a>  <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dictionary</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="p">);</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+      <span class="k">return</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">label</span><span class="p">];</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">label</span><span class="p">];</span></div>
+  
+  
+<div class="viewcode-block" id="Annotation.parents"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.parents">[docs]</a>  <span class="k">def</span> <span class="nf">parents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dictionary</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">);</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">label</span><span class="p">];</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">];</span>
+    <span class="k">while</span> <span class="n">p</span><span class="o">.</span><span class="n">level</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">parent</span><span class="p">;</span>
+      <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">[</span><span class="n">ll</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="k">for</span> <span class="n">ll</span> <span class="ow">in</span> <span class="n">l</span><span class="p">];</span></div>
+   
+  
+<div class="viewcode-block" id="Annotation.common_parent"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.Annotation.common_parent">[docs]</a>  <span class="k">def</span> <span class="nf">common_parent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="n">parents</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parents</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">label</span><span class="p">];</span>
+    
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">]);</span>
+    <span class="n">p0</span> <span class="o">=</span> <span class="n">parents</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span> <span class="o">-</span><span class="n">level</span><span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">==</span> <span class="n">p0</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parents</span><span class="p">]):</span>
+      <span class="n">level</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">p0</span><span class="p">[</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">);</span></div>
+   
+    
+  <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Annotation(</span><span class="si">%d</span><span class="s1">)[</span><span class="si">%d</span><span class="s1">]{</span><span class="si">%s</span><span class="s1">}&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_structures</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_level</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label_file</span><span class="p">);</span>
+  
+  <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">();</span></div>
+  
+ 
+
+<span class="n">annotation</span> <span class="o">=</span> <span class="n">Annotation</span><span class="p">();</span>
+<span class="sd">&quot;&quot;&quot;Information on the annotated regions&quot;&quot;&quot;</span>
+
+<span class="n">n_structures</span>    <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">n_structures</span><span class="p">;</span>
+<span class="n">get_dictionary</span>  <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">get_dictionary</span><span class="p">;</span>
+<span class="n">get_list</span>        <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">get_list</span><span class="p">;</span>
+<span class="n">get_map</span>         <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">get_map</span><span class="p">;</span>
+<span class="n">find</span>            <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">find</span><span class="p">;</span>
+
+
+<div class="viewcode-block" id="initialize"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.initialize">[docs]</a><span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">label_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra_label</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">annotation_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="k">global</span> <span class="n">annotation</span><span class="p">,</span> <span class="n">n_structures</span><span class="p">,</span> <span class="n">get_dictionary</span><span class="p">,</span> <span class="n">get_list</span><span class="p">,</span> <span class="n">get_map</span><span class="p">,</span> <span class="n">find</span>
+  <span class="n">annotation</span> <span class="o">=</span> <span class="n">Annotation</span><span class="p">(</span><span class="n">label_file</span><span class="o">=</span><span class="n">label_file</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="n">extra_label</span><span class="p">,</span> <span class="n">annotation_file</span><span class="o">=</span><span class="n">annotation_file</span><span class="p">);</span>
+  
+  <span class="n">n_structures</span>    <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">n_structures</span><span class="p">;</span>
+  <span class="n">get_dictionary</span>  <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">get_dictionary</span><span class="p">;</span>
+  <span class="n">get_list</span>        <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">get_list</span><span class="p">;</span>
+  <span class="n">get_map</span>         <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">get_map</span><span class="p">;</span>
+  <span class="n">find</span>            <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">find</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="set_annotation_file"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.set_annotation_file">[docs]</a><span class="k">def</span> <span class="nf">set_annotation_file</span><span class="p">(</span><span class="n">annotation_file</span><span class="p">):</span>
+  <span class="n">initialize</span><span class="p">(</span><span class="n">annotation_file</span><span class="o">=</span><span class="n">annotation_file</span><span class="p">,</span> <span class="n">label_file</span><span class="o">=</span><span class="n">annotation</span><span class="o">.</span><span class="n">label_file</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="n">annotation</span><span class="o">.</span><span class="n">extra_label</span><span class="p">);</span></div>
+
+<div class="viewcode-block" id="set_label_file"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.set_label_file">[docs]</a><span class="k">def</span> <span class="nf">set_label_file</span><span class="p">(</span><span class="n">label_file</span><span class="p">,</span> <span class="n">extra_label</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="n">initialize</span><span class="p">(</span><span class="n">annotation_file</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">annotation_file</span><span class="p">,</span> <span class="n">label_file</span><span class="o">=</span><span class="n">label_file</span><span class="p">,</span> <span class="n">extra_label</span><span class="o">=</span><span class="n">extra_label</span><span class="p">);</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Labeling</span>
+<span class="c1">###############################################################################</span>
+
+<span class="c1">#TODO:use parallel arryay processing and lut routines to speed up? </span>
+<div class="viewcode-block" id="label_points"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.label_points">[docs]</a><span class="k">def</span> <span class="nf">label_points</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">annotation_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">invalid</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Label points according to the annotation in the labeled image file.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  points : array </span>
+<span class="sd">    Array of nxdim point coordinates to be labeled.</span>
+<span class="sd">  annotation_file : str</span>
+<span class="sd">    File name of the atals annotation.</span>
+<span class="sd">  invalid : int</span>
+<span class="sd">    Label for invalid points.</span>
+<span class="sd">  key : str</span>
+<span class="sd">    The key of the label, by default the order of the labels.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  label : array</span>
+<span class="sd">    Label of the points corresponding to the given key.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">n_points</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>  
+  <span class="n">n_dim</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  
+  <span class="k">if</span> <span class="n">annotation_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">annotation_file</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">annotation_file</span><span class="p">;</span>
+  
+  <span class="n">atlas</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">annotation_file</span><span class="p">);</span>   
+  <span class="n">atlas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">atlas</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">);</span>
+  <span class="n">atlas_shape</span> <span class="o">=</span> <span class="n">atlas</span><span class="o">.</span><span class="n">shape</span><span class="p">;</span>
+ 
+  <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_points</span><span class="p">,</span> <span class="n">invalid</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">);</span>
+  
+  <span class="n">points_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_dim</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">points_int</span><span class="p">[:,</span><span class="n">d</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">points_int</span><span class="p">[:,</span><span class="n">d</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">atlas_shape</span><span class="p">[</span><span class="n">d</span><span class="p">]);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">valid</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">points_int</span><span class="p">[:,</span><span class="n">d</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">points_int</span><span class="p">[:,</span><span class="n">d</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">atlas_shape</span><span class="p">[</span><span class="n">d</span><span class="p">]));</span>
+  
+  <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">points_int</span><span class="p">[</span><span class="n">valid</span><span class="p">,</span><span class="n">d</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_dim</span><span class="p">)];</span>
+  <span class="n">label</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">=</span> <span class="n">atlas</span><span class="p">[</span><span class="n">indices</span><span class="p">];</span>
+  
+  <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s1">&#39;id&#39;</span> <span class="ow">or</span> <span class="n">level</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">label</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_label</span><span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="n">valid</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">label</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="convert_label"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.convert_label">[docs]</a><span class="k">def</span> <span class="nf">convert_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Convert label using the atlas annotation data.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  lable : array</span>
+<span class="sd">    List of labels to convert.</span>
+<span class="sd">  key : str</span>
+<span class="sd">    The key corresponding to the label.</span>
+<span class="sd">  value : str</span>
+<span class="sd">    The key to ocnvert the lable to.</span>
+<span class="sd">  level : nt or None</span>
+<span class="sd">    Convert at this level of the hierarchy. I fNone use full hierarchy.</span>
+<span class="sd">  method : &#39;map&#39; or &#39;dictionary&#39;</span>
+<span class="sd">    Convert labels using a mapping array or a dictionary. Depending on the keys </span>
+<span class="sd">    either can be faster for large data sets.</span>
+<span class="sd">    </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  label : array</span>
+<span class="sd">    List of converted labels.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;rgb&#39;</span><span class="p">,</span> <span class="s1">&#39;rgba&#39;</span><span class="p">,</span> <span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="s1">&#39;RGBA&#39;</span><span class="p">]:</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">value</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;rgba&#39;</span><span class="p">,</span> <span class="s1">&#39;RGBA&#39;</span><span class="p">];</span>
+    <span class="n">as_int</span> <span class="o">=</span> <span class="n">value</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;RGB&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">annotation</span><span class="o">.</span><span class="n">label_to_color</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="n">as_int</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">annotation</span><span class="o">.</span><span class="n">convert_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">);</span></div>
+
+
+<div class="viewcode-block" id="convert_label_to_color"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.convert_label_to_color">[docs]</a><span class="k">def</span> <span class="nf">convert_label_to_color</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">as_int</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">int_type</span> <span class="o">=</span> <span class="s1">&#39;uint8&#39;</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Convert label using the atlas annotation colors.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  lable : array</span>
+<span class="sd">    List of labels to convert.</span>
+<span class="sd">  key : str</span>
+<span class="sd">    The key corresponding to the label.</span>
+<span class="sd">  level : nt or None</span>
+<span class="sd">    Convert at this level of the hierarchy. I fNone use full hierarchy.</span>
+<span class="sd">  alpha : bool</span>
+<span class="sd">    If True, return rgba values.</span>
+<span class="sd">  as_int : bool</span>
+<span class="sd">    If True, return rgb valueas as int between 0 and 255.</span>
+<span class="sd">  int_type : dtype</span>
+<span class="sd">    Type for the color array.</span>
+<span class="sd">    </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  colors : array</span>
+<span class="sd">    List of colors for each label.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">annotation</span><span class="o">.</span><span class="n">label_to_color</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="n">as_int</span><span class="p">,</span> <span class="n">int_type</span><span class="o">=</span><span class="n">int_type</span><span class="p">);</span></div>
+
+
+<div class="viewcode-block" id="count_label"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.count_label">[docs]</a><span class="k">def</span> <span class="nf">count_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">hierarchical</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Counts the label within the various structures, taking into account the sub-structures.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  label : array</span>
+<span class="sd">    List of labels.</span>
+<span class="sd">  weights : array </span>
+<span class="sd">    Optional list of weights for each label.</span>
+<span class="sd">  key : str</span>
+<span class="sd">    The key the lables are given in.</span>
+<span class="sd">  hierarchical : bool</span>
+<span class="sd">    If True, count all sub-labels.</span>
+<span class="sd">    </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  bins : array</span>
+<span class="sd">    The counts for each label.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s1">&#39;order&#39;</span><span class="p">:</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">convert_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+  
+  <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="n">n_structures</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">hierarchical</span><span class="p">:</span>
+    <span class="n">_recursive_count</span><span class="p">(</span><span class="n">annotation</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="n">bins</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">bins</span><span class="p">;</span></div>
+
+
+<span class="k">def</span> <span class="nf">_recursive_count</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper for label counting.&quot;&quot;&quot;</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">+=</span> <span class="n">_recursive_count</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">counts</span><span class="p">);</span>
+  <span class="n">counts</span><span class="p">[</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">n</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">counts</span><span class="p">[</span><span class="n">node</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]];</span>
+
+
+<div class="viewcode-block" id="count_points"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.count_points">[docs]</a><span class="k">def</span> <span class="nf">count_points</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">annotation_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">invalid</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hierarchical</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Counts the points within the various structures, taking into account the sub-structures.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  points : array</span>
+<span class="sd">    Array of nxdim points to annotate and count.</span>
+<span class="sd">  weights : array or None</span>
+<span class="sd">    Optional intensity values to weight the count.</span>
+<span class="sd">  annotation_file : str</span>
+<span class="sd">    File name of the atlas annotation.</span>
+<span class="sd">  invalid : int</span>
+<span class="sd">    Label for invalid points.</span>
+<span class="sd">  hierarchical : bool</span>
+<span class="sd">    If True, count all sub-labels.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  bins : array</span>
+<span class="sd">    The counts for each label.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">label</span> <span class="o">=</span> <span class="n">label_points</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">annotation_file</span><span class="o">=</span><span class="n">annotation_file</span><span class="p">,</span> <span class="n">invalid</span><span class="o">=</span><span class="n">invalid</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;order&#39;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">count_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">hierarchical</span><span class="o">=</span><span class="n">hierarchical</span><span class="p">);</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Color maps</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="color_map"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.color_map">[docs]</a><span class="k">def</span> <span class="nf">color_map</span><span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">as_int</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">int_type</span> <span class="o">=</span> <span class="s1">&#39;uint8&#39;</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Generates a color map from color ids to rgb</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  alpha : bool</span>
+<span class="sd">    If True return a color map with alpha values.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  color_map : array</span>
+<span class="sd">    An array of rgb colors for each label.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">cm</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">colors_rgb</span><span class="p">;</span>  
+  <span class="k">return</span> <span class="n">col</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span><span class="n">as_int</span><span class="o">=</span><span class="n">as_int</span><span class="p">,</span> <span class="n">int_type</span><span class="o">=</span><span class="n">int_type</span><span class="p">);</span></div>
+ 
+
+<div class="viewcode-block" id="write_color_palette"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.write_color_palette">[docs]</a><span class="k">def</span> <span class="nf">write_color_palette</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Creates a pal or lut file for imaris or imagej based on label colors of atlas.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  filename : str</span>
+<span class="sd">    The name of the color palette file.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  filename : str</span>
+<span class="sd">    The name of the file to which the color palette was written.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  
+  <span class="n">cm</span> <span class="o">=</span> <span class="n">color_map</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+ 
+  <span class="n">fext</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">file_extension</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
+  <span class="k">if</span> <span class="n">fext</span> <span class="o">==</span> <span class="s1">&#39;pal&#39;</span><span class="p">:</span>
+    <span class="n">col</span><span class="o">.</span><span class="n">write_PAL</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">cm</span><span class="p">);</span>
+  <span class="k">elif</span> <span class="n">fext</span> <span class="o">==</span> <span class="s1">&#39;lut&#39;</span><span class="p">:</span>
+    <span class="n">col</span><span class="o">.</span><span class="n">write_LUT</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">cm</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;color pallete format: </span><span class="si">%s</span><span class="s1"> not lut or pal&#39;</span> <span class="o">%</span> <span class="n">fext</span><span class="p">);</span>
+      
+  <span class="k">return</span> <span class="n">filename</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="write_color_annotation"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.write_color_annotation">[docs]</a><span class="k">def</span> <span class="nf">write_color_annotation</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">annotation_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Creates a rgb image from the atlas color data.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  filename : str</span>
+<span class="sd">    The name of the color palette file.</span>
+<span class="sd">  annotation_file : str</span>
+<span class="sd">    File name of the atals annotation. </span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  filename : str</span>
+<span class="sd">    The name of the file to which the color atlas was written.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#load atlas and convert to order</span>
+  <span class="k">if</span> <span class="n">annotation_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">annotation_file</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">annotation_file</span><span class="p">;</span>
+  <span class="n">atlas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">annotation_file</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">);</span>   
+  <span class="n">atlas</span> <span class="o">=</span> <span class="n">convert_label</span><span class="p">(</span><span class="n">atlas</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;map&#39;</span><span class="p">);</span>
+  
+  <span class="c1">#apply color map</span>
+  <span class="n">cm</span> <span class="o">=</span> <span class="n">color_map</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  <span class="n">atlas</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="n">atlas</span><span class="p">];</span>
+  
+  <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">atlas</span><span class="p">);</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Labeling</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="prepare_annotation_files"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.prepare_annotation_files">[docs]</a><span class="k">def</span> <span class="nf">prepare_annotation_files</span><span class="p">(</span><span class="n">slicing</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">orientation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                             <span class="n">directory</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">postfix</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                             <span class="n">annotation_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                             <span class="n">reference_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                             <span class="n">distance_to_surface_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                             <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Crop the annotation, reference and distance files to match the data.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  slicing : tuple or None</span>
+<span class="sd">    The slice specification after reorienting.</span>
+<span class="sd">  orientation : tuple, str or None.</span>
+<span class="sd">    The orientation specification. Strings can be &#39;left&#39; or &#39;right&#39;, for the</span>
+<span class="sd">    two hemispheres.</span>
+<span class="sd">  directory : str or None</span>
+<span class="sd">    The target directory. If None, use ClearMap resources folder.</span>
+<span class="sd">  postfix : str or None</span>
+<span class="sd">    Use this postfix for the cropped annotation file. If None and automatic </span>
+<span class="sd">    label is choosen.</span>
+<span class="sd">  annotation_file : str or None</span>
+<span class="sd">    The annotation file to use.</span>
+<span class="sd">  reference_file : str or None</span>
+<span class="sd">    The reference file to use.</span>
+<span class="sd">  distance_to_surface_file : str or None</span>
+<span class="sd">    The distance file to use.</span>
+<span class="sd">  overwrite : bool</span>
+<span class="sd">    If True, overwrite exisitng files.</span>
+<span class="sd">    </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  annotation_file : str</span>
+<span class="sd">    The cropped annotation file.</span>
+<span class="sd">  reference_file : str</span>
+<span class="sd">    The cropped reference file.</span>
+<span class="sd">  distance_to_surface_file : str</span>
+<span class="sd">    The distance cropped file.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">annotation_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">annotation_file</span> <span class="o">=</span> <span class="n">default_annotation_file</span><span class="p">;</span>
+  <span class="k">if</span> <span class="n">reference_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">reference_file</span> <span class="o">=</span> <span class="n">default_reference_file</span><span class="p">;</span>
+  <span class="k">if</span> <span class="n">distance_to_surface_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">distance_to_surface_file</span> <span class="o">=</span> <span class="n">default_distance_to_surface_file</span><span class="p">;</span>
+
+  <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">annotation_file</span><span class="p">,</span> <span class="n">reference_file</span><span class="p">,</span> <span class="n">distance_to_surface_file</span><span class="p">];</span>
+  
+  <span class="n">results</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">fn</span> <span class="o">=</span> <span class="n">format_annotation_filename</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">,</span> <span class="n">slicing</span><span class="o">=</span><span class="n">slicing</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="n">postfix</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">);</span>
+      <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Preparing: </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">fn</span><span class="p">);</span>   
+      
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">overwrite</span> <span class="ow">and</span> <span class="n">io</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fn</span><span class="p">);</span>
+        <span class="k">continue</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">io</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot find annotation file: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">f</span><span class="p">);</span>
+      
+      <span class="n">s</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+      <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Preparing: from source </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">s</span><span class="p">);</span>
+      
+      <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">array</span><span class="p">);</span>
+      
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">orientation</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#permute</span>
+        <span class="n">per</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">orientation_to_permuation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">per</span><span class="p">);</span>
+
+        <span class="c1">#reverse axes</span>
+        <span class="n">reslice</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+        <span class="n">sl</span> <span class="o">=</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span><span class="p">;</span>
+        <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">o</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">orientation</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">o</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">sl</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+            <span class="n">reslice</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+        <span class="k">if</span> <span class="n">reslice</span><span class="p">:</span>
+          <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">sl</span><span class="p">)];</span>
+      
+      <span class="k">if</span> <span class="n">slicing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">slicing</span><span class="p">];</span>
+      <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+      <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fn</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">);</span>
+      
+  <span class="k">return</span> <span class="n">results</span><span class="p">;</span></div>
+  
+
+<div class="viewcode-block" id="format_annotation_filename"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Annotation.html#ClearMap.Alignment.Annotation.format_annotation_filename">[docs]</a><span class="k">def</span> <span class="nf">format_annotation_filename</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">orientation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">slicing</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">postfix</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">directory</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Formats the annotation filename given oriantion and slicing.&quot;&quot;&quot;</span> 
+  
+  <span class="k">if</span> <span class="n">postfix</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">orientation</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">format_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">));</span>
+    <span class="n">postfix</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;_</span><span class="si">%d</span><span class="s1">_</span><span class="si">%d</span><span class="s1">_</span><span class="si">%d</span><span class="s1">_</span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">orientation</span> <span class="o">+</span> <span class="p">(</span><span class="n">slicing</span><span class="p">,)))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;(&#39;</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;)&#39;</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">);</span>
+    
+  <span class="n">fn</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="n">postfix</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fn</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">postfix</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">fn</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+  <span class="k">if</span> <span class="n">directory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">fn</span><span class="p">);</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">fn</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+  
+  <span class="k">return</span> <span class="n">fn</span><span class="p">;</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tests</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Alignment.Annotation</span> <span class="k">as</span> <span class="nn">ano</span>
+  <span class="c1">#reload(ano)</span>
+
+  <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">162</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">138</span><span class="p">],</span> <span class="p">[</span><span class="mi">246</span><span class="p">,</span> <span class="mi">486</span><span class="p">,</span> <span class="mi">138</span><span class="p">],</span> <span class="p">[</span><span class="mi">246</span><span class="p">,</span> <span class="mi">486</span><span class="p">,</span> <span class="mi">138</span><span class="p">]]);</span>
+  
+  <span class="n">label</span> <span class="o">=</span> <span class="n">ano</span><span class="o">.</span><span class="n">label_points</span><span class="p">(</span><span class="n">points</span><span class="p">);</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">);</span>
+  
+  <span class="n">cnts</span> <span class="o">=</span> <span class="n">ano</span><span class="o">.</span><span class="n">count_points</span><span class="p">(</span><span class="n">points</span><span class="p">);</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">cnts</span><span class="p">);</span>
+
+  <span class="n">cnts</span> <span class="o">=</span> <span class="n">ano</span><span class="o">.</span><span class="n">count_points</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">hierarchical</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">cnts</span><span class="p">);</span>
+
+  <span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+  <span class="n">ano</span><span class="o">.</span><span class="n">write_color_annotation</span><span class="p">(</span><span class="s1">&#39;test.tif&#39;</span><span class="p">)</span>
+  <span class="n">io</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="s1">&#39;test.tif&#39;</span><span class="p">)</span>
+
+
+  <span class="n">l</span> <span class="o">=</span> <span class="n">ano</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">247</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+  <span class="n">l</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">with_children</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">level</span><span class="p">)</span>
+
+
+</pre></div>
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../../../overview.html"><img src="../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,213 @@
+{% extends "basic/layout.html" %}
+
+
+{%- block scripts %}
+    {{ super() }}
+    <script src="{{ pathto('_static/clearmap.js', 1) }}"></script>
+    <script src="{{ pathto('_static/clearmap_sidebar.js', 1) }}"></script>
+    <script src="{{ pathto('_static/clearmap_togglebutton.js', 1) }}"></script>    
+{%- endblock %}
+
+
+{# doctype override #}
+{%- block doctype %}
+<!doctype html>
+{%- endblock %}
+
+
+{% block extrahead %}
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+  {{ super() }}
+{% endblock %}
+
+{% block header %}
+<div class="document">
+ <div class="imagecontainer">
+  <a href="{{ pathto('home') }}"><img src="{{ pathto("_static/ClearMap_banner.jpg", 1) }}" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="{{ pathto('home') }}" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="{{ pathto('home') }}">Home</a></li>
+     <li class="link-list"><a href="{{ pathto('overview') }}">Overview</a></li>    
+     <li class="link-list"><a href="{{ pathto('installation') }}">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="{{ pathto("_static/GitHub-Mark.png", 1) }}" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+{% endblock %}
+
+
+{% block rootrellink %}
+       <li><a href="{{ pathto('home') }}">Home</a>|&nbsp;</li>
+       <li><a href="{{ pathto('overview') }}">Overview</a>|&nbsp;</li>      
+       <li><a href="{{ pathto('search') }}">Search</a>|&nbsp;</li>
+       <li><a href="{{ pathto('index') }}">Documentation </a> |&nbsp;</li>
+       <li><a href="{{ pathto('index') }}#clearmap-api">API </a> &raquo;</li>     
+{% endblock %}
+
+
+{#
+{%- macro relbar() %}
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>{{ _('Navigation') }}</h3>
+      <ul>
+        {%- for rellink in rellinks %}
+        <li class="right" {% if loop.first %}style="margin-right: 10px"{% endif %}>
+          <a href="{{ pathto(rellink[0])|e }}" title="{{ rellink[1]|striptags|e }}"
+             {{ accesskey(rellink[2]) }}>{{ rellink[1]|striptags|e }}</a>
+          {%- if not loop.first %}{{ reldelim2 }}{% endif %}</li>
+        {%- endfor %}
+        {%- block rootrellink %}
+        <li><a href="{{ pathto('home') }}">Home</a>|&nbsp;</li>
+        <li><a href="{{ pathto('overview') }}">Overview</a>|&nbsp;</li>      
+        <li><a href="{{ pathto('search') }}">Search</a>|&nbsp;</li>
+        <li><a href="{{ pathto('index') }}">Documentation </a> |&nbsp;</li>
+        <li><a href="{{ pathto('index') }}#clearmap-api">API </a> &raquo;</li>   
+        {%- endblock %}
+        {%- for parent in parents %}
+         <li class="nav-item nav-item-{{ loop.index }}"><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a>{{ reldelim1 }}</li>
+        {%- endfor %}
+        <li class="nav-item nav-item-this"><a href="{{ link|e }}">{{ title }}</a></li>
+        {%- block relbaritems %} {% endblock %}
+      </ul>
+    </div>
+{%- endmacro %}
+#}
+
+{#
+{% block relbar1 %}
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 10px 10px 10px 10px">
+<div class="imagecontainer">
+  <a href="{{ pathto('home') }}"><img src="{{ pathto("_static/ClearMap_banner.jpg", 1) }}" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="{{ pathto('overview') }}" style="color: #ffffff; font-weight: bold"> ClearMap Toolbox Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+
+  </a>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+    <a href="https://github.com/ChristophKirst/ClearMap2"> <img src="{{ pathto("_static/GitHub-Mark.png", 1) }}" height=20px alt="Github"/></a>
+  </div>
+</div>
+</div>
+{{ super() }}
+{% endblock %}
+#}
+
+
+{% block relbar2 %}
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="{{ pathto('overview') }}"><img src="{{ pathto("_static/ClearMap_banner.jpg", 1) }}" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+{% endblock %}
+
+
+
+
+{%- block content %}
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    {{ sidebar() }}
+    
+    {% block sidebar2 %}
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="{{ pathto('cellmap') }}">CellMap Pipeline</a></h3>
+          <a href="{{ pathto('cellmap') }}">
+            <img src="{{ pathto("_static/CellMap_small_fast.gif", 1) }}" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="{{ pathto('tubemap') }}">Tubemap Pipeline</a></h3>
+          <a href="{{ pathto('tubemap') }}">
+            <img src="{{ pathto("_static/TubeMap_raw_movie_small.gif", 1) }}" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="{{ pathto('media') }}#gallery"> Gallery</a></h3>
+          <a href="{{ pathto('media') }}#gallery">
+            <img src="{{ pathto("_static/TubeMap_graph_movie_small.gif", 1) }}" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="{{ pathto('media') }}#videos">Social Media and Videos</a></h3>
+          <a href="{{ pathto('media') }}#videos">   
+            <img src="{{ pathto("_static/TEDx.png", 1) }}" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+    {% endblock %}  <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          {% block body %}
+            <h1>{{ _('Welcome') }}</h1>
+              <p> ClearMap is a toolbox for the analysis and registration of volumetric data from cleared tissues. </p>
+              
+              <p> It was initially developed to map brain activity at cellular resolution in whole mouse brains using immediate early
+                  gene expression. It has since then been extended as a tool for the qunatification of whole mouse brain vascualtur 
+                  networks at capilary resolution. </p>
+          
+          
+                
+            <h2> {{ _('Overview') }}</h2>    
+            <p> ClearMap has been designed to analyze O(TB) 3d datasets obtained via light sheet microscopy
+                from iDISCO+ cleared tissue samples immunolabeled for proteins. 
+                The ClearMap tools may also be useful for data obtained with other types of microscopes, 
+                types of markers, clearing techniques, as well as other species, organs, or samples. </p>
+            <p>    
+                Click <a href="{{ pathto('index') }}" alt="Documentation"> here</a> for publications and more details.
+            </p>
+            
+            <table class="contentstable">
+              <tr>
+                <td>
+                  <p class="biglink"><a class="biglink" href="{{ pathto('overview') }}">Overview</a><br/>
+                     <span class="linkdescr">overview over the toolboxs</span></p>
+                </td><td>
+                  {%- if hasdoc('search') %}<p class="biglink"><a class="biglink" href="{{ pathto('search') }}">Search</a><br/>
+                     <span class="linkdescr">search the documentation</span></p>{%- endif %}
+                </td>
+              </tr><tr>
+              <tr>
+                <td>
+                  <p class="biglink"><a class="biglink" href="{{ pathto('Documentation') }}">Documentation</a><br/>
+                     <span class="linkdescr">content of this documentation</span></p>
+                </td><td>
+                  {%- if hasdoc('genindex') %}<p class="biglink"><a class="biglink" href="{{ pathto('genindex') }}">Index</a><br/>
+                     <span class="linkdescr">all functions, classes, terms</span></p>{%- endif %}
+                </td>
+              </tr><tr>
+                <td>
+                  <p class="biglink"><a class="biglink" href="{{ pathto('installation') }}">Installation</a><br/>
+                     <span class="linkdescr">for installatoin instructions</span></p>
+                </td><td>
+                  {%- if hasdoc('py-modindex') %}<p class="biglink"><a class="biglink" href="{{ pathto('py-modindex') }}">Modules</a><br/>
+                     <span class="linkdescr">all modules</span></p>{%- endif %}
+                </td>
+              </tr>
+            </table>
+          {% endblock %} <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+{%- endblock %} <!-- content -->
+

@@ -1,0 +1,630 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/clearmap.js"></script>
+    <script src="../../../../_static/clearmap_sidebar.js"></script>
+    <script src="../../../../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../../../../home.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../../../../home.html">Home</a></li>
+     <li class="link-list"><a href="../../../../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../../../../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+       <li><a href="../../../../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../../../../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../../../../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../../../../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../../../../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../../../../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../../../../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../../../../cellmap.html">
+            <img src="../../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../../../../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../../../../tubemap.html">
+            <img src="../../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../../../../media.html#gallery"> Gallery</a></h3>
+          <a href="../../../../media.html#gallery">
+            <img src="../../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../../../../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../../../../media.html#videos">   
+            <img src="../../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <h1>Source code for ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">ConvolvePointList</span>
+<span class="sd">=================</span>
+
+<span class="sd">Convolution on a subset of points only. </span>
+
+<span class="sd">Paralllel convolution of a kernel at specified points of the source only.</span>
+<span class="sd">Useful to speed up processing in large arrays and only a smaller number of </span>
+<span class="sd">convolution points.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">  This module is heavily used in the </span>
+<span class="sd">  :mod&quot;`~ClearMap.ImageProcessing.Skeletonization` algorithm.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="p">;</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">cpu_count</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+
+<span class="kn">import</span> <span class="nn">pyximport</span><span class="p">;</span> 
+<span class="n">pyximport</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="n">setup_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;include_dirs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">get_include</span><span class="p">()]},</span> <span class="n">reload_support</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.DataProcessing.ConvolvePointListCode</span> <span class="k">as</span> <span class="nn">code</span>
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Convolve point lists</span>
+<span class="c1">###############################################################################</span>
+
+<span class="c1">#TODO: use ArrayProcessing initialization tools </span>
+<div class="viewcode-block" id="convolve_3d"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.html#ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.convolve_3d">[docs]</a><span class="k">def</span> <span class="nf">convolve_3d</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">points</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">check_border</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()):</span>
+  <span class="sd">&quot;&quot;&quot;Convolves source with a specified kernel at specific points only.</span>
+<span class="sd">    </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    3d binary array to convolve.</span>
+<span class="sd">  kernel : array</span>
+<span class="sd">    Convolution kernel.</span>
+<span class="sd">  points : array</span>
+<span class="sd">    List of points to convolve.</span>
+<span class="sd">  indices : array</span>
+<span class="sd">    Indices to convolve.</span>
+<span class="sd">  x,y,z : array</span>
+<span class="sd">    Arrays of x,y,z coordinates of points to convolve on</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Optional sink to write result to.</span>
+<span class="sd">  sink_dtype : dtype)</span>
+<span class="sd">    Optional type of the sink. If None, the kernel type is used as default.</span>
+<span class="sd">  strides : array</span>
+<span class="sd">    The strides of the source in case its given as a 1d list.</span>
+<span class="sd">  check_border : bool</span>
+<span class="sd">    If True, check if each kernel element is inside the source array shape.</span>
+<span class="sd">  processes : int or None</span>
+<span class="sd">    Number of processes to use.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  convolved : array</span>
+<span class="sd">    List of results of convolution at specified points</span>
+<span class="sd">    </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  Either points x,y,z or an index array needs to be given. This function wraps</span>
+<span class="sd">  more specialized functions</span>
+<span class="sd">        </span>
+<span class="sd">  See also</span>
+<span class="sd">  --------</span>
+<span class="sd">  convolve_3d_points, convolve_3d_xyz, convolve_3d_indices</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+    
+  <span class="k">if</span> <span class="n">points</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">points</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="n">indices</span> <span class="o">=</span> <span class="n">points</span><span class="p">;</span>
+      <span class="n">points</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+    
+  <span class="k">if</span> <span class="n">points</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">convolve_3d_points</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="n">sink_dtype</span><span class="p">,</span> <span class="n">check_border</span> <span class="o">=</span> <span class="n">check_border</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="n">processes</span><span class="p">);</span>
+  <span class="k">elif</span> <span class="n">indices</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">convolve_3d_indices</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="n">sink_dtype</span><span class="p">,</span> <span class="n">check_border</span> <span class="o">=</span> <span class="n">check_border</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="n">processes</span><span class="p">);</span>
+  <span class="k">elif</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">z</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">convolve_3d_xyz</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="n">sink_dtype</span><span class="p">,</span> <span class="n">check_border</span> <span class="o">=</span> <span class="n">check_border</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="n">processes</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Positions expected to be given as points, index or x,y,z arrays&#39;</span><span class="p">);</span></div>
+  
+
+
+<div class="viewcode-block" id="convolve_3d_points"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.html#ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.convolve_3d_points">[docs]</a><span class="k">def</span> <span class="nf">convolve_3d_points</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">check_border</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()):</span>
+  <span class="sd">&quot;&quot;&quot;Convolves source with a specified kernel at specific points only</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    3d binary array to convolve.</span>
+<span class="sd">  kernel : array</span>
+<span class="sd">    Convolution kernel.</span>
+<span class="sd">  points : array</span>
+<span class="sd">    List of points to convolve.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Optional sink to write result to.</span>
+<span class="sd">  sink_dtype : dtype)</span>
+<span class="sd">    Optional type of the sink. If None, the kernel type is used as default.</span>
+<span class="sd">  check_border : bool</span>
+<span class="sd">    If True, check if each kernel element is inside the source array shape.</span>
+<span class="sd">  processes : int or None</span>
+<span class="sd">    Number of processes to use.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  convolved : array</span>
+<span class="sd">    List of results of convolution at specified points</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  
+  <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+  
+  <span class="n">npts</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>  
+    
+  <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sink_dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink_dtype</span> <span class="o">=</span> <span class="n">kernel</span><span class="o">.</span><span class="n">dtype</span><span class="p">;</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">npts</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">sink_dtype</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">npts</span><span class="p">:</span>
+     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;The sinkput has not the expected size of </span><span class="si">%d</span><span class="s1"> but </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">npts</span><span class="p">,</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">sink</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="n">kernel</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">kernel</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">processes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">();</span>
+  
+  <span class="k">if</span> <span class="n">check_border</span><span class="p">:</span>
+    <span class="n">code</span><span class="o">.</span><span class="n">convolve_3d_points</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">processes</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">code</span><span class="o">.</span><span class="n">convolve_3d_points_no_check</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">processes</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="convolve_3d_xyz"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.html#ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.convolve_3d_xyz">[docs]</a><span class="k">def</span> <span class="nf">convolve_3d_xyz</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">check_border</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()):</span>
+  <span class="sd">&quot;&quot;&quot;Convolves source with a specified kernel at specific points only</span>
+<span class="sd">    </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    3d binary array to convolve.</span>
+<span class="sd">  kernel : array</span>
+<span class="sd">    Convolution kernel.</span>
+<span class="sd">  x,y,z : array</span>
+<span class="sd">    Arrays of x,y,z coordinates of points to convolve on</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Optional sink to write result to.</span>
+<span class="sd">  sink_dtype : dtype)</span>
+<span class="sd">    Optional type of the sink. If None, the kernel type is used as default.</span>
+<span class="sd">  check_border : bool</span>
+<span class="sd">    If True, check if each kernel element is inside the source array shape.</span>
+<span class="sd">  processes : int or None</span>
+<span class="sd">    Number of processes to use.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  convolved : array</span>
+<span class="sd">    List of results of convolution.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  
+  <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+    
+  <span class="n">npts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+    
+  <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sink_dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink_dtype</span> <span class="o">=</span> <span class="n">kernel</span><span class="o">.</span><span class="n">dtype</span><span class="p">;</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">npts</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">sink_dtype</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">npts</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">!=</span> <span class="n">npts</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">!=</span> <span class="n">npts</span><span class="p">:</span>
+     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;The sinkput has size </span><span class="si">%d</span><span class="s1"> and does not match the x,y,z coordinates of sizes: </span><span class="si">%d</span><span class="s1"> = </span><span class="si">%d</span><span class="s1"> = </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">z</span><span class="p">)));</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">sink</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="n">kernel</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">kernel</span><span class="p">;</span>
+    
+  <span class="k">if</span> <span class="n">processes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">();</span>
+  
+  <span class="k">if</span> <span class="n">check_border</span><span class="p">:</span>
+    <span class="n">code</span><span class="o">.</span><span class="n">convolve_3d_xyz</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">processes</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">code</span><span class="o">.</span><span class="n">convolve_3_xyz_no_check</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">processes</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="convolve_3d_indices"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.html#ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.convolve_3d_indices">[docs]</a><span class="k">def</span> <span class="nf">convolve_3d_indices</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">check_border</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()):</span>
+  <span class="sd">&quot;&quot;&quot;Convolves source with a specified kernel at specific points given by a flat array index.</span>
+<span class="sd">    </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    3d binary array to convolve.</span>
+<span class="sd">  kernel : array</span>
+<span class="sd">    Convolution kernel.</span>
+<span class="sd">  indices : array</span>
+<span class="sd">    Indices to convolve.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Optional sink to write result to.</span>
+<span class="sd">  sink_dtype : dtype)</span>
+<span class="sd">    Optional type of the sink. If None, the kernel type is used as default.</span>
+<span class="sd">  strides : array</span>
+<span class="sd">    The strides of the source in case its given as a 1d list.</span>
+<span class="sd">  check_border : bool</span>
+<span class="sd">    If True, check if each kernel element is inside the source array shape.</span>
+<span class="sd">  processes : int or None</span>
+<span class="sd">    Number of processes to use.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  convolved : array</span>
+<span class="sd">    List of results of convolution.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+    
+  <span class="n">npts</span> <span class="o">=</span> <span class="n">indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    
+  <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sink_dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink_dtype</span> <span class="o">=</span> <span class="n">kernel</span><span class="o">.</span><span class="n">dtype</span><span class="p">;</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">npts</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">sink_dtype</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">npts</span><span class="p">:</span>
+     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;The sinkput has not the expected size of </span><span class="si">%d</span><span class="s1"> but </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">npts</span><span class="p">,</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">sink</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="n">kernel</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">kernel</span><span class="p">;</span> 
+
+  <span class="k">if</span> <span class="n">processes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">();</span>
+  
+  <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">strides</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">element_strides</span><span class="p">(</span><span class="n">source</span><span class="p">));</span>
+  
+  <span class="c1">#print d.dtype, strides.dtype, kernel.dtype, o.dtype</span>
+  <span class="k">if</span> <span class="n">check_border</span><span class="p">:</span>
+    <span class="n">code</span><span class="o">.</span><span class="n">convolve_3d_indices</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">strides</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">processes</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">code</span><span class="o">.</span><span class="n">convolve_3d_indices_no_check</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">strides</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">processes</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="convolve_3d_indices_if_smaller_than"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.html#ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.convolve_3d_indices_if_smaller_than">[docs]</a><span class="k">def</span> <span class="nf">convolve_3d_indices_if_smaller_than</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">strides</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">check_border</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()):</span>
+  <span class="sd">&quot;&quot;&quot;Convolves source with a specified kernel at specific points given by a flat array indx under conditon the value is smaller than a number</span>
+<span class="sd">    </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    3d binary array to convolve.</span>
+<span class="sd">  kernel : array</span>
+<span class="sd">    Convolution kernel.</span>
+<span class="sd">  indices : array</span>
+<span class="sd">    Indices to convolve.</span>
+<span class="sd">  max_value : float</span>
+<span class="sd">    Checks if the convolution result is smaller than this value.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Optional sink to write result to.</span>
+<span class="sd">  strides : array</span>
+<span class="sd">    The strides of the source in case its given as a 1d list.</span>
+<span class="sd">  check_border : bool</span>
+<span class="sd">    If True, check if each kernel element is inside the source array shape.</span>
+<span class="sd">  processes : int or None</span>
+<span class="sd">    Number of processes to use.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  convolved : array</span>
+<span class="sd">    List of results of convolution at specified points</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+    
+  <span class="n">npts</span> <span class="o">=</span> <span class="n">indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  
+  <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">npts</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">npts</span><span class="p">:</span>
+     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;The sinkput has not the expected size of </span><span class="si">%d</span><span class="s1"> but </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">npts</span><span class="p">,</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">sink</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="n">kernel</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">kernel</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">processes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">();</span>
+  
+  <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">strides</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">element_strides</span><span class="p">(</span><span class="n">source</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">);</span>
+  
+  <span class="c1">#print d.dtype, strides.dtype, kernel.dtype, o.dtype</span>
+  <span class="k">if</span> <span class="n">check_border</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">strides</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">indices</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">max_value</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">code</span><span class="o">.</span><span class="n">convolve_3d_indices_if_smaller_than</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">strides</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">processes</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">code</span><span class="o">.</span><span class="n">convolve_3d_indices_if_smaller_than_no_check</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">strides</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">processes</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+
+<div class="viewcode-block" id="convolve_3d_find_smaller_than"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.html#ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.convolve_3d_find_smaller_than">[docs]</a><span class="k">def</span> <span class="nf">convolve_3d_find_smaller_than</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">search</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()):</span>
+  <span class="sd">&quot;&quot;&quot;Convolves source with a specified kernel at specific points given by a flat array indx under conditon the value is smaller than a number</span>
+<span class="sd">    </span>
+<span class="sd">  Arguments:</span>
+<span class="sd">        source (array): 3d binary array to convolve</span>
+<span class="sd">        kernel (array): binary orinteger kernel to convolve</span>
+<span class="sd">        points (array): list of points to convolve given by the flat array coordinates</span>
+<span class="sd">        max_value (int): if result of convolution is smaller then this value return True otherwise False in the sink array</span>
+<span class="sd">        processes (int): number of processors</span>
+<span class="sd">    </span>
+<span class="sd">  Returns:</span>
+<span class="sd">        array: list of results of convolution at specified points</span>
+<span class="sd">    </span>
+<span class="sd">  Note:</span>
+<span class="sd">        cython does not support bools -&gt; use view on uint8 as numpy does</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+    
+  <span class="n">npts</span> <span class="o">=</span> <span class="n">indices</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  
+  <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">npts</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">npts</span><span class="p">:</span>
+     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;The sinkput has not the expected size of </span><span class="si">%d</span><span class="s1"> but </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">npts</span><span class="p">,</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">o</span> <span class="o">=</span> <span class="n">sink</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">processes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">();</span>
+  
+  <span class="n">code</span><span class="o">.</span><span class="n">convolve_3d_find_smaller_than</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">search</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">processes</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tests</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="test"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.html#ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.test">[docs]</a><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.sourceProcessing.ConvolvePointList</span> <span class="k">as</span> <span class="nn">cpl</span>
+  
+  <span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+  <span class="n">reload</span><span class="p">(</span><span class="n">cpl</span><span class="p">);</span>
+  <span class="n">reload</span><span class="p">(</span><span class="n">cpl</span><span class="o">.</span><span class="n">code</span><span class="p">);</span>
+  
+  <span class="c1">#source = np.random.rand(2000,1000,1000) &gt; 0.5;</span>
+  <span class="n">source</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">;</span>
+  <span class="n">source</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],:,:]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">source</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],:]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">source</span><span class="p">[:,:,[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+  <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">;</span>
+  
+  <span class="c1">#np.save(&#39;source.npy&#39;, source);</span>
+  <span class="c1">#np.save(&#39;points.npy&#39;, pts)</span>
+  
+  <span class="kn">from</span> <span class="nn">ClearMap.ImageProcessing.Topology.Topology3d</span> <span class="kn">import</span> <span class="n">n6</span>
+  <span class="n">n6i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">n6</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
+  
+  <span class="kn">import</span> <span class="nn">time</span><span class="p">;</span>
+  <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">cpl</span><span class="o">.</span><span class="n">convolve_3d</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">n6i</span><span class="p">,</span> <span class="n">pts</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">check_border</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+  <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1"> secs&#39;</span> <span class="o">%</span> <span class="p">((</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">)));</span>
+  
+  <span class="kn">import</span> <span class="nn">scipy.ndimage</span>
+  <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span>
+  <span class="n">good</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">ndimage</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">n6</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">),</span> <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">cval</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1"> secs&#39;</span> <span class="o">%</span> <span class="p">((</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">)));</span>
+  
+  <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="n">pts</span><span class="o">.</span><span class="n">T</span>
+  <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">good</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">==</span> <span class="n">result</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;works&#39;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error!&#39;</span><span class="p">)</span>
+  
+  
+  <span class="n">ptsi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">cpl</span><span class="o">.</span><span class="n">convolve_3d_index</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">n6i</span><span class="p">,</span> <span class="n">ptsi</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+  <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1"> secs&#39;</span> <span class="o">%</span> <span class="p">((</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">)));</span>
+  
+  <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="n">pts</span><span class="o">.</span><span class="n">T</span>
+  <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">good</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">==</span> <span class="n">result</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;works&#39;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error!&#39;</span><span class="p">)</span>
+  
+  <span class="n">ptsi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span>
+  <span class="n">resultc</span> <span class="o">=</span> <span class="n">cpl</span><span class="o">.</span><span class="n">convolve_3d_index_if_smaller_than</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">n6i</span><span class="p">,</span> <span class="n">ptsi</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+  <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1"> secs&#39;</span> <span class="o">%</span> <span class="p">((</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">)));</span>
+  
+  <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">resultc</span> <span class="o">==</span> <span class="p">(</span><span class="n">result</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">))</span>
+  
+  
+  <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span> <span class="o">=</span> <span class="n">pts</span><span class="o">.</span><span class="n">T</span>
+  <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">good</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">==</span> <span class="n">result</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;works&#39;</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error!&#39;</span><span class="p">);</span></div>
+  
+  <span class="c1">#import os</span>
+  <span class="c1">#os.remove(&#39;source.npy&#39;);</span>
+  <span class="c1">#os.remove(&#39;points.npy&#39;)</span>
+</pre></div>
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../../../../overview.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

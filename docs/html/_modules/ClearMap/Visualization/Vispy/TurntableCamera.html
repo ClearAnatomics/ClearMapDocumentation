@@ -1,0 +1,460 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ClearMap.Visualization.Vispy.TurntableCamera &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/clearmap.js"></script>
+    <script src="../../../../_static/clearmap_sidebar.js"></script>
+    <script src="../../../../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../../../../home.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../../../../home.html">Home</a></li>
+     <li class="link-list"><a href="../../../../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../../../../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+       <li><a href="../../../../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../../../../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../../../../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../../../../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../../../../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../../../../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../../../../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../../../../cellmap.html">
+            <img src="../../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../../../../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../../../../tubemap.html">
+            <img src="../../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../../../../media.html#gallery"> Gallery</a></h3>
+          <a href="../../../../media.html#gallery">
+            <img src="../../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../../../../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../../../../media.html#videos">   
+            <img src="../../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <h1>Source code for ClearMap.Visualization.Vispy.TurntableCamera</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright (c) Vispy Development Team. All Rights Reserved.</span>
+<span class="c1"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
+
+<span class="c1"># Modified by C. Kirst to allow arbitrary rotations</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">vispy.scene.cameras.perspective</span> <span class="kn">import</span> <span class="n">Base3DRotationCamera</span>
+<span class="kn">from</span> <span class="nn">vispy.util</span> <span class="kn">import</span> <span class="n">keys</span>
+
+<span class="c1">#from vispy.util.transforms import rotate</span>
+
+<div class="viewcode-block" id="TurntableCamera"><a class="viewcode-back" href="../../../../Api/ClearMap.Visualization.Vispy.TurntableCamera.html#ClearMap.Visualization.Vispy.TurntableCamera.TurntableCamera">[docs]</a><span class="k">class</span> <span class="nc">TurntableCamera</span><span class="p">(</span><span class="n">Base3DRotationCamera</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; 3D camera class that orbits around a center point while</span>
+<span class="sd">    maintaining a view on a center point.</span>
+
+<span class="sd">    For this camera, the ``scale_factor`` indicates the zoom level, and</span>
+<span class="sd">    the ``center`` indicates the position to put at the center of the</span>
+<span class="sd">    view.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fov : float</span>
+<span class="sd">        Field of view. Zero (default) means orthographic projection.</span>
+<span class="sd">    elevation : float</span>
+<span class="sd">        Elevation angle in degrees. Positive angles place the camera</span>
+<span class="sd">        above the cente point, negative angles place the camera below</span>
+<span class="sd">        the center point.</span>
+<span class="sd">    azimuth : float</span>
+<span class="sd">        Azimuth angle in degrees. Zero degrees places the camera on the</span>
+<span class="sd">        positive x-axis, pointing in the negative x direction.</span>
+<span class="sd">    roll : float</span>
+<span class="sd">        Roll angle in degrees</span>
+<span class="sd">    distance : float | None</span>
+<span class="sd">        The distance of the camera from the rotation point (only makes sense</span>
+<span class="sd">        if fov &gt; 0). If None (default) the distance is determined from the</span>
+<span class="sd">        scale_factor and fov.</span>
+<span class="sd">    **kwargs : dict</span>
+<span class="sd">        Keyword arguments to pass to `BaseCamera`.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Interaction:</span>
+
+<span class="sd">        * LMB: orbits the view around its center point.</span>
+<span class="sd">        * RMB or scroll: change scale_factor (i.e. zoom level)</span>
+<span class="sd">        * SHIFT + LMB: translate the center point</span>
+<span class="sd">        * SHIFT + RMB: change FOV</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_state_props</span> <span class="o">=</span> <span class="n">Base3DRotationCamera</span><span class="o">.</span><span class="n">_state_props</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;elevation&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;azimuth&#39;</span><span class="p">,</span> <span class="s1">&#39;roll&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fov</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">elevation</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">roll</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">distance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TurntableCamera</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">fov</span><span class="o">=</span><span class="n">fov</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Set camera attributes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">azimuth</span> <span class="o">=</span> <span class="n">azimuth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elevation</span> <span class="o">=</span> <span class="n">elevation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">roll</span> <span class="o">=</span> <span class="n">roll</span>  <span class="c1"># interaction not implemented yet</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="n">distance</span>  <span class="c1"># None means auto-distance</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">elevation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; The angle of the camera in degrees above the horizontal (x, z)</span>
+<span class="sd">        plane.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_elevation</span>
+
+    <span class="nd">@elevation</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">elevation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elev</span><span class="p">):</span>
+        <span class="n">elev</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">elev</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">elev</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">180</span><span class="p">:</span>
+            <span class="n">elev</span> <span class="o">+=</span> <span class="mi">360</span>
+        <span class="k">while</span> <span class="n">elev</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">:</span>
+            <span class="n">elev</span> <span class="o">-=</span> <span class="mi">360</span>        
+        <span class="bp">self</span><span class="o">.</span><span class="n">_elevation</span> <span class="o">=</span> <span class="n">elev</span><span class="p">;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view_changed</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">azimuth</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; The angle of the camera in degrees around the y axis. An angle of</span>
+<span class="sd">        0 places the camera within the (y, z) plane.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_azimuth</span>
+
+    <span class="nd">@azimuth</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">azimuth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">azim</span><span class="p">):</span>
+        <span class="n">azim</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">azim</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">azim</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">180</span><span class="p">:</span>
+            <span class="n">azim</span> <span class="o">+=</span> <span class="mi">360</span>
+        <span class="k">while</span> <span class="n">azim</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">:</span>
+            <span class="n">azim</span> <span class="o">-=</span> <span class="mi">360</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_azimuth</span> <span class="o">=</span> <span class="n">azim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view_changed</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; The angle of the camera in degrees around the z axis. An angle of</span>
+<span class="sd">        0 places puts the camera upright.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_roll</span>
+
+    <span class="nd">@roll</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">roll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roll</span><span class="p">):</span>
+        <span class="n">roll</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">roll</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">roll</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">180</span><span class="p">:</span>
+            <span class="n">roll</span> <span class="o">+=</span> <span class="mi">360</span>
+        <span class="k">while</span> <span class="n">roll</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">:</span>
+            <span class="n">roll</span> <span class="o">-=</span> <span class="mi">360</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_roll</span> <span class="o">=</span> <span class="n">roll</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view_changed</span><span class="p">()</span>
+
+<div class="viewcode-block" id="TurntableCamera.orbit"><a class="viewcode-back" href="../../../../Api/ClearMap.Visualization.Vispy.TurntableCamera.html#ClearMap.Visualization.Vispy.TurntableCamera.TurntableCamera.orbit">[docs]</a>    <span class="k">def</span> <span class="nf">orbit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">azim</span><span class="p">,</span> <span class="n">elev</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Orbits the camera around the center position.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        azim : float</span>
+<span class="sd">            Angle in degrees to rotate horizontally around the center point.</span>
+<span class="sd">        elev : float</span>
+<span class="sd">            Angle in degrees to rotate vertically around the center point.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">azimuth</span> <span class="o">+=</span> <span class="n">azim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elevation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">elevation</span> <span class="o">+</span> <span class="n">elev</span><span class="p">;</span> <span class="c1"># np.clip(self.elevation + elev, -90, 90)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view_changed</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_update_rotation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update rotation parmeters based on mouse movement&quot;&quot;&quot;</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">azimuth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">elevation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">azimuth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elevation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.5</span>
+      
+    <span class="k">def</span> <span class="nf">_update_roll</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update roll parmeter based on mouse movement&quot;&quot;&quot;</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">roll</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">roll</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">+</span> <span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">p1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1">#self.azimuth = self._event_value[0] - (p2 - p1)[0] * 0.5</span>
+        <span class="c1">#self.elevation = self._event_value[1] + (p2 - p1)[1] * 0.5</span>
+    
+    <span class="k">def</span> <span class="nf">_update_elevation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update elevation parmeter based on mouse movement&quot;&quot;&quot;</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">elevation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elevation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">+</span> <span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">p1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        
+    <span class="k">def</span> <span class="nf">_update_azimuth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update azimuth parmeter based on mouse movement&quot;&quot;&quot;</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">azimuth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">azimuth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">+</span> <span class="p">(</span><span class="n">p2</span><span class="o">-</span><span class="n">p1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">_update_zoom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update azimuth parmeter based on mouse movement&quot;&quot;&quot;</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_scale_factor</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_distance</span><span class="p">)</span>
+        <span class="n">zoomy</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">zoom_factor</span><span class="p">)</span> <span class="o">**</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">zoomy</span>
+        <span class="c1"># Modify distance if its given</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_distance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">zoomy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">view_changed</span><span class="p">();</span>
+    
+    <span class="k">def</span> <span class="nf">_update_translate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update translate parmeter based on mouse movement&quot;&quot;&quot;</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">pos</span>
+        
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_viewbox</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">center</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="p">(</span><span class="n">p1</span> <span class="o">-</span> <span class="n">p2</span><span class="p">)</span> <span class="o">/</span> <span class="n">norm</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scale_factor</span>
+        <span class="n">dist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="c1"># Black magic part 1: turn 2D into 3D translations</span>
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dist_to_trans</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+        <span class="c1"># Black magic part 2: take up-vector and flipping into account</span>
+        <span class="n">ff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flip_factors</span>
+        <span class="n">up</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dim_vectors</span><span class="p">()</span>
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span> <span class="o">=</span> <span class="n">right</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">forward</span> <span class="o">*</span> <span class="n">dy</span> <span class="o">+</span> <span class="n">up</span> <span class="o">*</span> <span class="n">dz</span>
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span> <span class="o">=</span> <span class="n">ff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">dx</span><span class="p">,</span> <span class="n">ff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">dy</span><span class="p">,</span> <span class="n">ff</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">dz</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">center</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dy</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">dz</span>
+    
+    <span class="k">def</span> <span class="nf">_update_fov</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update fov parmeter based on mouse movement&quot;&quot;&quot;</span>  
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">press_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">pos</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span><span class="p">;</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fov</span>
+        <span class="n">fov</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">-</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mf">5.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fov</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">180.0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">fov</span><span class="p">))</span>
+    
+    <span class="k">def</span> <span class="nf">_rotate_tr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Rotate the transformation matrix based on camera parameters&quot;&quot;&quot;</span>
+        <span class="n">up</span><span class="p">,</span> <span class="n">forward</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_dim_vectors</span><span class="p">()</span>
+        <span class="c1">#self.transform.rotate(self.roll, forward)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">azimuth</span><span class="p">,</span> <span class="n">up</span><span class="p">)</span>
+        <span class="c1">#forward = np.dot(forward, rotate(self.azimuth, up)[:3,:3]);</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">elevation</span><span class="p">,</span> <span class="o">-</span><span class="n">right</span><span class="p">)</span>
+        <span class="c1">#forward = np.dot(forward, rotate(self.elevation, -right)[:3,:3]);</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">roll</span><span class="p">,</span> <span class="n">forward</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">_dist_to_trans</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dist</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Convert mouse x, y movement into x, y, z translations&quot;&quot;&quot;</span>
+        <span class="n">rae</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">roll</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">azimuth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">elevation</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span>
+        <span class="n">sro</span><span class="p">,</span> <span class="n">saz</span><span class="p">,</span> <span class="n">sel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">rae</span><span class="p">)</span>
+        <span class="n">cro</span><span class="p">,</span> <span class="n">caz</span><span class="p">,</span> <span class="n">cel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">rae</span><span class="p">)</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="o">+</span> <span class="n">dist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">cro</span> <span class="o">*</span> <span class="n">caz</span> <span class="o">+</span> <span class="n">sro</span> <span class="o">*</span> <span class="n">sel</span> <span class="o">*</span> <span class="n">saz</span><span class="p">)</span>
+              <span class="o">+</span> <span class="n">dist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">sro</span> <span class="o">*</span> <span class="n">caz</span> <span class="o">-</span> <span class="n">cro</span> <span class="o">*</span> <span class="n">sel</span> <span class="o">*</span> <span class="n">saz</span><span class="p">))</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="p">(</span><span class="o">+</span> <span class="n">dist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">cro</span> <span class="o">*</span> <span class="n">saz</span> <span class="o">-</span> <span class="n">sro</span> <span class="o">*</span> <span class="n">sel</span> <span class="o">*</span> <span class="n">caz</span><span class="p">)</span>
+              <span class="o">+</span> <span class="n">dist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">sro</span> <span class="o">*</span> <span class="n">saz</span> <span class="o">+</span> <span class="n">cro</span> <span class="o">*</span> <span class="n">sel</span> <span class="o">*</span> <span class="n">caz</span><span class="p">))</span>
+        <span class="n">dz</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">dist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">sro</span> <span class="o">*</span> <span class="n">cel</span> <span class="o">+</span> <span class="n">dist</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">cro</span> <span class="o">*</span> <span class="n">cel</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span>
+      
+      
+      
+<div class="viewcode-block" id="TurntableCamera.viewbox_mouse_event"><a class="viewcode-back" href="../../../../Api/ClearMap.Visualization.Vispy.TurntableCamera.html#ClearMap.Visualization.Vispy.TurntableCamera.TurntableCamera.viewbox_mouse_event">[docs]</a>    <span class="k">def</span> <span class="nf">viewbox_mouse_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+      <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      The viewbox received a mouse event; update transform</span>
+<span class="sd">      accordingly.</span>
+
+<span class="sd">      Parameters</span>
+<span class="sd">      ----------</span>
+<span class="sd">      event : instance of Event</span>
+<span class="sd">          The event.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">handled</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">interactive</span><span class="p">:</span>
+          <span class="k">return</span>
+
+      <span class="c1">#PerspectiveCamera.viewbox_mouse_event(self, event)</span>
+      <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;mouse_wheel&#39;</span><span class="p">:</span>
+          <span class="n">s</span> <span class="o">=</span> <span class="mf">1.1</span> <span class="o">**</span> <span class="o">-</span> <span class="n">event</span><span class="o">.</span><span class="n">delta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">_scale_factor</span> <span class="o">*=</span> <span class="n">s</span>
+          <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_distance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_distance</span> <span class="o">*=</span> <span class="n">s</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">view_changed</span><span class="p">()</span>
+      
+      <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;mouse_release&#39;</span><span class="p">:</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">_event_value</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Reset</span>
+      <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;mouse_press&#39;</span><span class="p">:</span>
+          <span class="n">event</span><span class="o">.</span><span class="n">handled</span> <span class="o">=</span> <span class="kc">True</span>
+      <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;mouse_move&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">press_event</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="n">modifiers</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_event</span><span class="o">.</span><span class="n">modifiers</span>
+
+        <span class="k">if</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">buttons</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">modifiers</span><span class="p">:</span>
+          <span class="c1"># Rotate</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">_update_rotation</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+          
+        <span class="k">elif</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">buttons</span> <span class="ow">and</span> <span class="n">keys</span><span class="o">.</span><span class="n">CONTROL</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+          <span class="c1">#roll only</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">_update_roll</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+          
+        <span class="k">elif</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">buttons</span> <span class="ow">and</span> <span class="n">keys</span><span class="o">.</span><span class="n">META</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+          <span class="c1">#elevation only</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">_update_elevation</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+            
+        <span class="k">elif</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">buttons</span> <span class="ow">and</span> <span class="n">keys</span><span class="o">.</span><span class="n">SHIFT</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+          <span class="c1">#azimuth only</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">_update_azimuth</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+        
+        <span class="k">elif</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">buttons</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">modifiers</span><span class="p">:</span>
+          <span class="c1">#zoom</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">_update_zoom</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+        
+        <span class="k">elif</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">buttons</span> <span class="ow">and</span> <span class="n">keys</span><span class="o">.</span><span class="n">SHIFT</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+          <span class="c1"># Translate</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">_update_translate</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+
+        <span class="k">elif</span> <span class="mi">2</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">buttons</span> <span class="ow">and</span> <span class="n">keys</span><span class="o">.</span><span class="n">META</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+          <span class="c1"># Change fov</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">_update_fov</span><span class="p">(</span><span class="n">event</span><span class="p">);</span></div></div>
+</pre></div>
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../../../../overview.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

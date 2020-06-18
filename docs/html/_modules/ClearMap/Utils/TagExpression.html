@@ -1,0 +1,715 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ClearMap.Utils.TagExpression &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/clearmap.js"></script>
+    <script src="../../../_static/clearmap_sidebar.js"></script>
+    <script src="../../../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../../../home.html"><img src="../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../../../home.html">Home</a></li>
+     <li class="link-list"><a href="../../../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../../../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+       <li><a href="../../../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../../../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../../../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../../../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../../../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../../../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../../../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../../../cellmap.html">
+            <img src="../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../../../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../../../tubemap.html">
+            <img src="../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../../../media.html#gallery"> Gallery</a></h3>
+          <a href="../../../media.html#gallery">
+            <img src="../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../../../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../../../media.html#videos">   
+            <img src="../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <h1>Source code for ClearMap.Utils.TagExpression</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">TagExpression</span>
+<span class="sd">=============</span>
+
+<span class="sd">Module providing routines to check and convert between tag expressions.</span>
+<span class="sd">This simplfies the handling of list of files from using regular expressions</span>
+<span class="sd">to tag expression. </span>
+
+<span class="sd">A tag is a simple placeholder for a string or number in a file name.</span>
+<span class="sd">An expression is a filename with any number of tags.</span>
+
+<span class="sd">A tag has the format &lt;Name,Type,Width&gt;. </span>
+<span class="sd">  * Name : str that specifies the tag name</span>
+<span class="sd">  * Type : &#39;I&#39; or &#39;S&#39; for integer or string, optional and defaults to &#39;I&#39;</span>
+<span class="sd">  * Width : int, if given indicates a fixed width  and missing digist or chars</span>
+<span class="sd">    are replaced by trailing zeros or spaces.</span>
+
+<span class="sd">The module also provides functions to infer the tag expressions from a list of</span>
+<span class="sd">file names via the function :func:`~ClearMap.Utils.TagExpression.detect`.</span>
+
+<span class="sd">Expressions can also be converted to glob or regular expressions.</span>
+
+
+<span class="sd">Example</span>
+<span class="sd">-------</span>
+<span class="sd">An example tag expression would be &#39;file_&lt;X,2&gt;_&lt;Y,3&gt;.npy&#39; and would for example</span>
+<span class="sd">match the filename &#39;file_01_013.npy&#39;</span>
+
+<span class="sd">&gt;&gt;&gt; import ClearMap.Utils.TagExpression as te</span>
+<span class="sd">&gt;&gt;&gt; e = te.Expression(&#39;file_&lt;X,2&gt;_&lt;Y,3&gt;.npy&#39;)</span>
+<span class="sd">&gt;&gt;&gt; e.tag_names()</span>
+<span class="sd">e.tag_names()</span>
+
+<span class="sd">&gt;&gt;&gt; e.glob()</span>
+<span class="sd">&#39;file_[0-9][0-9]_[0-9][0-9].npy&#39;</span>
+
+<span class="sd">&gt;&gt;&gt; e.indices(&#39;file_01_013.npy&#39;)</span>
+<span class="sd">[1, 13]</span>
+
+<span class="sd">&gt;&gt;&gt; e.re()</span>
+<span class="sd">&#39;file_(?P&lt;X&gt;\\d{2})_(?P&lt;Y&gt;\\d{3})\\.npy&#39;</span>
+
+<span class="sd">&gt;&gt;&gt; e.string({&#39;X&#39;:1, &#39;Y&#39;:10})</span>
+<span class="sd">&#39;file_01_010.npy&#39;</span>
+
+<span class="sd">See also</span>
+<span class="sd">--------</span>
+<span class="sd">:mod:`~ClearMap.Utils.RegularExpression`</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE.txt)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+
+<span class="kn">import</span> <span class="nn">copy</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">TAG_START</span> <span class="o">=</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">;</span>
+<span class="n">TAG_END</span>   <span class="o">=</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">;</span>
+<span class="n">TAG_SEPARATOR</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">;</span>
+<span class="n">TAG_INT</span> <span class="o">=</span> <span class="s1">&#39;I&#39;</span><span class="p">;</span> 
+<span class="n">TAG_STR</span> <span class="o">=</span> <span class="s1">&#39;S&#39;</span><span class="p">;</span>
+
+<div class="viewcode-block" id="ttype_to_dtype"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.ttype_to_dtype">[docs]</a><span class="k">def</span> <span class="nf">ttype_to_dtype</span><span class="p">(</span><span class="n">ttype</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">ttype</span> <span class="o">==</span> <span class="n">TAG_INT</span> <span class="ow">or</span> <span class="n">ttype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">int</span>
+  <span class="k">elif</span> <span class="n">ttype</span> <span class="o">==</span> <span class="n">TAG_STR</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">;</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The specified tag type </span><span class="si">%r</span><span class="s1"> is not valid!&#39;</span> <span class="o">%</span> <span class="n">ttype</span><span class="p">);</span></div>
+
+<div class="viewcode-block" id="default_tag_name"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.default_tag_name">[docs]</a><span class="k">def</span> <span class="nf">default_tag_name</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;Tag&#39;</span><span class="p">;</span>
+  <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">tag</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">index</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">tag</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="Tag"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Tag">[docs]</a><span class="k">class</span> <span class="nc">Tag</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ttype</span> <span class="o">=</span> <span class="n">TAG_INT</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">reference</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">trange</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">tag</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">tag</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="o">=</span> <span class="n">ttype</span><span class="p">;</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span><span class="p">;</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="n">reference</span><span class="p">;</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">trange</span> <span class="o">=</span> <span class="n">trange</span><span class="p">;</span> 
+  
+<div class="viewcode-block" id="Tag.label"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Tag.label">[docs]</a>  <span class="k">def</span> <span class="nf">label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">default_tag_name</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">)</span></div>
+  
+<div class="viewcode-block" id="Tag.dtype"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Tag.dtype">[docs]</a>  <span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">ttype_to_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ttype</span><span class="p">);</span></div>
+
+<div class="viewcode-block" id="Tag.tag"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Tag.tag">[docs]</a>  <span class="k">def</span> <span class="nf">tag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">TAG_START</span><span class="p">;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">t</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="n">TAG_SEPARATOR</span><span class="p">;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">t</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="o">+</span> <span class="n">TAG_SEPARATOR</span><span class="p">;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">t</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> <span class="o">+</span> <span class="n">TAG_SEPARATOR</span><span class="p">;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">TAG_START</span><span class="p">):</span>
+      <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">TAG_SEPARATOR</span><span class="p">)];</span>
+    <span class="n">t</span> <span class="o">+=</span> <span class="n">TAG_END</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">;</span></div>
+  
+<div class="viewcode-block" id="Tag.glob"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Tag.glob">[docs]</a>  <span class="k">def</span> <span class="nf">glob</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="o">==</span> <span class="n">TAG_INT</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;[0-9]&#39;</span>
+      <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="o">==</span> <span class="n">TAG_STR</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;?&#39;</span>
+      <span class="n">e</span> <span class="o">+=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">s</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">e</span> <span class="o">+=</span> <span class="s1">&#39;*&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">e</span><span class="p">;</span></div>
+
+<div class="viewcode-block" id="Tag.re"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Tag.re">[docs]</a>  <span class="k">def</span> <span class="nf">re</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">;</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="s1">&#39;(?P=&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Name needs to be given for a referenced tag!&#39;</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="s1">&#39;(?P&lt;&#39;</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="s1">&#39;(&#39;</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="o">==</span> <span class="n">TAG_INT</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="s1">&#39;\d&#39;</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span> <span class="c1"># self.ttype == TAG_STR:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="s1">&#39;.&#39;</span><span class="p">;</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="s1">&#39;{&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;}&#39;</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="s1">&#39;*?&#39;</span><span class="p">;</span>
+      <span class="n">e</span> <span class="o">+=</span> <span class="s1">&#39;)&#39;</span>
+    <span class="k">return</span> <span class="n">e</span><span class="p">;</span></div>
+    
+<div class="viewcode-block" id="Tag.string"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Tag.string">[docs]</a>  <span class="k">def</span> <span class="nf">string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">();</span>
+    
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="o">==</span> <span class="n">TAG_INT</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">frmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">frmt</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="o">==</span> <span class="n">TAG_INT</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">frmt</span> <span class="o">=</span> <span class="s1">&#39;%0&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;d&#39;</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">frmt</span> <span class="o">=</span> <span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;s&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">frmt</span> <span class="o">%</span> <span class="n">value</span><span class="p">;</span></div>
+  
+  
+<div class="viewcode-block" id="Tag.string_from_index"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Tag.string_from_index">[docs]</a>  <span class="k">def</span> <span class="nf">string_from_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">trange</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">trange</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">index</span><span class="p">;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">);</span></div>
+  
+  
+<div class="viewcode-block" id="Tag.value"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Tag.value">[docs]</a>  <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">()(</span><span class="n">string</span><span class="p">);</span></div>
+  
+    
+<div class="viewcode-block" id="Tag.index"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Tag.index">[docs]</a>  <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">trange</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;No range to determine index for tag </span><span class="si">%r</span><span class="s1"> and value </span><span class="si">%r</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">));</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trange</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="n">r</span><span class="p">:</span>
+          <span class="k">return</span> <span class="n">i</span><span class="p">;</span>
+      <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;Value </span><span class="si">%r</span><span class="s1"> not in tag range </span><span class="si">%r</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trange</span><span class="p">));</span></div>
+  
+<div class="viewcode-block" id="Tag.parse"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Tag.parse">[docs]</a>  <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">TAG_START</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">TAG_END</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The string </span><span class="si">%s</span><span class="s1"> is not a valid tag!&#39;</span> <span class="o">%</span> <span class="n">tag</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tag</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">TAG_START</span><span class="p">)]</span> <span class="o">!=</span> <span class="n">TAG_START</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Expecting the tag to start with </span><span class="si">%s</span><span class="s1"> found </span><span class="si">%s</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">TAG_START</span><span class="p">,</span> <span class="n">tag</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">TAG_START</span><span class="p">)]));</span>
+    <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">TAG_END</span><span class="p">):]</span> <span class="o">!=</span> <span class="n">TAG_END</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Expecting the tag to end with </span><span class="si">%s</span><span class="s1"> found </span><span class="si">%s</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">TAG_END</span><span class="p">,</span> <span class="n">tag</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">TAG_END</span><span class="p">):]));</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">TAG_START</span><span class="p">):</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">TAG_END</span><span class="p">)];</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="fm">__init__</span><span class="p">();</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">TAG_SEPARATOR</span><span class="p">);</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Found </span><span class="si">%d</span><span class="s1"> &gt; </span><span class="si">%d</span><span class="s1"> tag specifications!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="mi">3</span><span class="p">));</span>
+    
+    <span class="n">name</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="n">ttype</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>  
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#dont expect a width specification in the first entry</span>
+          <span class="k">raise</span> <span class="ne">Exception</span><span class="p">;</span>
+        <span class="n">width</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">));</span>
+      <span class="k">except</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">TAG_INT</span><span class="p">,</span> <span class="n">TAG_STR</span><span class="p">]:</span>
+          <span class="n">ttype</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Found two tag separators without a value in between!&#39;</span><span class="p">);</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;More than one name found in tag: </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">);</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ttype</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;More than one type found in tag: </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">ttype</span><span class="p">);</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;More than one widht found in tag: </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">width</span><span class="p">);</span>
+    
+    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="kc">None</span><span class="p">;</span>
+    <span class="n">ttype</span> <span class="o">=</span> <span class="n">ttype</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ttype</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="kc">None</span><span class="p">;</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">width</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">width</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="kc">None</span><span class="p">;</span>
+    
+    <span class="bp">self</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ttype</span><span class="o">=</span><span class="n">ttype</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">);</span></div>
+
+  <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">();</span>
+  
+  <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">();</span></div>
+
+
+<div class="viewcode-block" id="Expression"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression">[docs]</a><span class="k">class</span> <span class="nc">Expression</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">Expression</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">pattern</span><span class="p">);</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">pattern</span><span class="o">.</span><span class="n">tags</span><span class="p">);</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">pattern</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">pattern</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">pattern</span><span class="p">;</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pattern</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Tag</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">reference</span><span class="p">];</span>
+   
+<div class="viewcode-block" id="Expression.tag"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression.tag">[docs]</a>  <span class="k">def</span> <span class="nf">tag</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Tag</span><span class="p">):</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="n">p</span><span class="o">.</span><span class="n">tag</span><span class="p">();</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">e</span><span class="p">;</span></div>
+  
+<div class="viewcode-block" id="Expression.re"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression.re">[docs]</a>  <span class="k">def</span> <span class="nf">re</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="n">n_tag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Tag</span><span class="p">):</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="n">p</span><span class="o">.</span><span class="n">re</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">n_tag</span><span class="p">));</span>
+        <span class="n">n_tag</span> <span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">e</span><span class="p">;</span>  </div>
+    
+<div class="viewcode-block" id="Expression.glob"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression.glob">[docs]</a>  <span class="k">def</span> <span class="nf">glob</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="n">n_tag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Tag</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">values</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="n">e</span> <span class="o">+=</span> <span class="n">p</span><span class="o">.</span><span class="n">glob</span><span class="p">();</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">lab</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">n_tag</span><span class="p">);</span>
+          <span class="k">if</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">e</span> <span class="o">+=</span> <span class="n">escape_glob</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">lab</span><span class="p">]));</span>
+          <span class="k">else</span><span class="p">:</span>
+            <span class="n">e</span> <span class="o">+=</span> <span class="n">p</span><span class="o">.</span><span class="n">glob</span><span class="p">();</span>
+        <span class="n">n_tag</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="n">escape_glob</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">e</span><span class="p">;</span></div>
+    
+<div class="viewcode-block" id="Expression.string"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression.string">[docs]</a>  <span class="k">def</span> <span class="nf">string</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="n">n_tag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Tag</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="n">v</span> <span class="o">=</span>  <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">n_tag</span><span class="p">),</span> <span class="kc">None</span><span class="p">);</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">v</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="n">p</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="n">v</span><span class="p">);</span>
+        <span class="n">n_tag</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">e</span><span class="p">;</span></div>
+    
+<div class="viewcode-block" id="Expression.values"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression.values">[docs]</a>  <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">;</span>
+    <span class="n">search</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">re</span><span class="p">())</span><span class="o">.</span><span class="n">search</span><span class="p">;</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">search</span><span class="p">(</span><span class="n">string</span><span class="p">);</span>
+    <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">{};</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">d</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">();</span>
+      <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">dtype</span><span class="p">()(</span><span class="n">v</span><span class="p">);</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+      <span class="k">return</span> <span class="n">d</span><span class="p">;</span></div>
+    
+<div class="viewcode-block" id="Expression.string_from_index"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression.string_from_index">[docs]</a>  <span class="k">def</span> <span class="nf">string_from_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+      <span class="n">indices</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">:</span> <span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">)};</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="n">n_tag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">Tag</span><span class="p">):</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="n">p</span><span class="o">.</span><span class="n">string_from_index</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">n_tag</span><span class="p">)]);</span>
+        <span class="n">n_tag</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">+=</span> <span class="n">p</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">e</span><span class="p">;</span></div>
+    
+<div class="viewcode-block" id="Expression.indices"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression.indices">[docs]</a>  <span class="k">def</span> <span class="nf">indices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">;</span>
+    <span class="n">search</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">re</span><span class="p">())</span><span class="o">.</span><span class="n">search</span><span class="p">;</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">search</span><span class="p">(</span><span class="n">string</span><span class="p">);</span>
+    <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot infer indices from string!&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">d</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">();</span>
+      <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">dtype</span><span class="p">()(</span><span class="n">v</span><span class="p">));</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">];</span>
+    <span class="k">return</span> <span class="n">indices</span><span class="p">;</span></div>
+  
+<div class="viewcode-block" id="Expression.tag_names"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression.tag_names">[docs]</a>  <span class="k">def</span> <span class="nf">tag_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">)];</span></div>
+  
+<div class="viewcode-block" id="Expression.ntags"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression.ntags">[docs]</a>  <span class="k">def</span> <span class="nf">ntags</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">);</span> </div>
+  
+  <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag_names</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">i</span><span class="p">:</span>
+          <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+      <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;No tag with name </span><span class="si">%r</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">);</span>
+  
+<div class="viewcode-block" id="Expression.parse"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression.parse">[docs]</a>  <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">TAG_START</span> <span class="o">+</span> <span class="s1">&#39;.*?&#39;</span> <span class="o">+</span> <span class="n">TAG_END</span><span class="p">);</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">start</span><span class="p">:</span>
+        <span class="n">pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">()]);</span>
+      <span class="n">tag</span> <span class="o">=</span> <span class="n">Tag</span><span class="p">(</span><span class="n">tag</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+      <span class="n">pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">);</span>
+      <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">);</span>
+      <span class="n">start</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">();</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+      <span class="n">pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">[</span><span class="n">start</span><span class="p">:]);</span>
+    
+    <span class="c1">#check for references</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">t</span><span class="o">.</span><span class="n">reference</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">refs</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="p">];</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">refs</span><span class="p">:</span>
+          <span class="n">r</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+          <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">ttype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">ttype</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">ttype</span><span class="p">;</span>
+          <span class="k">elif</span> <span class="n">r</span><span class="o">.</span><span class="n">ttype</span> <span class="o">!=</span> <span class="n">t</span><span class="o">.</span><span class="n">ttype</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The reference </span><span class="si">%r</span><span class="s1"> has not the same type as the tag </span><span class="si">%r</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">t</span><span class="p">));</span>
+          <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">width</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">width</span><span class="p">;</span>
+    
+    <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">pattern</span><span class="p">;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">pattern</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">Tag</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">reference</span><span class="p">];</span></div>
+  
+  
+<div class="viewcode-block" id="Expression.detect"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.Expression.detect">[docs]</a>  <span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strings</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">max_check</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">with_trange</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">strings</span><span class="p">,</span><span class="nb">list</span><span class="p">):</span>
+      <span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="n">strings</span><span class="p">];</span>
+    
+    <span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">];</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">l</span> <span class="o">!=</span> <span class="n">ls</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot infer tag expression from strings of different length!&#39;</span><span class="p">);</span>
+      
+    <span class="k">if</span> <span class="n">max_check</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">max_check</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">strings</span><span class="p">);</span>         
+      
+    <span class="k">if</span> <span class="n">names</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">names</span> <span class="o">=</span> <span class="p">[];</span>
+    
+    <span class="c1">#detect differences in filenames</span>
+    <span class="n">s0</span> <span class="o">=</span> <span class="n">strings</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="n">tag_start</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">tag_end</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s0</span><span class="p">):</span>
+      <span class="n">same</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+      <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">c</span><span class="p">:</span>
+          <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">tag_end</span><span class="p">:</span>
+            <span class="n">tag_end</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+          <span class="k">else</span><span class="p">:</span>
+            <span class="n">tag_start</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="n">tag_end</span>   <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+          <span class="k">break</span><span class="p">;</span>
+      <span class="k">if</span> <span class="n">same</span> <span class="ow">and</span> <span class="n">tag_start</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">tag_start</span><span class="p">,</span> <span class="n">tag_end</span><span class="p">));</span>
+        <span class="n">tag_start</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">tag_end</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  
+    <span class="c1">#detect trailing zeros  </span>
+    <span class="n">tags_full</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">:</span>
+      <span class="n">s</span><span class="p">,</span><span class="n">e</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+      <span class="k">while</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">s0</span><span class="p">[</span><span class="n">s</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">tags_full</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">));</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">tags_full</span><span class="p">;</span>  
+    
+    <span class="c1">#infer pattern</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
+      <span class="n">s</span><span class="p">,</span><span class="n">e</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span> 
+      <span class="k">if</span> <span class="n">s</span><span class="o">-</span><span class="n">p</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s0</span><span class="p">[</span><span class="n">p</span><span class="p">:</span><span class="n">s</span><span class="p">]);</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+      
+      <span class="n">ttype</span> <span class="o">=</span> <span class="n">TAG_INT</span><span class="p">;</span>
+      <span class="n">values</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">[:</span><span class="n">max_check</span><span class="p">]:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]];</span>
+        <span class="k">try</span><span class="p">:</span>
+          <span class="n">v</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+        <span class="k">except</span><span class="p">:</span>
+          <span class="n">ttype</span> <span class="o">=</span> <span class="n">TAG_STR</span><span class="p">;</span>
+          <span class="k">if</span> <span class="ow">not</span> <span class="n">with_trange</span><span class="p">:</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">names</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">default_tag_name</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+      <span class="n">trange</span> <span class="o">=</span> <span class="n">values</span> <span class="k">if</span> <span class="n">with_trange</span> <span class="k">else</span> <span class="kc">None</span><span class="p">;</span>
+      <span class="n">pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Tag</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">,</span> <span class="n">ttype</span> <span class="o">=</span> <span class="n">ttype</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trange</span> <span class="o">=</span> <span class="n">trange</span><span class="p">));</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pattern</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s0</span><span class="p">[</span><span class="n">p</span><span class="p">:]);</span> 
+    
+    <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">pattern</span><span class="p">;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">pattern</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">Tag</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">reference</span><span class="p">];</span></div>
+  
+  
+  <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;TagExpression(&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span><span class="p">;</span>
+    
+  <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">();</span></div>
+      
+
+<div class="viewcode-block" id="parse"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.parse">[docs]</a><span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">expression</span><span class="p">):</span>
+  <span class="n">e</span> <span class="o">=</span> <span class="n">Expression</span><span class="p">()</span>
+  <span class="n">e</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">expression</span><span class="o">=</span><span class="n">expression</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">e</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="detect"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.detect">[docs]</a><span class="k">def</span> <span class="nf">detect</span><span class="p">(</span><span class="n">strings</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">max_check</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">with_trange</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="n">e</span> <span class="o">=</span> <span class="n">Expression</span><span class="p">();</span>
+  <span class="n">e</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">strings</span><span class="o">=</span><span class="n">strings</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">max_check</span><span class="o">=</span><span class="n">max_check</span><span class="p">,</span> <span class="n">with_trange</span><span class="o">=</span><span class="n">with_trange</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">e</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="escape_glob"><a class="viewcode-back" href="../../../Api/ClearMap.Utils.TagExpression.html#ClearMap.Utils.TagExpression.escape_glob">[docs]</a><span class="k">def</span> <span class="nf">escape_glob</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+  <span class="n">e</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+  <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">string</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">&#39;?[]&#39;</span><span class="p">:</span>
+      <span class="n">e</span> <span class="o">+=</span> <span class="s1">&#39;[&#39;</span> <span class="o">+</span> <span class="n">c</span> <span class="o">+</span> <span class="s1">&#39;]&#39;</span><span class="p">;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">e</span> <span class="o">+=</span> <span class="n">c</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">e</span><span class="p">;</span></div>
+
+
+
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Tests&quot;&quot;&quot;</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Utils.TagExpression</span> <span class="k">as</span> <span class="nn">te</span>
+  <span class="c1">#reload(te);  </span>
+  
+  <span class="c1">#values and strings</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;/test/test&lt;X,I,4&gt;_&lt;Y,I,3&gt;_&lt;X&gt;.tif&#39;</span><span class="p">)</span>
+  
+  <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;/test/test0010_013_0010.tif&#39;</span><span class="p">;</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+  <span class="n">s2</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+  <span class="n">s</span> <span class="o">==</span> <span class="n">s2</span>
+  
+  <span class="n">t</span><span class="o">.</span><span class="n">string</span><span class="p">({</span><span class="s1">&#39;X&#39;</span> <span class="p">:</span> <span class="mi">111</span><span class="p">})</span>
+  
+  <span class="c1">#indices</span>
+  <span class="n">t</span><span class="o">.</span><span class="n">indices</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;/test/test&lt;X,I,4&gt;_&lt;Y,S&gt;.tif&#39;</span><span class="p">);</span>
+  <span class="n">t</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span>
+  <span class="n">t</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">trange</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcd&#39;</span><span class="p">)</span>
+  <span class="n">t</span><span class="o">.</span><span class="n">string_from_index</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>  
+  
+  <span class="c1">#glob</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Tests.Files</span> <span class="k">as</span> <span class="nn">tf</span>
+  <span class="kn">import</span> <span class="nn">glob</span>
+  
+  <span class="n">s</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">tif_sequence</span><span class="p">,</span> <span class="s1">&#39;sequence&lt;I,4&gt;.tif&#39;</span><span class="p">)</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+  <span class="n">f</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">glob</span><span class="p">())</span>
+  
+  <span class="c1">#detection</span>
+  <span class="n">te</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">])</span>
+  
+  <span class="n">t</span> <span class="o">=</span> <span class="n">te</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">with_trange</span> <span class="o">=</span> <span class="kc">True</span><span class="p">);</span>
+  <span class="n">t</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">trange</span>
+
+  
+  
+</pre></div>
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../../../overview.html"><img src="../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

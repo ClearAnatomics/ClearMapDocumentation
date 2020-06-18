@@ -1,0 +1,589 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ClearMap.ImageProcessing.Differentiation.Hessian &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/clearmap.js"></script>
+    <script src="../../../../_static/clearmap_sidebar.js"></script>
+    <script src="../../../../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../../../../home.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../../../../home.html">Home</a></li>
+     <li class="link-list"><a href="../../../../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../../../../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+       <li><a href="../../../../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../../../../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../../../../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../../../../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../../../../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../../../../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../../../../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../../../../cellmap.html">
+            <img src="../../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../../../../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../../../../tubemap.html">
+            <img src="../../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../../../../media.html#gallery"> Gallery</a></h3>
+          <a href="../../../../media.html#gallery">
+            <img src="../../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../../../../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../../../../media.html#videos">   
+            <img src="../../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <h1>Source code for ClearMap.ImageProcessing.Differentiation.Hessian</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Hessian</span>
+<span class="sd">=======</span>
+
+<span class="sd">Module to compute curvature measures based on Hessian Matrix</span>
+
+<span class="sd">Usefull for filtering vasculature data</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE.txt)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>    
+
+
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+
+
+<span class="kn">import</span> <span class="nn">pyximport</span><span class="p">;</span>
+<span class="n">pyximport</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="n">setup_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;include_dirs&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">get_include</span><span class="p">()},</span> <span class="n">reload_support</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">HessianCode</span> <span class="k">as</span> <span class="n">code</span>
+
+<span class="c1">#import ClearMap.IO.IO as io</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hessian&#39;</span><span class="p">,</span> <span class="s1">&#39;eigenvalues&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda123&#39;</span><span class="p">,</span> <span class="s1">&#39;tubeness&#39;</span><span class="p">];</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Curvature measures</span>
+<span class="c1">###############################################################################</span>
+          
+<div class="viewcode-block" id="hessian"><a class="viewcode-back" href="../../../../Api/ClearMap.ImageProcessing.Differentiation.Hessian.html#ClearMap.ImageProcessing.Differentiation.hessian">[docs]</a><span class="k">def</span> <span class="nf">hessian</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns the hessian matrix at each location calculatd via finite differences.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output, if None, a new array is allocated.  </span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  hessian : array:</span>
+<span class="sd">      5d array with the hessian matrix in the first two dimensions.</span>
+<span class="sd">  &quot;&quot;&quot;</span>    
+  <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">hessian</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_shape_per_pixel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">parameter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">);</span></div>
+  
+
+<div class="viewcode-block" id="eigenvalues"><a class="viewcode-back" href="../../../../Api/ClearMap.ImageProcessing.Differentiation.Hessian.html#ClearMap.ImageProcessing.Differentiation.eigenvalues">[docs]</a><span class="k">def</span> <span class="nf">eigenvalues</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Hessiean eigenvalues of source data</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output, if None, a new array is allocated.</span>
+<span class="sd">  sigma : float or None</span>
+<span class="sd">    If not None, a Gaussian filter with std sigma is applied initialliy.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The three eigenvalues along the first axis for each source.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">eigenvalues</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_shape_per_pixel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">parameter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">);</span></div>
+          
+
+<div class="viewcode-block" id="tubeness"><a class="viewcode-back" href="../../../../Api/ClearMap.ImageProcessing.Differentiation.Hessian.html#ClearMap.ImageProcessing.Differentiation.tubeness">[docs]</a><span class="k">def</span> <span class="nf">tubeness</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Tubeness mesure of source data</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  srouce : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output, if None, a new array is allocated.</span>
+<span class="sd">  threshold : float or None</span>
+<span class="sd">    If float, the tubeness is thresholded at this level.</span>
+<span class="sd">  sigma : float or None</span>
+<span class="sd">    If not None, a Gaussian filter with std sigma is applied initialliy.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : 3-D array</span>
+<span class="sd">      Tubness output.</span>
+
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  The tubness is the geometric mean of the two smallest eigenvalues.      </span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">tubeness</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span> 
+    <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">tubeness_threshold</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">parameter</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="lambda123"><a class="viewcode-back" href="../../../../Api/ClearMap.ImageProcessing.Differentiation.Hessian.html#ClearMap.ImageProcessing.Differentiation.lambda123">[docs]</a><span class="k">def</span> <span class="nf">lambda123</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">gamma12</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">gamma23</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Generalized tubness measure of source data.</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output, if None, a new array is allocated.</span>
+<span class="sd">  gamma12, gamma23, alpha : float</span>
+<span class="sd">    Parameters for the tubness measure.</span>
+<span class="sd">  sigma : float or None</span>
+<span class="sd">    If not None, a Gaussian filter with std sigma is applied initialliy.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The tubness measure.</span>
+<span class="sd">  </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  Reference: Sato et al. Three-dimensional multi-scale line filter for segmentation and visualization of curvilinear structures in medical images, Medical Image Analysis 1998, pp 143--168.</span>
+<span class="sd">  &quot;&quot;&quot;</span>  
+  <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">parameter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">gamma12</span><span class="p">,</span> <span class="n">gamma23</span><span class="p">,</span> <span class="n">alpha</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">lambda123</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">parameter</span><span class="o">=</span><span class="n">parameter</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">sink_dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">);</span>          
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">parameter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">gamma12</span><span class="p">,</span> <span class="n">gamma23</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">threshold</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">lambda123_threshold</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">parameter</span><span class="o">=</span><span class="n">parameter</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">sink_dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">);</span>          </div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Helpers</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_apply_code</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_shape_per_pixel</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">parameter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper to apply the core functions&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The tubness measure is implemented for 3d data, found </span><span class="si">%d</span><span class="s1">d!&#39;</span> <span class="o">%</span> <span class="n">source</span><span class="o">.</span><span class="n">ndim</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">source</span> <span class="ow">is</span> <span class="n">sink</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot perform operation in place!&quot;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">sink_shape_per_pixel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">shape_per_pixel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">shape_per_pixel</span> <span class="o">=</span> <span class="n">sink_shape_per_pixel</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sink_dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">float</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">shape_per_pixel</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">sink_dtype</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">shape_per_pixel</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,):</span>
+      <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">shape_per_pixel</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The sink of shape </span><span class="si">%r</span><span class="s1"> does not have expected shape </span><span class="si">%r</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">shape_per_pixel</span><span class="p">));</span>
+    <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">shape_per_pixel</span><span class="p">:</span>
+      <span class="n">sink</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">shape_per_pixel</span><span class="p">)</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sink</span><span class="p">;</span>
+
+  <span class="n">sink_stride</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">element_strides</span><span class="p">(</span><span class="n">sink</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    
+  <span class="k">if</span> <span class="n">parameter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">parameter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">parameter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">parameter</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">();</span>
+                     
+  <span class="k">if</span> <span class="n">sigma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">);</span>
+  
+  <span class="n">function</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">sink_stride</span><span class="o">=</span><span class="n">sink_stride</span><span class="p">,</span>  <span class="n">parameter</span><span class="o">=</span><span class="n">parameter</span><span class="p">)</span>
+  
+  <span class="k">if</span> <span class="n">sink_shape_per_pixel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+  
+  <span class="k">return</span> <span class="n">sink</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tests</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Test.Files</span> <span class="k">as</span> <span class="nn">tst</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">p3d</span>
+  
+  <span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Differentiation</span> <span class="k">as</span> <span class="nn">dif</span>
+  
+  <span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+  <span class="n">reload</span><span class="p">(</span><span class="n">dif</span><span class="p">);</span>
+  
+  <span class="n">source</span> <span class="o">=</span> <span class="n">tst</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">)[:</span><span class="mi">20</span><span class="p">,</span> <span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="p">:</span><span class="mi">20</span><span class="p">];</span> 
+  
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">dif</span><span class="o">.</span><span class="n">eigenvalues</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">source</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])));</span>
+    
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span><span class="p">);</span>
+  <span class="n">dif</span><span class="o">.</span><span class="n">eigenvalues</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">source</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])));</span>
+
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">);</span>
+  <span class="n">dif</span><span class="o">.</span><span class="n">eigenvalues</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">source</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])));</span>
+  
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">);</span>
+  <span class="n">dif</span><span class="o">.</span><span class="n">lambda123</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">])</span>
+  
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">dif</span><span class="o">.</span><span class="n">lambda123</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">);</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">]);</span>
+  
+  <span class="c1">#import ClearMap.ImageProcessing.Differentiation.Gradient as grd</span>
+  <span class="c1">#res2 = grd.eigenvalues(data, sigma = 1.0);</span>
+
+  <span class="c1">#import numpy as np</span>
+  <span class="c1">#np.max(np.abs(res[[2,1,0]] - res2))</span>
+  
+  <span class="c1">#print res[:,10,10,10], res2[:,10,10,10]</span>
+
+
+
+<span class="c1"># Python implementations of HessianCode for testing</span>
+<span class="c1">#from scipy import ndimage as ndi  </span>
+<span class="c1">#</span>
+<span class="c1">#def hessian(source):</span>
+<span class="c1">#  &quot;&quot;&quot;Returns the hessian matrix at each location calculatd via finite differences.</span>
+<span class="c1">#  </span>
+<span class="c1">#  Arguments</span>
+<span class="c1">#  ---------</span>
+<span class="c1">#  source : array</span>
+<span class="c1">#    Input array.</span>
+<span class="c1">#  sink : array</span>
+<span class="c1">#    Output, if None, a new array is allocated.  </span>
+<span class="c1">#</span>
+<span class="c1">#  Returns</span>
+<span class="c1">#  -------</span>
+<span class="c1">#    ndarray:</span>
+<span class="c1">#      5d array with the hessian matrix in the first two dimensions</span>
+<span class="c1">#  &quot;&quot;&quot;    </span>
+<span class="c1">#  c = 2*source;</span>
+<span class="c1">#  h[0,0] = mm[0:-2,1:-1,1:-1] - c + mm[2:,1:-1,1:-1];</span>
+<span class="c1">#  h[1,1] = mm[1:-1,0:-2,1:-1] - c + mm[1:-1,2:,1:-1];</span>
+<span class="c1">#  h[2,2] = mm[1:-1,1:-1,0:-2] - c + mm[1:-1,1:-1,2:];</span>
+<span class="c1">#  </span>
+<span class="c1">#  h[0,1] = h[1,0] = (mm[2:,2:,1:-1] - mm[:-2,2:,1:-1] - mm[2:,:-2,1:-1] + mm[:-2,:-2,1:-1]) / 4;</span>
+<span class="c1">#  h[0,2] = h[2,0] = (mm[2:,1:-1,2:] - mm[:-2,1:-1,2:] - mm[2:,1:-1,:-2] + mm[:-2,1:-1,:-2]) / 4;</span>
+<span class="c1">#  h[1,2] = h[2,1] = (mm[1:-1,2:,2:] - mm[1:-1,:-2,2:] - mm[1:-1,2:,:-2] + mm[1:-1,:-2,:-2]) / 4;</span>
+<span class="c1">#</span>
+<span class="c1">#  return h;</span>
+<span class="c1">#</span>
+<span class="c1">#def eigenvalues3D(m):</span>
+<span class="c1">#    &quot;&quot;&quot;Find the coefficients of the characteristic polynomial:</span>
+<span class="c1">#       http://en.wikipedia.org/wiki/Eigenvalue_algorithm</span>
+<span class="c1">#</span>
+<span class="c1">#		// The matrix looks like:</span>
+<span class="c1">#		/*</span>
+<span class="c1">#			A  B  C</span>
+<span class="c1">#			B  D  E</span>
+<span class="c1">#			C  E  F</span>
+<span class="c1">#		*/</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    </span>
+<span class="c1">#    A = m[0,0];</span>
+<span class="c1">#    B = m[0,1];</span>
+<span class="c1">#    C = m[0,2];</span>
+<span class="c1">#    D = m[1,1];</span>
+<span class="c1">#    E = m[1,2];</span>
+<span class="c1">#    F = m[2,2];</span>
+<span class="c1">#</span>
+<span class="c1">#    a = -1;</span>
+<span class="c1">#    b = A + D + F;</span>
+<span class="c1">#    c = B * B + C * C + E * E - A * D - A * F - D * F;</span>
+<span class="c1">#    d = A * D * F - A * E * E	- B * B * F + 2 * B * C * E - C * C * D;</span>
+<span class="c1">#</span>
+<span class="c1">#    third = 0.333333333333333333333333333333333333;</span>
+<span class="c1">#</span>
+<span class="c1">#    #Now use the root-finding formula described here:</span>
+<span class="c1">#    #http://en.wikipedia.org/wiki/Cubic_equation#oot-finding_formula</span>
+<span class="c1">#</span>
+<span class="c1">#    q = (3*a*c - b*b) / (9*a*a);</span>
+<span class="c1">#    r = (9*a*b*c - 27*a*a*d - 2*b*b*b) / (54*a*a*a);</span>
+<span class="c1">#</span>
+<span class="c1">#    discriminant = q*q*q + r*r;</span>
+<span class="c1">#    #print discriminant.shape</span>
+<span class="c1">#    </span>
+<span class="c1">#    eigenValues = np.zeros((3,) + m.shape[2:]);</span>
+<span class="c1">#    #print eigenValues.shape</span>
+<span class="c1">#</span>
+<span class="c1">#    #ids = discriminant &gt; 0;</span>
+<span class="c1">#    #if np.any(ids):</span>
+<span class="c1">#        #should never happen for symmetric matrix</span>
+<span class="c1">#    #    return None;</span>
+<span class="c1">#</span>
+<span class="c1">#    ids = discriminant &lt; 0;</span>
+<span class="c1">#    </span>
+<span class="c1">#    rr = r[ids];</span>
+<span class="c1">#      </span>
+<span class="c1">#    rootThree = 1.7320508075688772935;</span>
+<span class="c1">#    innerSize = np.sqrt( rr*rr - discriminant[ids] );</span>
+<span class="c1">#      </span>
+<span class="c1">#    ids2 = rr &gt; 0;</span>
+<span class="c1">#    innerAngle = np.zeros(rr.shape);</span>
+<span class="c1">#    </span>
+<span class="c1">#    innerAngle[ids2] = np.arctan(np.sqrt(-discriminant[ids][ids2]) / rr[ids2] );</span>
+<span class="c1">#    </span>
+<span class="c1">#    ids2 = np.logical_not(ids2);</span>
+<span class="c1">#    innerAngle[ids2] = ( np.pi - np.arctan( np.sqrt(-discriminant[ids][ids2]) / -rr[ids2] ) );</span>
+<span class="c1">#       </span>
+<span class="c1">#    # So now s is the cube root of innerSize * e ^ (   innerAngle * i )</span>
+<span class="c1">#    # and t is the cube root of innerSize * e ^ ( - innerAngle * i )       </span>
+<span class="c1">#       </span>
+<span class="c1">#    stSize = np.power(innerSize,third);</span>
+<span class="c1">#      </span>
+<span class="c1">#    sAngle = innerAngle / 3;</span>
+<span class="c1">#    #tAngle = - innerAngle / 3;</span>
+<span class="c1">#     </span>
+<span class="c1">#    sPlusT = 2 * stSize * np.cos(sAngle);</span>
+<span class="c1">#    </span>
+<span class="c1">#    eigenValues[0][ids] = ( sPlusT - (b[ids] / (3*a)) );</span>
+<span class="c1">#    firstPart = - (sPlusT / 2) - (b[ids] / 3*a);</span>
+<span class="c1">#    lastPart = - rootThree * stSize * np.sin(sAngle);</span>
+<span class="c1">#      </span>
+<span class="c1">#    eigenValues[1][ids] = ( firstPart + lastPart );</span>
+<span class="c1">#    eigenValues[2][ids] = ( firstPart - lastPart );</span>
+<span class="c1">#</span>
+<span class="c1">#    </span>
+<span class="c1">#    #The discriminant is zero (or very small),</span>
+<span class="c1">#    #so the second two solutions are the same:</span>
+<span class="c1">#    ids = discriminant == 0;</span>
+<span class="c1">#    rr = r[ids];    </span>
+<span class="c1">#    </span>
+<span class="c1">#    ids2 = rr &gt;= 0;</span>
+<span class="c1">#        </span>
+<span class="c1">#    </span>
+<span class="c1">#    sPlusT = np.zeros(rr.shape);</span>
+<span class="c1">#    sPlusT[ids2] = 2 * np.power(rr[ids2],third);</span>
+<span class="c1">#    ids2 = np.logical_not(ids2);</span>
+<span class="c1">#    sPlusT[ids2] = -2 * np.power(-rr[ids2],third);</span>
+<span class="c1">#        </span>
+<span class="c1">#    bOver3A = b[ids] / (3 * a);</span>
+<span class="c1">#      </span>
+<span class="c1">#    eigenValues[0][ids] = ( sPlusT   - bOver3A );</span>
+<span class="c1">#    eigenValues[1][ids] = (-sPlusT/2 - bOver3A );</span>
+<span class="c1">#    eigenValues[2][ids] = eigenValues[1][ids];</span>
+<span class="c1">#      </span>
+<span class="c1">#    return eigenValues;</span>
+<span class="c1">##</span>
+<span class="c1">##</span>
+<span class="c1">#def eigenvalues(m, sigma = 1.0, sort = True):</span>
+<span class="c1">#  if sigma is not None:</span>
+<span class="c1">#    smoothed = ndi.gaussian_filter(np.asarray(m, dtype = float), sigma=sigma);</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    smoothed = m;</span>
+<span class="c1">#</span>
+<span class="c1">#  h3 = hessian(smoothed);</span>
+<span class="c1">#  e3 = eigenvalues3D(h3);</span>
+<span class="c1">#  #e3a = np.abs(e3);</span>
+<span class="c1">#  e3a = e3;</span>
+<span class="c1">#  </span>
+<span class="c1">#  if sort:</span>
+<span class="c1">#    index = list(np.ix_(*[np.arange(i) for i in e3a.shape]))</span>
+<span class="c1">#    index[0] = e3a.argsort(axis = 0)</span>
+<span class="c1">#    return e3[index];</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    return e3;</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def tubeness(m, sigma = 1.0):   </span>
+<span class="c1">#  if sigma is not None:</span>
+<span class="c1">#    smoothed = ndi.gaussian_filter(np.asarray(m, dtype = float), sigma=sigma);</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    smoothed = m;</span>
+<span class="c1">#</span>
+<span class="c1">#  h3 = hessian(smoothed);</span>
+<span class="c1">#  e3 = eigenvalues3D(h3);</span>
+<span class="c1">#  e3a = np.abs(e3);</span>
+<span class="c1">#  </span>
+<span class="c1">#  index = list(np.ix_(*[np.arange(i) for i in e3a.shape]))</span>
+<span class="c1">#  index[0] = e3a.argsort(axis = 0)</span>
+<span class="c1">#  e3s = e3[index];</span>
+<span class="c1">#  </span>
+<span class="c1">#  tb = np.zeros(m.shape);</span>
+<span class="c1">#  ids = np.logical_and(e3s[1] &lt; 0, e3s[2] &lt; 0);</span>
+<span class="c1">#  tb[ids] = np.sqrt(e3s[1][ids] * e3s[2][ids]);</span>
+<span class="c1">#</span>
+<span class="c1">#  return tb;</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def frangi(m, alpha = 0.5, beta  = 0.5, gamma  = 100, sigma = 1.0):</span>
+<span class="c1">#  if sigma is not None:</span>
+<span class="c1">#    smoothed = ndi.gaussian_filter(np.asarray(m, dtype = float), sigma=sigma);</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    smoothed = m;</span>
+<span class="c1">#</span>
+<span class="c1">#  h3 = hessian(smoothed);</span>
+<span class="c1">#  e3 = eigenvalues3D(h3);</span>
+<span class="c1">#  e3a = np.abs(e3);</span>
+<span class="c1">#  </span>
+<span class="c1">#  index = list(np.ix_(*[np.arange(i) for i in e3a.shape]))</span>
+<span class="c1">#  index[0] = e3a.argsort(axis = 0)</span>
+<span class="c1">#  e3s = e3[index];</span>
+<span class="c1">#  </span>
+<span class="c1">#  ra = np.abs(e3s[1]) / np.abs(e3s[2]);</span>
+<span class="c1">#  rb = np.abs(e3s[0]) / np.sqrt(np.abs(e3s[1] * e3s[2]));</span>
+<span class="c1">#  s  = np.sqrt(np.square(e3s[0]) + np.square(e3s[1]) + np.square(e3s[2]))</span>
+<span class="c1">#</span>
+<span class="c1">#  plate = 1 - np.exp(- np.square(ra) / (2 * np.square(alpha)));</span>
+<span class="c1">#  blob  = np.exp(-np.square(rb) / (2 * np.square(beta)));</span>
+<span class="c1">#  background = 1 - np.exp(-np.square(s) / (2 * np.square(gamma)));</span>
+<span class="c1">#</span>
+<span class="c1">#  f = plate * blob * background;</span>
+<span class="c1">#  </span>
+<span class="c1">#  ids = np.logical_and(e3s[1] &gt;= 0, e3s[2] &gt;= 0);</span>
+<span class="c1">#  f[ids] = 0;</span>
+<span class="c1">#  </span>
+<span class="c1">#  return f;</span>
+<span class="c1">#</span>
+</pre></div>
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../../../../overview.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,548 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Functionality &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/clearmap.js"></script>
+    <script src="_static/clearmap_sidebar.js"></script>
+    <script src="_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="home.html"><img src="_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="home.html">Home</a></li>
+     <li class="link-list"><a href="overview.html">Overview</a></li>    
+     <li class="link-list"><a href="installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Usage"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+       <li><a href="home.html">Home</a>|&nbsp;</li>
+       <li><a href="overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="search.html">Search</a>|&nbsp;</li>
+       <li><a href="index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="index.html#clearmap-api">API </a> &raquo;</li>     
+ 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="index.html">ClearMap</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Functionality</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modules">Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#alignment">Alignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analysis">Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#imageprocessing">ImageProcessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#io">IO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parallelprocessing">ParallelProcessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualization">Visualization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="next chapter">Usage</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/functionality.rst"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="cellmap.html">CellMap Pipeline</a></h3>
+          <a href="cellmap.html">
+            <img src="_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="tubemap.html">
+            <img src="_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="media.html#gallery"> Gallery</a></h3>
+          <a href="media.html#gallery">
+            <img src="_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="media.html#videos">Social Media and Videos</a></h3>
+          <a href="media.html#videos">   
+            <img src="_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <div class="section" id="functionality">
+<h1>Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline">¶</a></h1>
+<p>ClearMap 2.0 is designed for advanced and fast image processing of large
+(Terabyte) 3D data sets <a class="reference internal" href="api.html#kirst2020" id="id1"><span>[Kirst2020]</span></a> obtained from tissue clearing. It is a
+complete redesign of
+<a class="reference external" href="https://www.github.com/ChristophKirst/ClearMap">ClearMap 1.0</a> <a class="reference internal" href="api.html#renier2016" id="id2"><span>[Renier2016]</span></a>.</p>
+<p>The modular source management allows a unified handling of various data sources
+(image files, binary files, memory maps, shared memory arrays, numpy arrays,
+GPU arrays, graph formats) and fast parallel 3D image and graph
+processing as well as interactive visualization of large 3d images.</p>
+<p>In the following we provide a list of the ClearMap 2.0 functionality.
+<a class="reference external" href="https://github.com/ChristophKirst/ClearMap2">ClearMap 2.0</a> is open source
+software and available for download under
+<a class="reference external" href="https://github.com/ChristophKirst/ClearMap2">https://github.com/ChristophKirst/ClearMap2</a>.</p>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p>The ClearMap code is structured into these main modules:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#alignment">Alignment</a> for stitching, resampling, and registration of images onto references</p></li>
+<li><p><a class="reference internal" href="#analysis">Analysis</a> for measurements and statistical analysis of the data</p></li>
+<li><p><a class="reference internal" href="#imageprocessing">ImageProcessing</a> for correcting and quantifying image data</p></li>
+<li><p><a class="reference internal" href="#io">IO</a> for reading and writing data</p></li>
+<li><p><a class="reference internal" href="#parallelprocessing">ParallelProcessing</a> for organizing parallel processing of the data</p></li>
+<li><p><a class="reference internal" href="#visualization">Visualization</a> for visualizing the data and results.</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="alignment">
+<h3>Alignment<a class="headerlink" href="#alignment" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="Api/ClearMap.Alignment.html#module-ClearMap.Alignment" title="ClearMap.Alignment"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.Alignment</span></code></a> module includes methods for</p>
+<blockquote>
+<div><ul>
+<li><p>3d resampling:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.Alignment.Resampling.html#module-ClearMap.Alignment.Resampling" title="ClearMap.Alignment.Resampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Resampling</span></code></a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>3d alignment to reference atlases (e.g.
+<a class="reference external" href="https://portal.brain-map.org/">Allen Brain Institute Atlases</a>) via
+interfacing to
+<a class="reference external" href="http://elastix.isi.uu.nl">elastix &lt;http://elastix.isi.uu.nl</a>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.Alignment.Elastix.html#module-ClearMap.Alignment.Elastix" title="ClearMap.Alignment.Elastix"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Elastix</span></code></a></p></li>
+<li><p><a class="reference internal" href="Api/ClearMap.Alignment.Annotation.html#module-ClearMap.Alignment.Annotation" title="ClearMap.Alignment.Annotation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Annotation</span></code></a></p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>3d rigid and wobbly stitching via <a class="reference internal" href="wobblystitcher.html"><span class="doc">WobblyStitcher</span></a>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.Alignment.Stitching.StitchingRigid.html#module-ClearMap.Alignment.Stitching.StitchingRigid" title="ClearMap.Alignment.Stitching.StitchingRigid"><code class="xref py py-mod docutils literal notranslate"><span class="pre">StitchingRigid</span></code></a></p></li>
+<li><p><a class="reference internal" href="Api/ClearMap.Alignment.Stitching.StitchingWobbly.html#module-ClearMap.Alignment.Stitching.StitchingWobbly" title="ClearMap.Alignment.Stitching.StitchingWobbly"><code class="xref py py-mod docutils literal notranslate"><span class="pre">StitchingWobbly</span></code></a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="analysis">
+<h3>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="Api/ClearMap.Analysis.html#module-ClearMap.Analysis" title="ClearMap.Analysis"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Analysis</span></code></a> module provides methods for the quantification
+and analysis of the data, including:</p>
+<blockquote>
+<div><ul>
+<li><p>graph and network analysis for very large graphs</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.Analysis.Graphs.html#module-ClearMap.Analysis.Graphs" title="ClearMap.Analysis.Graphs"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Graphs</span></code></a></p></li>
+</ul>
+<dl class="simple">
+<dt>enabling:</dt><dd><ul class="simple">
+<li><p>graph preprocessing and cleanup</p></li>
+<li><p>graph branch reduction</p></li>
+<li><p>graph annotation</p></li>
+<li><p>graphs embedded 3d space</p></li>
+<li><p>3d graphs with 3d edge geometry</p></li>
+<li><p>graph vertex and edge label morphological operations</p></li>
+<li><p>sub-graph extraction</p></li>
+<li><p>network analysis</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>measurement routines to quantify the results</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.Analysis.Measurements.html#module-ClearMap.Analysis.Measurements" title="ClearMap.Analysis.Measurements"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Measurements</span></code></a></p></li>
+</ul>
+<dl class="simple">
+<dt>enabling:</dt><dd><ul class="simple">
+<li><p>measurments of expression levels</p></li>
+<li><p>measurments of geometric shapes and radii</p></li>
+<li><p>maxima detection</p></li>
+<li><p>voxelization</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>statistics routines to analyse the results</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.Analysis.Statistics.html#module-ClearMap.Analysis.Statistics" title="ClearMap.Analysis.Statistics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Statistics</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="imageprocessing">
+<h3>ImageProcessing<a class="headerlink" href="#imageprocessing" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="Api/ClearMap.ImageProcessing.html#module-ClearMap.ImageProcessing" title="ClearMap.ImageProcessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ImageProcessing</span></code></a> module is the core of <em>ClearMap</em> and
+provides methods to process 3d images of TB size, including:</p>
+<blockquote>
+<div><ul>
+<li><p>binary image processing</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Binary.html#module-ClearMap.ImageProcessing.Binary" title="ClearMap.ImageProcessing.Binary"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Binary</span></code></a></p></li>
+</ul>
+<p>with filling and discrete topology based binary smoothing routines:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Binary.Filling.html#module-ClearMap.ImageProcessing.Binary.Filling" title="ClearMap.ImageProcessing.Binary.Filling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Filling</span></code></a></p></li>
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Binary.Smoothing.html#module-ClearMap.ImageProcessing.Binary.Smoothing" title="ClearMap.ImageProcessing.Binary.Smoothing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Smoothing</span></code></a></p></li>
+</ul>
+</li>
+<li><p>clipping and normalization</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Clipping.html#module-ClearMap.ImageProcessing.Clipping" title="ClearMap.ImageProcessing.Clipping"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Clipping</span></code></a></p></li>
+</ul>
+</li>
+<li><p>3d local gradients and Hessian matrices</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Differentiation.html#module-ClearMap.ImageProcessing.Differentiation" title="ClearMap.ImageProcessing.Differentiation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Differentiation</span></code></a></p></li>
+</ul>
+<p>with 3d tube filter and tubeness measures:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Differentiation.Hessian.html#module-ClearMap.ImageProcessing.Differentiation.Hessian" title="ClearMap.ImageProcessing.Differentiation.Hessian"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Hessian</span></code></a></p></li>
+</ul>
+</li>
+<li><p>3d filtering</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Filter.html#module-ClearMap.ImageProcessing.Filter" title="ClearMap.ImageProcessing.Filter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Filter</span></code></a></p></li>
+</ul>
+<p>with 3d rank filter library (&gt;30 filters)</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Filter.Rank.html#module-ClearMap.ImageProcessing.Filter.Rank" title="ClearMap.ImageProcessing.Filter.Rank"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Rank</span></code></a></p></li>
+</ul>
+</li>
+<li><p>skeletonization via parallel thinning</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Skeletonization.html#module-ClearMap.ImageProcessing.Skeletonization" title="ClearMap.ImageProcessing.Skeletonization"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Skeletonization</span></code></a></p></li>
+</ul>
+</li>
+<li><p>3d tracing</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Tracing.html#module-ClearMap.ImageProcessing.Tracing" title="ClearMap.ImageProcessing.Tracing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Tracing</span></code></a></p></li>
+</ul>
+</li>
+<li><p>fast calculation of 3d local image statistics</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.LocalStatistics.html#module-ClearMap.ImageProcessing.LocalStatistics" title="ClearMap.ImageProcessing.LocalStatistics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LocalStatistics</span></code></a></p></li>
+</ul>
+</li>
+<li><p>fast 3d local image statistics</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.LocalStatistics.html#module-ClearMap.ImageProcessing.LocalStatistics" title="ClearMap.ImageProcessing.LocalStatistics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LocalStatistics</span></code></a></p></li>
+</ul>
+</li>
+<li><p>hysteresis and seeded thresholding</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Thresholding.html#module-ClearMap.ImageProcessing.Thresholding" title="ClearMap.ImageProcessing.Thresholding"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Thresholding</span></code></a></p></li>
+</ul>
+</li>
+<li><p>light-sheet artifact removal</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.LightsheetCorrection.html#module-ClearMap.ImageProcessing.LightsheetCorrection" title="ClearMap.ImageProcessing.LightsheetCorrection"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LightsheetCorrection</span></code></a></p></li>
+</ul>
+</li>
+<li><p>illuminatoin correction</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.IlluminationCorrection.html#module-ClearMap.ImageProcessing.IlluminationCorrection" title="ClearMap.ImageProcessing.IlluminationCorrection"><code class="xref py py-mod docutils literal notranslate"><span class="pre">IlluminationCorrection</span></code></a></p></li>
+</ul>
+</li>
+<li><p>machine learning based image processing</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.MachineLearning.html#module-ClearMap.ImageProcessing.MachineLearning" title="ClearMap.ImageProcessing.MachineLearning"><code class="xref py py-mod docutils literal notranslate"><span class="pre">MachineLearning</span></code></a></p></li>
+</ul>
+<p>with vessel and tube filling deep convolutional neural network:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.MachineLearning.VesselFilling.html#module-ClearMap.ImageProcessing.MachineLearning.VesselFilling" title="ClearMap.ImageProcessing.MachineLearning.VesselFilling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">VesselFilling</span></code></a></p></li>
+</ul>
+</li>
+<li><p>expert processing pipelines for specific applications</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ImageProcessing.Experts.html#module-ClearMap.ImageProcessing.Experts" title="ClearMap.ImageProcessing.Experts"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Experts</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="io">
+<h3>IO<a class="headerlink" href="#io" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="Api/ClearMap.IO.html#module-ClearMap.IO" title="ClearMap.IO"><code class="xref py py-mod docutils literal notranslate"><span class="pre">IO</span></code></a> module provides methods to hold information about data
+and read and write data files efficiently as sources and sinks, that can
+be sliced and turned into virtual sources useful for parallel processing
+and memory mapping:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.IO.Source.html#module-ClearMap.IO.Source" title="ClearMap.IO.Source"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Source</span></code></a></p></li>
+<li><p><a class="reference internal" href="Api/ClearMap.IO.Slice.html#module-ClearMap.IO.Slice" title="ClearMap.IO.Slice"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Slice</span></code></a></p></li>
+</ul>
+</div></blockquote>
+<p>Supported source types include:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 27%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Module</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>tif</p></td>
+<td><p><a class="reference internal" href="Api/ClearMap.IO.TIF.html#module-ClearMap.IO.TIF" title="ClearMap.IO.TIF"><code class="xref py py-mod docutils literal notranslate"><span class="pre">TIF</span></code></a></p></td>
+<td><p>tif images and stacks</p></td>
+</tr>
+<tr class="row-odd"><td><p>raw / mhd</p></td>
+<td><p><a class="reference internal" href="Api/ClearMap.IO.MHD.html#module-ClearMap.IO.MHD" title="ClearMap.IO.MHD"><code class="xref py py-mod docutils literal notranslate"><span class="pre">MHD</span></code></a></p></td>
+<td><p>raw image files with optional mhd header file</p></td>
+</tr>
+<tr class="row-even"><td><p>nrrd</p></td>
+<td><p><a class="reference internal" href="Api/ClearMap.IO.NRRD.html#module-ClearMap.IO.NRRD" title="ClearMap.IO.NRRD"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NRRD</span></code></a></p></td>
+<td><p>nearly raw raster data files</p></td>
+</tr>
+<tr class="row-odd"><td><p>csv</p></td>
+<td><p><a class="reference internal" href="Api/ClearMap.IO.CSV.html#module-ClearMap.IO.CSV" title="ClearMap.IO.CSV"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CSV</span></code></a></p></td>
+<td><p>text files as comma separated values</p></td>
+</tr>
+<tr class="row-even"><td><p>npy</p></td>
+<td><p><a class="reference internal" href="Api/ClearMap.IO.NPY.html#module-ClearMap.IO.NPY" title="ClearMap.IO.NPY"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NPY</span></code></a></p></td>
+<td><p>numpy binary file</p></td>
+</tr>
+<tr class="row-odd"><td><p>gt</p></td>
+<td><p><a class="reference internal" href="Api/ClearMap.IO.GT.html#module-ClearMap.IO.GT" title="ClearMap.IO.GT"><code class="xref py py-mod docutils literal notranslate"><span class="pre">GT</span></code></a></p></td>
+<td><p>graph tool file</p></td>
+</tr>
+<tr class="row-even"><td><p>file list</p></td>
+<td><p><a class="reference internal" href="Api/ClearMap.IO.FileList.html#module-ClearMap.IO.FileList" title="ClearMap.IO.FileList"><code class="xref py py-mod docutils literal notranslate"><span class="pre">FileList</span></code></a></p></td>
+<td><p>folder, file list or file expression for a list source files</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p><a class="reference internal" href="Api/ClearMap.IO.MMP.html#module-ClearMap.IO.MMP" title="ClearMap.IO.MMP"><code class="xref py py-mod docutils literal notranslate"><span class="pre">MMP</span></code></a></p></td>
+<td><p>memory mapped file</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p><a class="reference internal" href="Api/ClearMap.IO.SMA.html#module-ClearMap.IO.SMA" title="ClearMap.IO.SMA"><code class="xref py py-mod docutils literal notranslate"><span class="pre">SMA</span></code></a></p></td>
+<td><p>shared memory array</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <a class="reference internal" href="Api/ClearMap.IO.html#module-ClearMap.IO" title="ClearMap.IO"><code class="xref py py-mod docutils literal notranslate"><span class="pre">IO</span></code></a> module also provides a workspace that handles the
+organization of files in <a class="reference internal" href="cellmap.html"><span class="doc">CellMap</span></a> and <a class="reference internal" href="tubemap.html"><span class="doc">TubeMap</span></a> projects:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.IO.Workspace.html#module-ClearMap.IO.Workspace" title="ClearMap.IO.Workspace"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Workspace</span></code></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="parallelprocessing">
+<h3>ParallelProcessing<a class="headerlink" href="#parallelprocessing" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="Api/ClearMap.ParallelProcessing.html#module-ClearMap.ParallelProcessing" title="ClearMap.ParallelProcessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ParallelProcessing</span></code></a> module provides methods for distributed
+processing.</p>
+<blockquote>
+<div><ul>
+<li><p>large data arrays can be proccessed in blocks via a specialized <a class="reference internal" href="#io">IO</a> source</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ParallelProcessing.Block.html#module-ClearMap.ParallelProcessing.Block" title="ClearMap.ParallelProcessing.Block"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Block</span></code></a></p></li>
+<li><p><a class="reference internal" href="Api/ClearMap.ParallelProcessing.BlockProcessing.html#module-ClearMap.ParallelProcessing.BlockProcessing" title="ClearMap.ParallelProcessing.BlockProcessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">BlockProcessing</span></code></a></p></li>
+</ul>
+</li>
+<li><p>or via shared memory arrays:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ParallelProcessing.SharedMemoryArray.html#module-ClearMap.ParallelProcessing.SharedMemoryArray" title="ClearMap.ParallelProcessing.SharedMemoryArray"><code class="xref py py-mod docutils literal notranslate"><span class="pre">SharedMemoryArray</span></code></a></p></li>
+<li><p><a class="reference internal" href="Api/ClearMap.ParallelProcessing.SharedMemoryManager.html#module-ClearMap.ParallelProcessing.SharedMemoryManager" title="ClearMap.ParallelProcessing.SharedMemoryManager"><code class="xref py py-mod docutils literal notranslate"><span class="pre">SharedMemoryManager</span></code></a></p></li>
+</ul>
+</li>
+<li><p>numerical processing routines for TB data arrays are collected in</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ParallelProcessing.DataProcessing.html#module-ClearMap.ParallelProcessing.DataProcessing" title="ClearMap.ParallelProcessing.DataProcessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">DataProcessing</span></code></a></p></li>
+</ul>
+<p>including speed ups for numpy array processing, convolution and measurement
+routines:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#module-ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing" title="ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ArrayProcessing</span></code></a></p></li>
+<li><p><a class="reference internal" href="Api/ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.html#module-ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList" title="ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ConvolvePointList</span></code></a></p></li>
+<li><p><a class="reference internal" href="Api/ClearMap.ParallelProcessing.DataProcessing.DevolvePointList.html#module-ClearMap.ParallelProcessing.DataProcessing.DevolvePointList" title="ClearMap.ParallelProcessing.DataProcessing.DevolvePointList"><code class="xref py py-mod docutils literal notranslate"><span class="pre">DevolvePointList</span></code></a></p></li>
+<li><p><a class="reference internal" href="Api/ClearMap.ParallelProcessing.DataProcessing.MeasurePointList.html#module-ClearMap.ParallelProcessing.DataProcessing.MeasurePointList" title="ClearMap.ParallelProcessing.DataProcessing.MeasurePointList"><code class="xref py py-mod docutils literal notranslate"><span class="pre">MeasurePointList</span></code></a></p></li>
+<li><p><a class="reference internal" href="Api/ClearMap.ParallelProcessing.DataProcessing.StatisticsPointList.html#module-ClearMap.ParallelProcessing.DataProcessing.StatisticsPointList" title="ClearMap.ParallelProcessing.DataProcessing.StatisticsPointList"><code class="xref py py-mod docutils literal notranslate"><span class="pre">StatisticsPointList</span></code></a></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="visualization">
+<h3>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h3>
+<p><em>ClearMap’s</em> “mod:<cite>ClearMap.Visualization</cite> module comes with a larger set of
+interactive visualization functions using various backends:</p>
+<blockquote>
+<div><ul>
+<li><p><a class="reference internal" href="Api/ClearMap.Visualization.Qt.html#module-ClearMap.Visualization.Qt" title="ClearMap.Visualization.Qt"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Qt</span></code></a></p>
+<p>providing:</p>
+<ul class="simple">
+<li><p>fast interactive 2d slice plotting of 3d TB data sets</p>
+<ul>
+<li><p><a class="reference internal" href="Api/ClearMap.Visualization.Qt.DataViewer.html#module-ClearMap.Visualization.Qt.DataViewer" title="ClearMap.Visualization.Qt.DataViewer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">DataViewer</span></code></a></p></li>
+</ul>
+</li>
+<li><p>overlays and/or synchronized window display of multiple data sets.</p>
+<ul>
+<li><p><a class="reference internal" href="Api/ClearMap.Visualization.Qt.Plot3d.html#module-ClearMap.Visualization.Qt.Plot3d" title="ClearMap.Visualization.Qt.Plot3d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Plot3d</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="Api/ClearMap.Visualization.Vispy.html#module-ClearMap.Visualization.Vispy" title="ClearMap.Visualization.Vispy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Vispy</span></code></a></p>
+<p>providing:</p>
+<ul class="simple">
+<li><p>3d volume rendering, lists and line plots</p>
+<ul>
+<li><p><a class="reference internal" href="Api/ClearMap.Visualization.Vispy.Plot3d.html#module-ClearMap.Visualization.Vispy.Plot3d" title="ClearMap.Visualization.Vispy.Plot3d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Plot3d</span></code></a></p></li>
+</ul>
+</li>
+<li><p>3d plots 3d graphs as lines or mesh plots with edge geometries, etc</p>
+<ul>
+<li><p><a class="reference internal" href="Api/ClearMap.Visualization.Vispy.PlotGraph3d.html#module-ClearMap.Visualization.Vispy.PlotGraph3d" title="ClearMap.Visualization.Vispy.PlotGraph3d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">PlotGraph3d</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="overview.html"><img src="_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>
