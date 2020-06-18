@@ -107,8 +107,11 @@ in a python console:
 Running     
 -------   
 
-To run *ClearMap* we recommend using `spyder <https://www.spyder-ide.org/>`_.
-Spyder will be automatically installed in the ClearMap anaconda environment.
+To run *ClearMap*  we recommend to use `spyder <https://www.spyder-ide.org/>`_
+or `jupyer <https://jupyter.org>`_.
+
+
+Both will be automatically installed in the ClearMap anaconda environment.
 
 To run an analysis *ClearMap* provides main scripts in 
 :mod:`~ClearMap.Scripts`. 
@@ -119,11 +122,15 @@ cells by placig the cursor in the cell and use Shift + Enter.
 Before running, modify the parameters and filenames to match your data and 
 analysis.
    
-The two main scripts are :doc:`tubemap` and :doc:cellmap'.
+The two main scripts are :doc:`tubemap` and :doc:`cellmap'.
 
-If you just want to set up the ClearMap functions in a python console run
+If you want to set up the ClearMap functions in a python console run
 
 >>> from ClearMap.Environment import *
+
+You can also use jupyter to run ClearMap. Our tutorials for
+:ref:`CellMap.ipynb</CellMap.ipynb>` and :ref:`TubeMap.ipynb</TubeMap.ipynb>` 
+are good points to start.
 
 
 Configuration

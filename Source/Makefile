@@ -55,7 +55,7 @@ github: clean cleanapi html publish
 publish:
 	rm -rf $(PUBLISHDIR)/html
 	mkdir $(PUBLISHDIR)/html
-	cp -r $(BUILDDIR)/html $(PUBLISHDIR)
+	rsync -r $(BUILDDIR)/html $(PUBLISHDIR)/html
 	
 clean:
 	rm -rf $(BUILDDIR)/*
