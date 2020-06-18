@@ -1,5 +1,5 @@
-ClearMap Documentation
-======================
+[ClearMap Documentation](https://christophkirst.github.io/ClearMap2Documentation)
+=================================================================================
 
 [![DOI](https://zenodo.org/badge/59701678.svg)](https://zenodo.org/badge/latestdoi/59701678)
 [![GitHub stars](https://img.shields.io/github/stars/ChristophKirst/ClearMap2.svg?style=social&label=Star)](https://github.com/ChristophKirst/ClearMap2) 
