@@ -65,13 +65,13 @@ Build
 
 To build this documentation run
 
-  $ cd Source
-  $ make html
+    $ cd Source
+    $ make html
   
 To make the documentation public in github pages run
 
-  $ cd Source
-  $ make github
+    $ cd Source
+    $ make github
 
 
 Authors
