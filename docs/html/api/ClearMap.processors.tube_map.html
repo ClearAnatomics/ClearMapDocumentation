@@ -1,0 +1,898 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>tube_map &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.processors.tube_map';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.processors.batch_process.html">batch_process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.processors.cell_map.html">cell_map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.processors.generic_tab_processor.html">generic_tab_processor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.processors.sample_preparation.html">sample_preparation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">tube_map</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">tube_map</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tube-map">
+<h1>tube_map<a class="headerlink" href="#tube-map" title="Link to this heading">#</a></h1>
+<table class="autosummary longtable table autosummary">
+<tbody>
+</tbody>
+</table>
+<p id="module-ClearMap.processors.tube_map">This module contains the classes to generate annotated graphs from vasculature
+lightsheet data <a class="reference internal" href="../references.html#kirst2020" id="id1"><span>[Kirst2020]</span></a>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BinaryVesselProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.processors.generic_tab_processor.html#ClearMap.processors.generic_tab_processor.TabProcessor" title="ClearMap.processors.generic_tab_processor.TabProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabProcessor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.binarize">
+<span class="sig-name descname"><span class="pre">binarize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.binarize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.binarize" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.binarize_channel">
+<span class="sig-name descname"><span class="pre">binarize_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.binarize_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.binarize_channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.combine_binary">
+<span class="sig-name descname"><span class="pre">combine_binary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.combine_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.combine_binary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.deep_fill_channel">
+<span class="sig-name descname"><span class="pre">deep_fill_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.deep_fill_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.deep_fill_channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.fill">
+<span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.fill"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.fill" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.fill_channel">
+<span class="sig-name descname"><span class="pre">fill_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.fill_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.fill_channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.get_n_blocks">
+<span class="sig-name descname"><span class="pre">get_n_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.get_n_blocks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.get_n_blocks" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.plot_binarization_result">
+<span class="sig-name descname"><span class="pre">plot_binarization_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postfix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.plot_binarization_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.plot_binarization_result" title="Link to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>postfix str:</dt><dd><p>empty for raw</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.plot_combined">
+<span class="sig-name descname"><span class="pre">plot_combined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.plot_combined"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.plot_combined" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.plot_results">
+<span class="sig-name descname"><span class="pre">plot_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('raw',)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side_by_side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.plot_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.plot_results" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.plot_vessel_filling_results">
+<span class="sig-name descname"><span class="pre">plot_vessel_filling_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postfix_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.plot_vessel_filling_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.plot_vessel_filling_results" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.setup" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.smooth">
+<span class="sig-name descname"><span class="pre">smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.smooth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.smooth" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessor.smooth_channel">
+<span class="sig-name descname"><span class="pre">smooth_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessor.smooth_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.smooth_channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessorSteps">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BinaryVesselProcessorSteps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workspace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postfix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessorSteps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessorSteps" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.processors.generic_tab_processor.html#ClearMap.processors.generic_tab_processor.ProcessorSteps" title="ClearMap.processors.generic_tab_processor.ProcessorSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProcessorSteps</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessorSteps.path_from_step_name">
+<span class="sig-name descname"><span class="pre">path_from_step_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#BinaryVesselProcessorSteps.path_from_step_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessorSteps.path_from_step_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.BinaryVesselProcessorSteps.steps">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">steps</span></span><a class="headerlink" href="#ClearMap.processors.tube_map.BinaryVesselProcessorSteps.steps" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VesselGraphProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.processors.generic_tab_processor.html#ClearMap.processors.generic_tab_processor.TabProcessor" title="ClearMap.processors.generic_tab_processor.TabProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabProcessor</span></code></a></p>
+<dl class="simple">
+<dt>The graph contains the following edge properties:</dt><dd><ul class="simple">
+<li><p>artery_raw</p></li>
+<li><p>artery_binary</p></li>
+<li><p>artery</p></li>
+<li><p>vein</p></li>
+<li><p>radii</p></li>
+<li><p>distance_to_surface</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.clean_graph">
+<span class="sig-name descname"><span class="pre">clean_graph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.clean_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.clean_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.get_structure_sub_graph">
+<span class="sig-name descname"><span class="pre">get_structure_sub_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.get_structure_sub_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.get_structure_sub_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.plot_graph_chunk">
+<span class="sig-name descname"><span class="pre">plot_graph_chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph_chunk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mesh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sub</span> <span class="pre">graph'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_max_vertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.plot_graph_chunk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.plot_graph_chunk" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.plot_graph_structure">
+<span class="sig-name descname"><span class="pre">plot_graph_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.plot_graph_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.plot_graph_structure" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.plot_voxelization">
+<span class="sig-name descname"><span class="pre">plot_voxelization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.plot_voxelization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.plot_voxelization" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.post_process">
+<span class="sig-name descname"><span class="pre">post_process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.post_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.post_process" title="Link to this definition">#</a></dt>
+<dd><p>Iteratively refine arteries and veins based on one another</p>
+<p class="rubric">Returns</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.pre_process">
+<span class="sig-name descname"><span class="pre">pre_process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.pre_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.pre_process" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.reduce_graph">
+<span class="sig-name descname"><span class="pre">reduce_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex_to_edge_mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_to_edge_mappings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.reduce_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.reduce_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.register">
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.register" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.save_graph">
+<span class="sig-name descname"><span class="pre">save_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.save_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.save_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preprocessor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.setup" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.skeletonize">
+<span class="sig-name descname"><span class="pre">skeletonize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.skeletonize" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.skeletonize_and_build_graph">
+<span class="sig-name descname"><span class="pre">skeletonize_and_build_graph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.skeletonize_and_build_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.skeletonize_and_build_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.unload_temporary_graphs">
+<span class="sig-name descname"><span class="pre">unload_temporary_graphs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.unload_temporary_graphs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.unload_temporary_graphs" title="Link to this definition">#</a></dt>
+<dd><p>To free up memory</p>
+<p class="rubric">Returns</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.visualize_graph_annotations">
+<span class="sig-name descname"><span class="pre">visualize_graph_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunk_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mesh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reduced'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.visualize_graph_annotations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.visualize_graph_annotations" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.voxelize">
+<span class="sig-name descname"><span class="pre">voxelize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight_by_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex_degrees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.voxelize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.voxelize" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.write_vertex_table">
+<span class="sig-name descname"><span class="pre">write_vertex_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessor.write_vertex_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.write_vertex_table" title="Link to this definition">#</a></dt>
+<dd><p>Write a table with vertex coordinates and properties</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.graph_annotated">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph_annotated</span></span><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.graph_annotated" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.graph_cleaned">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph_cleaned</span></span><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.graph_cleaned" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.graph_raw">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph_raw</span></span><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.graph_raw" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.graph_reduced">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph_reduced</span></span><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.graph_reduced" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.graph_traced">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph_traced</span></span><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.graph_traced" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessor.use_arteries_for_graph">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">use_arteries_for_graph</span></span><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessor.use_arteries_for_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessorSteps">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VesselGraphProcessorSteps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workspace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">postfix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessorSteps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessorSteps" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.processors.generic_tab_processor.html#ClearMap.processors.generic_tab_processor.ProcessorSteps" title="ClearMap.processors.generic_tab_processor.ProcessorSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProcessorSteps</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessorSteps.path_from_step_name">
+<span class="sig-name descname"><span class="pre">path_from_step_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/tube_map.html#VesselGraphProcessorSteps.path_from_step_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessorSteps.path_from_step_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.tube_map.VesselGraphProcessorSteps.steps">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">steps</span></span><a class="headerlink" href="#ClearMap.processors.tube_map.VesselGraphProcessorSteps.steps" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.binarize"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.binarize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.binarize_channel"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.binarize_channel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.combine_binary"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.combine_binary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.deep_fill_channel"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.deep_fill_channel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.fill"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.fill()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.fill_channel"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.fill_channel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.get_n_blocks"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.get_n_blocks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.plot_binarization_result"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.plot_binarization_result()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.plot_combined"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.plot_combined()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.plot_results"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.plot_results()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.plot_vessel_filling_results"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.plot_vessel_filling_results()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.run"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.setup"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.setup()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.smooth"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.smooth()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessor.smooth_channel"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.smooth_channel()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessorSteps"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessorSteps.path_from_step_name"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.path_from_step_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.BinaryVesselProcessorSteps.steps"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.steps</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.clean_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.clean_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.get_structure_sub_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.get_structure_sub_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.plot_graph_chunk"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.plot_graph_chunk()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.plot_graph_structure"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.plot_graph_structure()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.plot_voxelization"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.plot_voxelization()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.post_process"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.post_process()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.pre_process"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.pre_process()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.reduce_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.reduce_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.register"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.register()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.run"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.save_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.save_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.setup"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.setup()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.skeletonize"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.skeletonize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.skeletonize_and_build_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.skeletonize_and_build_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.unload_temporary_graphs"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.unload_temporary_graphs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.visualize_graph_annotations"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.visualize_graph_annotations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.voxelize"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.voxelize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.write_vertex_table"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.write_vertex_table()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.graph_annotated"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.graph_annotated</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.graph_cleaned"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.graph_cleaned</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.graph_raw"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.graph_raw</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.graph_reduced"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.graph_reduced</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.graph_traced"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.graph_traced</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessor.use_arteries_for_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.use_arteries_for_graph</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessorSteps"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessorSteps</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessorSteps.path_from_step_name"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessorSteps.path_from_step_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.tube_map.VesselGraphProcessorSteps.steps"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessorSteps.steps</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.processors.tube_map.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

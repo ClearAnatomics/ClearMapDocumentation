@@ -1,0 +1,1059 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>FileList &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.IO.FileList';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.CSV.html">CSV</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">FileList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.FileUtils.html">FileUtils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.GT.html">GT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.IO.html">IO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.MHD.html">MHD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.MMP.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.NPY.html">NPY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.NRRD.html">NRRD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.SMA.html">SMA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.Slice.html">Slice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.Source.html">Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.TIF.html">TIF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.Temporary.html">Temporary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.Workspace.html">Workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.elastix_config.html">elastix_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.metadata.html">metadata</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">FileList</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="filelist">
+<h1>FileList<a class="headerlink" href="#filelist" title="Link to this heading">#</a></h1>
+<table class="autosummary longtable table autosummary">
+<tbody>
+</tbody>
+</table>
+<p id="module-ClearMap.IO.FileList">Module to handle sources distributed over a list of files.</p>
+<p>File lists ar specified using a <a class="reference internal" href="ClearMap.Utils.TagExpression.html#module-ClearMap.Utils.TagExpression" title="ClearMap.Utils.TagExpression"><code class="xref py py-mod docutils literal notranslate"><span class="pre">TagExpression</span></code></a>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#Source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.Source" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.IO.Source.html#ClearMap.IO.Source.VirtualSource" title="ClearMap.IO.Source.VirtualSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">VirtualSource</span></code></a></p>
+<p>File list source.</p>
+<p class="rubric">Note</p>
+<p>The full shape of the file list source is the shape of the expression and
+the shape of the data in each file, i.e. shape = file_list_shape + array_shape.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.as_buffer">
+<span class="sig-name descname"><span class="pre">as_buffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#Source.as_buffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.Source.as_buffer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.as_real">
+<span class="sig-name descname"><span class="pre">as_real</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#Source.as_real"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.Source.as_real" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.as_virtual">
+<span class="sig-name descname"><span class="pre">as_virtual</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#Source.as_virtual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.Source.as_virtual" title="Link to this definition">#</a></dt>
+<dd><p>Return virtual source without array data to pass in parallel processing.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>source<span class="classifier">Source class</span></dt><dd><p>The source class without array data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.axes_to_tag_order">
+<span class="sig-name descname"><span class="pre">axes_to_tag_order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#Source.axes_to_tag_order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.Source.axes_to_tag_order" title="Link to this definition">#</a></dt>
+<dd><p>Map from axes of this source to the tag list from the file expression.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.tag_to_axes_order">
+<span class="sig-name descname"><span class="pre">tag_to_axes_order</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#Source.tag_to_axes_order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.Source.tag_to_axes_order" title="Link to this definition">#</a></dt>
+<dd><p>Map from the tag list from the file expression and the axes of this source.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.array">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">array</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.array" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.axes_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">axes_file</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.axes_file" title="Link to this definition">#</a></dt>
+<dd><p>Source axes that constitute individual file dimensions in the full array.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.axes_list">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">axes_list</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.axes_list" title="Link to this definition">#</a></dt>
+<dd><p>Source axes that constitute the dimensions of the file list in the full array.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.axes_order">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">axes_order</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.axes_order" title="Link to this definition">#</a></dt>
+<dd><p>Optional ordering of the tag names.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>axes_order<span class="classifier">list of str</span></dt><dd><p>The ordered axis names.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.dtype" title="Link to this definition">#</a></dt>
+<dd><p>The data type of the source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>dtype<span class="classifier">dtype</span></dt><dd><p>The data type of the source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.element_strides">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element_strides</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.element_strides" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.expression">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">expression</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.expression" title="Link to this definition">#</a></dt>
+<dd><p>The underlying expression of this file list.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The underlying expression of this source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.file_list">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_list</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.file_list" title="Link to this definition">#</a></dt>
+<dd><p>The underlying file list.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>filelist<span class="classifier">list</span></dt><dd><p>The underlying sources of this source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.name" title="Link to this definition">#</a></dt>
+<dd><p>The name of this source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>name<span class="classifier">str</span></dt><dd><p>Name of this source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.ndim_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ndim_file</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.ndim_file" title="Link to this definition">#</a></dt>
+<dd><p>Source dimension of the individual files.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.ndim_list">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ndim_list</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.ndim_list" title="Link to this definition">#</a></dt>
+<dd><p>Source dimensions of the file list.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.shape" title="Link to this definition">#</a></dt>
+<dd><p>The shape of the source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>shape<span class="classifier">tuple</span></dt><dd><p>The shape of the source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.shape_file">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape_file</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.shape_file" title="Link to this definition">#</a></dt>
+<dd><p>Source shape of the individual files.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.Source.shape_list">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape_list</span></span><a class="headerlink" href="#ClearMap.IO.FileList.Source.shape_list" title="Link to this definition">#</a></dt>
+<dd><p>Source shape of the file list.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">VirtualSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#VirtualSource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.IO.Source.html#ClearMap.IO.Source.VirtualSource" title="ClearMap.IO.Source.VirtualSource"><code class="xref py py-class docutils literal notranslate"><span class="pre">VirtualSource</span></code></a></p>
+<p>Virtual file list source.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource.as_buffer">
+<span class="sig-name descname"><span class="pre">as_buffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#VirtualSource.as_buffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource.as_buffer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource.as_real">
+<span class="sig-name descname"><span class="pre">as_real</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#VirtualSource.as_real"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource.as_real" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource.as_virtual">
+<span class="sig-name descname"><span class="pre">as_virtual</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#VirtualSource.as_virtual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource.as_virtual" title="Link to this definition">#</a></dt>
+<dd><p>Return virtual source without array data to pass in parallel processing.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>source<span class="classifier">Source class</span></dt><dd><p>The source class without array data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource.array">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">array</span></span><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource.array" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource.axes_order">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">axes_order</span></span><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource.axes_order" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource.dtype" title="Link to this definition">#</a></dt>
+<dd><p>The data type of the source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>dtype<span class="classifier">dtype</span></dt><dd><p>The data type of the source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource.element_strides">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element_strides</span></span><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource.element_strides" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource.expression">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">expression</span></span><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource.expression" title="Link to this definition">#</a></dt>
+<dd><p>The underlying expression of this file list.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The underlying expression of this source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource.file_list">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file_list</span></span><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource.file_list" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource.name" title="Link to this definition">#</a></dt>
+<dd><p>The name of this source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>name<span class="classifier">str</span></dt><dd><p>Name of this source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.VirtualSource.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#ClearMap.IO.FileList.VirtualSource.shape" title="Link to this definition">#</a></dt>
+<dd><p>The shape of the source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>shape<span class="classifier">tuple</span></dt><dd><p>The shape of the source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.convert">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#convert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.convert" title="Link to this definition">#</a></dt>
+<dd><p>Converts list of files to a sink in parallel</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">Source</span></dt><dd><p>File list source.</p>
+</dd>
+<dt>sink<span class="classifier">Source</span></dt><dd><p>A sink to write the source to.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">Source</span></dt><dd><p>The sink the data was converted to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#create"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.create" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.dtype">
+<span class="sig-name descname"><span class="pre">dtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#dtype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.dtype" title="Link to this definition">#</a></dt>
+<dd><p>Returns data type of the array stored in a file list.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular epression for the file list.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>dtype<span class="classifier">dtype</span></dt><dd><p>The data type of the file list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.is_file_list">
+<span class="sig-name descname"><span class="pre">is_file_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exists</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#is_file_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.is_file_list" title="Link to this definition">#</a></dt>
+<dd><p>Checks if the expression is a valid file list.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression to check.</p>
+</dd>
+<dt>exists<span class="classifier">bool</span></dt><dd><p>If True, check if at least one file exists.</p>
+</dd>
+<dt>tag_names<span class="classifier">list of str or None</span></dt><dd><p>List of tag names expected to be present in the expression.</p>
+</dd>
+<dt>n_Tags<span class="classifier">int or None</span></dt><dd><p>Number of tags to expect.</p>
+</dd>
+<dt>verbose<span class="classifier">bool</span></dt><dd><p>If True, print reason why the epxression does not represent the desired file list.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>is_expression<span class="classifier">bool</span></dt><dd><p>Returns True if the expression fullfills the desired criteria and at least one file matching the expression exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.ndim">
+<span class="sig-name descname"><span class="pre">ndim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#ndim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.ndim" title="Link to this definition">#</a></dt>
+<dd><p>Calculates the dimension of the file list given by an expression.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The expression for the file_list.</p>
+</dd>
+<dt>file_list<span class="classifier">list</span></dt><dd><p>Optional file_list to speed up calculation.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>ndim<span class="classifier">int</span></dt><dd><p>The dimension of the file list given by the expression.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.order">
+<span class="sig-name descname"><span class="pre">order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.order" title="Link to this definition">#</a></dt>
+<dd><p>Returns order of the array stored in a file list.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular epression for the file list.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>dtype<span class="classifier">dtype</span></dt><dd><p>The data type of the file list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.read">
+<span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slicing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.read" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.shape" title="Link to this definition">#</a></dt>
+<dd><p>Calculates the shape of the data in a file list.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str or None</span></dt><dd><p>The regular epression for the file list.</p>
+</dd>
+<dt>file_list<span class="classifier">list or None</span></dt><dd><p>List of files.</p>
+</dd>
+<dt>axis<span class="classifier">int or None</span></dt><dd><p>The shape along a specific axis. Can speed up the shape calculation.</p>
+</dd>
+<dt>axes_order<span class="classifier">list or None</span></dt><dd><p>The names of how to order the different tag names in the expression.
+If None, use ordering of the tags in the expression.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>shape<span class="classifier">int or tuple of ints</span></dt><dd><p>The shape of the array st  ored in a file list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.shape_file">
+<span class="sig-name descname"><span class="pre">shape_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#shape_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.shape_file" title="Link to this definition">#</a></dt>
+<dd><p>Calculates the shape of the data in a file list.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str or None</span></dt><dd><p>The regular epression for the file list.</p>
+</dd>
+<dt>file_list<span class="classifier">list or None</span></dt><dd><p>List of files.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>shape<span class="classifier">int or tuple of ints</span></dt><dd><p>The shape of the array st  ored in a file list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.shape_list">
+<span class="sig-name descname"><span class="pre">shape_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#shape_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.shape_list" title="Link to this definition">#</a></dt>
+<dd><p>Calculates the shape of the data in a file list.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str or None</span></dt><dd><p>The regular epression for the file list.</p>
+</dd>
+<dt>file_list<span class="classifier">list or None</span></dt><dd><p>List of files.</p>
+</dd>
+<dt>axes_order<span class="classifier">list or None</span></dt><dd><p>The names of how to order the different tag names in the expression.
+If None, use ordering of the tags in the expression.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>shape<span class="classifier">int or tuple of ints</span></dt><dd><p>The shape of the array along the dimensions created by the file list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.FileList.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sink</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slicing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/FileList.html#write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.FileList.write" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source"><code class="docutils literal notranslate"><span class="pre">Source</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.as_buffer"><code class="docutils literal notranslate"><span class="pre">Source.as_buffer()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.as_real"><code class="docutils literal notranslate"><span class="pre">Source.as_real()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.as_virtual"><code class="docutils literal notranslate"><span class="pre">Source.as_virtual()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.axes_to_tag_order"><code class="docutils literal notranslate"><span class="pre">Source.axes_to_tag_order()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.tag_to_axes_order"><code class="docutils literal notranslate"><span class="pre">Source.tag_to_axes_order()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.array"><code class="docutils literal notranslate"><span class="pre">Source.array</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.axes_file"><code class="docutils literal notranslate"><span class="pre">Source.axes_file</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.axes_list"><code class="docutils literal notranslate"><span class="pre">Source.axes_list</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.axes_order"><code class="docutils literal notranslate"><span class="pre">Source.axes_order</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.dtype"><code class="docutils literal notranslate"><span class="pre">Source.dtype</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.element_strides"><code class="docutils literal notranslate"><span class="pre">Source.element_strides</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.expression"><code class="docutils literal notranslate"><span class="pre">Source.expression</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.file_list"><code class="docutils literal notranslate"><span class="pre">Source.file_list</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.name"><code class="docutils literal notranslate"><span class="pre">Source.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.ndim_file"><code class="docutils literal notranslate"><span class="pre">Source.ndim_file</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.ndim_list"><code class="docutils literal notranslate"><span class="pre">Source.ndim_list</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.shape"><code class="docutils literal notranslate"><span class="pre">Source.shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.shape_file"><code class="docutils literal notranslate"><span class="pre">Source.shape_file</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.Source.shape_list"><code class="docutils literal notranslate"><span class="pre">Source.shape_list</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource"><code class="docutils literal notranslate"><span class="pre">VirtualSource</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource.as_buffer"><code class="docutils literal notranslate"><span class="pre">VirtualSource.as_buffer()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource.as_real"><code class="docutils literal notranslate"><span class="pre">VirtualSource.as_real()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource.as_virtual"><code class="docutils literal notranslate"><span class="pre">VirtualSource.as_virtual()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource.array"><code class="docutils literal notranslate"><span class="pre">VirtualSource.array</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource.axes_order"><code class="docutils literal notranslate"><span class="pre">VirtualSource.axes_order</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource.dtype"><code class="docutils literal notranslate"><span class="pre">VirtualSource.dtype</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource.element_strides"><code class="docutils literal notranslate"><span class="pre">VirtualSource.element_strides</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource.expression"><code class="docutils literal notranslate"><span class="pre">VirtualSource.expression</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource.file_list"><code class="docutils literal notranslate"><span class="pre">VirtualSource.file_list</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource.name"><code class="docutils literal notranslate"><span class="pre">VirtualSource.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.VirtualSource.shape"><code class="docutils literal notranslate"><span class="pre">VirtualSource.shape</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.convert"><code class="docutils literal notranslate"><span class="pre">convert()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.create"><code class="docutils literal notranslate"><span class="pre">create()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.dtype"><code class="docutils literal notranslate"><span class="pre">dtype()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.is_file_list"><code class="docutils literal notranslate"><span class="pre">is_file_list()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.ndim"><code class="docutils literal notranslate"><span class="pre">ndim()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.order"><code class="docutils literal notranslate"><span class="pre">order()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.shape"><code class="docutils literal notranslate"><span class="pre">shape()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.shape_file"><code class="docutils literal notranslate"><span class="pre">shape_file()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.shape_list"><code class="docutils literal notranslate"><span class="pre">shape_list()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.FileList.write"><code class="docutils literal notranslate"><span class="pre">write()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.IO.FileList.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

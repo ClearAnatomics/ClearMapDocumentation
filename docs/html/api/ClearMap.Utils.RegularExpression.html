@@ -1,0 +1,965 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>RegularExpression &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.Utils.RegularExpression';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.Formatting.html">Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.HierarchicalDict.html">HierarchicalDict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.Lazy.html">Lazy</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">RegularExpression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.Sound.html">Sound</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.TagExpression.html">TagExpression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.Timer.html">Timer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.array_utils.html">array_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.array_utils_cy.html">array_utils_cy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.docutils.html">docutils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.exceptions.html">exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.install_utils.html">install_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.path_utils.html">path_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.utilities.html">utilities</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">RegularExpression</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="regularexpression">
+<h1>RegularExpression<a class="headerlink" href="#regularexpression" title="Link to this heading">#</a></h1>
+<table class="autosummary longtable table autosummary">
+<tbody>
+</tbody>
+</table>
+<p id="module-ClearMap.Utils.RegularExpression">Module providing routines to check and convert between regular and file
+expressions.</p>
+<p>Utility module fused by <a class="reference internal" href="ClearMap.Utils.TagExpression.html#module-ClearMap.Utils.TagExpression" title="ClearMap.Utils.TagExpression"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.Utils.TagExpression</span></code></a>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PatternInverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_any">
+<span class="sig-name descname"><span class="pre">generate_any</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_any"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_any" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_assert">
+<span class="sig-name descname"><span class="pre">generate_assert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_assert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_assert" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_assert_not">
+<span class="sig-name descname"><span class="pre">generate_assert_not</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_assert_not"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_assert_not" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_at">
+<span class="sig-name descname"><span class="pre">generate_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_at" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_branch">
+<span class="sig-name descname"><span class="pre">generate_branch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_branch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_branch" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_group">
+<span class="sig-name descname"><span class="pre">generate_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_group" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_group_ref">
+<span class="sig-name descname"><span class="pre">generate_group_ref</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_group_ref"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_group_ref" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_in">
+<span class="sig-name descname"><span class="pre">generate_in</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_in"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_in" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_literal">
+<span class="sig-name descname"><span class="pre">generate_literal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_literal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_literal" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_max_repeat">
+<span class="sig-name descname"><span class="pre">generate_max_repeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_max_repeat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_max_repeat" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_min_repeat">
+<span class="sig-name descname"><span class="pre">generate_min_repeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_min_repeat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_min_repeat" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_negate">
+<span class="sig-name descname"><span class="pre">generate_negate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_negate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_negate" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_not_literal">
+<span class="sig-name descname"><span class="pre">generate_not_literal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_not_literal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_not_literal" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_range">
+<span class="sig-name descname"><span class="pre">generate_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_range" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_re">
+<span class="sig-name descname"><span class="pre">generate_re</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_re"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_re" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_re_type">
+<span class="sig-name descname"><span class="pre">generate_re_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_re_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_re_type" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.generate_subpattern">
+<span class="sig-name descname"><span class="pre">generate_subpattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#PatternInverter.generate_subpattern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_subpattern" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.at_categories">
+<span class="sig-name descname"><span class="pre">at_categories</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{AT_BEGINNING:</span> <span class="pre">'^',</span> <span class="pre">AT_BEGINNING_STRING:</span> <span class="pre">'\\A',</span> <span class="pre">AT_BOUNDARY:</span> <span class="pre">'\\b',</span> <span class="pre">AT_NON_BOUNDARY:</span> <span class="pre">'\\B',</span> <span class="pre">AT_END:</span> <span class="pre">'$',</span> <span class="pre">AT_END_STRING:</span> <span class="pre">'\\Z'}</span></em><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.at_categories" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.escapes">
+<span class="sig-name descname"><span class="pre">escapes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{7:</span> <span class="pre">'\\a',</span> <span class="pre">8:</span> <span class="pre">'\\b',</span> <span class="pre">9:</span> <span class="pre">'\\t',</span> <span class="pre">10:</span> <span class="pre">'\\n',</span> <span class="pre">11:</span> <span class="pre">'\\v',</span> <span class="pre">12:</span> <span class="pre">'\\f',</span> <span class="pre">13:</span> <span class="pre">'\\r',</span> <span class="pre">92:</span> <span class="pre">'\\'}</span></em><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.escapes" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.PatternInverter.in_categories">
+<span class="sig-name descname"><span class="pre">in_categories</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{CATEGORY_DIGIT:</span> <span class="pre">'\\d',</span> <span class="pre">CATEGORY_NOT_DIGIT:</span> <span class="pre">'\\D',</span> <span class="pre">CATEGORY_SPACE:</span> <span class="pre">'\\s',</span> <span class="pre">CATEGORY_NOT_SPACE:</span> <span class="pre">'\\S',</span> <span class="pre">CATEGORY_WORD:</span> <span class="pre">'\\w',</span> <span class="pre">CATEGORY_NOT_WORD:</span> <span class="pre">'\\W'}</span></em><a class="headerlink" href="#ClearMap.Utils.RegularExpression.PatternInverter.in_categories" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.expression_to_glob">
+<span class="sig-name descname"><span class="pre">expression_to_glob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.[]'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#expression_to_glob"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.expression_to_glob" title="Link to this definition">#</a></dt>
+<dd><p>Converts a regular expression to a glob expression, e.g. to search for files</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression.</p>
+</dd>
+<dt>replace<span class="classifier">dict, all or None</span></dt><dd><p>A dictionary specifying how to replace specific groups. If all or None, all groups are replaced with the default.</p>
+</dd>
+<dt>ignore<span class="classifier">list of chars</span></dt><dd><p>Ignore these special chars in the regular expression.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression in glob form.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.expression_to_pattern">
+<span class="sig-name descname"><span class="pre">expression_to_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#expression_to_pattern"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.expression_to_pattern" title="Link to this definition">#</a></dt>
+<dd><p>Convert a regular expression to a parsed pattern for manipulation</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression to convert.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>pattern<span class="classifier">list</span></dt><dd><p>The parsed pattern of the regular expression.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.format_expression">
+<span class="sig-name descname"><span class="pre">format_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#format_expression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.format_expression" title="Link to this definition">#</a></dt>
+<dd><p>Inserts escapes infront of certain regular expression symbols.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regulsr expresion.</p>
+</dd>
+<dt>ignore<span class="classifier">list of chars</span></dt><dd><p>A list of characters to ignore as regular expressions commands.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression with escaped characters that are ignored.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.glob_to_expression">
+<span class="sig-name descname"><span class="pre">glob_to_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#glob_to_expression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.glob_to_expression" title="Link to this definition">#</a></dt>
+<dd><p>Converts a glob expression to a regular expression</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>A glob expression.</p>
+</dd>
+<dt>groups<span class="classifier">dict or None</span></dt><dd><p>A dicitonary specifying how to name groups in the form {id : name}</p>
+</dd>
+<dt>to_group<span class="classifier">list of chars or None</span></dt><dd><p>Glob placeholders to convert to a group.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.group_dict">
+<span class="sig-name descname"><span class="pre">group_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">expression,</span> <span class="pre">value,</span> <span class="pre">as_types=[&lt;class</span> <span class="pre">'int'&gt;,</span> <span class="pre">&lt;class</span> <span class="pre">'float'&gt;]</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#group_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.group_dict" title="Link to this definition">#</a></dt>
+<dd><p>Returns a dictionary with the values of the groups in the regular expression that match the value string.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">string</span></dt><dd><p>The regular expression.</p>
+</dd>
+<dt>value<span class="classifier">string</span></dt><dd><p>The text to match and extract group values from.</p>
+</dd>
+<dt>as_types<span class="classifier">list of types</span></dt><dd><p>List of types to try to convert the extracted group value to.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>values<span class="classifier">dict</span></dt><dd><p>The values for each group item.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.group_names">
+<span class="sig-name descname"><span class="pre">group_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#group_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.group_names" title="Link to this definition">#</a></dt>
+<dd><p>Returns the names of groups in the regular expression</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>names<span class="classifier">list of str</span></dt><dd><p>The group names in the regular expression sorted according to appearance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.insert_group_names">
+<span class="sig-name descname"><span class="pre">insert_group_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#insert_group_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.insert_group_names" title="Link to this definition">#</a></dt>
+<dd><p>Inserts group names into a regular expression for spcified groups.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression.</p>
+</dd>
+<dt>groups<span class="classifier">dict or None</span></dt><dd><p>A dictionary specifying the group names as {groupid : groupname}.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression with named groups.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.is_expression">
+<span class="sig-name descname"><span class="pre">is_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_patterns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#is_expression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.is_expression" title="Link to this definition">#</a></dt>
+<dd><p>Checks if the regular expression fullfills certain criteria</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression to check.</p>
+</dd>
+<dt>group_names<span class="classifier">list of str or None</span></dt><dd><p>List of group names expected to be present in the expression.</p>
+</dd>
+<dt>n_patterns<span class="classifier">int or None</span></dt><dd><p>Number of group patterns to expect. If negative, the expression is expted to have at least this number of groups.</p>
+</dd>
+<dt>ignore<span class="classifier">list of chars or None</span></dt><dd><p>Optional list of chars that should not be regarded as a regular expression command.
+Useful for filenames setting ignore = [‘.’].</p>
+</dd>
+<dt>exclude<span class="classifier">list of str or None</span></dt><dd><p>Exculde these tokens when counting groups.</p>
+</dd>
+<dt>verbose<span class="classifier">bool</span></dt><dd><p>If True, print reason for expression to not fullfil desired criteria.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>is_expression<span class="classifier">bool</span></dt><dd><p>Returns True if the expression fullfills the desired criteria.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.n_groups">
+<span class="sig-name descname"><span class="pre">n_groups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#n_groups"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.n_groups" title="Link to this definition">#</a></dt>
+<dd><p>Returns the number of groups in the expression.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>n<span class="classifier">int</span></dt><dd><p>The number of groups in the epxression.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.pattern_to_expression">
+<span class="sig-name descname"><span class="pre">pattern_to_expression</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#pattern_to_expression"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.pattern_to_expression" title="Link to this definition">#</a></dt>
+<dd><p>Convert a pattern to regular expression</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>pattern<span class="classifier">list</span></dt><dd><p>The regular expression in pattern form.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.replace">
+<span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#replace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.replace" title="Link to this definition">#</a></dt>
+<dd><p>Replaces patterns in a regular expression with given strings</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression.</p>
+</dd>
+<dt>replace<span class="classifier">dict</span></dt><dd><p>The replacements to do in the regular expression given as {pos : str} or {groupname : str}.</p>
+</dd>
+<dt>ignore<span class="classifier">list or chars</span></dt><dd><p>Ignore certain regular expression commands.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>replaced<span class="classifier">str</span></dt><dd><p>The regular expression with replacements.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.RegularExpression.subpatterns_to_groups">
+<span class="sig-name descname"><span class="pre">subpatterns_to_groups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/RegularExpression.html#subpatterns_to_groups"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.RegularExpression.subpatterns_to_groups" title="Link to this definition">#</a></dt>
+<dd><p>Replaces subpatterns with groups in a regular expression.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression to check.</p>
+</dd>
+<dt>ignore<span class="classifier">list of chars or None</span></dt><dd><p>Optional list of chars that should not be regarded as a regular expression command.
+Useful for filenames setting ignore = [‘.’].</p>
+</dd>
+<dt>exclude<span class="classifier">list of str or None</span></dt><dd><p>Exculde these tokens when counting groups.</p>
+</dd>
+<dt>group_names<span class="classifier">list of str</span></dt><dd><p>The group names to use for the new groups.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>expression<span class="classifier">str</span></dt><dd><p>The regular expression with subpatterns replaced as groups.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter"><code class="docutils literal notranslate"><span class="pre">PatternInverter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_any"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_any()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_assert"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_assert()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_assert_not"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_assert_not()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_at"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_at()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_branch"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_branch()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_group"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_group()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_group_ref"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_group_ref()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_in"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_in()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_literal"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_literal()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_max_repeat"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_max_repeat()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_min_repeat"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_min_repeat()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_negate"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_negate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_not_literal"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_not_literal()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_range"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_range()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_re"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_re()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_re_type"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_re_type()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.generate_subpattern"><code class="docutils literal notranslate"><span class="pre">PatternInverter.generate_subpattern()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.at_categories"><code class="docutils literal notranslate"><span class="pre">PatternInverter.at_categories</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.escapes"><code class="docutils literal notranslate"><span class="pre">PatternInverter.escapes</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.PatternInverter.in_categories"><code class="docutils literal notranslate"><span class="pre">PatternInverter.in_categories</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.expression_to_glob"><code class="docutils literal notranslate"><span class="pre">expression_to_glob()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.expression_to_pattern"><code class="docutils literal notranslate"><span class="pre">expression_to_pattern()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.format_expression"><code class="docutils literal notranslate"><span class="pre">format_expression()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.glob_to_expression"><code class="docutils literal notranslate"><span class="pre">glob_to_expression()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.group_dict"><code class="docutils literal notranslate"><span class="pre">group_dict()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.group_names"><code class="docutils literal notranslate"><span class="pre">group_names()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.insert_group_names"><code class="docutils literal notranslate"><span class="pre">insert_group_names()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.is_expression"><code class="docutils literal notranslate"><span class="pre">is_expression()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.n_groups"><code class="docutils literal notranslate"><span class="pre">n_groups()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.pattern_to_expression"><code class="docutils literal notranslate"><span class="pre">pattern_to_expression()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.replace"><code class="docutils literal notranslate"><span class="pre">replace()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.RegularExpression.subpatterns_to_groups"><code class="docutils literal notranslate"><span class="pre">subpatterns_to_groups()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.Utils.RegularExpression.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

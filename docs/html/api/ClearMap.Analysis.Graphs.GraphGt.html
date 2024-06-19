@@ -1,0 +1,1483 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>GraphGt &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.Analysis.Graphs.GraphGt';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.Curves.html">ClearMap.Analysis.Curves</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.DimensionReduction.html">DimensionReduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.Graphs.html">ClearMap.Analysis.Graphs</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.Measurements.html">ClearMap.Analysis.Measurements</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.Statistics.html">ClearMap.Analysis.Statistics</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.vasculature.html">ClearMap.Analysis.vasculature</a></li>
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">GraphGt</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="graphgt">
+<h1>GraphGt<a class="headerlink" href="#graphgt" title="Link to this heading">#</a></h1>
+<table class="autosummary longtable table autosummary">
+<tbody>
+</tbody>
+</table>
+<p id="module-ClearMap.Analysis.Graphs.GraphGt">Module provides basic Graph interface to the
+<a class="reference external" href="https://graph-tool.skewed.de">graph_tool</a> library.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_vertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex_radii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_radii</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_geometries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">annotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_geometry_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'graph'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.Analysis.Graphs.Graph.html#ClearMap.Analysis.Graphs.Graph.AnnotatedGraph" title="ClearMap.Analysis.Graphs.Graph.AnnotatedGraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnnotatedGraph</span></code></a></p>
+<p>Graph class to handle graph construction and analysis.</p>
+<p class="rubric">Note</p>
+<p>This is a interface from ClearMap graphs to graph_tool.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.add_edge" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.add_edge_property">
+<span class="sig-name descname"><span class="pre">add_edge_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.add_edge_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.add_edge_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.add_graph_property">
+<span class="sig-name descname"><span class="pre">add_graph_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.add_graph_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.add_graph_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.add_vertex">
+<span class="sig-name descname"><span class="pre">add_vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_vertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.add_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.add_vertex" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.add_vertex_property">
+<span class="sig-name descname"><span class="pre">add_vertex_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.add_vertex_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.add_vertex_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.annotate_properties">
+<span class="sig-name descname"><span class="pre">annotate_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex_properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_geometry_properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.annotate_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.annotate_properties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.axis_indices">
+<span class="sig-name descname"><span class="pre">axis_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.axis_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.axis_indices" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.copy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.copy" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.define_edge_property">
+<span class="sig-name descname"><span class="pre">define_edge_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.define_edge_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.define_edge_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.define_graph_property">
+<span class="sig-name descname"><span class="pre">define_graph_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.define_graph_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.define_graph_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.define_vertex_property">
+<span class="sig-name descname"><span class="pre">define_vertex_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.define_vertex_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.define_vertex_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge">
+<span class="sig-name descname"><span class="pre">edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_annotation">
+<span class="sig-name descname"><span class="pre">edge_annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_annotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_annotation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_close_binary">
+<span class="sig-name descname"><span class="pre">edge_close_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_close_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_close_binary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_connectivity">
+<span class="sig-name descname"><span class="pre">edge_connectivity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_connectivity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_connectivity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_coordinates">
+<span class="sig-name descname"><span class="pre">edge_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_coordinates" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_dilate_binary">
+<span class="sig-name descname"><span class="pre">edge_dilate_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_dilate_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_dilate_binary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_erode_binary">
+<span class="sig-name descname"><span class="pre">edge_erode_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_erode_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_erode_binary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry">
+<span class="sig-name descname"><span class="pre">edge_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'coordinates'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reshape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_from_edge_property">
+<span class="sig-name descname"><span class="pre">edge_geometry_from_edge_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge_property_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_geometry_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_geometry_from_edge_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_from_edge_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_indices">
+<span class="sig-name descname"><span class="pre">edge_geometry_indices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_geometry_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_indices" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_lengths">
+<span class="sig-name descname"><span class="pre">edge_geometry_lengths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'coordinates'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_geometry_lengths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_lengths" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_property">
+<span class="sig-name descname"><span class="pre">edge_geometry_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_geometry_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_property_name">
+<span class="sig-name descname"><span class="pre">edge_geometry_property_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'coordinates'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'edge_geometry'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_geometry_property_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_property_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_graph">
+<span class="sig-name descname"><span class="pre">edge_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_edge_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_index">
+<span class="sig-name descname"><span class="pre">edge_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_index" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_indices">
+<span class="sig-name descname"><span class="pre">edge_indices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_indices" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_iterator">
+<span class="sig-name descname"><span class="pre">edge_iterator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_iterator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_iterator" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_open_binary">
+<span class="sig-name descname"><span class="pre">edge_open_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_open_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_open_binary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_propagate">
+<span class="sig-name descname"><span class="pre">edge_propagate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_propagate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_propagate" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_property">
+<span class="sig-name descname"><span class="pre">edge_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_property_map">
+<span class="sig-name descname"><span class="pre">edge_property_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_property_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_property_map" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_radii">
+<span class="sig-name descname"><span class="pre">edge_radii</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_radii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_radii" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_source_label">
+<span class="sig-name descname"><span class="pre">edge_source_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_source_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_source_label" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_target_label">
+<span class="sig-name descname"><span class="pre">edge_target_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_target_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_target_label" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_to_vertex_label">
+<span class="sig-name descname"><span class="pre">edge_to_vertex_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'max'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_to_vertex_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_to_vertex_label" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_to_vertex_label_or">
+<span class="sig-name descname"><span class="pre">edge_to_vertex_label_or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge_label</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.edge_to_vertex_label_or"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_to_vertex_label_or" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.expand_vertex_filter">
+<span class="sig-name descname"><span class="pre">expand_vertex_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex_filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.expand_vertex_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.expand_vertex_filter" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.first_edge">
+<span class="sig-name descname"><span class="pre">first_edge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.first_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.first_edge" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.first_vertex">
+<span class="sig-name descname"><span class="pre">first_vertex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.first_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.first_vertex" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.graph_property">
+<span class="sig-name descname"><span class="pre">graph_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.graph_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.graph_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.graph_property_map">
+<span class="sig-name descname"><span class="pre">graph_property_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.graph_property_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.graph_property_map" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.has_edge_geometry">
+<span class="sig-name descname"><span class="pre">has_edge_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'coordinates'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.has_edge_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.has_edge_geometry" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.info" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.is_edge_geometry_consistent">
+<span class="sig-name descname"><span class="pre">is_edge_geometry_consistent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.is_edge_geometry_consistent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.is_edge_geometry_consistent" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.label_components">
+<span class="sig-name descname"><span class="pre">label_components</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_vertex_counts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.label_components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.label_components" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.largest_component">
+<span class="sig-name descname"><span class="pre">largest_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.largest_component"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.largest_component" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.load" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.remove_edge">
+<span class="sig-name descname"><span class="pre">remove_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.remove_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_edge" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.remove_edge_geometry">
+<span class="sig-name descname"><span class="pre">remove_edge_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.remove_edge_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_edge_geometry" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.remove_edge_property">
+<span class="sig-name descname"><span class="pre">remove_edge_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.remove_edge_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_edge_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.remove_graph_property">
+<span class="sig-name descname"><span class="pre">remove_graph_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.remove_graph_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_graph_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.remove_isolated_edges">
+<span class="sig-name descname"><span class="pre">remove_isolated_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.remove_isolated_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_isolated_edges" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.remove_isolated_vertices">
+<span class="sig-name descname"><span class="pre">remove_isolated_vertices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.remove_isolated_vertices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_isolated_vertices" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.remove_self_loops">
+<span class="sig-name descname"><span class="pre">remove_self_loops</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.remove_self_loops"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_self_loops" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.remove_vertex">
+<span class="sig-name descname"><span class="pre">remove_vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.remove_vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_vertex" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.remove_vertex_property">
+<span class="sig-name descname"><span class="pre">remove_vertex_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.remove_vertex_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_vertex_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.resize_edge_geometry">
+<span class="sig-name descname"><span class="pre">resize_edge_geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.resize_edge_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.resize_edge_geometry" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.save" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_annotation">
+<span class="sig-name descname"><span class="pre">set_edge_annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'int32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_edge_annotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_annotation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_coordaintes">
+<span class="sig-name descname"><span class="pre">set_edge_coordaintes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_edge_coordaintes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_coordaintes" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_geometry">
+<span class="sig-name descname"><span class="pre">set_edge_geometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_edge_geometry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_geometry" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_geometry_type">
+<span class="sig-name descname"><span class="pre">set_edge_geometry_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edge_geometry_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_edge_geometry_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_geometry_type" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_property">
+<span class="sig-name descname"><span class="pre">set_edge_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_edge_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_radii">
+<span class="sig-name descname"><span class="pre">set_edge_radii</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radii</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_edge_radii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_radii" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_graph_property">
+<span class="sig-name descname"><span class="pre">set_graph_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_graph_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_graph_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_annotation">
+<span class="sig-name descname"><span class="pre">set_vertex_annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">annotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'int32'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_vertex_annotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_annotation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_coordinate">
+<span class="sig-name descname"><span class="pre">set_vertex_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_vertex_coordinate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_coordinate" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_coordinates">
+<span class="sig-name descname"><span class="pre">set_vertex_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'float'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_vertex_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_coordinates" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_property">
+<span class="sig-name descname"><span class="pre">set_vertex_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_vertex_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_radii">
+<span class="sig-name descname"><span class="pre">set_vertex_radii</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radii</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_vertex_radii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_radii" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_radius">
+<span class="sig-name descname"><span class="pre">set_vertex_radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.set_vertex_radius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_radius" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.sub_graph">
+<span class="sig-name descname"><span class="pre">sub_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.sub_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.sub_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.sub_slice">
+<span class="sig-name descname"><span class="pre">sub_slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.sub_slice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.sub_slice" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.sub_slice_edge_filter">
+<span class="sig-name descname"><span class="pre">sub_slice_edge_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.sub_slice_edge_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.sub_slice_edge_filter" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.sub_slice_vertex_filter">
+<span class="sig-name descname"><span class="pre">sub_slice_vertex_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.sub_slice_vertex_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.sub_slice_vertex_filter" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.transform_properties">
+<span class="sig-name descname"><span class="pre">transform_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">transformation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex_properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_geometry_properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.transform_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.transform_properties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex">
+<span class="sig-name descname"><span class="pre">vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_annotation">
+<span class="sig-name descname"><span class="pre">vertex_annotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_annotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_annotation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_close_binary">
+<span class="sig-name descname"><span class="pre">vertex_close_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_close_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_close_binary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_coloring">
+<span class="sig-name descname"><span class="pre">vertex_coloring</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_coloring"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_coloring" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_coordinates">
+<span class="sig-name descname"><span class="pre">vertex_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_coordinates" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_degree">
+<span class="sig-name descname"><span class="pre">vertex_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_degree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_degree" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_degrees">
+<span class="sig-name descname"><span class="pre">vertex_degrees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_degrees" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_dilate_binary">
+<span class="sig-name descname"><span class="pre">vertex_dilate_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_dilate_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_dilate_binary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_edges">
+<span class="sig-name descname"><span class="pre">vertex_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_edges" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_edges_iterator">
+<span class="sig-name descname"><span class="pre">vertex_edges_iterator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_edges_iterator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_edges_iterator" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_erode_binary">
+<span class="sig-name descname"><span class="pre">vertex_erode_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_erode_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_erode_binary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_degree">
+<span class="sig-name descname"><span class="pre">vertex_in_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_in_degree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_degree" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_degrees">
+<span class="sig-name descname"><span class="pre">vertex_in_degrees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_in_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_degrees" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_edges">
+<span class="sig-name descname"><span class="pre">vertex_in_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_in_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_edges" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_edges_iterator">
+<span class="sig-name descname"><span class="pre">vertex_in_edges_iterator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_in_edges_iterator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_edges_iterator" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_neighbours">
+<span class="sig-name descname"><span class="pre">vertex_in_neighbours</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_in_neighbours"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_neighbours" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_index">
+<span class="sig-name descname"><span class="pre">vertex_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_index" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_indices">
+<span class="sig-name descname"><span class="pre">vertex_indices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_indices" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_iterator">
+<span class="sig-name descname"><span class="pre">vertex_iterator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_iterator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_iterator" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_neighbours">
+<span class="sig-name descname"><span class="pre">vertex_neighbours</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_neighbours"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_neighbours" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_open_binary">
+<span class="sig-name descname"><span class="pre">vertex_open_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_open_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_open_binary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_degree">
+<span class="sig-name descname"><span class="pre">vertex_out_degree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_out_degree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_degree" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_degrees">
+<span class="sig-name descname"><span class="pre">vertex_out_degrees</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_out_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_degrees" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_edges">
+<span class="sig-name descname"><span class="pre">vertex_out_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_out_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_edges" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_edges_iterator">
+<span class="sig-name descname"><span class="pre">vertex_out_edges_iterator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_out_edges_iterator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_edges_iterator" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_neighbours">
+<span class="sig-name descname"><span class="pre">vertex_out_neighbours</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_out_neighbours"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_neighbours" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_propagate">
+<span class="sig-name descname"><span class="pre">vertex_propagate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_propagate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_propagate" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_property">
+<span class="sig-name descname"><span class="pre">vertex_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_property" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_property_map">
+<span class="sig-name descname"><span class="pre">vertex_property_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_property_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_property_map" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_radii">
+<span class="sig-name descname"><span class="pre">vertex_radii</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_radii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_radii" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_to_edge_label">
+<span class="sig-name descname"><span class="pre">vertex_to_edge_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.vertex_to_edge_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_to_edge_label" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.view">
+<span class="sig-name descname"><span class="pre">view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#Graph.view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.view" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.base">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.base" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.directed">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directed</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.directed" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_properties">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edge_geometry_properties</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_properties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_property_names">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edge_geometry_property_names</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_property_names" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edge_geometry_type</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_type" title="Link to this definition">#</a></dt>
+<dd><p>Type for storing edge properties</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>type<span class="classifier">‘graph’ or ‘edge’</span></dt><dd><dl class="simple">
+<dt>‘graph’<span class="classifier">Stores edge coordinates in an graph property array and</span></dt><dd><p>start end indices in edges.</p>
+</dd>
+<dt>‘edge’<span class="classifier">Stores the edge coordinates in variable length vectors in</span></dt><dd><p>each edge.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edge_properties">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edge_properties</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_properties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.edges">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edges" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.graph_properties">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph_properties</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.graph_properties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.has_edge_coordinates">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_edge_coordinates</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.has_edge_coordinates" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.has_edge_radii">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_edge_radii</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.has_edge_radii" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.has_vertex_coordinates">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_vertex_coordinates</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.has_vertex_coordinates" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.has_vertex_radii">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_vertex_radii</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.has_vertex_radii" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.is_view">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_view</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.is_view" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.n_edges">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_edges</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.n_edges" title="Link to this definition">#</a></dt>
+<dd><p>Number of edges in the graph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.n_vertices">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_vertices</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.n_vertices" title="Link to this definition">#</a></dt>
+<dd><p>Number of vertices in the graph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.ndim">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ndim</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.ndim" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.shape" title="Link to this definition">#</a></dt>
+<dd><p>The shape of the space in which the graph is embedded.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>shape<span class="classifier">tuple of int</span></dt><dd><p>The shape of the graph space.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_properties">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vertex_properties</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_properties" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.Graph.vertices">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vertices</span></span><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertices" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.dtype_to_gtype">
+<span class="sig-name descname"><span class="pre">dtype_to_gtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dtype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#dtype_to_gtype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.dtype_to_gtype" title="Link to this definition">#</a></dt>
+<dd><p>Convert a data type to a graph_tool data type.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.edge_property_map_from_python">
+<span class="sig-name descname"><span class="pre">edge_property_map_from_python</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#edge_property_map_from_python"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.edge_property_map_from_python" title="Link to this definition">#</a></dt>
+<dd><p>Create a edge property map from a python source.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.edge_property_map_to_python">
+<span class="sig-name descname"><span class="pre">edge_property_map_to_python</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">property_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#edge_property_map_to_python"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.edge_property_map_to_python" title="Link to this definition">#</a></dt>
+<dd><p>Convert edge property map to a python array or list.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.gtype_from_source">
+<span class="sig-name descname"><span class="pre">gtype_from_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vectorize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_property</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#gtype_from_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.gtype_from_source" title="Link to this definition">#</a></dt>
+<dd><p>Determines the graph_tool data type from a data source.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.load" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.ndim_from_source">
+<span class="sig-name descname"><span class="pre">ndim_from_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#ndim_from_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.ndim_from_source" title="Link to this definition">#</a></dt>
+<dd><p>Determines the dimension of a source appropiate for graph_tool.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.ndim_to_gtype">
+<span class="sig-name descname"><span class="pre">ndim_to_gtype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gtype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#ndim_to_gtype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.ndim_to_gtype" title="Link to this definition">#</a></dt>
+<dd><p>Convert a scalar gtype to a vector one if necessary.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.pickler">
+<span class="sig-name descname"><span class="pre">pickler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#pickler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.pickler" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.save" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.set_edge_property_map">
+<span class="sig-name descname"><span class="pre">set_edge_property_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">property_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#set_edge_property_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.set_edge_property_map" title="Link to this definition">#</a></dt>
+<dd><p>Set values for edge property map.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.set_vertex_property_map">
+<span class="sig-name descname"><span class="pre">set_vertex_property_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">property_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#set_vertex_property_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.set_vertex_property_map" title="Link to this definition">#</a></dt>
+<dd><p>Set values for vertex property map.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.unpickler">
+<span class="sig-name descname"><span class="pre">unpickler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stream</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#unpickler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.unpickler" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.vertex_property_map_from_python">
+<span class="sig-name descname"><span class="pre">vertex_property_map_from_python</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#vertex_property_map_from_python"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.vertex_property_map_from_python" title="Link to this definition">#</a></dt>
+<dd><p>Create a vertex property map from a python source.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.Graphs.GraphGt.vertex_property_map_to_python">
+<span class="sig-name descname"><span class="pre">vertex_property_map_to_python</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">property_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">as_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/Graphs/GraphGt.html#vertex_property_map_to_python"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.Graphs.GraphGt.vertex_property_map_to_python" title="Link to this definition">#</a></dt>
+<dd><p>Convert vertex property map to a python array or list.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph"><code class="docutils literal notranslate"><span class="pre">Graph</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.add_edge"><code class="docutils literal notranslate"><span class="pre">Graph.add_edge()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.add_edge_property"><code class="docutils literal notranslate"><span class="pre">Graph.add_edge_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.add_graph_property"><code class="docutils literal notranslate"><span class="pre">Graph.add_graph_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.add_vertex"><code class="docutils literal notranslate"><span class="pre">Graph.add_vertex()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.add_vertex_property"><code class="docutils literal notranslate"><span class="pre">Graph.add_vertex_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.annotate_properties"><code class="docutils literal notranslate"><span class="pre">Graph.annotate_properties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.axis_indices"><code class="docutils literal notranslate"><span class="pre">Graph.axis_indices()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.copy"><code class="docutils literal notranslate"><span class="pre">Graph.copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.define_edge_property"><code class="docutils literal notranslate"><span class="pre">Graph.define_edge_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.define_graph_property"><code class="docutils literal notranslate"><span class="pre">Graph.define_graph_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.define_vertex_property"><code class="docutils literal notranslate"><span class="pre">Graph.define_vertex_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge"><code class="docutils literal notranslate"><span class="pre">Graph.edge()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_annotation"><code class="docutils literal notranslate"><span class="pre">Graph.edge_annotation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_close_binary"><code class="docutils literal notranslate"><span class="pre">Graph.edge_close_binary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_connectivity"><code class="docutils literal notranslate"><span class="pre">Graph.edge_connectivity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_coordinates"><code class="docutils literal notranslate"><span class="pre">Graph.edge_coordinates()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_dilate_binary"><code class="docutils literal notranslate"><span class="pre">Graph.edge_dilate_binary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_erode_binary"><code class="docutils literal notranslate"><span class="pre">Graph.edge_erode_binary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry"><code class="docutils literal notranslate"><span class="pre">Graph.edge_geometry()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_from_edge_property"><code class="docutils literal notranslate"><span class="pre">Graph.edge_geometry_from_edge_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_indices"><code class="docutils literal notranslate"><span class="pre">Graph.edge_geometry_indices()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_lengths"><code class="docutils literal notranslate"><span class="pre">Graph.edge_geometry_lengths()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_property"><code class="docutils literal notranslate"><span class="pre">Graph.edge_geometry_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_property_name"><code class="docutils literal notranslate"><span class="pre">Graph.edge_geometry_property_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_graph"><code class="docutils literal notranslate"><span class="pre">Graph.edge_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_index"><code class="docutils literal notranslate"><span class="pre">Graph.edge_index()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_indices"><code class="docutils literal notranslate"><span class="pre">Graph.edge_indices()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_iterator"><code class="docutils literal notranslate"><span class="pre">Graph.edge_iterator()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_open_binary"><code class="docutils literal notranslate"><span class="pre">Graph.edge_open_binary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_propagate"><code class="docutils literal notranslate"><span class="pre">Graph.edge_propagate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_property"><code class="docutils literal notranslate"><span class="pre">Graph.edge_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_property_map"><code class="docutils literal notranslate"><span class="pre">Graph.edge_property_map()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_radii"><code class="docutils literal notranslate"><span class="pre">Graph.edge_radii()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_source_label"><code class="docutils literal notranslate"><span class="pre">Graph.edge_source_label()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_target_label"><code class="docutils literal notranslate"><span class="pre">Graph.edge_target_label()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_to_vertex_label"><code class="docutils literal notranslate"><span class="pre">Graph.edge_to_vertex_label()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_to_vertex_label_or"><code class="docutils literal notranslate"><span class="pre">Graph.edge_to_vertex_label_or()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.expand_vertex_filter"><code class="docutils literal notranslate"><span class="pre">Graph.expand_vertex_filter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.first_edge"><code class="docutils literal notranslate"><span class="pre">Graph.first_edge()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.first_vertex"><code class="docutils literal notranslate"><span class="pre">Graph.first_vertex()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.graph_property"><code class="docutils literal notranslate"><span class="pre">Graph.graph_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.graph_property_map"><code class="docutils literal notranslate"><span class="pre">Graph.graph_property_map()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.has_edge_geometry"><code class="docutils literal notranslate"><span class="pre">Graph.has_edge_geometry()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.info"><code class="docutils literal notranslate"><span class="pre">Graph.info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.is_edge_geometry_consistent"><code class="docutils literal notranslate"><span class="pre">Graph.is_edge_geometry_consistent()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.label_components"><code class="docutils literal notranslate"><span class="pre">Graph.label_components()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.largest_component"><code class="docutils literal notranslate"><span class="pre">Graph.largest_component()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.load"><code class="docutils literal notranslate"><span class="pre">Graph.load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_edge"><code class="docutils literal notranslate"><span class="pre">Graph.remove_edge()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_edge_geometry"><code class="docutils literal notranslate"><span class="pre">Graph.remove_edge_geometry()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_edge_property"><code class="docutils literal notranslate"><span class="pre">Graph.remove_edge_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_graph_property"><code class="docutils literal notranslate"><span class="pre">Graph.remove_graph_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_isolated_edges"><code class="docutils literal notranslate"><span class="pre">Graph.remove_isolated_edges()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_isolated_vertices"><code class="docutils literal notranslate"><span class="pre">Graph.remove_isolated_vertices()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_self_loops"><code class="docutils literal notranslate"><span class="pre">Graph.remove_self_loops()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_vertex"><code class="docutils literal notranslate"><span class="pre">Graph.remove_vertex()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.remove_vertex_property"><code class="docutils literal notranslate"><span class="pre">Graph.remove_vertex_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.resize_edge_geometry"><code class="docutils literal notranslate"><span class="pre">Graph.resize_edge_geometry()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.save"><code class="docutils literal notranslate"><span class="pre">Graph.save()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_annotation"><code class="docutils literal notranslate"><span class="pre">Graph.set_edge_annotation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_coordaintes"><code class="docutils literal notranslate"><span class="pre">Graph.set_edge_coordaintes()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_geometry"><code class="docutils literal notranslate"><span class="pre">Graph.set_edge_geometry()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_geometry_type"><code class="docutils literal notranslate"><span class="pre">Graph.set_edge_geometry_type()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_property"><code class="docutils literal notranslate"><span class="pre">Graph.set_edge_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_edge_radii"><code class="docutils literal notranslate"><span class="pre">Graph.set_edge_radii()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_graph_property"><code class="docutils literal notranslate"><span class="pre">Graph.set_graph_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_annotation"><code class="docutils literal notranslate"><span class="pre">Graph.set_vertex_annotation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_coordinate"><code class="docutils literal notranslate"><span class="pre">Graph.set_vertex_coordinate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_coordinates"><code class="docutils literal notranslate"><span class="pre">Graph.set_vertex_coordinates()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_property"><code class="docutils literal notranslate"><span class="pre">Graph.set_vertex_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_radii"><code class="docutils literal notranslate"><span class="pre">Graph.set_vertex_radii()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.set_vertex_radius"><code class="docutils literal notranslate"><span class="pre">Graph.set_vertex_radius()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.sub_graph"><code class="docutils literal notranslate"><span class="pre">Graph.sub_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.sub_slice"><code class="docutils literal notranslate"><span class="pre">Graph.sub_slice()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.sub_slice_edge_filter"><code class="docutils literal notranslate"><span class="pre">Graph.sub_slice_edge_filter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.sub_slice_vertex_filter"><code class="docutils literal notranslate"><span class="pre">Graph.sub_slice_vertex_filter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.transform_properties"><code class="docutils literal notranslate"><span class="pre">Graph.transform_properties()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex"><code class="docutils literal notranslate"><span class="pre">Graph.vertex()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_annotation"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_annotation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_close_binary"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_close_binary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_coloring"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_coloring()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_coordinates"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_coordinates()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_degree"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_degree()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_degrees"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_degrees()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_dilate_binary"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_dilate_binary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_edges"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_edges()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_edges_iterator"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_edges_iterator()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_erode_binary"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_erode_binary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_degree"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_in_degree()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_degrees"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_in_degrees()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_edges"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_in_edges()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_edges_iterator"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_in_edges_iterator()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_in_neighbours"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_in_neighbours()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_index"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_index()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_indices"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_indices()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_iterator"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_iterator()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_neighbours"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_neighbours()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_open_binary"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_open_binary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_degree"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_out_degree()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_degrees"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_out_degrees()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_edges"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_out_edges()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_edges_iterator"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_out_edges_iterator()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_out_neighbours"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_out_neighbours()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_propagate"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_propagate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_property"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_property()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_property_map"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_property_map()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_radii"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_radii()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_to_edge_label"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_to_edge_label()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.view"><code class="docutils literal notranslate"><span class="pre">Graph.view()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.base"><code class="docutils literal notranslate"><span class="pre">Graph.base</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.directed"><code class="docutils literal notranslate"><span class="pre">Graph.directed</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_properties"><code class="docutils literal notranslate"><span class="pre">Graph.edge_geometry_properties</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_property_names"><code class="docutils literal notranslate"><span class="pre">Graph.edge_geometry_property_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_geometry_type"><code class="docutils literal notranslate"><span class="pre">Graph.edge_geometry_type</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edge_properties"><code class="docutils literal notranslate"><span class="pre">Graph.edge_properties</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.edges"><code class="docutils literal notranslate"><span class="pre">Graph.edges</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.graph_properties"><code class="docutils literal notranslate"><span class="pre">Graph.graph_properties</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.has_edge_coordinates"><code class="docutils literal notranslate"><span class="pre">Graph.has_edge_coordinates</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.has_edge_radii"><code class="docutils literal notranslate"><span class="pre">Graph.has_edge_radii</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.has_vertex_coordinates"><code class="docutils literal notranslate"><span class="pre">Graph.has_vertex_coordinates</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.has_vertex_radii"><code class="docutils literal notranslate"><span class="pre">Graph.has_vertex_radii</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.is_view"><code class="docutils literal notranslate"><span class="pre">Graph.is_view</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.n_edges"><code class="docutils literal notranslate"><span class="pre">Graph.n_edges</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.n_vertices"><code class="docutils literal notranslate"><span class="pre">Graph.n_vertices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.ndim"><code class="docutils literal notranslate"><span class="pre">Graph.ndim</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.shape"><code class="docutils literal notranslate"><span class="pre">Graph.shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertex_properties"><code class="docutils literal notranslate"><span class="pre">Graph.vertex_properties</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.Graph.vertices"><code class="docutils literal notranslate"><span class="pre">Graph.vertices</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.dtype_to_gtype"><code class="docutils literal notranslate"><span class="pre">dtype_to_gtype()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.edge_property_map_from_python"><code class="docutils literal notranslate"><span class="pre">edge_property_map_from_python()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.edge_property_map_to_python"><code class="docutils literal notranslate"><span class="pre">edge_property_map_to_python()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.gtype_from_source"><code class="docutils literal notranslate"><span class="pre">gtype_from_source()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.ndim_from_source"><code class="docutils literal notranslate"><span class="pre">ndim_from_source()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.ndim_to_gtype"><code class="docutils literal notranslate"><span class="pre">ndim_to_gtype()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.pickler"><code class="docutils literal notranslate"><span class="pre">pickler()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.save"><code class="docutils literal notranslate"><span class="pre">save()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.set_edge_property_map"><code class="docutils literal notranslate"><span class="pre">set_edge_property_map()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.set_vertex_property_map"><code class="docutils literal notranslate"><span class="pre">set_vertex_property_map()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.unpickler"><code class="docutils literal notranslate"><span class="pre">unpickler()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.vertex_property_map_from_python"><code class="docutils literal notranslate"><span class="pre">vertex_property_map_from_python()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.Graphs.GraphGt.vertex_property_map_to_python"><code class="docutils literal notranslate"><span class="pre">vertex_property_map_to_python()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.Analysis.Graphs.GraphGt.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
