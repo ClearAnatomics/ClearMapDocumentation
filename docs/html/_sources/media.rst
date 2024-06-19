@@ -4,21 +4,21 @@ News and Media
 Gallery
 -------
 
-.. image:: Static/TubeMap_raw.png
+.. image:: static/TubeMap_raw.png
 
-.. image:: Static/TubeMap_raw_movie_small.*
+.. image:: static/TubeMap_raw_movie_small.*
    :width: 300
    
-.. image:: Static/TubeMap_graph_movie_small.*
+.. image:: static/TubeMap_graph_movie_small.*
    :width: 300 
 
-.. image:: Static/TubeMap_graph_full.jpg
+.. image:: static/TubeMap_graph_full.jpg
 
-.. image:: Static/TubeMap_graph_inside.png
+.. image:: static/TubeMap_graph_inside.png
 
-.. image:: Static/TubeMap_graph_closeup.png
+.. image:: static/TubeMap_graph_closeup.png
 
-.. image:: Static/CellMap_small_fast.*
+.. image:: static/CellMap_small_fast.*
    :width: 300
 
 
@@ -45,7 +45,10 @@ https://www.ted.com/talks/christoph_kirst_a_transparent_journey_into_the_brain_a
 
 Twitter
 -------
+`@clearmap_idisco <https://twitter.com/clearmap_idisco>`_
 
-:tw:`@clearmap_idisco`
+.. See if we could replace with a twitter feed using e.g. https://chrisholdgraf.com/blog/2023/social-directive/
+  Since tw is deprecated
 
-.. timeline:: clearmap_idisco
+
+.. . timeline:: clearmap_idisco

@@ -1,146 +1,472 @@
 
-<!doctype html>
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html lang="en" data-content_root="../../../" >
+
   <head>
     <meta charset="utf-8" />
-    <title>ClearMap.IO.FileUtils &#8212; ClearMap 2.0.0 documentation</title>
-    <link rel="stylesheet" href="../../../_static/clearmap.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/clearmap_utils.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/clearmap_sidebar.css" />
-    
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
-    <script src="https://platform.twitter.com/widgets.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.IO.FileUtils &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../../../_static/clearmap.js"></script>
-    <script src="../../../_static/clearmap_sidebar.js"></script>
-    <script src="../../../_static/clearmap_togglebutton.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/IO/FileUtils';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <!--[if lt IE 9]>
-  <script src="_static/css3-mediaqueries.js"></script>
-  <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
-   
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-  </head><body>
-<div class="document">
- <div class="imagecontainer">
-  <a href="../../../home.html"><img src="../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
-  <div class="top-left">
-    <p style="font-size: 30px"> 
-       <a href="../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
-    </p>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
   </div>
-  <div class="top-right">
-    <ul class="link-list">
-     <li class="link-list"><a href="../../../home.html">Home</a></li>
-     <li class="link-list"><a href="../../../overview.html">Overview</a></li>    
-     <li class="link-list"><a href="../../../installation.html">Installation</a></li>
-     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
-    </ul>
-  </div>
-  <div class="bottom-right">
-    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
-  </div>
- </div>
-</div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-       <li><a href="../../../home.html">Home</a>|&nbsp;</li>
-       <li><a href="../../../overview.html">Overview</a>|&nbsp;</li>      
-       <li><a href="../../../search.html">Search</a>|&nbsp;</li>
-       <li><a href="../../../index.html">Documentation </a> |&nbsp;</li>
-       <li><a href="../../../index.html#clearmap-api">API </a> &raquo;</li>     
-
-          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
-      </ul>
-    </div>
-<div class="document">
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
-    <div class="documentwrapper">
-    
-    
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><h3><a href="../../../index.html">ClearMap</a></h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../functionality.html">Functionality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../wobblystitcher.html">WobblyStitcher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../cellmap.html">CellMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../CellMap.html">CellMap Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tubemap.html">TubeMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../TubeMap.html">TubeMap Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../media.html">News and Media</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../api.html">ClearMap</a></li>
-</ul>
- 
+      <div class="navbar-item">
 
-<h3>Questions? Suggestions?</h3>
-<p>Open an issue at the
-  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
   
 
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
     
     
-    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
-      <div class="sphinxsidebarwrapper_right">
-        <h3> <a href="../../../cellmap.html">CellMap Pipeline</a></h3>
-          <a href="../../../cellmap.html">
-            <img src="../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
-        <h3> <a href="../../../tubemap.html">Tubemap Pipeline</a></h3>
-          <a href="../../../tubemap.html">
-            <img src="../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
-        <h3> <a href="../../../media.html#gallery"> Gallery</a></h3>
-          <a href="../../../media.html#gallery">
-            <img src="../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
-        <h3> <a href="../../../media.html#videos">Social Media and Videos</a></h3>
-          <a href="../../../media.html#videos">   
-            <img src="../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
-      </div>
-    </div>
-      <!-- sidebar2 --> 
-    
-    
-    <div class="bodywrapper">       
-    <div class="body" role="main">
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
           
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.IO....</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <h1>Source code for ClearMap.IO.FileUtils</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -153,312 +479,498 @@
 <span class="sd">--------</span>
 <span class="sd">:mod:`ClearMap.IO`.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
-<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE.txt)&#39;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE.txt)&#39;</span>
 <span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
-<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
-<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+<span class="n">__webpage__</span> <span class="o">=</span> <span class="s1">&#39;https://idisco.info&#39;</span>
+<span class="n">__download__</span> <span class="o">=</span> <span class="s1">&#39;https://www.github.com/ChristophKirst/ClearMap2&#39;</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;is_file&#39;</span><span class="p">,</span> <span class="s1">&#39;is_directory&#39;</span><span class="p">,</span> <span class="s1">&#39;file_extension&#39;</span><span class="p">,</span> <span class="s1">&#39;join&#39;</span><span class="p">,</span> <span class="s1">&#39;split&#39;</span><span class="p">,</span> \
-           <span class="s1">&#39;abspath&#39;</span><span class="p">,</span> <span class="s1">&#39;create_directory&#39;</span><span class="p">,</span> <span class="s1">&#39;delete_directory&#39;</span><span class="p">,</span> \
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;is_file&#39;</span><span class="p">,</span> <span class="s1">&#39;is_directory&#39;</span><span class="p">,</span> <span class="s1">&#39;file_extension&#39;</span><span class="p">,</span> <span class="s1">&#39;join&#39;</span><span class="p">,</span> <span class="s1">&#39;split&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;abspath&#39;</span><span class="p">,</span> <span class="s1">&#39;create_directory&#39;</span><span class="p">,</span> <span class="s1">&#39;delete_directory&#39;</span><span class="p">,</span>
            <span class="s1">&#39;copy_file&#39;</span><span class="p">,</span> <span class="s1">&#39;delete_file&#39;</span><span class="p">]</span>
 
 <span class="c1">##############################################################################</span>
-<span class="c1">### Basic file queries</span>
+<span class="c1"># ## Basic file queries</span>
 <span class="c1">##############################################################################</span>
 
-<div class="viewcode-block" id="is_file"><a class="viewcode-back" href="../../../Api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.is_file">[docs]</a><span class="k">def</span> <span class="nf">is_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Checks if a file exists.</span>
-<span class="sd">  </span>
-<span class="sd">  Arguments</span>
-<span class="sd">  ---------</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    The file name to check if it exists.</span>
-<span class="sd">      </span>
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  is_file : bool</span>
-<span class="sd">    True if filename exists on disk and is not a directory.   </span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="k">return</span> <span class="kc">False</span><span class="p">;</span>
 
-  <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="k">return</span> <span class="kc">False</span><span class="p">;</span>
+<div class="viewcode-block" id="is_file">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.is_file">[docs]</a>
+<span class="k">def</span> <span class="nf">is_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if a file exists.</span>
 
-  <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span></div>
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The file name to check if it exists.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    is_file : bool</span>
+<span class="sd">        True if filename exists on disk and is not a directory.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
+
 
      
-<div class="viewcode-block" id="is_directory"><a class="viewcode-back" href="../../../Api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.is_directory">[docs]</a><span class="k">def</span> <span class="nf">is_directory</span><span class="p">(</span><span class="n">dirname</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Checks if a directory exsits.</span>
-<span class="sd">  </span>
-<span class="sd">  Arguments</span>
-<span class="sd">  ---------</span>
-<span class="sd">  dirname : str</span>
-<span class="sd">    The directory name.</span>
-<span class="sd">      </span>
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  is_directory : bool</span>
-<span class="sd">    True if source is a real file. </span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="k">return</span> <span class="kc">False</span><span class="p">;</span>
+<div class="viewcode-block" id="is_directory">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.is_directory">[docs]</a>
+<span class="k">def</span> <span class="nf">is_directory</span><span class="p">(</span><span class="n">dirname</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks if a directory exists.</span>
 
-  <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dirname</span><span class="p">);</span></div>
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    dirname : str</span>
+<span class="sd">        The directory name.</span>
 
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    is_directory : bool</span>
+<span class="sd">        True if source is a real file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
 
-<span class="c1">##############################################################################</span>
-<span class="c1">### File name manipulation</span>
-<span class="c1">##############################################################################</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">dirname</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="file_extension"><a class="viewcode-back" href="../../../Api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.file_extension">[docs]</a><span class="k">def</span> <span class="nf">file_extension</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Returns the file extension of a file</span>
-<span class="sd">  </span>
-<span class="sd">  Arguments</span>
-<span class="sd">  ---------</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    The file name.</span>
-<span class="sd">    </span>
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  extension : str</span>
-<span class="sd">    The file extension or None if it does not exists.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="k">return</span> <span class="kc">None</span><span class="p">;</span>
-  
-  <span class="n">fext</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
-  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fext</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-      <span class="k">return</span> <span class="kc">None</span><span class="p">;</span>
-  <span class="k">else</span><span class="p">:</span>
-      <span class="k">return</span> <span class="n">fext</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span></div>
-
-
-<div class="viewcode-block" id="join"><a class="viewcode-back" href="../../../Api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.join">[docs]</a><span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Joins a path to a file name.</span>
-<span class="sd">  </span>
-<span class="sd">  Arguments</span>
-<span class="sd">  ---------</span>
-<span class="sd">  path : str</span>
-<span class="sd">    The path to append a file name to.</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    The file name.</span>
-<span class="sd">    </span>
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    The full file name.</span>
-<span class="sd">  &quot;&quot;&quot;</span>  
-  <span class="c1">#correct to allow joining &#39;/foo&#39; with &#39;/bar&#39; to /foo/bar (os gives /bar!)</span>
-  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">filename</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="p">[</span><span class="mi">1</span><span class="p">:];</span>
-  
-  <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">filename</span><span class="p">);</span></div>
-
-
-<div class="viewcode-block" id="split"><a class="viewcode-back" href="../../../Api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.split">[docs]</a><span class="k">def</span> <span class="nf">split</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Splits a file name into it&#39;s path and name.</span>
-<span class="sd">  </span>
-<span class="sd">  Arguments</span>
-<span class="sd">  ---------</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    The file name.</span>
-<span class="sd">    </span>
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  path : str</span>
-<span class="sd">    The path of the file.</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    The file name.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span></div>
-
-
-<div class="viewcode-block" id="abspath"><a class="viewcode-back" href="../../../Api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.abspath">[docs]</a><span class="k">def</span> <span class="nf">abspath</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Returns the filename using the full path specification.</span>
-<span class="sd">  </span>
-<span class="sd">  Arguments</span>
-<span class="sd">  ---------</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    The file name.</span>
-<span class="sd">    </span>
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    The full file name.</span>
-<span class="sd">  &quot;&quot;&quot;</span> 
-  <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span></div>
 
 
 <span class="c1">##############################################################################</span>
-<span class="c1">### File manipulation</span>
+<span class="c1"># ## File name manipulation</span>
 <span class="c1">##############################################################################</span>
 
-<div class="viewcode-block" id="create_directory"><a class="viewcode-back" href="../../../Api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.create_directory">[docs]</a><span class="k">def</span> <span class="nf">create_directory</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">split</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Creates the directory of the file name if it does not exists.</span>
-<span class="sd">   </span>
-<span class="sd">  Arguments</span>
-<span class="sd">  ---------</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    The name to create the directory from.</span>
-<span class="sd">  split : bool</span>
-<span class="sd">    If True, split the filename first.</span>
-<span class="sd">      </span>
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  directory : str</span>
-<span class="sd">    The directory name.</span>
-<span class="sd">  &quot;&quot;&quot;</span>      
-  <span class="k">if</span> <span class="n">split</span><span class="p">:</span>
-    <span class="n">path</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">filename</span><span class="p">;</span>    
-  
-  <span class="k">if</span> <span class="ow">not</span> <span class="n">is_directory</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
-  
-  <span class="k">return</span> <span class="n">path</span><span class="p">;</span></div>
+<div class="viewcode-block" id="file_extension">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.file_extension">[docs]</a>
+<span class="k">def</span> <span class="nf">file_extension</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the file extension of a file</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The file name.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    extension : str</span>
+<span class="sd">        The file extension or None if it does not exists.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">return</span>
+
+    <span class="n">fext</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>  <span class="c1"># FIXME: use os.path.splitext(...)[-1][1:]  # To remove leading dot</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fext</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fext</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="delete_directory"><a class="viewcode-back" href="../../../Api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.delete_directory">[docs]</a><span class="k">def</span> <span class="nf">delete_directory</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">split</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Deletes a directory of the filename if it exists.</span>
-<span class="sd">   </span>
-<span class="sd">  Arguments</span>
-<span class="sd">  ---------</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    The name to create the directory from.</span>
-<span class="sd">  split : bool</span>
-<span class="sd">    If True, split the filename first.</span>
-<span class="sd">      </span>
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  directory : str</span>
-<span class="sd">    The directory name.</span>
-<span class="sd">  &quot;&quot;&quot;</span>      
-  <span class="k">if</span> <span class="n">split</span><span class="p">:</span>
-    <span class="n">path</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">filename</span><span class="p">;</span>    
-  
-  <span class="k">if</span> <span class="n">is_directory</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path</span><span class="p">);</span></div>
+
+<div class="viewcode-block" id="join">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.join">[docs]</a>
+<span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Joins a path to a file name.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path to append a file name to.</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The file name.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The full file name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO: correct to allow joining &#39;/foo&#39; with &#39;/bar&#39; to /foo/bar (os gives /bar!)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">filename</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;/&#39;</span><span class="p">:</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="delete_file"><a class="viewcode-back" href="../../../Api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.delete_file">[docs]</a><span class="k">def</span> <span class="nf">delete_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Deletes a file.</span>
-<span class="sd">   </span>
-<span class="sd">  Arguments</span>
-<span class="sd">  ---------</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    Filename to delete.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="n">is_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span></div>
+
+<div class="viewcode-block" id="split">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.split">[docs]</a>
+<span class="k">def</span> <span class="nf">split</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Splits a file name into it&#39;s path and name.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The file name.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        The path of the file.</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The file name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="abspath">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.abspath">[docs]</a>
+<span class="k">def</span> <span class="nf">abspath</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the filename using the full path specification.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The file name.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The full file name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
+
+
+
+<span class="c1">##############################################################################</span>
+<span class="c1"># ## File manipulation</span>
+<span class="c1">##############################################################################</span>
+
+<div class="viewcode-block" id="create_directory">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.create_directory">[docs]</a>
+<span class="k">def</span> <span class="nf">create_directory</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates the directory of the file name if it does not exists.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The name to create the directory from.</span>
+<span class="sd">    split : bool</span>
+<span class="sd">        If True, split the filename first.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    directory : str</span>
+<span class="sd">        The directory name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">split</span><span class="p">:</span>
+        <span class="n">path</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">filename</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_directory</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">path</span></div>
+
+
+
+<div class="viewcode-block" id="delete_directory">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.delete_directory">[docs]</a>
+<span class="k">def</span> <span class="nf">delete_directory</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Deletes a directory of the filename if it exists.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        The name to create the directory from.</span>
+<span class="sd">    split : bool</span>
+<span class="sd">        If True, split the filename first.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    directory : str</span>
+<span class="sd">        The directory name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">split</span><span class="p">:</span>
+        <span class="n">path</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">filename</span>
+
+    <span class="k">if</span> <span class="n">is_directory</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="delete_file">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.delete_file">[docs]</a>
+<span class="k">def</span> <span class="nf">delete_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Deletes a file.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    filename : str</span>
+<span class="sd">        Filename to delete.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
+
 
     
-<div class="viewcode-block" id="copy_file"><a class="viewcode-back" href="../../../Api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.copy_file">[docs]</a><span class="k">def</span> <span class="nf">copy_file</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Copy a file.</span>
-<span class="sd">  </span>
-<span class="sd">  Arguments</span>
-<span class="sd">  ---------</span>
-<span class="sd">  source : str</span>
-<span class="sd">    Filename of the file to copy.</span>
-<span class="sd">  sink : str</span>
-<span class="sd">    File or directory name to copy the file to.</span>
-<span class="sd">  </span>
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  sink : str</span>
-<span class="sd">    The name of the copied file.</span>
-<span class="sd">  &quot;&quot;&quot;</span> 
-  <span class="k">if</span> <span class="n">is_directory</span><span class="p">(</span><span class="n">sink</span><span class="p">):</span>
-    <span class="n">path</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
-    <span class="n">sink</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
-  <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">);</span>
-  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+<div class="viewcode-block" id="copy_file">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.FileUtils.html#ClearMap.IO.FileUtils.copy_file">[docs]</a>
+<span class="k">def</span> <span class="nf">copy_file</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Copy a file.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    source : str</span>
+<span class="sd">        Filename of the file to copy.</span>
+<span class="sd">    sink : str</span>
+<span class="sd">        File or directory name to copy the file to.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    sink : str</span>
+<span class="sd">        The name of the copied file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_directory</span><span class="p">(</span><span class="n">sink</span><span class="p">):</span>
+        <span class="n">path</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="n">sink</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sink</span></div>
 
 
 
+<span class="k">def</span> <span class="nf">uncompress</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;zip&#39;</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Unzips a file only if:</span>
+<span class="sd">        1) the file does not exist (check)</span>
+<span class="sd">        2) the compressed file exists.</span>
 
-<span class="c1">###############################################################################</span>
-<span class="c1">### Tests</span>
-<span class="c1">###############################################################################</span>
 
-<span class="k">def</span> <span class="nf">uncompress</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">extension</span> <span class="o">=</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span> <span class="n">check</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Unzips a file if only the compressed zip file exists.</span>
-<span class="sd">  </span>
-<span class="sd">  Arguments</span>
-<span class="sd">  ---------</span>
-<span class="sd">  filename : str</span>
-<span class="sd">    The filename to search for.</span>
-<span class="sd">  extension : str</span>
-<span class="sd">    The extension for the compressed file.</span>
-<span class="sd">  check : bool</span>
-<span class="sd">    If True, check if the uncomressed file already exists.</span>
-<span class="sd">  verbose : bool</span>
-<span class="sd">    Print progrss info.</span>
-<span class="sd">  </span>
-<span class="sd">  Returns</span>
-<span class="sd">  -------</span>
-<span class="sd">  filename : str or None</span>
-<span class="sd">     The uncompressed filename or None if failed.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">try</span><span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">check</span><span class="p">:</span>
-      <span class="n">zip_filename</span> <span class="o">=</span> <span class="n">filename</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">extension</span><span class="p">;</span>
-      <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">zip_filename</span><span class="p">):</span>
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">        The file path to search for.</span>
+<span class="sd">    extension : str</span>
+<span class="sd">        The extension for the compressed file.</span>
+<span class="sd">    check : bool</span>
+<span class="sd">        If True, check if the decompressed file already exists.</span>
+<span class="sd">    verbose : bool</span>
+<span class="sd">        Print progress info.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    filename : str or None</span>
+<span class="sd">        The uncompressed filename or None if failed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">check</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">extension</span> <span class="o">==</span> <span class="s1">&#39;auto&#39;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">algo</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;zip&#39;</span><span class="p">,</span> <span class="s1">&#39;bz2&#39;</span><span class="p">,</span> <span class="s1">&#39;gzip&#39;</span><span class="p">,</span> <span class="s1">&#39;lzma&#39;</span><span class="p">):</span>
+                <span class="n">f_path_w_ext</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">algo</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f_path_w_ext</span><span class="p">):</span>
+                    <span class="n">extension</span> <span class="o">=</span> <span class="n">algo</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not find compressed source for </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">compressed_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">compressed_path</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Decompressing source: </span><span class="si">{</span><span class="n">compressed_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">extension</span> <span class="o">==</span> <span class="s1">&#39;zip&#39;</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">zipfile</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">compressed_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zipf</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_path</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;.nrrd&#39;</span><span class="p">):</span>
+                            <span class="n">zipf</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_path</span><span class="p">),</span> <span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">compressed_path</span><span class="p">))</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">zipf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">compressed_path</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+                        <span class="k">raise</span> <span class="ne">FileNotFoundError</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>  <span class="c1"># FIXME: TOO broad</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                    <span class="k">return</span>
+            <span class="k">elif</span> <span class="n">extension</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;bz2&#39;</span><span class="p">,</span> <span class="s1">&#39;gzip&#39;</span><span class="p">,</span> <span class="s1">&#39;lzma&#39;</span><span class="p">):</span>
+                <span class="n">mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">extension</span><span class="p">)</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">,</span> \
+                        <span class="nb">open</span><span class="p">(</span><span class="n">compressed_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">compressed_file</span><span class="p">:</span>
+                    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">compressed_file</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unrecognized compression extension </span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cannot find compressed source: </span><span class="si">{</span><span class="n">compressed_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">file_path</span>
+
+
+<span class="k">def</span> <span class="nf">compress</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;zip&#39;</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compresses a file only if:</span>
+<span class="sd">        1) the file exists (check)</span>
+<span class="sd">        2) the compressed file does not exist.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">        The file path to search for.</span>
+<span class="sd">    extension : str</span>
+<span class="sd">        The extension for the compressed file.</span>
+<span class="sd">    check : bool</span>
+<span class="sd">        If True, check if the compressed file already exists.</span>
+<span class="sd">    verbose : bool</span>
+<span class="sd">        Print progress info.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    filename : str or None</span>
+<span class="sd">        The compressed filename or None if failed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">check</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">extension</span> <span class="o">==</span> <span class="s1">&#39;auto&#39;</span><span class="p">:</span>
+            <span class="n">extension</span> <span class="o">=</span> <span class="s1">&#39;zip&#39;</span>
+        <span class="n">compressed_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s1">&#39;</span>  <span class="c1"># FIXME: replace existing extension</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">compressed_path</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Compressing source: </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">extension</span> <span class="o">==</span> <span class="s1">&#39;zip&#39;</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">zipfile</span>
+                <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">compressed_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="n">zipfile</span><span class="o">.</span><span class="n">ZIP_DEFLATED</span><span class="p">)</span> <span class="k">as</span> <span class="n">zipf</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_path</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;.nrrd&#39;</span><span class="p">):</span>
+                        <span class="n">zipf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">arcname</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_path</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+                            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                                <span class="n">zipf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">),</span> <span class="n">arcname</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">compressed_path</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">FileNotFoundError</span>
+            <span class="k">elif</span> <span class="n">extension</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;bz2&#39;</span><span class="p">,</span> <span class="s1">&#39;gzip&#39;</span><span class="p">,</span> <span class="s1">&#39;lzma&#39;</span><span class="p">):</span>
+                <span class="n">mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">extension</span><span class="p">)</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">in_file</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">compressed_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">compressed_file</span><span class="p">:</span>
+                    <span class="n">compressed_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">in_file</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unrecognized compression extension </span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Compressed file </span><span class="si">{</span><span class="n">compressed_path</span><span class="si">}</span><span class="s1"> exists. Skipping compression.&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">compressed_path</span>
+
+
+<span class="k">def</span> <span class="nf">checksum</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;md5&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the checksum of a file.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    file_path : str</span>
+<span class="sd">        The file path to search for.</span>
+<span class="sd">    algorithm : str</span>
+<span class="sd">        The algorithm to use for the checksum.</span>
+<span class="sd">    verbose : bool</span>
+<span class="sd">        Print progress info.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    checksum : str or None</span>
+<span class="sd">        The checksum or None if failed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-          <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Uncompressing source: </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">zip_filename</span><span class="p">);</span>
-        <span class="kn">import</span> <span class="nn">zipfile</span>
-        <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zipf</span><span class="p">:</span>
-          <span class="n">zipf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">zip_filename</span><span class="p">)[</span><span class="mi">0</span><span class="p">]);</span>
-      <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-          <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cannot find compressed source: </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">zip_filename</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">filename</span><span class="p">;</span>
-  <span class="k">except</span><span class="p">:</span>
-    <span class="k">return</span> <span class="kc">None</span><span class="p">;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Calculating checksum for </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="kn">import</span> <span class="nn">hashlib</span>
+        <span class="nb">hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">algorithm</span><span class="p">)</span>  <span class="c1"># TODO: check because could be faster to call the function directly</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">4096</span><span class="p">),</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+                <span class="nb">hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+        <span class="n">file_checksum</span> <span class="o">=</span> <span class="nb">hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cannot find file </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">file_checksum</span>
     
 
 <span class="c1">###############################################################################</span>
-<span class="c1">### Tests</span>
+<span class="c1"># ## Tests</span>
 <span class="c1">###############################################################################</span>
 
 <span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
-  <span class="kn">import</span> <span class="nn">ClearMap.IO.FileUtils</span> <span class="k">as</span> <span class="nn">fu</span>
-  <span class="n">reload</span><span class="p">(</span><span class="n">fu</span><span class="p">)</span>
-  
-  <span class="n">filename</span> <span class="o">=</span> <span class="n">fu</span><span class="o">.</span><span class="vm">__file__</span><span class="p">;</span>
-  <span class="n">path</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">fu</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-  
-  <span class="n">fu</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="n">fu</span><span class="o">.</span><span class="n">is_directory</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
-  <span class="n">fu</span><span class="o">.</span><span class="n">file_extension</span><span class="p">(</span><span class="n">filename</span><span class="p">);</span>
-  
-  
-  
-  
-  
-</pre></div>
- <!-- body -->
-    </div> <!-- body -->
-    </div> <!-- bodywrapper -->
-    
+    <span class="kn">import</span> <span class="nn">ClearMap.IO.FileUtils</span> <span class="k">as</span> <span class="nn">fu</span>
+    <span class="n">reload</span><span class="p">(</span><span class="n">fu</span><span class="p">)</span>
 
-     
-  <!-- mainrow --></div>
-<!-- document --></div>
-<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
-<p align="center">
-<a href="../../../overview.html"><img src="../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
-</p>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">fu</span><span class="o">.</span><span class="vm">__file__</span>
+    <span class="n">path</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">fu</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="n">fu</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="n">fu</span><span class="o">.</span><span class="n">is_directory</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="n">fu</span><span class="o">.</span><span class="n">file_extension</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
 </div>
 
-    <div class="footer" role="contentinfo">
-        &#169; Copyright Copyright © 2020 by Christoph Kirst.
-    </div>
+  </footer>
   </body>
 </html>

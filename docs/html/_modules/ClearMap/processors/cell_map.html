@@ -1,0 +1,1234 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.processors.cell_map &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/processors/cell_map';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.pro...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.processors.cell_map</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">CellMap</span>
+<span class="sd">=======</span>
+
+<span class="sd">This module contains the class to analyze (detect) individual cells,</span>
+<span class="sd">e.g. to analyze immediate early gene expression data from iDISCO+ cleared tissue [Renier2016]_.</span>
+
+
+<span class="sd">.. image:: ../static/cell_abstract_2016.jpg</span>
+<span class="sd">   :target: https://doi.org/10.1016/j.cell.2020.01.028</span>
+<span class="sd">   :width: 300</span>
+
+<span class="sd">.. figure:: ../static/CellMap_pipeline.png</span>
+
+<span class="sd">  iDISCO+ and ClearMap: A Pipeline for Cell Detection, Registration, and </span>
+<span class="sd">  Mapping in Intact Samples Using Light Sheet Microscopy.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures.process</span> <span class="kn">import</span> <span class="n">BrokenProcessPool</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtGui</span> <span class="kn">import</span> <span class="n">QColor</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">pyqtgraph</span> <span class="k">as</span> <span class="nn">pg</span>
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Alignment.Elastix</span> <span class="k">as</span> <span class="nn">elastix</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">clearmap_io</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">plot_3d</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Visualization.Qt.Plot3d</span> <span class="k">as</span> <span class="nn">qplot_3d</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Alignment.Resampling</span> <span class="k">as</span> <span class="nn">resampling</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Experts.Cells</span> <span class="k">as</span> <span class="nn">cell_detection</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Analysis.Measurements.Voxelization</span> <span class="k">as</span> <span class="nn">voxelization</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Alignment.Annotation</span> <span class="k">as</span> <span class="nn">annotation</span>
+<span class="kn">from</span> <span class="nn">ClearMap.processors.sample_preparation</span> <span class="kn">import</span> <span class="n">PreProcessor</span>
+<span class="kn">from</span> <span class="nn">ClearMap.processors.generic_tab_processor</span> <span class="kn">import</span> <span class="n">TabProcessor</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Utils.utilities</span> <span class="kn">import</span> <span class="n">runs_on_ui</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Visualization.Qt.widgets</span> <span class="kn">import</span> <span class="n">Scatter3D</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;, Charly Rousseau &lt;charly.rousseau@icm-institute.org&gt;&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Public License v3 (see LICENSE)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span> <span class="o">=</span> <span class="s1">&#39;https://idisco.info&#39;</span>
+<span class="n">__download__</span> <span class="o">=</span> <span class="s1">&#39;https://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+<span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;darwin&#39;</span><span class="p">):</span>
+    <span class="n">USE_BINARY_POINTS_FILE</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">USE_BINARY_POINTS_FILE</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+<div class="viewcode-block" id="CellDetector">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector">[docs]</a>
+<span class="k">class</span> <span class="nc">CellDetector</span><span class="p">(</span><span class="n">TabProcessor</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preprocessor</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cell_detection_re</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Processing block&#39;</span><span class="p">,</span>
+                                  <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;.*?Processing block \d+/\d+.*?\selapsed time:\s\d+:\d+:\d+\.\d+&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CellDetector.setup">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.setup">[docs]</a>
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span> <span class="o">=</span> <span class="n">preprocessor</span>
+        <span class="k">if</span> <span class="n">preprocessor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">workspace</span>
+            <span class="n">configs</span> <span class="o">=</span> <span class="n">preprocessor</span><span class="o">.</span><span class="n">get_configs</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span> <span class="o">=</span> <span class="n">configs</span><span class="p">[</span><span class="s1">&#39;sample&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span> <span class="o">=</span> <span class="n">configs</span><span class="p">[</span><span class="s1">&#39;machine&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">config_loader</span><span class="o">.</span><span class="n">get_cfg</span><span class="p">(</span><span class="s1">&#39;cell_map&#39;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_progress_watcher</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">progress_watcher</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">detected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">))</span>
+
+<div class="viewcode-block" id="CellDetector.run">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.run">[docs]</a>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># select sub-slice for testing the pipeline</span>
+        <span class="n">slicing</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;test_set_slicing&#39;</span><span class="p">][</span><span class="s1">&#39;dim_0&#39;</span><span class="p">]),</span>
+            <span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;test_set_slicing&#39;</span><span class="p">][</span><span class="s1">&#39;dim_1&#39;</span><span class="p">]),</span>
+            <span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;test_set_slicing&#39;</span><span class="p">][</span><span class="s1">&#39;dim_2&#39;</span><span class="p">])</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_test_dataset</span><span class="p">(</span><span class="n">slicing</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">run_cell_detection</span><span class="p">(</span><span class="n">tuning</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;detection&#39;</span><span class="p">][</span><span class="s1">&#39;preview&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">preview_cell_detection</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">run_cell_detection</span><span class="p">()</span>
+        <span class="c1"># print(f&quot;Number of cells detected: {self.get_n_detected_cells()}&quot;)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">post_process_cells</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.post_process_cells">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.post_process_cells">[docs]</a>
+    <span class="k">def</span> <span class="nf">post_process_cells</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;detection&#39;</span><span class="p">][</span><span class="s1">&#39;plot_cells&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">runs_on_ui</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_cells</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filter_cells</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;cell_filtration&#39;</span><span class="p">][</span><span class="s1">&#39;preview&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">runs_on_ui</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_filtered_cells</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">atlas_align</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">export_collapsed_stats</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.voxelize">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.voxelize">[docs]</a>
+    <span class="k">def</span> <span class="nf">voxelize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
+        <span class="n">coordinates</span><span class="p">,</span> <span class="n">cells</span><span class="p">,</span> <span class="n">voxelization_parameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_voxelization_params</span><span class="p">(</span><span class="n">postfix</span><span class="o">=</span><span class="n">postfix</span><span class="p">)</span>
+        <span class="c1"># %% Unweighted</span>
+        <span class="n">coordinates</span><span class="p">,</span> <span class="n">counts_file_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">voxelize_unweighted</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">voxelization_parameter</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;voxelization&#39;</span><span class="p">][</span><span class="s1">&#39;preview&#39;</span><span class="p">][</span><span class="s1">&#39;counts&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">runs_on_ui</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_voxelized_counts</span><span class="p">()</span></div>
+
+        <span class="c1"># %% Weighted</span>
+        <span class="c1"># intensities_file_path = self.voxelize_weighted(coordinates, cells, voxelization_parameter)  # WARNING: Currently causing issues</span>
+        <span class="c1"># if self.processing_config[&#39;voxelization&#39;][&#39;preview&#39;][&#39;densities&#39;]:</span>
+        <span class="c1">#     self.plot_voxelized_intensities()</span>
+
+<div class="viewcode-block" id="CellDetector.plot_voxelized_counts">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.plot_voxelized_counts">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_voxelized_counts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arrange</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;resampling&#39;</span><span class="p">][</span><span class="s1">&#39;raw_sink_resolution&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">plot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;counts&#39;</span><span class="p">),</span>
+                            <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Cell density (voxelized)&#39;</span><span class="p">,</span> <span class="n">lut</span><span class="o">=</span><span class="s1">&#39;flame&#39;</span><span class="p">,</span>
+                            <span class="n">arrange</span><span class="o">=</span><span class="n">arrange</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.create_test_dataset">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.create_test_dataset">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_test_dataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slicing</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">create_debug</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">,</span> <span class="n">slicing</span><span class="o">=</span><span class="n">slicing</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.get_voxelization_params">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.get_voxelization_params">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_voxelization_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="n">voxelization_parameter</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;voxelization&#39;</span><span class="p">][</span><span class="s1">&#39;radii&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="kc">True</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>  <span class="c1"># Path will use debug</span>
+            <span class="n">voxelization_parameter</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;shape&#39;</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">was_registered</span><span class="p">:</span>
+            <span class="n">voxelization_parameter</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">annotation_file_path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">voxelization_parameter</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">resampled_shape</span>
+        <span class="k">if</span> <span class="n">postfix</span><span class="p">:</span>  <span class="c1"># Hack to compensate for the fact that the realigned makes no sense in</span>
+            <span class="n">cells</span><span class="p">,</span> <span class="n">coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coords</span><span class="p">(</span><span class="n">coord_type</span><span class="o">=</span><span class="n">postfix</span><span class="p">,</span> <span class="n">aligned</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cells</span><span class="p">,</span> <span class="n">coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coords</span><span class="p">(</span><span class="n">coord_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aligned</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">cells</span><span class="p">,</span> <span class="n">voxelization_parameter</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.get_coords">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.get_coords">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_coords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord_type</span><span class="o">=</span><span class="s1">&#39;filtered&#39;</span><span class="p">,</span> <span class="n">aligned</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">coord_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;filtered&#39;</span><span class="p">,</span> <span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Coordinate type &quot;</span><span class="si">{</span><span class="n">coord_type</span><span class="si">}</span><span class="s1">&quot; not recognised&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">coord_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dataframe_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.feather&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dataframe_path</span><span class="p">):</span>
+                <span class="n">table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">dataframe_path</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="n">coord_type</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">aligned</span><span class="p">:</span>
+            <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">table</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;xt&#39;</span><span class="p">,</span> <span class="s1">&#39;yt&#39;</span><span class="p">,</span> <span class="s1">&#39;zt&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">table</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">return</span> <span class="n">table</span><span class="p">,</span> <span class="n">coordinates</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.voxelize_unweighted">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.voxelize_unweighted">[docs]</a>
+    <span class="k">def</span> <span class="nf">voxelize_unweighted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">voxelization_parameter</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Voxelize un weighted i.e. for cell counts</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        coordinates</span>
+<span class="sd">            str, array or Source</span>
+<span class="sd">            Source of point of nxd coordinates.</span>
+
+<span class="sd">        voxelization_parameter</span>
+<span class="sd">            dict</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">counts_file_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;counts&#39;</span><span class="p">)</span>  <span class="c1"># TODO: improve var name</span>
+        <span class="n">clearmap_io</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="n">counts_file_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_watcher_step</span><span class="p">(</span><span class="s1">&#39;Unweighted voxelisation&#39;</span><span class="p">)</span>
+        <span class="n">voxelization</span><span class="o">.</span><span class="n">voxelize</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">counts_file_path</span><span class="p">,</span> <span class="o">**</span><span class="n">voxelization_parameter</span><span class="p">)</span>  <span class="c1"># WARNING: prange</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+        <span class="c1"># self.remove_crust(coordinates, voxelization_parameter)  # WARNING: currently causing issues</span>
+        <span class="k">return</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">counts_file_path</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.voxelize_weighted">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.voxelize_weighted">[docs]</a>
+    <span class="k">def</span> <span class="nf">voxelize_weighted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">voxelization_parameter</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Voxelize weighted i.e. for cell intensities</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        coordinates</span>
+<span class="sd">            np.array</span>
+<span class="sd">        source</span>
+<span class="sd">            Source.Source</span>
+<span class="sd">        voxelization_parameter</span>
+<span class="sd">            dict</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">intensities_file_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;intensities&#39;</span><span class="p">)</span>
+        <span class="n">intensities</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span>
+        <span class="n">voxelization</span><span class="o">.</span><span class="n">voxelize</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">intensities_file_path</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">intensities</span><span class="p">,</span> <span class="o">**</span><span class="n">voxelization_parameter</span><span class="p">)</span>   <span class="c1"># WARNING: prange</span>
+        <span class="k">return</span> <span class="n">intensities_file_path</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.atlas_align">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.atlas_align">[docs]</a>
+    <span class="k">def</span> <span class="nf">atlas_align</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Atlas alignment and annotation &quot;&quot;&quot;</span>
+        <span class="n">table</span><span class="p">,</span> <span class="n">coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coords</span><span class="p">(</span><span class="n">coord_type</span><span class="o">=</span><span class="s1">&#39;filtered&#39;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">coordinates</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">coordinates</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="n">coordinates</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]})</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">was_registered</span><span class="p">:</span>
+            <span class="n">coordinates_transformed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_coordinates</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;xt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">coordinates_transformed</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;yt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">coordinates_transformed</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;zt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">coordinates_transformed</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+
+            <span class="n">structure_ids</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">label_points</span><span class="p">(</span><span class="n">coordinates_transformed</span><span class="p">,</span>
+                                                    <span class="n">annotation_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">annotation_file_path</span><span class="p">,</span>
+                                                    <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">structure_ids</span>
+
+            <span class="n">hemisphere_labels</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">label_points</span><span class="p">(</span><span class="n">coordinates_transformed</span><span class="p">,</span>
+                                                        <span class="n">annotation_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">hemispheres_file_path</span><span class="p">,</span>
+                                                        <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hemisphere_labels</span>
+
+            <span class="n">names</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">convert_label</span><span class="p">(</span><span class="n">structure_ids</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">names</span>
+
+            <span class="n">unique_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+            <span class="n">order_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">id_</span><span class="p">:</span> <span class="n">annotation</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">id_</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">id_</span> <span class="ow">in</span> <span class="n">unique_ids</span><span class="p">}</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">order_map</span><span class="p">)</span>
+
+            <span class="n">color_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">id_</span><span class="p">:</span> <span class="n">annotation</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">id_</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;rgb&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">id_</span> <span class="ow">in</span> <span class="n">unique_ids</span><span class="p">}</span>  <span class="c1"># WARNING RGB upper case should give integer but does not work</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">color_map</span><span class="p">)</span>
+
+            <span class="n">volumes</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">annotation</span><span class="o">.</span><span class="n">get_lateralised_volume_map</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;resampling&#39;</span><span class="p">][</span><span class="s1">&#39;autofluo_sink_resolution&#39;</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">hemispheres_file_path</span>
+            <span class="p">)</span>
+            <span class="n">df</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;hemisphere&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">volumes</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+
+        <span class="n">df</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.feather&#39;</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.transform_coordinates">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.transform_coordinates">[docs]</a>
+    <span class="k">def</span> <span class="nf">transform_coordinates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coords</span><span class="p">):</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="n">resampling</span><span class="o">.</span><span class="n">resample_points</span><span class="p">(</span>
+            <span class="n">coords</span><span class="p">,</span> <span class="n">resampled</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">original_shape</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">raw_stitched_shape</span><span class="p">,</span>
+            <span class="n">resampled_shape</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">resampled_shape</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">was_registered</span><span class="p">:</span>
+            <span class="n">coords</span> <span class="o">=</span> <span class="n">elastix</span><span class="o">.</span><span class="n">transform_points</span><span class="p">(</span>
+                <span class="n">coords</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">transform_directory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled_to_auto&#39;</span><span class="p">),</span>
+                <span class="n">binary</span><span class="o">=</span><span class="n">USE_BINARY_POINTS_FILE</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+            <span class="n">coords</span> <span class="o">=</span> <span class="n">elastix</span><span class="o">.</span><span class="n">transform_points</span><span class="p">(</span>
+                <span class="n">coords</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">transform_directory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;auto_to_reference&#39;</span><span class="p">),</span>
+                <span class="n">binary</span><span class="o">=</span><span class="n">USE_BINARY_POINTS_FILE</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">coords</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.filter_cells">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.filter_cells">[docs]</a>
+    <span class="k">def</span> <span class="nf">filter_cells</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
+        <span class="n">thresholds</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;source&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;cell_filtration&#39;</span><span class="p">][</span><span class="s1">&#39;thresholds&#39;</span><span class="p">][</span><span class="s1">&#39;intensity&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;cell_filtration&#39;</span><span class="p">][</span><span class="s1">&#39;thresholds&#39;</span><span class="p">][</span><span class="s1">&#39;size&#39;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">cell_detection</span><span class="o">.</span><span class="n">filter_cells</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">),</span>
+                                    <span class="n">sink</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;filtered&#39;</span><span class="p">),</span>
+                                    <span class="n">thresholds</span><span class="o">=</span><span class="n">thresholds</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.run_cell_detection">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.run_cell_detection">[docs]</a>
+    <span class="k">def</span> <span class="nf">run_cell_detection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tuning</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save_shape</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">tuning</span>  <span class="c1"># TODO: use context manager</span>
+        <span class="n">cell_detection_param</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">cell_detection</span><span class="o">.</span><span class="n">default_cell_detection_parameter</span><span class="p">)</span>
+        <span class="n">cell_detection_param</span><span class="p">[</span><span class="s1">&#39;illumination_correction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># WARNING: illumination or illumination_correction</span>
+        <span class="n">cell_detection_param</span><span class="p">[</span><span class="s1">&#39;background_correction&#39;</span><span class="p">][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;detection&#39;</span><span class="p">][</span><span class="s1">&#39;background_correction&#39;</span><span class="p">][</span><span class="s1">&#39;diameter&#39;</span><span class="p">]</span>
+        <span class="n">cell_detection_param</span><span class="p">[</span><span class="s1">&#39;maxima_detection&#39;</span><span class="p">][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;detection&#39;</span><span class="p">][</span><span class="s1">&#39;maxima_detection&#39;</span><span class="p">][</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span>
+        <span class="n">cell_detection_param</span><span class="p">[</span><span class="s1">&#39;intensity_detection&#39;</span><span class="p">][</span><span class="s1">&#39;measure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span>
+        <span class="n">cell_detection_param</span><span class="p">[</span><span class="s1">&#39;shape_detection&#39;</span><span class="p">][</span><span class="s1">&#39;threshold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;detection&#39;</span><span class="p">][</span><span class="s1">&#39;shape_detection&#39;</span><span class="p">][</span><span class="s1">&#39;threshold&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">tuning</span><span class="p">:</span>
+            <span class="n">clearmap_io</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;bkg&#39;</span><span class="p">))</span>
+            <span class="n">cell_detection_param</span><span class="p">[</span><span class="s1">&#39;background_correction&#39;</span><span class="p">][</span><span class="s1">&#39;save&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;bkg&#39;</span><span class="p">)</span>
+            <span class="n">clearmap_io</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;shape&#39;</span><span class="p">))</span>
+            <span class="n">cell_detection_param</span><span class="p">[</span><span class="s1">&#39;shape_detection&#39;</span><span class="p">][</span><span class="s1">&#39;save&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;shape&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">save_shape</span><span class="p">:</span>
+            <span class="n">cell_detection_param</span><span class="p">[</span><span class="s1">&#39;shape_detection&#39;</span><span class="p">][</span><span class="s1">&#39;save&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;shape&#39;</span><span class="p">)</span>
+
+            <span class="c1"># clearmap_io.delete_file(workspace.filename(&#39;cells&#39;, postfix=&#39;maxima&#39;))</span>
+            <span class="c1"># cell_detection_param[&#39;maxima_detection&#39;][&#39;save&#39;] = workspace.filename(&#39;cells&#39;, postfix=&#39;maxima&#39;)</span>
+
+        <span class="n">processing_parameter</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">cell_detection</span><span class="o">.</span><span class="n">default_cell_detection_processing_parameter</span><span class="p">)</span>
+        <span class="n">processing_parameter</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>  <span class="c1"># TODO: store as other dict and run .update(**self.extra_detection_params)</span>
+            <span class="n">processes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_cell_detection&#39;</span><span class="p">],</span>
+            <span class="n">size_min</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;detection_chunk_size_min&#39;</span><span class="p">],</span>
+            <span class="n">size_max</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;detection_chunk_size_max&#39;</span><span class="p">],</span>
+            <span class="n">overlap</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;detection_chunk_overlap&#39;</span><span class="p">],</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+        <span class="n">n_steps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_n_blocks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># OPTIMISE: read metadata w/out load  # TODO: round to processors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="n">n_steps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell_detection_re</span><span class="p">,</span> <span class="s1">&#39;Detecting cells&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cell_detection</span><span class="o">.</span><span class="n">detect_cells</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">),</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">),</span>
+                                        <span class="n">cell_detection_parameter</span><span class="o">=</span><span class="n">cell_detection_param</span><span class="p">,</span>
+                                        <span class="n">processing_parameter</span><span class="o">=</span><span class="n">processing_parameter</span><span class="p">,</span>
+                                        <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">)</span>  <span class="c1"># WARNING: prange inside multiprocess (including arrayprocessing and devolvepoints for vox)</span>
+        <span class="k">except</span> <span class="n">BrokenProcessPool</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cell detection canceled&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.export_as_csv">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.export_as_csv">[docs]</a>
+    <span class="k">def</span> <span class="nf">export_as_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Export the cell coordinates to csv</span>
+
+<span class="sd">        .. deprecated:: 2.1</span>
+<span class="sd">            Use :func:`atlas_align` and `export_collapsed_stats` instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;export_as_csv is deprecated and will be removed in future versions;&quot;</span>
+                      <span class="s2">&quot;please use the new formats from atlas_align and export_collapsed_stats&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">csv_file_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_cells_df</span><span class="p">()</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">csv_file_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.export_collapsed_stats">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.export_collapsed_stats">[docs]</a>
+    <span class="k">def</span> <span class="nf">export_collapsed_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">all_regions</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cells_df</span><span class="p">()</span>
+
+        <span class="n">collapsed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+        <span class="n">relevant_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;hemisphere&#39;</span><span class="p">,</span> <span class="s1">&#39;volume&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">):</span>  <span class="c1"># Split by hemisphere to group by structure and reconcatenate hemispheres after</span>
+            <span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span><span class="p">][</span><span class="n">relevant_columns</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+            <span class="n">first</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Structure ID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">first</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Structure order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">first</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Structure name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">first</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Hemisphere&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">first</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Structure volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">first</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Cell counts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Average cell size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span>
+
+            <span class="n">collapsed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">collapsed</span><span class="p">,</span> <span class="n">tmp</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">all_regions</span><span class="p">:</span>  <span class="c1"># Add regions even if they are empty</span>
+            <span class="n">uniq_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">annotation</span><span class="o">.</span><span class="n">annotation</span><span class="o">.</span><span class="n">atlas</span><span class="p">)</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Structure ID&#39;</span><span class="p">:</span> <span class="n">uniq_ids</span><span class="p">,</span> <span class="s1">&#39;mock&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Structure name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">convert_label</span><span class="p">(</span><span class="n">uniq_ids</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+            <span class="n">df_mock</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Hemisphere&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="s1">&#39;mock&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_mock</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;mock&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;mock&#39;</span><span class="p">)</span>
+            <span class="n">vol_map</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">annotation</span><span class="o">.</span><span class="n">get_lateralised_volume_map</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;resampling&#39;</span><span class="p">][</span><span class="s1">&#39;autofluo_sink_resolution&#39;</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">hemispheres_file_path</span>
+            <span class="p">)</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Structure volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Structure ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Hemisphere&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">vol_map</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+            <span class="n">order_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">id_</span><span class="p">:</span> <span class="n">annotation</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">id_</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">id_</span> <span class="ow">in</span> <span class="n">uniq_ids</span><span class="p">}</span>
+            <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Structure order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="s1">&#39;Structure ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">order_map</span><span class="p">)</span>
+            <span class="n">collapsed</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">collapsed</span><span class="p">[[</span><span class="s1">&#39;Structure ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Hemisphere&#39;</span><span class="p">,</span> <span class="s1">&#39;Cell counts&#39;</span><span class="p">,</span> <span class="s1">&#39;Average cell size&#39;</span><span class="p">]],</span>
+                                  <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Structure ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Hemisphere&#39;</span><span class="p">])</span>
+
+        <span class="n">collapsed</span> <span class="o">=</span> <span class="n">collapsed</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Structure ID&#39;</span><span class="p">)</span>
+
+        <span class="n">csv_file_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;stats&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+        <span class="n">collapsed</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">csv_file_path</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.plot_cells">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.plot_cells">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_cells</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># For non GUI</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span>
+        <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">plot_3d</span><span class="o">.</span><span class="n">subplot_tiling</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.plot_cells_3d_scatter_w_atlas_colors">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.plot_cells_3d_scatter_w_atlas_colors">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_cells_3d_scatter_w_atlas_colors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">raw</span><span class="p">:</span>
+            <span class="n">dv</span> <span class="o">=</span> <span class="n">qplot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stitched and cells&#39;</span><span class="p">,</span>
+                               <span class="c1"># scale=self.preprocessor.sample_config[&#39;resolutions&#39;][&#39;raw&#39;],# FIXME: correct scaling for anisotropic</span>
+                               <span class="n">arrange</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lut</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">was_registered</span><span class="p">:</span>  <span class="c1"># REFACTORING: could extract</span>
+                <span class="n">dv</span> <span class="o">=</span> <span class="n">qplot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">clearmap_io</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">reference_file_path</span><span class="p">),</span>
+                                   <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Reference and cells&#39;</span><span class="p">,</span>
+                                   <span class="n">arrange</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lut</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dv</span> <span class="o">=</span> <span class="n">qplot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Resampled and cells&#39;</span><span class="p">,</span>
+                                   <span class="n">arrange</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lut</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">scatter</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">ScatterPlotItem</span><span class="p">()</span>
+
+        <span class="n">dv</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">scatter</span><span class="p">)</span>
+        <span class="n">dv</span><span class="o">.</span><span class="n">scatter</span> <span class="o">=</span> <span class="n">scatter</span>
+
+        <span class="n">df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cells_df</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">raw</span><span class="p">:</span>
+            <span class="n">coordinates</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+            <span class="c1"># coordinates = coordinates * np.array(self.preprocessor.sample_config[&#39;resolutions&#39;][&#39;raw&#39;])</span>
+            <span class="c1"># coordinates = coordinates.astype(int)  # required to match integer z  # FIXME: correct scaling for anisotropic</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">coordinates</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;xt&#39;</span><span class="p">,</span> <span class="s1">&#39;yt&#39;</span><span class="p">,</span> <span class="s1">&#39;zt&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="c1"># required to match integer z</span>
+            <span class="n">dv</span><span class="o">.</span><span class="n">atlas</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">annotation_file_path</span><span class="p">)</span>
+            <span class="n">dv</span><span class="o">.</span><span class="n">structure_names</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">get_names_map</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s1">&#39;hemisphere&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">hemispheres</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hemispheres</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">dv</span><span class="o">.</span><span class="n">scatter_coords</span> <span class="o">=</span> <span class="n">Scatter3D</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                                      <span class="n">hemispheres</span><span class="o">=</span><span class="n">hemispheres</span><span class="p">,</span> <span class="n">half_slice_thickness</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">dv</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">dv</span><span class="p">]</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">df_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">feather_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.feather&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">feather_path</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CellDetector.get_cells_df">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.get_cells_df">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_cells_df</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">df_path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.feather&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df_path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">df_path</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.plot_filtered_cells">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.plot_filtered_cells">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_filtered_cells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">smarties</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coords</span><span class="p">(</span><span class="s1">&#39;filtered&#39;</span><span class="p">)</span>
+        <span class="n">stitched_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">)</span>
+        <span class="n">dv</span> <span class="o">=</span> <span class="n">qplot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stitched_path</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stitched and filtered cells&#39;</span><span class="p">,</span> <span class="n">arrange</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                           <span class="n">lut</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">scatter</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">ScatterPlotItem</span><span class="p">()</span>
+
+        <span class="n">dv</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">scatter</span><span class="p">)</span>
+        <span class="n">dv</span><span class="o">.</span><span class="n">scatter</span> <span class="o">=</span> <span class="n">scatter</span>
+
+        <span class="n">dv</span><span class="o">.</span><span class="n">scatter_coords</span> <span class="o">=</span> <span class="n">Scatter3D</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">smarties</span><span class="o">=</span><span class="n">smarties</span><span class="p">,</span> <span class="n">half_slice_thickness</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">dv</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">dv</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.plot_background_subtracted_img">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.plot_background_subtracted_img">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_background_subtracted_img</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">)[</span><span class="n">c</span><span class="p">][:,</span> <span class="kc">None</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">&#39;xyz&#39;</span><span class="p">])</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">plot_3d</span><span class="o">.</span><span class="n">list_plot_3d</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">plot_3d</span><span class="o">.</span><span class="n">plot_3d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">),</span> <span class="n">view</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plot_3d</span><span class="o">.</span><span class="n">grays_alpha</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.remove_crust">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.remove_crust">[docs]</a>
+    <span class="k">def</span> <span class="nf">remove_crust</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">voxelization_parameter</span><span class="p">):</span>
+        <span class="n">dist2surf</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">distance_file_path</span><span class="p">)</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="c1"># Convert coordinates to integer</span>
+        <span class="n">int_coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+        <span class="c1"># Ensure all coordinates are within the dist2surf array bounds</span>
+        <span class="n">valid_indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">int_coordinates</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dist2surf</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&amp;</span> \
+                        <span class="p">(</span><span class="n">int_coordinates</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dist2surf</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> \
+                        <span class="p">(</span><span class="n">int_coordinates</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">dist2surf</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+        <span class="c1"># Apply the mask to get valid coordinates</span>
+        <span class="n">valid_coordinates</span> <span class="o">=</span> <span class="n">int_coordinates</span><span class="p">[</span><span class="n">valid_indices</span><span class="p">]</span>
+
+        <span class="c1"># Get the dist2surf values at the valid coordinates</span>
+        <span class="n">dist_values</span> <span class="o">=</span> <span class="n">dist2surf</span><span class="p">[</span><span class="n">valid_coordinates</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+                                <span class="n">valid_coordinates</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+                                <span class="n">valid_coordinates</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]]</span>
+
+        <span class="c1"># Apply the threshold</span>
+        <span class="n">coordinates_wcrust</span> <span class="o">=</span> <span class="n">valid_coordinates</span><span class="p">[</span><span class="n">dist_values</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span>
+
+        <span class="n">voxelization</span><span class="o">.</span><span class="n">voxelize</span><span class="p">(</span><span class="n">coordinates_wcrust</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;counts_wcrust&#39;</span><span class="p">),</span>
+                              <span class="o">**</span><span class="n">voxelization_parameter</span><span class="p">)</span>   <span class="c1"># WARNING: prange</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.preview_cell_detection">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.preview_cell_detection">[docs]</a>
+    <span class="k">def</span> <span class="nf">preview_cell_detection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">arrange</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">),</span>
+                   <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;bkg&#39;</span><span class="p">),</span>
+                   <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;shape&#39;</span><span class="p">)</span>
+                   <span class="p">]</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">s</span><span class="p">)]</span>  <span class="c1"># Remove missing files (if not tuning)</span>
+        <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">]</span>
+        <span class="n">luts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;random&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">plot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">titles</span><span class="p">,</span> <span class="n">arrange</span><span class="o">=</span><span class="n">arrange</span><span class="p">,</span> <span class="n">sync</span><span class="o">=</span><span class="n">sync</span><span class="p">,</span> <span class="n">lut</span><span class="o">=</span><span class="n">luts</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.get_n_detected_cells">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.get_n_detected_cells">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_n_detected_cells</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">)):</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coords</span><span class="p">(</span><span class="n">coord_type</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># TODO: check dimension instead</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.get_n_filtered_cells">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.get_n_filtered_cells">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_n_filtered_cells</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;filtered&#39;</span><span class="p">)):</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_coords</span><span class="p">(</span><span class="n">coord_type</span><span class="o">=</span><span class="s1">&#39;filtered&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">coords</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># TODO: check dimension instead</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.plot_voxelized_intensities">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.plot_voxelized_intensities">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_voxelized_intensities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arrange</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">plot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;intensities&#39;</span><span class="p">),</span> <span class="n">arrange</span><span class="o">=</span><span class="n">arrange</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.get_n_blocks">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.get_n_blocks">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_n_blocks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim_size</span><span class="p">):</span>
+        <span class="n">blk_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;detection_chunk_size_max&#39;</span><span class="p">]</span>
+        <span class="n">overlap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;detection_chunk_overlap&#39;</span><span class="p">]</span>
+        <span class="n">n_blocks</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">dim_size</span> <span class="o">-</span> <span class="n">blk_size</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">blk_size</span> <span class="o">-</span> <span class="n">overlap</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">n_blocks</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.export_to_clearmap1_fmt">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.export_to_clearmap1_fmt">[docs]</a>
+    <span class="k">def</span> <span class="nf">export_to_clearmap1_fmt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        ClearMap 1.0 export (will generate the files cells_ClearMap1_intensities, cells_ClearMap1_points_transformed,</span>
+<span class="sd">        cells_ClearMap1_points necessaries to use the analysis script of ClearMap1.</span>
+<span class="sd">        In ClearMap2 the &#39;cells&#39; file contains already all this information)</span>
+<span class="sd">        In order to align the coordinates when we have right and left hemispheres,</span>
+<span class="sd">        if the orientation of the brain is left, will calculate the new coordinates for the Y axes,</span>
+<span class="sd">        this change will not affect the orientation of the heatmaps, since these are generated from</span>
+<span class="sd">        the ClearMap2 file &#39;cells&#39;</span>
+
+<span class="sd">        .. deprecated:: 2.1</span>
+<span class="sd">            Use :func:`atlas_align` and `export_collapsed_stats` instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;export_to_clearmap1_fmt is deprecated and will be removed in future versions;&quot;</span>
+                      <span class="s2">&quot;please use the new formats from atlas_align and export_collapsed_stats&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">)</span>
+        <span class="n">clearmap1_format</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;points&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">],</span>
+                            <span class="s1">&#39;points_transformed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;xt&#39;</span><span class="p">,</span> <span class="s1">&#39;yt&#39;</span><span class="p">,</span> <span class="s1">&#39;zt&#39;</span><span class="p">],</span>
+                            <span class="s1">&#39;intensities&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;background&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">]}</span>
+        <span class="k">for</span> <span class="n">filename</span><span class="p">,</span> <span class="n">names</span> <span class="ow">in</span> <span class="n">clearmap1_format</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">sink</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ClearMap1&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sink</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">source</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">names</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>
+            <span class="n">clearmap_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CellDetector.convert_cm2_to_cm2_1_fmt">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.cell_map.html#ClearMap.processors.cell_map.CellDetector.convert_cm2_to_cm2_1_fmt">[docs]</a>
+    <span class="k">def</span> <span class="nf">convert_cm2_to_cm2_1_fmt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Atlas alignment and annotation &quot;&quot;&quot;</span>
+        <span class="n">cells</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">))</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">ax</span><span class="p">:</span> <span class="n">cells</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="s1">&#39;xyz&#39;</span><span class="p">})</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="s1">&#39;xyz&#39;</span><span class="p">:</span>
+            <span class="n">df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s1">t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cells</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s1">t&#39;</span><span class="p">]</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cells</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+
+        <span class="n">coordinates_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">cells</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s1">t&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="s1">&#39;xyz&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="c1"># FIXME: Put key ID and get ID directly</span>
+        <span class="n">hemisphere_label</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">label_points</span><span class="p">(</span><span class="n">coordinates_transformed</span><span class="p">,</span>
+                                                   <span class="n">annotation_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">hemispheres_file_path</span><span class="p">,</span>
+                                                   <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+        <span class="n">unique_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+        <span class="n">color_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">lbl</span><span class="p">:</span> <span class="n">annotation</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">lbl</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;order&#39;</span><span class="p">)[</span><span class="s1">&#39;rgb&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">lbl</span> <span class="ow">in</span>
+                     <span class="n">unique_labels</span><span class="p">}</span>  <span class="c1"># WARNING RGB upper case should give integer but does not work</span>
+        <span class="n">id_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">lbl</span><span class="p">:</span> <span class="n">annotation</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">lbl</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;order&#39;</span><span class="p">)[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">lbl</span> <span class="ow">in</span> <span class="n">unique_labels</span><span class="p">}</span>
+
+        <span class="n">atlas</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">annotation_file_path</span><span class="p">)</span>
+        <span class="n">atlas_scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocessor</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;resampling&#39;</span><span class="p">][</span><span class="s1">&#39;autofluo_sink_resolution&#39;</span><span class="p">]</span>
+        <span class="n">atlas_scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">atlas_scale</span><span class="p">)</span>
+        <span class="n">volumes</span> <span class="o">=</span> <span class="p">{</span><span class="n">_id</span><span class="p">:</span> <span class="p">(</span><span class="n">atlas</span> <span class="o">==</span> <span class="n">_id</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="n">atlas_scale</span> <span class="k">for</span> <span class="n">_id</span> <span class="ow">in</span>
+                   <span class="n">id_map</span><span class="o">.</span><span class="n">values</span><span class="p">()}</span>  <span class="c1"># Volumes need a lookup on ID since the atlas is in ID space</span>
+
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">id_map</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hemisphere_label</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">color_map</span><span class="p">)</span>
+        <span class="n">df</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">volumes</span><span class="p">)</span>
+
+        <span class="n">df</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.feather&#39;</span><span class="p">))</span></div>
+</div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">PreProcessor</span><span class="p">()</span>
+    <span class="n">preprocessor</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">preprocessor</span><span class="o">.</span><span class="n">setup_atlases</span><span class="p">()</span>
+    <span class="c1"># preprocessor.run()</span>
+
+    <span class="n">detector</span> <span class="o">=</span> <span class="n">CellDetector</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

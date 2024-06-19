@@ -1,146 +1,472 @@
 
-<!doctype html>
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html lang="en" data-content_root="../../../" >
+
   <head>
     <meta charset="utf-8" />
-    <title>ClearMap.ParallelProcessing.SharedMemoryArray &#8212; ClearMap 2.0.0 documentation</title>
-    <link rel="stylesheet" href="../../../_static/clearmap.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/clearmap_utils.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/clearmap_sidebar.css" />
-    
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
-    <script src="https://platform.twitter.com/widgets.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.ParallelProcessing.SharedMemoryArray &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=36754332"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="../../../_static/clearmap.js"></script>
-    <script src="../../../_static/clearmap_sidebar.js"></script>
-    <script src="../../../_static/clearmap_togglebutton.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/ParallelProcessing/SharedMemoryArray';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <!--[if lt IE 9]>
-  <script src="_static/css3-mediaqueries.js"></script>
-  <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
-   
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-  </head><body>
-<div class="document">
- <div class="imagecontainer">
-  <a href="../../../home.html"><img src="../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
-  <div class="top-left">
-    <p style="font-size: 30px"> 
-       <a href="../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
-    </p>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
   </div>
-  <div class="top-right">
-    <ul class="link-list">
-     <li class="link-list"><a href="../../../home.html">Home</a></li>
-     <li class="link-list"><a href="../../../overview.html">Overview</a></li>    
-     <li class="link-list"><a href="../../../installation.html">Installation</a></li>
-     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
-    </ul>
-  </div>
-  <div class="bottom-right">
-    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
-  </div>
- </div>
-</div>
-
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../../../py-modindex.html" title="Python Module Index"
-             >modules</a> |</li>
-       <li><a href="../../../home.html">Home</a>|&nbsp;</li>
-       <li><a href="../../../overview.html">Overview</a>|&nbsp;</li>      
-       <li><a href="../../../search.html">Search</a>|&nbsp;</li>
-       <li><a href="../../../index.html">Documentation </a> |&nbsp;</li>
-       <li><a href="../../../index.html#clearmap-api">API </a> &raquo;</li>     
-
-          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
-      </ul>
-    </div>
-<div class="document">
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
-    <div class="documentwrapper">
-    
-    
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><h3><a href="../../../index.html">ClearMap</a></h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../functionality.html">Functionality</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../wobblystitcher.html">WobblyStitcher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../cellmap.html">CellMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../CellMap.html">CellMap Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tubemap.html">TubeMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../TubeMap.html">TubeMap Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../media.html">News and Media</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../api.html">ClearMap</a></li>
-</ul>
- 
+      <div class="navbar-item">
 
-<h3>Questions? Suggestions?</h3>
-<p>Open an issue at the
-  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
   
 
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
-      </div>
     
     
-    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
-      <div class="sphinxsidebarwrapper_right">
-        <h3> <a href="../../../cellmap.html">CellMap Pipeline</a></h3>
-          <a href="../../../cellmap.html">
-            <img src="../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
-        <h3> <a href="../../../tubemap.html">Tubemap Pipeline</a></h3>
-          <a href="../../../tubemap.html">
-            <img src="../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
-        <h3> <a href="../../../media.html#gallery"> Gallery</a></h3>
-          <a href="../../../media.html#gallery">
-            <img src="../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
-        <h3> <a href="../../../media.html#videos">Social Media and Videos</a></h3>
-          <a href="../../../media.html#videos">   
-            <img src="../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
-      </div>
-    </div>
-      <!-- sidebar2 --> 
-    
-    
-    <div class="bodywrapper">       
-    <div class="body" role="main">
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
           
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Par...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <h1>Source code for ClearMap.ParallelProcessing.SharedMemoryArray</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -164,8 +490,10 @@
 <span class="c1">### Functionality</span>
 <span class="c1">###############################################################################</span>
 
-<div class="viewcode-block" id="ctype"><a class="viewcode-back" href="../../../Api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.ctype">[docs]</a><span class="k">def</span> <span class="nf">ctype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Determine ctype from array or dtype for ctype array construction</span>
+<div class="viewcode-block" id="ctype">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.ctype">[docs]</a>
+<span class="k">def</span> <span class="nf">ctype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Determine ctype from array or dtype for ctype array construction</span>
 <span class="sd">  </span>
 <span class="sd">  Arguments</span>
 <span class="sd">  ---------</span>
@@ -198,8 +526,11 @@
   <span class="k">return</span> <span class="n">ct</span><span class="p">;</span></div>
 
 
-<div class="viewcode-block" id="base"><a class="viewcode-back" href="../../../Api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.base">[docs]</a><span class="k">def</span> <span class="nf">base</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Return the underlying multiprocessing shared raw array from a shared numpy array</span>
+
+<div class="viewcode-block" id="base">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.base">[docs]</a>
+<span class="k">def</span> <span class="nf">base</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Return the underlying multiprocessing shared raw array from a shared numpy array</span>
 <span class="sd">  </span>
 <span class="sd">  Arguments</span>
 <span class="sd">  ---------</span>
@@ -217,8 +548,9 @@
     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Array has no shared base&#39;</span><span class="p">);</span></div>
 
 
+
 <span class="k">def</span> <span class="nf">array</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Create a shared array wrapped in numpy array.&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Create a shared array wrapped in numpy array.&quot;&quot;&quot;</span>
   <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">;</span>
     
@@ -235,8 +567,10 @@
   <span class="k">return</span> <span class="n">array</span><span class="p">;</span>
 
 
-<div class="viewcode-block" id="empty"><a class="viewcode-back" href="../../../Api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.empty">[docs]</a><span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Creates a empty shared memory array with numpy wrapper</span>
+<div class="viewcode-block" id="empty">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.empty">[docs]</a>
+<span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Creates a empty shared memory array with numpy wrapper</span>
 <span class="sd">  </span>
 <span class="sd">  Arguments</span>
 <span class="sd">  ---------</span>
@@ -255,8 +589,11 @@
   <span class="k">return</span> <span class="n">array</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span></div>
 
 
-<div class="viewcode-block" id="zeros"><a class="viewcode-back" href="../../../Api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.zeros">[docs]</a><span class="k">def</span> <span class="nf">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Creates a shared memory array of zeros with numpy wrapper</span>
+
+<div class="viewcode-block" id="zeros">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.zeros">[docs]</a>
+<span class="k">def</span> <span class="nf">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Creates a shared memory array of zeros with numpy wrapper</span>
 <span class="sd">  </span>
 <span class="sd">  Arguments</span>
 <span class="sd">  ---------</span>
@@ -275,8 +612,11 @@
   <span class="k">return</span> <span class="n">array</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span></div>
 
 
-<div class="viewcode-block" id="zeros_like"><a class="viewcode-back" href="../../../Api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.zeros_like">[docs]</a><span class="k">def</span> <span class="nf">zeros_like</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Creates a shared memory array with numpy wrapper using shape, dtype and order from source</span>
+
+<div class="viewcode-block" id="zeros_like">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.zeros_like">[docs]</a>
+<span class="k">def</span> <span class="nf">zeros_like</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Creates a shared memory array with numpy wrapper using shape, dtype and order from source</span>
 <span class="sd">  </span>
 <span class="sd">  Arguments</span>
 <span class="sd">  ---------</span>
@@ -310,8 +650,11 @@
   <span class="k">return</span> <span class="n">array</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span></div>
 
 
-<div class="viewcode-block" id="ones"><a class="viewcode-back" href="../../../Api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.ones">[docs]</a><span class="k">def</span> <span class="nf">ones</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Creates a shared memory array of ones with numpy wrapper</span>
+
+<div class="viewcode-block" id="ones">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.SharedMemoryArray.html#ClearMap.IO.SMA.ones">[docs]</a>
+<span class="k">def</span> <span class="nf">ones</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Creates a shared memory array of ones with numpy wrapper</span>
 <span class="sd">  </span>
 <span class="sd">  Arguments</span>
 <span class="sd">  ---------</span>
@@ -333,8 +676,9 @@
 
 
 
+
 <span class="k">def</span> <span class="nf">is_shared</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Returns True if array is a shared memory array</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Returns True if array is a shared memory array</span>
 <span class="sd">  </span>
 <span class="sd">  Arguments</span>
 <span class="sd">  ---------</span>
@@ -361,7 +705,7 @@
 
 
 <span class="k">def</span> <span class="nf">as_shared</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Convert array to a shared memory array</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Convert array to a shared memory array</span>
 <span class="sd">  </span>
 <span class="sd">  Arguments</span>
 <span class="sd">  ---------</span>
@@ -425,22 +769,69 @@
   <span class="n">pp</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">propagate_non_shared</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span><span class="p">));</span> <span class="c1">#analysis:ignore</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">non_shared</span><span class="p">)</span>
 </pre></div>
- <!-- body -->
-    </div> <!-- body -->
-    </div> <!-- bodywrapper -->
-    
 
-     
-  <!-- mainrow --></div>
-<!-- document --></div>
-<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
-<p align="center">
-<a href="../../../overview.html"><img src="../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
-</p>
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
 </div>
 
-    <div class="footer" role="contentinfo">
-        &#169; Copyright Copyright © 2020 by Christoph Kirst.
-    </div>
+  </footer>
   </body>
 </html>

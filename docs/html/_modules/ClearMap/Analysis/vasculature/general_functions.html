@@ -1,0 +1,1269 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.Analysis.vasculature.general_functions &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/Analysis/vasculature/general_functions';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Ana...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.Analysis.vasculature.general_functions</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">from</span> <span class="nn">ClearMap.Analysis.vasculature.geometry_utils</span> <span class="kn">import</span> <span class="n">cartesian_to_polar</span><span class="p">,</span> <span class="n">angle_between_vectors</span><span class="p">,</span> <span class="n">compute_grid</span><span class="p">,</span> \
+    <span class="n">interpolate_vectors</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Analysis.vasculature.vasc_graph_utils</span> <span class="kn">import</span> <span class="n">set_artery_vein_if_missing</span><span class="p">,</span> <span class="n">combine_arteries_and_veins</span><span class="p">,</span> \
+    <span class="n">vertex_to_edge_property</span><span class="p">,</span> <span class="n">edge_to_vertex_property</span><span class="p">,</span> <span class="n">filter_graph_degrees</span><span class="p">,</span> \
+    <span class="n">parallel_get_vessels_lengths</span><span class="p">,</span> <span class="n">graph_gt_to_igraph</span><span class="p">,</span> <span class="n">n_kinds</span><span class="p">,</span> <span class="n">get_vertex_coordinates</span><span class="p">,</span> <span class="n">vertex_filter_to_edge_filter</span>
+
+<span class="n">CORRECTED_GRAPH_BASE_NAME</span> <span class="o">=</span> <span class="s1">&#39;data_graph_correcteduniverse&#39;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">cPickle</span> <span class="k">as</span> <span class="nn">pickle</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>  <span class="c1"># python 3.x</span>
+    <span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">igraph</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">clearmap_io</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Alignment.Annotation</span> <span class="k">as</span> <span class="nn">annotation</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Analysis.Graphs.GraphGt</span> <span class="k">as</span> <span class="nn">graph_gt</span>
+
+<span class="kn">from</span> <span class="nn">ClearMap.Analysis.vasculature.flow.linear_system</span> <span class="kn">import</span> <span class="n">LinearSystem</span>
+
+
+<span class="c1"># TODO:</span>
+<span class="c1">#  - Change all orders to ids</span>
+<span class="c1">#  - Check that group_name is forced to controls whenever appropriate</span>
+
+<span class="c1"># FIXME: check cases where group should be hard coded to controls (i.e. when it is the reference group)</span>
+
+
+<span class="n">N_PROCESSES</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="n">VESSEL_PERMEABILITY_CONSTANT</span> <span class="o">=</span> <span class="mf">7.6</span>  <span class="c1"># TODO: check value</span>
+<span class="n">DEFAULT_UNITS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;length&#39;</span><span class="p">:</span> <span class="s1">&#39;um&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="s1">&#39;ug&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;ms&#39;</span><span class="p">}</span>
+
+
+<div class="viewcode-block" id="load_graph">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.load_graph">[docs]</a>
+<span class="k">def</span> <span class="nf">load_graph</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">group_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads the graph from the given work directory and control.</span>
+<span class="sd">    Tries to load the default corrected graph, if it does not exist, tries to load the default graph.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">graph_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">group_name</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">graph_gt</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">graph_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">CORRECTED_GRAPH_BASE_NAME</span><span class="si">}</span><span class="s1">.gt&#39;</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">graph_gt</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">graph_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">group_name</span><span class="si">}</span><span class="s1">_graph.gt&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">graph</span></div>
+
+
+
+<span class="c1"># FIXME: structures by name (here, cerebellum and hippocampus)</span>
+<span class="c1"># FIXME: set to ID but won&#39;t work because algo seems designed for order</span>
+<div class="viewcode-block" id="structure_specific_radius_filter">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.structure_specific_radius_filter">[docs]</a>
+<span class="k">def</span> <span class="nf">structure_specific_radius_filter</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">artery_vein</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">specific_structures</span><span class="o">=</span><span class="p">((</span><span class="mi">1006</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">463</span><span class="p">,</span> <span class="mi">6</span><span class="p">))):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function reworks the graph so that the radius criterion is applied differently</span>
+<span class="sd">    depending on the structure (here, cerebellum and hippocampus)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph</span>
+<span class="sd">    artery_vein</span>
+<span class="sd">    label</span>
+<span class="sd">    specific_structures</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_annotation</span><span class="p">()</span>
+    <span class="n">radii</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_property</span><span class="p">(</span><span class="s1">&#39;radii&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">arts</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># @Sophie: what is arts ? arteries ? more explicit name</span>
+        <span class="k">for</span> <span class="n">id_</span><span class="p">,</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">specific_structures</span><span class="p">:</span>
+            <span class="n">label_leveled</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">convert_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">)</span>
+            <span class="n">structure</span> <span class="o">=</span> <span class="n">label_leveled</span> <span class="o">==</span> <span class="n">id_</span>
+            <span class="n">arts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">radii</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">structure</span><span class="p">,</span> <span class="n">artery_vein</span><span class="p">)))</span>  <span class="c1"># FIXME: magic numbers</span>
+            <span class="n">artery_vein</span><span class="p">[</span><span class="n">structure</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">radii</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_property</span><span class="p">(</span><span class="s1">&#39;radii&#39;</span><span class="p">)</span>
+        <span class="n">pb_art</span> <span class="o">=</span> <span class="n">arts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">art</span> <span class="ow">in</span> <span class="n">arts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+            <span class="n">pb_art</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">pb_art</span><span class="p">,</span> <span class="n">art</span><span class="p">)</span>
+        <span class="n">artery_vein</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">pb_art</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">artery_vein</span><span class="p">,</span> <span class="n">radii</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># FIXME: magic numbers (6 in streamlines_flow.py)</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not find region, check json file&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">artery_vein</span></div>
+
+
+
+<span class="c1"># WARNING: if clean_graph is True, This will use a structure specific radius filter</span>
+<div class="viewcode-block" id="get_artery_vein_edge_coords_and_vectors">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.get_artery_vein_edge_coords_and_vectors">[docs]</a>
+<span class="k">def</span> <span class="nf">get_artery_vein_edge_coords_and_vectors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">artery</span><span class="p">,</span> <span class="n">vein</span><span class="p">,</span> <span class="n">min_radius</span><span class="p">,</span>
+                                            <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">clean_graph</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                            <span class="n">distance_to_surface</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_dist_to_surface</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">invert</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                            <span class="n">coordinates_name</span><span class="o">=</span><span class="s1">&#39;coordinates&#39;</span><span class="p">,</span> <span class="n">orientation_criterion</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span>
+                                            <span class="n">return_filter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">artery_vein</span> <span class="o">=</span> <span class="n">combine_arteries_and_veins</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">artery</span><span class="p">,</span> <span class="n">vein</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">min_radius</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">clean_graph</span><span class="p">:</span>
+        <span class="n">artery_vein</span> <span class="o">=</span> <span class="n">structure_specific_radius_filter</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">artery_vein</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">distance_to_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">artery_vein</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">artery_vein</span><span class="p">,</span> <span class="n">distance_to_surface</span> <span class="o">&gt;=</span> <span class="n">min_dist_to_surface</span><span class="p">))</span>
+
+    <span class="n">vertex_filter</span> <span class="o">=</span> <span class="n">artery_vein</span>
+    <span class="k">if</span> <span class="n">invert</span><span class="p">:</span>  <span class="c1"># i.e. capillaries</span>
+        <span class="n">vertex_filter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">vertex_filter</span><span class="p">)</span>
+    <span class="n">sub_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">sub_graph</span><span class="p">(</span><span class="n">vertex_filter</span><span class="o">=</span><span class="n">vertex_filter</span><span class="p">)</span>  <span class="c1"># TODO: see why edge_connectivity is different for view (this would speedup otherwise)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">graph_to_edge_coords_and_vectors</span><span class="p">(</span><span class="n">sub_graph</span><span class="p">,</span> <span class="n">coordinates_name</span><span class="o">=</span><span class="n">coordinates_name</span><span class="p">,</span>
+                                               <span class="n">orientation_criterion</span><span class="o">=</span><span class="n">orientation_criterion</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">return_filter</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">vertex_filter_to_edge_filter</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">vertex_filter</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+
+<div class="viewcode-block" id="compute_flow_f_schmid">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.compute_flow_f_schmid">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_flow_f_schmid</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">cont</span><span class="p">,</span> <span class="n">graph_name</span><span class="o">=</span><span class="s1">&#39;correcteduniverse&#39;</span><span class="p">,</span> <span class="n">dest_base_name</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the flow and velocity of the graph using the method published in</span>
+<span class="sd">    Schmid F. et al. https://doi.org/10.1371/journal.pcbi.1005392</span>
+
+<span class="sd">    First, make an igraph version of the graph with the necassary properties</span>
+<span class="sd">    Then add:</span>
+<span class="sd">    - length (computed from the geometry of the edges)</span>
+<span class="sd">    - boundary_cap (True if edge is a boundary capillary)</span>
+<span class="sd">    - nkind (node kind, i.e. integer representing the type of node from</span>
+<span class="sd">    (0, 1, 2, 3) for (capillaries, arteries, veins, universe)</span>
+<span class="sd">    - pBC (pressure boundary conditions)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    work_dir : str</span>
+<span class="sd">        The path to the work directory</span>
+<span class="sd">    graph: GraphGt.Graph</span>
+<span class="sd">        The graph to compute the flow and velocity from</span>
+<span class="sd">    cont : str</span>
+<span class="sd">        The name of the control group</span>
+<span class="sd">    graph_name : str</span>
+<span class="sd">        The name of the graph file</span>
+<span class="sd">    dest_base_name : str</span>
+<span class="sd">        The base name of the destination file. If &#39;same&#39;, the name will be the same as the graph name</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        flow, velocity, pressure : ndarray, ndarray, ndarray</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tmp_graph</span> <span class="o">=</span> <span class="n">graph_gt_to_igraph</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+    <span class="n">vessels_lengths</span> <span class="o">=</span> <span class="n">parallel_get_vessels_lengths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">n_processes</span><span class="o">=</span><span class="n">N_PROCESSES</span><span class="p">)</span>
+    <span class="n">tmp_graph</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vessels_lengths</span>
+
+    <span class="n">graph_ml_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">cont</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">CORRECTED_GRAPH_BASE_NAME</span><span class="si">}</span><span class="s1">.GraphML&#39;</span><span class="p">)</span>  <span class="c1"># REFACTORING: could use path from graph ?</span>
+    <span class="n">tmp_graph</span><span class="o">.</span><span class="n">write_graphml</span><span class="p">(</span><span class="n">graph_ml_path</span><span class="p">)</span>
+    <span class="n">tmp_graph</span> <span class="o">=</span> <span class="n">igraph</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">graph_ml_path</span><span class="p">)</span>  <span class="c1"># FIXME: is the read necessary</span>
+    <span class="n">tmp_graph</span><span class="p">[</span><span class="s1">&#39;defaultUnits&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">DEFAULT_UNITS</span>
+
+    <span class="c1"># Change capillary deadends adjacent to A or V to (n_kinds[&#39;arteries&#39;], n_kinds[&#39;veins&#39;])</span>
+    <span class="n">tmp_graph</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;boundary_cap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">tmp_graph</span><span class="o">.</span><span class="n">ecount</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tmp_graph</span><span class="o">.</span><span class="n">vs</span><span class="p">(</span><span class="n">_degree_eq</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nkind_eq</span><span class="o">=</span><span class="n">n_kinds</span><span class="p">[</span><span class="s1">&#39;capillaries&#39;</span><span class="p">]):</span>
+        <span class="n">tmp_graph</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="n">tmp_graph</span><span class="o">.</span><span class="n">incident</span><span class="p">(</span><span class="n">v</span><span class="p">)[</span><span class="mi">0</span><span class="p">]][</span><span class="s1">&#39;boundary_cap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 0 by default, 1 for (degree1 and capillary)</span>
+
+    <span class="c1"># For boundary capillaries with diameter &gt; 10, if vertices are connected to A or V, change to A or V</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">tmp_graph</span><span class="o">.</span><span class="n">es</span><span class="p">(</span><span class="n">boundary_cap_eq</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">diameter_gt</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>  <span class="c1"># FIXME: magic number</span>
+        <span class="k">for</span> <span class="n">n_kind</span> <span class="ow">in</span> <span class="p">(</span><span class="n">n_kinds</span><span class="p">[</span><span class="s1">&#39;arteries&#39;</span><span class="p">],</span> <span class="n">n_kinds</span><span class="p">[</span><span class="s1">&#39;veins&#39;</span><span class="p">]):</span>  <span class="c1"># @ Sophie: is it correct to be sequential ?</span>
+            <span class="k">if</span> <span class="n">n_kind</span> <span class="ow">in</span> <span class="n">tmp_graph</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">tuple</span><span class="p">][</span><span class="s1">&#39;nkind&#39;</span><span class="p">]:</span>
+                <span class="n">e</span><span class="p">[</span><span class="s1">&#39;nkind&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_kind</span>
+                <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">tuple</span><span class="p">:</span>
+                    <span class="n">tmp_graph</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="s1">&#39;nkind&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_kind</span>
+
+    <span class="c1"># pressure fit. pBC = pressure boundary conditions</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.59476905e-05</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.91218311e-03</span><span class="p">,</span> <span class="mf">1.06888397e+00</span><span class="p">,</span> <span class="mf">2.04594862e+01</span><span class="p">])</span>  <span class="c1"># FIXME: extract and explain where this comes from</span>
+    <span class="n">tmp_graph</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="s1">&#39;pBC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">tmp_graph</span><span class="o">.</span><span class="n">vcount</span><span class="p">()</span>
+    <span class="c1"># for all degree1 vertices, if veins, pBC = 10, else pBC = np.polyval(p, diameter)</span>
+    <span class="n">tmp_graph</span><span class="o">.</span><span class="n">vs</span><span class="p">(</span><span class="n">_degree_eq</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nkind_eq</span><span class="o">=</span><span class="n">n_kinds</span><span class="p">[</span><span class="s1">&#39;veins&#39;</span><span class="p">])[</span><span class="s1">&#39;pBC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">tmp_graph</span><span class="o">.</span><span class="n">vs</span><span class="p">(</span><span class="n">_degree_eq</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nkind_eq</span><span class="o">=</span><span class="n">n_kinds</span><span class="p">[</span><span class="s1">&#39;veins&#39;</span><span class="p">])))</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tmp_graph</span><span class="o">.</span><span class="n">vs</span><span class="p">(</span><span class="n">_degree_eq</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nkind_ne</span><span class="o">=</span><span class="n">n_kinds</span><span class="p">[</span><span class="s1">&#39;veins&#39;</span><span class="p">]):</span>
+        <span class="n">diameter</span> <span class="o">=</span> <span class="n">tmp_graph</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="n">tmp_graph</span><span class="o">.</span><span class="n">incident</span><span class="p">(</span><span class="n">v</span><span class="p">)[</span><span class="mi">0</span><span class="p">]][</span><span class="s1">&#39;diameter&#39;</span><span class="p">]</span>
+        <span class="n">v</span><span class="p">[</span><span class="s1">&#39;pBC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">diameter</span><span class="p">)</span>
+
+    <span class="c1"># p_a, _ = fit_for_pressureBC()  # TODO: check if could remove</span>
+    <span class="c1"># assign_pressureBC(tmp_graph, p_a)</span>
+
+    <span class="n">linear_system</span> <span class="o">=</span> <span class="n">LinearSystem</span><span class="p">(</span><span class="n">tmp_graph</span><span class="p">)</span>
+    <span class="n">dest_base_name</span> <span class="o">=</span> <span class="n">graph_name</span> <span class="k">if</span> <span class="n">dest_base_name</span> <span class="o">==</span> <span class="s1">&#39;same&#39;</span> <span class="k">else</span> <span class="n">cont</span>  <span class="c1"># REFACTOR: simplify logic</span>
+    <span class="n">out_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">cont</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;sampledict</span><span class="si">{</span><span class="n">dest_base_name</span><span class="si">}</span><span class="s1">.pkl&#39;</span><span class="p">)</span>  <span class="c1"># TODO: see if could extract path and share with load_sample_dict</span>
+    <span class="n">sample_dict</span> <span class="o">=</span> <span class="n">linear_system</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="s1">&#39;iterative2&#39;</span><span class="p">,</span> <span class="n">dest_file_path</span><span class="o">=</span><span class="n">out_path</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sample_dict</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;pressure&#39;</span><span class="p">]]</span></div>
+
+
+
+<div class="viewcode-block" id="compute_blood_flow">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.compute_blood_flow">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_blood_flow</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">work_dir</span><span class="p">,</span> <span class="n">sample_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the graph with the flow, velocity and pressure properties added</span>
+<span class="sd">    If this has not been computed before, it will be computed and saved to</span>
+<span class="sd">    the sample dict</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph : GraphGt.Graph</span>
+<span class="sd">        The graph to compute the flow, velocity and pressure from</span>
+<span class="sd">    work_dir : str</span>
+<span class="sd">        The path to the work directory</span>
+<span class="sd">    sample_name : str</span>
+<span class="sd">        The name of the sample (used in the file name)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    graph : GraphGt.Graph</span>
+<span class="sd">        The graph with the flow, velocity and pressure properties added</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">flow</span><span class="p">,</span> <span class="n">velocity</span><span class="p">,</span> <span class="n">pressure</span> <span class="o">=</span> <span class="n">compute_flow_f_schmid</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">sample_name</span><span class="p">)</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">add_edge_property</span><span class="p">(</span><span class="s1">&#39;flow&#39;</span><span class="p">,</span> <span class="n">flow</span><span class="p">)</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">add_edge_property</span><span class="p">(</span><span class="s1">&#39;veloc&#39;</span><span class="p">,</span> <span class="n">velocity</span><span class="p">)</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">add_vertex_property</span><span class="p">(</span><span class="s1">&#39;pressure&#39;</span><span class="p">,</span> <span class="n">pressure</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">graph</span></div>
+
+
+
+<div class="viewcode-block" id="get_nb_radial_vessels">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.get_nb_radial_vessels">[docs]</a>
+<span class="k">def</span> <span class="nf">get_nb_radial_vessels</span><span class="p">(</span><span class="n">edge_color</span><span class="p">,</span> <span class="n">radiality_threshold</span><span class="o">=</span><span class="mf">0.7</span><span class="p">):</span>  <span class="c1"># warning: unused</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the number of radial vessels from the edge color</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    edge_color : ndarray</span>
+<span class="sd">    radiality_threshold : float</span>
+<span class="sd">        Threshold to filter out vessels that are not sufficiently radial to the plane.</span>
+<span class="sd">        The default value is 0.7, which means that the vessel must be at least 70% radial to the plane to be</span>
+<span class="sd">        counted as radial. This is a good empirical value, but it may need to be adjusted for different</span>
+<span class="sd">        applications.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    nb_radial : int</span>
+<span class="sd">        The number of radial vessels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">radial</span> <span class="o">=</span> <span class="n">edge_color</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">edge_color</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># TODO: check that edge_color.shape = (n, 3) and document</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">radial</span> <span class="o">&gt;</span> <span class="n">radiality_threshold</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_nb_parallel_vessels">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.get_nb_parallel_vessels">[docs]</a>
+<span class="k">def</span> <span class="nf">get_nb_parallel_vessels</span><span class="p">(</span><span class="n">edge_color</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parallel_threshold</span><span class="o">=</span><span class="mf">0.7</span><span class="p">):</span>  <span class="c1"># warning: unused</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the number of parallel vessels from the edge color</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    edge_color : ndarray</span>
+<span class="sd">    parallel_threshold : float</span>
+<span class="sd">        Threshold to filter out vessels that are not sufficiently parallel to the plane.</span>
+<span class="sd">        The default value is 0.7, which means that the vessel must be at least 70% parallel to the plane to be</span>
+<span class="sd">        counted as parallel. This is a good empirical value, but it may need to be adjusted for different</span>
+<span class="sd">        applications.</span>
+<span class="sd">    verbose : bool</span>
+<span class="sd">        Whether to print the shape of the array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    nb_parallel : int</span>
+<span class="sd">        The number of parallel vessels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">planar</span> <span class="o">=</span> <span class="p">(</span><span class="n">edge_color</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">edge_color</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">edge_color</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+        <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># TODO: check that edge_color.shape = (n, 3) and document</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">planar</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">planar</span> <span class="o">&gt;</span> <span class="n">parallel_threshold</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="graph_to_edge_coords_and_vectors">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.graph_to_edge_coords_and_vectors">[docs]</a>
+<span class="k">def</span> <span class="nf">graph_to_edge_coords_and_vectors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">coordinates_name</span><span class="o">=</span><span class="s1">&#39;coordinates&#39;</span><span class="p">,</span> <span class="n">orientation_criterion</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the coordinates and vectors of the edges of the graph.</span>
+<span class="sd">    The edges can be oriented based on the criterion so that the vectors will follow this orientation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph : GraphGt.Graph</span>
+<span class="sd">        The graph to get the edge coordinates and vectors from</span>
+<span class="sd">    coordinates_name : str</span>
+<span class="sd">        The coordinates space to use. Typically, &#39;coordinates&#39; or &#39;coordinates_atlas&#39;</span>
+<span class="sd">        IT should be an existing vertex property of the graph</span>
+<span class="sd">        (that represents the coordinates of the vertices in some space)</span>
+<span class="sd">    orientation_criterion : str</span>
+<span class="sd">        The criterion to use to orient the edges. Can be either &#39;pressure&#39;, &#39;distance_to_surface&#39; or &#39;&#39; (no sorting)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vertex_coordinates</span> <span class="o">=</span> <span class="n">get_vertex_coordinates</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">coordinates_name</span><span class="p">)</span>
+    <span class="n">connectivity</span> <span class="o">=</span> <span class="n">sort_connectivity_based_on_vertex_property</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">orientation_criterion</span><span class="p">)</span>
+    <span class="c1"># Compute the edge coordinates as the mean of the coordinates of the vertices of the edge</span>
+    <span class="n">edge_coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="n">vertex_coordinates</span><span class="p">[</span><span class="n">connectivity</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]]</span> <span class="o">+</span>
+                                 <span class="n">vertex_coordinates</span><span class="p">[</span><span class="n">connectivity</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]])</span>
+                                <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">edge_vectors</span> <span class="o">=</span> <span class="n">coordinates_to_edge_vectors</span><span class="p">(</span><span class="n">vertex_coordinates</span><span class="p">,</span> <span class="n">connectivity</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">edge_coordinates</span><span class="p">,</span> <span class="n">edge_vectors</span></div>
+
+
+
+<div class="viewcode-block" id="coordinates_to_edge_vectors">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.coordinates_to_edge_vectors">[docs]</a>
+<span class="k">def</span> <span class="nf">coordinates_to_edge_vectors</span><span class="p">(</span><span class="n">vertex_coordinates</span><span class="p">,</span> <span class="n">connectivity</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the edge vectors from the coordinates and connectivity.</span>
+<span class="sd">    The vectors are computed as the difference between the coordinates of the vertices of the edge.</span>
+
+
+<span class="sd">    .. warning::</span>
+<span class="sd">        If normalized is True, the vectors will be normalized to unit length.</span>
+<span class="sd">        If a normalized vector is 0, it will be replaced by a vector of 0s.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vertex_coordinates : ndarray</span>
+<span class="sd">        The coordinates of the vertices</span>
+<span class="sd">    connectivity : ndarray</span>
+<span class="sd">        The connectivity of the graph.</span>
+<span class="sd">    normalized : bool</span>
+<span class="sd">        Whether to normalize the vectors to unit length or not</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    edge_vectors : ndarray</span>
+<span class="sd">        The vectors of the edges</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">edges_coordinates</span> <span class="o">=</span> <span class="n">vertex_coordinates</span><span class="p">[</span><span class="n">connectivity</span><span class="p">]</span>
+    <span class="n">edge_vectors</span> <span class="o">=</span> <span class="n">edges_coordinates</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">edges_coordinates</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="k">if</span> <span class="n">normalized</span><span class="p">:</span>
+        <span class="n">norms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">edge_vectors</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+        <span class="n">edge_vectors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">edge_vectors</span><span class="p">,</span> <span class="n">norms</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">edge_vectors</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="n">norms</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">edge_vectors</span></div>
+
+
+
+<div class="viewcode-block" id="get_edge_vectors">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.get_edge_vectors">[docs]</a>
+<span class="k">def</span> <span class="nf">get_edge_vectors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">orientation_criterion</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span>
+                     <span class="n">coordinates_name</span><span class="o">=</span><span class="s1">&#39;coordinates&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the edge vectors and sorted connectivity from the graph.</span>
+<span class="sd">    The edges can be oriented based on the criterion so that the vectors will follow this orientation.</span>
+<span class="sd">    If no criterion is given (&#39;&#39;), the edges will not be oriented.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph : GraphGt.Graph</span>
+<span class="sd">        The graph to get the edge vectors from</span>
+<span class="sd">    normed : bool</span>
+<span class="sd">        Whether to normalize the vectors to unit length or not</span>
+<span class="sd">    orientation_criterion : str</span>
+<span class="sd">        The criterion to use to orient the edges.</span>
+<span class="sd">        Can be either &#39;pressure&#39;, &#39;distance_to_surface&#39; or &#39;&#39; (no sorting)</span>
+<span class="sd">    coordinates_name : str</span>
+<span class="sd">        The coordinates space to use. Typically, &#39;coordinates&#39;, &#39;coordinates_atlas&#39;,</span>
+<span class="sd">        &#39;coordinates_scaled&#39; or &#39;coordinates_MRI&#39;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">connectivity</span> <span class="o">=</span> <span class="n">sort_connectivity_based_on_vertex_property</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">orientation_criterion</span><span class="p">)</span>
+
+    <span class="n">vertex_coordinates</span> <span class="o">=</span> <span class="n">get_vertex_coordinates</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">coordinates_name</span><span class="p">)</span>
+    <span class="n">edge_vectors</span> <span class="o">=</span> <span class="n">coordinates_to_edge_vectors</span><span class="p">(</span><span class="n">vertex_coordinates</span><span class="p">,</span> <span class="n">connectivity</span><span class="p">,</span> <span class="n">normed</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">edge_vectors</span><span class="p">,</span> <span class="n">connectivity</span></div>
+
+
+
+<span class="c1"># FIXME: what are x, y, center and where do they come from ?</span>
+<div class="viewcode-block" id="get_edge_vectors_spherical">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.get_edge_vectors_spherical">[docs]</a>
+<span class="k">def</span> <span class="nf">get_edge_vectors_spherical</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">orientation_criterion</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">connectivity</span> <span class="o">=</span> <span class="n">sort_connectivity_based_on_vertex_property</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">orientation_criterion</span><span class="p">,</span> <span class="nb">reversed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">spherical_coord</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cartesian_to_polar</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">center</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">-</span> <span class="n">center</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">edge_vectors</span> <span class="o">=</span> <span class="n">coordinates_to_edge_vectors</span><span class="p">(</span><span class="n">spherical_coord</span><span class="p">,</span> <span class="n">connectivity</span><span class="p">,</span> <span class="n">normed</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">edge_vectors</span><span class="p">,</span> <span class="n">connectivity</span></div>
+
+
+
+<span class="c1"># FIXME: set criterion defaults but check usage first</span>
+<div class="viewcode-block" id="sort_connectivity_based_on_vertex_property">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.sort_connectivity_based_on_vertex_property">[docs]</a>
+<span class="k">def</span> <span class="nf">sort_connectivity_based_on_vertex_property</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">orientation_criterion</span><span class="p">,</span> <span class="nb">reversed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    For each edge, sort the vertices based on the criterion.</span>
+<span class="sd">    i.e. get the edges direction based on the criterion,</span>
+<span class="sd">    which can be either &#39;pressure&#39;, &#39;distance_to_surface&#39; or &#39;&#39; (no sorting)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph</span>
+<span class="sd">    orientation_criterion : str</span>
+<span class="sd">        The criterion to use to sort the edges. Can be either &#39;pressure&#39;, &#39;distance_to_surface&#39; or &#39;&#39; (no sorting)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">orientation_criterion</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">):</span>
+        <span class="n">orientation_criterion</span> <span class="o">=</span> <span class="s1">&#39;distance_to_surface&#39;</span>
+
+    <span class="k">if</span> <span class="n">orientation_criterion</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+        <span class="n">vertex_property</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">vertex_property</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_property</span><span class="p">(</span><span class="n">orientation_criterion</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unknown criteria </span><span class="si">{</span><span class="n">orientation_criterion</span><span class="si">}</span><span class="s1">, typical values are (&quot;pressure&quot;, &quot;distance&quot;)&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">err</span>
+    <span class="n">connectivity</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_connectivity</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">vertex_property</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">vertex_property</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">vertex_property</span><span class="p">[</span><span class="n">connectivity</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">reversed</span><span class="p">:</span>
+            <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">sorted_indices</span><span class="p">[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># Apply the sorted indices to the connectivity</span>
+        <span class="n">oriented_connectivity</span> <span class="o">=</span> <span class="n">connectivity</span><span class="p">[</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">connectivity</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">sorted_indices</span><span class="p">]</span>  <span class="c1"># TODO: TEST: compare to above</span>
+        <span class="n">connectivity</span> <span class="o">=</span> <span class="n">oriented_connectivity</span>
+    <span class="k">return</span> <span class="n">connectivity</span></div>
+
+
+
+<div class="viewcode-block" id="get_streamline_agv_path">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.get_streamline_agv_path">[docs]</a>
+<span class="k">def</span> <span class="nf">get_streamline_agv_path</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">sample_name</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;streamline_AGV_</span><span class="si">{</span><span class="n">group_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">sample_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s1">.npy&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_streamline_aec_path">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.get_streamline_aec_path">[docs]</a>
+<span class="k">def</span> <span class="nf">get_streamline_aec_path</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">sample_name</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;streamline_AEC_</span><span class="si">{</span><span class="n">group_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">sample_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s1">.npy&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_reference_streamlines">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.get_reference_streamlines">[docs]</a>
+<span class="k">def</span> <span class="nf">get_reference_streamlines</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">reference_samples</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="n">AEC</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">AGV</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">reference_samples</span><span class="p">:</span>
+        <span class="n">streamline_aec_path</span> <span class="o">=</span> <span class="n">get_streamline_aec_path</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s1">&#39;controls&#39;</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+        <span class="n">streamline_agv_path</span> <span class="o">=</span> <span class="n">get_streamline_agv_path</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="s1">&#39;controls&#39;</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">streamline_aec_path</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">streamline_agv_path</span><span class="p">):</span>
+            <span class="n">take_avg_streamlines</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
+        <span class="n">AEC</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">streamline_aec_path</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">AGV</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">streamline_agv_path</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">AEC</span><span class="p">,</span> <span class="n">AGV</span></div>
+
+
+
+
+<div class="viewcode-block" id="take_avg_streamlines">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.take_avg_streamlines">[docs]</a>
+<span class="k">def</span> <span class="nf">take_avg_streamlines</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bigvessels&#39;</span><span class="p">,</span> <span class="n">group_name</span><span class="o">=</span><span class="s1">&#39;controls&#39;</span><span class="p">,</span> <span class="n">min_radius</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                         <span class="n">coordinates_name</span><span class="o">=</span><span class="s1">&#39;coordinates&#39;</span><span class="p">):</span>
+
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">load_graph</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">sample</span><span class="p">)</span>  <span class="c1"># TODO: check if sample or group_name</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">filter_graph_degrees</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+
+    <span class="n">set_artery_vein_if_missing</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+
+    <span class="n">artery</span> <span class="o">=</span> <span class="n">edge_to_vertex_property</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s1">&#39;artery&#39;</span><span class="p">)</span>
+    <span class="n">vein</span> <span class="o">=</span> <span class="n">edge_to_vertex_property</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s1">&#39;vein&#39;</span><span class="p">)</span>
+    <span class="n">d2s</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_property</span><span class="p">(</span><span class="s1">&#39;distance_to_surface&#39;</span><span class="p">)</span>
+    <span class="n">art_edge_coordinates</span><span class="p">,</span> <span class="n">art_graph_vector</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">get_artery_vein_edge_coords_and_vectors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">artery</span><span class="p">,</span> <span class="n">vein</span><span class="p">,</span> <span class="n">min_radius</span><span class="o">=</span><span class="n">min_radius</span><span class="p">,</span>
+                                                <span class="n">distance_to_surface</span><span class="o">=</span><span class="n">d2s</span><span class="p">,</span> <span class="n">coordinates_name</span><span class="o">=</span><span class="n">coordinates_name</span><span class="p">))</span>
+
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">get_streamline_aec_path</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">mode</span><span class="p">),</span> <span class="n">art_edge_coordinates</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">get_streamline_agv_path</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">group_name</span><span class="p">,</span> <span class="n">sample</span><span class="p">,</span> <span class="n">mode</span><span class="p">),</span> <span class="n">art_graph_vector</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="avg_streamlines_grid">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.avg_streamlines_grid">[docs]</a>
+<span class="k">def</span> <span class="nf">avg_streamlines_grid</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">reference_samples</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bigvessels&#39;</span><span class="p">,</span> <span class="n">group_name</span><span class="o">=</span><span class="s1">&#39;controls&#39;</span><span class="p">):</span>  <span class="c1"># FIXME: unused</span>
+    <span class="n">AEC</span><span class="p">,</span> <span class="n">AGV</span> <span class="o">=</span> <span class="n">get_reference_streamlines</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">reference_samples</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+
+    <span class="n">all_samples_flow_vectors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">arteries_edge_coordinates</span><span class="p">,</span> <span class="n">arteries_graph_vector</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">AEC</span><span class="p">,</span> <span class="n">AGV</span><span class="p">):</span>
+
+        <span class="n">grid</span> <span class="o">=</span> <span class="n">compute_grid</span><span class="p">(</span><span class="n">arteries_edge_coordinates</span><span class="p">)</span>
+
+        <span class="n">flow_vectors</span> <span class="o">=</span> <span class="n">interpolate_vectors</span><span class="p">(</span><span class="n">arteries_graph_vector</span><span class="p">,</span> <span class="n">arteries_edge_coordinates</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
+        <span class="n">all_samples_flow_vectors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">flow_vectors</span><span class="p">)</span>
+
+    <span class="n">flow_vectors_avgs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_samples_flow_vectors</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">dest_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">work_dir</span><span class="p">)</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;streamline_grid_avg_</span><span class="si">{</span><span class="n">group_name</span><span class="si">}{</span><span class="n">mode</span><span class="si">}</span><span class="s1">.npy&#39;</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">dest_path</span><span class="p">,</span> <span class="n">flow_vectors_avgs</span><span class="p">)</span>
+    <span class="n">clearmap_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">dest_path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.tif&#39;</span><span class="p">)),</span> <span class="n">flow_vectors_avgs</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ############################################################################################################</span>
+
+<div class="viewcode-block" id="get_orientation_from_normal_to_surface_local">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.get_orientation_from_normal_to_surface_local">[docs]</a>
+<span class="k">def</span> <span class="nf">get_orientation_from_normal_to_surface_local</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">region_ids</span><span class="p">,</span> <span class="n">normal_vector_method</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                                                 <span class="n">coordinates_name</span><span class="o">=</span><span class="s1">&#39;coordinates&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Orientation in the cortex relative to the surface normal. (i.e. we fit a plane to the top vertices</span>
+<span class="sd">    and the bottom vertices and take the normal to this plane as the top-to-bottom direction). Alternatively,</span>
+<span class="sd">    we can use the average method which takes the mean of the top and bottom vertices.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph : GraphGt.Graph</span>
+<span class="sd">        The graph to get the orientation from</span>
+<span class="sd">    region_ids : list</span>
+<span class="sd">        The list of the ids of the regions to consider.</span>
+<span class="sd">    normal_vector_method : str</span>
+<span class="sd">        Determines the way to compute the normal vector to the plane best fitting the vertices.</span>
+<span class="sd">        Can be either &#39;svd&#39; or &#39;mean&#39;.</span>
+<span class="sd">        If set to svd, we use Singular Value Decomposition (SVD) to find the normal vector to the plane best fitting</span>
+<span class="sd">        the top vertices.</span>
+<span class="sd">        If set to mea, we take the average of the top and bottom vertices.</span>
+<span class="sd">    coordinates_name : str</span>
+<span class="sd">        The coordinates space to use. Typically, &#39;coordinates&#39;, &#39;coordinates_atlas&#39;,</span>
+<span class="sd">         &#39;coordinates_scaled&#39; or &#39;coordinates_MRI&#39;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        radial_orientations, planar_orientations, reference_norms, edge_lengths</span>
+<span class="sd">        (all ndarrays)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">radial_orientations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">n_edges</span><span class="p">)</span>
+    <span class="n">planar_orientations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">n_edges</span><span class="p">)</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_annotation</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">id_</span> <span class="ow">in</span> <span class="n">region_ids</span><span class="p">:</span>  <span class="c1"># WARNING: could use second element of tuple which is the level</span>
+        <span class="n">vertex_filter</span> <span class="o">=</span> <span class="n">label</span> <span class="o">==</span> <span class="n">id_</span>
+        <span class="n">sub_graph</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">sub_graph</span><span class="p">(</span><span class="n">vertex_filter</span><span class="o">=</span><span class="n">vertex_filter</span><span class="p">)</span>  <span class="c1"># PERFORMANCE: check if we could use view instead of sub_graph</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">get_orientation_from_normal_to_surface_global</span><span class="p">(</span><span class="n">sub_graph</span><span class="p">,</span> <span class="n">sub_graph</span><span class="p">,</span>  <span class="c1"># FIXME: check if sub_graph is correct</span>
+                                                             <span class="n">normal_vector_method</span><span class="o">=</span><span class="n">normal_vector_method</span><span class="p">,</span>
+                                                             <span class="n">coordinates_name</span><span class="o">=</span><span class="n">coordinates_name</span><span class="p">)</span>
+        <span class="n">edge_filter</span> <span class="o">=</span> <span class="n">vertex_to_edge_property</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">vertex_filter</span><span class="p">)</span>
+        <span class="n">radial_orientations</span><span class="p">[</span><span class="n">edge_filter</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span>
+        <span class="n">planar_orientations</span><span class="p">[</span><span class="n">edge_filter</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">radial_orientations</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">planar_orientations</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_orientation_from_normal_to_surface_global">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.get_orientation_from_normal_to_surface_global">[docs]</a>
+<span class="k">def</span> <span class="nf">get_orientation_from_normal_to_surface_global</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">ref_graph</span><span class="p">,</span> <span class="n">normal_vector_method</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                                                  <span class="n">coordinates_name</span><span class="o">=</span><span class="s1">&#39;coordinates&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the orientation of the graph relative to the surface normal.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph : GraphGt.Graph</span>
+<span class="sd">        The graph to get the orientation from</span>
+<span class="sd">    ref_graph</span>
+<span class="sd">    normal_vector_method : str</span>
+<span class="sd">        The method to use to compute the normal vector to the plane best fitting the vertices.</span>
+<span class="sd">        Can be either &#39;svd&#39; or &#39;mean&#39;.</span>
+<span class="sd">    coordinates_name : str</span>
+<span class="sd">        The coordinates space to use. Typically, &#39;coordinates&#39;, &#39;coordinates_atlas&#39;,</span>
+<span class="sd">            &#39;coordinates_scaled&#39; or &#39;coordinates_MRI&#39;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vertex_coordinates</span> <span class="o">=</span> <span class="n">get_vertex_coordinates</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">coordinates_name</span><span class="o">=</span><span class="n">coordinates_name</span><span class="p">)</span>
+    <span class="n">normed_edge_vect</span> <span class="o">=</span> <span class="n">coordinates_to_edge_vectors</span><span class="p">(</span><span class="n">vertex_coordinates</span><span class="p">,</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_connectivity</span><span class="p">(),</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">top_to_bottom_dist</span> <span class="o">=</span> <span class="n">get_top_to_bottom_dist</span><span class="p">(</span><span class="n">ref_graph</span><span class="p">,</span> <span class="n">normal_vector_method</span><span class="o">=</span><span class="n">normal_vector_method</span><span class="p">)</span>
+    <span class="n">radial_orientations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">top_to_bottom_dist</span><span class="p">,</span> <span class="n">normed_edge_vect</span><span class="p">)</span>
+    <span class="n">planar_orientations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">radial_orientations</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># edge_vect = coordinates_to_edge_vectors(vertex_coordinates, connectivity, normalized=False)</span>
+    <span class="c1"># reference_norms = np.linalg.norm(edge_vect[edge_vect.shape[0] - 1])</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">radial_orientations</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">planar_orientations</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_top_to_bottom_dist">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.get_top_to_bottom_dist">[docs]</a>
+<span class="k">def</span> <span class="nf">get_top_to_bottom_dist</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">normal_vector_method</span><span class="o">=</span><span class="s1">&#39;svd&#39;</span><span class="p">,</span> <span class="n">coordinates_name</span><span class="o">=</span><span class="s1">&#39;coordinates&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the top to bottom distance of the graph.</span>
+<span class="sd">    This can be computed using the minimum distance method or by taking the mean of the top and bottom vertices.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph : GraphGt.Graph</span>
+<span class="sd">        The graph to get the top to bottom distance from</span>
+<span class="sd">    normal_vector_method : str</span>
+<span class="sd">        The method to use to compute the top to bottom distance.</span>
+<span class="sd">        Can be either &#39;svd&#39; or &#39;mean&#39;.</span>
+<span class="sd">        If set to &#39;svd&#39;, we identify the vertices in the graph that are closer to the surface than a certain threshold</span>
+<span class="sd">        (min_dist, which is the minimum distance to the surface plus 1.5).</span>
+<span class="sd">        We then calculate the centroid of these vertices and uses Singular Value Decomposition (SVD)</span>
+<span class="sd">        to find the normal vector to the plane best fitting these vertices.</span>
+<span class="sd">        This normal vector is considered as the top-to-bottom direction.</span>
+
+<span class="sd">        If set to &#39;mean&#39;, the function computes the top-to-bottom distance by taking the mean of the coordinates</span>
+<span class="sd">        of the top and bottom vertices in the graph.</span>
+<span class="sd">        The top vertices are those with a distance to the surface less than or equal to the minimum distance plus 1,</span>
+<span class="sd">        and the bottom vertices are those with a distance to the surface greater than or equal</span>
+<span class="sd">        to the maximum distance minus 1.</span>
+<span class="sd">        The top-to-bottom direction is then the normalized vector from the mean of the top vertices</span>
+<span class="sd">        to the mean of the bottom vertices.</span>
+<span class="sd">    coordinates_name : str</span>
+<span class="sd">        The coordinates space to use. Typically, &#39;coordinates&#39;, &#39;coordinates_atlas&#39;,</span>
+<span class="sd">        &#39;coordinates_scaled&#39; or &#39;coordinates_MRI&#39;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_property</span><span class="p">(</span><span class="s1">&#39;distance_to_surface&#39;</span><span class="p">)</span>
+    <span class="n">coordinates</span> <span class="o">=</span> <span class="n">get_vertex_coordinates</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">coordinates_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">normal_vector_method</span> <span class="o">==</span> <span class="s1">&#39;svd&#39;</span><span class="p">:</span>
+        <span class="n">margin</span> <span class="o">=</span> <span class="mf">1.5</span>
+        <span class="n">top_vertices</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> <span class="o">+</span> <span class="n">margin</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">top_vertices</span><span class="p">]</span>
+
+        <span class="n">centroid</span> <span class="o">=</span> <span class="n">coords</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># run SVD</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">vh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">coords</span> <span class="o">-</span> <span class="n">centroid</span><span class="p">)</span>
+        <span class="c1"># unitary normal vector</span>
+        <span class="n">top_to_bottom_dist</span> <span class="o">=</span> <span class="n">vh</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># FIXME: why 2 ?</span>
+    <span class="k">elif</span> <span class="n">normal_vector_method</span> <span class="o">==</span> <span class="s1">&#39;mean&#39;</span><span class="p">:</span>
+        <span class="n">margin</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># FIXME: different margin</span>
+        <span class="n">top_vertices</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">&lt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> <span class="o">+</span> <span class="n">margin</span>
+        <span class="n">bottom_vertices</span> <span class="o">=</span> <span class="n">dist</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> <span class="o">-</span> <span class="n">margin</span>
+
+        <span class="n">top_to_bottom_dist</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">coordinates</span><span class="p">[</span><span class="n">bottom_vertices</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span>
+                              <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">coordinates</span><span class="p">[</span><span class="n">top_vertices</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+        <span class="n">top_to_bottom_dist</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">top_to_bottom_dist</span><span class="p">)</span>  <span class="c1"># preprocessing.normalize(top_to_bottom_dist, norm=&#39;l2&#39;)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unknown method </span><span class="si">{</span><span class="n">normal_vector_method</span><span class="si">}</span><span class="s1">, expected &quot;svd&quot; or &quot;mean&quot;&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">top_to_bottom_dist</span><span class="o">.</span><span class="n">T</span></div>
+
+
+
+<span class="c1"># FIXME: extract part that modifies the graph to add artery and vein</span>
+<div class="viewcode-block" id="generalized_radial_planar_orientation">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.vasculature.general_functions.html#ClearMap.Analysis.vasculature.general_functions.generalized_radial_planar_orientation">[docs]</a>
+<span class="k">def</span> <span class="nf">generalized_radial_planar_orientation</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">work_dir</span><span class="p">,</span> <span class="n">min_radius</span><span class="p">,</span> <span class="n">reference_samples</span><span class="p">,</span> <span class="n">corrected</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                          <span class="n">distance_to_surface</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                          <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;arteryvein&#39;</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dvlpmt</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_dist_to_surface</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+                                          <span class="n">coordinates_name</span><span class="o">=</span><span class="s1">&#39;coordinates&#39;</span><span class="p">,</span> <span class="n">orientation_criterion</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Use Flow interpolation to compute the orientation of the vessels in the graph.</span>
+<span class="sd">    This is based on the local orientation of the arteries</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph</span>
+<span class="sd">    work_dir</span>
+<span class="sd">    min_radius</span>
+<span class="sd">    reference_samples</span>
+<span class="sd">    corrected</span>
+<span class="sd">    distance_to_surface</span>
+<span class="sd">    mode</span>
+<span class="sd">    average</span>
+<span class="sd">    dvlpmt</span>
+<span class="sd">    min_dist_to_surface</span>
+<span class="sd">    coordinates_name</span>
+<span class="sd">    orientation_criterion</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">artery</span> <span class="o">=</span> <span class="n">edge_to_vertex_property</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s1">&#39;artery&#39;</span><span class="p">)</span>
+    <span class="n">vein</span> <span class="o">=</span> <span class="n">edge_to_vertex_property</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s1">&#39;vein&#39;</span><span class="p">)</span>
+    <span class="n">distance_to_surface</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_property</span><span class="p">(</span><span class="s1">&#39;distance_to_surface&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">distance_to_surface</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">average</span><span class="p">:</span>
+        <span class="n">reference_arteries_edge_coords</span><span class="p">,</span> <span class="n">reference_arteries_edge_vectors</span> <span class="o">=</span> <span class="n">get_reference_streamlines</span><span class="p">(</span><span class="n">work_dir</span><span class="p">,</span> <span class="n">reference_samples</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>  <span class="c1"># FIXME: this could be computed in parent function and passed as argument</span>
+
+        <span class="n">capillaries_edge_coordinates</span><span class="p">,</span> <span class="n">capillaries_edge_vectors</span><span class="p">,</span> <span class="nb">filter</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">get_artery_vein_edge_coords_and_vectors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">artery</span><span class="p">,</span> <span class="n">vein</span><span class="p">,</span>
+                                                    <span class="n">min_radius</span><span class="o">=</span><span class="n">min_radius</span><span class="p">,</span>
+                                                    <span class="n">distance_to_surface</span><span class="o">=</span><span class="n">distance_to_surface</span><span class="p">,</span> <span class="n">min_dist_to_surface</span><span class="o">=</span><span class="n">min_dist_to_surface</span><span class="p">,</span>
+                                                    <span class="n">coordinates_name</span><span class="o">=</span><span class="n">coordinates_name</span><span class="p">,</span> <span class="n">orientation_criterion</span><span class="o">=</span><span class="n">orientation_criterion</span><span class="p">,</span>
+                                                    <span class="n">invert</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_filter</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="n">tmp_angles</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># The angles to all the reference samples</span>
+        <span class="c1"># PERFORMANCE: should use multiple cores</span>
+        <span class="c1"># For each reference sample, interpolate its arteries vector onto the edges of the tested graph and compute the angle</span>
+        <span class="k">for</span> <span class="n">arteries_edge_coordinates</span><span class="p">,</span> <span class="n">arteries_graph_vector</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">reference_arteries_edge_coords</span><span class="p">,</span> <span class="n">reference_arteries_edge_vectors</span><span class="p">):</span>
+            <span class="n">flow_vectors</span> <span class="o">=</span> <span class="n">interpolate_vectors</span><span class="p">(</span><span class="n">arteries_graph_vector</span><span class="p">,</span> <span class="n">arteries_edge_coordinates</span><span class="p">,</span> <span class="n">capillaries_edge_coordinates</span><span class="p">)</span>
+            <span class="n">tmp_angles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">angle_between_vectors</span><span class="p">(</span><span class="n">flow_vectors</span><span class="p">,</span> <span class="n">capillaries_edge_vectors</span><span class="p">))</span>
+        <span class="n">sub_angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tmp_angles</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">n_edges</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">filter</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">angles</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_angles</span>  <span class="c1"># Cast back to the original graph shape</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">edge_coordinates</span><span class="p">,</span> <span class="n">edge_vectors</span> <span class="o">=</span> <span class="n">graph_to_edge_coords_and_vectors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">coordinates_name</span><span class="o">=</span><span class="n">coordinates_name</span><span class="p">,</span>  <span class="c1"># FIXME: is this capillaries ? do we need to invert ?</span>
+                                                                          <span class="n">orientation_criterion</span><span class="o">=</span><span class="n">orientation_criterion</span><span class="p">)</span>
+        <span class="n">arteries_edge_coordinates</span><span class="p">,</span> <span class="n">arteries_edge_vectors</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">get_artery_vein_edge_coords_and_vectors</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">artery</span><span class="p">,</span> <span class="n">vein</span><span class="p">,</span>
+                                                    <span class="n">min_radius</span><span class="o">=</span><span class="n">min_radius</span><span class="p">,</span> <span class="n">clean_graph</span><span class="o">=</span><span class="p">(</span><span class="n">corrected</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">dvlpmt</span><span class="p">),</span>
+                                                    <span class="n">distance_to_surface</span><span class="o">=</span><span class="n">distance_to_surface</span><span class="p">,</span> <span class="n">min_dist_to_surface</span><span class="o">=</span><span class="n">min_dist_to_surface</span><span class="p">,</span>
+                                                    <span class="n">coordinates_name</span><span class="o">=</span><span class="n">coordinates_name</span><span class="p">,</span> <span class="n">orientation_criterion</span><span class="o">=</span><span class="n">orientation_criterion</span><span class="p">))</span>
+
+        <span class="n">flow_vectors</span> <span class="o">=</span> <span class="n">interpolate_vectors</span><span class="p">(</span><span class="n">arteries_edge_vectors</span><span class="p">,</span> <span class="n">arteries_edge_coordinates</span><span class="p">,</span> <span class="n">edge_coordinates</span><span class="p">)</span>
+        <span class="n">angles</span> <span class="o">=</span> <span class="n">angle_between_vectors</span><span class="p">(</span><span class="n">flow_vectors</span><span class="p">,</span> <span class="n">edge_vectors</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">angles</span><span class="p">,</span> <span class="n">graph</span>  <span class="c1"># FIXME: why return graph ? It shouldn&#39;t be modified</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,3 +1,5 @@
+.. FIXME rename to package organisation
+
 Functionality
 =============
 
@@ -34,28 +36,12 @@ The ClearMap code is structured into these main modules:
 Alignment
 ^^^^^^^^^
 
-The :mod:`ClearMap.Alignment` module includes methods for
-
-    * 3d resampling: 
-      
-        - :mod:`~ClearMap.Alignment.Resampling`
-        
-    * 3d alignment to reference atlases (e.g. 
-      `Allen Brain Institute Atlases <https://portal.brain-map.org/>`_) via
-      interfacing to
-      `elastix <http://elastix.isi.uu.nl <http://elastix.isi.uu.nl>`_:
-    
-        - :mod:`~ClearMap.Alignment.Elastix`
-        - :mod:`~ClearMap.Alignment.Annotation`
-        
-    * 3d rigid and wobbly stitching via :doc:`wobblystitcher`:
-    
-        - :mod:`~ClearMap.Alignment.Stitching.StitchingRigid`
-        - :mod:`~ClearMap.Alignment.Stitching.StitchingWobbly`
+.. include:: Alignment.rst
 
 
 Analysis
 ^^^^^^^^
+.. FIXME move to Analysis.__init__.py
 
 The :mod:`~ClearMap.Analysis` module provides methods for the quantification
 and analysis of the data, including:
@@ -79,8 +65,8 @@ and analysis of the data, including:
       - :mod:`~ClearMap.Analysis.Measurements`
         
       enabling:
-        - measurments of expression levels
-        - measurments of geometric shapes and radii
+        - measurements of expression levels
+        - measurements of geometric shapes and radii
         - maxima detection 
         - voxelization
 
@@ -92,76 +78,78 @@ and analysis of the data, including:
 ImageProcessing
 ^^^^^^^^^^^^^^^
 
+.. FIXME move to ImageProcessing.__init__.py
+
 The :mod:`~ClearMap.ImageProcessing` module is the core of *ClearMap* and
 provides methods to process 3d images of TB size, including:
 
-  * binary image processing 
-    
-    - :mod:`~ClearMap.ImageProcessing.Binary`
-    
-    with filling and discrete topology based binary smoothing routines:
-    
-    - :mod:`~ClearMap.ImageProcessing.Binary.Filling`
-    - :mod:`~ClearMap.ImageProcessing.Binary.Smoothing` 
+  * binary image processing
 
-  * clipping and normalization 
-    
+    - :mod:`~ClearMap.ImageProcessing.Binary`
+
+    with filling and discrete topology based binary smoothing routines:
+
+    - :mod:`~ClearMap.ImageProcessing.Binary.Filling`
+    - :mod:`~ClearMap.ImageProcessing.Binary.Smoothing`
+
+  * clipping and normalization
+
     - :mod:`~ClearMap.ImageProcessing.Clipping`
-  
+
   * 3d local gradients and Hessian matrices
-     
+
     - :mod:`~ClearMap.ImageProcessing.Differentiation`
-  
+
     with 3d tube filter and tubeness measures:
-    
+
     - :mod:`~ClearMap.ImageProcessing.Differentiation.Hessian`
-  
+
   * 3d filtering
-    
-    - :mod:`~ClearMap.ImageProcessing.Filter` 
-  
+
+    - :mod:`~ClearMap.ImageProcessing.Filter`
+
     with 3d rank filter library (>30 filters)
-    
+
     - :mod:`~ClearMap.ImageProcessing.Filter.Rank`
-  
+
   * skeletonization via parallel thinning
-    
+
     - :mod:`~ClearMap.ImageProcessing.Skeletonization`
-  
+
   * 3d tracing
-    
+
     - :mod:`~ClearMap.ImageProcessing.Tracing`
-  
+
   * fast calculation of 3d local image statistics
-    
+
     - :mod:`~ClearMap.ImageProcessing.LocalStatistics`
-  
+
   * fast 3d local image statistics
-  
+
     - :mod:`~ClearMap.ImageProcessing.LocalStatistics`
-  
+
   * hysteresis and seeded thresholding
-    
+
     - :mod:`~ClearMap.ImageProcessing.Thresholding`
-  
+
   * light-sheet artifact removal
-    
+
     - :mod:`~ClearMap.ImageProcessing.LightsheetCorrection`
-     
+
   * illuminatoin correction
-    
+
     - :mod:`~ClearMap.ImageProcessing.IlluminationCorrection`
-    
+
   * machine learning based image processing
-    
-    - :mod:`~ClearMap.ImageProcessing.MachineLearning`
-    
+
+    - :mod:`~ClearMap.ImageProcessing.machine_learning`
+
     with vessel and tube filling deep convolutional neural network:
-    
-    - :mod:`~ClearMap.ImageProcessing.MachineLearning.VesselFilling`
-  
+
+    - :mod:`~ClearMap.ImageProcessing.machine_learning.vessel_filling`
+
   * expert processing pipelines for specific applications
-    
+
     - :mod:`~ClearMap.ImageProcessing.Experts`
 
 
@@ -227,35 +215,34 @@ processing.
       - :mod:`~ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList`
       - :mod:`~ClearMap.ParallelProcessing.DataProcessing.DevolvePointList`
       - :mod:`~ClearMap.ParallelProcessing.DataProcessing.MeasurePointList`
-      - :mod:`~ClearMap.ParallelProcessing.DataProcessing.StatisticsPointList`
   
 
 Visualization
 ^^^^^^^^^^^^^
 
-*ClearMap's* "mod:`ClearMap.Visualization` module comes with a larger set of
+*ClearMap's* " :mod:`ClearMap.Visualization` module comes with a larger set of
 interactive visualization functions using various backends:
 
-  * :mod:`~ClearMap.Visualization.Qt`
-    
+* :mod:`~ClearMap.Visualization.Qt`
+
     providing:
-    
+
     - fast interactive 2d slice plotting of 3d TB data sets
-    
-      - :mod:`~ClearMap.Visualization.Qt.DataViewer`
-    
-    - overlays and/or synchronized window display of multiple data sets.
-    
-      - :mod:`~ClearMap.Visualization.Qt.Plot3d`    
 
-  * :mod:`~ClearMap.Visualization.Vispy`
+      - :mod:`~ClearMap.Visualization.Qt.DataViewer`
+
+    - overlays and/or synchronized window display of multiple data sets.
+
+      - :mod:`~ClearMap.Visualization.Qt.Plot3d`
+
+* :mod:`~ClearMap.Visualization.Vispy`
 
     providing:
-    
+
     -  3d volume rendering, lists and line plots
-    
+
        - :mod:`~ClearMap.Visualization.Vispy.Plot3d`
-    
+
     -  3d plots 3d graphs as lines or mesh plots with edge geometries, etc
-    
+
        - :mod:`~ClearMap.Visualization.Vispy.PlotGraph3d`

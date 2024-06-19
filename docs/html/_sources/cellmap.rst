@@ -1,11 +1,17 @@
+.. .. _CellMap:
+
 CellMap
 =======
 
-This pipeine implements the cell detection and analysis done in [Renier2016]_.
+This pipeline implements the cell detection and analysis done in [Renier2016]_.
+It highly optimized to perform a fast and efficient detection of cell nuclei
+in TB scale light sheet microscopy images.
 
-See the :ref:`CellMap tutorial </CellMap.ipynb>` for usage.
+See the `CellMap tutorial` for usage.
 
-The main image processing steps are defined in the cell expert
+.. _CellMap tutorial: _static/scripts/cell_map_tutorial.ipynb
+
+The main image processing steps are defined in the cell expert module
 :mod:`ClearMap.ImageProcessing.Experts.Cells`.
 
 Pipeline
@@ -15,17 +21,11 @@ Pipeline
 and composed of the following image processing steps:
 
 * `Illumination correction`_
-
 * `Background removal`_
-
 * `Equalization`_
-
 * `Difference of Gaussians (DoG) filter`_
-
 * `Maxima detection`_
-
 * `Cell shape detection`_
-
 * `Cell intensity measurements`_
 
 
@@ -36,7 +36,7 @@ the resulting shapes filtered by volume to retain only genuine cells.
 
 .. _CellMapPipeline:
 
-.. figure:: Static/CellMap_pipeline.png
+.. figure:: /static/CellMap_pipeline.png
 
   iDISCO+ and ClearMap: A Pipeline for Cell Detection, Registration, and 
   Mapping in Intact Samples Using Light Sheet Microscopy.
@@ -65,7 +65,7 @@ features will be positioned in the same region of the lens across samples.
 
 .. _CellMapPipelineIllumination:
 
-.. figure:: Static/CellMap_pipeline_illumination.jpg
+.. figure:: /static/CellMap_pipeline_illumination.jpg
 
   Illumination correction in ClearMap.
 
@@ -114,18 +114,18 @@ to increase the contrast of the relevant objects for other experiments.
 Maxima detection
 ^^^^^^^^^^^^^^^^
 
-In this step potentiall cell centers are detect by finding local maxima
+In this step potential cell centers are detect by finding local maxima
 in the pre-processed images. 
 
 The maxima detection can have an optional extended maxima filter (via
-an h-transform) usefull for objects that contain several peaks of intensity,
+an h-transform) useful for objects that contain several peaks of intensity,
 for instance, higher resolution views of a cell nuclei with granular texture. 
 
 
 Cell shape detection
 ^^^^^^^^^^^^^^^^^^^^
 
-The cell shape detection can be used to measure the volmues of the detected 
+The cell shape detection can be used to measure the volumes of the detected
 cells. This can help to remove local peaks that do not correspond to an actual 
 cell.
 
@@ -138,7 +138,7 @@ Cell intensity measurements
 
 This part of the pipeline allows to measure various expression levels and 
 intensities given the cell centers or shape. Different methods
-can be used to calculate the intensity in an extened cell shape (e..g max, min,
+can be used to calculate the intensity in an extended cell shape (e..g max, min,
 mean etc.).
 
 

@@ -1,10 +1,13 @@
-ClearMap
-========
+.. _api:
 
-.. autopackagesummary:: ClearMap
-   :toctree: Api/
-   :template: autosummary/module.rst
-
+ClearMap API
+============
 
 .. automodule:: ClearMap
 
+.. autopackagesummary:: ClearMap
+   :toctree: api
+   :template: autosummary/package.rst
+
+
+.. include:: references.rst

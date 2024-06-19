@@ -5,7 +5,7 @@ TubeMap
 The :mod:`ClearMap.Scripts.TubeMap` script implements the analysis done 
 in [Kirst2020]_.
 
-See the :ref:`TubeMap tutorial </TubeMap.ipynb>` for usage.
+See the :ref:`TubeMap tutorial <../../ClearMap/Scripts/tube_map_tutorial.ipynb>` for usage.
 
 The main image processing steps are defined in the vascualture expert
 :mod:`ClearMap.ImageProcessing.Experts.Vasculature`.
@@ -18,7 +18,7 @@ Pipeline
 tubular networks into graph representations illustrated  here:
 
 
-.. figure:: Static/TubeMap_pipeline_overview.png
+.. figure:: static/TubeMap_pipeline_overview.png
     :name: tubemap-overview
    
     TubeMap pipeline overview.
@@ -48,7 +48,7 @@ following image processing steps:
 and is illustrated here:
 
 
-.. figure:: Static/TubeMap_pipeline_image_processing.png
+.. figure:: static/TubeMap_pipeline_image_processing.png
     :name: tubemap-image-processing
   
     TubeMap image processing pipeline.
@@ -359,7 +359,7 @@ vessels have larger radii and are sparse, we used blocs of 900*900*900
 voxels with a 200 voxel overlap, and down sampled the blocks by a factor
 of 4.
 
-.. figure:: Static/TubeMap_pipeline_deep_filling.png
+.. figure:: static/TubeMap_pipeline_deep_filling.png
     :name: tubemap-deep-filling
 
     TubeMap's deep vessel filling.

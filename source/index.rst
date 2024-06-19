@@ -38,10 +38,6 @@ ClearMap Documentation
 
         ClearMap test text
 
-    .. figure:: static/ClearMap_banner_negative.jpg
-
-        ClearMap test text
-
     .. figure:: static/stitching_banner.png
 
         Custom stitching

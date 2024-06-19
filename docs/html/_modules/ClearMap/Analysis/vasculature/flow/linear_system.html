@@ -1,0 +1,836 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.Analysis.vasculature.flow.linear_system &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/design-tabs.js?v=36754332"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/Analysis/vasculature/flow/linear_system';</script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../overview.html">
+                        Overview
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../installation.html">
+                        Installation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../functionality.html">
+                        Functionality
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../gui/index.html">
+                        GUI usage
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../../../advanced/advanced_usage.html">
+                        ClearMap pipelines
+                      </a>
+                    </li>
+                
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links-2">
+                    More
+                </button>
+                <ul id="pst-nav-more-links-2" class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../../media.html">
+                        News and Media
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link dropdown-item nav-internal" href="../../../../../references.html">
+                        References
+                      </a>
+                    </li>
+                
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Ana...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.Analysis.vasculature.flow.linear_system</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">pyamg</span> <span class="kn">import</span> <span class="n">rootnode_solver</span>
+
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">lil_matrix</span><span class="p">,</span> <span class="n">linalg</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="kn">import</span> <span class="n">gmres</span>
+
+<span class="kn">from</span> <span class="nn">pyximport</span> <span class="kn">import</span> <span class="n">pyximport</span>
+
+
+<span class="kn">import</span> <span class="nn">ClearMap.Analysis.vasculature.flow.units</span> <span class="k">as</span> <span class="nn">units</span>
+<span class="n">pyximport</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="n">setup_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;include_dirs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">get_include</span><span class="p">()]},</span> <span class="n">reload_support</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Analysis.vasculature.flow.physiology</span> <span class="kn">import</span> <span class="n">Physiology</span>  <span class="c1"># dot import for pyx</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;LinearSystem&#39;</span><span class="p">]</span>
+<span class="n">defaultUnits</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;length&#39;</span><span class="p">:</span> <span class="s1">&#39;um&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">:</span> <span class="s1">&#39;ug&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;ms&#39;</span><span class="p">}</span>
+
+
+<span class="c1"># ------------------------------------------------------------------------------</span>
+<span class="c1"># ------------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="LinearSystem">
+<a class="viewcode-back" href="../../../../../api/ClearMap.Analysis.vasculature.flow.linear_system.html#ClearMap.Analysis.vasculature.flow.linear_system.LinearSystem">[docs]</a>
+<span class="k">class</span> <span class="nc">LinearSystem</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">withRBC</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">invivo</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dMin_empirical</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">htdMax_empirical</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes the flow and pressure field of a vascular graph without RBC tracking.</span>
+<span class="sd">        It can be chosen between pure plasma flow, constant hematocrit or a given htt/htd</span>
+<span class="sd">        distribution.</span>
+<span class="sd">        The pressure boundary conditions (pBC) should be given in mmHg and pressure will be output in mmHg</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        G: igraph.Graph</span>
+<span class="sd">            Vascular graph in iGraph format.</span>
+<span class="sd">        withRBC: int</span>
+<span class="sd">            0: no RBCs, pure plasma Flow (default)</span>
+<span class="sd">            0 &lt; withRBC &lt; 1 &amp; &#39;htt&#39; not in edgeAttributes: the given value is assigned as htt to all edges.</span>
+<span class="sd">            0 &lt; withRBC &lt; 1 &amp; &#39;htt&#39; in edgeAttributes: the given value is assigned as htt to all edges where htt = None.</span>
+<span class="sd">        invivo: boolean</span>
+<span class="sd">            whether the invivo or invitro empirical functions are used (default = 0, i.e. in vitro)</span>
+<span class="sd">        dMin_empiricial: float</span>
+<span class="sd">            lower limit for the diameter that is used to compute nurel (effective viscosity). The aim of the limit</span>
+<span class="sd">            is to avoid using the empirical equations in a range where no experimental data is available (default = 3.5).</span>
+<span class="sd">        htdMax_empirical: float</span>
+<span class="sd">            upper limit for htd that is used to compute nurel (effective viscosity). The aim of the limit</span>
+<span class="sd">            is to avoid using the empirical equations in a range where no experimental data is available (default = 0.6). Maximum has to be 1.</span>
+<span class="sd">        verbose: bool</span>
+<span class="sd">            if WARNINGS and setup information is printed</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None, the edge properties htt is assigned and the function update is executed (see description for more details)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_G</span> <span class="o">=</span> <span class="n">G</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_eps</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_eps</span> <span class="o">=</span> <span class="mf">1e-5</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_P</span> <span class="o">=</span> <span class="n">Physiology</span><span class="p">(</span><span class="n">defaultUnits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_muPlasma</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_P</span><span class="o">.</span><span class="n">dynamic_plasma_viscosity</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_withRBC</span> <span class="o">=</span> <span class="n">withRBC</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_invivo</span> <span class="o">=</span> <span class="n">invivo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dMin_empirical</span> <span class="o">=</span> <span class="n">dMin_empirical</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_htdMax_empirical</span> <span class="o">=</span> <span class="n">htdMax_empirical</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;INFO: The limits for the compuation of the effective viscosity are set to&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Minimum diameter </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_dMin_empirical</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Maximum discharge </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_htdMax_empirical</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_withRBC</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_withRBC</span> <span class="o">&lt;</span> <span class="mf">1.</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;htt&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="o">.</span><span class="n">attribute_names</span><span class="p">():</span>
+                    <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;htt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_withRBC</span><span class="p">]</span> <span class="o">*</span> <span class="n">G</span><span class="o">.</span><span class="n">ecount</span><span class="p">()</span>  <span class="c1"># G.ecount() --&gt; total number of edges</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">httNone</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">(</span><span class="n">htt_eq</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">indices</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">httNone</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="n">httNone</span><span class="p">][</span><span class="s1">&#39;htt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_withRBC</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">httNone</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;WARNING: htt is already an edge attribute. </span><span class="se">\n</span><span class="s1"> Existing values are not overwritten!&#39;</span> <span class="o">+</span> \
+                                  <span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> If new values should be assigned htt has to be deleted beforehand!&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ERROR: 0 &lt; withRBC &lt; 1&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s1">&#39;rBC&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="o">.</span><span class="n">attribute_names</span><span class="p">():</span>  <span class="c1"># instead of pressure boundary conditions, in/outflow boundary conditions can be assigned (vertex attributed rBC)</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="s1">&#39;rBC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">G</span><span class="o">.</span><span class="n">vcount</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="s1">&#39;pBC&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="o">.</span><span class="n">attribute_names</span><span class="p">():</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="s1">&#39;pBC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">G</span><span class="o">.</span><span class="n">vcount</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="c1"># --------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="LinearSystem.update">
+<a class="viewcode-back" href="../../../../../api/ClearMap.Analysis.vasculature.flow.linear_system.html#ClearMap.Analysis.vasculature.flow.linear_system.LinearSystem.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs the linear system A x = b where the matrix A contains the</span>
+<span class="sd">        conductance information of the vascular graph, the vector b specifies</span>
+<span class="sd">        the boundary conditions and the vector x holds the pressures at the</span>
+<span class="sd">        vertices (for which the system needs to be solved).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        matrix A and vector b</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">htt2htd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_P</span><span class="o">.</span><span class="n">tube_to_discharge_hematocrit</span>
+        <span class="n">nurel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_P</span><span class="o">.</span><span class="n">relative_apparent_blood_viscosity</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_G</span>
+
+        <span class="c1"># Convert &#39;pBC&#39; [&#39;mmHG&#39;] to default Units</span>
+        <span class="c1"># for v in G.vs(pBC_ne=None):</span>
+        <span class="c1">#     v[&#39;pBC&#39;]=v[&#39;pBC&#39;]*vgm.units.scaling_factor_du(&#39;mmHg&#39;,G[&#39;defaultUnits&#39;])</span>
+
+        <span class="n">nVertices</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">vcount</span><span class="p">()</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nVertices</span><span class="p">)</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">lil_matrix</span><span class="p">((</span><span class="n">nVertices</span><span class="p">,</span> <span class="n">nVertices</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+        <span class="c1"># Compute nominal and specific resistance:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_nominal_and_specific_resistance</span><span class="p">()</span>
+
+        <span class="c1"># if with RBCs compute effective resistance</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_withRBC</span><span class="p">:</span>
+            <span class="c1"># using numpy notation:</span>
+            <span class="c1"># dischargeHt = np.minimum(htt2htd(G.es[&#39;htt&#39;], G.es[&#39;diameter&#39;], self._invivo), 1.0)</span>
+            <span class="n">dischargeHt</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">htt2htd</span><span class="p">(</span><span class="n">htt</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_invivo</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">htt</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;htt&#39;</span><span class="p">],</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;diameter&#39;</span><span class="p">])]</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;htd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dischargeHt</span>
+
+            <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;effResistance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">res</span> <span class="o">*</span> <span class="n">nurel</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dMin_empirical</span><span class="p">,</span> <span class="n">d</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">dHt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_htdMax_empirical</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_invivo</span><span class="p">)</span> \
+                <span class="k">for</span> <span class="n">res</span><span class="p">,</span> <span class="n">dHt</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;resistance&#39;</span><span class="p">],</span> <span class="n">dischargeHt</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;diameter&#39;</span><span class="p">])]</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;conductance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;effResistance&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;conductance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="o">/</span> <span class="n">e</span><span class="p">[</span><span class="s1">&#39;resistance&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_conductance</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;conductance&#39;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">vertex</span><span class="o">.</span><span class="n">index</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">rows</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">if</span> <span class="n">vertex</span><span class="p">[</span><span class="s1">&#39;pBC&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+                <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">vertex</span><span class="p">[</span><span class="s1">&#39;pBC&#39;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">aDummy</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">incident</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">):</span>  <span class="c1"># G.incident --&gt; list of edges attached to vertex i</span>
+                    <span class="k">if</span> <span class="n">G</span><span class="o">.</span><span class="n">is_loop</span><span class="p">(</span><span class="n">edge</span><span class="p">):</span>
+                        <span class="k">continue</span>
+                    <span class="n">j</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">i</span><span class="p">)[</span><span class="n">k</span><span class="p">]</span>  <span class="c1"># G.neighbors --&gt; list of vertices neighboring vertex i</span>
+                    <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">conductance</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="n">edge</span><span class="p">][</span><span class="s1">&#39;conductance&#39;</span><span class="p">]</span>
+                    <span class="n">neighbor</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                    <span class="c1"># +=, -= account for multiedges</span>
+                    <span class="n">aDummy</span> <span class="o">+=</span> <span class="n">conductance</span>
+                    <span class="k">if</span> <span class="n">neighbor</span><span class="p">[</span><span class="s1">&#39;pBC&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">neighbor</span><span class="p">[</span><span class="s1">&#39;pBC&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">conductance</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">j</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+                            <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">conductance</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">conductance</span>
+                    <span class="n">neighbors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">vertex</span><span class="p">[</span><span class="s1">&#39;rBC&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">vertex</span><span class="p">[</span><span class="s1">&#39;rBC&#39;</span><span class="p">]</span>
+                <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">aDummy</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_A</span> <span class="o">=</span> <span class="n">A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_b</span> <span class="o">=</span> <span class="n">b</span></div>
+
+
+    <span class="c1"># --------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="LinearSystem.solve">
+<a class="viewcode-back" href="../../../../../api/ClearMap.Analysis.vasculature.flow.linear_system.html#ClearMap.Analysis.vasculature.flow.linear_system.LinearSystem.solve">[docs]</a>
+    <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">dest_file_path</span><span class="o">=</span><span class="s1">&#39;sampledict.pkl&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Solves the linear system A x = b for the vector of unknown pressures</span>
+<span class="sd">        x, either using a direct solver (obsolete) or an iterative GMRES solver. From the</span>
+<span class="sd">        pressures, the flow field is computed.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        method: str</span>
+<span class="sd">            This can be either &#39;direct&#39; or &#39;iterative2&#39;</span>
+<span class="sd">        dest_file_path: str</span>
+<span class="sd">            The path to save the output file</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None - G is modified in place.</span>
+<span class="sd">        G_final.pkl &amp; G_final.vtp: are save as output</span>
+<span class="sd">        sampledict.pkl: is saved as output</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># htt2htd = self._P.tube_to_discharge_hematocrit</span>
+
+        <span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;direct&#39;</span><span class="p">:</span>
+            <span class="n">linalg</span><span class="o">.</span><span class="n">use_solver</span><span class="p">(</span><span class="n">useUmfpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">spsolve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_b</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;iterative2&#39;</span><span class="p">:</span>
+            <span class="n">ml</span> <span class="o">=</span> <span class="n">rootnode_solver</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;energy&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;degree&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}),</span> <span class="n">strength</span><span class="o">=</span><span class="s1">&#39;evolution&#39;</span><span class="p">)</span>
+            <span class="n">M</span> <span class="o">=</span> <span class="n">ml</span><span class="o">.</span><span class="n">aspreconditioner</span><span class="p">(</span><span class="n">cycle</span><span class="o">=</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
+            <span class="c1"># Solve pressure system</span>
+            <span class="c1"># x,info = gmres(A, self._b, tol=self._eps, maxiter=1000, M=M)</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">gmres</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_b</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mi">10</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eps</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">info</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ERROR in Solving the Matrix&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ERROR: Unknown method </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s1">! Choose either &quot;direct&quot; or &quot;iterative2&quot;!&#39;</span><span class="p">)</span>
+
+        <span class="n">G</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_G</span>
+        <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">get_edgelist</span><span class="p">())</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="n">pressure</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">conductance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_conductance</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">pressure</span><span class="p">[</span><span class="n">edges</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]]</span> <span class="o">-</span> <span class="n">pressure</span><span class="p">[</span><span class="n">edges</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]])</span> <span class="o">*</span> <span class="n">conductance</span>
+
+        <span class="c1"># Default Units - mmHg for pressure</span>
+        <span class="n">skl</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">scaling_factor_du</span><span class="p">(</span><span class="s1">&#39;mmHg&#39;</span><span class="p">,</span> <span class="n">G</span><span class="p">[</span><span class="s1">&#39;defaultUnits&#39;</span><span class="p">])</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pressure</span> <span class="o">/</span> <span class="n">skl</span>
+
+        <span class="c1"># Fahraeus effect --&gt; RBC flow velocity larger than bulk flow velocity</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_withRBC</span><span class="p">:</span>  <span class="c1"># TODO: test</span>
+            <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+            <span class="n">e_htd</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;htd&#39;</span><span class="p">]</span>
+            <span class="n">e_htt</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;htt&#39;</span><span class="p">]</span>
+            <span class="n">e_flow</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">]</span>
+            <span class="n">e_diam</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;diameter&#39;</span><span class="p">]</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">e_htd</span> <span class="o">/</span> <span class="n">e_htt</span> <span class="o">*</span> <span class="n">e_flow</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">e_diam</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">end1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+            <span class="n">d1</span> <span class="o">=</span> <span class="n">end1</span> <span class="o">-</span> <span class="n">start</span>
+
+            <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="s1">&#39;htd&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">e</span><span class="p">[</span><span class="s1">&#39;htt&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">e</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">e</span><span class="p">[</span><span class="s1">&#39;diameter&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">]</span>
+            <span class="n">d2</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">end1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;diameter&#39;</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Convert &#39;pBC&#39; from default Units to mmHg</span>
+        <span class="n">pbc_not_none</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="p">(</span><span class="n">pBC_ne</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">indices</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="n">pbc_not_none</span><span class="p">][</span><span class="s1">&#39;pBC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="n">pbc_not_none</span><span class="p">][</span><span class="s1">&#39;pBC&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span>
+                    <span class="mi">1</span> <span class="o">/</span> <span class="n">units</span><span class="o">.</span><span class="n">scaling_factor_du</span><span class="p">(</span><span class="s1">&#39;mmHg&#39;</span><span class="p">,</span> <span class="n">G</span><span class="p">[</span><span class="s1">&#39;defaultUnits&#39;</span><span class="p">]))</span>
+
+        <span class="n">G</span><span class="o">.</span><span class="n">write_pickle</span><span class="p">(</span><span class="s1">&#39;G_final.pkl&#39;</span><span class="p">)</span>
+        <span class="c1"># vgm.write_pkl(G, &#39;G_final.pkl&#39;)</span>
+        <span class="c1"># vgm.write_vtp(G, &#39;G_final.vtp&#39;,False)</span>
+
+        <span class="c1"># Write Output</span>
+        <span class="n">sample_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;flow&#39;</span><span class="p">:</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;v&#39;</span><span class="p">:</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;pressure&#39;</span><span class="p">:</span> <span class="n">G</span><span class="o">.</span><span class="n">vs</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dest_file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">sample_dict</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sample_dict</span></div>
+
+
+    <span class="c1"># --------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">_update_nominal_and_specific_resistance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">esequence</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Updates the nominal and specific resistance of a given edge</span>
+<span class="sd">        sequence.</span>
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        esequence:</span>
+<span class="sd">            Sequence of edge indices as tuple. If not provided, all</span>
+<span class="sd">            edges are updated.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None, the edge properties &#39;resistance&#39; and &#39;specificResistance&#39;</span>
+<span class="sd">        are updated (or created).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_G</span>
+
+        <span class="k">if</span> <span class="n">esequence</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">es</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">es</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">(</span><span class="n">esequence</span><span class="p">)</span>
+
+        <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;specificResistance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">128</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_muPlasma</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">d</span> <span class="o">**</span> <span class="mi">4</span><span class="p">)</span>
+                                      <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;diameter&#39;</span><span class="p">]]</span>
+
+        <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;resistance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span> <span class="o">*</span> <span class="n">sr</span> <span class="k">for</span> <span class="n">l</span><span class="p">,</span> <span class="n">sr</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">],</span>
+                                                      <span class="n">G</span><span class="o">.</span><span class="n">es</span><span class="p">[</span><span class="s1">&#39;specificResistance&#39;</span><span class="p">])]</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
