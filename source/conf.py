@@ -16,7 +16,7 @@ import pkgutil
 
 from sphinx.builders.html import StandaloneHTMLBuilder
 
-from Documentation.source.custom_autodoc import CustomAutosummaryRenderer
+from documentation.source.custom_autodoc import CustomAutosummaryRenderer
 
 # =============================================================================
 # ============================ Path setup ======================================
