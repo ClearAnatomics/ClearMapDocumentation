@@ -1693,7 +1693,7 @@ document.write(`
 
 <div class="viewcode-block" id="gray_image_to_rgb">
 <a class="viewcode-back" href="../../../../api/ClearMap.Visualization.Color.Color.html#ClearMap.Visualization.Color.Color.gray_image_to_rgb">[docs]</a>
-<span class="k">def</span> <span class="nf">gray_image_to_rgb</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">color_name</span><span class="p">,</span> <span class="n">pseudo_z_score</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">gray_image_to_rgb</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">color_name</span><span class="p">,</span> <span class="n">pseudo_z_score</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">range_max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert a grayscale image to a colored RGB image.</span>
 
@@ -1713,8 +1713,11 @@ document.write(`
     <span class="k">if</span> <span class="n">pseudo_z_score</span><span class="p">:</span>
         <span class="n">n_sds</span> <span class="o">=</span> <span class="mi">4</span>
         <span class="n">high_intensity</span> <span class="o">=</span> <span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">+</span> <span class="n">n_sds</span> <span class="o">*</span> <span class="n">image</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
-        <span class="n">max_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">max</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">/</span> <span class="n">high_intensity</span>  <span class="c1"># * max_val</span>
+        <span class="k">if</span> <span class="n">range_max</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">max_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">max</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">max_val</span> <span class="o">=</span> <span class="n">range_max</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">image</span> <span class="o">/</span> <span class="n">high_intensity</span> <span class="o">*</span> <span class="p">(</span><span class="n">max_val</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
         <span class="n">image</span> <span class="o">=</span> <span class="p">(</span><span class="n">image</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">image</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
