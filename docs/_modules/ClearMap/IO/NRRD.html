@@ -1,0 +1,1509 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.IO.NRRD &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/IO/NRRD';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.IO.NRRD</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.IO.NRRD</h1><div class="highlight"><pre>
+<span></span><span class="c1"># encoding: utf-8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">NRRD</span>
+<span class="sd">====</span>
+
+<span class="sd">IO interface to NRRD volumetric image data files.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">  The interface is based on nrrd.py for reading and writing nrrd files.</span>
+<span class="sd">  See &#39;this link &lt;http://teem.sourceforge.net/nrrd/format.html&gt;`_ for </span>
+<span class="sd">  specifications.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE.txt)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">gzip</span>
+<span class="kn">import</span> <span class="nn">bz2</span>
+<span class="kn">import</span> <span class="nn">datetime</span> 
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.IO.Source</span> <span class="k">as</span> <span class="nn">src</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Source class</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="Source">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.Source">[docs]</a>
+<span class="k">class</span> <span class="nc">Source</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">Source</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Nrrd array source.&quot;&quot;&quot;</span>
+  
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Nrrd source class constructor.</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    location : str</span>
+<span class="sd">      The file nameof the nrrd source.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_location</span> <span class="o">=</span> <span class="n">location</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;Nrrd-Source&quot;</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">location</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_location</span>
+
+  <span class="nd">@location</span><span class="o">.</span><span class="n">setter</span>
+  <span class="k">def</span> <span class="nf">location</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_location</span> <span class="o">=</span> <span class="n">value</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">array</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The underlying data array.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    array : array</span>
+<span class="sd">      The underlying data array of this source.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+
+  <span class="nd">@array</span><span class="o">.</span><span class="n">setter</span>
+  <span class="k">def</span> <span class="nf">array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="n">_write_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The shape of the source.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    shape : tuple</span>
+<span class="sd">      The shape of the source.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+
+  <span class="nd">@shape</span><span class="o">.</span><span class="n">setter</span>
+  <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="c1">#TODO: fix</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Cannot set shape of nrrd file&#39;</span><span class="p">)</span>
+
+  <span class="nd">@property</span> 
+  <span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The data type of the source.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dtype : dtype</span>
+<span class="sd">      The data type of the source.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+
+  <span class="nd">@dtype</span><span class="o">.</span><span class="n">setter</span>
+  <span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="c1">#TODO: fix</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Cannot set dtype of nrrd file&#39;</span><span class="p">)</span>
+
+  <span class="nd">@property</span> 
+  <span class="k">def</span> <span class="nf">order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The order of how the data is stored in the source.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    order : str</span>
+<span class="sd">      Returns &#39;C&#39; for C contigous and &#39;F&#39; for fortran contigous, None otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_order</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+
+  <span class="nd">@order</span><span class="o">.</span><span class="n">setter</span>
+  <span class="k">def</span> <span class="nf">order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="c1">#TODO: fix</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Cannot set order of nrrd file&#39;</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">element_strides</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The strides of the array elements.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    strides : tuple</span>
+<span class="sd">      Strides of the array elements.</span>
+<span class="sd">      </span>
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    The strides of the elements module itemsize instead of bytes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">memmap</span> <span class="o">=</span> <span class="n">_memmap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+    <span class="k">return</span>  <span class="nb">tuple</span><span class="p">(</span><span class="n">s</span> <span class="o">//</span> <span class="n">memmap</span><span class="o">.</span><span class="n">itemsize</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">memmap</span><span class="o">.</span><span class="n">strides</span><span class="p">)</span>
+  
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">offset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The offset of the memory map in the file.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    offset : int</span>
+<span class="sd">      Offset of the memeory map in the file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_offset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+
+  <span class="c1">### Data</span>
+  <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">memmap</span> <span class="o">=</span> <span class="n">_memmap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">memmap</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">memmap</span> <span class="o">=</span> <span class="n">_memmap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+    <span class="n">memmap</span><span class="o">.</span><span class="fm">__setitem__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Source.metadata">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.Source.metadata">[docs]</a>
+  <span class="k">def</span> <span class="nf">metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns metadata from this nrrd file.</span>
+<span class="sd">  </span>
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    info : list or all</span>
+<span class="sd">      Optional list of keywords, if all return full tif metadata, if None return default set info.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    metadata : dict</span>
+<span class="sd">      Dictionary with the meta data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_read_header</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Source.as_memmap">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.Source.as_memmap">[docs]</a>
+  <span class="k">def</span> <span class="nf">as_memmap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+     <span class="k">return</span> <span class="n">_memmap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Source.as_virtual">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.Source.as_virtual">[docs]</a>
+  <span class="k">def</span> <span class="nf">as_virtual</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+     <span class="k">return</span> <span class="n">VirtualSource</span><span class="p">(</span><span class="n">source</span> <span class="o">=</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Source.as_real">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.Source.as_real">[docs]</a>
+  <span class="k">def</span> <span class="nf">as_real</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="Source.as_buffer">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.Source.as_buffer">[docs]</a>
+  <span class="k">def</span> <span class="nf">as_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_memmap</span><span class="p">()</span></div>
+
+
+  <span class="c1">### Formatting</span>
+  <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+      <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">name</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">except</span><span class="p">:</span>
+      <span class="n">name</span> <span class="o">=</span><span class="s1">&#39;&#39;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span>
+      <span class="n">shape</span> <span class="o">=</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">((</span><span class="n">shape</span><span class="p">,))</span> <span class="k">if</span> <span class="n">shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">except</span><span class="p">:</span>
+      <span class="n">shape</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">dtype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span>
+      <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;[</span><span class="si">%s</span><span class="s1">]&#39;</span> <span class="o">%</span> <span class="n">dtype</span> <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">except</span><span class="p">:</span>
+      <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">order</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span>
+      <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;|</span><span class="si">%s</span><span class="s1">|&#39;</span> <span class="o">%</span> <span class="n">order</span> <span class="k">if</span> <span class="n">order</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">except</span><span class="p">:</span>
+      <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="c1">#    try:</span>
+<span class="c1">#      memory = self.memory;</span>
+<span class="c1">#      memory = &#39;&lt;%s&gt;&#39; % memory if memory is not None else &#39;&#39;;</span>
+<span class="c1">#    except:</span>
+<span class="c1">#      memory = &#39;&#39;;  </span>
+    
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span>
+      <span class="n">location</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">location</span> <span class="k">if</span> <span class="n">location</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">location</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">location</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;...&#39;</span> <span class="o">+</span> <span class="n">location</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">:]</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">location</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="s1">&#39;{</span><span class="si">%s</span><span class="s1">}&#39;</span> <span class="o">%</span> <span class="n">location</span>
+    <span class="k">except</span><span class="p">:</span>
+      <span class="n">location</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">return</span> <span class="n">name</span> <span class="o">+</span> <span class="n">shape</span> <span class="o">+</span> <span class="n">dtype</span> <span class="o">+</span> <span class="n">order</span> <span class="o">+</span> <span class="n">location</span></div>
+
+
+
+<div class="viewcode-block" id="VirtualSource">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.VirtualSource">[docs]</a>
+<span class="k">class</span> <span class="nc">VirtualSource</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">VirtualSource</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">location</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">VirtualSource</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">Source</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">location</span>
+
+  <span class="nd">@property</span> 
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;Virtual-Nrrd-Source&#39;</span>
+
+<div class="viewcode-block" id="VirtualSource.as_virtual">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.VirtualSource.as_virtual">[docs]</a>
+  <span class="k">def</span> <span class="nf">as_virtual</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="VirtualSource.as_real">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.VirtualSource.as_real">[docs]</a>
+  <span class="k">def</span> <span class="nf">as_real</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Source</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="VirtualSource.as_buffer">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.VirtualSource.as_buffer">[docs]</a>
+  <span class="k">def</span> <span class="nf">as_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_real</span><span class="p">()</span><span class="o">.</span><span class="n">as_buffer</span><span class="p">()</span></div>
+</div>
+
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### IO Interface</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="is_nrrd">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.is_nrrd">[docs]</a>
+<span class="k">def</span> <span class="nf">is_nrrd</span><span class="p">(</span><span class="n">source</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Checks if this source is a NRRD source&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">Source</span><span class="p">):</span>
+    <span class="k">return</span> <span class="kc">True</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">source</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;nrrd&#39;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">Source</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+  <span class="k">return</span> <span class="kc">False</span></div>
+
+
+
+<div class="viewcode-block" id="read">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.read">[docs]</a>
+<span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">slicing</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Read data from a nrrd file.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : str</span>
+<span class="sd">    The name of the nrrd file.</span>
+<span class="sd">  slicing : slice, Slice or None</span>
+<span class="sd">    An optional sub-slice to consider.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  array : array</span>
+<span class="sd">    The image data in the tif file as a buffer.</span>
+<span class="sd">  &quot;&quot;&quot;</span> 
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">Source</span><span class="p">):</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">slicing</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">source</span><span class="o">.</span><span class="n">array</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">source</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">slicing</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="write">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.write">[docs]</a>
+<span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">slicing</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">Source</span><span class="p">):</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">location</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid sink specification </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">sink</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">slicing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">memmap</span> <span class="o">=</span> <span class="n">_memmap</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r+&#39;</span><span class="p">)</span>
+    <span class="n">memmap</span><span class="p">[</span><span class="n">slicing</span><span class="p">]</span><span class="o">=</span> <span class="n">data</span>
+    <span class="k">return</span> <span class="n">sink</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">_write</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="create">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.create">[docs]</a>
+<span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">location</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">array</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">as_source</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Creating NRRD files not implemented yet!&#39;</span><span class="p">)</span>  </div>
+
+  
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Reading</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="NrrdError">
+<a class="viewcode-back" href="../../../api/ClearMap.IO.NRRD.html#ClearMap.IO.NRRD.NrrdError">[docs]</a>
+<span class="k">class</span> <span class="nc">NrrdError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exceptions for Nrrd class.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<span class="k">def</span> <span class="nf">_convert_to_reproducible_floatingpoint</span><span class="p">(</span> <span class="n">x</span> <span class="p">):</span>
+  <span class="c1">#This will help prevent loss of precision</span>
+  <span class="c1">#IEEE754-1985 standard says that 17 decimal digits is enough in all cases.</span>
+  <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">==</span> <span class="nb">float</span><span class="p">:</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.16f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="c1"># Remove trailing zeros, and dot if at end</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">value</span>
+
+<span class="n">_TYPEMAP_NRRD2NUMPY</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;signed char&#39;</span><span class="p">:</span> <span class="s1">&#39;i1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;int8&#39;</span><span class="p">:</span> <span class="s1">&#39;i1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;int8_t&#39;</span><span class="p">:</span> <span class="s1">&#39;i1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uchar&#39;</span><span class="p">:</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unsigned char&#39;</span><span class="p">:</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uint8&#39;</span><span class="p">:</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uint8_t&#39;</span><span class="p">:</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;short&#39;</span><span class="p">:</span> <span class="s1">&#39;i2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;short int&#39;</span><span class="p">:</span> <span class="s1">&#39;i2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;signed short&#39;</span><span class="p">:</span> <span class="s1">&#39;i2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;signed short int&#39;</span><span class="p">:</span> <span class="s1">&#39;i2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;int16&#39;</span><span class="p">:</span> <span class="s1">&#39;i2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;int16_t&#39;</span><span class="p">:</span> <span class="s1">&#39;i2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ushort&#39;</span><span class="p">:</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unsigned short&#39;</span><span class="p">:</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unsigned short int&#39;</span><span class="p">:</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uint16&#39;</span><span class="p">:</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uint16_t&#39;</span><span class="p">:</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;int&#39;</span><span class="p">:</span> <span class="s1">&#39;i4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;signed int&#39;</span><span class="p">:</span> <span class="s1">&#39;i4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;int32&#39;</span><span class="p">:</span> <span class="s1">&#39;i4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;int32_t&#39;</span><span class="p">:</span> <span class="s1">&#39;i4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uint&#39;</span><span class="p">:</span> <span class="s1">&#39;u4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unsigned int&#39;</span><span class="p">:</span> <span class="s1">&#39;u4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uint32&#39;</span><span class="p">:</span> <span class="s1">&#39;u4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uint32_t&#39;</span><span class="p">:</span> <span class="s1">&#39;u4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;longlong&#39;</span><span class="p">:</span> <span class="s1">&#39;i8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;long long&#39;</span><span class="p">:</span> <span class="s1">&#39;i8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;long long int&#39;</span><span class="p">:</span> <span class="s1">&#39;i8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;signed long long&#39;</span><span class="p">:</span> <span class="s1">&#39;i8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;signed long long int&#39;</span><span class="p">:</span> <span class="s1">&#39;i8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;int64&#39;</span><span class="p">:</span> <span class="s1">&#39;i8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;int64_t&#39;</span><span class="p">:</span> <span class="s1">&#39;i8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ulonglong&#39;</span><span class="p">:</span> <span class="s1">&#39;u8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unsigned long long&#39;</span><span class="p">:</span> <span class="s1">&#39;u8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;unsigned long long int&#39;</span><span class="p">:</span> <span class="s1">&#39;u8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uint64&#39;</span><span class="p">:</span> <span class="s1">&#39;u8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;uint64_t&#39;</span><span class="p">:</span> <span class="s1">&#39;u8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;float&#39;</span><span class="p">:</span> <span class="s1">&#39;f4&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;double&#39;</span><span class="p">:</span> <span class="s1">&#39;f8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;block&#39;</span><span class="p">:</span> <span class="s1">&#39;V&#39;</span>
+<span class="p">}</span>
+
+<span class="n">_TYPEMAP_NUMPY2NRRD</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;i1&#39;</span><span class="p">:</span> <span class="s1">&#39;int8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;u1&#39;</span><span class="p">:</span> <span class="s1">&#39;uint8&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;i2&#39;</span><span class="p">:</span> <span class="s1">&#39;int16&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;u2&#39;</span><span class="p">:</span> <span class="s1">&#39;uint16&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;i4&#39;</span><span class="p">:</span> <span class="s1">&#39;int32&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;u4&#39;</span><span class="p">:</span> <span class="s1">&#39;uint32&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;i8&#39;</span><span class="p">:</span> <span class="s1">&#39;int64&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;u8&#39;</span><span class="p">:</span> <span class="s1">&#39;uint64&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;f4&#39;</span><span class="p">:</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;f8&#39;</span><span class="p">:</span> <span class="s1">&#39;double&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="s1">&#39;block&#39;</span>
+<span class="p">}</span>
+
+<span class="n">_NUMPY2NRRD_ENDIAN_MAP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;&lt;&#39;</span><span class="p">:</span> <span class="s1">&#39;little&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="s1">&#39;little&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;&gt;&#39;</span><span class="p">:</span> <span class="s1">&#39;big&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="s1">&#39;big&#39;</span>
+<span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">_parse_nrrdvector</span><span class="p">(</span><span class="n">inp</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse a vector from a nrrd header, return a list.&quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">inp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="s2">&quot;Vector should be enclosed by parenthesis.&quot;</span>
+    <span class="k">assert</span> <span class="n">inp</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">,</span> <span class="s2">&quot;Vector should be enclosed by parenthesis.&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">_convert_to_reproducible_floatingpoint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">inp</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">_parse_optional_nrrdvector</span><span class="p">(</span><span class="n">inp</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse a vector from a nrrd header that can also be none.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">inp</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">inp</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_parse_nrrdvector</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+
+<span class="n">_NRRD_FIELD_PARSERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;dimension&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;sizes&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;endian&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;encoding&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="s1">&#39;oldmin&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="s1">&#39;old min&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="s1">&#39;oldmax&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="s1">&#39;old max&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="s1">&#39;lineskip&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s1">&#39;line skip&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s1">&#39;byteskip&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s1">&#39;byte skip&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;sample units&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;datafile&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;data file&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;spacings&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="n">_convert_to_reproducible_floatingpoint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;thicknesses&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="n">_convert_to_reproducible_floatingpoint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;axis mins&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="n">_convert_to_reproducible_floatingpoint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;axismins&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="n">_convert_to_reproducible_floatingpoint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;axis maxs&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="n">_convert_to_reproducible_floatingpoint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;axismaxs&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="n">_convert_to_reproducible_floatingpoint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;centerings&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;kinds&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;space&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;space dimension&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="s1">&#39;space units&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;space origin&#39;</span><span class="p">:</span> <span class="n">_parse_nrrdvector</span><span class="p">,</span>
+    <span class="s1">&#39;space directions&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span>
+                        <span class="p">[</span><span class="n">_parse_optional_nrrdvector</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+    <span class="s1">&#39;measurement frame&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span>
+                        <span class="p">[</span><span class="n">_parse_nrrdvector</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="o">.</span><span class="n">split</span><span class="p">()],</span>
+<span class="p">}</span>
+
+<span class="n">_NRRD_REQUIRED_FIELDS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dimension&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;encoding&#39;</span><span class="p">,</span> <span class="s1">&#39;sizes&#39;</span><span class="p">]</span>
+
+<span class="c1"># The supported field values</span>
+<span class="n">_NRRD_FIELD_ORDER</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dimension&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;space dimension&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;space&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sizes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;space directions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;kinds&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;endian&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;encoding&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;min&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;max&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;oldmin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;old min&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;oldmax&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;old max&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;content&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sample units&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spacings&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;thicknesses&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;axis mins&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;axismins&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;axis maxs&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;axismaxs&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;centerings&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;units&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;space units&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;space origin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;measurement frame&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;data file&#39;</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_dtype_from_header</span><span class="p">(</span><span class="n">fields</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine the numpy dtype of the data.&quot;&quot;&quot;</span>
+    
+    <span class="c1"># Process the data type</span>
+    <span class="n">np_typestring</span> <span class="o">=</span> <span class="n">_TYPEMAP_NRRD2NUMPY</span><span class="p">[</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">np_typestring</span><span class="p">)</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;endian&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="s1">&#39;Nrrd header misses required field: &quot;endian&quot;.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;endian&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;big&#39;</span><span class="p">:</span>
+            <span class="n">np_typestring</span> <span class="o">=</span> <span class="s1">&#39;&gt;&#39;</span> <span class="o">+</span> <span class="n">np_typestring</span>
+        <span class="k">elif</span> <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;endian&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;little&#39;</span><span class="p">:</span>
+            <span class="n">np_typestring</span> <span class="o">=</span> <span class="s1">&#39;&lt;&#39;</span> <span class="o">+</span> <span class="n">np_typestring</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="n">np_typestring</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_validate_magic_line</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;For NRRD files, the first four characters are always &quot;NRRD&quot;, and</span>
+<span class="sd">    remaining characters give information about the file format version</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;NRRD&#39;</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="s1">&#39;Missing magic &quot;NRRD&quot; word. Is this an NRRD file?&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="s1">&#39;NRRD file version too new for this library.&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="s1">&#39;Invalid NRRD magic line: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">line</span><span class="p">,))</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_read_header</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse the fields in the nrrd header</span>
+
+<span class="sd">    nrrdfile can be any object which supports the iterator protocol and</span>
+<span class="sd">    returns a string each time its next() method is called — file objects and</span>
+<span class="sd">    list objects are both suitable. If csvfile is a file object, it must be</span>
+<span class="sd">    opened with the ‘b’ flag on platforms where that makes a difference</span>
+<span class="sd">    (e.g. Windows)</span>
+
+<span class="sd">    &gt;&gt;&gt; _read_header((&quot;NRRD0005&quot;, &quot;type: float&quot;, &quot;dimension: 3&quot;))</span>
+<span class="sd">    {&#39;type&#39;: &#39;float&#39;, &#39;dimension&#39;: 3, &#39;keyvaluepairs&#39;: {}}</span>
+<span class="sd">    &gt;&gt;&gt; _read_header((&quot;NRRD0005&quot;, &quot;my extra info:=my : colon-separated : values&quot;))</span>
+<span class="sd">    {&#39;keyvaluepairs&#39;: {&#39;my extra info&#39;: &#39;my : colon-separated : values&#39;}}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">nrrdfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">nrrdfile</span> <span class="o">=</span> <span class="n">filename</span>
+
+    <span class="c1"># Collect number of bytes in the file header (for seeking below)</span>
+    <span class="n">headerSize</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">nrrdfile</span><span class="p">)</span>
+    <span class="n">headerSize</span> <span class="o">+=</span> <span class="n">_validate_magic_line</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">it</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">))</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;keyvaluepairs&#39;</span><span class="p">:</span> <span class="p">{}</span> <span class="p">}</span>
+    <span class="k">for</span> <span class="n">raw_line</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+        <span class="n">headerSize</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_line</span><span class="p">)</span>
+        <span class="n">raw_line</span> <span class="o">=</span> <span class="n">raw_line</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Trailing whitespace ignored per the NRRD spec</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">raw_line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+        <span class="c1"># Comments start with &#39;#&#39;, no leading whitespace allowed</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="c1"># Single blank line separates the header from the data</span>
+        <span class="k">if</span> <span class="n">line</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="c1"># Handle the &lt;key&gt;:=&lt;value&gt; lines first since &lt;value&gt; may contain a</span>
+        <span class="c1"># &#39;: &#39; which messes up the &lt;field&gt;: &lt;desc&gt; parsing</span>
+        <span class="n">key_value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:=&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">key_value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">key_value</span>
+            <span class="c1"># escape \\ and \n ??</span>
+            <span class="c1"># value.replace(r&#39;\\\\&#39;, r&#39;\\&#39;).replace(r&#39;\n&#39;, &#39;\n&#39;)</span>
+            <span class="n">header</span><span class="p">[</span><span class="s1">&#39;keyvaluepairs&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># Handle the &quot;&lt;field&gt;: &lt;desc&gt;&quot; lines.</span>
+        <span class="n">field_desc</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;: &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">field_desc</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">field</span><span class="p">,</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">field_desc</span>
+            <span class="c1">## preceeding and suffixing white space should be ignored.</span>
+            <span class="n">field</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+            <span class="n">desc</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">_NRRD_FIELD_PARSERS</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="s1">&#39;Unexpected field in nrrd header: &quot;</span><span class="si">%s</span><span class="s1">&quot;.&#39;</span> <span class="o">%</span> <span class="n">field</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">header</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="s1">&#39;Duplicate header field: &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">field</span><span class="p">)</span>
+            <span class="n">header</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">_NRRD_FIELD_PARSERS</span><span class="p">[</span><span class="n">field</span><span class="p">](</span><span class="n">desc</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># Should not reach here</span>
+        <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="s1">&#39;Invalid header line: &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">line</span><span class="p">)</span>
+
+    <span class="c1"># Check whether the required fields are there</span>
+    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">_NRRD_REQUIRED_FIELDS</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">header</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="s1">&#39;Nrrd header misses required field: &quot;</span><span class="si">%s</span><span class="s1">&quot;.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">field</span><span class="p">))</span>
+
+    <span class="c1"># line reading was buffered; correct file pointer to just behind header:</span>
+    <span class="n">nrrdfile</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">headerSize</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">header</span>
+
+
+<span class="k">def</span> <span class="nf">_array</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Read the actual data into a numpy array.&quot;&quot;&quot;</span>
+    
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="n">_read_header</span><span class="p">(</span><span class="n">filehandle</span><span class="p">)</span>
+    
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">_dtype_from_header</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;sizes&#39;</span><span class="p">]</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span>
+
+    <span class="c1">#offset</span>
+    <span class="n">numPixels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">datafilehandle</span> <span class="o">=</span> <span class="n">filehandle</span>
+    <span class="n">datafile</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;datafile&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data file&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">datafile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">datafile</span><span class="p">):</span>
+            <span class="n">datafilename</span> <span class="o">=</span> <span class="n">datafile</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">datafilename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="n">datafile</span><span class="p">)</span>
+        <span class="n">datafilehandle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">datafilename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;raw&#39;</span><span class="p">:</span>
+        <span class="n">byteskip</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;byteskip&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;byte skip&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">byteskip</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># This is valid only with raw encoding</span>
+          <span class="n">totalbytes</span> <span class="o">=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">*</span> <span class="n">numPixels</span>
+          <span class="n">datafilehandle</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="o">-</span><span class="n">totalbytes</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">lineskip</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lineskip&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;line skip&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+          <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lineskip</span><span class="p">):</span>
+            <span class="n">datafilehandle</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+          <span class="n">datafilehandle</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">byteskip</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromfile</span><span class="p">(</span><span class="n">datafilehandle</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+    
+    <span class="k">elif</span> <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;gzip&#39;</span> <span class="ow">or</span>\
+         <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;gz&#39;</span><span class="p">:</span>
+        <span class="n">gzipfile</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">GzipFile</span><span class="p">(</span><span class="n">fileobj</span><span class="o">=</span><span class="n">datafilehandle</span><span class="p">)</span>
+        <span class="c1"># Again, unfortunately, np.fromfile does not support</span>
+        <span class="c1"># reading from a gzip stream, so we&#39;ll do it like this.</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">gzipfile</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">dtype</span><span class="p">)</span>
+    
+    <span class="k">elif</span> <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;bzip2&#39;</span> <span class="ow">or</span>\
+         <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;bz2&#39;</span><span class="p">:</span>
+        <span class="n">bz2file</span> <span class="o">=</span> <span class="n">bz2</span><span class="o">.</span><span class="n">BZ2File</span><span class="p">(</span><span class="n">fileobj</span><span class="o">=</span><span class="n">datafilehandle</span><span class="p">)</span>
+        <span class="c1"># Again, unfortunately, np.fromfile does not support</span>
+        <span class="c1"># reading from a gzip stream, so we&#39;ll do it like this.</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">bz2file</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">dtype</span><span class="p">)</span>
+    
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="s1">&#39;Unsupported encoding: &quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">numPixels</span> <span class="o">!=</span> <span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+       <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ERROR: </span><span class="si">{</span><span class="n">numPixels</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s1">=</span><span class="si">{</span><span class="n">numPixels</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">data</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+
+<span class="k">def</span> <span class="nf">_dtype</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine data type from nrrd file.&quot;&quot;&quot;</span>
+    <span class="c1"># read header</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
+       <span class="n">fields</span> <span class="o">=</span> <span class="n">_read_header</span><span class="p">(</span><span class="n">filehandle</span><span class="p">)</span>
+    
+    <span class="c1"># Determine the data type from the fields</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;sizes&#39;</span><span class="p">](</span><span class="n">fields</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dtype</span>
+
+
+<span class="k">def</span> <span class="nf">_shape</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine shape from nrrd file.&quot;&quot;&quot;</span>
+    <span class="c1">#read header</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
+       <span class="n">fields</span> <span class="o">=</span> <span class="n">_read_header</span><span class="p">(</span><span class="n">filehandle</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;sizes&#39;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">_order</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Determine shape from nrrd file.&quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="s1">&#39;F&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">_offset</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Offset of data in file.&quot;&quot;&quot;</span>
+  
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="n">_read_header</span><span class="p">(</span><span class="n">filehandle</span><span class="p">)</span>
+    
+    <span class="c1">#offset</span>
+    <span class="n">datafilehandle</span> <span class="o">=</span> <span class="n">filehandle</span>
+    <span class="n">datafile</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;datafile&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data file&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">datafile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">datafile</span><span class="p">):</span>
+            <span class="n">datafilename</span> <span class="o">=</span> <span class="n">datafile</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">datafilename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="n">datafile</span><span class="p">)</span>
+        <span class="n">datafilehandle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">datafilename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;raw&#39;</span><span class="p">:</span>
+        <span class="n">byteskip</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;byteskip&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;byte skip&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">byteskip</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># This is valid only with raw encoding</span>
+          <span class="n">numPixels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;sizes&#39;</span><span class="p">])</span>
+          <span class="n">dtype</span> <span class="o">=</span> <span class="n">_dtype_from_header</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+          <span class="n">totalbytes</span> <span class="o">=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">*</span> <span class="n">numPixels</span>
+          <span class="n">datafilehandle</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="o">-</span><span class="n">totalbytes</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">lineskip</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lineskip&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;line skip&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+          <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lineskip</span><span class="p">):</span>
+            <span class="n">datafilehandle</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+          <span class="n">datafilehandle</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">byteskip</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">datafilehandle</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">_memmap</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Create memmap to the nrrd data.&quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="n">_read_header</span><span class="p">(</span><span class="n">filehandle</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;raw&#39;</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="s1">&#39;Cannot memmap to compressed file </span><span class="si">%r</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="n">fields</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">])</span>
+
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">_dtype_from_header</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;sizes&#39;</span><span class="p">])</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span>
+
+    <span class="c1">#datafile</span>
+    <span class="n">datafilename</span> <span class="o">=</span> <span class="n">filename</span>
+    <span class="n">datafilehandle</span> <span class="o">=</span> <span class="n">filehandle</span>
+    <span class="n">datafile</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;datafile&quot;</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data file&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">datafile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">datafile</span><span class="p">):</span>
+            <span class="n">datafilename</span> <span class="o">=</span> <span class="n">datafile</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">datafilename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="n">datafile</span><span class="p">)</span>
+        <span class="n">datafilehandle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">datafilename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+    
+    <span class="c1">#offset</span>
+    <span class="n">byteskip</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;byteskip&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;byte skip&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">byteskip</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="c1"># This is valid only with raw encoding</span>
+      <span class="n">numPixels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+      <span class="n">totalbytes</span> <span class="o">=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">*</span> <span class="n">numPixels</span>
+      <span class="n">datafilehandle</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="o">-</span><span class="n">totalbytes</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">lineskip</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;lineskip&#39;</span><span class="p">,</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;line skip&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+      <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lineskip</span><span class="p">):</span>
+        <span class="n">datafilehandle</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+      <span class="n">datafilehandle</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">byteskip</span><span class="p">)</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">datafilehandle</span><span class="o">.</span><span class="n">tell</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r+&#39;</span>
+
+    <span class="c1">#print datafilename, dtype,  mode, shape, order, offset</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">memmap</span><span class="p">(</span><span class="n">datafilename</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+
+
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Writing</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_format_nrrd_list</span><span class="p">(</span><span class="n">fieldValue</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">_convert_to_reproducible_floatingpoint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">_format_nrrdvector</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;(&#39;</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">_convert_to_reproducible_floatingpoint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">v</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+
+<span class="k">def</span> <span class="nf">_format_optional_nrrdvector</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;none&#39;</span>
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">_format_nrrdvector</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="n">_NRRD_FIELD_FORMATTERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;dimension&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;sizes&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;endian&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;encoding&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;oldmin&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;old min&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;oldmax&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;old max&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;lineskip&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;line skip&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;byteskip&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;byte skip&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;sample units&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;datafile&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;data file&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;spacings&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;thicknesses&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;axis mins&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;axismins&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;axis maxs&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;axismaxs&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;centerings&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;kinds&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;space&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;space dimension&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="s1">&#39;space units&#39;</span><span class="p">:</span> <span class="n">_format_nrrd_list</span><span class="p">,</span>
+    <span class="s1">&#39;space origin&#39;</span><span class="p">:</span> <span class="n">_format_nrrdvector</span><span class="p">,</span>
+    <span class="s1">&#39;space directions&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">_format_optional_nrrdvector</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="p">]),</span>
+    <span class="s1">&#39;measurement frame&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">fieldValue</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">_format_optional_nrrdvector</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fieldValue</span><span class="p">]),</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">_write_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+    <span class="c1"># Now write data directly</span>
+    <span class="c1"># rawdata = data.transpose([2,0,1]).tostring(order = &#39;C&#39;)</span>
+    <span class="c1"># FIXME: this is only working for numpy arrays!</span>
+
+    <span class="n">compressors</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;gzip&#39;</span><span class="p">:</span> <span class="n">gzip</span><span class="p">,</span>
+        <span class="s1">&#39;bz2&#39;</span><span class="p">:</span> <span class="n">bz2</span>
+    <span class="p">}</span>
+    <span class="n">encoding</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">encoding</span> <span class="o">==</span> <span class="s1">&#39;raw&#39;</span><span class="p">:</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">tofile</span><span class="p">(</span><span class="n">filehandle</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">encoding</span> <span class="ow">in</span> <span class="n">compressors</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">with</span> <span class="n">compressors</span><span class="p">[</span><span class="n">encoding</span><span class="p">]</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filehandle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">compressor_file</span><span class="p">:</span>
+            <span class="n">compressor_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">NrrdError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unsupported encoding: </span><span class="si">{</span><span class="n">encoding</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_write</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{},</span> <span class="n">separate_header</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write data to nrrd file.</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments:</span>
+<span class="sd">        filename (str): file name as regular expression</span>
+<span class="sd">        data (array): image data</span>
+<span class="sd">        options (dict): options dictionary</span>
+<span class="sd">        separateHeader (bool): write a separate header file</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: nrrd output file name</span>
+<span class="sd">  </span>
+<span class="sd">    To sample date use `options[&#39;spacings&#39;] = [s1, s2, s3]` for</span>
+<span class="sd">    3d data with sampling deltas `s1`, `s2`, and `s3` in each dimension.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dtype</span>
+
+    <span class="n">options</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_TYPEMAP_NUMPY2NRRD</span><span class="p">[</span><span class="n">dtype</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+    <span class="k">if</span> <span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;endian&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_NUMPY2NRRD_ENDIAN_MAP</span><span class="p">[</span><span class="n">dtype</span><span class="o">.</span><span class="n">str</span><span class="p">[:</span><span class="mi">1</span><span class="p">]]</span>
+    
+    <span class="c1"># if &#39;space&#39; is specified &#39;space dimension&#39; can not. See http://teem.sourceforge.net/nrrd/format.html#space</span>
+    <span class="k">if</span> <span class="s1">&#39;space&#39;</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="ow">and</span> <span class="s1">&#39;space dimension&#39;</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">del</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;space dimension&#39;</span><span class="p">]</span>
+    <span class="n">options</span><span class="p">[</span><span class="s1">&#39;dimension&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span>
+    <span class="n">dsize</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">options</span><span class="p">[</span><span class="s1">&#39;sizes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dsize</span>
+
+    <span class="c1"># The default encoding is &#39;raw&#39;</span>
+    <span class="k">if</span> <span class="s1">&#39;encoding&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;raw&#39;</span>
+
+    <span class="c1"># A bit of magic in handling options here.</span>
+    <span class="c1"># If *.nhdr filename provided, this overrides `separate_header=False`</span>
+    <span class="c1"># If *.nrrd filename provided AND separate_header=True, separate files   written.</span>
+    <span class="c1"># For all other cases, header &amp; data written to same file.</span>
+    <span class="k">if</span> <span class="n">filename</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;.nhdr&#39;</span><span class="p">:</span>
+        <span class="n">separate_header</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="s1">&#39;data file&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+            <span class="n">datafilename</span> <span class="o">=</span> <span class="n">filename</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;encoding&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;gzip&#39;</span><span class="p">:</span>
+                <span class="n">datafilename</span> <span class="o">+=</span> <span class="s1">&#39;.gz&#39;</span>
+            <span class="n">options</span><span class="p">[</span><span class="s1">&#39;data file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datafilename</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">datafilename</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;data file&#39;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">filename</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">:]</span> <span class="o">==</span> <span class="s1">&#39;.nrrd&#39;</span> <span class="ow">and</span> <span class="n">separate_header</span><span class="p">:</span>
+        <span class="n">separate_header</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">datafilename</span> <span class="o">=</span> <span class="n">filename</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="s1">&#39;nhdr&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Write header &amp; data as one file</span>
+        <span class="n">datafilename</span> <span class="o">=</span> <span class="n">filename</span>
+        <span class="n">separate_header</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
+        <span class="n">filehandle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;NRRD0005</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">filehandle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;# This NRRD file was generated by pynrrd</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">filehandle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;# on &#39;</span> <span class="o">+</span>
+                         <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span> <span class="o">+</span>
+                         <span class="sa">b</span><span class="s1">&#39;(GMT).</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">filehandle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;# Complete NRRD file format specification at:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">filehandle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;# http://teem.sourceforge.net/nrrd/format.html</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Write the fields in order, this ignores fields not in _NRRD_FIELD_ORDER</span>
+        <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">_NRRD_FIELD_ORDER</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">options</span><span class="p">:</span>
+                <span class="n">outline</span> <span class="o">=</span> <span class="p">(</span><span class="n">field</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span>
+                           <span class="n">_NRRD_FIELD_FORMATTERS</span><span class="p">[</span><span class="n">field</span><span class="p">](</span><span class="n">options</span><span class="p">[</span><span class="n">field</span><span class="p">])</span> <span class="o">+</span>
+                           <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+                <span class="n">filehandle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">outline</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;keyvaluepairs&#39;</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">outline</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+            <span class="n">filehandle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">outline</span><span class="p">)</span>
+
+        <span class="c1"># Write the closing extra newline</span>
+        <span class="n">filehandle</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># If a single file desired, write data</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">separate_header</span><span class="p">:</span>
+            <span class="n">_write_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+
+    <span class="c1"># If separate header desired, write data to different file</span>
+    <span class="k">if</span> <span class="n">separate_header</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">datafilename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datafilehandle</span><span class="p">:</span>
+            <span class="n">_write</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">datafilehandle</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">filename</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tests</span>
+<span class="c1">###############################################################################</span>
+        
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">ClearMap.IO.NRRD</span> <span class="k">as</span> <span class="nn">NRRD</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">:</span><span class="mi">45</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;test.nrrd&#39;</span>
+
+    <span class="n">NRRD</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+    <span class="n">check</span> <span class="o">=</span> <span class="n">NRRD</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">data</span><span class="o">==</span><span class="n">check</span><span class="p">))</span>
+    
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

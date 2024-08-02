@@ -1,0 +1,939 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.ImageProcessing.Filter.Rank.Percentile &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/ImageProcessing/Filter/Rank/Percentile';</script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Ima...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.ImageProcessing.Filter.Rank.Percentile</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Inferior and superior ranks, provided by the user, are passed to the kernel</span>
+<span class="sd">function to provide a softer version of the rank filters. E.g.</span>
+<span class="sd">``autolevel_percentile`` will stretch image levels between percentile [p0, p1]</span>
+<span class="sd">instead of using [min, max]. It means that isolated bright or dark pixels will</span>
+<span class="sd">not produce halos.</span>
+
+<span class="sd">The local histogram is computed using a sliding window.</span>
+
+<span class="sd">Input image can be 8-bit or 16-bit, for 16-bit input images, the number of</span>
+<span class="sd">histogram bins is determined from the maximum value present in the image.</span>
+
+<span class="sd">Result image is 8-/16-bit or double with respect to the input image and the</span>
+<span class="sd">rank filter operation.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE.txt)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+<span class="n">__note__</span>      <span class="o">=</span> <span class="s2">&quot;Code adpated from skimage.filters.rank&quot;</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Rank</span> <span class="k">as</span> <span class="n">rnk</span>
+
+<span class="kn">import</span> <span class="nn">pyximport</span><span class="p">;</span>
+<span class="n">pyximport</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="n">setup_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;include_dirs&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">get_include</span><span class="p">()},</span> <span class="n">reload_support</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">PercentileCode</span> <span class="k">as</span> <span class="n">code</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;autolevel_percentile&#39;</span><span class="p">,</span> <span class="s1">&#39;gradient_percentile&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;mean_percentile&#39;</span><span class="p">,</span> <span class="s1">&#39;subtract_mean_percentile&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;enhance_contrast_percentile&#39;</span><span class="p">,</span> <span class="s1">&#39;percentile&#39;</span><span class="p">,</span> <span class="s1">&#39;pop_percentile&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;sum_percentile&#39;</span><span class="p">,</span> <span class="s1">&#39;sum_above_percentile&#39;</span><span class="p">,</span> <span class="s1">&#39;threshold_percentile&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="autolevel_percentile">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Percentile.html#ClearMap.ImageProcessing.Filter.Rank.autolevel_percentile">[docs]</a>
+<span class="k">def</span> <span class="nf">autolevel_percentile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Return greyscale local autolevel of an image.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structure element. If None, use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array. If None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels on the mask are zero in the output.</span>
+<span class="sd">  max_bin : int or None</span>
+<span class="sd">    Maximal number of bins.</span>
+<span class="sd">  percentiles : tuple of floats</span>
+<span class="sd">    The lower and upper percentiles in [0,1] to use for </span>
+<span class="sd">    calculating the histogram.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">autolevel</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">autolevel_masked</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_float</span><span class="o">=</span><span class="n">percentiles</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+    
+
+
+<div class="viewcode-block" id="gradient_percentile">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Percentile.html#ClearMap.ImageProcessing.Filter.Rank.gradient_percentile">[docs]</a>
+<span class="k">def</span> <span class="nf">gradient_percentile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Return local gradient of an image (i.e. local maximum - local minimum).</span>
+
+<span class="sd">  Only greyvalues between percentiles [p0, p1] are considered in the filter.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structure element. If None, use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array. If None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels on the mask are zero in the output.</span>
+<span class="sd">  max_bin : int or None</span>
+<span class="sd">    Maximal number of bins.</span>
+<span class="sd">  percentiles : tuple of floats</span>
+<span class="sd">    The lower and upper percentiles in [0,1] to use for </span>
+<span class="sd">    calculating the histogram.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">gradient</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">gradient_masked</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_float</span><span class="o">=</span><span class="n">percentiles</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+
+<div class="viewcode-block" id="mean_percentile">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Percentile.html#ClearMap.ImageProcessing.Filter.Rank.mean_percentile">[docs]</a>
+<span class="k">def</span> <span class="nf">mean_percentile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Return local mean of an image.</span>
+
+<span class="sd">  Only greyvalues between percentiles [p0, p1] are considered in the filter.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structure element. If None, use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array. If None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels on the mask are zero in the output.</span>
+<span class="sd">  max_bin : int or None</span>
+<span class="sd">    Maximal number of bins.</span>
+<span class="sd">  percentiles : tuple of floats</span>
+<span class="sd">    The lower and upper percentiles in [0,1] to use for </span>
+<span class="sd">    calculating the histogram.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">mean_masked</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_float</span><span class="o">=</span><span class="n">percentiles</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+
+<div class="viewcode-block" id="subtract_mean_percentile">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Percentile.html#ClearMap.ImageProcessing.Filter.Rank.subtract_mean_percentile">[docs]</a>
+<span class="k">def</span> <span class="nf">subtract_mean_percentile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Return image subtracted from its local mean.</span>
+
+<span class="sd">  Only greyvalues between percentiles [p0, p1] are considered in the filter.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structure element. If None, use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array. If None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels on the mask are zero in the output.</span>
+<span class="sd">  max_bin : int or None</span>
+<span class="sd">    Maximal number of bins.</span>
+<span class="sd">  percentiles : float</span>
+<span class="sd">    The lower and upper percentiles in [0,1] to use for </span>
+<span class="sd">    calculating the histogram.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">subtract_mean</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">subtract_mean_masked</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_float</span><span class="o">=</span><span class="n">percentiles</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+
+<div class="viewcode-block" id="enhance_contrast_percentile">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Percentile.html#ClearMap.ImageProcessing.Filter.Rank.enhance_contrast_percentile">[docs]</a>
+<span class="k">def</span> <span class="nf">enhance_contrast_percentile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Enhance contrast of an image.</span>
+
+<span class="sd">  This replaces each pixel by the local maximum if the pixel greyvalue is</span>
+<span class="sd">  closer to the local maximum than the local minimum. Otherwise it is</span>
+<span class="sd">  replaced by the local minimum.</span>
+
+<span class="sd">  Only greyvalues between percentiles [p0, p1] are considered in the filter.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structure element. If None, use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array. If None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels on the mask are zero in the output.</span>
+<span class="sd">  max_bin : int or None</span>
+<span class="sd">    Maximal number of bins.</span>
+<span class="sd">  percentiles : tuple of floats</span>
+<span class="sd">    The lower and upper percentiles in [0,1] to use for </span>
+<span class="sd">    calculating the histogram.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">enhance_contrast</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">enhance_contrast_masked</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_float</span><span class="o">=</span><span class="n">percentiles</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+
+<div class="viewcode-block" id="percentile">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Percentile.html#ClearMap.ImageProcessing.Filter.Rank.percentile">[docs]</a>
+<span class="k">def</span> <span class="nf">percentile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Return local percentile of an image.</span>
+
+<span class="sd">  Returns the value of the p0 lower percentile of the local greyvalue</span>
+<span class="sd">  distribution.</span>
+
+<span class="sd">  Only greyvalues between percentiles [p0, p1] are considered in the filter.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structure element. If None, use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array. If None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels on the mask are zero in the output.</span>
+<span class="sd">  max_bin : int or None</span>
+<span class="sd">    Maximal number of bins.</span>
+<span class="sd">  percentile : float</span>
+<span class="sd">    The percentile in [0,1] to use for </span>
+<span class="sd">    calculating the histogram.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">percentile</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">percentile_masked</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_float</span><span class="o">=</span><span class="n">percentile</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+
+<div class="viewcode-block" id="pop_percentile">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Percentile.html#ClearMap.ImageProcessing.Filter.Rank.pop_percentile">[docs]</a>
+<span class="k">def</span> <span class="nf">pop_percentile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Return the local number (population) of pixels.</span>
+
+<span class="sd">  The number of pixels is defined as the number of pixels which are included</span>
+<span class="sd">  in the structuring element and the mask.</span>
+
+<span class="sd">  Only greyvalues between percentiles [p0, p1] are considered in the filter.</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structure element. If None, use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array. If None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels on the mask are zero in the output.</span>
+<span class="sd">  max_bin : int or None</span>
+<span class="sd">    Maximal number of bins.</span>
+<span class="sd">  percentiles : tuple of floats</span>
+<span class="sd">    The lower and upper percentiles in [0,1] to use for </span>
+<span class="sd">    calculating the histogram.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">pop</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">pop_masked</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_float</span><span class="o">=</span><span class="n">percentiles</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+
+<div class="viewcode-block" id="sum_percentile">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Percentile.html#ClearMap.ImageProcessing.Filter.Rank.sum_percentile">[docs]</a>
+<span class="k">def</span> <span class="nf">sum_percentile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Return the local sum of pixels.</span>
+
+<span class="sd">  Only greyvalues between percentiles [p0, p1] are considered in the filter.</span>
+
+<span class="sd">  Note that the sum may overflow depending on the data type of the input</span>
+<span class="sd">  array.</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structure element. If None, use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array. If None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels on the mask are zero in the output.</span>
+<span class="sd">  max_bin : int or None</span>
+<span class="sd">    Maximal number of bins.</span>
+<span class="sd">  percentiles : tuple of floats</span>
+<span class="sd">    The lower and upper percentiles in [0,1] to use for </span>
+<span class="sd">    calculating the histogram.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">sum_masked</span><span class="p">,</span>
+                        <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_float</span><span class="o">=</span><span class="n">percentiles</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+
+<div class="viewcode-block" id="sum_above_percentile">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Percentile.html#ClearMap.ImageProcessing.Filter.Rank.sum_above_percentile">[docs]</a>
+<span class="k">def</span> <span class="nf">sum_above_percentile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentile</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Return the local sum of pixels.</span>
+
+<span class="sd">  Only greyvalues between percentiles [p0, p1] are considered in the filter.</span>
+
+<span class="sd">  Note that the sum may overflow depending on the data type of the input</span>
+<span class="sd">  array.</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structure element. If None, use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array. If None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels on the mask are zero in the output.</span>
+<span class="sd">  max_bin : int or None</span>
+<span class="sd">    Maximal number of bins.</span>
+<span class="sd">  percentile : float</span>
+<span class="sd">    The percentiles in [0,1] to use for </span>
+<span class="sd">    calculating the histogram.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">sum_above</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">sum_above_masked</span><span class="p">,</span>
+                        <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_float</span><span class="o">=</span><span class="n">percentile</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="threshold_percentile">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Percentile.html#ClearMap.ImageProcessing.Filter.Rank.threshold_percentile">[docs]</a>
+<span class="k">def</span> <span class="nf">threshold_percentile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Local threshold of an image.</span>
+
+<span class="sd">  The resulting binary mask is True if the greyvalue of the center pixel is</span>
+<span class="sd">  greater than the local mean.</span>
+
+<span class="sd">  Only greyvalues between percentiles [p0, p1] are considered in the filter.</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structure element. If None, use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array. If None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels on the mask are zero in the output.</span>
+<span class="sd">  max_bin : int or None</span>
+<span class="sd">    Maximal number of bins.</span>
+<span class="sd">  percentile : float</span>
+<span class="sd">    The  percentile in [0,1] to use for </span>
+<span class="sd">    calculating the histogram.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">threshold</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">threshold_masked</span><span class="p">,</span>
+                        <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_float</span><span class="o">=</span><span class="n">percentile</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+    
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

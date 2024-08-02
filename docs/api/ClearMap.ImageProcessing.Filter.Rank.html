@@ -1,0 +1,1767 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ClearMap.ImageProcessing.Filter.Rank &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.ImageProcessing.Filter.Rank';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.Binary.html">ClearMap.ImageProcessing.Binary</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.Clipping.html">ClearMap.ImageProcessing.Clipping</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.Differentiation.html">ClearMap.ImageProcessing.Differentiation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.Experts.html">ClearMap.ImageProcessing.Experts</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.Filter.html">ClearMap.ImageProcessing.Filter</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.GreyReconstruction.html">GreyReconstruction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.IlluminationCorrection.html">IlluminationCorrection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.LightsheetCorrection.html">LightsheetCorrection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.LocalStatistics.html">LocalStatistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.Skeletonization.html">ClearMap.ImageProcessing.Skeletonization</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.Thresholding.html">ClearMap.ImageProcessing.Thresholding</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.Topology.html">ClearMap.ImageProcessing.Topology</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.Tracing.html">ClearMap.ImageProcessing.Tracing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.machine_learning.html">ClearMap.ImageProcessing.machine_learning</a></li>
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Ima...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-ClearMap.ImageProcessing.Filter.Rank">
+<span id="clearmap-imageprocessing-filter-rank"></span><h1>ClearMap.ImageProcessing.Filter.Rank<a class="headerlink" href="#module-ClearMap.ImageProcessing.Filter.Rank" title="Link to this heading">#</a></h1>
+<p>Rank filter module.</p>
+<p>This module provides 3d filters based on the local histogram / rank order of an image.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.autolevel">
+<span class="sig-name descname"><span class="pre">autolevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#autolevel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.autolevel" title="Link to this definition">#</a></dt>
+<dd><p>Auto-level image using local histogram.</p>
+<p>This filter locally stretches the histogram of greyvalues to cover the
+entire range of values from “white” to “black”.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structuring element, if None use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array, if None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels in the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.autolevel_percentile">
+<span class="sig-name descname"><span class="pre">autolevel_percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Percentile.html#autolevel_percentile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.autolevel_percentile" title="Link to this definition">#</a></dt>
+<dd><p>Return greyscale local autolevel of an image.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>percentiles<span class="classifier">tuple of floats</span></dt><dd><p>The lower and upper percentiles in [0,1] to use for
+calculating the histogram.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.bottomhat">
+<span class="sig-name descname"><span class="pre">bottomhat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#bottomhat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.bottomhat" title="Link to this definition">#</a></dt>
+<dd><p>Local bottom-hat.</p>
+<p>This filter computes the morphological closing of the image and then
+subtracts the result from the original image.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.contrast_limited_percentile">
+<span class="sig-name descname"><span class="pre">contrast_limited_percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contrast_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Parametric.html#contrast_limited_percentile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.contrast_limited_percentile" title="Link to this definition">#</a></dt>
+<dd><p>Local Sauvola threshold of an image.</p>
+<p>The resulting binary mask is True if the greyvalue of the center pixel is
+greater than the local mean.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>k, R<span class="classifier">float</span></dt><dd><p>The factors in the formula: threshold = mu + k * (std/R - 1) * (mu - max_bin)</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.enhance_contrast">
+<span class="sig-name descname"><span class="pre">enhance_contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#enhance_contrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.enhance_contrast" title="Link to this definition">#</a></dt>
+<dd><p>Enhance contrast.</p>
+<p>This replaces each pixel by the local maximum if the pixel gray value is
+closer to the local maximum than the local minimum. Otherwise it is
+replaced by the local minimum.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.enhance_contrast_percentile">
+<span class="sig-name descname"><span class="pre">enhance_contrast_percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Percentile.html#enhance_contrast_percentile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.enhance_contrast_percentile" title="Link to this definition">#</a></dt>
+<dd><p>Enhance contrast of an image.</p>
+<p>This replaces each pixel by the local maximum if the pixel greyvalue is
+closer to the local maximum than the local minimum. Otherwise it is
+replaced by the local minimum.</p>
+<p>Only greyvalues between percentiles [p0, p1] are considered in the filter.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>percentiles<span class="classifier">tuple of floats</span></dt><dd><p>The lower and upper percentiles in [0,1] to use for
+calculating the histogram.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.entropy">
+<span class="sig-name descname"><span class="pre">entropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#entropy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.entropy" title="Link to this definition">#</a></dt>
+<dd><p>Local entropy.</p>
+<p>The entropy is computed using base 2 logarithm i.e. the filter returns the
+minimum number of bits needed to encode the local greylevel
+distribution.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.equalize">
+<span class="sig-name descname"><span class="pre">equalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#equalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.equalize" title="Link to this definition">#</a></dt>
+<dd><p>Equalize image using local histogram.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.geometric_mean">
+<span class="sig-name descname"><span class="pre">geometric_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#geometric_mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.geometric_mean" title="Link to this definition">#</a></dt>
+<dd><p>Return local geometric mean.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.gradient">
+<span class="sig-name descname"><span class="pre">gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#gradient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.gradient" title="Link to this definition">#</a></dt>
+<dd><p>Return local gradient of an image (i.e. local maximum - local minimum).</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.gradient_percentile">
+<span class="sig-name descname"><span class="pre">gradient_percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Percentile.html#gradient_percentile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.gradient_percentile" title="Link to this definition">#</a></dt>
+<dd><p>Return local gradient of an image (i.e. local maximum - local minimum).</p>
+<p>Only greyvalues between percentiles [p0, p1] are considered in the filter.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>percentiles<span class="classifier">tuple of floats</span></dt><dd><p>The lower and upper percentiles in [0,1] to use for
+calculating the histogram.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.histogram">
+<span class="sig-name descname"><span class="pre">histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_bin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.histogram" title="Link to this definition">#</a></dt>
+<dd><p>Normalized sliding window histogram</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>Array of the source shape pluse on extra dimension for the histogram
+at each pixel.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.light_sheet_artifact_correction">
+<span class="sig-name descname"><span class="pre">light_sheet_artifact_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contrast_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Parametric.html#light_sheet_artifact_correction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.light_sheet_artifact_correction" title="Link to this definition">#</a></dt>
+<dd><p>Local Sauvola threshold of an image.</p>
+<p>The resulting binary mask is True if the greyvalue of the center pixel is
+greater than the local mean.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>k, R<span class="classifier">float</span></dt><dd><p>The factors in the formula: threshold = mu + k * (std/R - 1) * (mu - max_bin)</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.maximum">
+<span class="sig-name descname"><span class="pre">maximum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#maximum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.maximum" title="Link to this definition">#</a></dt>
+<dd><p>Return local maximum.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.mean">
+<span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.mean" title="Link to this definition">#</a></dt>
+<dd><p>Return local mean.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.mean_bilateral">
+<span class="sig-name descname"><span class="pre">mean_bilateral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Bilateral.html#mean_bilateral"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.mean_bilateral" title="Link to this definition">#</a></dt>
+<dd><p>Apply a flat kernel bilateral filter.</p>
+<p>This is an edge-preserving and noise reducing denoising filter. It averages
+pixels based on their spatial closeness and radiometric similarity.</p>
+<p>Spatial closeness is measured by considering only the local pixel
+neighborhood given by a structuring element.</p>
+<p>Radiometric similarity is defined by the greylevel interval [g-s0, g+s1]
+where g is the current pixel greylevel.</p>
+<p>Only pixels belonging to the structuring element and having a graylevel
+inside this interval are averaged.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structuring element, if None use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array, if None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels in the mask are zero in the output.</p>
+</dd>
+<dt>s0,s1<span class="classifier">int</span></dt><dd><p>The lower and upper widths around the center value
+for the bilateral window.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.mean_percentile">
+<span class="sig-name descname"><span class="pre">mean_percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Percentile.html#mean_percentile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.mean_percentile" title="Link to this definition">#</a></dt>
+<dd><p>Return local mean of an image.</p>
+<p>Only greyvalues between percentiles [p0, p1] are considered in the filter.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>percentiles<span class="classifier">tuple of floats</span></dt><dd><p>The lower and upper percentiles in [0,1] to use for
+calculating the histogram.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.mean_scale_bilateral">
+<span class="sig-name descname"><span class="pre">mean_scale_bilateral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Bilateral.html#mean_scale_bilateral"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.mean_scale_bilateral" title="Link to this definition">#</a></dt>
+<dd><p>Mean pixel value using a bilateral window size that scales with local pixel intensity.</p>
+<p>The filter linearly scales the biateral window size as [g-s0-p0*g, g+s1+p1*g].</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structuring element, if None use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array, if None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels in the mask are zero in the output.</p>
+</dd>
+<dt>s0,s1<span class="classifier">int</span></dt><dd><p>The lower and upper widths around the center value
+for the bilateral window.</p>
+</dd>
+<dt>p0,p1<span class="classifier">float</span></dt><dd><p>The lower and upper scale values for the bilateral window.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.median">
+<span class="sig-name descname"><span class="pre">median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#median"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.median" title="Link to this definition">#</a></dt>
+<dd><p>Return local median.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.minimum">
+<span class="sig-name descname"><span class="pre">minimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#minimum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.minimum" title="Link to this definition">#</a></dt>
+<dd><p>Return local minimum.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.minmax">
+<span class="sig-name descname"><span class="pre">minmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#minmax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.minmax" title="Link to this definition">#</a></dt>
+<dd><p>Return local maximum and minimum.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.modal">
+<span class="sig-name descname"><span class="pre">modal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#modal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.modal" title="Link to this definition">#</a></dt>
+<dd><p>Return local mode.</p>
+<p>The mode is the value that appears most often in the local histogram.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.nilblack">
+<span class="sig-name descname"><span class="pre">nilblack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Parametric.html#nilblack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.nilblack" title="Link to this definition">#</a></dt>
+<dd><p>Local nilblack threshold of an image.</p>
+<p>The resulting binary mask is True if the greyvalue of the center pixel is
+greater than the local mean.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>k<span class="classifier">float</span></dt><dd><p>The factor between mean and standard deviation: threshold = mu + k * std</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.noise_filter">
+<span class="sig-name descname"><span class="pre">noise_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#noise_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.noise_filter" title="Link to this definition">#</a></dt>
+<dd><p>Noise feature.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.otsu">
+<span class="sig-name descname"><span class="pre">otsu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#otsu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.otsu" title="Link to this definition">#</a></dt>
+<dd><p>Local Otsu’s threshold value for each pixel.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.percentile">
+<span class="sig-name descname"><span class="pre">percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Percentile.html#percentile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.percentile" title="Link to this definition">#</a></dt>
+<dd><p>Return local percentile of an image.</p>
+<p>Returns the value of the p0 lower percentile of the local greyvalue
+distribution.</p>
+<p>Only greyvalues between percentiles [p0, p1] are considered in the filter.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>percentile<span class="classifier">float</span></dt><dd><p>The percentile in [0,1] to use for
+calculating the histogram.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#pop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.pop" title="Link to this definition">#</a></dt>
+<dd><p>Return the local number (population) of pixels.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.pop_bilateral">
+<span class="sig-name descname"><span class="pre">pop_bilateral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Bilateral.html#pop_bilateral"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.pop_bilateral" title="Link to this definition">#</a></dt>
+<dd><p>Return the local number (population) of pixels.</p>
+<p>The number of pixels is defined as the number of pixels which are included
+in the structuring element and the mask. Additionally pixels must have a
+graylevel inside the interval [g-s0, g+s1] where g is the gray value of the
+center pixel.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structuring element, if None use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array, if None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels in the mask are zero in the output.</p>
+</dd>
+<dt>s0,s1<span class="classifier">int</span></dt><dd><p>The lower and upper widths around the center value
+for the bilateral window.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.pop_percentile">
+<span class="sig-name descname"><span class="pre">pop_percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Percentile.html#pop_percentile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.pop_percentile" title="Link to this definition">#</a></dt>
+<dd><p>Return the local number (population) of pixels.</p>
+<p>The number of pixels is defined as the number of pixels which are included
+in the structuring element and the mask.</p>
+<p>Only greyvalues between percentiles [p0, p1] are considered in the filter.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>percentiles<span class="classifier">tuple of floats</span></dt><dd><p>The lower and upper percentiles in [0,1] to use for
+calculating the histogram.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.sauvola">
+<span class="sig-name descname"><span class="pre">sauvola</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Parametric.html#sauvola"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.sauvola" title="Link to this definition">#</a></dt>
+<dd><p>Local Sauvola threshold of an image.</p>
+<p>The resulting binary mask is True if the greyvalue of the center pixel is
+greater than the local mean.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>k, R<span class="classifier">float</span></dt><dd><p>The factors in the formula: threshold = mu + k * (std/R - 1) * (mu - max_bin)</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.std">
+<span class="sig-name descname"><span class="pre">std</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#std"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.std" title="Link to this definition">#</a></dt>
+<dd><p>Local standard deviation.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.subtract_mean">
+<span class="sig-name descname"><span class="pre">subtract_mean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#subtract_mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.subtract_mean" title="Link to this definition">#</a></dt>
+<dd><p>Return image subtracted from its local mean.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.subtract_mean_percentile">
+<span class="sig-name descname"><span class="pre">subtract_mean_percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Percentile.html#subtract_mean_percentile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.subtract_mean_percentile" title="Link to this definition">#</a></dt>
+<dd><p>Return image subtracted from its local mean.</p>
+<p>Only greyvalues between percentiles [p0, p1] are considered in the filter.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>percentiles<span class="classifier">float</span></dt><dd><p>The lower and upper percentiles in [0,1] to use for
+calculating the histogram.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.sum_above_percentile">
+<span class="sig-name descname"><span class="pre">sum_above_percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Percentile.html#sum_above_percentile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.sum_above_percentile" title="Link to this definition">#</a></dt>
+<dd><p>Return the local sum of pixels.</p>
+<p>Only greyvalues between percentiles [p0, p1] are considered in the filter.</p>
+<p>Note that the sum may overflow depending on the data type of the input
+array.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>percentile<span class="classifier">float</span></dt><dd><p>The percentiles in [0,1] to use for
+calculating the histogram.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.sum_bilateral">
+<span class="sig-name descname"><span class="pre">sum_bilateral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Bilateral.html#sum_bilateral"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.sum_bilateral" title="Link to this definition">#</a></dt>
+<dd><p>Apply a flat kernel bilateral filter.</p>
+<p>This is an edge-preserving and noise reducing denoising filter. It sums
+pixels based on their spatial closeness and radiometric similarity.</p>
+<p>Spatial closeness is measured by considering only the local pixel
+neighborhood given by a structuring element (structural_element).</p>
+<p>Radiometric similarity is defined by the greylevel interval [g-s0, g+s1]
+where g is the current pixel greylevel.</p>
+<p>Only pixels belonging to the structuring element AND having a greylevel
+inside this interval are summed.</p>
+<p>Note that the sum may overflow depending on the data type of the input
+array.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structuring element, if None use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array, if None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels in the mask are zero in the output.</p>
+</dd>
+<dt>s0,s1<span class="classifier">int</span></dt><dd><p>The lower and upper widths around the center value
+for the bilateral window.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.sum_percentile">
+<span class="sig-name descname"><span class="pre">sum_percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Percentile.html#sum_percentile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.sum_percentile" title="Link to this definition">#</a></dt>
+<dd><p>Return the local sum of pixels.</p>
+<p>Only greyvalues between percentiles [p0, p1] are considered in the filter.</p>
+<p>Note that the sum may overflow depending on the data type of the input
+array.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>percentiles<span class="classifier">tuple of floats</span></dt><dd><p>The lower and upper percentiles in [0,1] to use for
+calculating the histogram.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.sum_relative_bilateral">
+<span class="sig-name descname"><span class="pre">sum_relative_bilateral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Bilateral.html#sum_relative_bilateral"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.sum_relative_bilateral" title="Link to this definition">#</a></dt>
+<dd><p>Apply a flat kernel bilateral filter.</p>
+<p>This is an edge-preserving and noise reducing denoising filter. It sums
+pixels based on their spatial closeness and radiometric similarity.</p>
+<p>Spatial closeness is measured by considering only the local pixel
+neighborhood given by a structuring element (structural_element).</p>
+<p>Radiometric similarity is defined by the greylevel interval [g-s0, g+s1]
+where g is the current pixel greylevel.</p>
+<p>Only pixels belonging to the structuring element AND having a greylevel
+inside this interval are summed.</p>
+<p>Note that the sum may overflow depending on the data type of the input
+array.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structuring element, if None use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array, if None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels in the mask are zero in the output.</p>
+</dd>
+<dt>s0,s1<span class="classifier">int</span></dt><dd><p>The lower and upper widths around the center value
+for the bilateral window.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.threshold">
+<span class="sig-name descname"><span class="pre">threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.threshold" title="Link to this definition">#</a></dt>
+<dd><p>Local threshold.</p>
+<p>The resulting binary mask is True if the greyvalue of the center pixel is
+greater than the local mean.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.threshold_percentile">
+<span class="sig-name descname"><span class="pre">threshold_percentile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Percentile.html#threshold_percentile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.threshold_percentile" title="Link to this definition">#</a></dt>
+<dd><p>Local threshold of an image.</p>
+<p>The resulting binary mask is True if the greyvalue of the center pixel is
+greater than the local mean.</p>
+<p>Only greyvalues between percentiles [p0, p1] are considered in the filter.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+<dt>max_bin<span class="classifier">int or None</span></dt><dd><p>Maximal number of bins.</p>
+</dd>
+<dt>percentile<span class="classifier">float</span></dt><dd><p>The  percentile in [0,1] to use for
+calculating the histogram.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.ImageProcessing.Filter.Rank.tophat">
+<span class="sig-name descname"><span class="pre">tophat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selem</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sink</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/ImageProcessing/Filter/Rank/Rank.html#tophat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.ImageProcessing.Filter.Rank.tophat" title="Link to this definition">#</a></dt>
+<dd><p>Local top-hat.</p>
+<p>This filter computes the morphological opening of the image and then
+subtracts the result from the original image.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">array</span></dt><dd><p>Input array.</p>
+</dd>
+<dt>selem<span class="classifier">array</span></dt><dd><p>Structure element. If None, use a cube of size 3.</p>
+</dd>
+<dt>sink<span class="classifier">array</span></dt><dd><p>Output array. If None, a new array is allocated.</p>
+</dd>
+<dt>mask<span class="classifier">array</span></dt><dd><p>Optional mask, if None, the complete source is used.
+Pixels on the mask are zero in the output.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array</span></dt><dd><p>The filtered array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="sub-packages-and-modules">
+<h1>Sub-packages and modules<a class="headerlink" href="#sub-packages-and-modules" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="ClearMap.ImageProcessing.Filter.Rank.Bilateral.html#module-ClearMap.ImageProcessing.Filter.Rank.Bilateral" title="ClearMap.ImageProcessing.Filter.Rank.Bilateral"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Filter.Rank.Bilateral</span></code></a></p></td>
+<td><p>Approximate bilateral rank filter for local (custom kernel) mean.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ClearMap.ImageProcessing.Filter.Rank.BilateralCode.html#module-ClearMap.ImageProcessing.Filter.Rank.BilateralCode" title="ClearMap.ImageProcessing.Filter.Rank.BilateralCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Filter.Rank.BilateralCode</span></code></a></p></td>
+<td><p>Cython code for the bilateral rank filters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ClearMap.ImageProcessing.Filter.Rank.Parametric.html#module-ClearMap.ImageProcessing.Filter.Rank.Parametric" title="ClearMap.ImageProcessing.Filter.Rank.Parametric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Filter.Rank.Parametric</span></code></a></p></td>
+<td><p>Parameteric rank filters</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ClearMap.ImageProcessing.Filter.Rank.ParametricCode.html#module-ClearMap.ImageProcessing.Filter.Rank.ParametricCode" title="ClearMap.ImageProcessing.Filter.Rank.ParametricCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Filter.Rank.ParametricCode</span></code></a></p></td>
+<td><p>Cython code for the parametric rank filters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ClearMap.ImageProcessing.Filter.Rank.Percentile.html#module-ClearMap.ImageProcessing.Filter.Rank.Percentile" title="ClearMap.ImageProcessing.Filter.Rank.Percentile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Filter.Rank.Percentile</span></code></a></p></td>
+<td><p>Inferior and superior ranks, provided by the user, are passed to the kernel function to provide a softer version of the rank filters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ClearMap.ImageProcessing.Filter.Rank.PercentileCode.html#module-ClearMap.ImageProcessing.Filter.Rank.PercentileCode" title="ClearMap.ImageProcessing.Filter.Rank.PercentileCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Filter.Rank.PercentileCode</span></code></a></p></td>
+<td><p>Cython code for the percentile rank filters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ClearMap.ImageProcessing.Filter.Rank.Rank.html#module-ClearMap.ImageProcessing.Filter.Rank.Rank" title="ClearMap.ImageProcessing.Filter.Rank.Rank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Filter.Rank.Rank</span></code></a></p></td>
+<td><p>Main 3d rank filter module</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ClearMap.ImageProcessing.Filter.Rank.RankCode.html#module-ClearMap.ImageProcessing.Filter.Rank.RankCode" title="ClearMap.ImageProcessing.Filter.Rank.RankCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Filter.Rank.RankCode</span></code></a></p></td>
+<td><p>Cython code for the basic rank filters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ClearMap.ImageProcessing.Filter.Rank.RankCoreCode.html#module-ClearMap.ImageProcessing.Filter.Rank.RankCoreCode" title="ClearMap.ImageProcessing.Filter.Rank.RankCoreCode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Filter.Rank.RankCoreCode</span></code></a></p></td>
+<td><p>Cython code for the core rank filter functions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ClearMap.ImageProcessing.Filter.Rank.RankResample.html#module-ClearMap.ImageProcessing.Filter.Rank.RankResample" title="ClearMap.ImageProcessing.Filter.Rank.RankResample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Filter.Rank.RankResample</span></code></a></p></td>
+<td><p>Rank filter on resampled data.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></blockquote>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">ClearMap.ImageProcessing.Filter.Rank</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.autolevel"><code class="docutils literal notranslate"><span class="pre">autolevel()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.autolevel_percentile"><code class="docutils literal notranslate"><span class="pre">autolevel_percentile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.bottomhat"><code class="docutils literal notranslate"><span class="pre">bottomhat()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.contrast_limited_percentile"><code class="docutils literal notranslate"><span class="pre">contrast_limited_percentile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.enhance_contrast"><code class="docutils literal notranslate"><span class="pre">enhance_contrast()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.enhance_contrast_percentile"><code class="docutils literal notranslate"><span class="pre">enhance_contrast_percentile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.entropy"><code class="docutils literal notranslate"><span class="pre">entropy()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.equalize"><code class="docutils literal notranslate"><span class="pre">equalize()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.geometric_mean"><code class="docutils literal notranslate"><span class="pre">geometric_mean()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.gradient"><code class="docutils literal notranslate"><span class="pre">gradient()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.gradient_percentile"><code class="docutils literal notranslate"><span class="pre">gradient_percentile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.histogram"><code class="docutils literal notranslate"><span class="pre">histogram()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.light_sheet_artifact_correction"><code class="docutils literal notranslate"><span class="pre">light_sheet_artifact_correction()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.maximum"><code class="docutils literal notranslate"><span class="pre">maximum()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.mean"><code class="docutils literal notranslate"><span class="pre">mean()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.mean_bilateral"><code class="docutils literal notranslate"><span class="pre">mean_bilateral()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.mean_percentile"><code class="docutils literal notranslate"><span class="pre">mean_percentile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.mean_scale_bilateral"><code class="docutils literal notranslate"><span class="pre">mean_scale_bilateral()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.median"><code class="docutils literal notranslate"><span class="pre">median()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.minimum"><code class="docutils literal notranslate"><span class="pre">minimum()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.minmax"><code class="docutils literal notranslate"><span class="pre">minmax()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.modal"><code class="docutils literal notranslate"><span class="pre">modal()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.nilblack"><code class="docutils literal notranslate"><span class="pre">nilblack()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.noise_filter"><code class="docutils literal notranslate"><span class="pre">noise_filter()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.otsu"><code class="docutils literal notranslate"><span class="pre">otsu()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.percentile"><code class="docutils literal notranslate"><span class="pre">percentile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.pop"><code class="docutils literal notranslate"><span class="pre">pop()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.pop_bilateral"><code class="docutils literal notranslate"><span class="pre">pop_bilateral()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.pop_percentile"><code class="docutils literal notranslate"><span class="pre">pop_percentile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.sauvola"><code class="docutils literal notranslate"><span class="pre">sauvola()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.std"><code class="docutils literal notranslate"><span class="pre">std()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.subtract_mean"><code class="docutils literal notranslate"><span class="pre">subtract_mean()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.subtract_mean_percentile"><code class="docutils literal notranslate"><span class="pre">subtract_mean_percentile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.sum_above_percentile"><code class="docutils literal notranslate"><span class="pre">sum_above_percentile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.sum_bilateral"><code class="docutils literal notranslate"><span class="pre">sum_bilateral()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.sum_percentile"><code class="docutils literal notranslate"><span class="pre">sum_percentile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.sum_relative_bilateral"><code class="docutils literal notranslate"><span class="pre">sum_relative_bilateral()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.threshold"><code class="docutils literal notranslate"><span class="pre">threshold()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.threshold_percentile"><code class="docutils literal notranslate"><span class="pre">threshold_percentile()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.ImageProcessing.Filter.Rank.tophat"><code class="docutils literal notranslate"><span class="pre">tophat()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sub-packages-and-modules">Sub-packages and modules</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.ImageProcessing.Filter.Rank.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

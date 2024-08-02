@@ -1,0 +1,1163 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Slice &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.IO.Slice';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.CSV.html">CSV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.FileList.html">FileList</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.FileUtils.html">FileUtils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.GT.html">GT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.IO.html">IO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.MHD.html">MHD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.MMP.html">MMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.NPY.html">NPY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.NRRD.html">NRRD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.SMA.html">SMA</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Slice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.Source.html">Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.TIF.html">TIF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.Temporary.html">Temporary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.Workspace.html">Workspace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.assets_constants.html">assets_constants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.elastix_config.html">elastix_config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.metadata.html">metadata</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Slice</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="slice">
+<h1>Slice<a class="headerlink" href="#slice" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+</tbody>
+</table>
+</div>
+<p id="module-ClearMap.IO.Slice">This module provides basic handling of slicing of sources.</p>
+<p>The main functionality is to virtually slice an array and return its
+expected shape and order. Virtual slices can also be used as handles with
+low communication overhead in parallel processing.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sliced</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">slc</span><span class="o">.</span><span class="n">Slice</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">slicing</span><span class="o">=</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sliced</span>
+<span class="go">Sliced-Numpy-Source(30, 10)[float64]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sliced</span><span class="o">.</span><span class="n">base</span>
+<span class="go">Numpy-Source(30, 40)[float64]|C|</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slicing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#Slice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.Slice" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.IO.Source.html#ClearMap.IO.Source.Source" title="ClearMap.IO.Source.Source"><code class="xref py py-class docutils literal notranslate"><span class="pre">Source</span></code></a></p>
+<p>A virtual slice of a source.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.as_buffer">
+<span class="sig-name descname"><span class="pre">as_buffer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#Slice.as_buffer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.Slice.as_buffer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.as_real">
+<span class="sig-name descname"><span class="pre">as_real</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#Slice.as_real"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.Slice.as_real" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.as_virtual">
+<span class="sig-name descname"><span class="pre">as_virtual</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#Slice.as_virtual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.Slice.as_virtual" title="Link to this definition">#</a></dt>
+<dd><p>Returns a virtual handle to this source striped of any big array data useful for parallel processing.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>source<span class="classifier">Source class</span></dt><dd><p>The source class with out any cached array data.</p>
+</dd>
+</dl>
+<p class="rubric">Note</p>
+<p>The slicing structure is kept here to be able to appropiately take slices in a source when processsing in parallel.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.array">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">array</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.array" title="Link to this definition">#</a></dt>
+<dd><p>The sliced array.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>array<span class="classifier">array</span></dt><dd><p>An array representing the slice, if the underling source has an slicable array property, else None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.base">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.base" title="Link to this definition">#</a></dt>
+<dd><p>The underlying base source in case of nested slicing.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>source<span class="classifier">Source</span></dt><dd><p>Returns the underlying base source of this sliced source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.base_lower">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_lower</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.base_lower" title="Link to this definition">#</a></dt>
+<dd><p>Returns the indices of the lower corner of this slice in the underlying base source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>position<span class="classifier">tuple of int</span></dt><dd><p>The coordinates of the lower corner of this slice within the base source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.base_position">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_position</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.base_position" title="Link to this definition">#</a></dt>
+<dd><p>Returns the indices of the lower corner of this slice in the underlying base source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>position<span class="classifier">tuple of int</span></dt><dd><p>The coordinates of the lower corner of this slice within the base source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.base_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_shape</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.base_shape" title="Link to this definition">#</a></dt>
+<dd><p>The shape of the underlying base source in case of nested slicing.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>shape<span class="classifier">tuple</span></dt><dd><p>Returns the shape for the base of this source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.base_slicing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_slicing</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.base_slicing" title="Link to this definition">#</a></dt>
+<dd><p>The direct slicing specification of the underlying base source in case of nested slicing.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">tuple</span></dt><dd><p>Returns the slice spcification for the base of this source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.base_upper">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_upper</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.base_upper" title="Link to this definition">#</a></dt>
+<dd><p>Returns the indices of the upper corner of this slice in the underlying base source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>position<span class="classifier">tuple of int</span></dt><dd><p>The coordinates of the upper corner of this slice within the base source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.dtype">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dtype</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.dtype" title="Link to this definition">#</a></dt>
+<dd><p>The data type of the source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>dtype<span class="classifier">dtype</span></dt><dd><p>The data type of the source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.element_strides">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element_strides</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.element_strides" title="Link to this definition">#</a></dt>
+<dd><p>The strides of the data source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>strides<span class="classifier">tuple of ints</span></dt><dd><p>The strides of the sliced source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.location">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">location</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.location" title="Link to this definition">#</a></dt>
+<dd><p>The location of the source’s data.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>location<span class="classifier">str</span></dt><dd><p>Returns the location of the data source or None if there is none.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.lower">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lower</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.lower" title="Link to this definition">#</a></dt>
+<dd><p>Returns the indices of the lower corner of this slice in the underlying source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>position<span class="classifier">tuple of int</span></dt><dd><p>The coordinates of the lower corner of this slice within the source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.name" title="Link to this definition">#</a></dt>
+<dd><p>The name of this source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>name<span class="classifier">str</span></dt><dd><p>Name of this source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.offset">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">offset</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.offset" title="Link to this definition">#</a></dt>
+<dd><p>The offset of the memory map in the file.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>offset<span class="classifier">int</span></dt><dd><p>Offset of the memeory map in the file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.order">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">order</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.order" title="Link to this definition">#</a></dt>
+<dd><p>The order of how the data is stored in the source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>order<span class="classifier">str</span></dt><dd><p>Returns ‘C’ for C contigous and ‘F’ for fortran contigous, None otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.position">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.position" title="Link to this definition">#</a></dt>
+<dd><p>Returns the indices of the lower corner of this slice in the underlying source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>position<span class="classifier">tuple of int</span></dt><dd><p>The coordinates of the lower corner of this slice within the source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.shape" title="Link to this definition">#</a></dt>
+<dd><p>The shape of the source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>shape<span class="classifier">tuple</span></dt><dd><p>The shape of the source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.slicing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">slicing</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.slicing" title="Link to this definition">#</a></dt>
+<dd><p>The slice spcification of the source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">slice, list or None</span></dt><dd><p>Returns the slice specification of this sliced source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.source">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.source" title="Link to this definition">#</a></dt>
+<dd><p>The source of this sliced source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>source<span class="classifier">Source class</span></dt><dd><p>The source of this slice.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.strides">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">strides</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.strides" title="Link to this definition">#</a></dt>
+<dd><p>The strides of the data source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>strides<span class="classifier">tuple of ints</span></dt><dd><p>The strides of the sliced source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.unpacked_slicing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unpacked_slicing</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.unpacked_slicing" title="Link to this definition">#</a></dt>
+<dd><p>The unpacked slicing specification.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">tuple</span></dt><dd><p>Returns the unpacked slice spcification of this sliced source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.Slice.upper">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">upper</span></span><a class="headerlink" href="#ClearMap.IO.Slice.Slice.upper" title="Link to this definition">#</a></dt>
+<dd><p>Returns the indices of the upper corner of this slice in the underlying source.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>position<span class="classifier">tuple of int</span></dt><dd><p>The coordinates of the upper corner of this slice within the source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.is_trivial">
+<span class="sig-name descname"><span class="pre">is_trivial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#is_trivial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.is_trivial" title="Link to this definition">#</a></dt>
+<dd><p>Returns True if the slicing is not generating a real sub-slice.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>The slice specification.</p>
+</dd>
+<dt>shape<span class="classifier">tuple of ints or None.</span></dt><dd><p>If not None assume this shape for the array to be sliced.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>is_trivial<span class="classifier">bool</span></dt><dd><p>True if the sliced array is changed form the original one.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.is_view">
+<span class="sig-name descname"><span class="pre">is_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#is_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.is_view" title="Link to this definition">#</a></dt>
+<dd><p>Returns True if the slicing results in a view of the original array.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>The slice specification.</p>
+</dd>
+<dt>ndim<span class="classifier">int</span></dt><dd><p>The dimension of the source to slice.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>is_view<span class="classifier">bool</span></dt><dd><p>True if the sliced array is a view.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.simplify_slicing">
+<span class="sig-name descname"><span class="pre">simplify_slicing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#simplify_slicing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.simplify_slicing" title="Link to this definition">#</a></dt>
+<dd><p>Simplifies slice specification to avoid fancy indexing if possible.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>The slice specification.</p>
+</dd>
+<dt>ndim<span class="classifier">int</span></dt><dd><p>The dimension of the source to slice.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>The full slice specification.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.slice_to_range">
+<span class="sig-name descname"><span class="pre">slice_to_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#slice_to_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.slice_to_range" title="Link to this definition">#</a></dt>
+<dd><p>Transforms a slice object to a range.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">slice</span></dt><dd><p>A sinlge slice class.</p>
+</dd>
+<dt>shape<span class="classifier">tupe of ints or None</span></dt><dd><p>The shape of the source, if None, try to determine from slice.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>range<span class="classifier">range</span></dt><dd><p>The range corrresponding to the slice.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.sliced_ndim">
+<span class="sig-name descname"><span class="pre">sliced_ndim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_index_arrays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#sliced_ndim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.sliced_ndim" title="Link to this definition">#</a></dt>
+<dd><p>Returns the dimension of a slicing of an array with given dimension.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>Slice specification.</p>
+</dd>
+<dt>ndim<span class="classifier">int</span></dt><dd><p>Diemnsion of the array.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>ndim<span class="classifier">int</span></dt><dd><p>The dimension of the sliced array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.sliced_offset">
+<span class="sig-name descname"><span class="pre">sliced_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_index_arrays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#sliced_offset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.sliced_offset" title="Link to this definition">#</a></dt>
+<dd><p>Returns the offset to the first element of the slicing into a buffer with given strides.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>Slice specification.</p>
+</dd>
+<dt>strides<span class="classifier">tuple</span></dt><dd><p>Strides of the array.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>offset<span class="classifier">int</span></dt><dd><p>Offset into the sliced array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.sliced_order">
+<span class="sig-name descname"><span class="pre">sliced_order</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_index_arrays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#sliced_order"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.sliced_order" title="Link to this definition">#</a></dt>
+<dd><p>Returns the contiguous order of a sliced array.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>The slice specification.</p>
+</dd>
+<dt>order<span class="classifier">‘C’, ‘F’ or None</span></dt><dd><p>The order of the source to be sliced.</p>
+</dd>
+<dt>shape<span class="classifier">tuple of ints</span></dt><dd><p>The shape of the source to be sliced.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>order<span class="classifier">‘C’, ‘F’ or None</span></dt><dd><p>The order of the sliced source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.sliced_reduction">
+<span class="sig-name descname"><span class="pre">sliced_reduction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_index_arrays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#sliced_reduction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.sliced_reduction" title="Link to this definition">#</a></dt>
+<dd><p>Returns a slicing that slices a list retaining only full dimensions in the slice.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>The slice specification.</p>
+</dd>
+<dt>ndim<span class="classifier">int</span></dt><dd><p>The dinension of the source.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>Slice specification that reduces a list of length ndim to the new dimensions of the slice.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.sliced_shape">
+<span class="sig-name descname"><span class="pre">sliced_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_index_arrays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#sliced_shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.sliced_shape" title="Link to this definition">#</a></dt>
+<dd><p>Returns the shape that results from slicing.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>Slice specification.</p>
+</dd>
+<dt>shape<span class="classifier">tuple</span></dt><dd><p>Shape of the original array.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>shape<span class="classifier">tuple</span></dt><dd><p>The shape of the sliced array.</p>
+</dd>
+</dl>
+<p class="rubric">Note</p>
+<p>Fancy indexing is not supported.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.sliced_slicing">
+<span class="sig-name descname"><span class="pre">sliced_slicing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing_second</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slicing_first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_index_arrays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#sliced_slicing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.sliced_slicing" title="Link to this definition">#</a></dt>
+<dd><p>Returns a slicing of a slicing if possible.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing_second<span class="classifier">object</span></dt><dd><p>Slice specification followed by first slicing.</p>
+</dd>
+<dt>slicing_first<span class="classifier">object</span></dt><dd><p>First slicing.</p>
+</dd>
+<dt>shape<span class="classifier">tuple of ints</span></dt><dd><p>Shape of the original source to be sliced twice.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>The reduced slicing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.sliced_start">
+<span class="sig-name descname"><span class="pre">sliced_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_index_arrays</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#sliced_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.sliced_start" title="Link to this definition">#</a></dt>
+<dd><p>Returns the starting position of the slicing in the original source.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>Slice specification.</p>
+</dd>
+<dt>shape<span class="classifier">tuple</span></dt><dd><p>Shape of the array.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>start<span class="classifier">tuple of int</span></dt><dd><p>Start position of the slicing in the original source.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.sliced_strides">
+<span class="sig-name descname"><span class="pre">sliced_strides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#sliced_strides"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.sliced_strides" title="Link to this definition">#</a></dt>
+<dd><p>Returns the strides of the slicing of a buffer with given strides if possible.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>Slice specification.</p>
+</dd>
+<dt>strides<span class="classifier">tuple</span></dt><dd><p>Strides of the original array.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>strides<span class="classifier">tuple</span></dt><dd><p>Strides into the sliced array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.unpack_slicing">
+<span class="sig-name descname"><span class="pre">unpack_slicing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/IO/Slice.html#unpack_slicing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.IO.Slice.unpack_slicing" title="Link to this definition">#</a></dt>
+<dd><p>Convert slice specification to a slice specification that matches the dimension of the sliced array.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>The slice specification.</p>
+</dd>
+<dt>ndim<span class="classifier">int</span></dt><dd><p>The dimension of the source to slice.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>slicing<span class="classifier">object</span></dt><dd><p>The full slice specification.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ClearMap.IO.Slice.allow_index_arrays">
+<span class="sig-name descname"><span class="pre">allow_index_arrays</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#ClearMap.IO.Slice.allow_index_arrays" title="Link to this definition">#</a></dt>
+<dd><p>Default value to allow index arrays in slicing.</p>
+<p class="rubric">Note</p>
+<p>If True, allows indexing to also be integer or boolean arrays.
+In numpy this type of indexing triggers copying of the array and the
+sliced array is not a view into the original array.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice"><code class="docutils literal notranslate"><span class="pre">Slice</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.as_buffer"><code class="docutils literal notranslate"><span class="pre">Slice.as_buffer()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.as_real"><code class="docutils literal notranslate"><span class="pre">Slice.as_real()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.as_virtual"><code class="docutils literal notranslate"><span class="pre">Slice.as_virtual()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.array"><code class="docutils literal notranslate"><span class="pre">Slice.array</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.base"><code class="docutils literal notranslate"><span class="pre">Slice.base</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.base_lower"><code class="docutils literal notranslate"><span class="pre">Slice.base_lower</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.base_position"><code class="docutils literal notranslate"><span class="pre">Slice.base_position</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.base_shape"><code class="docutils literal notranslate"><span class="pre">Slice.base_shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.base_slicing"><code class="docutils literal notranslate"><span class="pre">Slice.base_slicing</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.base_upper"><code class="docutils literal notranslate"><span class="pre">Slice.base_upper</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.dtype"><code class="docutils literal notranslate"><span class="pre">Slice.dtype</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.element_strides"><code class="docutils literal notranslate"><span class="pre">Slice.element_strides</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.location"><code class="docutils literal notranslate"><span class="pre">Slice.location</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.lower"><code class="docutils literal notranslate"><span class="pre">Slice.lower</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.name"><code class="docutils literal notranslate"><span class="pre">Slice.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.offset"><code class="docutils literal notranslate"><span class="pre">Slice.offset</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.order"><code class="docutils literal notranslate"><span class="pre">Slice.order</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.position"><code class="docutils literal notranslate"><span class="pre">Slice.position</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.shape"><code class="docutils literal notranslate"><span class="pre">Slice.shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.slicing"><code class="docutils literal notranslate"><span class="pre">Slice.slicing</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.source"><code class="docutils literal notranslate"><span class="pre">Slice.source</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.strides"><code class="docutils literal notranslate"><span class="pre">Slice.strides</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.unpacked_slicing"><code class="docutils literal notranslate"><span class="pre">Slice.unpacked_slicing</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.Slice.upper"><code class="docutils literal notranslate"><span class="pre">Slice.upper</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.is_trivial"><code class="docutils literal notranslate"><span class="pre">is_trivial()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.is_view"><code class="docutils literal notranslate"><span class="pre">is_view()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.simplify_slicing"><code class="docutils literal notranslate"><span class="pre">simplify_slicing()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.slice_to_range"><code class="docutils literal notranslate"><span class="pre">slice_to_range()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.sliced_ndim"><code class="docutils literal notranslate"><span class="pre">sliced_ndim()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.sliced_offset"><code class="docutils literal notranslate"><span class="pre">sliced_offset()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.sliced_order"><code class="docutils literal notranslate"><span class="pre">sliced_order()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.sliced_reduction"><code class="docutils literal notranslate"><span class="pre">sliced_reduction()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.sliced_shape"><code class="docutils literal notranslate"><span class="pre">sliced_shape()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.sliced_slicing"><code class="docutils literal notranslate"><span class="pre">sliced_slicing()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.sliced_start"><code class="docutils literal notranslate"><span class="pre">sliced_start()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.sliced_strides"><code class="docutils literal notranslate"><span class="pre">sliced_strides()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.unpack_slicing"><code class="docutils literal notranslate"><span class="pre">unpack_slicing()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.IO.Slice.allow_index_arrays"><code class="docutils literal notranslate"><span class="pre">allow_index_arrays</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.IO.Slice.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

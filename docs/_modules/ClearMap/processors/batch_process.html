@@ -1,0 +1,771 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.processors.batch_process &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/processors/batch_process';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.pro...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.processors.batch_process</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">batch_process</span>
+<span class="sd">=============</span>
+
+<span class="sd">The processor set of scripts to batch process a group of samples.</span>
+<span class="sd">This can be used from the GUI, from the CLI or interactively from the python interpreter</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">rescale</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">ClearMap.processors.tube_map</span> <span class="kn">import</span> <span class="n">BinaryVesselProcessor</span><span class="p">,</span> <span class="n">VesselGraphProcessor</span>
+    <span class="n">graph_gt</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">graph_gt</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="kn">from</span> <span class="nn">ClearMap.processors.cell_map</span> <span class="kn">import</span> <span class="n">CellDetector</span>
+<span class="kn">from</span> <span class="nn">ClearMap.processors.sample_preparation</span> <span class="kn">import</span> <span class="n">PreProcessor</span><span class="p">,</span> <span class="n">init_preprocessor</span>
+<span class="kn">from</span> <span class="nn">ClearMap.config.config_loader</span> <span class="kn">import</span> <span class="n">get_configs</span><span class="p">,</span> <span class="n">ConfigLoader</span>
+<span class="kn">from</span> <span class="nn">ClearMap.IO</span> <span class="kn">import</span> <span class="n">IO</span> <span class="k">as</span> <span class="n">clearmap_io</span>
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Charly Rousseau &lt;charly.rousseau@icm-institute.org&gt;&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Public License v3 (see LICENSE.txt)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2022 by Charly Rousseau&#39;</span>
+<span class="n">__webpage__</span> <span class="o">=</span> <span class="s1">&#39;https://idisco.info&#39;</span>
+<span class="n">__download__</span> <span class="o">=</span> <span class="s1">&#39;https://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+
+<div class="viewcode-block" id="process_sample">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.process_sample">[docs]</a>
+<span class="k">def</span> <span class="nf">process_sample</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cells</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vasc</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">patch_pipeline_name</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span> <span class="n">cells</span><span class="p">,</span> <span class="n">vasc</span><span class="p">)</span>
+
+    <span class="n">pre_proc</span> <span class="o">=</span> <span class="n">PreProcessor</span><span class="p">()</span>
+    <span class="n">pre_proc</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
+    <span class="n">pre_proc</span><span class="o">.</span><span class="n">setup_atlases</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">align</span><span class="p">:</span>
+        <span class="n">pre_proc</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">cells</span><span class="p">:</span>
+        <span class="n">cell_detector</span> <span class="o">=</span> <span class="n">CellDetector</span><span class="p">(</span><span class="n">pre_proc</span><span class="p">)</span>
+        <span class="n">cell_detector</span><span class="o">.</span><span class="n">processing_config</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
+
+        <span class="n">cell_detector</span><span class="o">.</span><span class="n">run_cell_detection</span><span class="p">()</span>
+        <span class="n">cell_detector</span><span class="o">.</span><span class="n">post_process_cells</span><span class="p">()</span>
+        <span class="n">cell_detector</span><span class="o">.</span><span class="n">voxelize</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">vasc</span><span class="p">:</span>
+        <span class="n">binary_vessel_processor</span> <span class="o">=</span> <span class="n">BinaryVesselProcessor</span><span class="p">(</span><span class="n">pre_proc</span><span class="p">)</span>
+        <span class="n">binary_vessel_processor</span><span class="o">.</span><span class="n">binarize</span><span class="p">()</span>
+        <span class="n">binary_vessel_processor</span><span class="o">.</span><span class="n">combine_binary</span><span class="p">()</span>
+
+        <span class="n">vessel_graph_processor</span> <span class="o">=</span> <span class="n">VesselGraphProcessor</span><span class="p">(</span><span class="n">pre_proc</span><span class="p">)</span>
+        <span class="n">vessel_graph_processor</span><span class="o">.</span><span class="n">pre_process</span><span class="p">()</span>
+        <span class="n">vessel_graph_processor</span><span class="o">.</span><span class="n">post_process</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="patch_pipeline_name">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.patch_pipeline_name">[docs]</a>
+<span class="k">def</span> <span class="nf">patch_pipeline_name</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span> <span class="n">cells</span><span class="p">,</span> <span class="n">vasc</span><span class="p">):</span>
+    <span class="n">configs</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;pipeline_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;CellMap&#39;</span> <span class="k">if</span> <span class="n">cells</span> <span class="k">else</span> <span class="s1">&#39;TubeMap&#39;</span>
+    <span class="k">if</span> <span class="n">cells</span> <span class="ow">and</span> <span class="n">vasc</span><span class="p">:</span>
+        <span class="n">configs</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;pipeline_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Both&#39;</span></div>
+
+
+
+<div class="viewcode-block" id="BatchProcessor">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.BatchProcessor">[docs]</a>
+<span class="k">class</span> <span class="nc">BatchProcessor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">progress_watcher</span><span class="p">,</span> <span class="n">results_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results_folder</span> <span class="o">=</span> <span class="n">results_folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress_watcher</span> <span class="o">=</span> <span class="n">progress_watcher</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
+
+<div class="viewcode-block" id="BatchProcessor.process_folders">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.BatchProcessor.process_folders">[docs]</a>
+    <span class="k">def</span> <span class="nf">process_folders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">ps</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get_all_paths</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ps</span><span class="p">]</span>  <span class="c1"># flatten list</span>
+        <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Processing sample &#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;brain&#39;</span><span class="p">):</span>
+            <span class="n">cfg_loader</span> <span class="o">=</span> <span class="n">ConfigLoader</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+            <span class="n">configs</span> <span class="o">=</span> <span class="n">get_configs</span><span class="p">(</span><span class="n">cfg_loader</span><span class="o">.</span><span class="n">get_cfg_path</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">),</span> <span class="n">cfg_loader</span><span class="o">.</span><span class="n">get_cfg_path</span><span class="p">(</span><span class="s1">&#39;processing&#39;</span><span class="p">))</span>
+            <span class="n">process_sample</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span>  <span class="n">align</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">align</span><span class="p">,</span> <span class="n">cells</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">count_cells</span><span class="p">,</span>
+                           <span class="n">vasc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">run_vaculature</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress_watcher</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="process_folders">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.process_folders">[docs]</a>
+<span class="k">def</span> <span class="nf">process_folders</span><span class="p">(</span><span class="n">folders</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cells</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vasc</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">folders</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Processing sample &#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;brain&#39;</span><span class="p">):</span>
+        <span class="n">cfg_loader</span> <span class="o">=</span> <span class="n">ConfigLoader</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+        <span class="n">configs</span> <span class="o">=</span> <span class="n">get_configs</span><span class="p">(</span><span class="n">cfg_loader</span><span class="o">.</span><span class="n">get_cfg_path</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">),</span> <span class="n">cfg_loader</span><span class="o">.</span><span class="n">get_cfg_path</span><span class="p">(</span><span class="s1">&#39;processing&#39;</span><span class="p">))</span>
+        <span class="n">process_sample</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="n">align</span><span class="p">,</span> <span class="n">cells</span><span class="o">=</span><span class="n">cells</span><span class="p">,</span> <span class="n">vasc</span><span class="o">=</span><span class="n">vasc</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.main">[docs]</a>
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">samples_file</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">samples_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+        <span class="n">folders</span> <span class="o">=</span> <span class="n">infile</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">folders</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">folders</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">f</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)]</span>
+    <span class="n">voxelize_folders</span><span class="p">(</span><span class="n">folders</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="voxelize_sample">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.voxelize_sample">[docs]</a>
+<span class="k">def</span> <span class="nf">voxelize_sample</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cells</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vasc</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">patch_pipeline_name</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span> <span class="n">cells</span><span class="p">,</span> <span class="n">vasc</span><span class="p">)</span>
+
+    <span class="n">pre_proc</span> <span class="o">=</span> <span class="n">PreProcessor</span><span class="p">()</span>
+    <span class="n">pre_proc</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
+    <span class="n">pre_proc</span><span class="o">.</span><span class="n">setup_atlases</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">align</span><span class="p">:</span>
+        <span class="n">pre_proc</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">cells</span><span class="p">:</span>
+        <span class="n">cell_detector</span> <span class="o">=</span> <span class="n">CellDetector</span><span class="p">(</span><span class="n">pre_proc</span><span class="p">)</span>
+
+        <span class="n">cell_detector</span><span class="o">.</span><span class="n">processing_config</span><span class="o">.</span><span class="n">reload</span><span class="p">()</span>
+        <span class="c1"># cell_detector.atlas_align()</span>
+        <span class="c1"># cell_detector.export_collapsed_stats()</span>
+        <span class="n">cell_detector</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;voxelization&#39;</span><span class="p">][</span><span class="s1">&#39;radii&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">cell_detector</span><span class="o">.</span><span class="n">processing_config</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+        <span class="n">cell_detector</span><span class="o">.</span><span class="n">voxelize</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="voxelize_folders">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.voxelize_folders">[docs]</a>
+<span class="k">def</span> <span class="nf">voxelize_folders</span><span class="p">(</span><span class="n">folders</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cells</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vasc</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">folders</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Processing sample &#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;brain&#39;</span><span class="p">):</span>
+        <span class="n">cfg_loader</span> <span class="o">=</span> <span class="n">ConfigLoader</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+        <span class="n">configs</span> <span class="o">=</span> <span class="n">get_configs</span><span class="p">(</span><span class="n">cfg_loader</span><span class="o">.</span><span class="n">get_cfg_path</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">),</span> <span class="n">cfg_loader</span><span class="o">.</span><span class="n">get_cfg_path</span><span class="p">(</span><span class="s1">&#39;processing&#39;</span><span class="p">))</span>
+        <span class="n">voxelize_sample</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="n">align</span><span class="p">,</span> <span class="n">cells</span><span class="o">=</span><span class="n">cells</span><span class="p">,</span> <span class="n">vasc</span><span class="o">=</span><span class="n">vasc</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="convert_to_cm_2_1">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.convert_to_cm_2_1">[docs]</a>
+<span class="k">def</span> <span class="nf">convert_to_cm_2_1</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">atlas_base_name</span><span class="o">=</span><span class="s1">&#39;ABA_25um&#39;</span><span class="p">):</span>
+    <span class="n">pre_proc</span> <span class="o">=</span> <span class="n">init_preprocessor</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">atlas_base_name</span><span class="p">)</span>
+    <span class="n">pre_proc</span><span class="o">.</span><span class="n">setup_atlases</span><span class="p">()</span>
+    <span class="n">cell_detector</span> <span class="o">=</span> <span class="n">CellDetector</span><span class="p">(</span><span class="n">pre_proc</span><span class="p">)</span>
+    <span class="n">cell_detector</span><span class="o">.</span><span class="n">convert_cm2_to_cm2_1_fmt</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="realign">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.realign">[docs]</a>
+<span class="k">def</span> <span class="nf">realign</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">atlas_base_name</span><span class="o">=</span><span class="s1">&#39;ABA_25um&#39;</span><span class="p">):</span>
+    <span class="n">pre_proc</span> <span class="o">=</span> <span class="n">init_preprocessor</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">atlas_base_name</span><span class="p">)</span>
+    <span class="n">pre_proc</span><span class="o">.</span><span class="n">setup_atlases</span><span class="p">()</span>
+    <span class="n">cell_detector</span> <span class="o">=</span> <span class="n">CellDetector</span><span class="p">(</span><span class="n">pre_proc</span><span class="p">)</span>
+    <span class="n">cell_detector</span><span class="o">.</span><span class="n">filter_cells</span><span class="p">()</span>
+    <span class="n">cell_detector</span><span class="o">.</span><span class="n">atlas_align</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="rescale_img">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.rescale_img">[docs]</a>
+<span class="k">def</span> <span class="nf">rescale_img</span><span class="p">(</span><span class="n">f_path</span><span class="p">,</span> <span class="n">scaling_factor</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Rescaling </span><span class="si">{</span><span class="n">f_path</span><span class="si">}</span><span class="s1"> by </span><span class="si">{</span><span class="n">scaling_factor</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f_path</span><span class="p">)</span>
+    <span class="n">rescaled_img</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">scaling_factor</span><span class="p">,</span> <span class="n">preserve_range</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">anti_aliasing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">clearmap_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f_path</span><span class="p">,</span> <span class="n">rescaled_img</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="rescale_channel">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.rescale_channel">[docs]</a>
+<span class="k">def</span> <span class="nf">rescale_channel</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">atlas_base_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dest_resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">n_cpus</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;.tif&#39;</span><span class="p">,</span>
+                    <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Used to rescale to create e.g. test samples that can be ran quickly</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    folder str:</span>
+<span class="sd">        The experiment folder with the tiles</span>
+<span class="sd">    atlas_base_name str:</span>
+<span class="sd">        The base name of the atlas that serves as a file prefix for the atlas files</span>
+<span class="sd">    dest_resolution tuple:</span>
+<span class="sd">        The desired resolution</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n_cpus</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">n_cpus</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">n_cpus</span>
+
+    <span class="n">pre_proc</span> <span class="o">=</span> <span class="n">init_preprocessor</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">atlas_base_name</span><span class="p">)</span>
+    <span class="n">file_list</span> <span class="o">=</span> <span class="n">pre_proc</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">pre_proc</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="n">ext</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processing </span><span class="si">{</span><span class="n">file_list</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">scaling_factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pre_proc</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;resolutions&#39;</span><span class="p">][</span><span class="n">channel</span><span class="p">])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dest_resolution</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">scaling_factors</span><span class="p">)</span>
+    <span class="n">rescale_f</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">rescale_img</span><span class="p">,</span> <span class="n">scaling_factor</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">scaling_factors</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">n_cpus</span><span class="o">*</span><span class="n">chunk_size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">f_path</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+            <span class="n">rescale_f</span><span class="p">(</span><span class="n">f_path</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">n_cpus</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">rescale_f</span><span class="p">,</span> <span class="n">file_list</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span>
+
+    <span class="n">pre_proc</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;resolutions&#39;</span><span class="p">][</span><span class="n">channel</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dest_resolution</span><span class="p">)</span>
+    <span class="n">pre_proc</span><span class="o">.</span><span class="n">sample_config</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DONE&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="batch_crop">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.batch_process.html#ClearMap.processors.batch_process.batch_crop">[docs]</a>
+<span class="k">def</span> <span class="nf">batch_crop</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">crop_x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">crop_y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;_cropped&#39;</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">ClearMap.processors.sample_preparation</span> <span class="kn">import</span> <span class="n">init_preprocessor</span>
+    <span class="n">preproc</span> <span class="o">=</span> <span class="n">init_preprocessor</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">preproc</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">f_path</span> <span class="ow">in</span> <span class="n">preproc</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">):</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">f_path</span><span class="p">)</span>
+        <span class="n">cropped_img</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="n">crop_x</span><span class="p">:</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">crop_x</span><span class="p">,</span> <span class="n">crop_y</span><span class="p">:</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">crop_y</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">cropped_path</span> <span class="o">=</span> <span class="n">f_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.ome.tif&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s1">.ome.tif&#39;</span><span class="p">)</span>
+        <span class="n">clearmap_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cropped_path</span><span class="p">,</span> <span class="n">cropped_img</span><span class="p">)</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

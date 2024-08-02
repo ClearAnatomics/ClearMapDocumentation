@@ -1,0 +1,924 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.Analysis.Graphs.GraphRendering &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/Analysis/Graphs/GraphRendering';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Ana...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.Analysis.Graphs.GraphRendering</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python2</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">GraphVisualization</span>
+<span class="sd">==================</span>
+
+<span class="sd">Module providing tools to create meshes and visualize graphs.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">functools</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="kn">import</span> <span class="nn">vispy.util.transforms</span> <span class="k">as</span> <span class="nn">trf</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.SharedMemoryManager</span> <span class="k">as</span> <span class="nn">smm</span>
+<span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.ParallelTraceback</span> <span class="k">as</span> <span class="nn">ptb</span>
+
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Mesh generation</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="mesh">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Graphs.GraphRendering.html#ClearMap.Analysis.Graphs.GraphRendering.mesh">[docs]</a>
+<span class="k">def</span> <span class="nf">mesh</span><span class="p">(</span><span class="n">graph</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;tubes&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;tubes&#39;</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">mesh_tube</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Method n</span><span class="si">%r</span><span class="s1"> not valid!&#39;</span> <span class="o">%</span> <span class="n">method</span><span class="p">);</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Graph mesh using tubes</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="mesh_tube">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Graphs.GraphRendering.html#ClearMap.Analysis.Graphs.GraphRendering.mesh_tube">[docs]</a>
+<span class="k">def</span> <span class="nf">mesh_tube</span><span class="p">(</span><span class="n">graph</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+              <span class="n">coordinates</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">radii</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+              <span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">vertex_colors</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">edge_colors</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+              <span class="n">n_tube_points</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+              <span class="n">default_radius</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">default_color</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
+              <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Construct mesh from edge geometry of a graph.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">graph</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">graph</span><span class="o">.</span><span class="n">has_edge_geometry</span><span class="p">():</span>
+      <span class="k">if</span> <span class="n">coordinates</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;coordinates&#39;</span><span class="p">;</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">coordinates</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_geometry</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">return_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_list</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Expected coordinates to by None or str, found </span><span class="si">%r</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="n">coordinates</span><span class="p">)</span>
+      
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">radii</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;radii&#39;</span><span class="p">;</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">name</span> <span class="o">=</span> <span class="n">radii</span><span class="p">;</span>
+        <span class="n">radii</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_geometry</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">return_indices</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">as_list</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+      <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No radii found in the graph, using uniform radii = </span><span class="si">%r</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="n">default_radius</span><span class="p">);</span>
+        <span class="n">radii</span> <span class="o">=</span> <span class="n">default_radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">coordinates</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_coordinates</span><span class="p">();</span>
+      <span class="n">indices</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_connectivity</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">();</span>
+      <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">coordinates</span><span class="p">[</span><span class="n">indices</span><span class="p">]);</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="n">radii</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">vertex_radii</span><span class="p">();</span>
+        <span class="n">radii</span> <span class="o">=</span> <span class="n">radii</span><span class="p">[</span><span class="n">indices</span><span class="p">];</span>
+      <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No radii found in the graph, using uniform radii = </span><span class="si">%r</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="n">default_radius</span><span class="p">);</span>
+        <span class="n">radii</span> <span class="o">=</span> <span class="n">default_radius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+      
+      <span class="n">n_edges</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">n_edges</span><span class="p">;</span>
+      <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_edges</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_edges</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span><span class="o">.</span><span class="n">T</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">vertex_colors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">edge_colors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">color</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">vertex_colors</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">color</span> <span class="o">=</span> <span class="n">default_color</span><span class="p">;</span>  
+   
+  <span class="k">if</span> <span class="n">vertex_colors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">connectivity</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_connectivity</span><span class="p">();</span>
+    <span class="n">edge_colors</span> <span class="o">=</span> <span class="p">(</span><span class="n">vertex_colors</span><span class="p">[</span><span class="n">connectivity</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="n">vertex_colors</span><span class="p">[</span><span class="n">connectivity</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]])</span><span class="o">/</span><span class="mf">2.0</span><span class="p">;</span>
+  
+  <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">mesh_tube_from_coordinates_and_radii</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">radii</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">n_tube_points</span><span class="o">=</span><span class="n">n_tube_points</span><span class="p">,</span> <span class="n">edge_colors</span><span class="o">=</span><span class="n">edge_colors</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="kc">None</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">colors</span></div>
+
+
+
+<div class="viewcode-block" id="mesh_tube_from_coordinates_and_radii">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Graphs.GraphRendering.html#ClearMap.Analysis.Graphs.GraphRendering.mesh_tube_from_coordinates_and_radii">[docs]</a>
+<span class="k">def</span> <span class="nf">mesh_tube_from_coordinates_and_radii</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">radii</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">n_tube_points</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">edge_colors</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Construct a mesh from the edge geometry of a graph.&quot;&quot;&quot;</span>  
+  <span class="n">coordinates_hdl</span> <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">coordinates</span><span class="p">);</span>
+  <span class="n">radii_hdl</span>       <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">radii</span><span class="p">);</span>
+  <span class="n">indices_hdl</span>     <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">n_tube_points</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">n_tube_points</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+  
+  <span class="n">func</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">_parallel_mesh</span><span class="p">,</span> <span class="n">coordinates_hdl</span><span class="o">=</span><span class="n">coordinates_hdl</span><span class="p">,</span> <span class="n">radii_hdl</span><span class="o">=</span><span class="n">radii_hdl</span><span class="p">,</span> <span class="n">indices_hdl</span><span class="o">=</span><span class="n">indices_hdl</span><span class="p">,</span> <span class="n">n_tube_points</span><span class="o">=</span><span class="n">n_tube_points</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">);</span>
+  <span class="n">argdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">));</span>
+  
+  <span class="c1"># process in parallel</span>
+  <span class="n">pool</span> <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span> <span class="o">=</span> <span class="n">processes</span><span class="p">);</span>    
+  <span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">argdata</span><span class="p">);</span>
+  <span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+  <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">();</span>
+  
+  <span class="n">smm</span><span class="o">.</span><span class="n">free</span><span class="p">(</span><span class="n">coordinates_hdl</span><span class="p">);</span>
+  <span class="n">smm</span><span class="o">.</span><span class="n">free</span><span class="p">(</span><span class="n">radii_hdl</span><span class="p">);</span>
+  <span class="n">smm</span><span class="o">.</span><span class="n">free</span><span class="p">(</span><span class="n">indices_hdl</span><span class="p">);</span>  
+
+  <span class="n">n_results</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">);</span>
+  
+  <span class="n">vertices</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">];</span>
+  <span class="n">n_indices</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">vertices</span><span class="p">];</span>
+  <span class="n">n_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">n_indices</span><span class="p">);</span>
+  <span class="n">n_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_indices</span><span class="p">]);</span>
+  
+  <span class="k">if</span> <span class="n">edge_colors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="n">edge_colors</span><span class="p">)];</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">colors</span><span class="p">);</span>
+    <span class="c1">#print(colors.shape)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+  
+  <span class="n">vertices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">vertices</span><span class="p">);</span>
+  <span class="c1">#print(grid.shape)</span>
+  <span class="n">faces</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">n_indices</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_results</span><span class="p">)]);</span>
+  
+  <span class="k">return</span> <span class="n">vertices</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">colors</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">_mesh</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">radii</span><span class="p">,</span> <span class="n">n_tube_points</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;uint32&#39;</span><span class="p">):</span>
+  <span class="n">n_coordinates</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">);</span>
+  <span class="n">tangents</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">binormals</span> <span class="o">=</span> <span class="n">_frenet_frames</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)</span>
+
+  <span class="c1">#circular tube</span>
+  <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_tube_points</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_tube_points</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">;</span>
+  <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+  
+  <span class="n">r</span> <span class="o">=</span> <span class="n">radii</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">];</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="n">normals</span> <span class="o">*</span> <span class="n">r</span><span class="p">;</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">binormals</span> <span class="o">*</span> <span class="n">r</span><span class="p">;</span>
+  
+  <span class="c1">#grid shape (npoints, ntube, 3)</span>
+  <span class="n">grid</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:];</span>
+
+  <span class="c1"># construct the mesh</span>
+  <span class="n">n_segments</span> <span class="o">=</span> <span class="n">n_coordinates</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">jp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_segments</span><span class="o">*</span><span class="n">n_tube_points</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">);</span>
+  <span class="n">jp</span><span class="p">[</span><span class="n">n_tube_points</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_segments</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">n_tube_points</span><span class="p">;</span>
+  
+  <span class="n">i1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_segments</span><span class="o">*</span><span class="n">n_tube_points</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">);</span>
+  <span class="n">i2</span> <span class="o">=</span> <span class="n">i1</span> <span class="o">+</span> <span class="n">n_tube_points</span><span class="p">;</span>
+  <span class="n">i3</span> <span class="o">=</span> <span class="n">i2</span> <span class="o">+</span> <span class="n">jp</span><span class="p">;</span>
+  <span class="n">i4</span> <span class="o">=</span> <span class="n">i1</span> <span class="o">+</span> <span class="n">jp</span><span class="p">;</span>
+  
+  <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">i1</span><span class="p">,</span><span class="n">i2</span><span class="p">,</span><span class="n">i4</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">i2</span><span class="p">,</span> <span class="n">i3</span><span class="p">,</span> <span class="n">i4</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">grid</span><span class="p">,</span> <span class="n">indices</span>
+
+
+<span class="k">def</span> <span class="nf">_frenet_frames</span><span class="p">(</span><span class="n">coordinates</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Calculates and returns the tangents, normals and binormals for a chain of coordinates.&quot;&quot;&quot;</span>
+  <span class="n">npoints</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">);</span>
+  
+  <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.0001</span>
+
+  <span class="c1"># compute tangent vectors for each segment</span>
+  <span class="n">tangents</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">tangents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">coordinates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">tangents</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">coordinates</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+  <span class="n">tangents</span> <span class="o">=</span> <span class="p">(</span><span class="n">tangents</span><span class="o">.</span><span class="n">T</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">tangents</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">;</span>
+
+  <span class="c1"># get initial normal and binormal</span>
+  <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tangents</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="n">smallest</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+  <span class="n">normal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+  <span class="n">normal</span><span class="p">[</span><span class="n">smallest</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+
+  <span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">tangents</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">normal</span><span class="p">)</span>
+
+  <span class="n">normals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">npoints</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+  <span class="n">normals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">tangents</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vec</span><span class="p">)</span>
+
+  <span class="c1"># compute changea along trajectory </span>
+  <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">tangents</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">tangents</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">));</span>
+  <span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">tangents</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">tangents</span><span class="p">[</span><span class="mi">1</span><span class="p">:]);</span>
+  <span class="n">nrm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="c1"># compute normal and binormal vectors along the path</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">npoints</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">normals</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">normals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">nrm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">epsilon</span><span class="p">:</span>
+      <span class="n">v</span> <span class="o">=</span> <span class="n">vec</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">nrm</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+      <span class="n">normals</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">trf</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">v</span><span class="p">)[:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">normals</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+  
+  <span class="n">binormals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">tangents</span><span class="p">,</span> <span class="n">normals</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">tangents</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">binormals</span>
+
+
+<span class="nd">@ptb</span><span class="o">.</span><span class="n">parallel_traceback</span>
+<span class="k">def</span> <span class="nf">_parallel_mesh</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">coordinates_hdl</span><span class="p">,</span> <span class="n">radii_hdl</span><span class="p">,</span> <span class="n">indices_hdl</span><span class="p">,</span> <span class="n">n_tube_points</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+
+  <span class="n">coordinates</span> <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">coordinates_hdl</span><span class="p">);</span>
+  <span class="n">radii</span>       <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">radii_hdl</span><span class="p">);</span>
+  <span class="n">start</span><span class="p">,</span><span class="n">end</span>   <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">indices_hdl</span><span class="p">)[</span><span class="n">i</span><span class="p">];</span>
+  
+  <span class="n">coordinates</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">];</span>
+  <span class="n">radii</span>  <span class="o">=</span> <span class="n">radii</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">];</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mesh calculation </span><span class="si">%d</span><span class="s1"> / </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">smm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">indices_hdl</span><span class="p">))));</span>
+  
+  <span class="k">return</span> <span class="n">_mesh</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">radii</span><span class="p">,</span> <span class="n">n_tube_points</span><span class="p">)</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Render graph using intrepolation</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="interpolate_edge_geometry">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Graphs.GraphRendering.html#ClearMap.Analysis.Graphs.GraphRendering.interpolate_edge_geometry">[docs]</a>
+<span class="k">def</span> <span class="nf">interpolate_edge_geometry</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">smooth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                              <span class="n">points_per_pixel</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
+                              <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Smooth center lines and radii of the edge geometry.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">graph</span><span class="o">.</span><span class="n">has_edge_geometry</span><span class="p">():</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Graph has no edge geometry!&#39;</span><span class="p">)</span>
+  
+  <span class="n">coordinates</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_geometry</span><span class="p">(</span><span class="s1">&#39;coordinates&#39;</span><span class="p">,</span> <span class="n">return_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_list</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+  <span class="n">radii</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">edge_geometry</span><span class="p">(</span><span class="s1">&#39;radii&#39;</span><span class="p">,</span> <span class="n">as_list</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+  
+  <span class="c1"># prepare result arrays</span>
+  <span class="c1">#indices_interp = np.array([_n_points_per_edge(i[1]-i[0], points_per_pixel=points_per_pixel) for i in indices]);</span>
+  <span class="c1">#indices_interp = np.cumsum(indices_interp);</span>
+  <span class="c1">#indices_interp = np.hstack([[0], indices_interp])</span>
+  <span class="c1">#indices_interp = np.array([indices_interp[:-1], indices_interp[1:]]).T;  </span>
+  
+  <span class="c1">#coordinates_interp = np.zeros((indices_interp[-1,1], coordinates.shape[1]), dtype=float);</span>
+  <span class="c1">#radii_interp = np.zeros(indices_interp[-1,1], dtype=float);</span>
+    
+  <span class="c1"># process in parallel</span>
+  <span class="n">coordinates_hdl</span> <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">coordinates</span><span class="p">);</span>
+  <span class="n">radii_hdl</span>       <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">radii</span><span class="p">);</span>
+  <span class="n">indices_hdl</span>     <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+  
+<span class="c1">#  coordinates_interp_hdl = smm.insert(coordinates_interp);</span>
+<span class="c1">#  radii_interp_hdl       = smm.insert(radii_interp);</span>
+<span class="c1">#  indices_interp_hdl     = smm.insert(indices_interp);</span>
+  
+  <span class="n">func</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">_parallel_interpolate</span><span class="p">,</span> 
+                    <span class="n">coordinates_hdl</span><span class="o">=</span><span class="n">coordinates_hdl</span><span class="p">,</span> <span class="n">radii_hdl</span><span class="o">=</span><span class="n">radii_hdl</span><span class="p">,</span> <span class="n">indices_hdl</span><span class="o">=</span><span class="n">indices_hdl</span><span class="p">,</span>
+<span class="c1">#                   coordinates_interp_hdl=coordinates_interp_hdl, radii_interp_hdl=radii_interp_hdl, indices_interp_hdl=indices_interp_hdl,   </span>
+                    <span class="n">smooth</span><span class="o">=</span><span class="n">smooth</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">points_per_pixel</span><span class="o">=</span><span class="n">points_per_pixel</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">);</span>
+  <span class="n">argdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">));</span>
+  
+  <span class="n">pool</span> <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span> <span class="o">=</span> <span class="n">processes</span><span class="p">);</span>    
+  <span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">argdata</span><span class="p">);</span>
+  <span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+  <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">();</span>
+  
+  <span class="n">smm</span><span class="o">.</span><span class="n">free</span><span class="p">(</span><span class="n">coordinates_hdl</span><span class="p">);</span>
+  <span class="n">smm</span><span class="o">.</span><span class="n">free</span><span class="p">(</span><span class="n">radii_hdl</span><span class="p">);</span>
+  <span class="n">smm</span><span class="o">.</span><span class="n">free</span><span class="p">(</span><span class="n">indices_hdl</span><span class="p">);</span>  
+  
+<span class="c1">#  smm.free(coordinates_interp_hdl);</span>
+<span class="c1">#  smm.free(radii_interp_hdl);</span>
+<span class="c1">#  smm.free(indices_interp_hdl);</span>
+  
+  <span class="n">indices_interp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]);</span>
+  <span class="n">indices_interp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">indices_interp</span><span class="p">);</span>
+  <span class="n">indices_interp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([[</span><span class="mi">0</span><span class="p">],</span> <span class="n">indices_interp</span><span class="p">])</span>
+  <span class="n">indices_interp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">indices_interp</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">indices_interp</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span><span class="o">.</span><span class="n">T</span><span class="p">;</span>  
+  
+  <span class="n">coordinates_interp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]);</span>
+  <span class="n">radii_interp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="n">coordinates_interp</span><span class="p">,</span> <span class="n">radii_interp</span><span class="p">,</span> <span class="n">indices_interp</span></div>
+
+   
+ 
+<span class="nd">@ptb</span><span class="o">.</span><span class="n">parallel_traceback</span>
+<span class="k">def</span> <span class="nf">_parallel_interpolate</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">coordinates_hdl</span><span class="p">,</span> <span class="n">radii_hdl</span><span class="p">,</span> <span class="n">indices_hdl</span><span class="p">,</span> 
+<span class="c1">#                             coordinates_interp_hdl, radii_interp_hdl, indices_interp_hdl,</span>
+                          <span class="n">smooth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">points_per_pixel</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="n">coordinates</span> <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">coordinates_hdl</span><span class="p">);</span>
+  <span class="n">radii</span>       <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">radii_hdl</span><span class="p">);</span>
+  <span class="n">start</span><span class="p">,</span><span class="n">end</span>   <span class="o">=</span> <span class="n">smm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">indices_hdl</span><span class="p">)[</span><span class="n">i</span><span class="p">];</span>
+  
+<span class="c1">#  coordinates_interp = smm.get(coordinates_interp_hdl);</span>
+<span class="c1">#  radii_interp       = smm.get(radii_interp_hdl);</span>
+<span class="c1">#  start_interp,end_interp = smm.get(indices_interp_hdl)[i];</span>
+  
+  <span class="n">coordinates</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">];</span>
+  <span class="n">radii</span>  <span class="o">=</span> <span class="n">radii</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">];</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mesh interpolation </span><span class="si">%d</span><span class="s1"> / </span><span class="si">%d</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">smm</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">indices_hdl</span><span class="p">))));</span>
+  
+  <span class="c1">#coordinates_interp[start:end], radii_interp[start:end]=</span>
+  
+  <span class="n">n_points</span> <span class="o">=</span> <span class="n">_n_points_per_edge</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">,</span> <span class="n">points_per_pixel</span><span class="o">=</span><span class="n">points_per_pixel</span><span class="p">)</span>
+  <span class="c1">#n_points = end_interp - start_interp;</span>
+  
+  <span class="c1">#coordinates_interp[start_interp:end_interp], radii_interp[start_interp:end_interp] = </span>
+  <span class="k">return</span> <span class="n">_interpolate_edge</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">radii</span><span class="p">,</span> <span class="n">n_points</span><span class="o">=</span><span class="n">n_points</span><span class="p">,</span>
+                           <span class="n">smooth</span><span class="o">=</span><span class="n">smooth</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+   
+ 
+<span class="kn">import</span> <span class="nn">ClearMap.Analysis.Curves.Resampling</span> <span class="k">as</span> <span class="nn">crs</span>
+  
+<span class="k">def</span> <span class="nf">_n_points_per_edge</span><span class="p">(</span><span class="n">n_pixel</span><span class="p">,</span> <span class="n">points_per_pixel</span><span class="p">):</span>
+  <span class="n">n_points</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">n_pixel</span> <span class="o">*</span> <span class="n">points_per_pixel</span><span class="p">));</span>
+  <span class="n">n_points</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_points</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">n_points</span><span class="p">;</span>
+
+<span class="k">def</span> <span class="nf">_interpolate_edge</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">radii</span><span class="p">,</span> <span class="n">n_points</span><span class="p">,</span> <span class="n">smooth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
+  <span class="n">order</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span><span class="p">);</span>
+  <span class="n">coordinates_interp</span> <span class="o">=</span> <span class="n">crs</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">n_points</span><span class="o">=</span><span class="n">n_points</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="n">smooth</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+  <span class="n">radii_interp</span> <span class="o">=</span> <span class="n">crs</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">radii</span><span class="p">,</span> <span class="n">n_points</span><span class="o">=</span><span class="n">n_points</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="n">smooth</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">coordinates_interp</span><span class="p">,</span> <span class="n">radii_interp</span><span class="p">;</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tests</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Tests.Files</span> <span class="k">as</span> <span class="nn">tf</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Analysis.Graphs.GraphProcessing</span> <span class="k">as</span> <span class="nn">gp</span>
+  <span class="c1">#reload(gp)</span>
+
+  <span class="n">skeleton</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;skeleton&#39;</span><span class="p">);</span>
+  
+  <span class="c1">#import ClearMap.Visualization.Plot3d as p3d</span>
+  <span class="c1">#p3d.plot(skeleton)</span>
+
+  <span class="c1">#reload(gp)</span>
+  <span class="n">g</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">graph_from_skeleton</span><span class="p">(</span><span class="n">skeleton</span><span class="p">)</span>
+
+  <span class="n">g</span><span class="o">.</span><span class="n">has_edge_geometry</span><span class="p">()</span>
+  
+  <span class="n">g</span><span class="o">.</span><span class="n">vertex_coordinates</span><span class="p">()</span>
+  
+  <span class="n">s</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">skeleton</span><span class="p">()</span>
+  <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">s</span><span class="o">==</span><span class="n">skeleton</span><span class="p">)</span>
+
+
+  <span class="n">gc</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">clean_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+  
+  
+  <span class="n">gr</span> <span class="o">=</span> <span class="n">gp</span><span class="o">.</span><span class="n">reduce_graph</span><span class="p">(</span><span class="n">gc</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  
+  <span class="n">coordinates</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">edge_geometry</span><span class="p">(</span><span class="n">return_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">as_list</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+ 
+  <span class="n">gr</span><span class="o">.</span><span class="n">set_edge_geometry</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;radii&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coordinates</span><span class="p">)))</span>
+
+  <span class="n">radii</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">edge_geometry</span><span class="p">(</span><span class="s1">&#39;radii&#39;</span><span class="p">,</span> <span class="n">as_list</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+
+  <span class="kn">import</span> <span class="nn">ClearMap.Analysis.Graphs.GraphVisualization</span> <span class="k">as</span> <span class="nn">gv</span>
+  <span class="n">reload</span><span class="p">(</span><span class="n">gv</span><span class="p">)</span>
+  
+  <span class="n">grid</span><span class="p">,</span> <span class="n">grid_indices</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">mesh_from_edge_geometry</span><span class="p">(</span><span class="n">coordinates</span><span class="o">=</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">radii</span><span class="o">=</span><span class="n">radii</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="n">indices</span><span class="p">);</span>
+ 
+  
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.GraphVisual</span> <span class="k">as</span> <span class="nn">gvi</span>
+
+  <span class="n">gvi</span><span class="o">.</span><span class="n">plot_mesh</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">grid_indices</span><span class="p">)</span>  
+  
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

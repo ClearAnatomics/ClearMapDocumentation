@@ -1,0 +1,1378 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.ParallelProcessing.BlockProcessing &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/ParallelProcessing/BlockProcessing';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Par...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.ParallelProcessing.BlockProcessing</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">BlockProcessing</span>
+<span class="sd">===============</span>
+
+<span class="sd">Module to process data in parallel for large data sets</span>
+
+<span class="sd">This strategy allows memory intensive processing of larger data sets.</span>
+
+<span class="sd">Example</span>
+<span class="sd">-------</span>
+
+<span class="sd">&gt;&gt;&gt; import numpy as np</span>
+<span class="sd">&gt;&gt;&gt; import ClearMap.IO.IO as io</span>
+<span class="sd">&gt;&gt;&gt; import ClearMap.ParallelProcessing.BlockProcessing as bp</span>
+<span class="sd">&gt;&gt;&gt; source = io.as_source(np.asarray(np.random.rand(50,100,200), order = &#39;F&#39;))</span>
+<span class="sd">&gt;&gt;&gt; blocks = bp.split_into_blocks(source, processes=10, axes=[2], size_min=30, size_max=50, overlap=20);</span>
+<span class="sd">&gt;&gt;&gt; blocks[0]</span>
+<span class="sd">Block-Numpy-Source(50, 100, 38)[float64]|F|</span>
+
+<span class="sd">&gt;&gt;&gt; blocks[0].info()</span>
+<span class="sd">&#39;0/10&lt;(0, 0, 0)/(1, 1, 10)&gt; (50, 100, 38)@(50, 100, 200)[(:,:,0:38)]&#39;</span>
+
+<span class="sd">&gt;&gt;&gt; b.valid</span>
+<span class="sd">&#39;Sliced-Block-Numpy-Source(50, 100, 28)[float64]|F|&#39;</span>
+
+<span class="sd">&gt;&gt;&gt; b = blocks[0];</span>
+<span class="sd">&gt;&gt;&gt; print(b.valid.base_shape)</span>
+<span class="sd">&gt;&gt;&gt; print(b.valid.base_slicing)</span>
+<span class="sd">&gt;&gt;&gt; print(b.iteration)</span>
+<span class="sd">(50, 100, 200)</span>
+<span class="sd">(slice(None, None, None), slice(None, None, None), slice(None, 28, None))</span>
+<span class="sd">0</span>
+<span class="sd"> </span>
+<span class="sd">&gt;&gt;&gt; shape = (2,3,20);</span>
+<span class="sd">&gt;&gt;&gt; source = io.npy.Source(array = np.random.rand(*shape));</span>
+<span class="sd">&gt;&gt;&gt; sink = io.npy.Source(array = np.zeros(shape))</span>
+<span class="sd">&gt;&gt;&gt;  </span>
+<span class="sd">&gt;&gt;&gt; def process_image(source, sink=None):</span>
+<span class="sd">&gt;&gt;&gt;    if sink is None:</span>
+<span class="sd">&gt;&gt;&gt;      sink = np.zeros(source.shape);</span>
+<span class="sd">&gt;&gt;&gt;    sink[:] = 100 * source[:];</span>
+<span class="sd">&gt;&gt;&gt;    return sink;</span>
+<span class="sd">&gt;&gt;&gt; </span>
+<span class="sd">&gt;&gt;&gt; bp.process(process_image, source, sink,</span>
+<span class="sd">&gt;&gt;&gt;            processes = &#39;serial&#39;, size_max = 4, size_min = 1, overlap = 0, axes = [2],</span>
+<span class="sd">&gt;&gt;&gt;            optimization = True, verbose = True);</span>
+<span class="sd">&gt;&gt;&gt;</span>
+<span class="sd">&gt;&gt;&gt; print(np.all(sink[:] == process_image(source)))</span>
+<span class="sd">True</span>
+<span class="sd">  </span>
+<span class="sd">&gt;&gt;&gt; bp.process(process_image, source, sink,</span>
+<span class="sd">&gt;&gt;&gt;            processes = None, size_max = 10, size_min = 6, overlap = 3, axes = &#39;all&#39;,</span>
+<span class="sd">&gt;&gt;&gt;            optimization = True, verbose = True);</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;ckirst@rockefeller.edu&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;MIT License &lt;http://www.opensource.org/licenses/mit-license.php&gt;&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright 2020 by Christoph Kirst&#39;</span>
+
+
+<span class="kn">import</span> <span class="nn">functools</span> <span class="k">as</span> <span class="nn">ft</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">import</span> <span class="nn">concurrent.futures</span> <span class="k">as</span> <span class="nn">cf</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">gc</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.Block</span> <span class="k">as</span> <span class="nn">blk</span>
+<span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.ParallelTraceback</span> <span class="k">as</span> <span class="nn">ptb</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">ClearMap.IO.SMA</span> <span class="k">as</span> <span class="nn">sma</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Utils.Timer</span> <span class="k">as</span> <span class="nn">tmr</span>
+
+<span class="c1">#TODO: clean up block functions: act on sources, arrays or blocks + memory or views</span>
+<span class="c1">#TODO: integrate with Torch or tensorflow ? GPU processing ?</span>
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Default parameter</span>
+<span class="c1">###############################################################################</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Utils.utilities</span> <span class="kn">import</span> <span class="n">CancelableProcessPoolExecutor</span>
+
+<span class="n">default_size_max</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&quot;&quot;&quot;Default maximal size of a block.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">Set this to limit the maximal block sizes automatically if size_max passed </span>
+<span class="sd">to :func:`ClearMap.ParallelProcessing.BlockProcessing.process` is None.</span>
+
+<span class="sd">If this is None, the full source size will be used.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">default_size_min</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&quot;&quot;&quot;Default minimal size of a block.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">Set this to limit the minimal block sizes automatically if size_min passed </span>
+<span class="sd">to :func:`ClearMap.ParallelProcessing.BlockProcessing.process` is None.</span>
+
+<span class="sd">If this is None, the full source size will be used.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">default_overlap</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="sd">&quot;&quot;&quot;Default overlap between blocks.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">This value is used if overlap passed </span>
+<span class="sd">to :func:`ClearMap.ParallelProcessing.BlockProcessing.process` is None.</span>
+
+<span class="sd">If this is None, a zero overlap will be used.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Processing</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="process">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.BlockProcessing.html#ClearMap.ParallelProcessing.BlockProcessing.process">[docs]</a>
+<span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">axes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">size_max</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">size_min</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">size_multiple_of</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">overlap</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">optimization</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">optimization_fix</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">neighbours</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="n">function_type</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">as_memory</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">return_result</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="n">return_blocks</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">workspace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Create blocks and process a function on them in parallel.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  function : function</span>
+<span class="sd">    The main data processing script.</span>
+<span class="sd">  source : str, Source, or list</span>
+<span class="sd">    The source or list of sources to apply a function to </span>
+<span class="sd">  sink : str, Source, list, or None</span>
+<span class="sd">    The sink or list of sinks to write the result to.</span>
+<span class="sd">    If None, return single array.</span>
+<span class="sd">  axes : int, list of ints, or None</span>
+<span class="sd">    Axes along which to split the source. If None, the </span>
+<span class="sd">    splitting is determined automaticlly from the order of the array.</span>
+<span class="sd">  size_max : int, list of ints or None</span>
+<span class="sd">    Maximal size of a block along the axes. </span>
+<span class="sd">    If None, :const:`default_size_max` is used.</span>
+<span class="sd">  size_min : int or list of ints</span>
+<span class="sd">    Minial size of a block along the axes. </span>
+<span class="sd">    If None, :const:`default_size_min` is used.</span>
+<span class="sd">  overlap : int, list of ints or None</span>
+<span class="sd">    Minimal overlap between blocks along the axes.</span>
+<span class="sd">    If None, :const:`default_overlap` is used.</span>
+<span class="sd">  optimization : bool or list of bools</span>
+<span class="sd">    If True, optimize block sizes to best fit number of processes.</span>
+<span class="sd">  optimization_fix : &#39;increase&#39;, &#39;decrease&#39;, &#39;all&#39; or None or list</span>
+<span class="sd">    Increase, decrease or optimally change the block size when optimization </span>
+<span class="sd">    is active.</span>
+<span class="sd">  neighbours : bool</span>
+<span class="sd">    If True, also include information about the neighbourhood in the blocks.</span>
+<span class="sd">  function_type : &#39;array&#39;, &#39;source&#39;, &#39;block&#39; or None</span>
+<span class="sd">    The function type passed. If None, &#39;array&#39; is used.</span>
+<span class="sd">    </span>
+<span class="sd">    * &#39;array&#39;</span>
+<span class="sd">      Reading and writing the valid slices from the blocks is automatic </span>
+<span class="sd">      and the function gets passed numpy arrays.</span>
+<span class="sd">    * &#39;source&#39; </span>
+<span class="sd">      Reading and writing the valid slices from the blocks is automatic </span>
+<span class="sd">      and the function gets passed Source classes as inputs. </span>
+<span class="sd">    * &#39;block&#39; </span>
+<span class="sd">      The function is assumed to act on and update blocks itself.</span>
+<span class="sd">    </span>
+<span class="sd">  as_memory : bool</span>
+<span class="sd">    If True, load full blocks into memory before applying the function.</span>
+<span class="sd">    Can be useful to reduce frequent reading and writing operations of memmaps.</span>
+<span class="sd">  return_result : bool</span>
+<span class="sd">    If True, return the results of the proceessing functions.</span>
+<span class="sd">  return_blocks : bool</span>
+<span class="sd">    If True, return the block information used to distribute the processing.</span>
+<span class="sd">  processes : int, None</span>
+<span class="sd">    The number of parallel processes, if &#39;serial&#39;, use serial processing.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    Print information on sub-stack generation.</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : str, Source, list or array </span>
+<span class="sd">    The results of the processing.</span>
+<span class="sd">  </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  This implementation only supports processing into sinks with the same shape as the source.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#sources and sinks</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="n">source</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">source</span><span class="p">]</span>
+  <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">as_virtual</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">]</span>
+
+  <span class="c1">#if sink is None:</span>
+  <span class="c1">#  sink = sma.Source(shape=sources[0].shape, dtype=sources[0].dtype, order=sources[0].order);</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="n">sinks</span> <span class="o">=</span> <span class="n">sink</span>
+  <span class="k">elif</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">sinks</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">sinks</span> <span class="o">=</span> <span class="p">[</span><span class="n">sink</span><span class="p">]</span>
+
+  <span class="n">sinks</span> <span class="o">=</span> <span class="p">[</span><span class="n">io</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">hint</span><span class="o">=</span><span class="n">sources</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sinks</span><span class="p">]</span>
+  <span class="n">sinks</span> <span class="o">=</span> <span class="p">[</span><span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">as_virtual</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sinks</span><span class="p">]</span>
+
+  <span class="n">axes</span> <span class="o">=</span> <span class="n">block_axes</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">)</span>
+
+  <span class="n">split</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">split_into_blocks</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span>
+                     <span class="n">size_max</span><span class="o">=</span><span class="n">size_max</span><span class="p">,</span> <span class="n">size_min</span><span class="o">=</span><span class="n">size_min</span><span class="p">,</span> <span class="n">size_multiple_of</span><span class="o">=</span><span class="n">size_multiple_of</span><span class="p">,</span>
+                     <span class="n">overlap</span><span class="o">=</span><span class="n">overlap</span><span class="p">,</span> <span class="n">optimization</span><span class="o">=</span><span class="n">optimization</span><span class="p">,</span>
+                     <span class="n">optimization_fix</span><span class="o">=</span><span class="n">optimization_fix</span><span class="p">,</span> <span class="n">neighbours</span><span class="o">=</span><span class="n">neighbours</span><span class="p">,</span>
+                     <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+  <span class="n">source_blocks</span> <span class="o">=</span> <span class="p">[</span><span class="n">split</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">]</span>
+  <span class="n">sink_blocks</span> <span class="o">=</span> <span class="p">[</span><span class="n">split</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sinks</span><span class="p">]</span>
+  <span class="n">n_blocks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+  <span class="n">source_blocks</span> <span class="o">=</span> <span class="p">[[</span><span class="n">blocks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">blocks</span> <span class="ow">in</span> <span class="n">source_blocks</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_blocks</span><span class="p">)]</span>
+  <span class="n">sink_blocks</span> <span class="o">=</span>  <span class="p">[[</span><span class="n">blocks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">blocks</span> <span class="ow">in</span> <span class="n">sink_blocks</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_blocks</span><span class="p">)]</span>
+
+  <span class="k">if</span> <span class="n">function_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">function_type</span> <span class="o">=</span> <span class="s1">&#39;array&#39;</span>
+  <span class="k">if</span> <span class="n">function_type</span> <span class="o">==</span> <span class="s1">&#39;block&#39;</span><span class="p">:</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">process_block_block</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">function</span><span class="p">,</span> <span class="n">as_memory</span><span class="o">=</span><span class="n">as_memory</span><span class="p">,</span> <span class="n">return_result</span><span class="o">=</span><span class="n">return_result</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">function_type</span> <span class="o">==</span> <span class="s1">&#39;source&#39;</span><span class="p">:</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">process_block_source</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">function</span><span class="p">,</span> <span class="n">as_memory</span><span class="o">=</span><span class="n">as_memory</span><span class="p">,</span> <span class="n">as_array</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">function_type</span> <span class="o">==</span> <span class="s1">&#39;array&#39;</span><span class="p">:</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">process_block_source</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">function</span><span class="p">,</span> <span class="n">as_memory</span><span class="o">=</span><span class="n">as_memory</span><span class="p">,</span> <span class="n">as_array</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;function type </span><span class="si">%r</span><span class="s2"> not &#39;array&#39;, &#39;source&#39;, &#39;block&#39; or None!&quot;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">processes</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">processes</span> <span class="o">!=</span> <span class="s2">&quot;serial&quot;</span><span class="p">:</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processing </span><span class="si">%d</span><span class="s2"> blocks with function </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_blocks</span><span class="p">,</span> <span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">processes</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="c1">#from bounded_pool_executor import BoundedProcessPoolExecutor</span>
+    <span class="c1">#with BoundedProcessPoolExecutor(max_workers=processes) as executor:</span>
+    <span class="c1">#   executor.map(function, source_blocks, sink_blocks)</span>
+    <span class="k">with</span> <span class="n">CancelableProcessPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="n">processes</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">workspace</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">workspace</span><span class="o">.</span><span class="n">executor</span> <span class="o">=</span> <span class="n">executor</span>
+      <span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">source_blocks</span><span class="p">,</span> <span class="n">sink_blocks</span><span class="p">)]</span>
+      <span class="c1"># res = executor.map(func, source_blocks, sink_blocks)</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">result</span><span class="p">()</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">futures</span><span class="p">]</span>  <span class="c1"># To prevent keeping references to futures to avoid mem leaks</span>
+      <span class="c1"># result = list(res)</span>
+      <span class="k">if</span> <span class="n">workspace</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">workspace</span><span class="o">.</span><span class="n">executor</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">source_blocks</span><span class="p">,</span> <span class="n">sink_blocks</span><span class="p">)]</span>  <span class="c1">#analysis:ignore</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s2">&quot;Processed </span><span class="si">%d</span><span class="s2"> blocks with function </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_blocks</span><span class="p">,</span> <span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+
+  <span class="c1">#gc.collect();</span>
+
+  <span class="k">if</span> <span class="n">return_result</span><span class="p">:</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">result</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">sink</span>
+  <span class="k">if</span> <span class="n">return_blocks</span><span class="p">:</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="p">[</span><span class="n">source_blocks</span><span class="p">,</span> <span class="n">sink_blocks</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">ret</span></div>
+
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Helpers</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="process_block_source">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.BlockProcessing.html#ClearMap.ParallelProcessing.BlockProcessing.process_block_source">[docs]</a>
+<span class="nd">@ptb</span><span class="o">.</span><span class="n">parallel_traceback</span>
+<span class="k">def</span> <span class="nf">process_block_source</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">sinks</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">as_memory</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">as_array</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Process a block with full traceback.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  sources :  source specifications</span>
+<span class="sd">    Sources passed to the function.</span>
+<span class="sd">  sinks : sourcespecifications</span>
+<span class="sd">    Sinks where data is written to.</span>
+<span class="sd">  function  func : function</span>
+<span class="sd">    The function to call.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing block </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">info</span><span class="p">(),))</span>
+
+  <span class="c1">#sources = [s.as_real() for s in sources];</span>
+  <span class="n">sources_input</span> <span class="o">=</span> <span class="n">sources</span>
+  <span class="k">if</span> <span class="n">as_memory</span><span class="p">:</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">as_memory</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">as_array</span><span class="p">:</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">array</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">]</span>
+
+  <span class="n">results</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">sources</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">results</span><span class="p">]</span>
+
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources_input</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sinks</span><span class="p">):</span>
+    <span class="n">sources_input</span> <span class="o">=</span> <span class="n">sources_input</span> <span class="o">+</span> <span class="p">[</span><span class="n">sources_input</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sinks</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="p">))</span>
+
+  <span class="k">for</span> <span class="n">sink</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sinks</span><span class="p">,</span> <span class="n">sources_input</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+    <span class="c1">#sink = sink.as_real();</span>
+    <span class="n">sink</span><span class="o">.</span><span class="n">valid</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">source</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">slicing</span><span class="p">]</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Processing block </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sources_input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">info</span><span class="p">(),))</span>
+
+  <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+  <span class="k">return</span> <span class="kc">None</span></div>
+
+
+
+<div class="viewcode-block" id="process_block_block">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.BlockProcessing.html#ClearMap.ParallelProcessing.BlockProcessing.process_block_block">[docs]</a>
+<span class="nd">@ptb</span><span class="o">.</span><span class="n">parallel_traceback</span>
+<span class="k">def</span> <span class="nf">process_block_block</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">sinks</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">as_memory</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">return_result</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Process a block with full traceback.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  sources :  source specifications</span>
+<span class="sd">    Sources passed to the function.</span>
+<span class="sd">  sinks : sourcespecifications</span>
+<span class="sd">    Sinks where data is written to.</span>
+<span class="sd">  function  func : function</span>
+<span class="sd">    The function to call.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Processing block </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">info</span><span class="p">(),))</span>
+
+  <span class="k">if</span> <span class="n">as_memory</span><span class="p">:</span>
+    <span class="n">sinks_memory</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">as_memory_block</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sinks</span><span class="p">]</span>
+    <span class="n">sources_and_sinks</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">as_memory_block</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">]</span> <span class="o">+</span> <span class="n">sinks_memory</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">sources_and_sinks</span> <span class="o">=</span> <span class="n">sources</span> <span class="o">+</span> <span class="n">sinks</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">sources_and_sinks</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">as_memory</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_memory</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sinks</span><span class="p">,</span> <span class="n">sinks_memory</span><span class="p">):</span>
+      <span class="n">sink</span><span class="o">.</span><span class="n">valid</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">sink_memory</span><span class="o">.</span><span class="n">valid</span><span class="p">[:]</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Processing block </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">info</span><span class="p">(),))</span>
+
+  <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+  <span class="k">if</span> <span class="n">return_result</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">result</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Source splitting into blocks</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="block_sizes">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.BlockProcessing.html#ClearMap.ParallelProcessing.BlockProcessing.block_sizes">[docs]</a>
+<span class="k">def</span> <span class="nf">block_sizes</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                <span class="n">size_max</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">size_min</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">overlap</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                <span class="n">optimization</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">optimization_fix</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Calculates the block sizes along a single axis when splitting up a source .</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  size : int </span>
+<span class="sd">    Size of the array dimension to be split up.</span>
+<span class="sd">  processes : int</span>
+<span class="sd">    Number of parallel processes to use.</span>
+<span class="sd">  size_max : int or None.</span>
+<span class="sd">    Maximal size of a block. If None, do not split.</span>
+<span class="sd">  size_min : int, &#39;fixed&#39;, or None</span>
+<span class="sd">    Minimal size of a block. If &#39;fixed&#39; blocks will be of fixed size given by</span>
+<span class="sd">    size_max and the overlap is increased if the last block is too small.</span>
+<span class="sd">    If None, the minimal size is determined from the overlap.</span>
+<span class="sd">  overlap : int or None</span>
+<span class="sd">    Minimal overlap between blocks in a single axis.</span>
+<span class="sd">    If None, the overlap defaults to zero. </span>
+<span class="sd">  optimization : bool </span>
+<span class="sd">    If True, optimize block sizes to best fit number of processes.</span>
+<span class="sd">  optimization_fix : &#39;increase&#39;, &#39;decrease&#39;, &#39;all&#39; or None</span>
+<span class="sd">    Increase, decrease or optimally change the block size when optimization </span>
+<span class="sd">    is active.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    Print information on block generation.</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  n_blocks : int</span>
+<span class="sd">   Number of blocks. </span>
+<span class="sd">  block_ranges : list of tuple of ints</span>
+<span class="sd">    Ranges of the blocks of the form [(lo0,hi0),(lo1,hi1),...].</span>
+<span class="sd">  valid_ranges : list of tuple of ints</span>
+<span class="sd">    Valid ranges of the blocks of the form [(lo0,hi0),(lo1,hi1),...].</span>
+<span class="sd">    </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  The optimization allows block sizes to change slightly to better distribute</span>
+<span class="sd">  the blocks over processes, assuming each block processes a similar amount of</span>
+<span class="sd">  time.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">processes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">processes</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">if</span> <span class="n">processes</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="mi">1</span>
+
+  <span class="k">if</span> <span class="n">size_max</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">size_max</span> <span class="o">&gt;</span> <span class="n">size</span><span class="p">:</span> 
+    <span class="n">size_max</span> <span class="o">=</span> <span class="n">size</span>
+
+  <span class="k">if</span> <span class="n">overlap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">overlap</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">if</span> <span class="n">overlap</span> <span class="o">&gt;=</span> <span class="n">size</span><span class="p">:</span>
+    <span class="n">overlap</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="mi">1</span>
+
+  <span class="n">fixed</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="k">if</span> <span class="n">size_min</span> <span class="o">==</span> <span class="s1">&#39;fixed&#39;</span><span class="p">:</span>
+    <span class="n">size_min</span> <span class="o">=</span> <span class="n">size_max</span>
+    <span class="n">fixed</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">optimization</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="k">elif</span> <span class="n">size_min</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">size_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">size_max</span><span class="p">,</span> <span class="n">overlap</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">size_min</span> <span class="o">&gt;</span> <span class="n">size</span><span class="p">:</span>
+    <span class="n">size_min</span> <span class="o">=</span> <span class="n">size</span>
+
+  <span class="c1">#check consistency</span>
+  <span class="k">if</span> <span class="n">size_min</span> <span class="o">&gt;</span> <span class="n">size</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Minimal block size is larger than the data size </span><span class="si">%d</span><span class="s1"> &gt; </span><span class="si">%d</span><span class="s1"> !&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">size_min</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+  <span class="k">if</span> <span class="n">size_min</span> <span class="o">&gt;</span> <span class="n">size_max</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Minimal block size larger than maximal block size </span><span class="si">%d</span><span class="s1"> &gt; </span><span class="si">%d</span><span class="s1"> !&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">size_min</span><span class="p">,</span> <span class="n">size_max</span><span class="p">))</span>
+  <span class="k">if</span> <span class="n">overlap</span> <span class="o">&gt;=</span> <span class="n">size_max</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Overlap is larger than maximal block size: </span><span class="si">%d</span><span class="s1"> &gt;= </span><span class="si">%d</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">overlap</span><span class="p">,</span> <span class="n">size_max</span><span class="p">))</span>
+  <span class="k">if</span> <span class="n">overlap</span> <span class="o">&gt;=</span> <span class="n">size_min</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Overlap is larger than minimal block size: </span><span class="si">%d</span><span class="s1"> &gt;= </span><span class="si">%d</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">overlap</span><span class="p">,</span> <span class="n">size_min</span><span class="p">))</span>
+
+  <span class="c1">#calcualte block size estimates</span>
+  <span class="n">block_size</span> <span class="o">=</span> <span class="n">size_max</span>
+  <span class="n">n_blocks</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">size</span> <span class="o">-</span> <span class="n">block_size</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">block_size</span> <span class="o">-</span> <span class="n">overlap</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+  <span class="k">if</span> <span class="n">n_blocks</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">n_blocks</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">fixed</span><span class="p">:</span>
+    <span class="n">block_size</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="p">(</span><span class="n">n_blocks</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">overlap</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_blocks</span>
+  <span class="k">if</span> <span class="n">block_size</span> <span class="o">&lt;</span> <span class="n">size_min</span><span class="p">:</span>
+    <span class="n">block_size</span> <span class="o">=</span> <span class="n">size_min</span>
+
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimated block size </span><span class="si">%d</span><span class="s2"> in </span><span class="si">%d</span><span class="s2"> blocks!&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">block_size</span><span class="p">,</span> <span class="n">n_blocks</span><span class="p">))</span>
+
+  <span class="k">if</span> <span class="n">n_blocks</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">)],</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">)]</span>
+      
+  <span class="c1">#optimize number of blocks wrt to number of processors</span>
+  <span class="k">if</span> <span class="n">optimization</span><span class="p">:</span>
+    <span class="n">n_add</span> <span class="o">=</span> <span class="n">n_blocks</span> <span class="o">%</span> <span class="n">processes</span>
+    <span class="k">if</span> <span class="n">n_add</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">optimization_fix</span> <span class="ow">in</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="nb">all</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">n_add</span> <span class="o">&lt;</span> <span class="n">processes</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">:</span>
+          <span class="n">optimization_fix</span> <span class="o">=</span> <span class="s1">&#39;increase&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">optimization_fix</span> <span class="o">=</span> <span class="s1">&#39;decrease&#39;</span>
+
+      <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimizing block size to fit number of processes!&quot;</span><span class="p">)</span>
+            
+      <span class="k">if</span> <span class="n">optimization_fix</span> <span class="o">==</span> <span class="s1">&#39;decrease&#39;</span><span class="p">:</span>
+        <span class="c1">#try to deccrease block size / increase block number to fit distribution on processors</span>
+        <span class="n">n_blocks</span> <span class="o">=</span> <span class="n">n_blocks</span> <span class="o">-</span> <span class="n">n_add</span> <span class="o">+</span> <span class="n">processes</span>
+        <span class="n">block_size</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="p">(</span><span class="n">n_blocks</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">overlap</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_blocks</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+          <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimized block size decreased to </span><span class="si">%d</span><span class="s2"> in </span><span class="si">%d</span><span class="s2"> blocks!&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">block_size</span><span class="p">,</span> <span class="n">n_blocks</span><span class="p">))</span>
+
+      <span class="k">elif</span> <span class="n">optimization_fix</span> <span class="o">==</span> <span class="s1">&#39;increase&#39;</span> <span class="ow">and</span> <span class="n">n_blocks</span> <span class="o">&gt;</span> <span class="n">n_add</span><span class="p">:</span> 
+        <span class="c1">#try to increase chunk size and decrease chunk number to fit  processors</span>
+        <span class="n">n_blocks</span> <span class="o">=</span> <span class="n">n_blocks</span> <span class="o">-</span> <span class="n">n_add</span>
+        <span class="n">block_size</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">size</span> <span class="o">+</span> <span class="p">(</span><span class="n">n_blocks</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">overlap</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_blocks</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+          <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimized block size increased to </span><span class="si">%d</span><span class="s2"> in </span><span class="si">%d</span><span class="s2"> blocks!&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">block_size</span><span class="p">,</span> <span class="n">n_blocks</span><span class="p">))</span>
+
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+          <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Optimized block size </span><span class="si">%d</span><span class="s2"> unchanged in </span><span class="si">%d</span><span class="s2"> blocks!&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">block_size</span><span class="p">,</span> <span class="n">n_blocks</span><span class="p">))</span>
+
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Block size </span><span class="si">%d</span><span class="s2"> optimal in </span><span class="si">%d</span><span class="s2"> chunks!&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">block_size</span><span class="p">,</span> <span class="n">n_blocks</span><span class="p">))</span>
+
+  <span class="k">if</span> <span class="n">block_size</span> <span class="o">&lt;</span> <span class="n">size_min</span><span class="p">:</span>
+    <span class="c1">#raise Warning(&quot;Warning: Some chunks with average chunk size %f.02 may be smaller than minima chunk size %d!&quot; % (chunksize, sizeMin)); </span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Some blocks with average block size </span><span class="si">%.02f</span><span class="s2"> may be smaller than minimal block size </span><span class="si">%d</span><span class="s2"> due to optimization!&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">block_size</span><span class="p">,</span> <span class="n">size_min</span><span class="p">))</span>
+  <span class="k">if</span> <span class="n">block_size</span> <span class="o">&gt;</span> <span class="n">size_max</span><span class="p">:</span>
+    <span class="c1">#raise Warning(&quot;Warning: optimized chunk size %f.02 is larger than maximum chunk size %d!&quot; % (chunksize, sizeMax)); </span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Some blocks with average block size </span><span class="si">%.02f</span><span class="s2"> may be larger than maximum block size </span><span class="si">%d</span><span class="s2"> due to optimization!&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">block_size</span><span class="p">,</span> <span class="n">size_max</span><span class="p">))</span>
+
+      <span class="c1">#calculate actual block sizes</span>
+  <span class="n">block_size_rest</span> <span class="o">=</span> <span class="n">block_size</span>
+  <span class="n">block_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">block_size</span><span class="p">))</span>
+  <span class="n">block_size_rest</span> <span class="o">=</span> <span class="n">block_size_rest</span> <span class="o">-</span> <span class="n">block_size</span>
+
+  <span class="n">block_ranges</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">block_size</span><span class="p">)]</span>
+  <span class="n">valid_ranges</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">valid_prev</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">sr</span> <span class="o">=</span> <span class="n">block_size_rest</span>
+  <span class="n">hi</span> <span class="o">=</span> <span class="n">block_size</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">while</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">n_blocks</span><span class="p">:</span>
+    <span class="n">n</span><span class="o">+=</span><span class="mi">1</span>
+
+    <span class="c1">#range    </span>
+    <span class="n">hi_prev</span> <span class="o">=</span> <span class="n">hi</span>
+    <span class="n">lo</span> <span class="o">=</span> <span class="n">hi</span> <span class="o">-</span> <span class="n">overlap</span>
+    <span class="n">hi</span> <span class="o">=</span> <span class="n">lo</span> <span class="o">+</span> <span class="n">block_size</span>
+
+    <span class="n">sr</span> <span class="o">+=</span> <span class="n">block_size_rest</span>
+    <span class="k">if</span> <span class="n">sr</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="n">sr</span> <span class="o">-=</span> <span class="mi">1</span>
+      <span class="n">hi</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">n_blocks</span><span class="p">:</span>        
+      <span class="n">hi</span> <span class="o">=</span> <span class="n">size</span>
+      <span class="k">if</span> <span class="n">fixed</span><span class="p">:</span>
+        <span class="n">lo</span> <span class="o">=</span> <span class="n">hi</span> <span class="o">-</span> <span class="n">block_size</span>
+
+    <span class="n">block_ranges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">))</span>
+
+    <span class="c1">#borders</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">hi_prev</span> <span class="o">-</span> <span class="n">lo</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.</span> <span class="o">+</span> <span class="n">lo</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">valid</span> <span class="o">&gt;</span> <span class="n">size</span><span class="p">:</span>
+      <span class="n">valid</span> <span class="o">=</span> <span class="n">size</span>
+    <span class="n">valid_ranges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">valid_prev</span><span class="p">,</span> <span class="n">valid</span><span class="p">))</span>
+    <span class="n">valid_prev</span> <span class="o">=</span> <span class="n">valid</span>
+
+  <span class="n">valid_ranges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">valid_prev</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">n_prt</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_blocks</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n_blocks</span> <span class="o">&gt;</span> <span class="n">n_prt</span><span class="p">:</span>
+      <span class="n">pr</span> <span class="o">=</span> <span class="s1">&#39;...&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">pr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final blocks : </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">n_blocks</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final blocks : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">block_ranges</span><span class="p">[:</span><span class="n">n_prt</span><span class="p">])</span> <span class="o">+</span> <span class="n">pr</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final borders: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">valid_ranges</span><span class="p">[:</span><span class="n">n_prt</span><span class="p">])</span> <span class="o">+</span> <span class="n">pr</span><span class="p">)</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">([</span><span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">block_ranges</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final sizes  : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sizes</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="n">n_blocks</span><span class="p">,</span> <span class="n">block_ranges</span><span class="p">,</span> <span class="n">valid_ranges</span></div>
+
+
+
+<div class="viewcode-block" id="block_axes">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.BlockProcessing.html#ClearMap.ParallelProcessing.BlockProcessing.block_axes">[docs]</a>
+<span class="k">def</span> <span class="nf">block_axes</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Determine the axes for block processing from source order.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array or Source</span>
+<span class="sd">    The source on which the block processing is used.</span>
+<span class="sd">  axes : list, &#39;all&#39; or None</span>
+<span class="sd">    The axes over which to split the block processing.</span>
+
+<span class="sd">    .. deprecated:: 2.1</span>
+<span class="sd">      Value *all* (the built-in Python keyword) is now</span>
+<span class="sd">      deprecated for parameter axes.</span>
+<span class="sd">      You should replace it with *&quot;all&quot;* (the string literal) instead</span>
+
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">   axes : list or None</span>
+<span class="sd">    The axes over which to split the block processing.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">axes</span> <span class="o">==</span> <span class="s1">&#39;all&#39;</span> <span class="ow">or</span> <span class="n">axes</span> <span class="ow">is</span> <span class="nb">all</span><span class="p">:</span>  <span class="c1"># FIXME: remove is all</span>
+    <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="nb">all</span><span class="p">:</span>
+      <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Parameter axes could take all (the built-in Python keyword). &quot;</span>
+                    <span class="s2">&quot;This will be replaced by the string &#39;all&#39; in future versions&quot;</span><span class="p">,</span>
+                    <span class="ne">DeprecationWarning</span><span class="p">,</span>
+                    <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">ndim</span><span class="p">)]</span>
+  <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axes</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">source</span><span class="o">.</span><span class="n">ndim</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axes</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Axes specification </span><span class="si">{</span><span class="n">axes</span><span class="si">}</span><span class="s1"> for source with dimension </span><span class="si">{</span><span class="n">source</span><span class="o">.</span><span class="n">ndim</span><span class="si">}</span><span class="s1"> not valid!&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">axes</span>
+  
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="n">source</span><span class="o">.</span><span class="n">ndim</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    
+  <span class="k">return</span> <span class="n">axes</span></div>
+
+
+
+<div class="viewcode-block" id="split_into_blocks">
+<a class="viewcode-back" href="../../../api/ClearMap.ParallelProcessing.BlockProcessing.html#ClearMap.ParallelProcessing.BlockProcessing.split_into_blocks">[docs]</a>
+<span class="k">def</span> <span class="nf">split_into_blocks</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                      <span class="n">size_max</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">size_min</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">overlap</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  
+                      <span class="n">optimization</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">optimization_fix</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span> 
+                      <span class="n">neighbours</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;splits a source into a list of Block sources for parallel processing.</span>
+<span class="sd">  </span>
+<span class="sd">  The block information is described in :mod:`ClearMapBlock`  </span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : Source </span>
+<span class="sd">    Source to divide into blocks.</span>
+<span class="sd">  processes : int</span>
+<span class="sd">    Number of parallel processes to use.</span>
+<span class="sd">  axes : int or list of ints or None</span>
+<span class="sd">    Axes along which to split the source. If None, all axes are split.</span>
+<span class="sd">  size_max : int or list of ints</span>
+<span class="sd">    Maximal size of a block along the axes.</span>
+<span class="sd">  size_min : int or list of ints</span>
+<span class="sd">    Minial size of a block along the axes..</span>
+<span class="sd">  overlap : int or list of ints</span>
+<span class="sd">    Minimal overlap between blocks along the axes.</span>
+<span class="sd">  optimization : bool or list of bools</span>
+<span class="sd">    If True, optimize block sizes to best fit number of processes.</span>
+<span class="sd">  optimization_fix : &#39;increase&#39;, &#39;decrease&#39;, &#39;all&#39; or None or list</span>
+<span class="sd">    Increase, decrease or optimally change the block size when optimization is active.</span>
+<span class="sd">  neighbours : bool</span>
+<span class="sd">    If True, also include information about the neighbourhood in the blocks.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    Print information on block generation.</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  blocks : list of Blocks</span>
+<span class="sd">    List of Block classes dividing the source.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span>
+  <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+
+  <span class="n">axes</span> <span class="o">=</span> <span class="n">block_axes</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">)</span>
+  <span class="n">n_axes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes</span><span class="p">)</span>
+
+  <span class="n">size_max</span> <span class="o">=</span> <span class="n">_unpack</span><span class="p">(</span><span class="n">size_max</span><span class="p">,</span> <span class="n">n_axes</span><span class="p">)</span>
+  <span class="n">size_min</span> <span class="o">=</span> <span class="n">_unpack</span><span class="p">(</span><span class="n">size_min</span><span class="p">,</span> <span class="n">n_axes</span><span class="p">)</span>
+  <span class="n">overlap</span>  <span class="o">=</span> <span class="n">_unpack</span><span class="p">(</span><span class="n">overlap</span><span class="p">,</span> <span class="n">n_axes</span><span class="p">)</span>
+  <span class="n">optimization</span> <span class="o">=</span> <span class="n">_unpack</span><span class="p">(</span><span class="n">optimization</span><span class="p">,</span> <span class="n">n_axes</span><span class="p">)</span>
+  <span class="n">optimization_fix</span> <span class="o">=</span> <span class="n">_unpack</span><span class="p">(</span><span class="n">optimization_fix</span><span class="p">,</span> <span class="n">n_axes</span><span class="p">)</span>
+  <span class="c1">#print size_max, size_min, overlap, optimization, optimization_fix</span>
+  
+  <span class="c1">#calculate block shapes</span>
+  <span class="n">blocks_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">()</span>
+  <span class="n">blocks_block_ranges</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">blocks_offsets</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+      <span class="n">n_blocks</span><span class="p">,</span> <span class="n">block_ranges</span><span class="p">,</span> <span class="n">valid_ranges</span> <span class="o">=</span> \
+        <span class="n">block_sizes</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="n">d</span><span class="p">],</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> 
+                    <span class="n">size_max</span><span class="o">=</span><span class="n">size_max</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">size_min</span><span class="o">=</span><span class="n">size_min</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">overlap</span><span class="o">=</span><span class="n">overlap</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> 
+                    <span class="n">optimization</span><span class="o">=</span><span class="n">optimization</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">optimization_fix</span><span class="o">=</span><span class="n">optimization_fix</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> 
+                    <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+      <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">n_blocks</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="n">block_ranges</span> <span class="o">=</span> <span class="p">[(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)]</span>
+      <span class="n">valid_ranges</span> <span class="o">=</span> <span class="p">[(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)]</span>
+    <span class="c1">#print(d, block_ranges, valid_ranges) </span>
+    
+    <span class="n">offsets</span> <span class="o">=</span> <span class="p">[(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">block_ranges</span><span class="p">,</span> <span class="n">valid_ranges</span><span class="p">)]</span>
+
+    <span class="n">blocks_shape</span> <span class="o">+=</span> <span class="p">(</span><span class="n">n_blocks</span><span class="p">,)</span>
+    <span class="n">blocks_block_ranges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">block_ranges</span><span class="p">)</span>
+    <span class="n">blocks_offsets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">offsets</span><span class="p">)</span>
+
+  <span class="c1">#create blocks</span>
+  <span class="n">blocks_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">blocks_shape</span><span class="p">)</span>
+  <span class="n">blocks</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">index_to_block</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">blocks_size</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">blocks_shape</span><span class="p">)</span>
+    <span class="n">slicing</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="p">[</span><span class="n">blocks_block_ranges</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="n">index</span><span class="p">[</span><span class="n">d</span><span class="p">]]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">)])</span>
+    <span class="n">offsets</span> <span class="o">=</span> <span class="p">[(</span><span class="n">o</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">o</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="p">[</span><span class="n">blocks_offsets</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="n">index</span><span class="p">[</span><span class="n">d</span><span class="p">]]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">)]]</span>
+    <span class="n">block</span> <span class="o">=</span> <span class="n">blk</span><span class="o">.</span><span class="n">Block</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">slicing</span><span class="o">=</span><span class="n">slicing</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="n">offsets</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">blocks_shape</span><span class="o">=</span><span class="n">blocks_shape</span><span class="p">)</span>
+    <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">neighbours</span><span class="p">:</span>
+      <span class="n">index_to_block</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">block</span>
+
+  <span class="k">if</span> <span class="n">neighbours</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">blocks</span><span class="p">:</span>
+      <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+      <span class="n">nbs</span> <span class="o">=</span> <span class="p">{}</span>
+      <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="n">ii</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span> <span class="n">ii</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">ii</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+          <span class="n">nbs</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">index_to_block</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">blocks_shape</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+          <span class="n">ii</span> <span class="o">=</span> <span class="n">index</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span> <span class="n">ii</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">ii</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">ii</span><span class="p">)</span>
+          <span class="n">nbs</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">index_to_block</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+      <span class="n">b</span><span class="o">.</span><span class="n">_neighbours</span> <span class="o">=</span> <span class="n">nbs</span>
+
+  <span class="k">return</span> <span class="n">blocks</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">_unpack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ndim</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Helper to parse values into standard form (value0,value1,...).&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">values</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">ndim</span> <span class="ow">or</span> <span class="mi">1</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">ndim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">!=</span> <span class="n">ndim</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Dimension </span><span class="si">%d</span><span class="s1"> does not match data dimensions </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="n">ndim</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="n">values</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tests</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.BlockProcessing</span> <span class="k">as</span> <span class="nn">bp</span>
+  
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">))</span>
+  
+  <span class="n">blocks</span> <span class="o">=</span> <span class="n">bp</span><span class="o">.</span><span class="n">split_into_blocks</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">size_min</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">size_max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span>
+  
+  <span class="n">b</span> <span class="o">=</span> <span class="n">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">base_shape</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">base_slicing</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">blocks</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">iteration</span><span class="p">)</span>
+  
+  <span class="n">blocks</span> <span class="o">=</span> <span class="n">bp</span><span class="o">.</span><span class="n">split_into_blocks</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">size_min</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">size_max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">neighbours</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">base_shape</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">base_slicing</span><span class="p">)</span>
+  
+  
+  <span class="n">blocks</span> <span class="o">=</span> <span class="n">bp</span><span class="o">.</span><span class="n">split_into_blocks</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">size_min</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">size_max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">neighbours</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">b</span> <span class="o">=</span> <span class="n">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">base_shape</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">base_slicing</span><span class="p">)</span>
+  
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">npy</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">))</span>
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">npy</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">))</span>
+  
+  <span class="k">def</span> <span class="nf">process_image</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">sink</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">source</span><span class="p">[:]</span>
+    <span class="k">return</span> <span class="n">sink</span>
+
+  <span class="n">bp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">process_image</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span>
+             <span class="n">processes</span> <span class="o">=</span> <span class="s1">&#39;serial&#39;</span><span class="p">,</span> <span class="n">size_max</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">size_min</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">overlap</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+             <span class="n">optimization</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">sink</span><span class="p">[:]</span> <span class="o">==</span> <span class="n">process_image</span><span class="p">(</span><span class="n">source</span><span class="p">)))</span>
+  
+  <span class="n">bp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">process_image</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span>
+             <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">size_max</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size_min</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">overlap</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+             <span class="n">optimization</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+  <span class="k">assert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">sink</span><span class="p">[:]</span> <span class="o">==</span> <span class="n">process_image</span><span class="p">(</span><span class="n">source</span><span class="p">)))</span> 
+
+    
+  <span class="n">result</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="n">bp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">process_image</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span>
+                              <span class="n">size_max</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="n">size_min</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">overlap</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">optimization</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+                              <span class="n">return_blocks</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+  <span class="c1">#memmaps loading</span>
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">mmp</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;source.npy&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+  <span class="n">source</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">)</span>
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">mmp</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;sink.npy&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+  
+  <span class="n">bp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">process_image</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span>
+             <span class="n">size_max</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size_min</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">overlap</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+             <span class="n">optimization</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">as_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+  <span class="k">assert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">sink</span><span class="p">[:]</span> <span class="o">==</span> <span class="n">process_image</span><span class="p">(</span><span class="n">source</span><span class="p">)))</span> 
+  
+  <span class="n">io</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+  <span class="n">io</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+
+  <span class="c1">#multiple sources and sinks</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+  <span class="n">source1</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">sma</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">))</span>
+  <span class="n">source2</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">sma</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">))</span>
+  <span class="n">sink1</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">sma</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">))</span>
+  <span class="n">sink2</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">sma</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">sum_and_difference</span><span class="p">(</span><span class="n">source1</span><span class="p">,</span> <span class="n">source2</span><span class="p">,</span> <span class="n">sink1</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink2</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">sink1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">source1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sink2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">source2</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">sink1</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">source1</span><span class="p">[:]</span> <span class="o">+</span> <span class="n">source2</span><span class="p">[:]</span>
+    <span class="n">sink2</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">source1</span><span class="p">[:]</span> <span class="o">-</span> <span class="n">source2</span><span class="p">[:]</span>
+    <span class="k">return</span> <span class="n">sink1</span><span class="p">,</span> <span class="n">sink2</span>
+
+  <span class="n">bp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">sum_and_difference</span><span class="p">,</span> <span class="p">[</span><span class="n">source1</span><span class="p">,</span> <span class="n">source2</span><span class="p">],</span> <span class="p">[</span><span class="n">sink1</span><span class="p">,</span> <span class="n">sink2</span><span class="p">],</span>
+             <span class="n">processes</span> <span class="o">=</span> <span class="s1">&#39;!serial&#39;</span><span class="p">,</span> <span class="n">size_max</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size_min</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">overlap</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+             <span class="n">optimization</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+  <span class="n">s</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="n">sum_and_difference</span><span class="p">(</span><span class="n">source1</span><span class="p">,</span> <span class="n">source2</span><span class="p">)</span>                 
+  <span class="k">assert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">sink1</span><span class="p">[:]</span> <span class="o">==</span> <span class="n">s</span><span class="p">))</span>
+  <span class="k">assert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">sink2</span><span class="p">[:]</span> <span class="o">==</span> <span class="n">d</span><span class="p">))</span>
+  
+  
+  <span class="c1">#trace backs</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">sma</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">shape</span><span class="p">))</span>
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">sma</span><span class="o">.</span><span class="n">Source</span><span class="p">(</span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">))</span>
+  
+  <span class="k">def</span> <span class="nf">raise_error</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+
+  <span class="n">bp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">raise_error</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span>
+             <span class="n">processes</span> <span class="o">=</span> <span class="s1">&#39;!serial&#39;</span><span class="p">,</span> <span class="n">size_max</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">size_min</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">overlap</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+             <span class="n">optimization</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

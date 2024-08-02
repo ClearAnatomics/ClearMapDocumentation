@@ -1,0 +1,1211 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.Analysis.Statistics.group_statistics &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/Analysis/Statistics/group_statistics';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Ana...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.Analysis.Statistics.group_statistics</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Statistics</span>
+<span class="sd">==========</span>
+
+<span class="sd">Create some statistics to test significant changes in voxelized and labeled </span>
+<span class="sd">data.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;, Sophie Skriabine &lt;sophie.skriabine@icm-institute.org&gt;, Charly Rousseau &lt;charly.rousseau@icm-institute.org&gt;&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Public License v3 (see LICENSE.txt)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span> <span class="o">=</span> <span class="s1">&#39;https://idisco.info&#39;</span>
+<span class="n">__download__</span> <span class="o">=</span> <span class="s1">&#39;https://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">tifffile</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Analysis.Statistics.StatisticalTests</span> <span class="k">as</span> <span class="nn">clearmap_stat_tests</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Alignment</span> <span class="kn">import</span> <span class="n">Annotation</span> <span class="k">as</span> <span class="n">annotation</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Alignment.utils</span> <span class="kn">import</span> <span class="n">get_all_structs</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Analysis.Statistics</span> <span class="kn">import</span> <span class="n">MultipleComparisonCorrection</span> <span class="k">as</span> <span class="n">clearmap_FDR</span>
+<span class="kn">from</span> <span class="nn">ClearMap.IO</span> <span class="kn">import</span> <span class="n">IO</span> <span class="k">as</span> <span class="n">clearmap_io</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Utils.exceptions</span> <span class="kn">import</span> <span class="n">GroupStatsError</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Utils.path_utils</span> <span class="kn">import</span> <span class="n">is_density_file</span><span class="p">,</span> <span class="n">find_density_file</span><span class="p">,</span> <span class="n">find_cells_df</span><span class="p">,</span> <span class="n">dir_to_sample_id</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Utils.utilities</span> <span class="kn">import</span> <span class="n">make_abs</span>
+<span class="kn">from</span> <span class="nn">ClearMap.processors.sample_preparation</span> <span class="kn">import</span> <span class="n">init_preprocessor</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># REFACTOR: move to visualisation module</span>
+    <span class="s1">&#39;red&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;green&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;blue&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">]</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="t_test_voxelization">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.t_test_voxelization">[docs]</a>
+<span class="k">def</span> <span class="nf">t_test_voxelization</span><span class="p">(</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">remove_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p_cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    t-Test on differences between the individual voxels in group1 and group2</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    group1, group2 : array of arrays</span>
+<span class="sd">        The group of voxelizations to compare.</span>
+<span class="sd">    signed : bool</span>
+<span class="sd">        If True, return also the direction of the changes as +1 or -1.</span>
+<span class="sd">    remove_nan : bool</span>
+<span class="sd">        Remove Nan values from the data.</span>
+<span class="sd">    p_cutoff : None or float</span>
+<span class="sd">        Optional cutoff for the p-values.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    p_values : array</span>
+<span class="sd">        The p values for the group wise comparison.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">group1</span> <span class="o">=</span> <span class="n">read_group</span><span class="p">(</span><span class="n">group1</span><span class="p">)</span>
+    <span class="n">group2</span> <span class="o">=</span> <span class="n">read_group</span><span class="p">(</span><span class="n">group2</span><span class="p">)</span>
+
+    <span class="n">t_vals</span><span class="p">,</span> <span class="n">p_vals</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">remove_nan</span><span class="p">:</span>
+        <span class="n">p_vals</span><span class="p">,</span> <span class="n">t_vals</span> <span class="o">=</span> <span class="n">remove_p_val_nans</span><span class="p">(</span><span class="n">p_vals</span><span class="p">,</span> <span class="n">t_vals</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">p_cutoff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">p_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">p_vals</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">p_cutoff</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">signed</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">p_vals</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">t_vals</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">p_vals</span></div>
+
+
+
+<span class="c1"># WARNING: needs clean up</span>
+<div class="viewcode-block" id="t_test_region_counts">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.t_test_region_counts">[docs]</a>
+<span class="k">def</span> <span class="nf">t_test_region_counts</span><span class="p">(</span><span class="n">counts1</span><span class="p">,</span> <span class="n">counts2</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">remove_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p_cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;t-Test on differences in counts of points in labeled regions&quot;&quot;&quot;</span>
+
+    <span class="c1"># ids, p1 = countPointsGroupInRegions(pointGroup1, labeledImage = labeledImage, withIds = True);</span>
+    <span class="c1"># p2 = countPointsGroupInRegions(pointGroup2,  labeledImage = labeledImage, withIds = False);</span>
+
+    <span class="n">t_vals</span><span class="p">,</span> <span class="n">p_vals</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">counts1</span><span class="p">,</span> <span class="n">counts2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="n">equal_var</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">remove_nan</span><span class="p">:</span>
+        <span class="n">p_vals</span><span class="p">,</span> <span class="n">t_vals</span> <span class="o">=</span> <span class="n">remove_p_val_nans</span><span class="p">(</span><span class="n">p_vals</span><span class="p">,</span> <span class="n">t_vals</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">p_cutoff</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">p_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">p_vals</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">p_cutoff</span><span class="p">)</span>
+
+    <span class="c1"># p_vals.shape = (1,) + p_vals.shape;</span>
+    <span class="c1"># ids.shape = (1,) + ids.shape;</span>
+    <span class="c1"># p_vals = numpy.concatenate((ids.T, p_vals.T), axis = 1);</span>
+
+    <span class="k">if</span> <span class="n">signed</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">p_vals</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">t_vals</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">p_vals</span></div>
+
+
+
+<span class="c1"># TODO: group sources in IO</span>
+<div class="viewcode-block" id="read_group">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.read_group">[docs]</a>
+<span class="k">def</span> <span class="nf">read_group</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Turn a list of sources for data into a numpy stack.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    sources : list of str or sources</span>
+<span class="sd">        The sources to combine.</span>
+<span class="sd">    combine : bool</span>
+<span class="sd">        If true combine the sources to ndarray, oterhwise return a list.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    group : array or list</span>
+<span class="sd">        The group data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># check if stack already:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">sources</span>
+
+    <span class="c1"># read the individual files</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">array</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">group</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">combine</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">group</span></div>
+
+
+
+<div class="viewcode-block" id="weights_from_precentiles">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.weights_from_precentiles">[docs]</a>
+<span class="k">def</span> <span class="nf">weights_from_precentiles</span><span class="p">(</span><span class="n">intensities</span><span class="p">,</span> <span class="n">percentiles</span><span class="o">=</span><span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">100</span><span class="p">]):</span>
+    <span class="n">perc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentiles</span><span class="p">(</span><span class="n">intensities</span><span class="p">,</span> <span class="n">percentiles</span><span class="p">)</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">intensities</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">perc</span><span class="p">:</span>
+        <span class="n">ii</span> <span class="o">=</span> <span class="n">intensities</span> <span class="o">&gt;</span> <span class="n">p</span>
+        <span class="n">weights</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">weights</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">__prepare_cumulative_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>  <span class="c1"># FIXME: use better variable names</span>
+    <span class="c1"># fill up the low count data</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+    <span class="n">nm</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+    <span class="n">mm</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">size</span>
+    <span class="c1"># print nm, mm, k</span>
+    <span class="k">if</span> <span class="n">offset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># assume data starts at 0 !</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="n">mm</span> <span class="o">/</span> <span class="n">nm</span>  <span class="c1"># ideal for all statistics this should be mm + eps to have as little influence as possible.</span>
+    <span class="n">datac</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">datac</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">nm</span><span class="p">,</span> <span class="n">offset</span>
+
+
+<span class="k">def</span> <span class="nf">__plot_cumulative_test</span><span class="p">(</span><span class="n">datac</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">plot</span><span class="p">):</span>
+    <span class="c1"># test by plotting</span>
+    <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+            <span class="n">datac</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">datac</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">datac</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">__run_cumulative_test</span><span class="p">(</span><span class="n">datac</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>  <span class="c1"># FIXME: remove one letter variable names</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;KolmogorovSmirnov&#39;</span><span class="p">,</span> <span class="s1">&#39;KS&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">s</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ks_2samp</span><span class="p">(</span><span class="n">datac</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">datac</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;KolmogorovSmirnov only for 2 samples not </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">k</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;CramervonMises&#39;</span><span class="p">,</span> <span class="s1">&#39;CM&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">s</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">clearmap_stat_tests</span><span class="o">.</span><span class="n">test_cramer_von_mises_2_sample</span><span class="p">(</span><span class="n">datac</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">datac</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;CramervonMises only for 2 samples not </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">k</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;AndersonDarling&#39;</span><span class="p">,</span> <span class="s1">&#39;AD&#39;</span><span class="p">):</span>
+        <span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">anderson_ksamp</span><span class="p">(</span><span class="n">datac</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">s</span>
+
+
+<div class="viewcode-block" id="test_completed_cumulatives">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.test_completed_cumulatives">[docs]</a>
+<span class="k">def</span> <span class="nf">test_completed_cumulatives</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;AndersonDarling&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test if data sets have the same number / intensity distribution by adding max intensity counts</span>
+<span class="sd">    to the smaller sized data sets and performing a distribution comparison test&quot;&quot;&quot;</span>
+
+    <span class="c1"># idea: fill up data points to the same numbers at the high intensity values and use KS test</span>
+    <span class="c1"># cf. work in progress on thoroughly testing the differences in histograms</span>
+
+    <span class="n">datac</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">nm</span><span class="p">,</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">__prepare_cumulative_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nm</span><span class="p">:</span>
+            <span class="n">datac</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">datac</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nm</span><span class="o">-</span><span class="n">n</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">datac</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">mm</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)))</span>  <span class="c1"># + 10E-5 * numpy.random.rand(nm-n[i])));</span>
+
+    <span class="n">__plot_cumulative_test</span><span class="p">(</span><span class="n">datac</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">plot</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">__run_cumulative_test</span><span class="p">(</span><span class="n">datac</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="test_completed_inverted_cumulatives">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.test_completed_inverted_cumulatives">[docs]</a>
+<span class="k">def</span> <span class="nf">test_completed_inverted_cumulatives</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;AndersonDarling&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test if data sets have the same number / intensity distribution by adding zero intensity counts</span>
+<span class="sd">    to the smaller sized data sets and performing a distribution comparison test on the reversed cumulative distribution&quot;&quot;&quot;</span>
+
+    <span class="c1"># idea: fill up data points to the same numbers at the high intensity values and use KS test</span>
+    <span class="c1"># cf. work in progress on thoroughly testing the differences in histograms</span>
+
+    <span class="n">datac</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">nm</span><span class="p">,</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">__prepare_cumulative_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nm</span><span class="p">:</span>
+            <span class="n">datac</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="o">-</span><span class="n">datac</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nm</span><span class="o">-</span><span class="n">n</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">datac</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">offset</span><span class="p">)))</span>  <span class="c1"># + 10E-5 * numpy.random.rand(nm-n[i])));  # FIXME: only different lines with function above</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">datac</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">datac</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="n">__plot_cumulative_test</span><span class="p">(</span><span class="n">datac</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">plot</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">__run_cumulative_test</span><span class="p">(</span><span class="n">datac</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="remove_p_val_nans">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.remove_p_val_nans">[docs]</a>
+<span class="k">def</span> <span class="nf">remove_p_val_nans</span><span class="p">(</span><span class="n">p_vals</span><span class="p">,</span> <span class="n">t_vals</span><span class="p">):</span>
+    <span class="n">invalid_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)</span>
+    <span class="n">p_vals_c</span> <span class="o">=</span> <span class="n">p_vals</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">t_vals_c</span> <span class="o">=</span> <span class="n">t_vals</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">p_vals_c</span><span class="p">[</span><span class="n">invalid_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="n">t_vals_c</span><span class="p">[</span><span class="n">invalid_idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">p_vals_c</span><span class="p">,</span> <span class="n">t_vals_c</span></div>
+
+
+
+<div class="viewcode-block" id="stack_voxelizations">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.stack_voxelizations">[docs]</a>
+<span class="k">def</span> <span class="nf">stack_voxelizations</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">f_list</span><span class="p">,</span> <span class="n">suffix</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Regroup voxelizations to simplify further processing</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    directory</span>
+<span class="sd">    f_list</span>
+<span class="sd">    suffix</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">f_list</span><span class="p">):</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">make_abs</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">file_name</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># init on first image</span>
+            <span class="n">stacked_voxelizations</span> <span class="o">=</span> <span class="n">img</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">stacked_voxelizations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">stacked_voxelizations</span><span class="p">,</span> <span class="n">img</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">stacked_voxelizations</span> <span class="o">=</span> <span class="n">stacked_voxelizations</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">clearmap_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;stacked_density_</span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s1">.tif&#39;</span><span class="p">),</span> <span class="n">stacked_voxelizations</span><span class="p">,</span> <span class="n">bigtiff</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">stacked_voxelizations</span></div>
+
+
+
+<div class="viewcode-block" id="average_voxelization_groups">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.average_voxelization_groups">[docs]</a>
+<span class="k">def</span> <span class="nf">average_voxelization_groups</span><span class="p">(</span><span class="n">stacked_voxelizations</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">suffix</span><span class="p">,</span> <span class="n">compute_sd</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">avg_voxelization</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">stacked_voxelizations</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">clearmap_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;avg_density_</span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s1">.tif&#39;</span><span class="p">),</span> <span class="n">avg_voxelization</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">compute_sd</span><span class="p">:</span>
+        <span class="n">sd_voxelization</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">stacked_voxelizations</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">clearmap_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;sd_density_</span><span class="si">{</span><span class="n">suffix</span><span class="si">}</span><span class="s1">.tif&#39;</span><span class="p">),</span> <span class="n">sd_voxelization</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># REFACTOR: move to visualisation module</span>
+<span class="k">def</span> <span class="nf">__validate_colors</span><span class="p">(</span><span class="n">positive_color</span><span class="p">,</span> <span class="n">negative_color</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">positive_color</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">negative_color</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Length of positive and negative colors do not match, &#39;</span>
+                         <span class="sa">f</span><span class="s1">&#39;got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">positive_color</span><span class="p">)</span><span class="si">}</span><span class="s1"> and </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">negative_color</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+  <span class="c1"># REFACTOR: move to visualisation module</span>
+<div class="viewcode-block" id="color_p_values">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.color_p_values">[docs]</a>
+<span class="k">def</span> <span class="nf">color_p_values</span><span class="p">(</span><span class="n">p_vals</span><span class="p">,</span> <span class="n">p_sign</span><span class="p">,</span> <span class="n">positive_color</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">negative_color</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">p_cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">positive_trend</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">negative_trend</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">p_max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    p_vals np.array:</span>
+<span class="sd">    p_sign np.array:</span>
+<span class="sd">    positive list:</span>
+<span class="sd">    negative list:</span>
+<span class="sd">    p_cutoff float:</span>
+<span class="sd">    positive_trend list:</span>
+<span class="sd">    negative_trend list:</span>
+<span class="sd">    p_max float:</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">p_max</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">p_max</span> <span class="o">=</span> <span class="n">p_vals</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+    <span class="n">p_vals_inv</span> <span class="o">=</span> <span class="n">p_max</span> <span class="o">-</span> <span class="n">p_vals</span>
+
+    <span class="k">if</span> <span class="n">p_cutoff</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># color given p values</span>
+        <span class="n">__validate_colors</span><span class="p">(</span><span class="n">positive_color</span><span class="p">,</span> <span class="n">negative_color</span><span class="p">)</span>
+
+        <span class="c1"># 3D + color output array</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">positive_color</span><span class="p">)</span>  <span class="c1"># 3D</span>
+        <span class="n">output_shape</span> <span class="o">=</span> <span class="n">p_vals</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="n">d</span><span class="p">,)</span>  <span class="c1"># 3D + color</span>
+        <span class="n">colored_p_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">output_shape</span><span class="p">)</span>
+
+        <span class="c1"># coloring</span>
+        <span class="k">for</span> <span class="n">neg</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">((</span><span class="kc">False</span><span class="p">,</span> <span class="n">positive_color</span><span class="p">),</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">negative_color</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">neg</span><span class="p">:</span>
+                <span class="n">ids</span> <span class="o">=</span> <span class="n">p_sign</span> <span class="o">&lt;</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">ids</span> <span class="o">=</span> <span class="n">p_sign</span> <span class="o">&gt;</span> <span class="mi">0</span>
+            <span class="n">p_vals_i</span> <span class="o">=</span> <span class="n">p_vals_inv</span><span class="p">[</span><span class="n">ids</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">channel_value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>  <span class="c1"># [i] on R, G, B components</span>
+                <span class="n">colored_p_vals</span><span class="p">[</span><span class="n">ids</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_vals_i</span> <span class="o">*</span> <span class="n">channel_value</span>
+    <span class="c1"># else:  # split p_values according to cutoff</span>
+    <span class="c1">#     if any([len(positive_color) != len(v) for v in (negative_color, positive_trend, negative_trend)]):</span>
+    <span class="c1">#         raise ValueError(&#39;color_p_values: positive, negative, positive_trend and &#39;</span>
+    <span class="c1">#                          &#39;negative_trend option must be equal length !&#39;)</span>
+    <span class="c1">#     output_shape = p_vals.shape + (len(positive_color),)</span>
+    <span class="c1">#     colored_p_vals = np.zeros(output_shape)</span>
+    <span class="c1">#</span>
+    <span class="c1">#     idc = p_vals &lt; p_cutoff</span>
+    <span class="c1">#     ids = p_sign &gt; 0</span>
+    <span class="c1">#     # significant positive, non sig positive, sig neg, non sig neg</span>
+    <span class="c1">#     for id_sign, idc_sign, w in ((1, 1, positive_color), (1, -1, positive_trend),</span>
+    <span class="c1">#                                  (-1, 1, negative_color), (-1, -1, negative_trend)):</span>
+    <span class="c1">#         if id_sign &lt; 0:</span>
+    <span class="c1">#             ids = np.logical_not(ids)</span>
+    <span class="c1">#         if idc_sign &lt; 0:</span>
+    <span class="c1">#             idc = np.logical_not(idc)</span>
+    <span class="c1">#         ii = np.logical_and(ids, idc)</span>
+    <span class="c1">#         p_vals_i = p_vals_inv[ii]</span>
+    <span class="c1">#         for i in range(len(w)):</span>
+    <span class="c1">#             colored_p_vals[ii, i] = p_vals_i * w[i]</span>
+
+    <span class="k">return</span> <span class="n">colored_p_vals</span></div>
+
+
+<span class="c1"># REFACTOR: move to visualisation module</span>
+<div class="viewcode-block" id="get_colored_p_vals">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.get_colored_p_vals">[docs]</a>
+<span class="k">def</span> <span class="nf">get_colored_p_vals</span><span class="p">(</span><span class="n">p_vals</span><span class="p">,</span> <span class="n">t_vals</span><span class="p">,</span> <span class="n">significance</span><span class="p">,</span> <span class="n">color_names</span><span class="p">):</span>
+    <span class="n">p_vals_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">p_vals</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">significance</span><span class="p">)</span>
+    <span class="n">p_sign</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">t_vals</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">color_p_values</span><span class="p">(</span><span class="n">p_vals_f</span><span class="p">,</span> <span class="n">p_sign</span><span class="p">,</span>
+                          <span class="n">positive_color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">color_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                          <span class="n">negative_color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">color_names</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span></div>
+
+
+
+<div class="viewcode-block" id="dirs_to_density_files">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.dirs_to_density_files">[docs]</a>
+<span class="k">def</span> <span class="nf">dirs_to_density_files</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">f_list</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">f_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">f_list</span><span class="p">):</span>
+        <span class="n">f_name</span> <span class="o">=</span> <span class="n">make_abs</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">f_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_density_file</span><span class="p">(</span><span class="n">f_name</span><span class="p">):</span>
+            <span class="n">f_name</span> <span class="o">=</span> <span class="n">find_density_file</span><span class="p">(</span><span class="n">f_name</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+
+<span class="c1"># def get_p_vals_f(p_vals, t_vals, p_cutoff):</span>
+<span class="c1">#     p_vals2 = np.clip(p_vals, None, p_cutoff)</span>
+<span class="c1">#     p_sign = np.sign(t_vals)</span>
+<span class="c1">#     return p_vals2, p_sign</span>
+
+
+<div class="viewcode-block" id="group_cells_counts">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.group_cells_counts">[docs]</a>
+<span class="k">def</span> <span class="nf">group_cells_counts</span><span class="p">(</span><span class="n">struct_ids</span><span class="p">,</span> <span class="n">group_cells_dfs</span><span class="p">,</span> <span class="n">sample_ids</span><span class="p">,</span> <span class="n">volume_map</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    struct_ids list:</span>
+<span class="sd">    group_cells_dfs: list(pd.DataFrame)</span>
+<span class="sd">    sample_ids: list</span>
+<span class="sd">    volume_map: dict</span>
+<span class="sd">        maps each id from structure_ids to the corresponding structure&#39;s volume (in pixel)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">all_ints</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">all_ints</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;counts_</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">sample_ids</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">group_cells_dfs</span><span class="p">))])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;counts_</span><span class="si">{</span><span class="n">sample_ids</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">group_cells_dfs</span><span class="p">))])</span>
+
+    <span class="n">output</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">struct_ids</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># for each hemisphere</span>
+    <span class="n">output</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">([</span><span class="n">annotation</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">id_</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">id_</span> <span class="ow">in</span> <span class="n">struct_ids</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">output</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">struct_ids</span><span class="p">))</span>  <span class="c1"># FIXME: translate hemisphere to plain text</span>
+    <span class="n">output</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;hemisphere&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">volume_map</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+
+    <span class="k">for</span> <span class="n">multiplier</span><span class="p">,</span> <span class="n">hem_id</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">sample_df</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">group_cells_dfs</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">all_ints</span><span class="p">:</span>
+                <span class="n">col_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;counts_</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">sample_ids</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>  <span class="c1"># TODO: option with f&#39;counts_{j}&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">col_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;counts_</span><span class="si">{</span><span class="n">sample_ids</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+
+            <span class="n">hem_sample_df</span> <span class="o">=</span> <span class="n">sample_df</span><span class="p">[</span><span class="n">sample_df</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">hem_id</span><span class="p">]</span>
+            <span class="c1"># FIXME: replace loop (slow)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">struct_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">struct_ids</span><span class="p">):</span>
+                <span class="n">row_idx</span> <span class="o">=</span> <span class="n">output</span><span class="p">[(</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">struct_id</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">hem_id</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row_idx</span><span class="p">,</span> <span class="n">col_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">hem_sample_df</span><span class="p">[</span><span class="n">hem_sample_df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">struct_id</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">output</span></div>
+
+
+
+<div class="viewcode-block" id="generate_summary_table">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.generate_summary_table">[docs]</a>
+<span class="k">def</span> <span class="nf">generate_summary_table</span><span class="p">(</span><span class="n">cells_dfs</span><span class="p">,</span> <span class="n">p_cutoff</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">gp_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cells_dfs</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="n">grouped_counts</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">total_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">cells_dfs</span><span class="p">[</span><span class="n">gp_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;volume&#39;</span><span class="p">,</span> <span class="s1">&#39;hemisphere&#39;</span><span class="p">)})</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">gp_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">gp_names</span><span class="p">):</span>
+        <span class="n">grouped_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">())</span>
+        <span class="k">for</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="n">cells_dfs</span><span class="p">[</span><span class="n">gp_name</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;count&#39;</span> <span class="ow">in</span> <span class="n">col_name</span><span class="p">:</span>
+                <span class="n">col</span> <span class="o">=</span> <span class="n">cells_dfs</span><span class="p">[</span><span class="n">gp_name</span><span class="p">][</span><span class="n">col_name</span><span class="p">]</span>
+                <span class="n">new_col_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">gp_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">col_name</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">total_df</span><span class="p">[</span><span class="n">new_col_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">col</span>
+                <span class="n">grouped_counts</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">new_col_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">col</span>
+        <span class="n">total_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mean_</span><span class="si">{</span><span class="n">gp_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped_counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>  <span class="c1"># To avoid &quot;object&quot; type</span>
+        <span class="n">total_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;sd_</span><span class="si">{</span><span class="n">gp_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grouped_counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>  <span class="c1"># To avoid &quot;object&quot; type</span>
+
+    <span class="n">total_df</span><span class="p">,</span> <span class="n">grouped_counts</span> <span class="o">=</span> <span class="n">sanitize_df</span><span class="p">(</span><span class="n">gp_names</span><span class="p">,</span> <span class="n">grouped_counts</span><span class="p">,</span> <span class="n">total_df</span><span class="p">)</span>
+
+    <span class="n">gp1</span> <span class="o">=</span> <span class="n">grouped_counts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">gp2</span> <span class="o">=</span> <span class="n">grouped_counts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">p_vals</span><span class="p">,</span> <span class="n">p_signs</span> <span class="o">=</span> <span class="n">t_test_region_counts</span><span class="p">(</span><span class="n">gp1</span><span class="p">,</span> <span class="n">gp2</span><span class="p">,</span> <span class="n">p_cutoff</span><span class="o">=</span><span class="n">p_cutoff</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">total_df</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_vals</span>
+    <span class="n">total_df</span><span class="p">[</span><span class="s1">&#39;q_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clearmap_FDR</span><span class="o">.</span><span class="n">estimate_q_values</span><span class="p">(</span><span class="n">p_vals</span><span class="p">)</span>
+    <span class="n">total_df</span><span class="p">[</span><span class="s1">&#39;p_sign&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_signs</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total_df</span></div>
+
+
+
+<div class="viewcode-block" id="sanitize_df">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.sanitize_df">[docs]</a>
+<span class="k">def</span> <span class="nf">sanitize_df</span><span class="p">(</span><span class="n">gp_names</span><span class="p">,</span> <span class="n">grouped_counts</span><span class="p">,</span> <span class="n">total_df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Remove rows with all 0 or NaN in at least 1 group</span>
+<span class="sd">    Args:</span>
+<span class="sd">        gp_names:</span>
+<span class="sd">        grouped_counts:</span>
+<span class="sd">        total_df:</span>
+
+<span class="sd">    Returns:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bad_idx</span> <span class="o">=</span> <span class="n">total_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mean_</span><span class="si">{</span><span class="n">gp_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>  <span class="c1"># FIXME: check that either not and</span>
+    <span class="n">bad_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">bad_idx</span><span class="p">,</span> <span class="n">total_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mean_</span><span class="si">{</span><span class="n">gp_names</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">bad_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">bad_idx</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">total_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mean_</span><span class="si">{</span><span class="n">gp_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]))</span>
+    <span class="n">bad_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">bad_idx</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">total_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;mean_</span><span class="si">{</span><span class="n">gp_names</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">total_df</span><span class="p">[</span><span class="o">~</span><span class="n">bad_idx</span><span class="p">],</span> <span class="p">[</span><span class="n">grouped_counts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">~</span><span class="n">bad_idx</span><span class="p">],</span> <span class="n">grouped_counts</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="o">~</span><span class="n">bad_idx</span><span class="p">]]</span></div>
+
+
+
+<div class="viewcode-block" id="dirs_to_cells_dfs">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.dirs_to_cells_dfs">[docs]</a>
+<span class="k">def</span> <span class="nf">dirs_to_cells_dfs</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">dirs</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">f_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dirs</span><span class="p">):</span>
+        <span class="n">f_name</span> <span class="o">=</span> <span class="n">make_abs</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">f_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">f_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;cells.feather&#39;</span><span class="p">):</span>
+            <span class="n">f_name</span> <span class="o">=</span> <span class="n">find_cells_df</span><span class="p">(</span><span class="n">f_name</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="n">f_name</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+
+<div class="viewcode-block" id="get_volume_map">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.get_volume_map">[docs]</a>
+<span class="k">def</span> <span class="nf">get_volume_map</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+    <span class="n">preproc</span> <span class="o">=</span> <span class="n">init_preprocessor</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">annotation</span><span class="o">.</span><span class="n">annotation</span><span class="o">.</span><span class="n">get_lateralised_volume_map</span><span class="p">(</span>
+        <span class="n">preproc</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;resampling&#39;</span><span class="p">][</span><span class="s1">&#39;autofluo_sink_resolution&#39;</span><span class="p">],</span>
+        <span class="n">preproc</span><span class="o">.</span><span class="n">hemispheres_file_path</span>
+    <span class="p">)</span></div>
+
+
+
+<span class="c1"># REFACTOR: move to separate module</span>
+<div class="viewcode-block" id="make_summary">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.make_summary">[docs]</a>
+<span class="k">def</span> <span class="nf">make_summary</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">gp1_name</span><span class="p">,</span> <span class="n">gp2_name</span><span class="p">,</span> <span class="n">gp1_dirs</span><span class="p">,</span> <span class="n">gp2_dirs</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">gp1_dfs</span> <span class="o">=</span> <span class="n">dirs_to_cells_dfs</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">gp1_dirs</span><span class="p">)</span>
+    <span class="n">gp2_dfs</span> <span class="o">=</span> <span class="n">dirs_to_cells_dfs</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">gp2_dirs</span><span class="p">)</span>
+    <span class="n">gp_cells_dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">gp1_dfs</span><span class="p">,</span> <span class="n">gp2_dfs</span><span class="p">]</span>
+    <span class="n">structs</span> <span class="o">=</span> <span class="n">get_all_structs</span><span class="p">(</span><span class="n">gp1_dfs</span> <span class="o">+</span> <span class="n">gp2_dfs</span><span class="p">)</span>
+
+    <span class="n">gp1_sample_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">dir_to_sample_id</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">gp1_dirs</span><span class="p">]</span>
+    <span class="n">gp2_sample_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">dir_to_sample_id</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span> <span class="k">for</span> <span class="n">folder</span> <span class="ow">in</span> <span class="n">gp2_dirs</span><span class="p">]</span>
+    <span class="n">sample_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">gp1_sample_ids</span><span class="p">,</span> <span class="n">gp2_sample_ids</span><span class="p">]</span>
+
+    <span class="n">volume_map</span> <span class="o">=</span> <span class="n">get_volume_map</span><span class="p">(</span><span class="n">gp1_dirs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># WARNING Hacky</span>
+
+    <span class="n">aggregated_dfs</span> <span class="o">=</span> <span class="p">{</span><span class="n">gp_name</span><span class="p">:</span> <span class="n">group_cells_counts</span><span class="p">(</span><span class="n">structs</span><span class="p">,</span> <span class="n">gp_cells_dfs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sample_ids</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">volume_map</span><span class="p">)</span>
+                      <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">gp_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">((</span><span class="n">gp1_name</span><span class="p">,</span> <span class="n">gp2_name</span><span class="p">))}</span>
+    <span class="n">total_df</span> <span class="o">=</span> <span class="n">generate_summary_table</span><span class="p">(</span><span class="n">aggregated_dfs</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">output_path</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">save</span><span class="p">:</span>
+        <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;statistics_</span><span class="si">{</span><span class="n">gp1_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">gp2_name</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+        <span class="n">total_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total_df</span></div>
+
+
+
+<div class="viewcode-block" id="density_files_are_comparable">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.density_files_are_comparable">[docs]</a>
+<span class="k">def</span> <span class="nf">density_files_are_comparable</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">gp1_dirs</span><span class="p">,</span> <span class="n">gp2_dirs</span><span class="p">):</span>
+    <span class="n">gp1_f_list</span> <span class="o">=</span> <span class="n">dirs_to_density_files</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">gp1_dirs</span><span class="p">)</span>
+    <span class="n">gp2_f_list</span> <span class="o">=</span> <span class="n">dirs_to_density_files</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">gp2_dirs</span><span class="p">)</span>
+    <span class="n">all_files</span> <span class="o">=</span> <span class="n">gp1_f_list</span> <span class="o">+</span> <span class="n">gp2_f_list</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">]</span>
+    <span class="n">tolerance</span> <span class="o">=</span> <span class="mi">1024</span>  <span class="c1"># 1 KB</span>
+    <span class="n">comparable</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">abs_tol</span><span class="o">=</span><span class="n">tolerance</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">comparable</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">GroupStatsError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not compare files, sizes differ</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+                              <span class="sa">f</span><span class="s1">&#39;Group 1: </span><span class="si">{</span><span class="n">gp1_f_list</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+                              <span class="sa">f</span><span class="s1">&#39;Group 2: </span><span class="si">{</span><span class="n">gp2_f_list</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+                              <span class="sa">f</span><span class="s1">&#39;Sizes 1: </span><span class="si">{</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">gp1_f_list</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+                              <span class="sa">f</span><span class="s1">&#39;Sizes 2: </span><span class="si">{</span><span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">gp2_f_list</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># REFACTOR: move to separate module</span>
+<div class="viewcode-block" id="compare_groups">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.Statistics.group_statistics.html#ClearMap.Analysis.Statistics.group_statistics.compare_groups">[docs]</a>
+<span class="k">def</span> <span class="nf">compare_groups</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">gp1_name</span><span class="p">,</span> <span class="n">gp2_name</span><span class="p">,</span> <span class="n">gp1_dirs</span><span class="p">,</span> <span class="n">gp2_dirs</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;p_val_colors&#39;</span><span class="p">,</span> <span class="n">advanced</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">gp1_f_list</span> <span class="o">=</span> <span class="n">dirs_to_density_files</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">gp1_dirs</span><span class="p">)</span>
+    <span class="n">gp2_f_list</span> <span class="o">=</span> <span class="n">dirs_to_density_files</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">gp2_dirs</span><span class="p">)</span>
+
+    <span class="n">gp1_stacked_voxelizations</span> <span class="o">=</span> <span class="n">stack_voxelizations</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">gp1_f_list</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="n">gp1_name</span><span class="p">)</span>
+    <span class="n">average_voxelization_groups</span><span class="p">(</span><span class="n">gp1_stacked_voxelizations</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">gp1_name</span><span class="p">,</span> <span class="n">compute_sd</span><span class="o">=</span><span class="n">advanced</span><span class="p">)</span>
+    <span class="n">gp2_stacked_voxelizations</span> <span class="o">=</span> <span class="n">stack_voxelizations</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">gp2_f_list</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="n">gp2_name</span><span class="p">)</span>
+    <span class="n">average_voxelization_groups</span><span class="p">(</span><span class="n">gp2_stacked_voxelizations</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">gp2_name</span><span class="p">,</span> <span class="n">compute_sd</span><span class="o">=</span><span class="n">advanced</span><span class="p">)</span>
+
+    <span class="n">t_vals</span><span class="p">,</span> <span class="n">p_vals</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">gp1_stacked_voxelizations</span><span class="p">,</span> <span class="n">gp2_stacked_voxelizations</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">p_vals</span><span class="p">,</span> <span class="n">t_vals</span> <span class="o">=</span> <span class="n">remove_p_val_nans</span><span class="p">(</span><span class="n">p_vals</span><span class="p">,</span> <span class="n">t_vals</span><span class="p">)</span>
+
+    <span class="n">colored_p_vals_05</span> <span class="o">=</span> <span class="n">get_colored_p_vals</span><span class="p">(</span><span class="n">p_vals</span><span class="p">,</span> <span class="n">t_vals</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">))</span>
+    <span class="n">colored_p_vals_01</span> <span class="o">=</span> <span class="n">get_colored_p_vals</span><span class="p">(</span><span class="n">p_vals</span><span class="p">,</span> <span class="n">t_vals</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">))</span>
+    <span class="n">colored_p_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">colored_p_vals_05</span><span class="p">,</span> <span class="n">colored_p_vals_01</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+    <span class="n">output_f_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">gp1_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">gp2_name</span><span class="si">}</span><span class="s1">.tif&#39;</span>
+    <span class="n">output_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">output_f_name</span><span class="p">)</span>
+    <span class="n">clearmap_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_file_path</span><span class="p">,</span> <span class="n">colored_p_vals</span><span class="p">,</span> <span class="n">photometric</span><span class="o">=</span><span class="s1">&#39;rgb&#39;</span><span class="p">,</span> <span class="n">imagej</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">advanced</span><span class="p">:</span>
+        <span class="n">effect_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">gp1_stacked_voxelizations</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">-</span>
+                             <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">gp2_stacked_voxelizations</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+        <span class="n">effect_size</span> <span class="o">=</span> <span class="n">effect_size</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>  <span class="c1"># for imagej compatibility</span>
+        <span class="n">output_f_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;effect_size_</span><span class="si">{</span><span class="n">gp1_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">gp2_name</span><span class="si">}</span><span class="s1">.tif&#39;</span>
+        <span class="n">output_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">output_f_name</span><span class="p">)</span>
+        <span class="n">clearmap_io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_file_path</span><span class="p">,</span> <span class="n">effect_size</span><span class="p">,</span> <span class="n">imagej</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">colored_p_vals</span></div>
+
+
+
+<span class="c1"># def test_completed_cumulatives_in_spheres(points1, intensities1, points2, intensities2,</span>
+<span class="c1"># shape=ano.default_annotation_file, radius = 100, method = &#39;AndresonDarling&#39;):</span>
+<span class="c1">#   &quot;&quot;&quot;Performs completed cumulative distribution tests for each pixel using points in a ball</span>
+<span class="c1">#   centered at that cooridnates, returns 4 arrays p value, statistic value, number in each group&quot;&quot;&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#   # TODO: simple implementation -&gt; slow -&gt; speed up</span>
+<span class="c1">#   if not isinstance(shape, tuple):</span>
+<span class="c1">#     shape = io.shape(shape)</span>
+<span class="c1">#   if len(shape) != 3:</span>
+<span class="c1">#       raise RuntimeError(&#39;Shape expected to be 3d, found %r&#39; % (shape,))</span>
+<span class="c1">#</span>
+<span class="c1">#   # distances^2 to origin</span>
+<span class="c1">#   x1= points1[:,0]; y1 = points1[:,1]; z1 = points1[:,2]; i1 = intensities1</span>
+<span class="c1">#   d1 = x1 * x1 + y1 * y1 + z1 * z1</span>
+<span class="c1">#</span>
+<span class="c1">#   x2 = points2[:,0]; y2 = points2[:,1]; z2 = points2[:,2]; i2 = intensities2</span>
+<span class="c1">#   d2 = x2 * x2 + y2 * y2 + z2 * z2</span>
+<span class="c1">#</span>
+<span class="c1">#   r2 = radius * radius  # WARNING: inhomogenous in 3d !</span>
+<span class="c1">#</span>
+<span class="c1">#   p = np.zeros(dataSize)</span>
+<span class="c1">#   s = np.zeros(dataSize)</span>
+<span class="c1">#   n1 = np.zeros(dataSize, dtype=&#39;int&#39;)</span>
+<span class="c1">#   n2 = np.zeros(dataSize, dtype=&#39;int&#39;)</span>
+<span class="c1">#</span>
+<span class="c1">#   for x in range(dataSize[0]):</span>
+<span class="c1">#   #print x</span>
+<span class="c1">#     for y in range(dataSize[1]):</span>
+<span class="c1">#       #print y</span>
+<span class="c1">#       for z in range(dataSize[2]):</span>
+<span class="c1">#         #print z</span>
+<span class="c1">#         d11 = d1 - 2 * (x * x1 + y * y1 + z * z1) + (x*x + y*y + z*z)</span>
+<span class="c1">#         d22 = d2 - 2 * (x * x2 + y * y2 + z * z2) + (x*x + y*y + z*z)</span>
+<span class="c1">#</span>
+<span class="c1">#         ii1 = d11 &lt; r2</span>
+<span class="c1">#         ii2 = d22 &lt; r2</span>
+<span class="c1">#</span>
+<span class="c1">#         n1[x,y,z] = ii1.sum()</span>
+<span class="c1">#         n2[x,y,z] = ii2.sum()</span>
+<span class="c1">#</span>
+<span class="c1">#         if n1[x,y,z] &gt; 0 and n2[x,y,z] &gt; 0:</span>
+<span class="c1">#             (pp, ss) = self.testCompletedCumulatives((i1[ii1], i2[ii2]), method = method)</span>
+<span class="c1">#         else:</span>
+<span class="c1">#             pp = 0; ss = 0</span>
+<span class="c1">#</span>
+<span class="c1">#         p[x,y,z] = pp</span>
+<span class="c1">#         s[x,y,z] = ss</span>
+<span class="c1">#</span>
+<span class="c1">#   return (p,s,n1,n2)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># ###############################################################################</span>
+<span class="c1"># ### Tests</span>
+<span class="c1"># ###############################################################################</span>
+<span class="c1">#</span>
+<span class="c1"># def _test():</span>
+<span class="c1">#     &quot;&quot;&quot;Test the statistics array&quot;&quot;&quot;</span>
+<span class="c1">#     import numpy as np</span>
+<span class="c1">#     import ClearMap.Analysis.Statistics.GroupStatistics as st</span>
+<span class="c1">#</span>
+<span class="c1">#     s = np.ones((5,4,20))</span>
+<span class="c1">#     s[:, 0:3, :] = - 1</span>
+<span class="c1">#</span>
+<span class="c1">#     x = np.random.rand(4,4,20)</span>
+<span class="c1">#     y = np.random.rand(5,4,20) + s</span>
+<span class="c1">#</span>
+<span class="c1">#     pvals, psign = st.t_test_voxelization(x,y, signed = True)</span>
+<span class="c1">#</span>
+<span class="c1">#     pvalscol = st.color_p_values(pvals, psign, positive = [255,0,0], negative = [0,255,0])</span>
+<span class="c1">#</span>
+<span class="c1">#     import ClearMap.Visualization.Plot3d as p3d</span>
+<span class="c1">#     p3d.plot(pvalscol)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

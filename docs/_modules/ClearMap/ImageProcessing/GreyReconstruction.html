@@ -1,0 +1,763 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.ImageProcessing.GreyReconstruction &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/ImageProcessing/GreyReconstruction';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Ima...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.ImageProcessing.GreyReconstruction</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">GreyReconstruction</span>
+<span class="sd">==================</span>
+
+<span class="sd">This morphological reconstruction routine was adapted from </span>
+<span class="sd">`CellProfiler &lt;http://www.cellprofiler.org&gt;`_.</span>
+
+<span class="sd">Authors</span>
+<span class="sd">-------</span>
+<span class="sd">Original author: Lee Kamentsky, Massachusetts Institute of Technology</span>
+<span class="sd">Modifed by Christoph Kirst for ClearMap integration.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE.txt)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">skimage.filters._rank_order</span> <span class="kn">import</span> <span class="n">rank_order</span>
+
+
+<span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Filter.StructureElement</span> <span class="k">as</span> <span class="nn">se</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Utils.Timer</span> <span class="k">as</span> <span class="nn">tmr</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Utils.HierarchicalDict</span> <span class="k">as</span> <span class="nn">hdict</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Grey reconstruction</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="reconstruct">
+<a class="viewcode-back" href="../../../api/ClearMap.ImageProcessing.GreyReconstruction.html#ClearMap.ImageProcessing.GreyReconstruction.reconstruct">[docs]</a>
+<span class="k">def</span> <span class="nf">reconstruct</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;dilation&#39;</span><span class="p">,</span> <span class="n">selem</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">offset</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Performs a morphological reconstruction of an image.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  seed : array</span>
+<span class="sd">    Seed image to be dilated or eroded.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Maximum (dilation) / minimum (erosion) allowed</span>
+<span class="sd">  method : {&#39;dilation&#39;|&#39;erosion&#39;}</span>
+<span class="sd">    The method to use.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structuring element.</span>
+<span class="sd">  offset : array or None</span>
+<span class="sd">    The offset of the structuring element, None is centered.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  reconstructed : array</span>
+<span class="sd">    Result of morphological reconstruction.</span>
+<span class="sd">  </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  Reconstruction uses a seed image, which specifies the values</span>
+<span class="sd">  to dilate and a mask image that gives the maximum allowed dilated value at</span>
+<span class="sd">  each pixel.</span>
+<span class="sd">  </span>
+<span class="sd">  The algorithm is taken from [1]_. Applications for greyscale </span>
+<span class="sd">  reconstruction are discussed in [2]_ and [3]_.</span>
+<span class="sd">  </span>
+<span class="sd">  Effectively operates on 2d images.</span>
+<span class="sd">  </span>
+<span class="sd">  Reference:</span>
+<span class="sd">  </span>
+<span class="sd">  .. [1] Robinson, &quot;Efficient morphological reconstruction: a downhill</span>
+<span class="sd">         filter&quot;, Pattern Recognition Letters 25 (2004) 1759-1767.</span>
+<span class="sd">  .. [2] Vincent, L., &quot;Morphological Grayscale Reconstruction in Image</span>
+<span class="sd">         Analysis: Applications and Efficient Algorithms&quot;, IEEE Transactions</span>
+<span class="sd">         on Image Processing (1993)</span>
+<span class="sd">  .. [3] Soille, P., &quot;Morphological Image Analysis: Principles and</span>
+<span class="sd">         Applications&quot;, Chapter 6, 2nd edition (2003), ISBN 3540429883.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">seed</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+  
+  <span class="k">if</span> <span class="n">seed</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Seed shape </span><span class="si">% a</span><span class="s1">nd mask shape </span><span class="si">%r</span><span class="s1"> do not match&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">seed</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+  
+  <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;dilation&#39;</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">seed</span> <span class="o">&gt;</span> <span class="n">mask</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Intensity of seed image must be less than that &quot;</span>
+                     <span class="s2">&quot;of the mask image for reconstruction by dilation.&quot;</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;erosion&#39;</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">seed</span> <span class="o">&lt;</span> <span class="n">mask</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Intensity of seed image must be greater than that &quot;</span>
+                     <span class="s2">&quot;of the mask image for reconstruction by erosion.&quot;</span><span class="p">)</span>
+  <span class="k">try</span><span class="p">:</span>
+      <span class="kn">from</span> <span class="nn">skimage.morphology._greyreconstruct</span> <span class="kn">import</span> <span class="n">reconstruction_loop</span>
+  <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="s2">&quot;_greyreconstruct extension not available.&quot;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">selem</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">selem</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">seed</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">selem</span> <span class="o">=</span> <span class="n">selem</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+  <span class="k">if</span> <span class="n">offset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">d</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">selem</span><span class="o">.</span><span class="n">shape</span><span class="p">]):</span>
+        <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Footprint dimensions must all be odd&quot;</span><span class="p">)</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">d</span> <span class="o">//</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">selem</span><span class="o">.</span><span class="n">shape</span><span class="p">])</span>
+  
+  <span class="c1"># Cross out the center of the structural_element</span>
+  <span class="n">selem</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">offset</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">False</span>
+
+  <span class="c1"># Make padding for edges of reconstructed image so we can ignore boundaries</span>
+  <span class="n">padding</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">selem</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+  <span class="n">dims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">seed</span><span class="o">.</span><span class="n">ndim</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+  <span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">seed</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">padding</span>
+  <span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="n">inside_slices</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">padding</span><span class="p">)</span>
+  <span class="c1"># Set padded region to minimum image intensity and mask along first axis so</span>
+  <span class="c1"># we can interleave image and mask pixels when sorting.</span>
+  <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;dilation&#39;</span><span class="p">:</span>
+      <span class="n">pad_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;erosion&#39;</span><span class="p">:</span>
+      <span class="n">pad_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+  <span class="n">images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">seed</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">*</span> <span class="n">pad_value</span>
+  <span class="n">images</span><span class="p">[(</span><span class="mi">0</span><span class="p">,)</span> <span class="o">+</span> <span class="n">inside_slices</span><span class="p">]</span> <span class="o">=</span> <span class="n">seed</span>
+  <span class="n">images</span><span class="p">[(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">+</span> <span class="n">inside_slices</span><span class="p">]</span> <span class="o">=</span> <span class="n">mask</span>
+
+  <span class="c1"># Create a list of strides across the array to get the neighbors within</span>
+  <span class="c1"># a flattened array</span>
+  <span class="n">value_stride</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="n">images</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span>
+  <span class="n">image_stride</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">images</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">itemsize</span>
+  <span class="n">selem_mgrid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[[</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="n">o</span><span class="p">,</span> <span class="n">d</span> <span class="o">-</span> <span class="n">o</span><span class="p">)</span>
+                          <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">selem</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">offset</span><span class="p">)]]</span>
+  <span class="n">selem_offsets</span> <span class="o">=</span> <span class="n">selem_mgrid</span><span class="p">[:,</span> <span class="n">selem</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+  <span class="n">nb_strides</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">value_stride</span> <span class="o">*</span> <span class="n">selem_offset</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">selem_offset</span> <span class="ow">in</span> <span class="n">selem_offsets</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+  <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+  <span class="c1"># Erosion goes smallest to largest; dilation goes largest to smallest.</span>
+  <span class="n">index_sorted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">images</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;dilation&#39;</span><span class="p">:</span>
+      <span class="n">index_sorted</span> <span class="o">=</span> <span class="n">index_sorted</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+  <span class="c1"># Make a linked list of pixels sorted by value. -1 is the list terminator.</span>
+  <span class="n">prev</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+  <span class="nb">next</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+  <span class="n">prev</span><span class="p">[</span><span class="n">index_sorted</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span> <span class="o">=</span> <span class="n">index_sorted</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+  <span class="nb">next</span><span class="p">[</span><span class="n">index_sorted</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">index_sorted</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+
+  <span class="c1"># Cython inner-loop compares the rank of pixel values.</span>
+  <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;dilation&#39;</span><span class="p">:</span>
+      <span class="n">value_rank</span><span class="p">,</span> <span class="n">value_map</span> <span class="o">=</span> <span class="n">rank_order</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;erosion&#39;</span><span class="p">:</span>
+      <span class="n">value_rank</span><span class="p">,</span> <span class="n">value_map</span> <span class="o">=</span> <span class="n">rank_order</span><span class="p">(</span><span class="o">-</span><span class="n">images</span><span class="p">)</span>
+      <span class="n">value_map</span> <span class="o">=</span> <span class="o">-</span><span class="n">value_map</span>
+
+  <span class="n">start</span> <span class="o">=</span> <span class="n">index_sorted</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">reconstruction_loop</span><span class="p">(</span><span class="n">value_rank</span><span class="p">,</span> <span class="n">prev</span><span class="p">,</span> <span class="nb">next</span><span class="p">,</span> <span class="n">nb_strides</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">image_stride</span><span class="p">)</span>
+
+  <span class="c1"># Reshape reconstructed image to original image shape and remove padding.</span>
+  <span class="n">rec_img</span> <span class="o">=</span> <span class="n">value_map</span><span class="p">[</span><span class="n">value_rank</span><span class="p">[:</span><span class="n">image_stride</span><span class="p">]]</span>
+  <span class="n">rec_img</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">seed</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">padding</span>
+  
+  <span class="k">return</span> <span class="n">rec_img</span><span class="p">[</span><span class="n">inside_slices</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="grey_reconstruct">
+<a class="viewcode-back" href="../../../api/ClearMap.ImageProcessing.GreyReconstruction.html#ClearMap.ImageProcessing.GreyReconstruction.grey_reconstruct">[docs]</a>
+<span class="k">def</span> <span class="nf">grey_reconstruct</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Calculates the grey reconstruction of the image </span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  </span>
+<span class="sd">  source : array</span>
+<span class="sd">    The source image data.</span>
+<span class="sd">  method : &#39;dilation&#39; or &#39;erosion&#39; or None</span>
+<span class="sd">    The mehtjod to use, if None return original image.</span>
+<span class="sd">  shape : in or tuple</span>
+<span class="sd">    Shape of the strucuturing element for the grey reconstruction.</span>
+<span class="sd">  verbose : boo;</span>
+<span class="sd">    If True, print progress info.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  reconstructed: array</span>
+<span class="sd">    Grey reconstructed image.</span>
+<span class="sd">    </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  The reconstruction is done slice by slice along the z-axis.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">();</span>
+    <span class="n">hdict</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">head</span><span class="o">=</span><span class="s1">&#39;Grey reconstruction&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+  
+  <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">source</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">source</span><span class="o">.</span><span class="n">dtype</span><span class="p">);</span>
+  
+  <span class="c1"># background subtraction in each slice</span>
+  <span class="n">selem</span> <span class="o">=</span> <span class="n">se</span><span class="o">.</span><span class="n">structure_element</span><span class="p">(</span><span class="n">form</span><span class="o">=</span><span class="s1">&#39;Disk&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+    <span class="c1">#img[:,:,z] = img[:,:,z] - grey_opening(img[:,:,z], structure = structureElement(&#39;Disk&#39;, (30,30)));</span>
+    <span class="c1">#img[:,:,z] = img[:,:,z] - morph.grey_opening(img[:,:,z], structure = self.structureELement(&#39;Disk&#39;, (150,150)));</span>
+    <span class="n">sink</span><span class="p">[:,:,</span><span class="n">z</span><span class="p">]</span> <span class="o">=</span> <span class="n">source</span><span class="p">[:,:,</span><span class="n">z</span><span class="p">]</span> <span class="o">-</span> <span class="n">reconstruct</span><span class="p">(</span><span class="n">source</span><span class="p">[:,:,</span><span class="n">z</span><span class="p">],</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">[:,:,</span><span class="n">z</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">)</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Grey reconstruction&#39;</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">sink</span> </div>
+
+
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Test</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.GreyReconstruction</span> <span class="k">as</span> <span class="nn">gr</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">p3d</span>
+
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span><span class="p">));</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">grey_reconstruct</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;erosion&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+  
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">r</span><span class="p">])</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CellMap &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'advanced/cell_map_advanced';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TubeMap" href="tube_map_advanced.html" />
+    <link rel="prev" title="WobblyStitcher" href="wobblystitcher.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tube_map_advanced.html">TubeMap</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="advanced_usage.html" class="nav-link">ClearMap pipelines</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">CellMap</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cellmap">
+<span id="cell-map-advanced"></span><h1>CellMap<a class="headerlink" href="#cellmap" title="Link to this heading">#</a></h1>
+<p>This pipeline implements the cell detection and analysis done in <a class="reference internal" href="../references.html#renier2016" id="id1"><span>[Renier2016]</span></a>.
+It highly optimized to perform a fast and efficient detection of cell nuclei
+in TB scale light sheet microscopy images.</p>
+<p>See the <cite>CellMap tutorial</cite> for usage.</p>
+<p>The main image processing steps are defined in the cell expert module
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">/../ClearMap.ImageProcessing.Experts.Cells</span></code>.</p>
+<section id="pipeline">
+<h2>Pipeline<a class="headerlink" href="#pipeline" title="Link to this heading">#</a></h2>
+<nav class="contents local" id="cellmap-is-tailored-to-detect-cell-nuclei-and-composed-of-the-following-image-processing-steps">
+<p class="topic-title"><a class="reference internal" href="../api/ClearMap.Scripts.CellMap.html#module-ClearMap.Scripts.CellMap" title="ClearMap.Scripts.CellMap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CellMap</span></code></a> is tailored to detect cell nuclei and composed of the following image processing steps:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#illumination-correction" id="id4">Illumination correction</a></p></li>
+<li><p><a class="reference internal" href="#background-removal" id="id5">Background removal</a></p></li>
+<li><p><a class="reference internal" href="#equalization" id="id6">Equalization</a></p></li>
+<li><p><a class="reference internal" href="#difference-of-gaussians-dog-filter" id="id7">Difference of Gaussians (DoG) filter</a></p></li>
+<li><p><a class="reference internal" href="#maxima-detection" id="id8">Maxima detection</a></p></li>
+<li><p><a class="reference internal" href="#cell-shape-detection" id="id9">Cell shape detection</a></p></li>
+<li><p><a class="reference internal" href="#cell-intensity-measurements" id="id10">Cell intensity measurements</a></p></li>
+<li><p><a class="reference internal" href="#statistics" id="id11">Statistics</a></p></li>
+</ul>
+</nav>
+<p>In short background subtraction via morphological opening is followed by a
+sequence of filters, morphological operations and a 3D peak detection.
+The peaks are used as seeds for a watershed on the foreground and
+the resulting shapes filtered by volume to retain only genuine cells.</p>
+<figure class="align-default" id="id2">
+<span id="cellmappipeline"></span><img alt="../_images/CellMap_pipeline.png" src="../_images/CellMap_pipeline.png" />
+<figcaption>
+<p><span class="caption-number">Figure 14 </span><span class="caption-text">iDISCO+ and ClearMap: A Pipeline for Cell Detection, Registration, and
+Mapping in Intact Samples Using Light Sheet Microscopy.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="illumination-correction">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Illumination correction</a><a class="headerlink" href="#illumination-correction" title="Link to this heading">#</a></h3>
+<p>To improve the consistency of the cell detection algorithm, we pre-process the
+light sheet images by correcting illumination along the y axis (orthogonal to
+the direction of illumination) to account for light loss due to the objective
+lens vignetting and Gaussian shape of the light sheet beam.</p>
+<p>Because of the Gaussian shape of the light sheet and of the objecting lens
+vignetting, the sample illumination is not uniform. While correcting the
+illumination can improve the uniformity of the cell detection, it is often
+not necessary if all samples where imaged the same way, as the anatomical
+features will be positioned in the same region of the lens across samples.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that you need to generate an intensity profile for your system
+if you wish to use this function.</p>
+</div>
+<figure class="align-default" id="id3">
+<span id="cellmappipelineillumination"></span><img alt="../_images/CellMap_pipeline_illumination.jpg" src="../_images/CellMap_pipeline_illumination.jpg" />
+<figcaption>
+<p><span class="caption-number">Figure 15 </span><span class="caption-text">Illumination correction in ClearMap.</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="background-removal">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Background removal</a><a class="headerlink" href="#background-removal" title="Link to this heading">#</a></h3>
+<p>This is the most important pre-processing step, usually always turned on.
+The background subtraction is done by subtracting a morphological opening
+and is not very sensitive to the size parameter used, as long as it is in the
+range of the size of the objects detected.</p>
+</section>
+<section id="equalization">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Equalization</a><a class="headerlink" href="#equalization" title="Link to this heading">#</a></h3>
+<p>In this step a custom designed equalization filter is applied optionally.
+The filter calculates for each voxel <img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/> a lower and upper
+intensity (<img class="math" src="../_images/math/cc5ff284e268e8842cdbdec61b1dc656560c1293.png" alt="l_{i}"/> and <img class="math" src="../_images/math/ea13b9e348dca22db563042e60e36be2ee06ba83.png" alt="u_{i}"/>)
+via a lower and upper percentile (<img class="math" src="../_images/math/cfe44106fbbe875b59dc00d26c894b646adcae7e.png" alt="p_{l}"/> and <img class="math" src="../_images/math/15b30f05a5e404db70bb4790d0800ab7bbfb6ff8.png" alt="p_{u}"/>) of
+the voxel intensities in a rectangular region <img class="math" src="../_images/math/60bf243b4c6f5e3fb74686244011b1d7c84be5b9.png" alt="R_{i}"/> centered
+around <img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/>. The region is chosen to be larger than the large
+vessel structures and our efficient histogram sampling framework is used
+to speed up computation. The voxel intensity is then normalized via</p>
+<div class="math">
+<p><img src="../_images/math/1bff3fec288e8161e641d18cd2041846327d3cbe.png" alt="v_{i} \rightarrow f_{i}v_{i}"/></p>
+</div><p>with normalization factor</p>
+<div class="math">
+<p><img src="../_images/math/335206cd9fe144d1f93d5b325df2df074c336b1a.png" alt="f_{i} = \left\{ \begin{array}{ll} v_{i}/l_{i} &amp; u_{i}/l_{i} \leq m \\ m/u_{i} &amp; \text{else} \end{array} \right."/></p>
+</div><p>and <img class="math" src="../_images/math/e9bc7da808d33a16a8347f27a519bd067186aa66.png" alt="m"/> a maximal intensity value for the upper percentile.</p>
+</section>
+<section id="difference-of-gaussians-dog-filter">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Difference of Gaussians (DoG) filter</a><a class="headerlink" href="#difference-of-gaussians-dog-filter" title="Link to this heading">#</a></h3>
+<p>This is an optional filter improves the contrast of blob like objects.
+This filter has a “Mexican Hat” shape that negatively weighs the intensity
+at the border of the objects.</p>
+<p>A c-Fos nuclear staining often has enough contrast and a simple shape
+so this additional filtering is not necessary usually, but it can help
+to increase the contrast of the relevant objects for other experiments.</p>
+</section>
+<section id="maxima-detection">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Maxima detection</a><a class="headerlink" href="#maxima-detection" title="Link to this heading">#</a></h3>
+<p>In this step potential cell centers are detect by finding local maxima
+in the pre-processed images.</p>
+<p>The maxima detection can have an optional extended maxima filter (via
+an h-transform) useful for objects that contain several peaks of intensity,
+for instance, higher resolution views of a cell nuclei with granular texture.</p>
+</section>
+<section id="cell-shape-detection">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Cell shape detection</a><a class="headerlink" href="#cell-shape-detection" title="Link to this heading">#</a></h3>
+<p>The cell shape detection can be used to measure the volumes of the detected
+cells. This can help to remove local peaks that do not correspond to an actual
+cell.</p>
+<p>The shape detection is done by a watershed, which will paint the volume
+of the cell from the detected center outwards.</p>
+</section>
+<section id="cell-intensity-measurements">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Cell intensity measurements</a><a class="headerlink" href="#cell-intensity-measurements" title="Link to this heading">#</a></h3>
+<p>This part of the pipeline allows to measure various expression levels and
+intensities given the cell centers or shape. Different methods
+can be used to calculate the intensity in an extended cell shape (e..g max, min,
+mean etc.).</p>
+</section>
+<section id="statistics">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Statistics</a><a class="headerlink" href="#statistics" title="Link to this heading">#</a></h3>
+<p>Cell counts or intensities of each sample in considered regions or annotated
+brain areas between different groups can be compared using the independent
+two sample student t-test assuming unequal variances.</p>
+<p>ClearMap as a discovery tool also provides correction for p-values for multiple
+comparison to q-values to control for false-discovery rate.</p>
+<p>See the <a class="reference internal" href="../api/ClearMap.Analysis.Statistics.html#module-ClearMap.Analysis.Statistics" title="ClearMap.Analysis.Statistics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.Analysis.Statistics</span></code></a> module for more details.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="wobblystitcher.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">WobblyStitcher</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="tube_map_advanced.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TubeMap</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline">Pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#illumination-correction">Illumination correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background-removal">Background removal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equalization">Equalization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difference-of-gaussians-dog-filter">Difference of Gaussians (DoG) filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maxima-detection">Maxima detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-shape-detection">Cell shape detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-intensity-measurements">Cell intensity measurements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics">Statistics</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/advanced/cell_map_advanced.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

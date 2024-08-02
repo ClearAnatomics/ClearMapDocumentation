@@ -1,0 +1,752 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.ImageProcessing.Tracing.Trace &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/ImageProcessing/Tracing/Trace';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Ima...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.ImageProcessing.Tracing.Trace</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Trace</span>
+<span class="sd">=====</span>
+
+<span class="sd">Module to trace paths of minimal resitance between two points in a 3d array.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;ckirst@rockefeller.edu&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;MIT License &lt;http://www.opensource.org/licenses/mit-license.php&gt;&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright (c) 2019 by Christoph Kirst&#39;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyximport</span>
+
+<span class="n">pyximport</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="n">setup_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;include_dirs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">get_include</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))]},</span>
+                  <span class="n">reload_support</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Tracing.TraceCode</span> <span class="k">as</span> <span class="nn">code</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tracing</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="trace">
+<a class="viewcode-back" href="../../../../api/ClearMap.ImageProcessing.Tracing.Trace.html#ClearMap.ImageProcessing.Tracing.Trace.trace">[docs]</a>
+<span class="k">def</span> <span class="nf">trace</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> 
+          <span class="n">costPerDistance</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">minimumCostPerDistance</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mf">60.0</span><span class="p">,</span>
+          <span class="n">tubenessMultiplier</span> <span class="o">=</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">minimalTubeness</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+          <span class="n">returnQuality</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+          <span class="n">maxSteps</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Trace a path in the 3d source image from start to stop</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ----------</span>
+<span class="sd">  srouce : array</span>
+<span class="sd">    Input source.</span>
+<span class="sd">  score : array</span>
+<span class="sd">    A measure at each point to score a path. The higher the more likely</span>
+<span class="sd">    is it that the path will go through and thus the score is a reward</span>
+<span class="sd">    like measure. The cost for the path is approximately 1/score.</span>
+<span class="sd">  start : array</span>
+<span class="sd">    Start position.</span>
+<span class="sd">  stop : array</span>
+<span class="sd">    Stop position.</span>
+<span class="sd">  costPerDistance : float</span>
+<span class="sd">    Cost used to when estimating remaining distance.</span>
+<span class="sd">    Can be used to weigh the estimated distance measure.</span>
+<span class="sd">  minimalCostperDistance : float</span>
+<span class="sd">    Minimal cost per distance used when tubeness measure is below this value.</span>
+<span class="sd">  tubenessMultipler : float</span>
+<span class="sd">    Multiply the tubeness measure by this value before estimating coadt via inverse.</span>
+<span class="sd">    Can be used to weigh tubness vs. distiance measures.</span>
+<span class="sd">  minimalTubeness : float</span>
+<span class="sd">    Minimal tubness measure to use (note the inverse of the tubness measure is used</span>
+<span class="sd">    to calculate the cost, this effectively limits the maximal cost).</span>
+<span class="sd">  maxSteps : int or None</span>
+<span class="sd">    Number of maximal iteration steps.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  path : 2-D array</span>
+<span class="sd">    The path a list of coordinates.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+<span class="c1">#    if not source.flags.c_contiguous:</span>
+<span class="c1">#        raise RuntimeError(&#39;Source array not c-contigous&#39;);</span>
+<span class="c1">#    </span>
+<span class="c1">#    if not tubeness.flags.c_contiguous:</span>
+<span class="c1">#        raise RuntimeError(&#39;Tubeness array not c-contigous&#39;);    </span>
+  
+  <span class="k">if</span> <span class="n">maxSteps</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">maxSteps</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  
+  <span class="n">path</span> <span class="o">=</span> <span class="n">code</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">start</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stop</span><span class="p">),</span> 
+                    <span class="n">costPerDistance</span><span class="p">,</span> <span class="n">minimumCostPerDistance</span><span class="p">,</span> 
+                    <span class="n">tubenessMultiplier</span><span class="p">,</span> <span class="n">minimalTubeness</span><span class="p">,</span>
+                    <span class="n">returnQuality</span><span class="p">,</span>
+                    <span class="n">maxSteps</span><span class="p">,</span> <span class="n">verbose</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">path</span><span class="p">;</span></div>
+
+
+  
+<div class="viewcode-block" id="trace_to_mask">
+<a class="viewcode-back" href="../../../../api/ClearMap.ImageProcessing.Tracing.Trace.html#ClearMap.ImageProcessing.Tracing.Trace.trace_to_mask">[docs]</a>
+<span class="k">def</span> <span class="nf">trace_to_mask</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">tubeness</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> 
+                  <span class="n">costPerDistance</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">minimumCostPerDistance</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mf">60.0</span><span class="p">,</span>
+                  <span class="n">tubenessMultiplier</span> <span class="o">=</span> <span class="mf">4.0</span><span class="p">,</span> <span class="n">minimalTubeness</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+                  <span class="n">returnQuality</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                  <span class="n">maxSteps</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Trace a path in the 3d source image from start to a point on the mask</span>
+
+<span class="sd">  Parameters</span>
+<span class="sd">  ----------</span>
+<span class="sd">  source : array </span>
+<span class="sd">      Input source.</span>
+<span class="sd">  tubeness : array</span>
+<span class="sd">      Tubness measure used to score path</span>
+<span class="sd">  start : array</span>
+<span class="sd">      starting point for tracing</span>
+<span class="sd">  mask : 3-D array</span>
+<span class="sd">      distance array to mask (goal points on mask == 0).  </span>
+<span class="sd">  costPerDistance : float</span>
+<span class="sd">      Cost used to when estimating remaining distance.</span>
+<span class="sd">      Can be used to weigh the estimated distance measure</span>
+<span class="sd">  minimalCostperDistance : float</span>
+<span class="sd">      Minimal cost per distance used when tubeness measure is below this value.</span>
+<span class="sd">  tubenessMultipler : float</span>
+<span class="sd">      Multiply the tubeness measure by this value before estimating coadt via inverse.</span>
+<span class="sd">      Can be used to weigh tubness vs. distiance measures.</span>
+<span class="sd">  maxSteps : int or None</span>
+<span class="sd">      Number of maximal iteration steps.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  path : 2-D array</span>
+<span class="sd">      the path a list of coordinates</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+<span class="c1">#    if not source.flags.c_contiguous:</span>
+<span class="c1">#        raise RuntimeError(&#39;Source array not c-contigous&#39;);</span>
+<span class="c1">#    </span>
+<span class="c1">#    if not tubeness.flags.c_contiguous:</span>
+<span class="c1">#        raise RuntimeError(&#39;Tubeness array not c-contigous&#39;);  </span>
+<span class="c1">#        </span>
+<span class="c1">#    if not mask.flags.c_contiguous:</span>
+<span class="c1">#        raise RuntimeError(&#39;Mask array not c-contigous&#39;);    </span>
+  
+  <span class="k">if</span> <span class="n">maxSteps</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">maxSteps</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="c1">#maxSteps = long(maxSteps);</span>
+  
+  <span class="n">path</span> <span class="o">=</span> <span class="n">code</span><span class="o">.</span><span class="n">traceToMask</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">tubeness</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">start</span><span class="p">),</span> <span class="n">mask</span><span class="p">,</span> 
+                    <span class="n">costPerDistance</span><span class="p">,</span> <span class="n">minimumCostPerDistance</span><span class="p">,</span>
+                    <span class="n">tubenessMultiplier</span><span class="p">,</span> <span class="n">minimalTubeness</span><span class="p">,</span> 
+                    <span class="n">returnQuality</span><span class="p">,</span>
+                    <span class="n">maxSteps</span><span class="p">,</span> <span class="n">verbose</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">path</span></div>
+
+
+
+
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="p">;</span>
+  <span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span><span class="p">;</span>
+  
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">p3d</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Filter.Curvature.Curvature</span> <span class="k">as</span> <span class="nn">cur</span> 
+  <span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Tracing.Trace</span> <span class="k">as</span> <span class="nn">trc</span><span class="p">;</span>
+  
+  <span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+  <span class="n">reload</span><span class="p">(</span><span class="n">trc</span><span class="p">);</span>
+  
+  <span class="c1">#x = np.random.rand(50,50,50);</span>
+  <span class="c1">#x = ndi.gaussian_filter(x, sigma = 2);</span>
+  
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;/home/ckirst/Desktop/data.npy&#39;</span><span class="p">)[:</span><span class="mi">50</span><span class="p">,:</span><span class="mi">50</span><span class="p">,:</span><span class="mi">50</span><span class="p">];</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">);</span>
+  
+  <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="p">[</span><span class="mi">37</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">24</span><span class="p">],</span> <span class="p">[</span><span class="mi">27</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">38</span><span class="p">]</span>
+  
+<span class="c1">#  from collections import defaultdict</span>
+<span class="c1">#  import gc</span>
+<span class="c1">#  gc.collect();</span>
+  <span class="c1">#before = defaultdict(int)</span>
+  <span class="c1">#after = defaultdict(int)</span>
+  <span class="c1">#for i in gc.get_objects():</span>
+  <span class="c1">#  before[type(i)] += 1   </span>
+  
+  <span class="n">t</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">tubeness</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  
+  <span class="c1">#reload(trc);</span>
+  <span class="n">p</span> <span class="o">=</span> <span class="n">trc</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">);</span>
+  
+  <span class="c1">#gc.collect();</span>
+  
+  <span class="c1">#for i in gc.get_objects():</span>
+  <span class="c1">#   after[type(i)] += 1</span>
+  <span class="c1">#print [(k, after[k] - before[k]) for k in after if after[k] - before[k]]</span>
+  
+  <span class="c1">#import mem_top as mt;</span>
+  <span class="c1">#print mt.mem_top(width = 150);</span>
+  
+  
+  <span class="c1">#%%</span>
+  <span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">);</span>
+  <span class="k">for</span> <span class="n">pp</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
+    <span class="n">xp</span><span class="p">[</span><span class="n">pp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">512</span><span class="p">;</span>
+ 
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">dd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">setSource</span><span class="p">(</span><span class="n">xp</span><span class="p">);</span>
+    <span class="n">dd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">setSource</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+  <span class="k">except</span><span class="p">:</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span><span class="n">t</span><span class="p">]);</span>
+
+
+  <span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>
+  
+  <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+  <span class="n">mask</span><span class="p">[:,:,:</span><span class="mi">40</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1"># zeros are the goal !!</span>
+  <span class="n">dist</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">sampling</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+  
+  <span class="n">start</span> <span class="o">=</span> <span class="p">[</span><span class="mi">37</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">];</span>
+  <span class="n">path</span> <span class="o">=</span> <span class="n">trc</span><span class="o">.</span><span class="n">traceToMask</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">dist</span><span class="p">)</span>
+  
+  <span class="n">xp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">);</span>
+  <span class="k">for</span> <span class="n">pp</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
+    <span class="n">xp</span><span class="p">[</span><span class="n">pp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">512</span><span class="p">;</span>  
+  
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">dd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">setSource</span><span class="p">(</span><span class="n">xp</span><span class="p">);</span>
+    <span class="n">dd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">setSource</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
+  <span class="k">except</span><span class="p">:</span>
+    <span class="n">dd</span> <span class="o">=</span> <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span><span class="n">t</span><span class="p">]);</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

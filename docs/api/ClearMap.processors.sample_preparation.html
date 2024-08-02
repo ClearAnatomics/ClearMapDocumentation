@@ -1,0 +1,1011 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>sample_preparation &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.processors.sample_preparation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.processors.batch_process.html">batch_process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.processors.cell_map.html">cell_map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.processors.generic_tab_processor.html">generic_tab_processor</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">sample_preparation</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">sample_preparation</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="sample-preparation">
+<h1>sample_preparation<a class="headerlink" href="#sample-preparation" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+</tbody>
+</table>
+</div>
+<p id="module-ClearMap.processors.sample_preparation">This is the part that is common to both pipelines to process the raw images.
+It includes file conversion, stitching and registration</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PreProcessor</span></span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.processors.generic_tab_processor.html#ClearMap.processors.generic_tab_processor.TabProcessor" title="ClearMap.processors.generic_tab_processor.TabProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabProcessor</span></code></a></p>
+<p>Handle the stitching and alignment of the raw images</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.align">
+<span class="sig-name descname"><span class="pre">align</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.align"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.align" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.check_has_all_tiles">
+<span class="sig-name descname"><span class="pre">check_has_all_tiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.check_has_all_tiles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.check_has_all_tiles" title="Link to this definition">#</a></dt>
+<dd><p>Check whether all the tiles of the channel exist on disk</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>channel</strong> (<em>str</em>) – The channel to check</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if all the tiles exist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.clear_landmarks">
+<span class="sig-name descname"><span class="pre">clear_landmarks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.clear_landmarks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.clear_landmarks" title="Link to this definition">#</a></dt>
+<dd><p>Clear (remove) the landmarks files</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.convert_tiles">
+<span class="sig-name descname"><span class="pre">convert_tiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.convert_tiles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.convert_tiles" title="Link to this definition">#</a></dt>
+<dd><p>Convert list of input files to numpy files for efficiency reasons</p>
+<p class="rubric">Returns</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.convert_to_image_format">
+<span class="sig-name descname"><span class="pre">convert_to_image_format</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.convert_to_image_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.convert_to_image_format" title="Link to this definition">#</a></dt>
+<dd><p>Convert (optionally) to image formats readable by e.g. Fiji</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.delete_resampled_files">
+<span class="sig-name descname"><span class="pre">delete_resampled_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.delete_resampled_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.delete_resampled_files" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.filename">
+<span class="sig-name descname"><span class="pre">filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.filename" title="Link to this definition">#</a></dt>
+<dd><p>A shortcut to get the filename from the workspace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong></p></li>
+<li><p><strong>kwargs</strong></p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>str</dt><dd><p>The filename</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.get_atlas_files">
+<span class="sig-name descname"><span class="pre">get_atlas_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.get_atlas_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.get_atlas_files" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.get_autofluo_pts_path">
+<span class="sig-name descname"><span class="pre">get_autofluo_pts_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'resampled_to_auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.get_autofluo_pts_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.get_autofluo_pts_path" title="Link to this definition">#</a></dt>
+<dd><p>Get the path to the autofluorescence landmarks file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>direction</strong></p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>str</dt><dd><p>The path to the autofluorescence landmarks file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.get_configs">
+<span class="sig-name descname"><span class="pre">get_configs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.get_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.get_configs" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.get_wobbly_layout">
+<span class="sig-name descname"><span class="pre">get_wobbly_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.get_wobbly_layout" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.overlay_layout_plane">
+<span class="sig-name descname"><span class="pre">overlay_layout_plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layout</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.overlay_layout_plane"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.overlay_layout_plane" title="Link to this definition">#</a></dt>
+<dd><p>Overlays the sources to check their placement.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>layout<span class="classifier">Layout class</span></dt><dd><p>The layout with the sources to overlay.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>image<span class="classifier">array</span></dt><dd><p>A color image.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.patch_elastix_cfg_landmarks">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">patch_elastix_cfg_landmarks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elastix_cfg_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.patch_elastix_cfg_landmarks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.patch_elastix_cfg_landmarks" title="Link to this definition">#</a></dt>
+<dd><p>Patches the elastix configuration file to use landmarks (CorrespondingPointsEuclideanDistanceMetric),
+in addition to AdvancedMattesMutualInformation</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This method modifies the file in place and assumes that the existing</p>
+</div>
+<p>metric is AdvancedMattesMutualInformation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>elastix_cfg_path</strong> (<em>str</em>) – Path to the elastix configuration file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.plot_atlas">
+<span class="sig-name descname"><span class="pre">plot_atlas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.plot_atlas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.plot_atlas" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.plot_layout">
+<span class="sig-name descname"><span class="pre">plot_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">postfix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aligned_axis'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.plot_layout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.plot_layout" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.plot_stitching_results">
+<span class="sig-name descname"><span class="pre">plot_stitching_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.plot_stitching_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.plot_stitching_results" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.resample_for_registration">
+<span class="sig-name descname"><span class="pre">resample_for_registration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.resample_for_registration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.resample_for_registration" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.restore_elastix_cfg_no_landmarks">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">restore_elastix_cfg_no_landmarks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elastix_cfg_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.restore_elastix_cfg_no_landmarks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.restore_elastix_cfg_no_landmarks" title="Link to this definition">#</a></dt>
+<dd><p>Restores the elastix configuration file to not use landmarks (CorrespondingPointsEuclideanDistanceMetric),
+only AdvancedMattesMutualInformation</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This method modifies the file in place and assumes that the existing metric is</p>
+</div>
+<p>AdvancedMattesMutualInformation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>elastix_cfg_path</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.set_configs">
+<span class="sig-name descname"><span class="pre">set_configs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_paths</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.set_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.set_configs" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert_tiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.setup" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>machine_cfg_path</strong> (<em>cfgs tuple of</em>) – (machine_cfg, sample_cfg, processing_cfg)</p></li>
+<li><p><strong>sample_cfg_path</strong> – (machine_cfg, sample_cfg, processing_cfg)</p></li>
+<li><p><strong>or</strong> (<em>processing_cfg_path</em><em>)</em>) – (machine_cfg, sample_cfg, processing_cfg)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.setup_atlases">
+<span class="sig-name descname"><span class="pre">setup_atlases</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.setup_atlases"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.setup_atlases" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.stack_columns">
+<span class="sig-name descname"><span class="pre">stack_columns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.stack_columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.stack_columns" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.stitch">
+<span class="sig-name descname"><span class="pre">stitch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.stitch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.stitch" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.stitch_overlay">
+<span class="sig-name descname"><span class="pre">stitch_overlay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.stitch_overlay"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.stitch_overlay" title="Link to this definition">#</a></dt>
+<dd><p>This creates a <em>dumb</em> overlay of the tiles
+i.e. only using the fixed guess overlap
+:param channel:
+:param color:</p>
+<p class="rubric">Returns</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.stitch_rigid">
+<span class="sig-name descname"><span class="pre">stitch_rigid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.stitch_rigid" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.stitch_wobbly">
+<span class="sig-name descname"><span class="pre">stitch_wobbly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.stitch_wobbly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.stitch_wobbly" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.unpack_atlas">
+<span class="sig-name descname"><span class="pre">unpack_atlas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atlas_base_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.unpack_atlas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.unpack_atlas" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.use_npy">
+<span class="sig-name descname"><span class="pre">use_npy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.use_npy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.use_npy" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.z_only">
+<span class="sig-name descname"><span class="pre">z_only</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raw'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#PreProcessor.z_only"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.z_only" title="Link to this definition">#</a></dt>
+<dd><p>Check if the channel is z only (no x or y tiles)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>channel</strong> (<em>str</em>) – The channel to check</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if the channel is z only</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.aligned_autofluo_path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">aligned_autofluo_path</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.aligned_autofluo_path" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.autofluorescence_is_tiled">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">autofluorescence_is_tiled</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.autofluorescence_is_tiled" title="Link to this definition">#</a></dt>
+<dd><p>Check if the autofluorescence channel is tiled (has x and y tiles)
+.. rubric:: Returns</p>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if the autofluorescence channel is tiled</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.has_npy">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_npy</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.has_npy" title="Link to this definition">#</a></dt>
+<dd><p>Check if the raw channel is in npy format</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if the raw channel is in npy format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.has_tiles">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_tiles</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.has_tiles" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.is_tiled">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_tiled</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.is_tiled" title="Link to this definition">#</a></dt>
+<dd><p>Check if the raw channel is tiled (has x and y tiles)</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>bool</dt><dd><p>True if the raw channel is tiled</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.n_channels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_channels</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.n_channels" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.n_channels_convert">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_channels_convert</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.n_channels_convert" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.n_registration_steps">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_registration_steps</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.n_registration_steps" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.n_rigid_steps_to_run">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_rigid_steps_to_run</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.n_rigid_steps_to_run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.n_wobbly_steps_to_run">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_wobbly_steps_to_run</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.n_wobbly_steps_to_run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.prefix">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prefix</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.prefix" title="Link to this definition">#</a></dt>
+<dd><p>Get the prefix to use for the files</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>str</dt><dd><p>The prefix to use, None to not use any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.raw_stitched_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raw_stitched_shape</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.raw_stitched_shape" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.ref_pts_path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ref_pts_path</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.ref_pts_path" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.resampled_pts_path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">resampled_pts_path</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.resampled_pts_path" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.resampled_shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">resampled_shape</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.resampled_shape" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.was_registered">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">was_registered</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.was_registered" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.PreProcessor.was_stitched_rigid">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">was_stitched_rigid</span></span><a class="headerlink" href="#ClearMap.processors.sample_preparation.PreProcessor.was_stitched_rigid" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.init_preprocessor">
+<span class="sig-name descname"><span class="pre">init_preprocessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atlas_base_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convert_tiles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#init_preprocessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.init_preprocessor" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.processors.sample_preparation.main">
+<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/processors/sample_preparation.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.processors.sample_preparation.main" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor"><code class="docutils literal notranslate"><span class="pre">PreProcessor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.align"><code class="docutils literal notranslate"><span class="pre">PreProcessor.align()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.check_has_all_tiles"><code class="docutils literal notranslate"><span class="pre">PreProcessor.check_has_all_tiles()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.clear_landmarks"><code class="docutils literal notranslate"><span class="pre">PreProcessor.clear_landmarks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.convert_tiles"><code class="docutils literal notranslate"><span class="pre">PreProcessor.convert_tiles()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.convert_to_image_format"><code class="docutils literal notranslate"><span class="pre">PreProcessor.convert_to_image_format()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.delete_resampled_files"><code class="docutils literal notranslate"><span class="pre">PreProcessor.delete_resampled_files()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.filename"><code class="docutils literal notranslate"><span class="pre">PreProcessor.filename()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.get_atlas_files"><code class="docutils literal notranslate"><span class="pre">PreProcessor.get_atlas_files()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.get_autofluo_pts_path"><code class="docutils literal notranslate"><span class="pre">PreProcessor.get_autofluo_pts_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.get_configs"><code class="docutils literal notranslate"><span class="pre">PreProcessor.get_configs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.get_wobbly_layout"><code class="docutils literal notranslate"><span class="pre">PreProcessor.get_wobbly_layout()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.overlay_layout_plane"><code class="docutils literal notranslate"><span class="pre">PreProcessor.overlay_layout_plane()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.patch_elastix_cfg_landmarks"><code class="docutils literal notranslate"><span class="pre">PreProcessor.patch_elastix_cfg_landmarks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.plot_atlas"><code class="docutils literal notranslate"><span class="pre">PreProcessor.plot_atlas()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.plot_layout"><code class="docutils literal notranslate"><span class="pre">PreProcessor.plot_layout()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.plot_stitching_results"><code class="docutils literal notranslate"><span class="pre">PreProcessor.plot_stitching_results()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.resample_for_registration"><code class="docutils literal notranslate"><span class="pre">PreProcessor.resample_for_registration()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.restore_elastix_cfg_no_landmarks"><code class="docutils literal notranslate"><span class="pre">PreProcessor.restore_elastix_cfg_no_landmarks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.run"><code class="docutils literal notranslate"><span class="pre">PreProcessor.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.set_configs"><code class="docutils literal notranslate"><span class="pre">PreProcessor.set_configs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.setup"><code class="docutils literal notranslate"><span class="pre">PreProcessor.setup()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.setup_atlases"><code class="docutils literal notranslate"><span class="pre">PreProcessor.setup_atlases()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.stack_columns"><code class="docutils literal notranslate"><span class="pre">PreProcessor.stack_columns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.stitch"><code class="docutils literal notranslate"><span class="pre">PreProcessor.stitch()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.stitch_overlay"><code class="docutils literal notranslate"><span class="pre">PreProcessor.stitch_overlay()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.stitch_rigid"><code class="docutils literal notranslate"><span class="pre">PreProcessor.stitch_rigid()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.stitch_wobbly"><code class="docutils literal notranslate"><span class="pre">PreProcessor.stitch_wobbly()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.unpack_atlas"><code class="docutils literal notranslate"><span class="pre">PreProcessor.unpack_atlas()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.use_npy"><code class="docutils literal notranslate"><span class="pre">PreProcessor.use_npy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.z_only"><code class="docutils literal notranslate"><span class="pre">PreProcessor.z_only()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.aligned_autofluo_path"><code class="docutils literal notranslate"><span class="pre">PreProcessor.aligned_autofluo_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.autofluorescence_is_tiled"><code class="docutils literal notranslate"><span class="pre">PreProcessor.autofluorescence_is_tiled</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.has_npy"><code class="docutils literal notranslate"><span class="pre">PreProcessor.has_npy</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.has_tiles"><code class="docutils literal notranslate"><span class="pre">PreProcessor.has_tiles</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.is_tiled"><code class="docutils literal notranslate"><span class="pre">PreProcessor.is_tiled</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.n_channels"><code class="docutils literal notranslate"><span class="pre">PreProcessor.n_channels</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.n_channels_convert"><code class="docutils literal notranslate"><span class="pre">PreProcessor.n_channels_convert</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.n_registration_steps"><code class="docutils literal notranslate"><span class="pre">PreProcessor.n_registration_steps</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.n_rigid_steps_to_run"><code class="docutils literal notranslate"><span class="pre">PreProcessor.n_rigid_steps_to_run</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.n_wobbly_steps_to_run"><code class="docutils literal notranslate"><span class="pre">PreProcessor.n_wobbly_steps_to_run</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.prefix"><code class="docutils literal notranslate"><span class="pre">PreProcessor.prefix</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.raw_stitched_shape"><code class="docutils literal notranslate"><span class="pre">PreProcessor.raw_stitched_shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.ref_pts_path"><code class="docutils literal notranslate"><span class="pre">PreProcessor.ref_pts_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.resampled_pts_path"><code class="docutils literal notranslate"><span class="pre">PreProcessor.resampled_pts_path</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.resampled_shape"><code class="docutils literal notranslate"><span class="pre">PreProcessor.resampled_shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.was_registered"><code class="docutils literal notranslate"><span class="pre">PreProcessor.was_registered</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.PreProcessor.was_stitched_rigid"><code class="docutils literal notranslate"><span class="pre">PreProcessor.was_stitched_rigid</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.init_preprocessor"><code class="docutils literal notranslate"><span class="pre">init_preprocessor()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.processors.sample_preparation.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.processors.sample_preparation.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

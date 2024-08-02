@@ -1,0 +1,1179 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TubeMap &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'advanced/tube_map_advanced';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="News and Media" href="../media.html" />
+    <link rel="prev" title="CellMap" href="cell_map_advanced.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cell_map_advanced.html">CellMap</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TubeMap</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="advanced_usage.html" class="nav-link">ClearMap pipelines</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">TubeMap</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tubemap">
+<span id="tube-map-advanced"></span><h1>TubeMap<a class="headerlink" href="#tubemap" title="Link to this heading">#</a></h1>
+<p>The <a class="reference internal" href="../api/ClearMap.Scripts.TubeMap.html#module-ClearMap.Scripts.TubeMap" title="ClearMap.Scripts.TubeMap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.Scripts.TubeMap</span></code></a> script implements the analysis done
+in <a class="reference internal" href="../references.html#kirst2020" id="id1"><span>[Kirst2020]</span></a>.</p>
+<p>See the <span class="xref std std-ref">TubeMap tutorial</span> for usage.</p>
+<p>The main image processing steps are defined in the vasculature expert
+<a class="reference internal" href="../api/ClearMap.ImageProcessing.Experts.Vasculature.html#module-ClearMap.ImageProcessing.Experts.Vasculature" title="ClearMap.ImageProcessing.Experts.Vasculature"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Experts.Vasculature</span></code></a>.</p>
+<section id="pipeline">
+<h2>Pipeline<a class="headerlink" href="#pipeline" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../api/ClearMap.Scripts.TubeMap.html#module-ClearMap.Scripts.TubeMap" title="ClearMap.Scripts.TubeMap"><code class="xref py py-mod docutils literal notranslate"><span class="pre">TubeMap</span></code></a> is a pipeline to convert raw 3d data of
+tubular networks into graph representations illustrated  here:</p>
+<figure class="align-default" id="tubemap-overview">
+<img alt="../_images/TubeMap_pipeline_overview.png" src="../_images/TubeMap_pipeline_overview.png" />
+<figcaption>
+<p><span class="caption-number">Figure 16 </span><span class="caption-text">TubeMap pipeline overview.</span><a class="headerlink" href="#tubemap-overview" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<nav class="contents local" id="the-image-processing-part-is-the-core-of-this-pipline-and-composed-of-the-following-image-processing-steps">
+<p class="topic-title">The image processing part is the core of this pipline and composed of the following image processing steps:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#clipping-masking-and-first-binarization" id="id2">Clipping, masking and first binarization</a></p></li>
+<li><p><a class="reference internal" href="#light-sheet-artifact-correction" id="id3">Light-sheet artifact correction</a></p></li>
+<li><p><a class="reference internal" href="#median-filter" id="id4">Median filter</a></p></li>
+<li><p><a class="reference internal" href="#pseudo-deconvolution-and-second-binarization" id="id5">Pseudo deconvolution and second binarization</a></p></li>
+<li><p><a class="reference internal" href="#adaptive-threshold-and-third-binarization" id="id6">Adaptive threshold and third binarization</a></p></li>
+<li><p><a class="reference internal" href="#equalization-and-fourth-binarization" id="id7">Equalization and fourth binarization</a></p></li>
+<li><p><a class="reference internal" href="#tube-filtering-and-fifth-binarization" id="id8">Tube filtering and fifth binarization</a></p></li>
+<li><p><a class="reference internal" href="#binary-filling" id="id9">Binary filling</a></p></li>
+<li><p><a class="reference internal" href="#deep-vessel-filling" id="id10">Deep Vessel Filling</a></p>
+<ul>
+<li><p><a class="reference internal" href="#architecture" id="id11">Architecture</a></p></li>
+<li><p><a class="reference internal" href="#optimization-function" id="id12">Optimization function</a></p></li>
+<li><p><a class="reference internal" href="#training" id="id13">Training</a></p></li>
+<li><p><a class="reference internal" href="#application" id="id14">Application</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#binary-smoothing" id="id15">Binary smoothing</a></p></li>
+<li><p><a class="reference internal" href="#skeletonization-and-graph-construction" id="id16">Skeletonization and graph construction</a></p>
+<ul>
+<li><p><a class="reference internal" href="#skeletonization" id="id17">Skeletonization</a></p></li>
+<li><p><a class="reference internal" href="#end-point-tracing" id="id18">End-point tracing</a></p></li>
+<li><p><a class="reference internal" href="#graph-construction" id="id19">Graph construction</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#vasculature-graph-geometry-extraction" id="id20">Vasculature graph geometry extraction</a></p></li>
+<li><p><a class="reference internal" href="#vasculature-vertex-and-branch-labeling" id="id21">Vasculature vertex and branch labeling</a></p></li>
+<li><p><a class="reference internal" href="#vasculature-graph-atlas-annotation" id="id22">Vasculature graph atlas annotation</a></p></li>
+</ul>
+</nav>
+<p>and is illustrated here:</p>
+<figure class="align-default" id="tubemap-image-processing">
+<img alt="../_images/TubeMap_pipeline_image_processing.png" src="../_images/TubeMap_pipeline_image_processing.png" />
+<figcaption>
+<p><span class="caption-number">Figure 17 </span><span class="caption-text">TubeMap image processing pipeline.</span><a class="headerlink" href="#tubemap-image-processing" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="clipping-masking-and-first-binarization">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Clipping, masking and first binarization</a><a class="headerlink" href="#clipping-masking-and-first-binarization" title="Link to this heading">#</a></h3>
+<p>In a first step of the processing pipeline the stitched raw volumetric
+image is clipped above intensities that can be unambiguously assigned to
+foreground pixels. Because of ‘stray’ or ‘blur’ artifacts from bright
+vessels (<code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-image-processing</span></code> D) this upper intensity is chosen conservatively and
+will only include very large and bright vessels. The voxels clipped in
+this way contribute the first foreground voxels to the final binary
+image.</p>
+<p>Voxels outside the brain sample show a distinct lower intensity value
+than even background voxels within the brain. Thus, in parallel to the
+clipping of high intensities, low intensities are clipped below the
+sample background and the clipped pixels are designated as background.
+Non-background pixels are used to define a mask for the brain sample
+which is used throughout the processing pipeline to restrict all
+calculations to the brain sample voxels.</p>
+</section>
+<section id="light-sheet-artifact-correction">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Light-sheet artifact correction</a><a class="headerlink" href="#light-sheet-artifact-correction" title="Link to this heading">#</a></h3>
+<p>Light-sheet microscopy introduced ‘stripe’ and ‘shadow’ artifacts
+(<code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-image-processing</span></code> C). While methods exist to correct for those artifacts (e.g.
+via Fourier analysis, or stripe detection), they have a high
+computational demand making them difficult to apply to images of TB
+size.</p>
+<p>We thus developed a method for fast and efficient light-sheet artifact
+correction. The method uses the fact that the stripe artifact occurs
+along a predefined axis in the images as the light-sheet always enters
+the sample from the same direction, and we used a single fixed light
+sheet illumination. Moreover, background voxels typically show similar
+intensities along the stripe axis over a certain length scale.</p>
+<p>Thus, for each voxel <img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/> we estimate the light-sheet stripe
+artifact intensity <img class="math" src="../_images/math/3c091c275415e4aadb07d81c3960c42ba3db9062.png" alt="l_{i}\"/>by calculating a predefined
+percentile <img class="math" src="../_images/math/0696499c1f32eada9086689bd3e2a29c437a9777.png" alt="p_{l}\"/>of the voxel intensities in a region
+centered around <img class="math" src="../_images/math/2be996568cbebfcee27f906de71bd60d2f3131dd.png" alt="\text{i\ }"/>and highly elongated along the
+stripe-artifact axis (<code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-image-processing</span></code> C). The length of this region (or
+structuring element) for the percentile filter along the stripe artifact
+axis is chosen to be of the scale on which the stripe artifact intensity
+changes, while the width and depth are chosen to be below the size of
+the stripe artifacts cross-section. Subtracting this estimate from the
+image leads to good corrections of the stripe artifact except at voxels
+that are part of longer vessels aligned with the artifact axis. To
+prevent this type of voxels to be removed, we also estimate the local
+background intensity <img class="math" src="../_images/math/cdd5ca0dc9282a633e0062b1f59a862e5b1cd267.png" alt="b_{i}"/> as the percentile<img class="math" src="../_images/math/74bf5d250769caa54a78925cc009b2127e556cdc.png" alt="\ p_{b}"/> of
+the voxel intensities in a square shaped region centered
+around<img class="math" src="../_images/math/c36ff9727085be59fdc9b676226ae7390eedb1e9.png" alt="\text{\ i}"/>. The size of this region is chosen larger
+than the largest vessel structures in the brain sample. This background
+estimate is compared to the light-sheet artifact estimate and voxel
+intensity <img class="math" src="../_images/math/f6a4f4c5a7f30d7c5fcd6ad3a4e154fc11feff17.png" alt="v_{i}"/> corrected according</p>
+<div class="math">
+<p><img src="../_images/math/4fe94d1cb8b35e47c842041f31d267fae8144e13.png" alt="v_{i} \rightarrow v_{i} - \min{{(v}_{i},\min{(l_{i},fb_{i})})}"/></p>
+</div><p>where <img class="math" src="../_images/math/5b7752c757e0b691a80ab8227eadb8a8389dc58a.png" alt="f"/> is a factor allowing to adjust the background estimate.
+The result of this correction is shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-image-processing</span></code> C.</p>
+<p>Processing speed is limited by the local percentile filters. We use our
+fast 3d rank filter library to speed up the computation. On top, the
+elongated shape of structuring element for the light-sheet estimate
+allows further optimization by shifting the structuring elements for
+local histograms estimation in the direction of the artifact axis. For
+background estimation we use large structural elements which allow the
+use of sub-sampling and interpolation.</p>
+</section>
+<section id="median-filter">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Median filter</a><a class="headerlink" href="#median-filter" title="Link to this heading">#</a></h3>
+<p>In the third step the light sheet corrected image is 3d median filtered
+with a small structuring element to smooth voxel intensities but
+preserve edges. We use our fast sliding histogram 3d rank filter library
+for this step.</p>
+</section>
+<section id="pseudo-deconvolution-and-second-binarization">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Pseudo deconvolution and second binarization</a><a class="headerlink" href="#pseudo-deconvolution-and-second-binarization" title="Link to this heading">#</a></h3>
+<p>The data showed ‘blur’ or ‘stray’ artifact producing ‘halos’ of high
+intensity voxels around bright and large vessels (<code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-image-processing</span></code> D). Without
+correction of this artifact, high thresholds had the tendency to remove
+weaker and smaller vessels and capillaries connecting to the larger
+ones, while low threshold values have the tendency to join larger
+neighboring vessels, even when local or adaptive thresholding was used.
+While this artifact could be corrected via an appropriate deconvolution
+step, such a step would add a large computational overhead for our very
+large data sets.</p>
+<p>We thus designed a ‘pseudo deconvolution’ step that corrects for the
+‘blur artifact’ with much less computational demands. High intensity
+voxels are identified via a threshold and ‘blured’ using a 3d Gaussian
+filter. The blurred result is then subtracted from the original image
+and the image rectified while the values of the high intensity voxels
+are preserved (cf. <code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-image-processing</span></code> D).</p>
+<p>The resulting ‘deconvolved’ image is then thresholded at a lower
+intensity level than the one used to determine the high intensity voxels
+in order to capture the structure of the bright vessels and the
+resulting binary added to the final binarized image.</p>
+</section>
+<section id="adaptive-threshold-and-third-binarization">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Adaptive threshold and third binarization</a><a class="headerlink" href="#adaptive-threshold-and-third-binarization" title="Link to this heading">#</a></h3>
+<p>In order to capture smaller and less bright vessels the deconvolved
+image is further subjected to a local histogram-based adaptive threshold
+and the result added to the final binarized image.</p>
+<p>We use our local histogram sampling framework to locally apply the
+Ridler-Calvard method (Ridler and Calvard, 1978) that determines a
+threshold by separating the voxels of the image into two groups such
+that the threshold is midway between the mean intensities of these
+groups.</p>
+</section>
+<section id="equalization-and-fourth-binarization">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Equalization and fourth binarization</a><a class="headerlink" href="#equalization-and-fourth-binarization" title="Link to this heading">#</a></h3>
+<p>While the previous stream of processing and binarization steps (4a,5a)
+is designed to mainly capture larger or brighter vessels, in parallel we
+designed a second stream (4b, 5b) for the binarization of weaker and
+smaller vessels and capillaries. While our clearing and staining
+protocol is highly optimized to homogeneously label the vasculature,
+regional variations in the overall luminance exists and particularly
+smaller and weaker vessels in the deeper regions are often not detected
+by the first stream of binarizations.</p>
+<p>In this step we thus apply a custom designed equalization filter to the
+median filtered image form step 3. The filter calculates for each voxel
+<img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/> a lower and upper intensity (<img class="math" src="../_images/math/cc5ff284e268e8842cdbdec61b1dc656560c1293.png" alt="l_{i}"/> and <img class="math" src="../_images/math/ea13b9e348dca22db563042e60e36be2ee06ba83.png" alt="u_{i}"/>)
+via a lower and upper percentile (<img class="math" src="../_images/math/cfe44106fbbe875b59dc00d26c894b646adcae7e.png" alt="p_{l}"/> and <img class="math" src="../_images/math/15b30f05a5e404db70bb4790d0800ab7bbfb6ff8.png" alt="p_{u}"/>) of
+the voxel intensities in a rectangular region <img class="math" src="../_images/math/60bf243b4c6f5e3fb74686244011b1d7c84be5b9.png" alt="R_{i}"/> centered
+around <img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/>. The region is chosen to be larger than the large
+vessel structures and our efficient histogram sampling framework is used
+to speed up computation. The voxel intensity is then normalized via</p>
+<div class="math">
+<p><img src="../_images/math/1bff3fec288e8161e641d18cd2041846327d3cbe.png" alt="v_{i} \rightarrow f_{i}v_{i}"/></p>
+</div><p>with normalization factor</p>
+<div class="math">
+<p><img src="../_images/math/335206cd9fe144d1f93d5b325df2df074c336b1a.png" alt="f_{i} = \left\{ \begin{array}{ll} v_{i}/l_{i} &amp; u_{i}/l_{i} \leq m \\ m/u_{i} &amp; \text{else} \end{array} \right."/></p>
+</div><p>and <img class="math" src="../_images/math/e9bc7da808d33a16a8347f27a519bd067186aa66.png" alt="m"/> a maximal intensity value for the upper percentile. As a
+result the image shows a more homogeneous intensity distribution across
+the sample (<code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-image-processing</span></code> E).</p>
+<p>A fixed conservative threshold is applied to the normalized image and
+added to the final binary.</p>
+</section>
+<section id="tube-filtering-and-fifth-binarization">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Tube filtering and fifth binarization</a><a class="headerlink" href="#tube-filtering-and-fifth-binarization" title="Link to this heading">#</a></h3>
+<p>In a final step, a generalized Frangi tube filter (Frangi et al., 1998;
+Sato et al., 1998) to enhance smaller vessels and capillaries is
+applied. The filter first smoothes the image with a 3d Gaussian of a
+given scale and then calculates the sorted eigenvalues
+<img class="math" src="../_images/math/5103e95523d25b3b7a9779aab44b35615bad6176.png" alt="\lambda_{1,i} \geq \lambda_{2,i} \geq \lambda_{3,i}"/> of the
+Hessian matrix at each voxel <img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/>. The tubeness measure
+<img class="math" src="../_images/math/f49b9947abf64a02da421bd28023a1084bb15f04.png" alt="t_{i}"/> is then calculated according to</p>
+<div class="math">
+<p><img src="../_images/math/d20130fabe5b003a3ce1a26abfff1c07b1f5f4ec.png" alt="\mathbf{t}_{\mathbf{i}} = \left\{ \begin{array}{ll}
+\left| \mathbf{\lambda}_{\mathbf{3,i}} \right|\left| \frac{\mathbf{\lambda}_{\mathbf{2,i}}}{\mathbf{\lambda}_{\mathbf{3,i}}} \right|^{\mathbf{\gamma}_{\mathbf{23}}}\left( \mathbf{1 +}\frac{\mathbf{\lambda}_{\mathbf{1,i}}}{\left| \mathbf{\lambda}_{\mathbf{2,i}} \right|} \right)^{\mathbf{\gamma}_{\mathbf{12}}} &amp; \mathbf{\lambda}_{\mathbf{1,i}}\mathbf{\leq 0,}\mathbf{\lambda}_{\mathbf{3,i}}\mathbf{\leq \ }\mathbf{\lambda}_{\mathbf{2,i}}\mathbf{&lt; 0} \\
+\left| \mathbf{\lambda}_{\mathbf{3,i}} \right|\left| \frac{\mathbf{\lambda}_{\mathbf{2,i}}}{\mathbf{\lambda}_{\mathbf{3,i}}} \right|^{\mathbf{\gamma}_{\mathbf{23}}}\left( \mathbf{1 - \alpha}\frac{\mathbf{\lambda}_{\mathbf{1,i}}}{\left| \mathbf{\lambda}_{\mathbf{2,i}} \right|} \right)^{\mathbf{\gamma}_{\mathbf{12}}} &amp; \mathbf{\alpha}\frac{\mathbf{\lambda}_{\mathbf{1,i}}}{\left| \mathbf{\lambda}_{\mathbf{2,i}} \right|}\mathbf{&lt; 1,}\mathbf{\lambda}_{\mathbf{3,i}}\mathbf{\leq \ }\mathbf{\lambda}_{\mathbf{2,i}}\mathbf{&lt; 0} \\
+\mathbf{0} &amp; \mathbf{\text{else}} \end{array} \right."/></p>
+</div><p>with parameters <img class="math" src="../_images/math/e0e87e9163d50e9279c4e141b8092b946af74fa5.png" alt="\gamma_{12} = 0.5"/>,<img class="math" src="../_images/math/0e347107c2573ea7f2e5c3533c3fc4913879b674.png" alt="\gamma_{23} = 0.5"/>
+and <img class="math" src="../_images/math/0d808a9e3656f48a6ae580e41e3da51b1934701a.png" alt="\alpha = 0.25"/> chosen to enhance tube like vessels but also
+account for their bending (Sato et al., 1998).</p>
+<p>A threshold is applied to the tube filtered image to contribute the last
+part to the final binary image.</p>
+</section>
+<section id="binary-filling">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Binary filling</a><a class="headerlink" href="#binary-filling" title="Link to this heading">#</a></h3>
+<p>In this step, the combined binary image is subjected to a 3d binary
+filling operation. While the final image is binary and thus already
+smaller in size it is still a large array. Splitting the filling
+operation into subsets of the data would entail complex joining
+operations. TubeMap thus implements a parallel binary filling code based
+on flood filling from the border that operates on memory maps, allowing
+the binary filling of arbitrarily sized images not limited by memory.</p>
+</section>
+<section id="deep-vessel-filling">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Deep Vessel Filling</a><a class="headerlink" href="#deep-vessel-filling" title="Link to this heading">#</a></h3>
+<p>As antibodies only target vessels walls receptor proteins, larger
+vessels appear as empty tubes. Given that our method to extract the
+centerline that relies on topology-preserving 3D thinning, it is
+necessary to generate solid tubes on the binary mask. Therefore, we
+designed a method to detect and fill empty tubes to allow a correct
+centerline extraction via erosion. Vessel filling is a complex task on
+our data, as the shape, size and continuity of the vessel walls are
+variable. For this reason, we decided to use a deep convolutional neural
+network to solve this task.</p>
+<section id="architecture">
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">Architecture</a><a class="headerlink" href="#architecture" title="Link to this heading">#</a></h4>
+<p>We based the initial network architecture on the DeepVesselNet
+architecture from Tetteh and colleagues</p>
+<p>(Tetteh et al.), which detects the centerline from 3D scans of filled
+vessels. We iterated modification of this architecture to obtain the
+following: 2 maxpooling layers followed by 2 3D convolutional layers
+with dropout with kernel size 7 and 5 and 16 and 32 channels
+respectively. Then we added a depthwise separable convolutional layer of
+size 32 with kernel size of 3. Next, two new other convolutional layer
+are added followed by upsampling layers to get back to the initial input
+data size before the maxpool layers, and a last convolutional layer of
+size 2 followed by a center shifted sigmoid function to map output
+values between 0 and 1, and a softmax layer (<code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-deep-filling</span></code> E).</p>
+<p>The depthwise separable convolutional layer (desep conv) consists in a
+depthwise convolution followed by pointwise convolution. The idea is to
+increase the network performance while keeping the same amount of
+parameters.</p>
+</section>
+<section id="optimization-function">
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">Optimization function</a><a class="headerlink" href="#optimization-function" title="Link to this heading">#</a></h4>
+<p>Our loss function</p>
+<div class="math">
+<p><img src="../_images/math/4fdf76824f9ff7e2b6165f7256cf2cb1df613934.png" alt="L = - \text{BCE}\  + \ \text{CBL}"/></p>
+</div><p>was composed of a classic binary cross entropy loss to minimize the
+difference between the output  <img class="math" src="../_images/math/49127746f1fdce7f06019da34feeaaf19339a076.png" alt="\widehat{y}"/> and the ground
+truth <img class="math" src="../_images/math/a97ee0419c1e831e8e042eb33cb23b718efa4114.png" alt="\text{y\ }"/>fed to the network:</p>
+<div class="math">
+<p><img src="../_images/math/263180c861b5f69a160ae5152f30bb06c7c239f4.png" alt="\text{BCE} = \frac{1}{N}\sum_{i = 1}^{N}{y_{i}\log{\left( {\widehat{y}}_{i} \right) + \left( 1 - y_{i} \right)\log{(1 - {\widehat{y}}_{i})}}\ }"/></p>
+</div><p>and of a class balancing loss <img class="math" src="../_images/math/c202719698b4cd3945d9fe0adca1b4878456621e.png" alt="\text{CBL}"/> as described in (Tetteh et al., 2018).</p>
+<p>Vessels account for a minority of voxels (about 15% of the data in our
+case). This makes the training memory and time consuming as large
+amounts of data are needed to reach convergence. Therefore, we used a
+loss which favors false positives and strongly penalizes false negative
+during the training, preventing the network to favor segmenting pixels
+as background.</p>
+</section>
+<section id="training">
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Training</a><a class="headerlink" href="#training" title="Link to this heading">#</a></h4>
+<p>To generate a training vascular brain graph for training, we generated
+datasets comprised only of filled tubes. To obtain such datasets, we
+designed a preparation of whole head fixation, in order to retain the
+blood in the tissue (<code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-deep-filling</span></code> A), and see the section “blood retention”
+for the preparation of these brains. After dissection, we immunostained
+the brain for circulating immunoglobulins (Liebmann et al., 2016), and
+complemented it with an immunostaining against podocalyxin to insure a
+better continuity of the labeled capillaries (<code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-deep-filling</span></code> B), and we
+double-stained for Smooth Muscle Actin as before. We cleared and imaged
+the labeled brains with identical conditions to the endothelial
+wall-stained samples. Vascular graphs were generated using the same
+multi-path binarization pipeline (<code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-image-processing</span></code> A) and centerline extraction
+as all other datasets (<code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-deep-filling</span></code> C). These graphs contain a natural
+distribution of vessel diameters, which we used to build training cubes
+of hollow tubes, for which the ground truth is the filled version
+(<code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-deep-filling</span></code> D). We designed and trained the DNN on these data to fill
+hollow tubes into solid tubes.</p>
+<p>We trained our network on 100*100*100 pixel wide blocks of artificially
+generated hollow vessels data. From the skeleton, we generated circular
+empty tubes as input training data and the filled counterpart as ground
+truth. To diversify the data, we also generated cubes from both the
+IgG/Podocalyxin dense capillary channel and from the Acta2 channel alone
+which has sparse arterial tubes. To diversify the vessel radii, we
+filtered out capillaries (which are already filled at this resolution)
+from the graph data to only keep vertices corresponding to vessels with
+larger radii. We also artificially increased the vessel radii on the
+sparse arterial graph to mimic underrepresented large vessels as they
+only account for a minority of the vessels in the dataset.</p>
+<p>A preprocessing step was added, consisting in adding noise by setting
+randomly voxel values as foreground to mimic background dots that appear
+occasionally on binarized data, and train the network to ignore them.</p>
+<p>We used a batch size of 8 and trained for 100 epochs.</p>
+</section>
+<section id="application">
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Application</a><a class="headerlink" href="#application" title="Link to this heading">#</a></h4>
+<p>We used the network on the CD31 + Podocalyxin stained binarized scans
+(hollow vessels). The binary masks of 1 channel from 1 hemisphere
+represents approximately 100Gb and cannot be loaded to the network
+directly. Therefore we divided the binary masks of the generic vessels
+(Pdclx + CD31) channel in blocks of 500*500*500 voxel with a 100 voxel
+overlap in every direction.</p>
+<p>We also filled the binary masks of the arterial channel. As Acta2+
+vessels have larger radii and are sparse, we used blocs of 900*900*900
+voxels with a 200 voxel overlap, and down sampled the blocks by a factor
+of 4.</p>
+<figure class="align-default" id="tubemap-deep-filling">
+<img alt="../_images/TubeMap_pipeline_deep_filling.png" src="../_images/TubeMap_pipeline_deep_filling.png" />
+<figcaption>
+<p><span class="caption-number">Figure 18 </span><span class="caption-text">TubeMap’s deep vessel filling.</span><a class="headerlink" href="#tubemap-deep-filling" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="binary-smoothing">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Binary smoothing</a><a class="headerlink" href="#binary-smoothing" title="Link to this heading">#</a></h3>
+<p>In the final step we smooth the binary data, as rough surfaces of
+vessels can lead to artifacts downstream in the skeletonization of the
+vasculature network. We therefore developed a discrete topology based
+binary smoothing algorithm based on (Németh et al., 2010).</p>
+<p>For each voxel <img class="math" src="../_images/math/2be996568cbebfcee27f906de71bd60d2f3131dd.png" alt="\text{i\ }"/>the local discrete topology in a
+3x3x3 cube <img class="math" src="../_images/math/319703ec690d26833374c1d982c8c72834b1ec1e.png" alt="C_{i}"/> centered around <img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/> is considered and
+depending on the configuration the center voxel is updated as follows:</p>
+<p>If the center voxel is foreground the center voxel is set to background
+if (i) there are less than three foreground voxels in the cube, (ii) the
+local topology matches the configuration <img class="math" src="../_images/math/ad8f129b03a522bca5747b909a48be898aa0c1fc.png" alt="C_{1}"/> or any of its
+rotations towards each of the 6 faces of the cube (iii) the topology
+matches <img class="math" src="../_images/math/556175c9dfec4ffc80d00bbeffdacf26344c4df9.png" alt="C_{2}"/> or <img class="math" src="../_images/math/de6e6b64b2cd7b7db633945dfdbd78cec0edc621.png" alt="C_{3}"/> or any of the 4 rotations around
+the z-axis or any of those further rotated towards each face (i.e. 24
+rotations), (iv) if the topology matches <img class="math" src="../_images/math/6f2345d5a66a360f45f18b55ed409c83aaf83d20.png" alt="C_{4}"/> or any of its 12
+rotations that rotate a fixed edge onto another one (v) the topology
+matches <img class="math" src="../_images/math/9e2fd3516a4a7ee16932ba3bcde952ef1f41875b.png" alt="C_{5}"/> or any of its 8 rotations that rotate a corner
+onto another one.</p>
+<p>If the center voxel is background the center voxel is set to foreground
+if either (i) the number of background pixels in the cube is less than
+6, (ii) the inverse topology in which foreground is exchanged with
+background fulfills either of the conditions for the foreground pixel
+smoothing above, (iii) the center voxel has at least 3 neighbors in its
+6-connected neighborhood and two of those voxels lie along one of the
+main axes.</p>
+<p>The processing of the smoothing is optimized via assigning a unique
+topological index <img class="math" src="../_images/math/914b2d4b6659b86d3153d5510839dfb254dfc8a3.png" alt="\tau"/> to each possible topological
+configuration of the 3x3x3 cube around the center voxel and
+pre-calculating a lookup-table from this index to the resulting center
+voxel value according to the smoothing rules above. The index
+<img class="math" src="../_images/math/914b2d4b6659b86d3153d5510839dfb254dfc8a3.png" alt="\tau"/> for each voxel in the image is obtained by considering the
+binary cube configuration as a 27 bit representation of that index, i.e.
+by convolving the local cube with a kernel <img class="math" src="../_images/math/52ddc0cde6d632f631533173562fe3ca375b1f32.png" alt="K"/>. To further speed
+up the computation, we make use of the fact that the kernel <img class="math" src="../_images/math/52ddc0cde6d632f631533173562fe3ca375b1f32.png" alt="K"/> is
+separable and convolution with it can be calculated via three subsequent
+one-dimensional convolutions along the three axes.</p>
+</section>
+<section id="skeletonization-and-graph-construction">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Skeletonization and graph construction</a><a class="headerlink" href="#skeletonization-and-graph-construction" title="Link to this heading">#</a></h3>
+<p>In a final step of the TubeMap image processing pipeline the binarized
+image is converted to a graph. The graph construction is done in three
+steps: (i) the binary image is skeletonized, (ii) loose ends in the
+skeleton are detected and possible continuations to other loose ends
+detected via tracing in the non-binarized image data, (iii) the final
+skeleton is converted into a graph.</p>
+<section id="skeletonization">
+<h4><a class="toc-backref" href="#id17" role="doc-backlink">Skeletonization</a><a class="headerlink" href="#skeletonization" title="Link to this heading">#</a></h4>
+<p>In the first step of the graph construction the binary image is
+skeletonized. While a large number of skeletonization algorithms exist,
+they were not suitable for the size of our data sets with running times
+of over 7 days on our workstation. We thus implemented a fast
+skeletonization algorithm for terabyte volumetric images that runs in
+45min. As skeletonization via thinning is context dependent the
+processing cannot be easily split into blocks of data. Instead, our
+algorithm is designed to handle TB sized data as whole. To increase the
+processing speed, we pre-calculate the thinning actions for all possible
+local topological configurations into a look-up table and use linear
+indexing of the image arrays. The algorithm uses 3d parallel thinning
+with 12 sub-iterations as described in (Palágyi and Kuba, 1999) with a
+series of optimizations. In short, for each voxel <img class="math" src="../_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/> the
+algorithm decides if that voxel can be thinned away by considering the
+topology in the local 3x3x3 cube <img class="math" src="../_images/math/319703ec690d26833374c1d982c8c72834b1ec1e.png" alt="C_{i}"/> centered
+on<img class="math" src="../_images/math/c36ff9727085be59fdc9b676226ae7390eedb1e9.png" alt="\text{\ i}"/> and using the rules defined in (Palágyi and Kuba,
+1999) (T1-T14). This process is done in parallel. As parallel thinning
+of surface voxels may lead to the disconnection of center lines or other
+topological changes in the final skeleton, the thinning is done in 12
+sub-iterations ‘attacking’ the surface pixels from 12 different
+directions corresponding to the mid-points of the 12 edges of a cube.</p>
+<p>To speed up processing on large images we implemented a series of
+additional optimizations. First, as the thinning is operating on
+foreground pixels only and their number significantly decays during the
+thinning iterations, calculation of the local topological configuration
+around each voxel is restricted to the foreground pixels only. In each
+thinning step only voxels that are 6-connected to the background are
+candidates for removal, so the calculation is further restricted to
+those border voxels. Second, the topological characterization around
+each voxel is done using topological indexing together with a
+pre-calculated look-up table that encodes the thinning rules as
+described above in the binary smoothing step. Third, all calculations
+are done on linear arrays using linear indexing, instead of 3d
+volumetric images. This speeds up addressing foreground pixels and
+reduces memory requirements by a factor of three. Fourth, all
+calculations, including candidate voxel detection and topological
+indexing are parallelized.</p>
+<p>The skeleton is post-processed by removing foreground voxels of center
+lines with at least one end-point (a foreground voxel with only one
+neighbor in the 27-neighborhood) and a length to a branch point (a
+foreground voxel with more than two neighbors) or another end-point
+below a critical length. End-points and branch-points detection is
+efficiently done in parallel by calculating the number of neighbors via
+convolution with a 3x3x3 cube of ones around each foreground pixel.</p>
+</section>
+<section id="end-point-tracing">
+<h4><a class="toc-backref" href="#id18" role="doc-backlink">End-point tracing</a><a class="headerlink" href="#end-point-tracing" title="Link to this heading">#</a></h4>
+<p>In this optional step, the skeleton is further post-processed by trying
+to connect loose ends of the skeleton center-lines using tracing in the
+non-binarized tube-filtered image. To achieve this, the end-points of
+the center-lines are detected as described above. For each end-point an
+A*-search in the voxel space is performed to find a path with the lowest
+cost towards the closest end-point. The cost <img class="math" src="../_images/math/4db5b6e16e06f929ce3f675c5e535d06ffb02ff7.png" alt="C"/> for a path
+<img class="math" src="../_images/math/c2aa3dff9bffb099e9dff196fd36aed56ec16baf.png" alt="P"/> is defined as</p>
+<div class="math">
+<p><img src="../_images/math/47750f163564089ea5281eb37afb66a67a0c3c3e.png" alt="C = \sum_{(i,j) \in \mathcal{P}}^{}\frac{d(i,j)}{t_{j}}"/></p>
+</div><p>where <img class="math" src="../_images/math/26a99b83fb5b09c5282255fcf9abb2c297ccacb1.png" alt="\left( i,j \right)"/> is a pair of neighboring voxels
+(27-neighbourhood) in the path, <img class="math" src="../_images/math/ab104e9c8a6b04bde14069b0c38b84ed57c0e152.png" alt="d\left( i,j \right)"/> the
+Euclidian distance between the voxels, and <img class="math" src="../_images/math/f49b9947abf64a02da421bd28023a1084bb15f04.png" alt="t_{i}"/> is the tubeness
+measure defined in (1). If the cost for the path is below a threshold
+the path is added to the binary image. If the cost is too high, a path
+to the binary mask of the vasculature is traced using the same cost
+function. If the cost is below a threshold the path is added to the
+binary mask. The resulting binary is re-skeletonized as described in the
+previous step.</p>
+<p>The purpose of this tracing step is to detect small vessels of weak
+intensity that were partly missed in the binarization process and
+thereby to reduce the number of open ends in the vasculature graph. For
+our data sets and with the above described equalization methods this
+step was usually not necessary (cf. <code class="xref std std-numref docutils literal notranslate"><span class="pre">tubemap-image-processing</span></code>).</p>
+</section>
+<section id="graph-construction">
+<h4><a class="toc-backref" href="#id19" role="doc-backlink">Graph construction</a><a class="headerlink" href="#graph-construction" title="Link to this heading">#</a></h4>
+<p>To facilitate the analysis of the vasculature network, the skeletonized
+binary image is turned into a graph representation that captures the
+topology of the vasculature network. A graph <img class="math" src="../_images/math/97fcae5c9db1c54d47cf88b7b60ff4bd1a04ece7.png" alt="G = \{ V,E\}\"/> is a
+collection of vertices <img class="math" src="../_images/math/03a034504d019c74bc8aa32f3bfa30fc9f3c5742.png" alt="v_{i} \in V\"/>and edges
+<img class="math" src="../_images/math/97005421887044d7ddbfd04d1ba7093800c8555f.png" alt="e_{i,j} \in E\"/>between two vertices <img class="math" src="../_images/math/f6a4f4c5a7f30d7c5fcd6ad3a4e154fc11feff17.png" alt="v_{i}"/> and
+<img class="math" src="../_images/math/8b4c89a485ca0bc40837d0c59dd3241f6fbb4dcb.png" alt="v_{j}"/>. The vasculature network carries additional geometric
+information (e.g. vessel shape or radius) and can be accompanied by
+additional local data (e.g. expression levels of molecular markers). We
+thus consider graphs in which the vertices and edges hold a set of
+additional properties (<img class="math" src="../_images/math/0c553647d051b39818a06dba3cc899fa84a6e34a.png" alt="p_{k}\left( v_{i} \right)"/>,
+<img class="math" src="../_images/math/472aaa22760508936fa89fc0f5da22a765fd34ca.png" alt="p_{l}(e_{i,j})"/>), such as spatial, geometric or molecular
+information.</p>
+<p>Graphs extracted from the vasculature consist of millions to hundreds of
+millions of vertices. To enable the analysis of those large graphs,
+TubeMap provides a high-performance graph module based on the graph-tool
+library (P. Peixoto, T. (2014)) and boost graph libraries
+(<a class="reference external" href="https://www.boost.org/doc/libs/1_66_0/libs/graph/doc/index.html">https://www.boost.org/doc/libs/1_66_0/libs/graph/doc/index.html</a>). In
+addition to a large number of graph manipulation and analysis routines,
+our module also provides graph classes that handle the spatial geometry
+and other annotational information, as well as the visualization of the
+graphs in 3d space.</p>
+<p>In TubeMap, graph construction from the skeletonized image is done as
+follows: first, a raw graph is constructed by turning each foreground
+voxel of the skeleton into a vertex that also carries the positional
+information of the voxel. The vertices are then connected via undirected
+edges if they are neighbors (27-neighborhood) in the skeleton image.
+This process can result in local all-to-all connected cliques with more
+than 2 vertices at branch points of the skeleton. Thus, those cliques
+are identified and replaced by a single vertex with a coordinate
+position that is the mean of the clique vertices. Isolated vertices or
+small components not connected to the giant component are typically
+removed from the graph for downstream analysis.</p>
+<p>In a second step, the raw graph is reduced to a branch graph consisting
+of vertices that are end-points or branch-points only (i.e. vertices
+<img class="math" src="../_images/math/f6a4f4c5a7f30d7c5fcd6ad3a4e154fc11feff17.png" alt="v_{i}"/> with edge degree <img class="math" src="../_images/math/fcb0229f229d2696a9b7c5d82b5abe952976a5fa.png" alt="d\left( v_{i} \right) \neq 2"/>).
+The vertices of this graph are then connected by edges if there is a
+path of vertices of degree 2 between them. The connection is done via
+tracing in the raw graph. In this process, the positional, geometric and
+other information attached to the vertices along a path between two
+branch-vertices is collected and attached as a property to the new edge
+connecting the two branch-points.</p>
+</section>
+</section>
+<section id="vasculature-graph-geometry-extraction">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Vasculature graph geometry extraction</a><a class="headerlink" href="#vasculature-graph-geometry-extraction" title="Link to this heading">#</a></h3>
+<p>To capture the geometry of the vasculature network, TubeMap, besides
+storing the positional information about the center lines of the vessels
+also detects their shape. In particular, the radius of the vessel at
+each vertex or each point in a branch is estimated by taking the
+pre-processed equalized image and measuring the distance to the nearest
+voxel in which the intensity decayed by half. To avoid measuring radii
+within hollow tubes, the nearest voxel search is started outside the
+final binarized image in which hollow tubes are filled.</p>
+</section>
+<section id="vasculature-vertex-and-branch-labeling">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Vasculature vertex and branch labeling</a><a class="headerlink" href="#vasculature-vertex-and-branch-labeling" title="Link to this heading">#</a></h3>
+<p>TubeMap enables measuring the expression of other markers obtained via
+multi-color stainings and imagining along the vasculature graph. A set
+of tools is provided to measure those, including methods to measure the
+histogram, mean, maximum or minimum expression levels within a
+structural element centered on each voxel of the extracted graph or
+within a region described by the local extracted vessel geometry.</p>
+<p>To measure the expression of the smooth muscle marker Acta2, we measure
+maximum expression levels around each point of the vasculature graph
+within a spherical region with a radius equal to the estimated radius of
+the vessel at that point. Branches are labeled positive for Acta2 if the
+majority of points in that branch have expression levels above a certain
+threshold.</p>
+<p>TubeMap provides further routines to post-process edge and vertex labels
+based on geometric or other measures and label continuity. In
+particular, binary labels can be subjected to morphological operations
+acting on the graph topology. This includes binary morphological closing
+that can be used to fill gaps in a sequence of branch labels. In
+addition, labels of vertices or edges can also be traced along the graph
+topology according to arbitrary passed rules that act on the geometry or
+other vertex or edge properties, providing a generalized hysteresis
+thresholding operation for a given labeling. For the vasculature graph
+we use a one-step morphological closing as well as tracing based on the
+radial measure to post-process the Acta2 branch label. Reconstruction of
+the vasculature network was corrupted by dense vessel crossings as well
+as preparation artefacts on the brains cortical surface. Thus, to avoid
+errors in the artery and vein labeling the tracing of arteries and veins
+was stopped when the distance to the surface fall below a certain
+threshold. The distance of each branch to the brain surface in turn was
+calculated by an Euclidian distance transform from the background into
+the brain using the 3d brain atlas annotation image.</p>
+</section>
+<section id="vasculature-graph-atlas-annotation">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Vasculature graph atlas annotation</a><a class="headerlink" href="#vasculature-graph-atlas-annotation" title="Link to this heading">#</a></h3>
+<p>TubeMap provides functions to annotate data with labels from reference
+atlases, such as the Allen Brain Atlas. The annotation is done by
+acquiring an additional reference image in parallel to the other data
+channels and align it to the corresponding reference image of the atlas.
+We used an autofluorescence template from the ABA at 25µm generated from
+serial 2-photon tomography. To achieve the alignment, TubeMap first
+resamples the auto-fluorescent image of the sample to the resolution of
+the atlas reference and then aligns the image in 3d non-linearly.
+TubeMap integrates the elastix package functionality (Klein et al.,
+2010) for the non-linear alignment. For the vasculature data a
+hierarchical estimation of b-spline transformations between the two
+reference images is used together with a cross-entropy measure to
+quantify the local alignment quality. For the vasculature data, the
+reference image is acquired in tiles directly after each tile of the
+other channels and thus the same alignment and stitching layout can be
+used to assemble the full reference image. To correct for small
+misalignments between reference and data images a rigid transformation
+between both is estimated using also a cross-entropy measure. The
+resulting joint transformation from data to sample reference to atlas
+reference is used to transform the coordinates of the graph points onto
+the reference frame of the atlas. In the final step, the transformed
+positions of the graph are used to extract the atlas annotation and any
+other atlas information.</p>
+<p>The TubeMap graph module implements routines to extract statistics,
+sub-graphs or other information based on these annotations. The atlas
+annotation can also be used for 3d rendering of the vasculature graph.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cell_map_advanced.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CellMap</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../media.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">News and Media</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline">Pipeline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clipping-masking-and-first-binarization">Clipping, masking and first binarization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#light-sheet-artifact-correction">Light-sheet artifact correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#median-filter">Median filter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudo-deconvolution-and-second-binarization">Pseudo deconvolution and second binarization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-threshold-and-third-binarization">Adaptive threshold and third binarization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equalization-and-fourth-binarization">Equalization and fourth binarization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tube-filtering-and-fifth-binarization">Tube filtering and fifth binarization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-filling">Binary filling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-vessel-filling">Deep Vessel Filling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-function">Optimization function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#application">Application</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-smoothing">Binary smoothing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skeletonization-and-graph-construction">Skeletonization and graph construction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#skeletonization">Skeletonization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#end-point-tracing">End-point tracing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-construction">Graph construction</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vasculature-graph-geometry-extraction">Vasculature graph geometry extraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vasculature-vertex-and-branch-labeling">Vasculature vertex and branch labeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vasculature-graph-atlas-annotation">Vasculature graph atlas annotation</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/advanced/tube_map_advanced.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

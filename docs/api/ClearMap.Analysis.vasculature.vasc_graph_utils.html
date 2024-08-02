@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>vasc_graph_utils &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.Analysis.vasculature.vasc_graph_utils';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.Curves.html">ClearMap.Analysis.Curves</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.DimensionReduction.html">DimensionReduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.Graphs.html">ClearMap.Analysis.Graphs</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.Measurements.html">ClearMap.Analysis.Measurements</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.Statistics.html">ClearMap.Analysis.Statistics</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.vasculature.html">ClearMap.Analysis.vasculature</a></li>
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">vasc_graph_utils</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="vasc-graph-utils">
+<h1>vasc_graph_utils<a class="headerlink" href="#vasc-graph-utils" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+</tbody>
+</table>
+</div>
+<dl class="py function" id="module-ClearMap.Analysis.vasculature.vasc_graph_utils">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.combine_arteries_and_veins">
+<span class="sig-name descname"><span class="pre">combine_arteries_and_veins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">artery</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vein</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'arteryvein'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#combine_arteries_and_veins"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.combine_arteries_and_veins" title="Link to this definition">#</a></dt>
+<dd><p>Combine the arteries and veins in the graph into a single property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<a class="reference internal" href="ClearMap.Analysis.Graphs.Graph.html#ClearMap.Analysis.Graphs.Graph.Graph" title="ClearMap.Analysis.Graphs.Graph.Graph"><em>Graph</em></a>) – The graph to combine the arteries and veins of</p></li>
+<li><p><strong>artery</strong> (<em>np.array</em><em> or </em><em>None</em>) – The artery property of the graph. If None, will be extracted from the graph</p></li>
+<li><p><strong>vein</strong> (<em>np.array</em><em> or </em><em>None</em>) – The vein property of the graph. If None, will be extracted from the graph</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – <dl class="simple">
+<dt>The mode to use for combining the arteries and veins. Can be one of:</dt><dd><ul>
+<li><p>’arteryvein’: simply combine (OR) the artery and vein properties</p></li>
+<li><p>’bigvessels’: combine the artery and vein properties and add the vessels with a radius above min_radius</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>min_radius</strong> (<em>float</em><em> or </em><em>None</em>) – The minimum radius to use for the ‘bigvessels’ mode. This is required if mode is ‘bigvessels’.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<p>The combined artery_vein property (as a numpy array)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.edge_to_vertex_property">
+<span class="sig-name descname"><span class="pre">edge_to_vertex_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_property</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#edge_to_vertex_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.edge_to_vertex_property" title="Link to this definition">#</a></dt>
+<dd><p>Converts graph_property from edge to vertex property</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function only works for binary properties</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<a class="reference internal" href="ClearMap.Analysis.Graphs.Graph.html#ClearMap.Analysis.Graphs.Graph.Graph" title="ClearMap.Analysis.Graphs.Graph.Graph"><em>Graph</em></a>) – The graph to convert the property from</p></li>
+<li><p><strong>edge_property</strong> (<em>str</em><em> or </em><em>np.array</em>) – The name of the edge property to convert or the edge property itself</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<p>The vertex property (as a numpy array)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.extract_annotated_region">
+<span class="sig-name descname"><span class="pre">extract_annotated_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#extract_annotated_region"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.extract_annotated_region" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.filter_graph_degrees">
+<span class="sig-name descname"><span class="pre">filter_graph_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_degree</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#filter_graph_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.filter_graph_degrees" title="Link to this definition">#</a></dt>
+<dd><p>Filter the graph to keep only the edges with a degree between min_degree and max_degree
+(boundaries are included)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong></p></li>
+<li><p><strong>min_degree</strong> (<em>int</em>) – The minimum degree to keep</p></li>
+<li><p><strong>max_degree</strong> (<em>int</em>) – The maximum degree to keep</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<p>The filtered graph</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.get_edges_n_kinds">
+<span class="sig-name descname"><span class="pre">get_edges_n_kinds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#get_edges_n_kinds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.get_edges_n_kinds" title="Link to this definition">#</a></dt>
+<dd><p>Get the n_kind property (i.e. the integer value representing the type of vessel)
+for each edge in the graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>graph</strong> (<a class="reference internal" href="ClearMap.Analysis.Graphs.Graph.html#ClearMap.Analysis.Graphs.Graph.Graph" title="ClearMap.Analysis.Graphs.Graph.Graph"><em>Graph</em></a>) – The graph to get the n_kind property of</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>n_kind<span class="classifier">np.array</span></dt><dd><p>The n_kind property for each edge in the graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.get_sub_graph">
+<span class="sig-name descname"><span class="pre">get_sub_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#get_sub_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.get_sub_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.get_vertex_coordinates">
+<span class="sig-name descname"><span class="pre">get_vertex_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coordinates_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#get_vertex_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.get_vertex_coordinates" title="Link to this definition">#</a></dt>
+<dd><p>Get the coordinates from the graph in any space.
+The coordinates can be in any space, as long as it is a vertex property of the graph.
+Examples of coordinates spaces are ‘coordinates’, ‘coordinates_atlas’, ‘coordinates_scaled’, ‘coordinates_MRI’
+:param graph: The graph to get the coordinates from
+:type graph: GraphGt.Graph
+:param coordinates_name: The name of the coordinates space to use. Typically, ‘coordinates’ or ‘coordinates_atlas’
+:type coordinates_name: str</p>
+<p class="rubric">Returns</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.get_vertices_n_kinds">
+<span class="sig-name descname"><span class="pre">get_vertices_n_kinds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#get_vertices_n_kinds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.get_vertices_n_kinds" title="Link to this definition">#</a></dt>
+<dd><p>Get the n_kind property (i.e. the integer value representing the type of vessel)
+for each vertex in the graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>graph</strong> (<a class="reference internal" href="ClearMap.Analysis.Graphs.Graph.html#ClearMap.Analysis.Graphs.Graph.Graph" title="ClearMap.Analysis.Graphs.Graph.Graph"><em>Graph</em></a>) – The graph to get the n_kind property of</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>n_kind<span class="classifier">np.array</span></dt><dd><p>The n_kind property for each vertex in the graph</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.get_vessel_length">
+<span class="sig-name descname"><span class="pre">get_vessel_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinates</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#get_vessel_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.get_vessel_length" title="Link to this definition">#</a></dt>
+<dd><p>Get the length of a single vessel from its coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>coordinates</strong> (<em>ndarray</em>) – The coordinates of the (single) vessel in the format (n_points, 3)</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.graph_gt_to_igraph">
+<span class="sig-name descname"><span class="pre">graph_gt_to_igraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#graph_gt_to_igraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.graph_gt_to_igraph" title="Link to this definition">#</a></dt>
+<dd><p>Convert graph from GraphGt to igraph format</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This only transfers the properties ‘radius’, ‘diameter’ and ‘nkind’. nkind is the integer value
+representing the type of vessel (see the n_kinds dictionary for the possible values)</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>src_graph</strong> (<em>GraphGt</em>) – The graph to convert (in GraphGt format)</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<p>The converted graph (in igraph format)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.modularity_measure">
+<span class="sig-name descname"><span class="pre">modularity_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modules</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#modularity_measure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.modularity_measure" title="Link to this definition">#</a></dt>
+<dd><p>Measure of modularity of a subgraph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>modules</strong></p></li>
+<li><p><strong>graph</strong></p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.parallel_get_vessels_lengths">
+<span class="sig-name descname"><span class="pre">parallel_get_vessels_lengths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_coordinates_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'coordinates'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_below_unity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_chunk_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_processes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#parallel_get_vessels_lengths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.parallel_get_vessels_lengths" title="Link to this definition">#</a></dt>
+<dd><p>Computes the length of each vessel in the graph in parallel.
+Using the geometry, we extract the coordinates of each vessel and compute the length from that.
+This is parallelized because pure numpy is impossible because the vessels have different lengths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<a class="reference internal" href="ClearMap.Analysis.Graphs.Graph.html#ClearMap.Analysis.Graphs.Graph.Graph" title="ClearMap.Analysis.Graphs.Graph.Graph"><em>Graph</em></a>) – The graph to compute the lengths of</p></li>
+<li><p><strong>edge_coordinates_name</strong> (<em>str</em>) – The name of the property containing the coordinates of the vessels.
+Typically, ‘coordinates’ or ‘coordinates_atlas’</p></li>
+<li><p><strong>clip_below_unity</strong> (<em>bool</em>) – If True, clips the length below 1 to 1</p></li>
+<li><p><strong>min_chunk_size</strong> (<em>int</em>) – The minimum chunk size to use for parallel processing</p></li>
+<li><p><strong>n_processes</strong> (<em>int</em>) – The number of processes to use for the computation</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<p>An array of the lengths of the vessels in the graph</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.remove_surface">
+<span class="sig-name descname"><span class="pre">remove_surface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#remove_surface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.remove_surface" title="Link to this definition">#</a></dt>
+<dd><p>Removes the vessels that are within a certain distance from the surface of the brain
+The filter is done on the ‘distance_to_surface’ property of the vertices. Hence, the
+depth should be given in the same unit as the property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<a class="reference internal" href="ClearMap.Analysis.Graphs.Graph.html#ClearMap.Analysis.Graphs.Graph.Graph" title="ClearMap.Analysis.Graphs.Graph.Graph"><em>Graph</em></a>) – The graph to filter</p></li>
+<li><p><strong>depth</strong> (<em>float</em>) – The depth from the surface to remove</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.set_artery_vein_if_missing">
+<span class="sig-name descname"><span class="pre">set_artery_vein_if_missing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">artery_min_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vein_min_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#set_artery_vein_if_missing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.set_artery_vein_if_missing" title="Link to this definition">#</a></dt>
+<dd><p>Sets the vertex properties for artery and vein if they are missing.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.vertex_filter_to_edge_filter">
+<span class="sig-name descname"><span class="pre">vertex_filter_to_edge_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex_filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator=&lt;ufunc</span> <span class="pre">'logical_and'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#vertex_filter_to_edge_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.vertex_filter_to_edge_filter" title="Link to this definition">#</a></dt>
+<dd><p>Converts a vertex filter to an edge filter</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The operator is essential. Should both vertices follow the filter or either one.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<a class="reference internal" href="ClearMap.Analysis.Graphs.Graph.html#ClearMap.Analysis.Graphs.Graph.Graph" title="ClearMap.Analysis.Graphs.Graph.Graph"><em>Graph</em></a>) – The graph to convert the filter for</p></li>
+<li><p><strong>vertex_filter</strong> (<em>np.array</em>) – The vertex filter to convert</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<p>The edge filter (as a numpy array)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Analysis.vasculature.vasc_graph_utils.vertex_to_edge_property">
+<span class="sig-name descname"><span class="pre">vertex_to_edge_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_property</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Analysis/vasculature/vasc_graph_utils.html#vertex_to_edge_property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.vertex_to_edge_property" title="Link to this definition">#</a></dt>
+<dd><p>Converts graph_property from vertex to edge property</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function only works for binary properties</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph</strong> (<a class="reference internal" href="ClearMap.Analysis.Graphs.Graph.html#ClearMap.Analysis.Graphs.Graph.Graph" title="ClearMap.Analysis.Graphs.Graph.Graph"><em>Graph</em></a>) – The graph to convert the property from</p></li>
+<li><p><strong>graph_property</strong> (<em>str</em><em> or </em><em>np.array</em>) – The name of the vertex property to convert or the vertex property itself</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<p>The edge property (as a numpy array)</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.combine_arteries_and_veins"><code class="docutils literal notranslate"><span class="pre">combine_arteries_and_veins()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.edge_to_vertex_property"><code class="docutils literal notranslate"><span class="pre">edge_to_vertex_property()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.extract_annotated_region"><code class="docutils literal notranslate"><span class="pre">extract_annotated_region()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.filter_graph_degrees"><code class="docutils literal notranslate"><span class="pre">filter_graph_degrees()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.get_edges_n_kinds"><code class="docutils literal notranslate"><span class="pre">get_edges_n_kinds()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.get_sub_graph"><code class="docutils literal notranslate"><span class="pre">get_sub_graph()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.get_vertex_coordinates"><code class="docutils literal notranslate"><span class="pre">get_vertex_coordinates()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.get_vertices_n_kinds"><code class="docutils literal notranslate"><span class="pre">get_vertices_n_kinds()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.get_vessel_length"><code class="docutils literal notranslate"><span class="pre">get_vessel_length()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.graph_gt_to_igraph"><code class="docutils literal notranslate"><span class="pre">graph_gt_to_igraph()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.modularity_measure"><code class="docutils literal notranslate"><span class="pre">modularity_measure()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.parallel_get_vessels_lengths"><code class="docutils literal notranslate"><span class="pre">parallel_get_vessels_lengths()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.remove_surface"><code class="docutils literal notranslate"><span class="pre">remove_surface()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.set_artery_vein_if_missing"><code class="docutils literal notranslate"><span class="pre">set_artery_vein_if_missing()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.vertex_filter_to_edge_filter"><code class="docutils literal notranslate"><span class="pre">vertex_filter_to_edge_filter()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Analysis.vasculature.vasc_graph_utils.vertex_to_edge_property"><code class="docutils literal notranslate"><span class="pre">vertex_to_edge_property()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.Analysis.vasculature.vasc_graph_utils.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

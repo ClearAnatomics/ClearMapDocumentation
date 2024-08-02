@@ -1,0 +1,782 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.ImageProcessing.Filter.Rank.Bilateral &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/ImageProcessing/Filter/Rank/Bilateral';</script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Ima...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.ImageProcessing.Filter.Rank.Bilateral</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Approximate bilateral rank filter for local (custom kernel) mean.</span>
+
+<span class="sd">The local histogram is computed using a sliding window similar to the method</span>
+<span class="sd">described in [Huang]_.</span>
+
+<span class="sd">The pixel neighborhood is defined by:</span>
+
+<span class="sd">* the given structuring element</span>
+<span class="sd">* an interval [g-s0, g+s1] in greylevel around g the processed pixel greylevel</span>
+
+<span class="sd">The kernel is flat (i.e. each pixel belonging to the neighborhood contributes</span>
+<span class="sd">equally).</span>
+
+<span class="sd">Result image is 8-/16-bit or double with respect to the input image and the</span>
+<span class="sd">rank filter operation.</span>
+
+<span class="sd">References</span>
+<span class="sd">----------</span>
+
+<span class="sd">.. [Huang] Huang, T. ,Yang, G. ;  Tang, G.. &quot;A fast two-dimensional</span>
+<span class="sd">       median filtering algorithm&quot;, IEEE Transactions on Acoustics, Speech and</span>
+<span class="sd">       Signal Processing, Feb 1979. Volume: 27 , Issue: 1, Page(s): 13 - 18.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__note__</span> <span class="o">=</span> <span class="s2">&quot;Code adpated to 3D images from skimage.filters.rank by Christoph Kirst&quot;</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Rank</span> <span class="k">as</span> <span class="n">rnk</span>
+
+<span class="kn">import</span> <span class="nn">pyximport</span><span class="p">;</span>
+<span class="n">pyximport</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="n">setup_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;include_dirs&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">get_include</span><span class="p">()},</span> <span class="n">reload_support</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">BilateralCode</span> <span class="k">as</span> <span class="n">code</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mean_bilateral&#39;</span><span class="p">,</span> <span class="s1">&#39;pop_bilateral&#39;</span><span class="p">,</span> <span class="s1">&#39;sum_bilateral&#39;</span><span class="p">,</span> <span class="s1">&#39;sum_relative_bilateral&#39;</span><span class="p">,</span> <span class="s1">&#39;mean_scale_bilateral&#39;</span><span class="p">]</span>
+
+
+ 
+<span class="c1">###############################################################################</span>
+<span class="c1">### Bilateral filter</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="mean_bilateral">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Bilateral.html#ClearMap.ImageProcessing.Filter.Rank.mean_bilateral">[docs]</a>
+<span class="k">def</span> <span class="nf">mean_bilateral</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s0</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">s1</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Apply a flat kernel bilateral filter.</span>
+
+<span class="sd">  This is an edge-preserving and noise reducing denoising filter. It averages</span>
+<span class="sd">  pixels based on their spatial closeness and radiometric similarity.</span>
+
+<span class="sd">  Spatial closeness is measured by considering only the local pixel</span>
+<span class="sd">  neighborhood given by a structuring element.</span>
+
+<span class="sd">  Radiometric similarity is defined by the greylevel interval [g-s0, g+s1]</span>
+<span class="sd">  where g is the current pixel greylevel.</span>
+
+<span class="sd">  Only pixels belonging to the structuring element and having a graylevel</span>
+<span class="sd">  inside this interval are averaged.</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structuring element, if None use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array, if None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels in the mask are zero in the output.</span>
+<span class="sd">  s0,s1 : int</span>
+<span class="sd">    The lower and upper widths around the center value</span>
+<span class="sd">    for the bilateral window. </span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">      The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">mean_masked</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_index</span><span class="o">=</span><span class="p">[</span><span class="n">s0</span><span class="p">,</span><span class="n">s1</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+<div class="viewcode-block" id="pop_bilateral">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Bilateral.html#ClearMap.ImageProcessing.Filter.Rank.pop_bilateral">[docs]</a>
+<span class="k">def</span> <span class="nf">pop_bilateral</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s0</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">s1</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Return the local number (population) of pixels.</span>
+<span class="sd">  </span>
+<span class="sd">  The number of pixels is defined as the number of pixels which are included</span>
+<span class="sd">  in the structuring element and the mask. Additionally pixels must have a</span>
+<span class="sd">  graylevel inside the interval [g-s0, g+s1] where g is the gray value of the</span>
+<span class="sd">  center pixel.</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structuring element, if None use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array, if None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels in the mask are zero in the output.</span>
+<span class="sd">  s0,s1 : int</span>
+<span class="sd">    The lower and upper widths around the center value</span>
+<span class="sd">    for the bilateral window. </span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">      The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">pop</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">pop_masked</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_index</span><span class="o">=</span><span class="p">[</span><span class="n">s0</span><span class="p">,</span><span class="n">s1</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+  
+
+<div class="viewcode-block" id="sum_bilateral">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Bilateral.html#ClearMap.ImageProcessing.Filter.Rank.sum_bilateral">[docs]</a>
+<span class="k">def</span> <span class="nf">sum_bilateral</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s0</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">s1</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Apply a flat kernel bilateral filter.</span>
+
+<span class="sd">  This is an edge-preserving and noise reducing denoising filter. It sums</span>
+<span class="sd">  pixels based on their spatial closeness and radiometric similarity.</span>
+
+<span class="sd">  Spatial closeness is measured by considering only the local pixel</span>
+<span class="sd">  neighborhood given by a structuring element (structural_element).</span>
+
+<span class="sd">  Radiometric similarity is defined by the greylevel interval [g-s0, g+s1]</span>
+<span class="sd">  where g is the current pixel greylevel.</span>
+
+<span class="sd">  Only pixels belonging to the structuring element AND having a greylevel</span>
+<span class="sd">  inside this interval are summed.</span>
+
+<span class="sd">  Note that the sum may overflow depending on the data type of the input</span>
+<span class="sd">  array.</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structuring element, if None use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array, if None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels in the mask are zero in the output.</span>
+<span class="sd">  s0,s1 : int</span>
+<span class="sd">    The lower and upper widths around the center value</span>
+<span class="sd">    for the bilateral window. </span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">      The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">sum_masked</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_index</span><span class="o">=</span><span class="p">[</span><span class="n">s0</span><span class="p">,</span><span class="n">s1</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+
+<div class="viewcode-block" id="sum_relative_bilateral">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Bilateral.html#ClearMap.ImageProcessing.Filter.Rank.sum_relative_bilateral">[docs]</a>
+<span class="k">def</span> <span class="nf">sum_relative_bilateral</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s0</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">s1</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Apply a flat kernel bilateral filter.</span>
+
+<span class="sd">  This is an edge-preserving and noise reducing denoising filter. It sums</span>
+<span class="sd">  pixels based on their spatial closeness and radiometric similarity.</span>
+
+<span class="sd">  Spatial closeness is measured by considering only the local pixel</span>
+<span class="sd">  neighborhood given by a structuring element (structural_element).</span>
+
+<span class="sd">  Radiometric similarity is defined by the greylevel interval [g-s0, g+s1]</span>
+<span class="sd">  where g is the current pixel greylevel.</span>
+
+<span class="sd">  Only pixels belonging to the structuring element AND having a greylevel</span>
+<span class="sd">  inside this interval are summed.</span>
+
+<span class="sd">  Note that the sum may overflow depending on the data type of the input</span>
+<span class="sd">  array.</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structuring element, if None use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array, if None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels in the mask are zero in the output.</span>
+<span class="sd">  s0,s1 : int</span>
+<span class="sd">    The lower and upper widths around the center value</span>
+<span class="sd">    for the bilateral window. </span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">sum_masked</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">parameter_float</span><span class="o">=</span><span class="p">[</span><span class="n">s0</span><span class="p">,</span><span class="n">s1</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+<div class="viewcode-block" id="mean_scale_bilateral">
+<a class="viewcode-back" href="../../../../../api/ClearMap.ImageProcessing.Filter.Rank.Bilateral.html#ClearMap.ImageProcessing.Filter.Rank.mean_scale_bilateral">[docs]</a>
+<span class="k">def</span> <span class="nf">mean_scale_bilateral</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">s0</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">s1</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Mean pixel value using a bilateral window size that scales with local pixel intensity.</span>
+<span class="sd">  </span>
+<span class="sd">  The filter linearly scales the biateral window size as [g-s0-p0*g, g+s1+p1*g].</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  selem : array</span>
+<span class="sd">    Structuring element, if None use a cube of size 3.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output array, if None, a new array is allocated.</span>
+<span class="sd">  mask : array</span>
+<span class="sd">    Optional mask, if None, the complete source is used.</span>
+<span class="sd">    Pixels in the mask are zero in the output.</span>
+<span class="sd">  s0,s1 : int</span>
+<span class="sd">    The lower and upper widths around the center value</span>
+<span class="sd">    for the bilateral window. </span>
+<span class="sd">  p0,p1 : float</span>
+<span class="sd">    The lower and upper scale values for the bilateral window.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The filtered array.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">rnk</span><span class="o">.</span><span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">mean_scale</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">mean_scale_masked</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> 
+                         <span class="n">parameter_index</span><span class="o">=</span><span class="p">[</span><span class="n">s0</span><span class="p">,</span><span class="n">s1</span><span class="p">],</span> <span class="n">parameter_float</span><span class="o">=</span><span class="p">[</span><span class="n">p0</span><span class="p">,</span><span class="n">p1</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">);</span></div>
+
+
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

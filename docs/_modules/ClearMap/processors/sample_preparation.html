@@ -1,0 +1,1599 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.processors.sample_preparation &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/processors/sample_preparation';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.pro...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.processors.sample_preparation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">sample_preparation</span>
+<span class="sd">==================</span>
+
+<span class="sd">This is the part that is common to both pipelines to process the raw images.</span>
+<span class="sd">It includes file conversion, stitching and registration</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures.process</span> <span class="kn">import</span> <span class="n">BrokenProcessPool</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">tifffile</span>
+
+<span class="kn">from</span> <span class="nn">ClearMap.Visualization.Color.Color</span> <span class="kn">import</span> <span class="n">gray_image_to_rgb</span>
+
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;Qt5Agg&#39;</span><span class="p">)</span>
+
+
+<span class="kn">import</span> <span class="nn">ClearMap.Settings</span> <span class="k">as</span> <span class="nn">settings</span>
+<span class="kn">from</span> <span class="nn">ClearMap.Utils.utilities</span> <span class="kn">import</span> <span class="n">runs_on_ui</span><span class="p">,</span> <span class="n">requires_files</span><span class="p">,</span> <span class="n">FilePath</span>
+<span class="kn">from</span> <span class="nn">ClearMap.config.atlas</span> <span class="kn">import</span> <span class="n">ATLAS_NAMES_MAP</span><span class="p">,</span> <span class="n">STRUCTURE_TREE_NAMES_MAP</span>
+<span class="kn">from</span> <span class="nn">ClearMap.gui.gui_utils</span> <span class="kn">import</span> <span class="n">TmpDebug</span>  <span class="c1"># REFACTOR: move to workspace object</span>
+<span class="kn">from</span> <span class="nn">ClearMap.processors.generic_tab_processor</span> <span class="kn">import</span> <span class="n">TabProcessor</span><span class="p">,</span> <span class="n">CanceledProcessing</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Alignment.Elastix</span> <span class="k">as</span> <span class="nn">elastix</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Alignment.Annotation</span> <span class="k">as</span> <span class="nn">annotation</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.IO.Workspace</span> <span class="k">as</span> <span class="nn">workspace</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">clearmap_io</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Visualization.Qt.Plot3d</span> <span class="k">as</span> <span class="nn">plot_3d</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Alignment.Resampling</span> <span class="k">as</span> <span class="nn">resampling</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Alignment.Stitching.StitchingRigid</span> <span class="k">as</span> <span class="nn">stitching_rigid</span>
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Alignment.Stitching.StitchingWobbly</span> <span class="k">as</span> <span class="nn">stitching_wobbly</span>
+<span class="kn">from</span> <span class="nn">ClearMap.IO.metadata</span> <span class="kn">import</span> <span class="n">define_auto_stitching_params</span><span class="p">,</span> <span class="n">define_auto_resolution</span><span class="p">,</span> <span class="n">pattern_finders_from_base_dir</span>
+<span class="kn">from</span> <span class="nn">ClearMap.IO.elastix_config</span> <span class="kn">import</span> <span class="n">ElastixParser</span>
+<span class="kn">from</span> <span class="nn">ClearMap.config.config_loader</span> <span class="kn">import</span> <span class="n">get_configs</span><span class="p">,</span> <span class="n">ConfigLoader</span><span class="p">,</span> <span class="n">CLEARMAP_CFG_DIR</span>
+<span class="kn">from</span> <span class="nn">ClearMap.config.update_config</span> <span class="kn">import</span> <span class="n">update_default_config</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">q_plot_3d</span>
+
+
+<span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;, Charly Rousseau &lt;charly.rousseau@icm-institute.org&gt;&#39;</span>
+<span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Public License v3 (see LICENSE)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span> <span class="o">=</span> <span class="s1">&#39;https://idisco.info&#39;</span>
+<span class="n">__download__</span> <span class="o">=</span> <span class="s1">&#39;https://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+
+<div class="viewcode-block" id="PreProcessor">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor">[docs]</a>
+<span class="k">class</span> <span class="nc">PreProcessor</span><span class="p">(</span><span class="n">TabProcessor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handle the stitching and alignment of the raw images</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_loader</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">src_directory</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources_directory</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">align_channels_affine_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">align_reference_affine_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">align_reference_bspline_file</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_annotation_file_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_hemispheres_file_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_reference_file_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_distance_file_path</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">annotation_file_path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hemispheres_file_path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reference_file_path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">distance_file_path</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__align_auto_to_ref_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+\s-?\d+\.\d+\s\d+\.\d+\s\d+\.\d+\s\d+\.\d+&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__align_resampled_to_auto_re</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d+\s-\d+\.\d+\s\d+\.\d+\s\d+\.\d+\s\d+\.\d+\s\d+\.\d+&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__resample_re</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Resampling: resampling&#39;</span><span class="p">,</span>
+                              <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;.*?Resampling:\sresampling\saxes\s.+\s?,\sslice\s.+\s/\s\d+&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_place_re</span> <span class="o">=</span> <span class="s1">&#39;done constructing constraints for component&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_algin_lyt_re</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Alignment: Wobbly alignment&#39;</span><span class="p">,</span>
+                                                <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Alignment:\sWobbly alignment \(\d+, \d+\)-&gt;\(\d+, \d+\) &quot;</span>
+                                                           <span class="sa">r</span><span class="s2">&quot;along axis [0-3] done: elapsed time: \d+:\d</span><span class="si">{2}</span><span class="s2">:\d</span><span class="si">{2}</span><span class="s2">.\d+&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_stitch_re</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Stitching: stitching&#39;</span><span class="p">,</span>
+                                             <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Stitching: stitching wobbly slice \d+/\d+&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__rigid_stitching_align_re</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">,</span>
+                                           <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Alignment: aligning \(\d+, \d+\) with \(\d+, \d+\), alignment&quot;</span>
+                                                      <span class="sa">r</span><span class="s2">&quot; pair \d+/\d+ done, shift = \(-?\d+, -?\d+, -?\d+\),&quot;</span>
+                                                      <span class="sa">r</span><span class="s2">&quot; quality = -\d+\.\d+e\+\d+!&quot;</span><span class="p">))</span>
+        <span class="c1"># if not runs_on_spyder():</span>
+        <span class="c1">#     pyqtgraph.mkQApp()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">CLEARMAP_CFG_DIR</span><span class="p">):</span>
+            <span class="n">update_default_config</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">prefix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the prefix to use for the files</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The prefix to use, None to not use any</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;sample_id&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;use_id_as_prefix&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="PreProcessor.filename">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.filename">[docs]</a>
+    <span class="k">def</span> <span class="nf">filename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A shortcut to get the filename from the workspace</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        args</span>
+<span class="sd">        kwargs</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The filename</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.z_only">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.z_only">[docs]</a>
+    <span class="k">def</span> <span class="nf">z_only</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the channel is z only (no x or y tiles)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        channel : str</span>
+<span class="sd">            The channel to check</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if the channel is z only</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">expression</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span><span class="o">.</span><span class="n">tags</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="n">tag</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tags</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">axes</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_tiled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the raw channel is tiled (has x and y tiles)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if the raw channel is tiled</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__is_tiled</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__is_tiled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+        <span class="n">tags</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">expression</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span><span class="o">.</span><span class="n">tags</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">tags</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">z_only</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">autofluorescence_is_tiled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the autofluorescence channel is tiled (has x and y tiles)</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if the autofluorescence channel is tiled</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__is_tiled</span><span class="p">(</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__has_tiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+        <span class="c1"># extension = &#39;npy&#39; if self.use_npy() else None</span>
+        <span class="c1"># return len(clearmap_io.file_list(self.filename(channel, prefix=self.prefix, extension=extension)))</span>
+        <span class="c1"># noinspection PyTypeChecker</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">clearmap_io</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">)))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">has_tiles</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__has_tiles</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PreProcessor.check_has_all_tiles">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.check_has_all_tiles">[docs]</a>
+    <span class="k">def</span> <span class="nf">check_has_all_tiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check whether all the tiles of the channel exist on disk</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        channel : str</span>
+<span class="sd">            The channel to check</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if all the tiles exist</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">extension</span> <span class="o">=</span> <span class="s1">&#39;npy&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_npy</span><span class="p">()</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">all_tiles_exist</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="n">extension</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">has_npy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the raw channel is in npy format</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if the raw channel is in npy format</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># noinspection PyTypeChecker</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">clearmap_io</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.npy&#39;</span><span class="p">)))</span>
+
+<div class="viewcode-block" id="PreProcessor.get_autofluo_pts_path">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.get_autofluo_pts_path">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_autofluo_pts_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;resampled_to_auto&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the path to the autofluorescence landmarks file</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        direction</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The path to the autofluorescence landmarks file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">elastix_folder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">elastix_folder</span><span class="p">,</span> <span class="s1">&#39;autolfuorescence_landmarks.pts&#39;</span><span class="p">)</span>  <span class="c1"># TODO: use workspace</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.clear_landmarks">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.clear_landmarks">[docs]</a>
+    <span class="k">def</span> <span class="nf">clear_landmarks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Clear (remove) the landmarks files</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">f_path</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ref_pts_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">resampled_pts_path</span><span class="p">,</span>
+                       <span class="bp">self</span><span class="o">.</span><span class="n">get_autofluo_pts_path</span><span class="p">(</span><span class="s1">&#39;resampled_to_auto&#39;</span><span class="p">),</span>
+                       <span class="bp">self</span><span class="o">.</span><span class="n">get_autofluo_pts_path</span><span class="p">(</span><span class="s1">&#39;auto_to_reference&#39;</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f_path</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f_path</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">resampled_pts_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled_to_auto&#39;</span><span class="p">),</span> <span class="s1">&#39;resampled_landmarks.pts&#39;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">ref_pts_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;auto_to_reference&#39;</span><span class="p">),</span> <span class="s1">&#39;reference_landmarks.pts&#39;</span><span class="p">)</span>  <span class="c1"># TODO: use workspace</span>
+
+<div class="viewcode-block" id="PreProcessor.setup">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.setup">[docs]</a>
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfgs</span><span class="p">,</span> <span class="n">watcher</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">convert_tiles</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfgs tuple of (machine_cfg_path, sample_cfg_path, processing_cfg_path) or</span>
+<span class="sd">            (machine_cfg, sample_cfg, processing_cfg)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources_directory</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">resources_path</span>
+        <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">for</span> <span class="n">cfg</span> <span class="ow">in</span> <span class="n">cfgs</span><span class="p">]):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_configs</span><span class="p">(</span><span class="n">cfgs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Directly the config</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span> <span class="o">=</span> <span class="n">cfgs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">src_directory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_loader</span> <span class="o">=</span> <span class="n">ConfigLoader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">src_directory</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">watcher</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">progress_watcher</span> <span class="o">=</span> <span class="n">watcher</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="n">Workspace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;pipeline_name&#39;</span><span class="p">],</span> <span class="n">directory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">src_directory</span><span class="p">,</span>
+                                             <span class="n">prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">tmp_debug</span> <span class="o">=</span> <span class="n">TmpDebug</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">)</span>
+        <span class="n">src_paths</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;src_paths&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="o">**</span><span class="n">src_paths</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">convert_tiles</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">convert_tiles</span><span class="p">()</span></div>
+
+        <span class="c1"># FIXME: check if setup_atlas should go here</span>
+
+<div class="viewcode-block" id="PreProcessor.unpack_atlas">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.unpack_atlas">[docs]</a>
+    <span class="k">def</span> <span class="nf">unpack_atlas</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">atlas_base_name</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">decompress_atlases</span><span class="p">(</span><span class="n">atlas_base_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_annotation_file_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_hemispheres_file_path</span><span class="p">,</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">default_reference_file_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_distance_file_path</span> <span class="o">=</span> <span class="n">res</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.stack_columns">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.stack_columns">[docs]</a>
+    <span class="k">def</span> <span class="nf">stack_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">pattern_finders</span> <span class="o">=</span> <span class="n">pattern_finders_from_base_dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">src_directory</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">pat_finder</span> <span class="ow">in</span> <span class="n">pattern_finders</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">pat_finder</span><span class="o">.</span><span class="n">y_values</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pat_finder</span><span class="o">.</span><span class="n">x_values</span><span class="p">:</span>
+                    <span class="n">stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">tifffile</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">f_path</span><span class="p">)</span> <span class="k">for</span> <span class="n">f_path</span> <span class="ow">in</span> <span class="n">pat_finder</span><span class="o">.</span><span class="n">get_sub_tiff_paths</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)])</span>
+                    <span class="n">new_path</span> <span class="o">=</span> <span class="n">pat_finder</span><span class="o">.</span><span class="n">sub_pattern_str</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+                    <span class="n">tifffile</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span><span class="n">new_path</span><span class="p">,</span> <span class="n">stack</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">aligned_autofluo_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;auto_to_reference&#39;</span><span class="p">),</span> <span class="s1">&#39;result.1.mhd&#39;</span><span class="p">)</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_stitched_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">resampled_shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">raw_resampled_res_from_cfg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;resampling&#39;</span><span class="p">][</span><span class="s1">&#39;raw_sink_resolution&#39;</span><span class="p">])</span>
+            <span class="n">raw_res_from_cfg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;resolutions&#39;</span><span class="p">][</span><span class="s1">&#39;raw&#39;</span><span class="p">])</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">resampled_shape</span> <span class="o">*</span> <span class="p">(</span><span class="n">raw_resampled_res_from_cfg</span> <span class="o">/</span> <span class="n">raw_res_from_cfg</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">resampled_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">))</span>
+
+<div class="viewcode-block" id="PreProcessor.convert_tiles">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.convert_tiles">[docs]</a>
+    <span class="k">def</span> <span class="nf">convert_tiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert list of input files to numpy files for efficiency reasons</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="n">force</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_npy</span><span class="p">():</span>
+            <span class="n">file_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">file_list</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;.tif&#39;</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">clearmap_io</span><span class="o">.</span><span class="n">convert_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;tif&#39;</span><span class="p">),</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;npy&#39;</span><span class="p">,</span>
+                                              <span class="n">processes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_file_conv&#39;</span><span class="p">],</span>
+                                              <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File conversion canceled&#39;</span><span class="p">)</span>
+                    <span class="k">return</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;src_paths&#39;</span><span class="p">][</span><span class="s1">&#39;arteries&#39;</span><span class="p">]:</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">clearmap_io</span><span class="o">.</span><span class="n">convert_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="s1">&#39;arteries&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;tif&#39;</span><span class="p">),</span>
+                                                  <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;npy&#39;</span><span class="p">,</span>
+                                                  <span class="n">processes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_file_conv&#39;</span><span class="p">],</span>
+                                                  <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File conversion canceled&#39;</span><span class="p">)</span>
+                        <span class="k">return</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.use_npy">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.use_npy">[docs]</a>
+    <span class="k">def</span> <span class="nf">use_npy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;conversion&#39;</span><span class="p">][</span><span class="s1">&#39;use_npy&#39;</span><span class="p">]</span> <span class="ow">or</span> \
+               <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.npy&#39;</span><span class="p">)</span> <span class="ow">or</span> \
+               <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;npy&#39;</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.set_configs">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.set_configs">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_configs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_paths</span><span class="p">):</span>
+        <span class="n">cfg_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">cfg_paths</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span> <span class="o">=</span> <span class="n">get_configs</span><span class="p">(</span><span class="o">*</span><span class="n">cfg_paths</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.setup_atlases">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.setup_atlases">[docs]</a>
+    <span class="k">def</span> <span class="nf">setup_atlases</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># TODO: add possibility to load custom reference file (i.e. defaults to None in cfg)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">:</span>
+            <span class="k">return</span>  <span class="c1"># Not setup yet. FIXME: find better way around</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Initialising atlases&#39;</span><span class="p">)</span>
+        <span class="n">atlas_base_name</span> <span class="o">=</span> <span class="n">ATLAS_NAMES_MAP</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;atlas&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]][</span><span class="s1">&#39;base_name&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unpack_atlas</span><span class="p">(</span><span class="n">atlas_base_name</span><span class="p">)</span>
+        <span class="n">x_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;slice_x&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;slice_x&#39;</span><span class="p">])</span>
+        <span class="n">y_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;slice_y&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;slice_y&#39;</span><span class="p">])</span>
+        <span class="n">z_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;slice_z&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;slice_z&#39;</span><span class="p">])</span>
+        <span class="n">xyz_slicing</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_slice</span><span class="p">,</span> <span class="n">y_slice</span><span class="p">,</span> <span class="n">z_slice</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">annotation</span><span class="o">.</span><span class="n">prepare_annotation_files</span><span class="p">(</span>
+            <span class="n">slicing</span><span class="o">=</span><span class="n">xyz_slicing</span><span class="p">,</span>
+            <span class="n">orientation</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;orientation&#39;</span><span class="p">],</span>
+            <span class="n">annotation_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">default_annotation_file_path</span><span class="p">,</span> <span class="n">hemispheres_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">default_hemispheres_file_path</span><span class="p">,</span>
+            <span class="n">reference_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">default_reference_file_path</span><span class="p">,</span> <span class="n">distance_to_surface_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">default_distance_file_path</span><span class="p">,</span>
+            <span class="n">hemispheres</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">annotation_file_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hemispheres_file_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_file_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance_file_path</span> <span class="o">=</span> <span class="n">res</span>
+        <span class="n">annotation</span><span class="o">.</span><span class="n">set_annotation_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">annotation_file_path</span><span class="p">)</span>
+
+        <span class="n">structure_tree_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;atlas&#39;</span><span class="p">][</span><span class="s1">&#39;structure_tree_id&#39;</span><span class="p">]</span>
+        <span class="n">structure_file_name</span> <span class="o">=</span> <span class="n">STRUCTURE_TREE_NAMES_MAP</span><span class="p">[</span><span class="n">structure_tree_id</span><span class="p">]</span>
+        <span class="n">annotation</span><span class="o">.</span><span class="n">set_label_file</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">atlas_folder</span><span class="p">,</span> <span class="n">structure_file_name</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+        <span class="n">atlas_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;atlas&#39;</span><span class="p">]</span>
+        <span class="n">align_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">resources_directory</span><span class="p">,</span> <span class="n">atlas_cfg</span><span class="p">[</span><span class="s1">&#39;align_files_folder&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">align_channels_affine_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">align_dir</span><span class="p">,</span> <span class="n">atlas_cfg</span><span class="p">[</span><span class="s1">&#39;align_channels_affine_file&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">align_reference_affine_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">align_dir</span><span class="p">,</span> <span class="n">atlas_cfg</span><span class="p">[</span><span class="s1">&#39;align_reference_affine_file&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">align_reference_bspline_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">align_dir</span><span class="p">,</span> <span class="n">atlas_cfg</span><span class="p">[</span><span class="s1">&#39;align_reference_bspline_file&#39;</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.plot_atlas">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.plot_atlas">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_atlas</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">q_plot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">reference_file_path</span><span class="p">,</span> <span class="n">lut</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;default_lut&#39;</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.run">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.run">[docs]</a>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stitch</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resample_for_registration</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">align</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_configs</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_atlas_files</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.stitch">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.stitch">[docs]</a>
+    <span class="k">def</span> <span class="nf">stitch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">stitching_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">stitching_cfg</span><span class="p">[</span><span class="s1">&#39;rigid&#39;</span><span class="p">][</span><span class="s1">&#39;skip&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stitch_rigid</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">stitching_cfg</span><span class="p">[</span><span class="s1">&#39;wobbly&#39;</span><span class="p">][</span><span class="s1">&#39;skip&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stitch_wobbly</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plot_stitching_results</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">stitching_cfg</span><span class="p">[</span><span class="s1">&#39;output_conversion&#39;</span><span class="p">][</span><span class="s1">&#39;skip&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">convert_to_image_format</span><span class="p">()</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">n_channels_convert</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;output_conversion&#39;</span><span class="p">][</span><span class="s1">&#39;raw&#39;</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;output_conversion&#39;</span><span class="p">][</span><span class="s1">&#39;arteries&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PreProcessor.convert_to_image_format">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.convert_to_image_format">[docs]</a>
+    <span class="k">def</span> <span class="nf">convert_to_image_format</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># TODO: support progress</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert (optionally) to image formats readable by e.g. Fiji</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;output_conversion&#39;</span><span class="p">][</span><span class="s1">&#39;format&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;output_conversion&#39;</span><span class="p">][</span><span class="s1">&#39;raw&#39;</span><span class="p">]:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">clearmap_io</span><span class="o">.</span><span class="n">convert_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;npy&#39;</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">),</span>
+                                          <span class="n">extension</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_file_conv&#39;</span><span class="p">],</span>
+                                          <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+            <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File conversion canceled&#39;</span><span class="p">)</span>
+                <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;output_conversion&#39;</span><span class="p">][</span><span class="s1">&#39;arteries&#39;</span><span class="p">]:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">clearmap_io</span><span class="o">.</span><span class="n">convert_files</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;arteries&#39;</span><span class="p">,</span>
+                                                                   <span class="n">prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;npy&#39;</span><span class="p">),</span>
+                                          <span class="n">extension</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_file_conv&#39;</span><span class="p">],</span>
+                                          <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+            <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File conversion canceled&#39;</span><span class="p">)</span>
+                <span class="k">return</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">was_stitched_rigid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;aligned_axis&#39;</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">was_registered</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># return os.path.exists(self.filename(&#39;resampled_to_auto&#39;))</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">aligned_autofluo_path</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">n_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;run&#39;</span><span class="p">][</span><span class="s1">&#39;raw&#39;</span><span class="p">])</span> <span class="o">+</span>
+                <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;run&#39;</span><span class="p">][</span><span class="s1">&#39;arteries&#39;</span><span class="p">]))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">n_rigid_steps_to_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;rigid&#39;</span><span class="p">][</span><span class="s1">&#39;skip&#39;</span><span class="p">])</span>
+
+    <span class="nd">@requires_files</span><span class="p">([</span><span class="n">FilePath</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">)])</span>
+    <span class="k">def</span> <span class="nf">stitch_rigid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_watcher_step</span><span class="p">(</span><span class="s1">&#39;Stitching rigid&#39;</span><span class="p">)</span>
+        <span class="n">stitching_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">]</span>
+        <span class="n">overlaps</span><span class="p">,</span> <span class="n">projection_thickness</span> <span class="o">=</span> <span class="n">define_auto_stitching_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                                      <span class="n">stitching_cfg</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_wobbly_layout</span><span class="p">(</span><span class="n">overlaps</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">stitching_cfg</span><span class="p">[</span><span class="s1">&#39;rigid&#39;</span><span class="p">][</span><span class="s1">&#39;background_pixels&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">background_params</span> <span class="o">=</span> <span class="n">stitching_cfg</span><span class="p">[</span><span class="s1">&#39;rigid&#39;</span><span class="p">][</span><span class="s1">&#39;background_level&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">background_params</span> <span class="o">=</span> <span class="p">(</span><span class="n">stitching_cfg</span><span class="p">[</span><span class="s1">&#39;rigid&#39;</span><span class="p">][</span><span class="s1">&#39;background_level&#39;</span><span class="p">],</span>
+                                 <span class="n">stitching_cfg</span><span class="p">[</span><span class="s1">&#39;rigid&#39;</span><span class="p">][</span><span class="s1">&#39;background_pixels&#39;</span><span class="p">])</span>
+        <span class="n">max_shifts</span> <span class="o">=</span> <span class="p">[</span><span class="n">stitching_cfg</span><span class="p">[</span><span class="s1">&#39;rigid&#39;</span><span class="p">][</span><span class="sa">f</span><span class="s1">&#39;max_shifts_</span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="s1">&#39;xyz&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">alignments</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__rigid_stitching_align_re</span><span class="p">,</span> <span class="s1">&#39;Align layout rigid&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">align_layout_rigid_mip</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">projection_thickness</span><span class="p">,</span> <span class="n">max_shifts</span><span class="o">=</span><span class="n">max_shifts</span><span class="p">,</span>
+                                                   <span class="n">ranges</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">background</span><span class="o">=</span><span class="n">background_params</span><span class="p">,</span>
+                                                   <span class="n">clip</span><span class="o">=</span><span class="mi">25000</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_stitching&#39;</span><span class="p">],</span>
+                                                   <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stitching canceled&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># FIXME: see if appropriate solution</span>
+            <span class="k">return</span>  <span class="c1"># FIXME: do not run stiching_wobbly if rigid failed</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;optimization&#39;</span><span class="p">,</span> <span class="n">min_quality</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">lower_to_origin</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+
+        <span class="c1"># layout.plot_alignments()  # TODO: TEST</span>
+        <span class="c1"># plt.show()</span>
+
+        <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">save_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;aligned_axis&#39;</span><span class="p">),</span> <span class="n">layout</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">layout</span>
+
+    <span class="nd">@requires_files</span><span class="p">([</span><span class="n">FilePath</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">)])</span>  <span class="c1"># TODO: optional requires npy</span>
+    <span class="k">def</span> <span class="nf">get_wobbly_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">overlaps</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">overlaps</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">overlaps</span><span class="p">,</span> <span class="n">projection_thickness</span> <span class="o">=</span> <span class="n">define_auto_stitching_params</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                                          <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">])</span>
+        <span class="n">extension</span> <span class="o">=</span> <span class="s1">&#39;npy&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_npy</span><span class="p">()</span> <span class="k">else</span> <span class="kc">None</span>  <span class="c1"># TODO: optional requires</span>
+        <span class="n">raw_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="n">extension</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">stitching_wobbly</span><span class="o">.</span><span class="n">WobblyLayout</span><span class="p">(</span><span class="n">expression</span><span class="o">=</span><span class="n">raw_path</span><span class="p">,</span> <span class="n">tile_axes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">],</span> <span class="n">overlaps</span><span class="o">=</span><span class="n">overlaps</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">layout</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">n_wobbly_steps_to_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;wobbly&#39;</span><span class="p">][</span><span class="s1">&#39;skip&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_channels</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__align_layout_wobbly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
+        <span class="n">wobbly_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;wobbly&#39;</span><span class="p">]</span>
+        <span class="n">max_shifts</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">wobbly_cfg</span><span class="p">[</span><span class="s1">&#39;max_shifts_x&#39;</span><span class="p">],</span>
+            <span class="n">wobbly_cfg</span><span class="p">[</span><span class="s1">&#39;max_shifts_y&#39;</span><span class="p">],</span>
+            <span class="n">wobbly_cfg</span><span class="p">[</span><span class="s1">&#39;max_shifts_z&#39;</span><span class="p">],</span>
+        <span class="p">]</span>
+        <span class="n">stack_validation_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">method</span><span class="o">=</span><span class="s1">&#39;foreground&#39;</span><span class="p">,</span>
+            <span class="n">valid_range</span><span class="o">=</span><span class="n">wobbly_cfg</span><span class="p">[</span><span class="s2">&quot;stack_valid_range&quot;</span><span class="p">],</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">wobbly_cfg</span><span class="p">[</span><span class="s2">&quot;stack_pixel_size&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">slice_validation_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">method</span><span class="o">=</span><span class="s1">&#39;foreground&#39;</span><span class="p">,</span>
+            <span class="n">valid_range</span><span class="o">=</span><span class="n">wobbly_cfg</span><span class="p">[</span><span class="s2">&quot;slice_valid_range&quot;</span><span class="p">],</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">wobbly_cfg</span><span class="p">[</span><span class="s2">&quot;slice_pixel_size&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">n_pairs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">alignments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="n">n_pairs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_algin_lyt_re</span><span class="p">,</span> <span class="s1">&#39;Align layout wobbly&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">stitching_wobbly</span><span class="o">.</span><span class="n">align_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">axis_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">max_shifts</span><span class="o">=</span><span class="n">max_shifts</span><span class="p">,</span> <span class="n">axis_mip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">stack_validation_params</span><span class="o">=</span><span class="n">stack_validation_params</span><span class="p">,</span>
+                                          <span class="n">prepare</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;normalization&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                                          <span class="n">slice_validation_params</span><span class="o">=</span><span class="n">slice_validation_params</span><span class="p">,</span>
+                                          <span class="n">prepare_slice</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">find_shifts</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;tracing&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span>
+                                          <span class="n">processes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_stitching&#39;</span><span class="p">],</span>
+                                          <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wobbly stitching canceled&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__place_layout_wobbly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">alignments</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>  <span class="c1"># WARNING: bad estimation</span>
+                                         <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_place_re</span><span class="p">,</span> <span class="s1">&#39;Place layout wobbly&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">n_processes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_stitching&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;darwin&#39;</span><span class="p">):</span>
+                <span class="n">n_processes</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">stitching_wobbly</span><span class="o">.</span><span class="n">place_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">min_quality</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
+                                          <span class="n">method</span><span class="o">=</span><span class="s1">&#39;optimization&#39;</span><span class="p">,</span>
+                                          <span class="n">smooth</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;window&#39;</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;bartlett&#39;</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                                                      <span class="n">binary</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+                                          <span class="n">smooth_optimized</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;window&#39;</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;bartlett&#39;</span><span class="p">,</span>
+                                                                <span class="n">window_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+                                          <span class="n">fix_isolated</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lower_to_origin</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                          <span class="n">processes</span><span class="o">=</span><span class="n">n_processes</span><span class="p">,</span>
+                                          <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wobbly stitching canceled&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__stitch_layout_wobbly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">load_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;placed&#39;</span><span class="p">))</span>
+        <span class="n">n_slices</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">))</span>  <span class="c1"># TODO: find better proxy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="n">n_slices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_stitch_re</span><span class="p">,</span> <span class="s1">&#39;Stitch layout wobbly&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">stitching_wobbly</span><span class="o">.</span><span class="n">stitch_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;interpolation&#39;</span><span class="p">,</span>
+                                           <span class="n">processes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_stitching&#39;</span><span class="p">],</span>
+                                           <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wobbly stitching canceled&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;run&#39;</span><span class="p">][</span><span class="s1">&#39;arteries&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="n">n_slices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_stitch_re</span><span class="p">,</span>
+                                             <span class="s1">&#39;Stitch layout wobbly arteries&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_npy</span><span class="p">():</span>
+                    <span class="n">layout</span><span class="o">.</span><span class="n">replace_source_location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;npy&#39;</span><span class="p">),</span>
+                                                   <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;arteries&#39;</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;npy&#39;</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">layout</span><span class="o">.</span><span class="n">replace_source_location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;arteries&#39;</span><span class="p">))</span>
+                <span class="n">stitching_wobbly</span><span class="o">.</span><span class="n">stitch_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;arteries&#39;</span><span class="p">),</span>
+                                               <span class="n">method</span><span class="o">=</span><span class="s1">&#39;interpolation&#39;</span><span class="p">,</span>
+                                               <span class="n">processes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_stitching&#39;</span><span class="p">],</span>
+                                               <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wobbly stitching arteries canceled&#39;</span><span class="p">)</span>
+                <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+
+<div class="viewcode-block" id="PreProcessor.stitch_wobbly">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.stitch_wobbly">[docs]</a>
+    <span class="k">def</span> <span class="nf">stitch_wobbly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_watcher_step</span><span class="p">(</span><span class="s1">&#39;Stitching wobbly&#39;</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">load_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;aligned_axis&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__align_layout_wobbly</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">save_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;aligned&#39;</span><span class="p">),</span> <span class="n">layout</span><span class="p">)</span>
+
+        <span class="c1"># layout = st.load_layout(self.filename(&#39;layout&#39;, postfix=&#39;aligned&#39;))  # FIXME: check if required</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__place_layout_wobbly</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">save_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;placed&#39;</span><span class="p">),</span> <span class="n">layout</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__stitch_layout_wobbly</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span></div>
+
+
+    <span class="k">def</span> <span class="nf">__resample_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">FileExistsError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Resampled raw (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s2">&quot;resampled&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">) already exists&#39;</span><span class="p">)</span>
+        <span class="n">resampling_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;resampling&#39;</span><span class="p">]</span>
+        <span class="n">default_resample_parameter</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;processes&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_resampling&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="n">resampling_cfg</span><span class="p">[</span><span class="s1">&#39;verbose&#39;</span><span class="p">]</span>
+        <span class="p">}</span>  <span class="c1"># WARNING: duplicate (use method ??)</span>
+        <span class="n">clearmap_io</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">))</span>  <span class="c1"># FIXME:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">f_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">file_list</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>  <span class="c1"># e.g. single file, force use of config</span>
+            <span class="n">f_list</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">f_list</span><span class="p">:</span>
+            <span class="n">src_res</span> <span class="o">=</span> <span class="n">define_auto_resolution</span><span class="p">(</span><span class="n">f_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;resolutions&#39;</span><span class="p">][</span><span class="s1">&#39;raw&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">src_res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;resolutions&#39;</span><span class="p">][</span><span class="s1">&#39;raw&#39;</span><span class="p">]</span>
+
+        <span class="n">n_planes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">))</span>  <span class="c1"># FIXME: use uimg metadata or z pattern of raw instead</span>
+        <span class="k">if</span> <span class="n">n_planes</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># e.g. 1 file</span>
+            <span class="n">n_planes</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">))[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="n">n_planes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__resample_re</span><span class="p">,</span> <span class="s1">&#39;Resampling raw&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">resampling</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">),</span>
+                                         <span class="n">original_resolution</span><span class="o">=</span><span class="n">src_res</span><span class="p">,</span>
+                                         <span class="n">resampled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">),</span>
+                                         <span class="n">resampled_resolution</span><span class="o">=</span><span class="n">resampling_cfg</span><span class="p">[</span><span class="s1">&#39;raw_sink_resolution&#39;</span><span class="p">],</span>
+                                         <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span>
+                                         <span class="o">**</span><span class="n">default_resample_parameter</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Resampling canceled&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Resampled raw has no data&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__resample_autofluorescence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">FileExistsError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Resampled autofluorescence &#39;</span>
+                                  <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s2">&quot;resampled&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">postfix</span><span class="o">=</span><span class="s2">&quot;autofluorescence&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">) already exists&#39;</span><span class="p">)</span>
+        <span class="n">resampling_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;resampling&#39;</span><span class="p">]</span>
+        <span class="n">default_resample_parameter</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;processes&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;n_processes_resampling&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="n">resampling_cfg</span><span class="p">[</span><span class="s1">&#39;verbose&#39;</span><span class="p">]</span>
+        <span class="p">}</span>  <span class="c1"># WARNING: duplicate (use method ??)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">auto_fluo_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Could not resample autofluorescence, file not found&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="n">auto_res</span> <span class="o">=</span> <span class="n">define_auto_resolution</span><span class="p">(</span><span class="n">auto_fluo_path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">[</span><span class="s1">&#39;resolutions&#39;</span><span class="p">][</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">])</span>
+        <span class="n">n_planes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">))</span>  <span class="c1"># TODO: find more elegant solution for counter</span>
+        <span class="k">if</span> <span class="n">n_planes</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># e.g. 1 file</span>
+            <span class="n">n_planes</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">))[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="n">n_planes</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__resample_re</span><span class="p">,</span> <span class="s1">&#39;Resampling autofluorescence&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">resampling</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">),</span>
+                                         <span class="n">original_resolution</span><span class="o">=</span><span class="n">auto_res</span><span class="p">,</span>
+                                         <span class="n">resampled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">),</span>
+                                         <span class="n">resampled_resolution</span><span class="o">=</span><span class="n">resampling_cfg</span><span class="p">[</span><span class="s1">&#39;autofluo_sink_resolution&#39;</span><span class="p">],</span>
+                                         <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span>
+                                         <span class="o">**</span><span class="n">default_resample_parameter</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Resampling canceled&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Resampled autofluorescence has no data&#39;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">n_registration_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">resampling_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;resampling&#39;</span><span class="p">]</span>  <span class="c1"># WARNING: probably 1 more when arteries included</span>
+        <span class="n">n_steps_atlas_setup</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">n_steps_align</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># WARNING: probably 1 more when arteries included</span>
+        <span class="k">return</span> <span class="n">n_steps_atlas_setup</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="ow">not</span> <span class="n">resampling_cfg</span><span class="p">[</span><span class="s1">&#39;skip&#39;</span><span class="p">])</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n_steps_align</span>
+
+<div class="viewcode-block" id="PreProcessor.resample_for_registration">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.resample_for_registration">[docs]</a>
+    <span class="k">def</span> <span class="nf">resample_for_registration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">resampling_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;resampling&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">resampling_cfg</span><span class="p">[</span><span class="s1">&#39;skip&#39;</span><span class="p">]:</span>
+            <span class="c1"># Raw</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__resample_raw</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="k">if</span> <span class="n">resampling_cfg</span><span class="p">[</span><span class="s1">&#39;plot_raw&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">runs_on_ui</span><span class="p">():</span>
+                <span class="n">plot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">))</span>
+
+            <span class="c1"># Autofluorescence</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__resample_autofluorescence</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">resampling_cfg</span><span class="p">[</span><span class="s1">&#39;plot_autofluo&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">runs_on_ui</span><span class="p">():</span>
+                <span class="n">plot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">),</span>
+                              <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">)])</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.align">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.align">[docs]</a>
+    <span class="k">def</span> <span class="nf">align</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__align_resampled_to_auto</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__align_auto_to_ref</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+        <span class="k">except</span> <span class="n">CanceledProcessing</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alignment canceled&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+    <span class="k">def</span> <span class="nf">__align_resampled_to_auto</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__align_resampled_to_auto_re</span><span class="p">,</span> <span class="s1">&#39;Align res to auto&#39;</span><span class="p">)</span>
+        <span class="n">align_channels_parameter</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="c1"># moving and reference images</span>
+            <span class="s2">&quot;moving_image&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">),</span>
+            <span class="s2">&quot;fixed_image&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">),</span>
+
+            <span class="c1"># elastix parameter files for alignment</span>
+            <span class="s2">&quot;affine_parameter_file&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">align_channels_affine_file</span><span class="p">,</span>
+            <span class="s2">&quot;bspline_parameter_file&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+
+            <span class="s2">&quot;result_directory&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled_to_auto&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;workspace&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span>
+        <span class="p">}</span>
+        <span class="n">use_landmarks</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_autofluo_pts_path</span><span class="p">(</span><span class="s1">&#39;resampled_to_auto&#39;</span><span class="p">))</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">resampled_pts_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">use_landmarks</span><span class="p">:</span>  <span class="c1"># FIXME: add use_landmarks to config</span>
+            <span class="n">align_channels_parameter</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">moving_landmarks_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">resampled_pts_path</span><span class="p">,</span>
+                                            <span class="n">fixed_landmarks_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_autofluo_pts_path</span><span class="p">(</span><span class="s1">&#39;resampled_to_auto&#39;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">patch_elastix_cfg_landmarks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">align_channels_affine_file</span><span class="p">)</span>
+        <span class="n">elastix</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="o">**</span><span class="n">align_channels_parameter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">restore_elastix_cfg_no_landmarks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">align_channels_affine_file</span><span class="p">)</span>  <span class="c1"># FIXME: do in try except</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__check_elastix_success</span><span class="p">(</span><span class="s1">&#39;resampled_to_auto&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__align_auto_to_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="mi">17000</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__align_auto_to_ref_re</span><span class="p">,</span> <span class="s1">&#39;Align auto to ref&#39;</span><span class="p">)</span>
+        <span class="n">align_reference_parameter</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="c1"># moving and reference images</span>
+            <span class="s2">&quot;moving_image&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_file_path</span><span class="p">,</span>
+            <span class="s2">&quot;fixed_image&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">),</span>
+
+            <span class="c1"># elastix parameter files for alignment</span>
+            <span class="s2">&quot;affine_parameter_file&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">align_reference_affine_file</span><span class="p">,</span>
+            <span class="s2">&quot;bspline_parameter_file&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">align_reference_bspline_file</span><span class="p">,</span>
+            <span class="c1"># directory of the alignment result</span>
+            <span class="s2">&quot;result_directory&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;auto_to_reference&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;workspace&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span>
+        <span class="p">}</span>
+        <span class="n">use_landmarks</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_autofluo_pts_path</span><span class="p">(</span><span class="s1">&#39;auto_to_reference&#39;</span><span class="p">))</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ref_pts_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">use_landmarks</span><span class="p">:</span>  <span class="c1"># FIXME: add use_landmarks to config</span>
+            <span class="n">align_reference_parameter</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">moving_landmarks_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ref_pts_path</span><span class="p">,</span>
+                                             <span class="n">fixed_landmarks_path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_autofluo_pts_path</span><span class="p">(</span><span class="s1">&#39;auto_to_reference&#39;</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">patch_elastix_cfg_landmarks</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">align_reference_bspline_file</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">align_reference_parameter</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Registration missing parameter &quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+        <span class="n">elastix</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="o">**</span><span class="n">align_reference_parameter</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">cfg_path</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">align_reference_affine_file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">align_reference_bspline_file</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">restore_elastix_cfg_no_landmarks</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">)</span>  <span class="c1"># FIXME: do in try except</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__check_elastix_success</span><span class="p">(</span><span class="s1">&#39;auto_to_reference&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__check_elastix_success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results_dir_name</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="n">results_dir_name</span><span class="p">),</span> <span class="s1">&#39;elastix.log&#39;</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">logfile</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;fail&#39;</span> <span class="ow">in</span> <span class="n">logfile</span><span class="o">.</span><span class="n">read</span><span class="p">():</span>
+                <span class="n">results_msg</span> <span class="o">=</span> <span class="n">results_dir_name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Alignment </span><span class="si">{</span><span class="n">results_msg</span><span class="si">}</span><span class="s1"> failed&#39;</span><span class="p">)</span>  <span class="c1"># TODO: change exception type</span>
+
+<div class="viewcode-block" id="PreProcessor.get_configs">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.get_configs">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_configs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;machine&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">,</span>
+            <span class="s1">&#39;sample&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_config</span><span class="p">,</span>
+            <span class="s1">&#39;processing&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">cfg</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.get_atlas_files">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.get_atlas_files">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_atlas_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">annotation_file_path</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setup_atlases</span><span class="p">()</span>
+        <span class="n">atlas_files</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;annotation&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">annotation_file_path</span><span class="p">,</span>
+            <span class="s1">&#39;reference&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference_file_path</span><span class="p">,</span>
+            <span class="s1">&#39;distance&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">distance_file_path</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">atlas_files</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.plot_stitching_results">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.plot_stitching_results">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_stitching_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;preview&#39;</span><span class="p">]</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">titles</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;raw&#39;</span><span class="p">]:</span>
+            <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">))</span>
+            <span class="n">titles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Raw stitched&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;arteries&#39;</span><span class="p">]:</span>
+            <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;arteries&#39;</span><span class="p">))</span>  <span class="c1"># WARNING: hard coded postfix</span>
+            <span class="n">titles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Arteries stitched&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">paths</span> <span class="o">=</span> <span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">dvs</span> <span class="o">=</span> <span class="n">plot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">titles</span><span class="p">,</span> <span class="n">arrange</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lut</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dvs</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.patch_elastix_cfg_landmarks">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.patch_elastix_cfg_landmarks">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">patch_elastix_cfg_landmarks</span><span class="p">(</span><span class="n">elastix_cfg_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Patches the elastix configuration file to use landmarks (CorrespondingPointsEuclideanDistanceMetric),</span>
+<span class="sd">        in addition to AdvancedMattesMutualInformation</span>
+
+<span class="sd">        .. warning:: This method modifies the file in place and assumes that the existing</span>
+<span class="sd">        metric is AdvancedMattesMutualInformation</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        elastix_cfg_path : str</span>
+<span class="sd">            Path to the elastix configuration file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="n">ElastixParser</span><span class="p">(</span><span class="n">elastix_cfg_path</span><span class="p">)</span>
+        <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;Registration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MultiMetricMultiResolutionRegistration&#39;</span><span class="p">]</span>
+        <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;Metric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AdvancedMattesMutualInformation&quot;</span><span class="p">,</span> <span class="s2">&quot;CorrespondingPointsEuclideanDistanceMetric&quot;</span><span class="p">]</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">write</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.restore_elastix_cfg_no_landmarks">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.restore_elastix_cfg_no_landmarks">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">restore_elastix_cfg_no_landmarks</span><span class="p">(</span><span class="n">elastix_cfg_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Restores the elastix configuration file to not use landmarks (CorrespondingPointsEuclideanDistanceMetric),</span>
+<span class="sd">        only AdvancedMattesMutualInformation</span>
+
+<span class="sd">        .. warning:: This method modifies the file in place and assumes that the existing metric is</span>
+<span class="sd">        AdvancedMattesMutualInformation</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        elastix_cfg_path</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="n">ElastixParser</span><span class="p">(</span><span class="n">elastix_cfg_path</span><span class="p">)</span>
+        <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;Registration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MultiResolutionRegistration&#39;</span><span class="p">]</span>
+        <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;Metric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AdvancedMattesMutualInformation&quot;</span><span class="p">]</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">write</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.stitch_overlay">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.stitch_overlay">[docs]</a>
+    <span class="k">def</span> <span class="nf">stitch_overlay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This creates a *dumb* overlay of the tiles</span>
+<span class="sd">        i.e. only using the fixed guess overlap</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        channel</span>
+<span class="sd">        color</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">get_positions</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+        <span class="n">mosaic_shape</span> <span class="o">=</span> <span class="p">{</span><span class="n">ax</span><span class="p">:</span> <span class="nb">max</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="s1">&#39;XY&#39;</span><span class="p">}</span>  <span class="c1"># +1 because 0 indexing</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_npy</span><span class="p">:</span>
+            <span class="n">files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;npy&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_list</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+        <span class="n">tile_shape</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="s1">&#39;XYZ&#39;</span><span class="p">,</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]))}</span>
+        <span class="n">middle_z</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tile_shape</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">overlaps</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing_config</span><span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;rigid&#39;</span><span class="p">][</span><span class="sa">f</span><span class="s1">&#39;overlap_</span><span class="si">{</span><span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="s1">&#39;XY&#39;</span><span class="p">}</span>
+        <span class="n">output_shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">tile_shape</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">*</span> <span class="n">mosaic_shape</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">-</span> <span class="n">overlaps</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">mosaic_shape</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="s1">&#39;XY&#39;</span><span class="p">]</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">output_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">output_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">tile_path</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">positions</span><span class="p">):</span>
+            <span class="n">starts</span> <span class="o">=</span> <span class="p">{</span><span class="n">ax</span><span class="p">:</span> <span class="n">pos</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">*</span> <span class="n">tile_shape</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">-</span> <span class="n">pos</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">*</span> <span class="n">overlaps</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="s1">&#39;XY&#39;</span><span class="p">}</span>
+            <span class="n">ends</span> <span class="o">=</span> <span class="p">{</span><span class="n">ax</span><span class="p">:</span> <span class="n">starts</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">+</span> <span class="n">tile_shape</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">starts</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_npy</span><span class="p">:</span>
+                <span class="n">tile</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">tile_path</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="n">middle_z</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tile</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">tile_path</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="n">middle_z</span><span class="p">]</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[(</span><span class="n">pos</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">])</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># Alternate colors</span>
+            <span class="n">layer</span><span class="p">[</span><span class="n">starts</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]:</span> <span class="n">ends</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">starts</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]:</span> <span class="n">ends</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">tile</span>
+        <span class="k">if</span> <span class="n">color</span><span class="p">:</span>
+            <span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">gray_image_to_rgb</span><span class="p">(</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">pseudo_z_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">range_max</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+            <span class="n">layers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">gray_image_to_rgb</span><span class="p">(</span><span class="n">layers</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">pseudo_z_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">range_max</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+        <span class="n">output_image</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">layers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">color</span><span class="p">:</span>
+            <span class="n">output_image</span> <span class="o">=</span> <span class="n">output_image</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output_image</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.overlay_layout_plane">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.overlay_layout_plane">[docs]</a>
+    <span class="k">def</span> <span class="nf">overlay_layout_plane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Overlays the sources to check their placement.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        layout : Layout class</span>
+<span class="sd">          The layout with the sources to overlay.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        image : array</span>
+<span class="sd">          A color image.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">sources</span>
+
+        <span class="n">dest_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">extent</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">full_lower</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">lower</span>
+        <span class="n">middle_z</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">sources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">color_layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dest_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dest_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)]</span>
+        <span class="c1"># construct full image</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span>
+            <span class="n">tile</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">location</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="n">middle_z</span><span class="p">]</span>  <span class="c1"># So as not to load the data into the list for memory efficiency</span>
+            <span class="n">current_slicing</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">ll</span> <span class="o">-</span> <span class="n">fl</span><span class="p">,</span> <span class="n">uu</span> <span class="o">-</span> <span class="n">fl</span><span class="p">)</span> <span class="k">for</span> <span class="n">ll</span><span class="p">,</span> <span class="n">uu</span><span class="p">,</span> <span class="n">fl</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">full_lower</span><span class="p">))[:</span><span class="mi">2</span><span class="p">]</span>
+
+            <span class="n">is_odd</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">tile_position</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="n">color_layers</span><span class="p">[</span><span class="n">is_odd</span><span class="p">]</span>  <span class="c1"># Alternate colors</span>
+            <span class="n">layer</span><span class="p">[</span><span class="n">current_slicing</span><span class="p">]</span> <span class="o">=</span> <span class="n">tile</span>
+
+        <span class="n">cyan_image</span> <span class="o">=</span> <span class="n">gray_image_to_rgb</span><span class="p">(</span><span class="n">color_layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">pseudo_z_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">range_max</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+        <span class="n">magenta_image</span> <span class="o">=</span> <span class="n">gray_image_to_rgb</span><span class="p">(</span><span class="n">color_layers</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">pseudo_z_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">range_max</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+
+        <span class="n">output_image</span> <span class="o">=</span> <span class="n">cyan_image</span> <span class="o">+</span> <span class="n">magenta_image</span>  <span class="c1"># TODO: normalise</span>
+        <span class="n">output_image</span> <span class="o">=</span> <span class="n">output_image</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">output_image</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.plot_layout">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.plot_layout">[docs]</a>
+    <span class="k">def</span> <span class="nf">plot_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="s1">&#39;aligned_axis&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">postfix</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;aligned_axis&#39;</span><span class="p">,</span> <span class="s1">&#39;aligned&#39;</span><span class="p">,</span> <span class="s1">&#39;placed&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected on of (&quot;aligned_axis&quot;, &quot;aligned&quot;, &quot;placed&quot;) for postfix, got &quot;</span><span class="si">{</span><span class="n">postfix</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">load_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="n">postfix</span><span class="p">))</span>
+        <span class="n">overlay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">overlay_layout_plane</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">overlay</span></div>
+
+
+<div class="viewcode-block" id="PreProcessor.delete_resampled_files">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.PreProcessor.delete_resampled_files">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete_resampled_files</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">postfix</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;autofluorescence&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">(</span><span class="s1">&#39;resampled&#39;</span><span class="p">,</span> <span class="n">postfix</span><span class="o">=</span><span class="n">postfix</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.main">[docs]</a>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">PreProcessor</span><span class="p">()</span>
+    <span class="n">preprocessor</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">preprocessor</span><span class="o">.</span><span class="n">setup_atlases</span><span class="p">()</span>
+    <span class="n">preprocessor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="init_preprocessor">
+<a class="viewcode-back" href="../../../api/ClearMap.processors.sample_preparation.html#ClearMap.processors.sample_preparation.init_preprocessor">[docs]</a>
+<span class="k">def</span> <span class="nf">init_preprocessor</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">atlas_base_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">convert_tiles</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">cfg_loader</span> <span class="o">=</span> <span class="n">ConfigLoader</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+    <span class="n">configs</span> <span class="o">=</span> <span class="n">get_configs</span><span class="p">(</span><span class="n">cfg_loader</span><span class="o">.</span><span class="n">get_cfg_path</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">),</span> <span class="n">cfg_loader</span><span class="o">.</span><span class="n">get_cfg_path</span><span class="p">(</span><span class="s1">&#39;processing&#39;</span><span class="p">))</span>
+    <span class="n">pre_proc</span> <span class="o">=</span> <span class="n">PreProcessor</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">atlas_base_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">atlas_id</span> <span class="o">=</span> <span class="n">configs</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;atlas&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+        <span class="n">atlas_base_name</span> <span class="o">=</span> <span class="n">ATLAS_NAMES_MAP</span><span class="p">[</span><span class="n">atlas_id</span><span class="p">][</span><span class="s1">&#39;base_name&#39;</span><span class="p">]</span>
+    <span class="n">json_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">atlas_folder</span><span class="p">,</span> <span class="n">STRUCTURE_TREE_NAMES_MAP</span><span class="p">[</span><span class="n">configs</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;registration&#39;</span><span class="p">][</span><span class="s1">&#39;atlas&#39;</span><span class="p">][</span><span class="s1">&#39;structure_tree_id&#39;</span><span class="p">]])</span>
+    <span class="n">pre_proc</span><span class="o">.</span><span class="n">unpack_atlas</span><span class="p">(</span><span class="n">atlas_base_name</span><span class="p">)</span>
+    <span class="n">pre_proc</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">configs</span><span class="p">,</span> <span class="n">convert_tiles</span><span class="o">=</span><span class="n">convert_tiles</span><span class="p">)</span>
+    <span class="n">pre_proc</span><span class="o">.</span><span class="n">setup_atlases</span><span class="p">()</span>
+    <span class="n">annotation</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">annotation_file</span><span class="o">=</span><span class="n">pre_proc</span><span class="o">.</span><span class="n">annotation_file_path</span><span class="p">,</span> <span class="n">label_file</span><span class="o">=</span><span class="n">json_file</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pre_proc</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

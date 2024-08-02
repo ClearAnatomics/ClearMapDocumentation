@@ -1,0 +1,1098 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.ImageProcessing.Differentiation.Hessian &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/ImageProcessing/Differentiation/Hessian';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Ima...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.ImageProcessing.Differentiation.Hessian</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Hessian</span>
+<span class="sd">=======</span>
+
+<span class="sd">Module to compute curvature measures based on Hessian Matrix</span>
+
+<span class="sd">Usefull for filtering vasculature data</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE.txt)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>    
+
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+
+<span class="kn">import</span> <span class="nn">pyximport</span>
+<span class="n">pyximport</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="n">setup_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;include_dirs&quot;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">get_include</span><span class="p">()},</span> <span class="n">reload_support</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">HessianCode</span> <span class="k">as</span> <span class="n">code</span>
+
+<span class="c1">#import ClearMap.IO.IO as io</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hessian&#39;</span><span class="p">,</span> <span class="s1">&#39;hessian_eigenvalues&#39;</span><span class="p">,</span> <span class="s1">&#39;hessian_eigensystem&#39;</span><span class="p">,</span> <span class="s1">&#39;lambda123&#39;</span><span class="p">,</span> <span class="s1">&#39;tubeness&#39;</span><span class="p">];</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Curvature measures</span>
+<span class="c1">###############################################################################</span>
+          
+<div class="viewcode-block" id="hessian">
+<a class="viewcode-back" href="../../../../api/ClearMap.ImageProcessing.Differentiation.Hessian.html#ClearMap.ImageProcessing.Differentiation.hessian">[docs]</a>
+<span class="k">def</span> <span class="nf">hessian</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Returns the hessian matrix at each location calculatd via finite differences.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output, if None, a new array is allocated.  </span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  hessian : array:</span>
+<span class="sd">      5d array with the hessian matrix in the first two dimensions.</span>
+<span class="sd">  &quot;&quot;&quot;</span>    
+  <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">hessian</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_shape_per_pixel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">parameter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">);</span></div>
+
+  
+
+<div class="viewcode-block" id="hessian_eigenvalues">
+<a class="viewcode-back" href="../../../../api/ClearMap.ImageProcessing.Differentiation.Hessian.html#ClearMap.ImageProcessing.Differentiation.hessian_eigenvalues">[docs]</a>
+<span class="k">def</span> <span class="nf">hessian_eigenvalues</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Hessian eigenvalues of source data</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output, if None, a new array is allocated.</span>
+<span class="sd">  sigma : float or None</span>
+<span class="sd">    If not None, a Gaussian filter with std sigma is applied initialliy.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The three eigenvalues of the Hessian matrix of the source.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">eigenvalues</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_shape_per_pixel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">parameter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">);</span></div>
+
+          
+
+<div class="viewcode-block" id="tubeness">
+<a class="viewcode-back" href="../../../../api/ClearMap.ImageProcessing.Differentiation.Hessian.html#ClearMap.ImageProcessing.Differentiation.tubeness">[docs]</a>
+<span class="k">def</span> <span class="nf">tubeness</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Tubeness mesure of source data</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  srouce : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output, if None, a new array is allocated.</span>
+<span class="sd">  threshold : float or None</span>
+<span class="sd">    If float, the tubeness is thresholded at this level.</span>
+<span class="sd">  sigma : float or None</span>
+<span class="sd">    If not None, a Gaussian filter with std sigma is applied initialliy.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : 3-D array</span>
+<span class="sd">      Tubness output.</span>
+
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  The tubness is the geometric mean of the two smallest eigenvalues.      </span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">tubeness</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span> 
+    <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">tubeness_threshold</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">parameter</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="lambda123">
+<a class="viewcode-back" href="../../../../api/ClearMap.ImageProcessing.Differentiation.Hessian.html#ClearMap.ImageProcessing.Differentiation.lambda123">[docs]</a>
+<span class="k">def</span> <span class="nf">lambda123</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">gamma12</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">gamma23</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Generalized tubness measure of source data.</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output, if None, a new array is allocated.</span>
+<span class="sd">  gamma12, gamma23, alpha : float</span>
+<span class="sd">    Parameters for the tubeness measure.</span>
+<span class="sd">  sigma : float or None</span>
+<span class="sd">    If not None, a Gaussian filter with std sigma is applied initialliy.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The tubness measure.</span>
+<span class="sd">  </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  Reference: Sato et al. Three-dimensional multi-scale line filter for segmentation and visualization of curvilinear structures in medical images, Medical Image Analysis 1998, pp 143--168.</span>
+<span class="sd">  &quot;&quot;&quot;</span>  
+  <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">parameter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">gamma12</span><span class="p">,</span> <span class="n">gamma23</span><span class="p">,</span> <span class="n">alpha</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">lambda123</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">parameter</span><span class="o">=</span><span class="n">parameter</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">sink_dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">);</span>          
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">parameter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">gamma12</span><span class="p">,</span> <span class="n">gamma23</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">threshold</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">lambda123_threshold</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">parameter</span><span class="o">=</span><span class="n">parameter</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">sink_dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">);</span>          </div>
+
+
+
+<div class="viewcode-block" id="hessian_eigensystem">
+<a class="viewcode-back" href="../../../../api/ClearMap.ImageProcessing.Differentiation.Hessian.html#ClearMap.ImageProcessing.Differentiation.hessian_eigensystem">[docs]</a>
+<span class="k">def</span> <span class="nf">hessian_eigensystem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="mi">3</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Hessian eigensystem of source data</span>
+
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output, if None, a new array is allocated.</span>
+<span class="sd">  sigma : float or None</span>
+<span class="sd">    If not None, a Gaussian filter with std sigma is applied initialliy.</span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The three eigenvalues and up to 3 eigenvectors of the Hessian matrix of the source.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">parameter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">eigenvectors</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">);</span>
+  <span class="n">sink_shape_per_pixel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="n">eigenvectors</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,)</span>
+  <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">eigensystem</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_shape_per_pixel</span><span class="o">=</span><span class="n">sink_shape_per_pixel</span><span class="p">,</span> <span class="n">parameter</span><span class="o">=</span><span class="n">parameter</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span></div>
+
+
+
+<span class="c1">#Note: for testing only</span>
+<span class="k">def</span> <span class="nf">hessian_test</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Returns the hessian matrix at each location calculatd via finite differences.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Input array.</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    Output, if None, a new array is allocated.  </span>
+
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  hessian : array:</span>
+<span class="sd">      5d array with the hessian matrix in the first two dimensions.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">_apply_code</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">eigensystem_test</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_shape_per_pixel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">6</span><span class="p">,),</span> <span class="n">parameter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">);</span>
+
+<span class="c1"># def eigenvalues_test(source, sink = None, sigma = None):</span>
+<span class="c1">#   &quot;&quot;&quot;Hessian eigenvalues of source data</span>
+
+<span class="c1">#   Arguments</span>
+<span class="c1">#   ---------</span>
+<span class="c1">#   source : array</span>
+<span class="c1">#     Input array.</span>
+<span class="c1">#   sink : array</span>
+<span class="c1">#     Output, if None, a new array is allocated.</span>
+<span class="c1">#   sigma : float or None</span>
+<span class="c1">#     If not None, a Gaussian filter with std sigma is applied initialliy.</span>
+  
+<span class="c1">#   Returns</span>
+<span class="c1">#   -------</span>
+<span class="c1">#   sink : array</span>
+<span class="c1">#     The three eigenvalues along the first axis for each source.</span>
+<span class="c1">#   &quot;&quot;&quot;</span>
+<span class="c1">#   return _apply_code(code.eigenvalues_test, source, sink, sink_shape_per_pixel = (3,), parameter = None, sigma = sigma);</span>
+
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Helpers</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_apply_code</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sink_dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_shape_per_pixel</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">parameter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Helper to apply the core functions&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">source</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The tubness measure is implemented for 3d data, found </span><span class="si">%d</span><span class="s1">d!&#39;</span> <span class="o">%</span> <span class="n">source</span><span class="o">.</span><span class="n">ndim</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">source</span> <span class="ow">is</span> <span class="n">sink</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot perform operation in place!&quot;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">sink_shape_per_pixel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">shape_per_pixel</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">shape_per_pixel</span> <span class="o">=</span> <span class="n">sink_shape_per_pixel</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sink_dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink_dtype</span> <span class="o">=</span> <span class="nb">float</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">shape_per_pixel</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="n">sink_dtype</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">shape_per_pixel</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,):</span>
+      <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">shape_per_pixel</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The sink of shape </span><span class="si">%r</span><span class="s1"> does not have expected shape </span><span class="si">%r</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">shape_per_pixel</span><span class="p">));</span>
+    <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">shape_per_pixel</span><span class="p">:</span>
+      <span class="n">sink</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="n">shape_per_pixel</span><span class="p">)</span>
+  
+  <span class="k">if</span> <span class="n">sink</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">sink</span><span class="p">;</span>
+
+  <span class="n">sink_stride</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">element_strides</span><span class="p">(</span><span class="n">sink</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    
+  <span class="k">if</span> <span class="n">parameter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">parameter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">parameter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">parameter</span><span class="p">],</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">();</span>
+                     
+  <span class="k">if</span> <span class="n">sigma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">);</span>
+  
+  <span class="n">function</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">sink_stride</span><span class="o">=</span><span class="n">sink_stride</span><span class="p">,</span>  <span class="n">parameter</span><span class="o">=</span><span class="n">parameter</span><span class="p">)</span>
+  
+  <span class="k">if</span> <span class="n">sink_shape_per_pixel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+  
+  <span class="k">return</span> <span class="n">sink</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tests</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Tests.Files</span> <span class="k">as</span> <span class="nn">tst</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">p3d</span>
+  
+  <span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Differentiation</span> <span class="k">as</span> <span class="nn">dif</span>
+  
+  <span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+  <span class="n">reload</span><span class="p">(</span><span class="n">dif</span><span class="p">);</span>
+  
+  <span class="c1"># test hessian </span>
+  <span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>   
+  <span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+  <span class="n">d1</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">));</span>
+  
+  <span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Differentiation.Hessian</span> <span class="k">as</span> <span class="nn">hes</span>
+  <span class="n">d2</span> <span class="o">=</span> <span class="n">hes</span><span class="o">.</span><span class="n">hessian</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+
+  <span class="n">clim</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]]))</span>
+
+  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">();</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="n">clim</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">d2</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">clim</span><span class="o">=</span><span class="n">clim</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">d1</span> <span class="o">-</span> <span class="n">d2</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">clim</span><span class="o">=</span><span class="n">clim</span><span class="p">)</span>
+  
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d1</span><span class="p">[:])</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">d2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+      
+      
+  <span class="c1"># test hessian eigenvalues</span>
+  <span class="n">source</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tst</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;v&#39;</span><span class="p">)[:</span><span class="mi">7</span><span class="p">,</span> <span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="p">:</span><span class="mi">7</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+  <span class="n">hessian</span> <span class="o">=</span> <span class="n">dif</span><span class="o">.</span><span class="n">hessian</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+  
+  <span class="c1"># eigenvalues</span>
+  <span class="n">evs_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigvals</span><span class="p">(</span><span class="n">hessian</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)[</span><span class="o">...</span><span class="p">,::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">evs</span>    <span class="o">=</span> <span class="n">dif</span><span class="o">.</span><span class="n">hessian_eigenvalues</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">evs</span><span class="p">,</span> <span class="n">evs_np</span><span class="p">))</span>
+
+  <span class="c1"># eigenvectors</span>
+  <span class="n">es</span> <span class="o">=</span> <span class="n">dif</span><span class="o">.</span><span class="n">hessian_eigensystem</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+  <span class="n">evs</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">,:];</span>
+  <span class="n">evecs</span> <span class="o">=</span> <span class="n">es</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">1</span><span class="p">:,:]</span>
+  
+  <span class="n">axis</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="n">index</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">evs</span><span class="o">.</span><span class="n">shape</span><span class="p">]))</span>
+  <span class="n">index</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="n">evs</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+  <span class="n">index</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+  
+  <span class="n">evs</span> <span class="o">=</span> <span class="n">evs</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+  <span class="n">evecs</span> <span class="o">=</span> <span class="n">evecs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+  
+  
+  <span class="n">evs_np</span><span class="p">,</span> <span class="n">evecs_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">hessian</span><span class="p">);</span>  
+  <span class="n">evecs_np</span> <span class="o">=</span> <span class="n">evecs_np</span><span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="c1"># numpy gives eigenvectros in the form evec[:,index]</span>
+
+  <span class="n">axis</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="n">index_np</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">evs_np</span><span class="o">.</span><span class="n">shape</span><span class="p">]))</span>
+  <span class="n">index_np</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="n">evs_np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+  <span class="n">index_np</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">index_np</span><span class="p">)</span>
+
+  <span class="n">evs_np</span> <span class="o">=</span> <span class="n">evs_np</span><span class="p">[</span><span class="n">index_np</span><span class="p">]</span>
+  <span class="n">evecs_np</span> <span class="o">=</span> <span class="n">evecs_np</span><span class="p">[</span><span class="n">index_np</span><span class="p">]</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">evs</span><span class="p">,</span> <span class="n">evs_np</span><span class="p">))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">evecs</span> <span class="o">/</span> <span class="n">evecs_np</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+  
+  <span class="c1">#wrong = np.array(np.where(np.logical_not(np.isclose(np.abs(evecs / evecs_np), 1)))).T</span>
+  <span class="c1">#wrong = wrong[::9][:,:3]</span>
+
+
+    
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span><span class="p">);</span>
+  <span class="n">dif</span><span class="o">.</span><span class="n">hessian_eigenvalues</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">source</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])));</span>
+
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span><span class="p">);</span>
+  <span class="n">dif</span><span class="o">.</span><span class="n">hessian_eigenvalues</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">source</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])));</span>
+  
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">);</span>
+  <span class="n">dif</span><span class="o">.</span><span class="n">lambda123</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">])</span>
+  
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">dif</span><span class="o">.</span><span class="n">lambda123</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">);</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">]);</span>
+  
+
+  <span class="c1">#test = dif.hessian_test(source, sigma=None)</span>
+  
+  <span class="c1"># Hessian:</span>
+  <span class="c1">#A B C</span>
+  <span class="c1">#B D E</span>
+  <span class="c1">#C E F</span>
+  <span class="c1">#hessian_test = np.array([[test[...,3], test[...,4], test[...,5]],[test[...,4], test[...,6], test[...,7]], [test[...,5], test[...,7], test[...,8]]])</span>
+  <span class="c1">#hessian_test = Hessian.transpose((2,3,4,0,1))</span>
+  
+  <span class="c1">#np.allclose(hessian_test, hessian)</span>
+  
+
+
+
+<span class="c1"># Python implementations of HessianCode for testing</span>
+<span class="c1">#from scipy import ndimage as ndi  </span>
+<span class="c1">#</span>
+<span class="c1">#def hessian(source):</span>
+<span class="c1">#  &quot;&quot;&quot;Returns the hessian matrix at each location calculatd via finite differences.</span>
+<span class="c1">#  </span>
+<span class="c1">#  Arguments</span>
+<span class="c1">#  ---------</span>
+<span class="c1">#  source : array</span>
+<span class="c1">#    Input array.</span>
+<span class="c1">#  sink : array</span>
+<span class="c1">#    Output, if None, a new array is allocated.  </span>
+<span class="c1">#</span>
+<span class="c1">#  Returns</span>
+<span class="c1">#  -------</span>
+<span class="c1">#    ndarray:</span>
+<span class="c1">#      5d array with the hessian matrix in the first two dimensions</span>
+<span class="c1">#  &quot;&quot;&quot;    </span>
+<span class="c1">#  c = 2*source;</span>
+<span class="c1">#  h[0,0] = mm[0:-2,1:-1,1:-1] - c + mm[2:,1:-1,1:-1];</span>
+<span class="c1">#  h[1,1] = mm[1:-1,0:-2,1:-1] - c + mm[1:-1,2:,1:-1];</span>
+<span class="c1">#  h[2,2] = mm[1:-1,1:-1,0:-2] - c + mm[1:-1,1:-1,2:];</span>
+<span class="c1">#  </span>
+<span class="c1">#  h[0,1] = h[1,0] = (mm[2:,2:,1:-1] - mm[:-2,2:,1:-1] - mm[2:,:-2,1:-1] + mm[:-2,:-2,1:-1]) / 4;</span>
+<span class="c1">#  h[0,2] = h[2,0] = (mm[2:,1:-1,2:] - mm[:-2,1:-1,2:] - mm[2:,1:-1,:-2] + mm[:-2,1:-1,:-2]) / 4;</span>
+<span class="c1">#  h[1,2] = h[2,1] = (mm[1:-1,2:,2:] - mm[1:-1,:-2,2:] - mm[1:-1,2:,:-2] + mm[1:-1,:-2,:-2]) / 4;</span>
+<span class="c1">#</span>
+<span class="c1">#  return h;</span>
+<span class="c1">#</span>
+<span class="c1">#def eigenvalues3D(m):</span>
+<span class="c1">#    &quot;&quot;&quot;Find the coefficients of the characteristic polynomial:</span>
+<span class="c1">#       http://en.wikipedia.org/wiki/Eigenvalue_algorithm</span>
+<span class="c1">#</span>
+<span class="c1">#		// The matrix looks like:</span>
+<span class="c1">#		/*</span>
+<span class="c1">#			A  B  C</span>
+<span class="c1">#			B  D  E</span>
+<span class="c1">#			C  E  F</span>
+<span class="c1">#		*/</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    </span>
+<span class="c1">#    A = m[0,0];</span>
+<span class="c1">#    B = m[0,1];</span>
+<span class="c1">#    C = m[0,2];</span>
+<span class="c1">#    D = m[1,1];</span>
+<span class="c1">#    E = m[1,2];</span>
+<span class="c1">#    F = m[2,2];</span>
+<span class="c1">#</span>
+<span class="c1">#    a = -1;</span>
+<span class="c1">#    b = A + D + F;</span>
+<span class="c1">#    c = B * B + C * C + E * E - A * D - A * F - D * F;</span>
+<span class="c1">#    d = A * D * F - A * E * E	- B * B * F + 2 * B * C * E - C * C * D;</span>
+<span class="c1">#</span>
+<span class="c1">#    third = 0.333333333333333333333333333333333333;</span>
+<span class="c1">#</span>
+<span class="c1">#    #Now use the root-finding formula described here:</span>
+<span class="c1">#    #http://en.wikipedia.org/wiki/Cubic_equation#oot-finding_formula</span>
+<span class="c1">#</span>
+<span class="c1">#    q = (3*a*c - b*b) / (9*a*a);</span>
+<span class="c1">#    r = (9*a*b*c - 27*a*a*d - 2*b*b*b) / (54*a*a*a);</span>
+<span class="c1">#</span>
+<span class="c1">#    discriminant = q*q*q + r*r;</span>
+<span class="c1">#    #print discriminant.shape</span>
+<span class="c1">#    </span>
+<span class="c1">#    eigenValues = np.zeros((3,) + m.shape[2:]);</span>
+<span class="c1">#    #print eigenValues.shape</span>
+<span class="c1">#</span>
+<span class="c1">#    #ids = discriminant &gt; 0;</span>
+<span class="c1">#    #if np.any(ids):</span>
+<span class="c1">#        #should never happen for symmetric matrix</span>
+<span class="c1">#    #    return None;</span>
+<span class="c1">#</span>
+<span class="c1">#    ids = discriminant &lt; 0;</span>
+<span class="c1">#    </span>
+<span class="c1">#    rr = r[ids];</span>
+<span class="c1">#      </span>
+<span class="c1">#    rootThree = 1.7320508075688772935;</span>
+<span class="c1">#    innerSize = np.sqrt( rr*rr - discriminant[ids] );</span>
+<span class="c1">#      </span>
+<span class="c1">#    ids2 = rr &gt; 0;</span>
+<span class="c1">#    innerAngle = np.zeros(rr.shape);</span>
+<span class="c1">#    </span>
+<span class="c1">#    innerAngle[ids2] = np.arctan(np.sqrt(-discriminant[ids][ids2]) / rr[ids2] );</span>
+<span class="c1">#    </span>
+<span class="c1">#    ids2 = np.logical_not(ids2);</span>
+<span class="c1">#    innerAngle[ids2] = ( np.pi - np.arctan( np.sqrt(-discriminant[ids][ids2]) / -rr[ids2] ) );</span>
+<span class="c1">#       </span>
+<span class="c1">#    # So now s is the cube root of innerSize * e ^ (   innerAngle * i )</span>
+<span class="c1">#    # and t is the cube root of innerSize * e ^ ( - innerAngle * i )       </span>
+<span class="c1">#       </span>
+<span class="c1">#    stSize = np.power(innerSize,third);</span>
+<span class="c1">#      </span>
+<span class="c1">#    sAngle = innerAngle / 3;</span>
+<span class="c1">#    #tAngle = - innerAngle / 3;</span>
+<span class="c1">#     </span>
+<span class="c1">#    sPlusT = 2 * stSize * np.cos(sAngle);</span>
+<span class="c1">#    </span>
+<span class="c1">#    eigenValues[0][ids] = ( sPlusT - (b[ids] / (3*a)) );</span>
+<span class="c1">#    firstPart = - (sPlusT / 2) - (b[ids] / 3*a);</span>
+<span class="c1">#    lastPart = - rootThree * stSize * np.sin(sAngle);</span>
+<span class="c1">#      </span>
+<span class="c1">#    eigenValues[1][ids] = ( firstPart + lastPart );</span>
+<span class="c1">#    eigenValues[2][ids] = ( firstPart - lastPart );</span>
+<span class="c1">#</span>
+<span class="c1">#    </span>
+<span class="c1">#    #The discriminant is zero (or very small),</span>
+<span class="c1">#    #so the second two solutions are the same:</span>
+<span class="c1">#    ids = discriminant == 0;</span>
+<span class="c1">#    rr = r[ids];    </span>
+<span class="c1">#    </span>
+<span class="c1">#    ids2 = rr &gt;= 0;</span>
+<span class="c1">#        </span>
+<span class="c1">#    </span>
+<span class="c1">#    sPlusT = np.zeros(rr.shape);</span>
+<span class="c1">#    sPlusT[ids2] = 2 * np.power(rr[ids2],third);</span>
+<span class="c1">#    ids2 = np.logical_not(ids2);</span>
+<span class="c1">#    sPlusT[ids2] = -2 * np.power(-rr[ids2],third);</span>
+<span class="c1">#        </span>
+<span class="c1">#    bOver3A = b[ids] / (3 * a);</span>
+<span class="c1">#      </span>
+<span class="c1">#    eigenValues[0][ids] = ( sPlusT   - bOver3A );</span>
+<span class="c1">#    eigenValues[1][ids] = (-sPlusT/2 - bOver3A );</span>
+<span class="c1">#    eigenValues[2][ids] = eigenValues[1][ids];</span>
+<span class="c1">#      </span>
+<span class="c1">#    return eigenValues;</span>
+<span class="c1">##</span>
+<span class="c1">##</span>
+<span class="c1">#def eigenvalues(m, sigma = 1.0, sort = True):</span>
+<span class="c1">#  if sigma is not None:</span>
+<span class="c1">#    smoothed = ndi.gaussian_filter(np.asarray(m, dtype = float), sigma=sigma);</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    smoothed = m;</span>
+<span class="c1">#</span>
+<span class="c1">#  h3 = hessian(smoothed);</span>
+<span class="c1">#  e3 = eigenvalues3D(h3);</span>
+<span class="c1">#  #e3a = np.abs(e3);</span>
+<span class="c1">#  e3a = e3;</span>
+<span class="c1">#  </span>
+<span class="c1">#  if sort:</span>
+<span class="c1">#    index = list(np.ix_(*[np.arange(i) for i in e3a.shape]))</span>
+<span class="c1">#    index[0] = e3a.argsort(axis = 0)</span>
+<span class="c1">#    return e3[index];</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    return e3;</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def tubeness(m, sigma = 1.0):   </span>
+<span class="c1">#  if sigma is not None:</span>
+<span class="c1">#    smoothed = ndi.gaussian_filter(np.asarray(m, dtype = float), sigma=sigma);</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    smoothed = m;</span>
+<span class="c1">#</span>
+<span class="c1">#  h3 = hessian(smoothed);</span>
+<span class="c1">#  e3 = eigenvalues3D(h3);</span>
+<span class="c1">#  e3a = np.abs(e3);</span>
+<span class="c1">#  </span>
+<span class="c1">#  index = list(np.ix_(*[np.arange(i) for i in e3a.shape]))</span>
+<span class="c1">#  index[0] = e3a.argsort(axis = 0)</span>
+<span class="c1">#  e3s = e3[index];</span>
+<span class="c1">#  </span>
+<span class="c1">#  tb = np.zeros(m.shape);</span>
+<span class="c1">#  ids = np.logical_and(e3s[1] &lt; 0, e3s[2] &lt; 0);</span>
+<span class="c1">#  tb[ids] = np.sqrt(e3s[1][ids] * e3s[2][ids]);</span>
+<span class="c1">#</span>
+<span class="c1">#  return tb;</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def frangi(m, alpha = 0.5, beta  = 0.5, gamma  = 100, sigma = 1.0):</span>
+<span class="c1">#  if sigma is not None:</span>
+<span class="c1">#    smoothed = ndi.gaussian_filter(np.asarray(m, dtype = float), sigma=sigma);</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    smoothed = m;</span>
+<span class="c1">#</span>
+<span class="c1">#  h3 = hessian(smoothed);</span>
+<span class="c1">#  e3 = eigenvalues3D(h3);</span>
+<span class="c1">#  e3a = np.abs(e3);</span>
+<span class="c1">#  </span>
+<span class="c1">#  index = list(np.ix_(*[np.arange(i) for i in e3a.shape]))</span>
+<span class="c1">#  index[0] = e3a.argsort(axis = 0)</span>
+<span class="c1">#  e3s = e3[index];</span>
+<span class="c1">#  </span>
+<span class="c1">#  ra = np.abs(e3s[1]) / np.abs(e3s[2]);</span>
+<span class="c1">#  rb = np.abs(e3s[0]) / np.sqrt(np.abs(e3s[1] * e3s[2]));</span>
+<span class="c1">#  s  = np.sqrt(np.square(e3s[0]) + np.square(e3s[1]) + np.square(e3s[2]))</span>
+<span class="c1">#</span>
+<span class="c1">#  plate = 1 - np.exp(- np.square(ra) / (2 * np.square(alpha)));</span>
+<span class="c1">#  blob  = np.exp(-np.square(rb) / (2 * np.square(beta)));</span>
+<span class="c1">#  background = 1 - np.exp(-np.square(s) / (2 * np.square(gamma)));</span>
+<span class="c1">#</span>
+<span class="c1">#  f = plate * blob * background;</span>
+<span class="c1">#  </span>
+<span class="c1">#  ids = np.logical_and(e3s[1] &gt;= 0, e3s[2] &gt;= 0);</span>
+<span class="c1">#  f[ids] = 0;</span>
+<span class="c1">#  </span>
+<span class="c1">#  return f;</span>
+<span class="c1">#</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

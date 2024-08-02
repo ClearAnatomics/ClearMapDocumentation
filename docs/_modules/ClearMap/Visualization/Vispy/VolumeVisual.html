@@ -1,0 +1,1191 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.Visualization.Vispy.VolumeVisual &#8212; ClearMap 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=819c53c9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/Visualization/Vispy/VolumeVisual';</script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../../_static/logo.png" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ClearMap 2.1.0</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../functionality.html">
+    Functionality
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ChristophKirst/ClearMap2" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">ClearMap.Vis...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.Visualization.Vispy.VolumeVisual</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright (c) Vispy Development Team. All Rights Reserved.</span>
+<span class="c1"># Distributed under the (new) BSD License. See LICENSE.txt for more info.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">About this technique</span>
+<span class="sd">--------------------</span>
+
+<span class="sd">In Python, we define the six faces of a cuboid to draw, as well as</span>
+<span class="sd">texture cooridnates corresponding with the vertices of the cuboid. </span>
+<span class="sd">The back faces of the cuboid are drawn (and front faces are culled)</span>
+<span class="sd">because only the back faces are visible when the camera is inside the </span>
+<span class="sd">volume.</span>
+
+<span class="sd">In the vertex shader, we intersect the view ray with the near and far </span>
+<span class="sd">clipping planes. In the fragment shader, we use these two points to</span>
+<span class="sd">compute the ray direction and then compute the position of the front</span>
+<span class="sd">cuboid surface (or near clipping plane) along the view ray.</span>
+
+<span class="sd">Next we calculate the number of steps to walk from the front surface</span>
+<span class="sd">to the back surface and iterate over these positions in a for-loop.</span>
+<span class="sd">At each iteration, the fragment color or other voxel information is </span>
+<span class="sd">updated depending on the selected rendering method.</span>
+
+<span class="sd">It is important for the texture interpolation is &#39;linear&#39;, since with</span>
+<span class="sd">nearest the result look very ugly. The wrapping should be clamp_to_edge</span>
+<span class="sd">to avoid artifacts when the ray takes a small step outside the volume.</span>
+
+<span class="sd">The ray direction is established by mapping the vertex to the document</span>
+<span class="sd">coordinate frame, adjusting z to +/-1, and mapping the coordinate back.</span>
+<span class="sd">The ray is expressed in coordinates local to the volume (i.e. texture</span>
+<span class="sd">coordinates).</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="kn">import</span> <span class="nn">vispy</span>
+<span class="k">if</span> <span class="n">vispy</span><span class="o">.</span><span class="n">__version__</span> <span class="o">&lt;</span> <span class="s1">&#39;0.12.1&#39;</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">vispy.visuals.volume</span> <span class="kn">import</span> <span class="n">Texture3D</span><span class="p">,</span> <span class="n">TextureEmulated3D</span><span class="p">,</span> <span class="n">VertexBuffer</span><span class="p">,</span> <span class="n">IndexBuffer</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">vispy.gloo</span> <span class="kn">import</span> <span class="n">Texture3D</span><span class="p">,</span> <span class="n">TextureEmulated3D</span><span class="p">,</span> <span class="n">VertexBuffer</span><span class="p">,</span> <span class="n">IndexBuffer</span>
+
+<span class="kn">from</span> <span class="nn">vispy.visuals.volume</span> <span class="kn">import</span> <span class="n">Visual</span><span class="p">,</span> <span class="n">Function</span><span class="p">,</span> <span class="n">get_colormap</span>
+
+<span class="c1"># from ..gloo import Texture3D, TextureEmulated3D, VertexBuffer, IndexBuffer</span>
+<span class="c1"># from . import Visual</span>
+<span class="c1"># from .shaders import Function</span>
+<span class="c1"># from ..color import get_colormap</span>
+
+<span class="c1"># todo: implement more render methods (port from visvis)</span>
+<span class="c1"># todo: allow anisotropic data</span>
+<span class="c1"># todo: what to do about lighting? ambi/diffuse/spec/shinynes on each visual?</span>
+
+<span class="c1"># Vertex shader</span>
+<span class="n">VERT_SHADER</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">attribute vec3 a_position;</span>
+<span class="s2">// attribute vec3 a_texcoord;</span>
+<span class="s2">uniform vec3 u_shape;</span>
+
+<span class="s2">// varying vec3 v_texcoord;</span>
+<span class="s2">varying vec3 v_position;</span>
+<span class="s2">varying vec4 v_nearpos;</span>
+<span class="s2">varying vec4 v_farpos;</span>
+
+<span class="s2">void main() {</span>
+<span class="s2">    // v_texcoord = a_texcoord;</span>
+<span class="s2">    v_position = a_position;</span>
+<span class="s2">    </span>
+<span class="s2">    // Project local vertex coordinate to camera position. Then do a step</span>
+<span class="s2">    // backward (in cam coords) and project back. Voila, we get our ray vector.</span>
+<span class="s2">    vec4 pos_in_cam = $viewtransformf(vec4(v_position, 1));</span>
+
+<span class="s2">    // intersection of ray and near clipping plane (z = -1 in clip coords)</span>
+<span class="s2">    pos_in_cam.z = -pos_in_cam.w;</span>
+<span class="s2">    v_nearpos = $viewtransformi(pos_in_cam);</span>
+<span class="s2">    </span>
+<span class="s2">    // intersection of ray and far clipping plane (z = +1 in clip coords)</span>
+<span class="s2">    pos_in_cam.z = pos_in_cam.w;</span>
+<span class="s2">    v_farpos = $viewtransformi(pos_in_cam);</span>
+<span class="s2">    </span>
+<span class="s2">    gl_Position = $transform(vec4(v_position, 1.0));</span>
+<span class="s2">}</span>
+<span class="s2">&quot;&quot;&quot;</span>  <span class="c1"># noqa</span>
+
+<span class="c1"># Fragment shader</span>
+<span class="n">FRAG_SHADER</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">// uniforms</span>
+<span class="s2">uniform $sampler_type u_volumetex;</span>
+<span class="s2">uniform vec3 u_shape;</span>
+<span class="s2">uniform float u_threshold;</span>
+<span class="s2">uniform float u_relative_step_size;</span>
+
+<span class="s2">//varyings</span>
+<span class="s2">// varying vec3 v_texcoord;</span>
+<span class="s2">varying vec3 v_position;</span>
+<span class="s2">varying vec4 v_nearpos;</span>
+<span class="s2">varying vec4 v_farpos;</span>
+
+<span class="s2">// uniforms for lighting. Hard coded until we figure out how to do lights</span>
+<span class="s2">const vec4 u_ambient = vec4(0.2, 0.4, 0.2, 1.0);</span>
+<span class="s2">const vec4 u_diffuse = vec4(0.8, 0.2, 0.2, 1.0);</span>
+<span class="s2">const vec4 u_specular = vec4(1.0, 1.0, 1.0, 1.0);</span>
+<span class="s2">const float u_shininess = 40.0;</span>
+
+<span class="s2">//varying vec3 lightDirs[1];</span>
+
+<span class="s2">// global holding view direction in local coordinates</span>
+<span class="s2">vec3 view_ray;</span>
+
+<span class="s2">float rand(vec2 co)</span>
+<span class="s2">{{</span>
+<span class="s2">    // Create a pseudo-random number between 0 and 1.</span>
+<span class="s2">    // http://stackoverflow.com/questions/4200224</span>
+<span class="s2">    return fract(sin(dot(co.xy ,vec2(12.9898, 78.233))) * 43758.5453);</span>
+<span class="s2">}}</span>
+
+<span class="s2">float colorToVal(vec4 color1)</span>
+<span class="s2">{{</span>
+<span class="s2">    return color1.g; // todo: why did I have this abstraction in visvis?</span>
+<span class="s2">}}</span>
+
+<span class="s2">vec4 calculateColor(vec4 betterColor, vec3 loc, vec3 step)</span>
+<span class="s2">{{   </span>
+<span class="s2">    // Calculate color by incorporating lighting</span>
+<span class="s2">    vec4 color1;</span>
+<span class="s2">    vec4 color2;</span>
+<span class="s2">    </span>
+<span class="s2">    // View direction</span>
+<span class="s2">    vec3 V = normalize(view_ray);</span>
+<span class="s2">    </span>
+<span class="s2">    // calculate normal vector from gradient</span>
+<span class="s2">    vec3 N; // normal</span>
+<span class="s2">    color1 = $sample( u_volumetex, loc+vec3(-step[0],0.0,0.0) );</span>
+<span class="s2">    color2 = $sample( u_volumetex, loc+vec3(step[0],0.0,0.0) );</span>
+<span class="s2">    N[0] = colorToVal(color1) - colorToVal(color2);</span>
+<span class="s2">    betterColor = max(max(color1, color2),betterColor);</span>
+<span class="s2">    color1 = $sample( u_volumetex, loc+vec3(0.0,-step[1],0.0) );</span>
+<span class="s2">    color2 = $sample( u_volumetex, loc+vec3(0.0,step[1],0.0) );</span>
+<span class="s2">    N[1] = colorToVal(color1) - colorToVal(color2);</span>
+<span class="s2">    betterColor = max(max(color1, color2),betterColor);</span>
+<span class="s2">    color1 = $sample( u_volumetex, loc+vec3(0.0,0.0,-step[2]) );</span>
+<span class="s2">    color2 = $sample( u_volumetex, loc+vec3(0.0,0.0,step[2]) );</span>
+<span class="s2">    N[2] = colorToVal(color1) - colorToVal(color2);</span>
+<span class="s2">    betterColor = max(max(color1, color2),betterColor);</span>
+<span class="s2">    float gm = length(N); // gradient magnitude</span>
+<span class="s2">    N = normalize(N);</span>
+<span class="s2">    </span>
+<span class="s2">    // Flip normal so it points towards viewer</span>
+<span class="s2">    float Nselect = float(dot(N,V) &gt; 0.0);</span>
+<span class="s2">    N = (2.0*Nselect - 1.0) * N;  // ==  Nselect * N - (1.0-Nselect)*N;</span>
+<span class="s2">    </span>
+<span class="s2">    // Get color of the texture (albeido)</span>
+<span class="s2">    color1 = betterColor;</span>
+<span class="s2">    color2 = color1;</span>
+<span class="s2">    // todo: parametrise color1_to_color2</span>
+<span class="s2">    </span>
+<span class="s2">    // Init colors</span>
+<span class="s2">    vec4 ambient_color = vec4(0.0, 0.0, 0.0, 0.0);</span>
+<span class="s2">    vec4 diffuse_color = vec4(0.0, 0.0, 0.0, 0.0);</span>
+<span class="s2">    vec4 specular_color = vec4(0.0, 0.0, 0.0, 0.0);</span>
+<span class="s2">    vec4 final_color;</span>
+<span class="s2">    </span>
+<span class="s2">    // todo: allow multiple light, define lights on viewvox or subscene</span>
+<span class="s2">    int nlights = 1; </span>
+<span class="s2">    for (int i=0; i&lt;nlights; i++)</span>
+<span class="s2">    {{ </span>
+<span class="s2">        // Get light direction (make sure to prevent zero devision)</span>
+<span class="s2">        vec3 L = normalize(view_ray);  //lightDirs[i]; </span>
+<span class="s2">        float lightEnabled = float( length(L) &gt; 0.0 );</span>
+<span class="s2">        L = normalize(L+(1.0-lightEnabled));</span>
+<span class="s2">        </span>
+<span class="s2">        // Calculate lighting properties</span>
+<span class="s2">        float lambertTerm = clamp( dot(N,L), 0.0, 1.0 );</span>
+<span class="s2">        vec3 H = normalize(L+V); // Halfway vector</span>
+<span class="s2">        float specularTerm = pow( max(dot(H,N),0.0), u_shininess);</span>
+<span class="s2">        </span>
+<span class="s2">        // Calculate mask</span>
+<span class="s2">        float mask1 = lightEnabled;</span>
+<span class="s2">        </span>
+<span class="s2">        // Calculate colors</span>
+<span class="s2">        ambient_color +=  mask1 * u_ambient;  // * gl_LightSource[i].ambient;</span>
+<span class="s2">        diffuse_color +=  mask1 * lambertTerm;</span>
+<span class="s2">        specular_color += mask1 * specularTerm * u_specular;</span>
+<span class="s2">    }}</span>
+<span class="s2">    </span>
+<span class="s2">    // Calculate final color by componing different components</span>
+<span class="s2">    final_color = color2 * ( ambient_color + diffuse_color) + specular_color;</span>
+<span class="s2">    final_color.a = color2.a;</span>
+<span class="s2">    </span>
+<span class="s2">    // Done</span>
+<span class="s2">    return final_color;</span>
+<span class="s2">}}</span>
+
+<span class="s2">// for some reason, this has to be the last function in order for the</span>
+<span class="s2">// filters to be inserted in the correct place...</span>
+
+<span class="s2">void main() {{</span>
+<span class="s2">    vec3 farpos = v_farpos.xyz / v_farpos.w;</span>
+<span class="s2">    vec3 nearpos = v_nearpos.xyz / v_nearpos.w;</span>
+
+<span class="s2">    // Calculate unit vector pointing in the view direction through this</span>
+<span class="s2">    // fragment.</span>
+<span class="s2">    view_ray = normalize(farpos.xyz - nearpos.xyz);</span>
+
+<span class="s2">    // Compute the distance to the front surface or near clipping plane</span>
+<span class="s2">    float distance = dot(nearpos-v_position, view_ray);</span>
+<span class="s2">    distance = max(distance, min((-0.5 - v_position.x) / view_ray.x,</span>
+<span class="s2">                            (u_shape.x - 0.5 - v_position.x) / view_ray.x));</span>
+<span class="s2">    distance = max(distance, min((-0.5 - v_position.y) / view_ray.y,</span>
+<span class="s2">                            (u_shape.y - 0.5 - v_position.y) / view_ray.y));</span>
+<span class="s2">    distance = max(distance, min((-0.5 - v_position.z) / view_ray.z,</span>
+<span class="s2">                            (u_shape.z - 0.5 - v_position.z) / view_ray.z));</span>
+
+<span class="s2">    // Now we have the starting position on the front surface</span>
+<span class="s2">    vec3 front = v_position + view_ray * distance;</span>
+
+<span class="s2">    // Decide how many steps to take</span>
+<span class="s2">    int nsteps = int(-distance / u_relative_step_size + 0.5);</span>
+<span class="s2">    if( nsteps &lt; 1 )</span>
+<span class="s2">        discard;</span>
+
+<span class="s2">    // Get starting location and step vector in texture coordinates</span>
+<span class="s2">    vec3 step = ((v_position - front) / u_shape) / nsteps;</span>
+<span class="s2">    vec3 start_loc = front / u_shape;</span>
+
+<span class="s2">    // For testing: show the number of steps. This helps to establish</span>
+<span class="s2">    // whether the rays are correctly oriented</span>
+<span class="s2">    //gl_FragColor = vec4(0.0, nsteps / 3.0 / u_shape.x, 1.0, 1.0);</span>
+<span class="s2">    //return;</span>
+
+<span class="s2">    </span><span class="si">{before_loop}</span>
+
+<span class="s2">    // This outer loop seems necessary on some systems for large</span>
+<span class="s2">    // datasets. Ugly, but it works ...</span>
+<span class="s2">    vec3 loc = start_loc;</span>
+<span class="s2">    int iter = 0;</span>
+<span class="s2">    while (iter &lt; nsteps) {{</span>
+<span class="s2">        for (iter=iter; iter&lt;nsteps; iter++)</span>
+<span class="s2">        {{</span>
+<span class="s2">            // Get sample color</span>
+<span class="s2">            vec4 color = $sample(u_volumetex, loc);</span>
+<span class="s2">            float val = color.g;</span>
+
+<span class="s2">            </span><span class="si">{in_loop}</span>
+
+<span class="s2">            // Advance location deeper into the volume</span>
+<span class="s2">            loc += step;</span>
+<span class="s2">        }}</span>
+<span class="s2">    }}</span>
+
+<span class="s2">    </span><span class="si">{after_loop}</span>
+
+<span class="s2">    /* Set depth value - from visvis TODO</span>
+<span class="s2">    int iter_depth = int(maxi);</span>
+<span class="s2">    // Calculate end position in world coordinates</span>
+<span class="s2">    vec4 position2 = vertexPosition;</span>
+<span class="s2">    position2.xyz += ray*shape*float(iter_depth);</span>
+<span class="s2">    // Project to device coordinates and set fragment depth</span>
+<span class="s2">    vec4 iproj = gl_ModelViewProjectionMatrix * position2;</span>
+<span class="s2">    iproj.z /= iproj.w;</span>
+<span class="s2">    gl_FragDepth = (iproj.z+1.0)/2.0;</span>
+<span class="s2">    */</span>
+<span class="s2">}}</span>
+
+
+<span class="s2">&quot;&quot;&quot;</span>  <span class="c1"># noqa</span>
+
+
+<span class="n">MIP_SNIPPETS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">before_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        float maxval = -99999.0; // The maximum encountered value</span>
+<span class="s2">        int maxi = 0;  // Where the maximum value was encountered</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">in_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        if( val &gt; maxval ) {</span>
+<span class="s2">            maxval = val;</span>
+<span class="s2">            maxi = iter;</span>
+<span class="s2">        }</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">after_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        // Refine search for max value</span>
+<span class="s2">        loc = start_loc + step * (float(maxi) - 0.5);</span>
+<span class="s2">        for (int i=0; i&lt;10; i++) {</span>
+<span class="s2">            maxval = max(maxval, $sample(u_volumetex, loc).g);</span>
+<span class="s2">            loc += step * 0.1;</span>
+<span class="s2">        }</span>
+<span class="s2">        gl_FragColor = $cmap(maxval);</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">MIP_FRAG_SHADER</span> <span class="o">=</span> <span class="n">FRAG_SHADER</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">MIP_SNIPPETS</span><span class="p">)</span>
+
+
+<span class="n">TRANSLUCENT_SNIPPETS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">before_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        vec4 integrated_color = vec4(0., 0., 0., 0.);</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">in_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            color = $cmap(val);</span>
+<span class="s2">            float a1 = integrated_color.a;</span>
+<span class="s2">            float a2 = color.a * (1 - a1);</span>
+<span class="s2">            float alpha = max(a1 + a2, 0.001);</span>
+<span class="s2">            </span>
+<span class="s2">            // Doesn&#39;t work.. GLSL optimizer bug?</span>
+<span class="s2">            //integrated_color = (integrated_color * a1 / alpha) + </span>
+<span class="s2">            //                   (color * a2 / alpha); </span>
+<span class="s2">            // This should be identical but does work correctly:</span>
+<span class="s2">            integrated_color *= a1 / alpha;</span>
+<span class="s2">            integrated_color += color * a2 / alpha;</span>
+<span class="s2">            </span>
+<span class="s2">            integrated_color.a = alpha;</span>
+<span class="s2">            </span>
+<span class="s2">            if( alpha &gt; 0.99 ){</span>
+<span class="s2">                // stop integrating if the fragment becomes opaque</span>
+<span class="s2">                iter = nsteps;</span>
+<span class="s2">            }</span>
+<span class="s2">        </span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">after_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        gl_FragColor = integrated_color;</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">TRANSLUCENT_FRAG_SHADER</span> <span class="o">=</span> <span class="n">FRAG_SHADER</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">TRANSLUCENT_SNIPPETS</span><span class="p">)</span>
+
+
+<span class="n">ADDITIVE_SNIPPETS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">before_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        vec4 integrated_color = vec4(0., 0., 0., 0.);</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">in_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        color = $cmap(val);</span>
+<span class="s2">        </span>
+<span class="s2">        integrated_color = 1.0 - (1.0 - integrated_color) * (1.0 - color);</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">after_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        gl_FragColor = integrated_color;</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ADDITIVE_FRAG_SHADER</span> <span class="o">=</span> <span class="n">FRAG_SHADER</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">ADDITIVE_SNIPPETS</span><span class="p">)</span>
+
+
+<span class="n">ISO_SNIPPETS</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+    <span class="n">before_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        vec4 color3 = vec4(0.0);  // final color</span>
+<span class="s2">        vec3 dstep = 1.5 / u_shape;  // step to sample derivative</span>
+<span class="s2">        gl_FragColor = vec4(0.0);</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">in_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        if (val &gt; u_threshold-0.2) {</span>
+<span class="s2">            // Take the last interval in smaller steps</span>
+<span class="s2">            vec3 iloc = loc - step;</span>
+<span class="s2">            for (int i=0; i&lt;10; i++) {</span>
+<span class="s2">                val = $sample(u_volumetex, iloc).g;</span>
+<span class="s2">                if (val &gt; u_threshold) {</span>
+<span class="s2">                    color = $cmap(val);</span>
+<span class="s2">                    gl_FragColor = calculateColor(color, iloc, dstep);</span>
+<span class="s2">                    iter = nsteps;</span>
+<span class="s2">                    break;</span>
+<span class="s2">                }</span>
+<span class="s2">                iloc += step * 0.1;</span>
+<span class="s2">            }</span>
+<span class="s2">        }</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">after_loop</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ISO_FRAG_SHADER</span> <span class="o">=</span> <span class="n">FRAG_SHADER</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">ISO_SNIPPETS</span><span class="p">)</span>
+
+<span class="n">frag_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;mip&#39;</span><span class="p">:</span> <span class="n">MIP_FRAG_SHADER</span><span class="p">,</span>
+    <span class="s1">&#39;iso&#39;</span><span class="p">:</span> <span class="n">ISO_FRAG_SHADER</span><span class="p">,</span>
+    <span class="s1">&#39;translucent&#39;</span><span class="p">:</span> <span class="n">TRANSLUCENT_FRAG_SHADER</span><span class="p">,</span>
+    <span class="s1">&#39;additive&#39;</span><span class="p">:</span> <span class="n">ADDITIVE_FRAG_SHADER</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="VolumeVisual">
+<a class="viewcode-back" href="../../../../api/ClearMap.Visualization.Vispy.VolumeVisual.html#ClearMap.Visualization.Vispy.VolumeVisual.VolumeVisual">[docs]</a>
+<span class="k">class</span> <span class="nc">VolumeVisual</span><span class="p">(</span><span class="n">Visual</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Displays a 3D Volume</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vol : ndarray</span>
+<span class="sd">        The volume to display. Must be ndim==3.</span>
+<span class="sd">    clim : tuple of two floats | None</span>
+<span class="sd">        The contrast limits. The values in the volume are mapped to</span>
+<span class="sd">        black and white corresponding to these values. Default maps</span>
+<span class="sd">        between min and max.</span>
+<span class="sd">    method : {&#39;mip&#39;, &#39;translucent&#39;, &#39;additive&#39;, &#39;iso&#39;}</span>
+<span class="sd">        The render method to use. See corresponding docs for details.</span>
+<span class="sd">        Default &#39;mip&#39;.</span>
+<span class="sd">    threshold : float</span>
+<span class="sd">        The threshold to use for the isosurface render method. By default</span>
+<span class="sd">        the mean of the given volume is used.</span>
+<span class="sd">    relative_step_size : float</span>
+<span class="sd">        The relative step size to step through the volume. Default 0.8.</span>
+<span class="sd">        Increase to e.g. 1.5 to increase performance, at the cost of</span>
+<span class="sd">        quality.</span>
+<span class="sd">    cmap : str</span>
+<span class="sd">        Colormap to use.</span>
+<span class="sd">    emulate_texture : bool</span>
+<span class="sd">        Use 2D textures to emulate a 3D texture. OpenGL ES 2.0 compatible,</span>
+<span class="sd">        but has lower performance on desktop platforms.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vol</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;mip&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                 <span class="n">relative_step_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;grays&#39;</span><span class="p">,</span>
+                 <span class="n">emulate_texture</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        
+        <span class="n">tex_cls</span> <span class="o">=</span> <span class="n">TextureEmulated3D</span> <span class="k">if</span> <span class="n">emulate_texture</span> <span class="k">else</span> <span class="n">Texture3D</span>
+
+        <span class="c1"># Storage of information of volume</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vol_shape</span> <span class="o">=</span> <span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_need_vertex_update</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Set the colormap</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span> <span class="o">=</span> <span class="n">get_colormap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+
+        <span class="c1"># Create gloo objects</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vertices</span> <span class="o">=</span> <span class="n">VertexBuffer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_texcoord</span> <span class="o">=</span> <span class="n">VertexBuffer</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tex</span> <span class="o">=</span> <span class="n">tex_cls</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> 
+                            <span class="n">wrapping</span><span class="o">=</span><span class="s1">&#39;clamp_to_edge&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Create program</span>
+        <span class="n">Visual</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vcode</span><span class="o">=</span><span class="n">VERT_SHADER</span><span class="p">,</span> <span class="n">fcode</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">[</span><span class="s1">&#39;u_volumetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tex</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">[</span><span class="s1">&#39;a_position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vertices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">[</span><span class="s1">&#39;a_texcoord&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_texcoord</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_draw_mode</span> <span class="o">=</span> <span class="s1">&#39;triangle_strip&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_index_buffer</span> <span class="o">=</span> <span class="n">IndexBuffer</span><span class="p">()</span>
+
+        <span class="c1"># Only show back faces of cuboid. This is required because if we are </span>
+        <span class="c1"># inside the volume, then the front faces are outside of the clipping</span>
+        <span class="c1"># box and will not be drawn.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_gl_state</span><span class="p">(</span><span class="s1">&#39;translucent&#39;</span><span class="p">,</span> <span class="n">cull_face</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        
+        <span class="c1"># Set data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">clim</span><span class="p">)</span>
+        
+        <span class="c1"># Set params</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relative_step_size</span> <span class="o">=</span> <span class="n">relative_step_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span> <span class="k">if</span> <span class="p">(</span><span class="n">threshold</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="k">else</span> <span class="n">vol</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freeze</span><span class="p">()</span>
+    
+<div class="viewcode-block" id="VolumeVisual.set_data">
+<a class="viewcode-back" href="../../../../api/ClearMap.Visualization.Vispy.VolumeVisual.html#ClearMap.Visualization.Vispy.VolumeVisual.VolumeVisual.set_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vol</span><span class="p">,</span> <span class="n">clim</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Set the volume data. </span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        vol : ndarray</span>
+<span class="sd">            The 3D volume.</span>
+<span class="sd">        clim : tuple | None</span>
+<span class="sd">            Colormap limits to use. None will use the min and max values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Check volume</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Volume visual needs a numpy array.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">((</span><span class="n">vol</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">vol</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">vol</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Volume visual needs a 3D image.&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># Handle clim</span>
+        <span class="k">if</span> <span class="n">clim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">clim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">clim</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">clim</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">clim</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;clim must be a 2-element array-like&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">clim</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span> <span class="o">=</span> <span class="n">vol</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vol</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        
+        <span class="c1"># Apply clim</span>
+        <span class="n">vol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vol</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.</span><span class="p">:</span>
+                <span class="n">vol</span> <span class="o">*=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vol</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">vol</span> <span class="o">/=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1"># Apply to texture</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tex</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">vol</span><span class="p">)</span>  <span class="c1"># will be efficient if vol is same shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">[</span><span class="s1">&#39;u_shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">vol</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">vol</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+                                          <span class="n">vol</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">vol</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vol_shape</span> <span class="o">!=</span> <span class="n">shape</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_vol_shape</span> <span class="o">=</span> <span class="n">shape</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_need_vertex_update</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vol_shape</span> <span class="o">=</span> <span class="n">shape</span>
+        
+        <span class="c1"># Get some stats</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kb_for_texture</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vol_shape</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1024</span></div>
+
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">clim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; The contrast limits that were applied to the volume data.</span>
+<span class="sd">        Settable via set_data().</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clim</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cmap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span>
+
+    <span class="nd">@cmap</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">cmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmap</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span> <span class="o">=</span> <span class="n">get_colormap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s1">&#39;cmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span><span class="o">.</span><span class="n">glsl_map</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The render method to use</span>
+
+<span class="sd">        Current options are:</span>
+<span class="sd">        </span>
+<span class="sd">            * translucent: voxel colors are blended along the view ray until</span>
+<span class="sd">              the result is opaque.</span>
+<span class="sd">            * mip: maxiumum intensity projection. Cast a ray and display the</span>
+<span class="sd">              maximum value that was encountered.</span>
+<span class="sd">            * additive: voxel colors are added along the view ray until</span>
+<span class="sd">              the result is saturated.</span>
+<span class="sd">            * iso: isosurface. Cast a ray until a certain threshold is</span>
+<span class="sd">              encountered. At that location, lighning calculations are</span>
+<span class="sd">              performed to give the visual appearance of a surface.  </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_method</span>
+    
+    <span class="nd">@method</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+        <span class="c1"># Check and save</span>
+        <span class="n">known_methods</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">frag_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">known_methods</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Volume render method should be in </span><span class="si">%r</span><span class="s1">, not </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span>
+                             <span class="p">(</span><span class="n">known_methods</span><span class="p">,</span> <span class="n">method</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="c1"># Get rid of specific variables - they may become invalid</span>
+        <span class="k">if</span> <span class="s1">&#39;u_threshold&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">[</span><span class="s1">&#39;u_threshold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="o">.</span><span class="n">frag</span> <span class="o">=</span> <span class="n">frag_dict</span><span class="p">[</span><span class="n">method</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s1">&#39;sampler_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tex</span><span class="o">.</span><span class="n">glsl_sampler_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s1">&#39;sample&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tex</span><span class="o">.</span><span class="n">glsl_sample</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="o">.</span><span class="n">frag</span><span class="p">[</span><span class="s1">&#39;cmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cmap</span><span class="o">.</span><span class="n">glsl_map</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">threshold</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; The threshold value to apply for the isosurface render method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_threshold</span>
+    
+    <span class="nd">@threshold</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">threshold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_threshold</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;u_threshold&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">[</span><span class="s1">&#39;u_threshold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_threshold</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">relative_step_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; The relative step size used during raycasting.</span>
+<span class="sd">        </span>
+<span class="sd">        Larger values yield higher performance at reduced quality. If</span>
+<span class="sd">        set &gt; 2.0 the ray skips entire voxels. Recommended values are</span>
+<span class="sd">        between 0.5 and 1.5. The amount of quality degredation depends</span>
+<span class="sd">        on the render method.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_relative_step_size</span>
+    
+    <span class="nd">@relative_step_size</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">relative_step_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mf">0.1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;relative_step_size cannot be smaller than 0.1&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_relative_step_size</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_program</span><span class="p">[</span><span class="s1">&#39;u_relative_step_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+    
+    <span class="k">def</span> <span class="nf">_create_vertex_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Create and set positions and texture coords from the given shape</span>
+<span class="sd">        </span>
+<span class="sd">        We have six faces with 1 quad (2 triangles) each, resulting in</span>
+<span class="sd">        6*2*3 = 36 vertices in total.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vol_shape</span>
+        
+        <span class="c1"># Get corner coordinates. The -0.5 offset is to center</span>
+        <span class="c1"># pixels/voxels. This works correctly for anisotropic data.</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.5</span>
+        <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.5</span>
+        <span class="n">z0</span><span class="p">,</span> <span class="n">z1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.5</span>
+
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+            <span class="p">[</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">z0</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x1</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">z0</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z0</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z0</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">z1</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x1</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">z1</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">],</span>
+            <span class="p">[</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">],</span>
+        <span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">          6-------7</span>
+<span class="sd">         /|      /|</span>
+<span class="sd">        4-------5 |</span>
+<span class="sd">        | |     | |</span>
+<span class="sd">        | 2-----|-3</span>
+<span class="sd">        |/      |/</span>
+<span class="sd">        0-------1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c1"># Order is chosen such that normals face outward; front faces will be</span>
+        <span class="c1"># culled.</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+                           <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">)</span>
+        
+        <span class="c1"># Apply</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vertices</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_index_buffer</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_compute_bounds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vol_shape</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_prepare_transforms</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="n">trs</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">transforms</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">view_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s1">&#39;transform&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trs</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span>
+
+        <span class="n">view_tr_f</span> <span class="o">=</span> <span class="n">trs</span><span class="o">.</span><span class="n">get_transform</span><span class="p">(</span><span class="s1">&#39;visual&#39;</span><span class="p">,</span> <span class="s1">&#39;document&#39;</span><span class="p">)</span>
+        <span class="n">view_tr_i</span> <span class="o">=</span> <span class="n">view_tr_f</span><span class="o">.</span><span class="n">inverse</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">view_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s1">&#39;viewtransformf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">view_tr_f</span>
+        <span class="n">view</span><span class="o">.</span><span class="n">view_program</span><span class="o">.</span><span class="n">vert</span><span class="p">[</span><span class="s1">&#39;viewtransformi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">view_tr_i</span>
+
+    <span class="k">def</span> <span class="nf">_prepare_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">view</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_need_vertex_update</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_create_vertex_data</span><span class="p">()</span></div>
+
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
