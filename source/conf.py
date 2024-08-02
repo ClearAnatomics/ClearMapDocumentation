@@ -16,8 +16,6 @@ import pkgutil
 
 from sphinx.builders.html import StandaloneHTMLBuilder
 
-from documentation.source.custom_autodoc import CustomAutosummaryRenderer
-
 # =============================================================================
 # ============================ Path setup ======================================
 # =============================================================================
@@ -28,6 +26,8 @@ clearmap_dir = doc_dir.parent.parent
 sys.path.insert(0, str(clearmap_dir))  # Add ClearMap to the path
 sys.path.insert(1, str(clearmap_dir / 'IO'))  # Add ClearMap to the path
 sys.path.insert(2, str(doc_dir / 'extensions'))  # Add extensions to the path
+
+from documentation.source.custom_autodoc import CustomAutosummaryRenderer
 
 import ClearMap.custom_scripts
 from ClearMap import Settings
