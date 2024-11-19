@@ -54,8 +54,8 @@ Please follow the steps below for simple installation from the terminal.
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.sh  # follow the instructions
     source ~/.bashrc  # reload the bashrc to activate conda
-    git clone https://github.com/ChristophKirst/ClearMap2.git
-    cd ClearMap2
+    git clone https://github.com/ClearAnatomics/ClearMap.git
+    cd ClearMap
     chmod +x install_gui.sh
     ./install.sh -f ClearMapUi39.yml
 
@@ -93,7 +93,7 @@ Alternatively, you can run the ClearMap scripts directly from your IDE, see:
 :mod:`~ClearMap.Scripts`.
 
 
-Before running, modify the parameters and filenames to match your data and 
+Before running, modify the parameters and filenames to match your data and
 analysis.
 
 .. deprecated:: 2.1.0
