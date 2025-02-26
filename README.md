@@ -26,9 +26,9 @@
 
 This repository holds ClearMap's documentation and media sources. 
 
-Start browsing the [documentation here](https://christophkirst.github.io/ClearMap2Documentation).
+Start browsing the [documentation here](https://clearanatomics.github.io/ClearMapDocumentation/).
 
-For experimental protocols also refer to [idisco.info](http:://idisco.info)
+For experimental protocols also refer to [idisco.info](https:://idisco.info)
 
 
 
