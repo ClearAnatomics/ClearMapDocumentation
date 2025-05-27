@@ -1,0 +1,58 @@
+name: ClearMap3Doc
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11  # constraining seems to speed up resolution
+  - cython  # get_distutils_extension has been removed from pyximport in >=3
+  - ipython
+#  - pytest
+  - docutils
+  - sphinx
+  - sphinx-copybutton
+  - nbsphinx
+  - pydata-sphinx-theme
+  - numpy
+  - scipy
+  - pandas<2  # Groupby syntax changes
+  - pyarrow
+  - scikit-image
+  - scikit-learn
+  - opencv
+  - configobj
+  - natsort
+  - tqdm
+  - matplotlib
+  - seaborn  #=0.12.2
+  - tifffile
+  - pyqt<6
+  - pyqtwebengine
+  - qtpy  # for qdarkstyle
+  - pyqtgraph=0.12  # Problem with pyqtgraph import of QWidgets with 0.13
+  - pygments
+  - qdarkstyle
+  - vispy
+  - pyvista
+  - vtk
+  - pyopengl
+  - napari
+  - graph-tool<=2.45  # Cannot remove self loops with later versions
+  - python-igraph
+  - mkl<2024.1  # Breaks pytorch (https://github.com/pytorch/pytorch/issues/123097)
+  - cudatoolkit=11.8
+  - xmltodict  # to compensate for old tifffile
+  - psutil  # required for python < 3.9 for cancelable ProcessPoolExecutors
+  - mpld3  # WARNING Maybe pip
+  - lxml < 5.2  # lxml 5.2 breaks napari
+  - pyamg
+  - quantities
+  - pip
+  - pip:
+    - itk-elastix
+    - torch
+    - sphinxcontrib.youtube
+    - sphinx-autopackagesummary
+    - sphinx_design
+    - sphinx-carousel
+variables:
+  PYTHONNOUSERSITE: 1
