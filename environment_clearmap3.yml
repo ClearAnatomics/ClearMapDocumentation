@@ -6,7 +6,8 @@ dependencies:
   - python=3.11  # constraining seems to speed up resolution
   - cython  # get_distutils_extension has been removed from pyximport in >=3
   - ipython
-#  - pytest
+  - jupyter
+  - ipywidgets  # For pyvista
   - docutils
   - sphinx
   - sphinx-copybutton
@@ -42,12 +43,15 @@ dependencies:
   - cudatoolkit=11.8
   - xmltodict  # to compensate for old tifffile
   - psutil  # required for python < 3.9 for cancelable ProcessPoolExecutors
+  - pytest
+  - jsonschema
   - mpld3  # WARNING Maybe pip
   - lxml < 5.2  # lxml 5.2 breaks napari
   - pyamg
   - quantities
   - pip
   - pip:
+    - itk==5.4.3  # Later seems to bug with numpy >= 1.24 (bool->bool_)
     - itk-elastix
     - torch
     - sphinxcontrib.youtube
