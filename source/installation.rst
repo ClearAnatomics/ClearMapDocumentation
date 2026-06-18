@@ -1,104 +1,123 @@
 .. _installation:
 
-
 Installation
 ------------
 
 Computing Resources
 ===================
 
-The processing with *CellMap* and *TubeMap* is best done on local workstations
-or a cluster. We use high performance workstations from DELL or HP with at least
-(for reasonable performance):
-* 256GB RAM
-* 12 CPUs
-* 24GB VRAM
-* Fast SSDs, NVMe preferred in a RAID0 configuration
-* For the vasculature analysis pipeline, a recent nVidia GPU with >= 24GB VRAM is required
+ClearMap is designed for high-performance workstations or clusters.
+Minimum recommended specifications:
 
-The workstations were operated by Linux Ubuntu 18.04LTS or later.
+* **RAM**: 256 GB
+* **CPU**: 12 cores
+* **Storage**: Fast SSDs, NVMe preferred in a RAID0 configuration
+* **GPU**: nVidia GPU with ≥ 24 GB VRAM (required for the vasculature
+  deep-filling step; optional otherwise)
 
-.. For our work we used either a Dell Precision T7920 or HP Z840 workstation.
-    Each workstation was equipped with 2 Intel Xeon Gold 6128 3.4G 6C/12T CPUs,
-    512Gb of 2666MHz DDR4 RAM, 4x1Tb NVMe Class 40 Solid State Drives in a RAID0
-    array (plus a separate system disk), and an NVIDIA Quadro P6000, 24Gb VRAM
-    video card.
+ClearMap has been tested on Ubuntu 20.04 LTS and later.
+
+.. note::
+    The vasculature pipeline's deep vessel filling step
+    (:class:`~ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor`)
+    requires a CUDA-capable nVidia GPU with at least 24 GB of VRAM.
+    All other pipelines run on CPU only.
 
 
 Getting ClearMap
 ================
 
-*ClearMap* currently runs on Linux, although some parts might work on Windows.
-For this tutorial we assume you are using a recent version of Ubuntu Linux.
+ClearMap currently runs on **Linux**.  Some components may work on
+Windows or macOS but these platforms are not officially supported.
 
-The required software packages for Linux are *build-essential*, *git* and recent proprietary nVidia drivers if
-you plan on using the vasculature analysis pipeline.
+Required system packages before starting:
 
-We recommend installation via `Miniconda <https://docs.anaconda.com/free/miniconda/index.html>`_ although
-you can also install the dependencies manually.
+.. code-block:: bash
 
+    sudo apt install build-essential git
 
-The steps are as follows:
+And, if you plan to use the vasculature pipeline, recent proprietary
+nVidia drivers.
 
-* Download `Miniconda3 <https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh>`_
-* Install anaconda for Python 3 for your OS and install it following
-  the `installation instructions <https://docs.anaconda.com/anaconda/install/>`_.
-* Clone *ClearMap* from git
-* Trigger the installation (which creates the environment...)
+Choosing a package manager
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please follow the steps below for simple installation from the terminal.
+ClearMap requires `conda <https://conda.io>`_.
+We recommend **Miniforge** over Anaconda or Miniconda for two reasons:
+
+1. **Pricing policy** — Anaconda Inc. changed its terms of service in
+   2023; the default ``defaults`` channel is no longer free for many
+   organisations.  Miniforge uses the community-maintained
+   ``conda-forge`` channel, which is always free.
+2. **PyTorch compatibility** — Pytorch decided to move to pip only.
+
+.. warning::
+    Several users have reported environment-solve failures when
+    installing ClearMap under full Anaconda.  If you already have
+    Anaconda installed you can still try, but Miniforge is strongly
+    recommended.  The symptoms are typically unsatisfiable dependency
+    conflicts during the ``conda env create`` step.
+
+Install Miniforge
+~~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
     cd /tmp
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    bash Miniconda3-latest-Linux-x86_64.sh  # follow the instructions
-    source ~/.bashrc  # reload the bashrc to activate conda
-    git clone https://github.com/ClearAnatomics/ClearMap.git
-    cd ClearMap
-    chmod +x install_gui.sh
-    ./install.sh -f ClearMapUi39.yml
-
-.. attention::
-    The installation script will create a new conda environment called ClearMapUi39.
-    The compilation of the ClearMap modules will take some time (about 15 minutes).
+    wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+    bash Miniforge3-Linux-x86_64.sh   # accept the licence, confirm init
+    source ~/.bashrc                   # reload to activate conda
 
 
-.. tip::
-    The GUI installation script automatically creates a .ClearMap directory in your home directory.
-    This directory contains the main settings file and the default configuration files for the
-    ClearMap GUI. You can modify the settings in the .ClearMap directory to match your system configuration.
-    The settings file is best edited through the *preferences* dialog in the ClearMap GUI.
-
-
-.. note::
-    Although *ClearMap* ships with the required libraries and should work out of the box,
-    you can still configure some paths for *ClearMap* by editing the
-    :download:`Settings.py <../../ClearMap/Settings.py>` file.
-
-    See :mod:`~ClearMap.Settings`.
-
-
-Running
-=======
-
-You can now run ClearMap by activating the ClearMap environment and starting the UI:
+Install ClearMap
+~~~~~~~~~~~~~~~~
 
 .. code-block:: bash
 
-    conda activate ClearMapUi39
+    git clone https://github.com/ClearAnatomics/ClearMap.git
+    cd ClearMap
+    chmod +x install_gui.sh
+    ./install_gui.sh
+
+.. attention::
+    The installer creates a conda environment called **ClearMap3.1** and
+    compiles all Cython extensions.  This takes approximately 15–30 minutes
+    depending on your hardware.
+
+.. tip::
+    The installer creates ``~/.clearmap/`` which holds the main settings
+    file and default configuration templates.  You can review these
+    settings through the **Preferences** dialog inside the GUI rather
+    than editing them by hand.
+
+.. note::
+    For advanced path configuration (e.g. custom atlas locations) see
+    :mod:`~ClearMap.Settings` and
+    :download:`Settings.py <../../ClearMap/Settings.py>`.
+
+
+Running ClearMap
+================
+
+GUI (recommended)
+~~~~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+    conda activate ClearMap3.1
     clearmap-ui
 
-Alternatively, you can run the ClearMap scripts directly from your IDE, see:
-:mod:`~ClearMap.Scripts`.
+Scripted / headless use
+~~~~~~~~~~~~~~~~~~~~~~~
 
+.. code-block:: bash
 
-Before running, modify the parameters and filenames to match your data and
-analysis.
+    conda activate ClearMap3.1
 
-.. deprecated:: 2.1.0
-    The two main scripts :doc:`tubemap` and :doc:`cellmap` are now deprecated.
-    Please use the new_api versions instead
+    # Cell detection
+    python -m ClearMap.Scripts.cell_map_new_api /path/to/experiment
 
-You can also use jupyter to run ClearMap. Our tutorials notebooks (`CellMap notebook <_static/scripts/cell_map_tutorial.ipynb>`_ or
-`TubeMap notebook <../../ClearMap/Scripts/tube_map_tutorial.ipynb>`_) are good starting points.....
+    # Vasculature
+    python -m ClearMap.Scripts.tube_map_new_api /path/to/experiment
+
+Full script source and interactive usage examples are in :ref:`usage`.

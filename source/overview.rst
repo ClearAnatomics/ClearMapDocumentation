@@ -9,18 +9,18 @@ Overview
 Functionality and Pipelines
 ---------------------------
 
-ClearMap provides a larger set of high performance 3d image processing 
+ClearMap provides a large set of high-performance 3D image processing
 functions that are introduced here: :doc:`functionality`.
 
-These functions are combined together in expert functions under
-:mod:`~ClearMap.ImageProcessing.Experts` which are made use of in 
-pipelines found in :mod:`~ClearMap.Scripts` to quantify the data sets. 
+These functions are combined in expert modules under
+:mod:`~ClearMap.ImageProcessing.Experts`, which are orchestrated by the
+pipeline workers in :mod:`~ClearMap.pipeline_orchestrators`.
 
-The main tools are:
+The main pipelines are:
 
-  * :doc:`advanced/wobblystitcher`
-  * :doc:`cellmap`
-  * :doc:`tubemap`
+  * :doc:`advanced/wobblystitcher` — non-rigid stitching of tiled acquisitions
+  * :doc:`cellmap` — cell detection and density mapping
+  * :doc:`tubemap` — vasculature binarization, graph construction, and annotation
 
 
 Usage
@@ -42,15 +42,15 @@ The full code documentation can be found here:
 Source
 ------
 
-https://github.com/ChristophKirst/ClearMap2
+https://github.com/ClearAnatomics/ClearMap
 
 
 Authors
 -------
 
 Lead programming and design
-"""""""""""""""""""""""""""
-Christoph Kirst
+""""""""""""""""""""""""""""
+Christoph Kirst and Charly Rousseau
 
 Scripts and specific applications
 """""""""""""""""""""""""""""""""
@@ -60,9 +60,13 @@ Vessel filling network
 """"""""""""""""""""""
 Sophie Skriabine and Christoph Kirst
 
-Documentation:
+GUI and pipeline orchestrators
+"""""""""""""""""""""""""""""""
+Charly Rousseau
+
+Documentation
 """"""""""""""
-Christoph Kirst and Nicolas Renier
+Christoph Kirst, Nicolas Renier, and Charly Rousseau
 
 
 License

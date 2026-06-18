@@ -14,10 +14,10 @@ immunolabeled for proteins.
 *ClearMap* has been written for mapping immediate early genes [Renier2016]_
 as well as vasculature networks of whole mouse brains [Kirst2020]_
 
-.. image:: /static/cell_abstract_2020.jpg
+.. image:: /static/cell_abstract_2016.jpg
    :target: https://doi.org/10.1016/j.cell.2016.05.007
    :width: 300
-.. image:: /static/cell_abstract_2016.jpg
+.. image:: /static/cell_abstract_2020.jpg
    :target: https://doi.org/10.1016/j.cell.2020.01.028
    :width: 300
 

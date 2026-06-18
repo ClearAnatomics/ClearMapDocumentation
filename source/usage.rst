@@ -1,59 +1,138 @@
 .. _usage:
 
-
 Usage
 =====
 
-GUI
----
-The simplest way to use *ClearMap* is to run the Graphical User Interface (GUI) by typing:
+GUI (recommended)
+-----------------
+
+The simplest way to use *ClearMap* is through the Graphical User Interface:
 
 .. code-block:: bash
 
-    # Replace ClearMapUi39 with your environment name
-    # This is printed at the end of the installation script for reference
-    conda activate ClearMapUi39
+    conda activate ClearMap3.1
     clearmap-ui
 
-Alternative scripts
--------------------
-Alternatively, you can use the following scripts to run the main functions of *ClearMap*:
-:mod:`~ClearMap.Scripts.cell_map_new_api` and :mod:`~ClearMap.Scripts.tube_map_new_api`. [1]_
+The GUI guides you through every pipeline step — sample configuration,
+stitching, registration, cell detection, and vasculature analysis — and
+writes all results to a workspace directory.
 
-ClearMap Environment
---------------------
+See :ref:`gui` for a full walkthrough.
 
-To make your functions available in your python console run
 
->>> from ClearMap.Environment import *
+Scripted / headless use
+-----------------------
 
+For batch processing or HPC environments, use the new-API scripts.
+
+.. code-block:: bash
+
+    conda activate ClearMap3.1
+
+    # Cell detection
+    python -m ClearMap.Scripts.cell_map_new_api /path/to/experiment
+
+    # Vasculature
+    python -m ClearMap.Scripts.tube_map_new_api /path/to/experiment
+
+Both scripts call
+:func:`~ClearMap.pipeline_orchestrators.utils.init_sample_manager_and_processors`
+to initialise the experiment, then run stitching, registration, and
+pipeline-specific steps.  Edit the YAML config files in your experiment
+folder to control parameters rather than editing the scripts themselves.
+
+**Cell detection (CellMap)**
+
+.. literalinclude:: ../../ClearMap/Scripts/cell_map_new_api.py
+   :language: python
+   :caption: ClearMap/Scripts/cell_map_new_api.py
+
+**Vasculature (TubeMap)**
+
+.. literalinclude:: ../../ClearMap/Scripts/tube_map_new_api.py
+   :language: python
+   :caption: ClearMap/Scripts/tube_map_new_api.py
+
+See :doc:`cellmap` and :doc:`tubemap` for pipeline-specific documentation.
+
+
+Interactive / console use
+--------------------------
+
+For exploratory analysis in IPython, Jupyter, or an IDE, import only
+what you need:
+
+.. code-block:: python
+
+    # IO — read and write any supported format
+    import ClearMap.IO.IO as io
+
+    data   = io.read('volume.npy')
+    source = io.as_source('volume.tif', slicing=(slice(0, 100),))
+    print(source.shape, source.dtype)
+    io.write('output.tif', data)
+
+.. code-block:: python
+
+    # Workspace and sample manager
+    from ClearMap.pipeline_orchestrators.sample_info_management import build_sample_manager
+
+    sm  = build_sample_manager('/path/to/experiment')
+    raw = sm.get('raw', channel='cfos')
+    print(raw.is_tiled, raw.tile_grid_shape)
+
+.. code-block:: python
+
+    # Graph analysis
+    from ClearMap.Analysis.graphs.graph_gt import Graph
+
+    g = Graph.load('/path/to/graph.gt')
+    print(g.n_vertices, g.n_edges)
+
+.. code-block:: python
+
+    # 3-D visualisation
+    import ClearMap.Visualization.Qt.Plot3d as plot_3d
+
+    plot_3d.plot('volume.tif')
 
 .. note::
-    When running this for the first time sub-modules will be compiled on demand
-    which can take up to 10-30min.
+    On first run, Cython sub-modules are compiled on demand.
+    This takes 10–30 minutes but only happens once per installation.
+
+.. deprecated:: 3.1.0
+
+    ``from ClearMap.Environment import *`` (the old convenience namespace)
+    is no longer recommended.  Wildcard imports from large packages make
+    dependencies opaque and break static analysis tools.  Use explicit
+    imports as shown above.
 
 
-Example
--------
+.. _deprecated_scripts:
 
-Here is a simple example that loads a data source and plots it:
+Deprecated scripts
+------------------
 
->>> from ClearMap.Environment import *
->>> source = io.as_source('path_to_filename')
->>> p3d.plot(source)
+.. deprecated:: 2.1.0
 
+    The monolithic scripts below are retained for reference but will be
+    removed in a future release.  Use the new-API scripts or the GUI instead.
 
-.. [1]
-    .. deprecated:: 2.1.0
-        The Former CellMap and TubeMap scripts are now deprecated. For standard uses, see the GUI,
-        or use the new :mod:`~ClearMap.Scripts.cell_map_new_api` and :mod:`~ClearMap.Scripts.tube_map_new_api` scripts.
+    .. list-table::
+       :header-rows: 1
+       :widths: 25 20 55
 
-        ================================ =============== =============================================================================== ==============================================================
-        Script                           Documentation   Tutorial                                                                        Description
-        ================================ =============== =============================================================================== ==============================================================
-        :mod:`~ClearMap.Scripts.CellMap` :doc:`cellmap`  :ref:`cell_map_tutorial.ipynb <_static/scripts/cell_map_tutorial.ipynb>`        Cell detection pipeline, e.g. for immediate early gene mapping
-        :mod:`~ClearMap.Scripts.TubeMap` :doc:`tubemap`  :ref:`tube_map_tutorial.ipynb <../../ClearMap/Scripts/tube_map_tutorial.ipynb>`               Vasculature network construction pipeline
-        ================================ =============== =============================================================================== ==============================================================
+       * - Script
+         - Documentation
+         - Replacement
+       * - :mod:`~ClearMap.Scripts.CellMap`
+         - :doc:`cellmap`
+         - :mod:`~ClearMap.Scripts.cell_map_new_api`
+       * - :mod:`~ClearMap.Scripts.TubeMap`
+         - :doc:`tubemap`
+         - :mod:`~ClearMap.Scripts.tube_map_new_api`
+
+    See :ref:`v3_migration` for a full comparison of the old and new APIs.
 
 
 .. toctree::

@@ -14,10 +14,9 @@ GPU arrays, graph formats) and fast parallel 3D image and graph
 processing as well as interactive visualization of large 3d images.
 
 In the following we provide a list of the ClearMap 2.0 functionality.
-`ClearMap 2.0 <https://github.com/ChristophKirst/ClearMap2>`_ is open source 
+`ClearMap 2.0 <https://github.com/ClearAnatomics/ClearMap>`_ is open source
 software and available for download under
-https://github.com/ChristophKirst/ClearMap2.
-
+https://github.com/ClearAnatomics/ClearMap
 
 
 Modules
@@ -48,7 +47,7 @@ and analysis of the data, including:
 
     * graph and network analysis for very large graphs 
     
-      - :mod:`~ClearMap.Analysis.Graphs`
+      - :mod:`~ClearMap.Analysis.graphs`
       
       enabling:
         - graph preprocessing and cleanup
@@ -184,7 +183,7 @@ file list        :mod:`~ClearMap.IO.FileList` folder, file list or file expressi
 The :mod:`~ClearMap.IO` module also provides a workspace that handles the
 organization of files in :doc:`cellmap` and :doc:`tubemap` projects:
 
-  - :mod:`~ClearMap.IO.Workspace`
+  - :mod:`~ClearMap.IO.workspace2`
   
   
   
