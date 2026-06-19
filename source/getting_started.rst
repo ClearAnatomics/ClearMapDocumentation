@@ -2,4 +2,4 @@
 
 .. include:: introduction.rst
 
-.. include:: installation.rst
+To install ClearMap see :doc:`installation`.

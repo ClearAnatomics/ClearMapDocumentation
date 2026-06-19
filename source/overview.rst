@@ -10,7 +10,7 @@ Functionality and Pipelines
 ---------------------------
 
 ClearMap provides a large set of high-performance 3D image processing
-functions that are introduced here: :doc:`functionality`.
+functions that are introduced here: :doc:`package_organisation`.
 
 These functions are combined in expert modules under
 :mod:`~ClearMap.ImageProcessing.Experts`, which are orchestrated by the
