@@ -14,7 +14,7 @@ See the :ref:`TubeMap tutorial <../../ClearMap/Scripts/tube_map_tutorial.ipynb>`
    :width: 300
 """
 __author__    = 'Christoph Kirst <christoph.kirst.ck@gmail.com>'
-__license__   = 'GPLv3 - GNU General Pulic License v3 (see LICENSE.txt)'
+__license__   = 'GPLv3 - GNU General Public License v3 (see LICENSE.txt)'
 __copyright__ = 'Copyright © 2020 by Christoph Kirst'
 __webpage__   = 'http://idisco.info'
 __download__  = 'http://www.github.com/ChristophKirst/ClearMap2'
@@ -423,14 +423,14 @@ if __name__ == '__main__':
   def vote(expression):
     return np.sum(expression) >= len(expression) / 1.5;
   
-  graph_reduced = gp.reduce_graph(graph_cleaned, edge_length=True,
-                            edge_to_edge_mappings = {'length' : np.sum},
-                            vertex_to_edge_mappings={'artery_binary' : vote,
+  graph_reduced = gp.reduce_graph(graph_cleaned, compute_edge_length=True,
+                                  edge_to_edge_mappings = {'length' : np.sum},
+                                  vertex_to_edge_mappings={'artery_binary' : vote,
                                                      'artery_raw'    : np.max,
-                                                     'radii'         : np.max},  
-                            edge_geometry_vertex_properties=['coordinates', 'radii', 'artery_binary', 'artery_raw'],
-                            edge_geometry_edge_properties=None,                        
-                            return_maps=False, verbose=True)
+                                                     'radii'         : np.max},
+                                  edge_geometry_vertex_properties=['coordinates', 'radii', 'artery_binary', 'artery_raw'],
+                                  edge_geometry_edge_properties=None,
+                                  return_maps=False, verbose=True)
   
   #%% Save reduced graph
   
