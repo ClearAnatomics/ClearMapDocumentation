@@ -1,0 +1,1152 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/clearmap.js"></script>
+    <script src="../../../../_static/clearmap_sidebar.js"></script>
+    <script src="../../../../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../../../../home.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../../../../home.html">Home</a></li>
+     <li class="link-list"><a href="../../../../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../../../../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+       <li><a href="../../../../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../../../../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../../../../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../../../../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../../../../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../../../../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../../../../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../../../../cellmap.html">
+            <img src="../../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../../../../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../../../../tubemap.html">
+            <img src="../../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../../../../media.html#gallery"> Gallery</a></h3>
+          <a href="../../../../media.html#gallery">
+            <img src="../../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../../../../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../../../../media.html#videos">   
+            <img src="../../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <h1>Source code for ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python2</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">ArrayProcessing</span>
+<span class="sd">===============</span>
+
+<span class="sd">Tools for parallel processing of large arrays.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">This module provides an interface to deal with large numpy arrays and speed up </span>
+<span class="sd">numpy routines that get very slow for data arrays above 100-500GB of size.</span>
+
+<span class="sd">The implementation builds on the buffer interface used by cython.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">ClearMap.IO.Slice</span> <span class="k">as</span> <span class="nn">slc</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Utils.Timer</span> <span class="k">as</span> <span class="nn">tmr</span>
+
+<span class="kn">import</span> <span class="nn">pyximport</span><span class="p">;</span>
+
+<span class="n">_old_get_distutils_extension</span> <span class="o">=</span> <span class="n">pyximport</span><span class="o">.</span><span class="n">pyximport</span><span class="o">.</span><span class="n">get_distutils_extension</span>
+
+<span class="k">def</span> <span class="nf">_new_get_distutils_extension</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span> <span class="n">pyxfilename</span><span class="p">,</span> <span class="n">language_level</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">extension_mod</span><span class="p">,</span> <span class="n">setup_args</span> <span class="o">=</span> <span class="n">_old_get_distutils_extension</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span> <span class="n">pyxfilename</span><span class="p">,</span> <span class="n">language_level</span><span class="p">)</span>
+    <span class="n">extension_mod</span><span class="o">.</span><span class="n">language</span><span class="o">=</span><span class="s1">&#39;c++&#39;</span>
+    <span class="k">return</span> <span class="n">extension_mod</span><span class="p">,</span><span class="n">setup_args</span>
+
+<span class="n">pyximport</span><span class="o">.</span><span class="n">pyximport</span><span class="o">.</span><span class="n">get_distutils_extension</span> <span class="o">=</span> <span class="n">_new_get_distutils_extension</span>
+
+<span class="n">pyximport</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="n">setup_args</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;include_dirs&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">get_include</span><span class="p">(),</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))]},</span>
+                  <span class="n">reload_support</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.DataProcessing.ArrayProcessingCode</span> <span class="k">as</span> <span class="nn">code</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Default Machine Settings</span>
+<span class="c1">###############################################################################</span>
+
+<span class="n">default_processes</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">();</span>
+<span class="sd">&quot;&quot;&quot;Default number of processes to use&quot;&quot;&quot;</span>
+
+
+<span class="n">default_blocks_per_process</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="sd">&quot;&quot;&quot;Default number of blocks per process to split the data.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">10 blocks per process is a good choice.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="n">default_cutoff</span> <span class="o">=</span> <span class="mi">20000000</span><span class="p">;</span>
+<span class="sd">&quot;&quot;&quot;Default size of array below which ordinary numpy is used.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">Ideally test this on your machine for different array sizes.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Lookup table transforms</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="apply_lut"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.apply_lut">[docs]</a><span class="k">def</span> <span class="nf">apply_lut</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">lut</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Transforms the source via a lookup table.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array </span>
+<span class="sd">    The source array.</span>
+<span class="sd">  lut : array</span>
+<span class="sd">    The lookup table.</span>
+<span class="sd">  sink : array or None</span>
+<span class="sd">    The result array, if none an array is created.</span>
+<span class="sd">  processes : None or int</span>
+<span class="sd">    Number of processes to use, if None use number of cpus.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    If True, print progress information.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The source transformed via the lookup table.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">processes</span><span class="p">,</span> <span class="n">timer</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="n">initialize_processing</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;apply_lut&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">return_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+
+  <span class="n">source</span><span class="p">,</span> <span class="n">source_buffer</span> <span class="o">=</span> <span class="n">initialize_source</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">as_1d</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  <span class="n">lut</span><span class="p">,</span> <span class="n">lut_buffer</span>       <span class="o">=</span> <span class="n">initialize_source</span><span class="p">(</span><span class="n">lut</span><span class="p">);</span>
+
+  <span class="n">sink</span><span class="p">,</span> <span class="n">sink_buffer</span> <span class="o">=</span> <span class="n">initialize_sink</span><span class="p">(</span><span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">as_1d</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">lut</span><span class="o">.</span><span class="n">dtype</span><span class="p">);</span>
+  
+  <span class="n">code</span><span class="o">.</span><span class="n">apply_lut</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">,</span> <span class="n">sink_buffer</span><span class="p">,</span> <span class="n">lut_buffer</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">)</span>
+
+  <span class="n">finalize_processing</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;apply_lut&#39;</span><span class="p">,</span> <span class="n">timer</span><span class="o">=</span><span class="n">timer</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="apply_lut_to_index"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.apply_lut_to_index">[docs]</a><span class="k">def</span> <span class="nf">apply_lut_to_index</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">lut</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Correlates the source with an index kernel and returns the value of the the look-up table.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array </span>
+<span class="sd">    The source array.</span>
+<span class="sd">  kernel : array</span>
+<span class="sd">    The correlation kernel.</span>
+<span class="sd">  lut : array</span>
+<span class="sd">    The lookup table.</span>
+<span class="sd">  sink : array or None</span>
+<span class="sd">    The result array, if none an array is created.</span>
+<span class="sd">  processes : None or int</span>
+<span class="sd">    Number of processes to use, if None use number of cpus</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The source transformed via the lookup table.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">processes</span><span class="p">,</span> <span class="n">timer</span> <span class="o">=</span>  <span class="n">initialize_processing</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;apply_lut_to_index&#39;</span><span class="p">);</span>
+
+  <span class="n">source</span><span class="p">,</span> <span class="n">source_buffer</span><span class="p">,</span> <span class="n">source_shape</span>   <span class="o">=</span> <span class="n">initialize_source</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">return_shape</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  <span class="n">kernel</span><span class="p">,</span> <span class="n">kernel_buffer</span><span class="p">,</span> <span class="n">kernel_shape</span>   <span class="o">=</span> <span class="n">initialize_source</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="n">return_shape</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  <span class="n">sink</span><span class="p">,</span> <span class="n">sink_buffer</span><span class="p">,</span> <span class="n">sink_shape</span> <span class="o">=</span> <span class="n">initialize_sink</span><span class="p">(</span><span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">lut</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">return_shape</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  <span class="n">lut</span><span class="p">,</span> <span class="n">lut_buffer</span> <span class="o">=</span> <span class="n">initialize_source</span><span class="p">(</span><span class="n">lut</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernel_shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;apply_lut_index not implemented for non 3d sources, found </span><span class="si">%d</span><span class="s1"> dimensions!&#39;</span><span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_shape</span><span class="p">));</span>
+    
+  <span class="n">code</span><span class="o">.</span><span class="n">apply_lut_to_index_3d</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">,</span> <span class="n">kernel_buffer</span><span class="p">,</span> <span class="n">lut_buffer</span><span class="p">,</span> <span class="n">sink_buffer</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">)</span>
+
+  <span class="n">finalize_processing</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;apply_lut_to_index&#39;</span><span class="p">,</span> <span class="n">timer</span><span class="o">=</span><span class="n">timer</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Correlation</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="correlate1d"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.correlate1d">[docs]</a><span class="k">def</span> <span class="nf">correlate1d</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Correlates the source along the given axis wih ta 1d kernel.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array </span>
+<span class="sd">    The source array.</span>
+<span class="sd">  lut : array</span>
+<span class="sd">    The lookup table.</span>
+<span class="sd">  sink : array or None</span>
+<span class="sd">    The result array, if none an array is created.</span>
+<span class="sd">  processes : None or int</span>
+<span class="sd">    Number of processes to use, if None use number of cpus</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    If True, print progress information.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array</span>
+<span class="sd">    The source transformed via the lookup table.</span>
+<span class="sd">  &quot;&quot;&quot;</span> 
+  <span class="n">processes</span><span class="p">,</span> <span class="n">timer</span> <span class="o">=</span>  <span class="n">initialize_processing</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> 
+                                            <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> 
+                                            <span class="n">function</span><span class="o">=</span><span class="s1">&#39;correlate1d&#39;</span><span class="p">);</span>
+
+  <span class="n">source</span><span class="p">,</span> <span class="n">source_buffer</span><span class="p">,</span> <span class="n">source_shape</span><span class="p">,</span> <span class="n">source_strides</span> <span class="o">=</span> <span class="n">initialize_source</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">as_1d</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_shape</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_strides</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  <span class="n">kernel</span><span class="p">,</span> <span class="n">kernel_buffer</span> <span class="o">=</span> <span class="n">initialize_source</span><span class="p">(</span><span class="n">kernel</span><span class="p">);</span>
+  
+  <span class="n">dtype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">result_type</span><span class="p">(</span><span class="n">source_buffer</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">kernel_buffer</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">;</span>
+  <span class="n">sink</span><span class="p">,</span> <span class="n">sink_buffer</span><span class="p">,</span> <span class="n">sink_shape</span><span class="p">,</span> <span class="n">sink_strides</span> <span class="o">=</span> <span class="n">initialize_sink</span><span class="p">(</span><span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">as_1d</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">source_shape</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">return_shape</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_strides</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="n">kernel_buffer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">kernel_buffer</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">);</span>
+  
+  <span class="n">code</span><span class="o">.</span><span class="n">correlate_1d</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">,</span> <span class="n">source_shape</span><span class="p">,</span> <span class="n">source_strides</span><span class="p">,</span> 
+                    <span class="n">sink_buffer</span><span class="p">,</span> <span class="n">sink_shape</span><span class="p">,</span> <span class="n">sink_strides</span><span class="p">,</span> 
+                    <span class="n">kernel_buffer</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span>
+
+  <span class="n">finalize_processing</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;correlate1d&#39;</span><span class="p">,</span> <span class="n">timer</span><span class="o">=</span><span class="n">timer</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Where</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="where"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.where">[docs]</a><span class="k">def</span> <span class="nf">where</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cutoff</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns the indices of the non-zero entries of the array.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Array to search for nonzero indices.</span>
+<span class="sd">  sink : array or None</span>
+<span class="sd">    If not None, results is written into this array</span>
+<span class="sd">  blocks : int or None</span>
+<span class="sd">    Number of blocks to split array into for parallel processing</span>
+<span class="sd">  cutoff : int</span>
+<span class="sd">    Number of elements below whih to switch to numpy.where</span>
+<span class="sd">  processes : None or int</span>
+<span class="sd">    Number of processes, if None use number of cpus.</span>
+<span class="sd">    </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  where : array</span>
+<span class="sd">      Positions of the nonzero entries of the input array</span>
+<span class="sd">  </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">    Uses numpy.where if there is no match of dimension implemented!</span>
+<span class="sd">  &quot;&quot;&quot;</span>  
+  <span class="n">source</span><span class="p">,</span> <span class="n">source_buffer</span> <span class="o">=</span> <span class="n">initialize_source</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+  
+  <span class="n">ndim</span> <span class="o">=</span> <span class="n">source_buffer</span><span class="o">.</span><span class="n">ndim</span><span class="p">;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">ndim</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="k">raise</span> <span class="ne">Warning</span><span class="p">(</span><span class="s1">&#39;Using numpy.where for dimension </span><span class="si">%d</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ndim</span><span class="p">,))</span>
+    <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
+
+  <span class="n">processes</span><span class="p">,</span> <span class="n">timer</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="n">initialize_processing</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;where&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">return_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+  <span class="k">if</span> <span class="n">cutoff</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">cutoff</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">cutoff</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cutoff</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">source_buffer</span><span class="o">.</span><span class="n">size</span> <span class="o">&lt;=</span> <span class="n">cutoff</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="p">;</span>
+    <span class="k">if</span> <span class="n">sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">sink</span><span class="p">,</span> <span class="n">sink_buffer</span> <span class="o">=</span> <span class="n">initialize_sink</span><span class="p">(</span><span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+      <span class="n">sink</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">result</span><span class="p">;</span>  
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="n">sums</span> <span class="o">=</span> <span class="n">code</span><span class="o">.</span><span class="n">block_sums_1d</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span>
+    <span class="k">elif</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="n">sums</span> <span class="o">=</span> <span class="n">code</span><span class="o">.</span><span class="n">block_sums21d</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">sums</span> <span class="o">=</span> <span class="n">code</span><span class="o">.</span><span class="n">block_sums_3d</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="n">sink_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sums</span><span class="p">),)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">sink_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sums</span><span class="p">),</span> <span class="n">ndim</span><span class="p">);</span>
+    <span class="n">sink</span><span class="p">,</span> <span class="n">sink_buffer</span> <span class="o">=</span> <span class="n">initialize_sink</span><span class="p">(</span><span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">sink_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">);</span>
+     
+    <span class="k">if</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="n">code</span><span class="o">.</span><span class="n">where_1d</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">sink_buffer</span><span class="p">,</span> <span class="n">sums</span><span class="o">=</span><span class="n">sums</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span>
+    <span class="k">elif</span> <span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="n">code</span><span class="o">.</span><span class="n">where_2d</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">sink_buffer</span><span class="p">,</span> <span class="n">sums</span><span class="o">=</span><span class="n">sums</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">code</span><span class="o">.</span><span class="n">where_3d</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">sink_buffer</span><span class="p">,</span> <span class="n">sums</span><span class="o">=</span><span class="n">sums</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span>
+  
+  <span class="n">finalize_processing</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;where&#39;</span><span class="p">,</span> <span class="n">timer</span><span class="o">=</span><span class="n">timer</span><span class="p">);</span>
+    
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="neighbours"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.neighbours">[docs]</a><span class="k">def</span> <span class="nf">neighbours</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns all pairs in a list of indices that are apart a specified offset.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  indices : array</span>
+<span class="sd">    List of indices.</span>
+<span class="sd">  offset : int</span>
+<span class="sd">    The offset to search for.</span>
+<span class="sd">  processes : None or int</span>
+<span class="sd">    Number of processes, if None use number of cpus.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    If True, print progress.</span>
+<span class="sd">    </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  neighbours : array </span>
+<span class="sd">    List of pairs of neighbours.</span>
+<span class="sd">    </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  This function can be used to create graphs from binary images.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">processes</span><span class="p">,</span> <span class="n">timer</span> <span class="o">=</span> <span class="n">initialize_processing</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;neighbours&#39;</span><span class="p">);</span>
+  
+  <span class="n">neighbours</span> <span class="o">=</span>  <span class="n">code</span><span class="o">.</span><span class="n">neighbours</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span>  <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span>
+  
+  <span class="n">finalize_processing</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">timer</span><span class="o">=</span><span class="n">timer</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;neighbours&#39;</span><span class="p">)</span>
+  
+  <span class="k">return</span> <span class="n">neighbours</span><span class="p">;</span></div>
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### IO</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="read"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.read">[docs]</a><span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">slicing</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">memory</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Read a large array into memory in parallel.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : str or Source</span>
+<span class="sd">    The source on diks to load.</span>
+<span class="sd">  slicing : slice, tuple, or None</span>
+<span class="sd">    Optional sublice to read.</span>
+<span class="sd">  memory : &#39;shared; or None</span>
+<span class="sd">    If &#39;shared&#39;, read into shared memory.</span>
+<span class="sd">  blocks : int or None</span>
+<span class="sd">    number of blocks to split array into for parallel processing</span>
+<span class="sd">  processes : None or int</span>
+<span class="sd">    number of processes, if None use number of cpus</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    print info about the file to be loaded</span>
+<span class="sd">    </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : Source class</span>
+<span class="sd">    The read source in memory.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">processes</span><span class="p">,</span> <span class="n">timer</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="n">initialize_processing</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;read&#39;</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">return_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="c1">#source info</span>
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+  <span class="k">if</span> <span class="n">slicing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">slc</span><span class="o">.</span><span class="n">Slice</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">slicing</span><span class="o">=</span><span class="n">slicing</span><span class="p">);</span>
+  
+  <span class="n">shape</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">offset</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">source</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">source</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="n">source</span><span class="o">.</span><span class="n">offset</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="n">location</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;The source has not valid location to read from!&#39;</span><span class="p">);</span>  
+  <span class="k">if</span> <span class="n">order</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">]:</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Cannot read in parallel from non-contigous source!&#39;</span><span class="p">);</span>
+    <span class="c1">#TODO: implement parallel reader with strides !</span>
+  
+  <span class="n">sink</span><span class="p">,</span> <span class="n">sink_buffer</span> <span class="o">=</span> <span class="n">initialize_sink</span><span class="p">(</span><span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="n">memory</span><span class="p">,</span> <span class="n">as_1d</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="n">code</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">sink_buffer</span><span class="p">,</span> <span class="n">location</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span>
+  
+  <span class="n">finalize_processing</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;read&#39;</span><span class="p">,</span> <span class="n">timer</span><span class="o">=</span><span class="n">timer</span><span class="p">);</span>
+           
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="write"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.write">[docs]</a><span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">slicing</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Write a large array to disk in parallel.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  sink : str or Source</span>
+<span class="sd">    The sink on disk to write to.</span>
+<span class="sd">  source : array or Source</span>
+<span class="sd">    The data to write to disk.</span>
+<span class="sd">  slicing : slicing or None</span>
+<span class="sd">    Optional slicing for the sink to write to.</span>
+<span class="sd">  overwrite : bool</span>
+<span class="sd">    If True, create new file if the source specifications do not match.</span>
+<span class="sd">  blocks : int or None</span>
+<span class="sd">    Number of blocks to split array into for parallel processing.</span>
+<span class="sd">  processes : None or int</span>
+<span class="sd">    Number of processes, if None use number of cpus.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    Print info about the file to be loaded.</span>
+<span class="sd">    </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : Source class</span>
+<span class="sd">      The sink to which the source was written.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">processes</span><span class="p">,</span> <span class="n">timer</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="n">initialize_processing</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;write&#39;</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">return_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="n">source</span><span class="p">,</span> <span class="n">source_buffer</span><span class="p">,</span> <span class="n">source_order</span> <span class="o">=</span> <span class="n">initialize_source</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">as_1d</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_order</span> <span class="o">=</span> <span class="kc">True</span><span class="p">);</span>  
+  
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">sink</span><span class="p">);</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">location</span><span class="p">;</span>
+  <span class="k">except</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+      <span class="n">location</span> <span class="o">=</span> <span class="n">sink</span><span class="p">;</span>
+      <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Sink is not a valid writable sink specification!&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">location</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Sink is not a valid writable sink specification!&#39;</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="n">slicing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">io</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot write a slice to a non-existent sink </span><span class="si">%s</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="n">location</span><span class="p">);</span>
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">slc</span><span class="o">.</span><span class="n">Slice</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">slicing</span><span class="o">=</span><span class="n">slicing</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">io</span><span class="o">.</span><span class="n">is_file</span><span class="p">(</span><span class="n">location</span><span class="p">):</span>
+      <span class="n">mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span> <span class="ow">or</span> <span class="n">sink</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span> <span class="ow">or</span> <span class="n">sink</span><span class="o">.</span><span class="n">order</span> <span class="o">!=</span> <span class="n">source_order</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">overwrite</span><span class="p">:</span>
+          <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;w+&#39;</span><span class="p">;</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Sink file </span><span class="si">%s</span><span class="s1"> exists but does not match source!&#39;</span><span class="p">);</span>
+      <span class="n">sink_shape</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">;</span>
+      <span class="n">sink_dtype</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span><span class="p">;</span>
+      <span class="n">sink_order</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">order</span><span class="p">;</span>
+      <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">sink_shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+      <span class="n">sink_dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+      <span class="n">sink_order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+      <span class="n">mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+    
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">initialize_sink</span><span class="p">(</span><span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">sink_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">sink_dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">sink_order</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">return_buffer</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+  <span class="n">sink_order</span><span class="p">,</span> <span class="n">sink_offset</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="n">sink</span><span class="o">.</span><span class="n">offset</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">sink_order</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">]:</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Cannot read in parallel from non-contigous source!&#39;</span><span class="p">);</span>  
+  <span class="k">if</span> <span class="p">(</span><span class="n">source_order</span> <span class="o">!=</span> <span class="n">sink_order</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Order of source </span><span class="si">%r</span><span class="s1"> and sink </span><span class="si">%r</span><span class="s1"> do not match!&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">source_order</span><span class="p">,</span> <span class="n">sink_order</span><span class="p">));</span>    
+  
+  <span class="c1">#print(source_buffer.shape, location, sink_offset, blocks, processes)</span>
+  <span class="n">code</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">,</span> <span class="n">location</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">offset</span><span class="o">=</span><span class="n">sink_offset</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span>
+  
+  <span class="n">finalize_processing</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="s1">&#39;write&#39;</span><span class="p">,</span> <span class="n">timer</span><span class="o">=</span><span class="n">timer</span><span class="p">);</span>
+           
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Utility</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="block_ranges"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.block_ranges">[docs]</a><span class="k">def</span> <span class="nf">block_ranges</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Ranges of evenly spaced blocks in array.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : array</span>
+<span class="sd">    Source to divide in blocks.</span>
+<span class="sd">  blocks : int or None</span>
+<span class="sd">    Number of blocks to split array into.</span>
+<span class="sd">  processes : None or int</span>
+<span class="sd">    Number of processes, if None use number of cpus.</span>
+<span class="sd">    </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  block_ranges : array</span>
+<span class="sd">    List of the range boundaries</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">processes</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">initialize_processing</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">blocks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">blocks</span> <span class="o">=</span> <span class="n">processes</span> <span class="o">*</span> <span class="n">default_blocks_per_process</span><span class="p">;</span>
+  
+  <span class="n">size</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+  <span class="n">blocks</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">blocks</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">);</span></div>
+
+
+<div class="viewcode-block" id="block_sums"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.block_sums">[docs]</a><span class="k">def</span> <span class="nf">block_sums</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Sums of evenly spaced blocks in array.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  data : array</span>
+<span class="sd">    Array to perform the block sums on.</span>
+<span class="sd">  blocks : int or None</span>
+<span class="sd">    Number of blocks to split array into.</span>
+<span class="sd">  processes : None or int</span>
+<span class="sd">    Number of processes, if None use number of cpus.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  block_sums : array</span>
+<span class="sd">    Sums of the values in the different blocks.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">processes</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">initialize_processing</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">blocks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">blocks</span> <span class="o">=</span> <span class="n">processes</span> <span class="o">*</span> <span class="n">default_blocks_per_process</span><span class="p">;</span>
+  
+  <span class="n">source</span><span class="p">,</span> <span class="n">source_buffer</span> <span class="o">=</span> <span class="n">initialize_source</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">as_1d</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">code</span><span class="o">.</span><span class="n">block_sums_1d</span><span class="p">(</span><span class="n">source_buffer</span><span class="p">,</span> <span class="n">blocks</span><span class="o">=</span><span class="n">blocks</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span></div>
+ 
+  
+<div class="viewcode-block" id="index_neighbours"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.index_neighbours">[docs]</a><span class="k">def</span> <span class="nf">index_neighbours</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns all pairs of indices that are a part of a specified offset.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  indices : array</span>
+<span class="sd">    List of indices.</span>
+<span class="sd">  offset : int</span>
+<span class="sd">    The offset to check for.</span>
+<span class="sd">  processes : None or int</span>
+<span class="sd">    Number of processes, if None use number of cpus.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">processes</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">initialize_processing</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">indices</span><span class="p">,</span> <span class="n">indices_buffer</span> <span class="o">=</span> <span class="n">initialize_source</span><span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">code</span><span class="o">.</span><span class="n">index_neighbours</span><span class="p">(</span><span class="n">indices_buffer</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">);</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Initialization</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="initialize_processing"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.initialize_processing">[docs]</a><span class="k">def</span> <span class="nf">initialize_processing</span><span class="p">(</span><span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">function</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">return_blocks</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initialize parallel array processing.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  processes : int, &#39;seial&#39; or None</span>
+<span class="sd">    The number of processes to use. If None use number of cpus.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    If True, print progress information.</span>
+<span class="sd">  function : str or None</span>
+<span class="sd">    The nae of the function.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  processes : int</span>
+<span class="sd">    The number of processes.</span>
+<span class="sd">  timer : Timer</span>
+<span class="sd">    A timer for the processing.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">processes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="n">default_processes</span><span class="p">;</span>
+  <span class="k">if</span> <span class="n">processes</span> <span class="o">==</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">function</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: initialized!&#39;</span> <span class="o">%</span> <span class="n">function</span><span class="p">);</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">();</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+  
+  <span class="n">results</span> <span class="o">=</span> <span class="p">(</span><span class="n">processes</span><span class="p">,</span> <span class="n">timer</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">return_blocks</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">blocks</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">blocks</span> <span class="o">=</span> <span class="n">processes</span> <span class="o">*</span> <span class="n">default_blocks_per_process</span><span class="p">;</span>
+    <span class="n">results</span> <span class="o">+=</span> <span class="p">(</span><span class="n">blocks</span><span class="p">,)</span>
+  
+  <span class="k">return</span> <span class="n">results</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="finalize_processing"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.finalize_processing">[docs]</a><span class="k">def</span> <span class="nf">finalize_processing</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">function</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">timer</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Finalize parallel array processing.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    If True, print progress information.</span>
+<span class="sd">  function : str or None</span>
+<span class="sd">    The nae of the function.</span>
+<span class="sd">  timer : Timer or None</span>
+<span class="sd">    A processing timer.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">function</span> <span class="ow">and</span> <span class="n">timer</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="n">function</span><span class="p">);</span></div>
+
+
+<div class="viewcode-block" id="initialize_source"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.initialize_source">[docs]</a><span class="k">def</span> <span class="nf">initialize_source</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">return_buffer</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">as_1d</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+                      <span class="n">return_shape</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">return_strides</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">return_order</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initialize a source buffer for parallel array processing.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : source specification</span>
+<span class="sd">    The source to initialize.</span>
+<span class="sd">  return_buffer : bool</span>
+<span class="sd">    If True, return a buffer compatible with cython memory views.</span>
+<span class="sd">  return_shape : bool</span>
+<span class="sd">    If True, also return shape of the source.</span>
+<span class="sd">  return_strides : bool</span>
+<span class="sd">    If True, also return the element strides of the source.</span>
+<span class="sd">  return_order : bool</span>
+<span class="sd">    If True, also return order of the source.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  source : Source</span>
+<span class="sd">    The intialized source.</span>
+<span class="sd">  source_buffer</span>
+<span class="sd">    The initialized source as buffer.</span>
+<span class="sd">  shape : tuple of int</span>
+<span class="sd">    Shape of the source.</span>
+<span class="sd">  return_Strides : tuple of int</span>
+<span class="sd">    Element strides of the source. </span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">return_shape</span><span class="p">:</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">return_strides</span><span class="p">:</span>
+    <span class="n">strides</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">element_strides</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">);</span>
+    
+  <span class="k">if</span> <span class="n">return_order</span><span class="p">:</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">order</span><span class="p">;</span>
+    
+  <span class="k">if</span> <span class="n">return_buffer</span><span class="p">:</span>
+    <span class="n">source_buffer</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">as_buffer</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="n">source_buffer</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+      <span class="n">source_buffer</span> <span class="o">=</span> <span class="n">source_buffer</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>  
+  
+    <span class="k">if</span> <span class="n">as_1d</span><span class="p">:</span>
+      <span class="n">source_buffer</span> <span class="o">=</span> <span class="n">source_buffer</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">);</span>
+  
+  <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">source</span><span class="p">,);</span>
+  <span class="k">if</span> <span class="n">return_buffer</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">source_buffer</span><span class="p">,)</span>
+  <span class="k">if</span> <span class="n">return_shape</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">shape</span><span class="p">,);</span>
+  <span class="k">if</span> <span class="n">return_strides</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">strides</span><span class="p">,);</span>
+  <span class="k">if</span> <span class="n">return_order</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">order</span><span class="p">,);</span>
+  
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="initialize_sink"><a class="viewcode-back" href="../../../../Api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.initialize_sink">[docs]</a><span class="k">def</span> <span class="nf">initialize_sink</span><span class="p">(</span><span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">memory</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">location</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">source</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                    <span class="n">return_buffer</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">as_1d</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">return_shape</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">return_strides</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initialze or create a sink.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  sink : sink specification</span>
+<span class="sd">    The source to initialize.</span>
+<span class="sd">  shape : tuple of int</span>
+<span class="sd">    Optional shape of the sink. If None, inferred from the source.</span>
+<span class="sd">  dtype : dtype</span>
+<span class="sd">    Optional dtype of the sink. If None, inferred from the source.</span>
+<span class="sd">  order : &#39;C&#39;, &#39;F&#39; or None</span>
+<span class="sd">    Optonal order of the sink. If None, inferred from the source.</span>
+<span class="sd">  memory : &#39;shared&#39; or None</span>
+<span class="sd">    If &#39;shared&#39; create a shared memory sink.</span>
+<span class="sd">  location : str</span>
+<span class="sd">    Optional location specification of the sink.</span>
+<span class="sd">  source : Source or None</span>
+<span class="sd">    Optional source to infer sink specifictions from.</span>
+<span class="sd">  return_buffer : bool</span>
+<span class="sd">    If True, return alos a buffer compatible with cython memory views. </span>
+<span class="sd">  return_shape : bool</span>
+<span class="sd">    If True, also return shape of the sink.</span>
+<span class="sd">  return_strides : bool</span>
+<span class="sd">    If True, also return the element strides of the sink.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : Source</span>
+<span class="sd">    The intialized sink.</span>
+<span class="sd">  buffer : array</span>
+<span class="sd">    Buffer of the sink.</span>
+<span class="sd">  shape : tuple of int</span>
+<span class="sd">    Shape of the source.</span>
+<span class="sd">  strides : tuple of int</span>
+<span class="sd">    Element strides of the source. </span>
+<span class="sd">  &quot;&quot;&quot;</span>
+       
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="n">memory</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">like</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">as_source</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">return_buffer</span><span class="p">:</span>
+    <span class="n">buffer</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">as_buffer</span><span class="p">();</span>
+  
+    <span class="k">if</span> <span class="n">buffer</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
+      <span class="n">buffer</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+      
+    <span class="k">if</span> <span class="n">as_1d</span><span class="p">:</span>
+      <span class="n">buffer</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;A&#39;</span><span class="p">);</span>  
+  
+  <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">sink</span><span class="p">,)</span>
+  <span class="k">if</span> <span class="n">return_buffer</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">buffer</span><span class="p">,);</span>
+  <span class="k">if</span> <span class="n">return_shape</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),);</span>
+  <span class="k">if</span> <span class="n">return_strides</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">element_strides</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),);</span>
+  
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span></div>
+
+
+
+
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tests</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  
+  <span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing</span> <span class="k">as</span> <span class="nn">ap</span>  
+  
+  <span class="c1">## Lookup table processing</span>
+  
+  <span class="c1">#apply_lut  </span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">));</span>
+  <span class="n">lut</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">apply_lut</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">lut</span><span class="p">)</span>
+  <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="c1">#apply_lut_to_index</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Topology.Topology3d</span> <span class="k">as</span> <span class="nn">t3d</span>
+  <span class="n">kernel</span> <span class="o">=</span> <span class="n">t3d</span><span class="o">.</span><span class="n">index_kernel</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">);</span>
+  
+  <span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Binary.Smoothing</span> <span class="k">as</span> <span class="nn">sm</span>
+  <span class="n">lut</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">initialize_lookup_table</span><span class="p">();</span>
+    
+  <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.75</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">);</span>
+  
+  <span class="n">result</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">apply_lut_to_index</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">lut</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">p3d</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([[</span><span class="n">data</span><span class="p">,</span> <span class="n">result</span><span class="p">]])</span>    
+  
+  
+  <span class="c1">### Correlation </span>
+  
+  <span class="c1">#correlate1d</span>
+  <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;uint32&#39;</span><span class="p">);</span>  
+  <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">27</span><span class="p">,</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">1500</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;uint32&#39;</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">);</span>
+  <span class="c1">#data = np.array(np.random.rand(3,4,5), order=&#39;F&#39;);</span>
+  
+  <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">300</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">1500</span><span class="p">),</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">);</span>
+  <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  
+  <span class="n">sink</span> <span class="o">=</span> <span class="s1">&#39;test.npy&#39;</span>
+  
+  <span class="kn">import</span> <span class="nn">ClearMap.Utils.Timer</span> <span class="k">as</span> <span class="nn">tmr</span>
+  <span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>
+  <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">();</span>
+  <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">axis</span><span class="p">);</span>
+    <span class="n">corr_ndi</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">correlate1d</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span><span class="n">cval</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;ndi&#39;</span><span class="p">)</span>  
+  
+  <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">();</span>
+  <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">correlate1d</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="kc">None</span><span class="p">);</span>  
+  <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;ap&#39;</span><span class="p">)</span>
+  
+
+  <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">corr</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">corr_ndi</span><span class="p">)</span>
+  
+  
+  <span class="c1"># IO</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing</span> <span class="k">as</span> <span class="nn">ap</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="n">reload</span><span class="p">(</span><span class="n">ap</span><span class="p">)</span>
+  
+  
+  <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+  
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;test.npy&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+  <span class="k">assert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">sink</span><span class="o">.</span><span class="n">array</span> <span class="o">==</span> <span class="n">data</span><span class="p">))</span>
+  
+  <span class="n">read</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;test.npy&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="k">assert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">read</span><span class="o">.</span><span class="n">array</span> <span class="o">==</span> <span class="n">data</span><span class="p">))</span>
+  
+  <span class="n">ap</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="s1">&#39;test.npy&#39;</span><span class="p">)</span>
+
+
+  <span class="c1"># where</span>
+  <span class="n">reload</span><span class="p">(</span><span class="n">ap</span><span class="p">)</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">;</span>
+  
+  <span class="n">where_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+  <span class="n">where</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cutoff</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">0</span><span class="p">)</span>
+  
+  <span class="n">check_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">);</span>
+  <span class="n">check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">);</span>
+  <span class="n">check_np</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">where_np</span><span class="o">.</span><span class="n">T</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+  <span class="n">check</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">where</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">T</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+  <span class="k">assert</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">check_np</span> <span class="o">==</span> <span class="n">check</span><span class="p">))</span>
+  
+
+<span class="c1">#</span>
+<span class="c1">#def setValue(data, indices, value, cutoff = defaultCutoff, processes = defaultProcesses):</span>
+<span class="c1">#  &quot;&quot;&quot;Set value at specified indices of an array</span>
+<span class="c1">#  </span>
+<span class="c1">#  Arguments:</span>
+<span class="c1">#    data : array</span>
+<span class="c1">#      array to search for nonzero indices</span>
+<span class="c1">#    indices : array or None</span>
+<span class="c1">#      list of indices to set</span>
+<span class="c1">#    value : numeric or bool</span>
+<span class="c1">#      value to set elements in data to</span>
+<span class="c1">#    processes : None or int</span>
+<span class="c1">#      number of processes, if None use number of cpus</span>
+<span class="c1">#    </span>
+<span class="c1">#  Returns:</span>
+<span class="c1">#    array</span>
+<span class="c1">#      array with specified entries set to new value</span>
+<span class="c1">#  </span>
+<span class="c1">#  Note:</span>
+<span class="c1">#    Uses numpy if there is no match of dimension implemented!</span>
+<span class="c1">#  &quot;&quot;&quot;</span>
+<span class="c1">#  if data.ndim != 1:</span>
+<span class="c1">#    raise Warning(&#39;Using numpy where for dimension %d and type %s!&#39; % (data.ndim, data.dtype))</span>
+<span class="c1">#    data[indices] = value;</span>
+<span class="c1">#    return data;</span>
+<span class="c1">#    </span>
+<span class="c1">#  if cutoff is None:</span>
+<span class="c1">#    cutoff = 1;</span>
+<span class="c1">#  cutoff = min(1, cutoff);</span>
+<span class="c1">#  if data.size &lt;= cutoff:</span>
+<span class="c1">#    data[indices] = value;</span>
+<span class="c1">#    return data;</span>
+<span class="c1">#  </span>
+<span class="c1">#  if processes is None:</span>
+<span class="c1">#    processes = defaultProcesses;</span>
+<span class="c1">#  </span>
+<span class="c1">#  if data.dtype == bool:</span>
+<span class="c1">#    d = data.view(&#39;uint8&#39;)</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    d = data;</span>
+<span class="c1">#  </span>
+<span class="c1">#  code.set1d(d, indices, value, processes = processes);</span>
+<span class="c1">#  </span>
+<span class="c1">#  return data;</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def setArray(data, indices, values, cutoff = defaultCutoff, processes = defaultProcesses):</span>
+<span class="c1">#  &quot;&quot;&quot;Set value at specified indices of an array</span>
+<span class="c1">#  </span>
+<span class="c1">#  Arguments:</span>
+<span class="c1">#    data : array</span>
+<span class="c1">#      array to search for nonzero indices</span>
+<span class="c1">#    indices : array or None</span>
+<span class="c1">#      list of indices to set</span>
+<span class="c1">#    values : array</span>
+<span class="c1">#      values to set elements in data to</span>
+<span class="c1">#    processes : None or int</span>
+<span class="c1">#      number of processes, if None use number of cpus</span>
+<span class="c1">#    </span>
+<span class="c1">#  Returns:</span>
+<span class="c1">#    array</span>
+<span class="c1">#      array with specified entries set to new value</span>
+<span class="c1">#  </span>
+<span class="c1">#  Note:</span>
+<span class="c1">#    Uses numpy if there is no match of dimension implemented!</span>
+<span class="c1">#  &quot;&quot;&quot;</span>
+<span class="c1">#  if data.ndim != 1:</span>
+<span class="c1">#    raise Warning(&#39;Using numpy where for dimension %d and type %s!&#39; % (data.ndim, data.dtype))</span>
+<span class="c1">#    data[indices] = values;</span>
+<span class="c1">#    return data;</span>
+<span class="c1">#    </span>
+<span class="c1">#  if cutoff is None:</span>
+<span class="c1">#    cutoff = 1;</span>
+<span class="c1">#  cutoff = min(1, cutoff);</span>
+<span class="c1">#  if data.size &lt;= cutoff:</span>
+<span class="c1">#    data[indices] = values;</span>
+<span class="c1">#    return data;</span>
+<span class="c1">#  </span>
+<span class="c1">#  if processes is None:</span>
+<span class="c1">#    processes = defaultProcesses;</span>
+<span class="c1">#  </span>
+<span class="c1">#  if data.dtype == bool:</span>
+<span class="c1">#    d = data.view(&#39;uint8&#39;)</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    d = data;</span>
+<span class="c1">#  </span>
+<span class="c1">#  code.set1darray(d, indices, values, processes = processes);</span>
+<span class="c1">#  </span>
+<span class="c1">#  return data;</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def take(data, indices, out = None, cutoff = defaultCutoff, processes = defaultProcesses):</span>
+<span class="c1">#  &quot;&quot;&quot;Extracts the values at specified indices</span>
+<span class="c1">#  </span>
+<span class="c1">#  Arguments:</span>
+<span class="c1">#    data : array</span>
+<span class="c1">#      array to search for nonzero indices</span>
+<span class="c1">#    out : array or None</span>
+<span class="c1">#      if not None results is written into this array</span>
+<span class="c1">#    cutoff : int</span>
+<span class="c1">#      number of elements below whih to switch to numpy.where</span>
+<span class="c1">#    processes : None or int</span>
+<span class="c1">#      number of processes, if None use number of cpus</span>
+<span class="c1">#    </span>
+<span class="c1">#  Returns:</span>
+<span class="c1">#    array</span>
+<span class="c1">#      positions of the nonzero entries of the input array</span>
+<span class="c1">#  </span>
+<span class="c1">#  Note:</span>
+<span class="c1">#    Uses numpy data[indices] if there is no match of dimension implemented!</span>
+<span class="c1">#  &quot;&quot;&quot; </span>
+<span class="c1">#  if data.ndim != 1:</span>
+<span class="c1">#    raise Warning(&#39;Using numpy where for dimension %d and type %s!&#39; % (data.ndim, data.dtype))</span>
+<span class="c1">#    return data[indices];</span>
+<span class="c1">#</span>
+<span class="c1">#  if cutoff is None:</span>
+<span class="c1">#    cutoff = 1;</span>
+<span class="c1">#  cutoff = min(1, cutoff);</span>
+<span class="c1">#  if data.size &lt; cutoff:</span>
+<span class="c1">#    return data[indices];</span>
+<span class="c1">#</span>
+<span class="c1">#  if processes is None:</span>
+<span class="c1">#    processes = defaultProcesses;</span>
+<span class="c1">#  </span>
+<span class="c1">#  if data.dtype == bool:</span>
+<span class="c1">#    d = data.view(&#39;uint8&#39;)</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    d = data;</span>
+<span class="c1">#</span>
+<span class="c1">#  if out is None:</span>
+<span class="c1">#    out = np.empty(len(indices), dtype = data.dtype);</span>
+<span class="c1">#  if out.dtype == bool:</span>
+<span class="c1">#    o = out.view(&#39;uint8&#39;);</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    o = out;</span>
+<span class="c1">#  </span>
+<span class="c1">#  code.take1d(d, indices, o, processes = processes);</span>
+<span class="c1">#  </span>
+<span class="c1">#  return out;</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def match(match, indices, out = None):</span>
+<span class="c1">#  &quot;&quot;&quot;Matches a sorted list of 1d indices to another larger one </span>
+<span class="c1">#  </span>
+<span class="c1">#  Arguments:</span>
+<span class="c1">#    match : array</span>
+<span class="c1">#      array of indices to match to indices</span>
+<span class="c1">#    indices : array or None</span>
+<span class="c1">#      array of indices</span>
+<span class="c1">#  </span>
+<span class="c1">#  Returns:</span>
+<span class="c1">#    array</span>
+<span class="c1">#      array with specified entries set to new value</span>
+<span class="c1">#  </span>
+<span class="c1">#  Note:</span>
+<span class="c1">#    Uses numpy if there is no match of dimension implemented!</span>
+<span class="c1">#  &quot;&quot;&quot;</span>
+<span class="c1">#  if match.ndim != 1:</span>
+<span class="c1">#    raise ValueError(&#39;Match array dimension required to be 1d, found %d!&#39; % (match.ndim))</span>
+<span class="c1">#  if indices.ndim != 1:</span>
+<span class="c1">#    raise ValueError(&#39;Indices array dimension required to be 1d, found %d!&#39; % (indices.ndim))  </span>
+<span class="c1">#  </span>
+<span class="c1">#  if out is None:</span>
+<span class="c1">#    out = np.empty(len(match), dtype = match.dtype);</span>
+<span class="c1">#  </span>
+<span class="c1">#  code.match1d(match, indices, out);</span>
+<span class="c1">#  </span>
+<span class="c1">#  return out;</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># Find neighbours in an index list</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def neighbours(indices, offset, processes = defaultProcesses):</span>
+<span class="c1">#  &quot;&quot;&quot;Returns all pairs of indices that are apart a specified offset&quot;&quot;&quot;</span>
+<span class="c1">#  return code.neighbours(indices, offset = offset,  processes = processes);</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def findNeighbours(indices, center, shape, strides, mask):</span>
+<span class="c1">#  &quot;&quot;&quot;Finds all indices within a specified kernel region centered at a point&quot;&quot;&quot;</span>
+<span class="c1">#  </span>
+<span class="c1">#  if len(strides) != 3 or len(shape) != 3 or (strides[0] != 1 and strides[2] != 1):</span>
+<span class="c1">#    raise RuntimeError(&#39;only 3d C or F contiguous arrays suported&#39;);</span>
+<span class="c1">#</span>
+<span class="c1">#  if isinstance(mask, int):</span>
+<span class="c1">#    mask = (mask,);</span>
+<span class="c1">#  if isinstance(mask, tuple):</span>
+<span class="c1">#    mask = mask * 3;</span>
+<span class="c1">#    return code.neighbourlistRadius(indices, center, shape[0], shape[1], shape[2], </span>
+<span class="c1">#                                                     strides[0], strides[1], strides[2], </span>
+<span class="c1">#                                                     mask[0], mask[1], mask[2]);</span>
+<span class="c1">#  else:</span>
+<span class="c1">#    if mask.dtype == bool:</span>
+<span class="c1">#      mask = mask.view(dtype = &#39;uint8&#39;);</span>
+<span class="c1">#                                                </span>
+<span class="c1">#    return code.neighbourlistMask(indices, center, shape[0], shape[1], shape[2], strides[0], strides[1], strides[2], mask);</span>
+</pre></div>
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../../../../overview.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

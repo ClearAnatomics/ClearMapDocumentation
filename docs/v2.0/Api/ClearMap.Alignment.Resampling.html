@@ -1,0 +1,577 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Resampling &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/clearmap.js"></script>
+    <script src="../_static/clearmap_sidebar.js"></script>
+    <script src="../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stitching" href="ClearMap.Alignment.Stitching.html" />
+    <link rel="prev" title="Elastix" href="ClearMap.Alignment.Elastix.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../home.html"><img src="../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../home.html">Home</a></li>
+     <li class="link-list"><a href="../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ClearMap.Alignment.Stitching.html" title="Stitching"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ClearMap.Alignment.Elastix.html" title="Elastix"
+             accesskey="P">previous</a> |</li>
+       <li><a href="../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../api.html" >ClearMap</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="ClearMap.Alignment.html" accesskey="U">Alignment</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../media.html">News and Media</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">ClearMap</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="ClearMap.Alignment.html">Alignment</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ClearMap.Alignment.Annotation.html">Annotation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ClearMap.Alignment.Elastix.html">Elastix</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Resampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ClearMap.Alignment.Stitching.html">Stitching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Analysis.html">Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Compile.html">Compile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Environment.html">Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.External.html">External</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.IO.html">IO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.ImageProcessing.html">ImageProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.ParallelProcessing.html">ParallelProcessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Tests.html">Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Utils.html">Utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ClearMap.Visualization.html">Visualization</a></li>
+</ul>
+</li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ClearMap.Alignment.Elastix.html"
+                        title="previous chapter">Elastix</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ClearMap.Alignment.Stitching.html"
+                        title="next chapter">Stitching</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Api/ClearMap.Alignment.Resampling.rst"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../cellmap.html">
+            <img src="../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../tubemap.html">
+            <img src="../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../media.html#gallery"> Gallery</a></h3>
+          <a href="../media.html#gallery">
+            <img src="../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../media.html#videos">   
+            <img src="../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <div class="section" id="resampling">
+<h1>Resampling<a class="headerlink" href="#resampling" title="Permalink to this headline">¶</a></h1>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
+<span class="target" id="module-ClearMap.Alignment.Resampling"></span><p>This module provides methods to resample and reorient data.</p>
+<p>Resampling the data is usually necessary as the first step to match the
+resolution and orientation of the reference object.</p>
+<dl class="function">
+<dt id="ClearMap.Alignment.Resampling.format_orientation">
+<code class="sig-name descname">format_orientation</code><span class="sig-paren">(</span><em class="sig-param">orientation</em>, <em class="sig-param">inverse=False</em>, <em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Resampling.html#format_orientation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Resampling.format_orientation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert orientation to standard format.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>orientation<span class="classifier">tuple or str</span></dt><dd><p>The orientation specification.</p>
+</dd>
+<dt>inverse<span class="classifier">bool</span></dt><dd><p>If True, invert orientation.</p>
+</dd>
+<dt>default<span class="classifier">object</span></dt><dd><p>The default value if orientation is None;</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>orientation<span class="classifier">tuple of ints</span></dt><dd><p>The orientation sequence.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">None()</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Resampling.inverse_orientation">
+<code class="sig-name descname">inverse_orientation</code><span class="sig-paren">(</span><em class="sig-param">orientation</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Resampling.html#inverse_orientation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Resampling.inverse_orientation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the inverse orientation taking axis inversions into account.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>orientation<span class="classifier">tuple or str</span></dt><dd><p>The orientation specification.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>orientation<span class="classifier">tuple</span></dt><dd><p>The inverse orientation sequence.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">None()</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Resampling.orient_resolution">
+<code class="sig-name descname">orient_resolution</code><span class="sig-paren">(</span><em class="sig-param">resolution</em>, <em class="sig-param">orientation</em>, <em class="sig-param">inverse=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Resampling.html#orient_resolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Resampling.orient_resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permutes a resolution tuple according to the given orientation.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>resolution<span class="classifier">tuple</span></dt><dd><p>The resolution specification.</p>
+</dd>
+<dt>orientation<span class="classifier">tuple or str</span></dt><dd><p>The orientation specification.</p>
+</dd>
+<dt>inverse<span class="classifier">bool</span></dt><dd><p>If True, invert the orientation.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>resolution<span class="classifier">tuple</span></dt><dd><p>The re-oriented resolution sequence.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">None()</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Resampling.orient_shape">
+<code class="sig-name descname">orient_shape</code><span class="sig-paren">(</span><em class="sig-param">shape</em>, <em class="sig-param">orientation</em>, <em class="sig-param">inverse=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Resampling.html#orient_shape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Resampling.orient_shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permutes a shape according to the given orientation.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>shape<span class="classifier">tuple</span></dt><dd><p>The shape specification.</p>
+</dd>
+<dt>orientation<span class="classifier">tuple or str</span></dt><dd><p>The orientation specification.</p>
+</dd>
+<dt>inverse<span class="classifier">bool</span></dt><dd><p>If True, invert the orientation.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>shape<span class="classifier">tuple</span></dt><dd><p>The oriented shape tuple.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">None()</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Resampling.orientation_to_permuation">
+<code class="sig-name descname">orientation_to_permuation</code><span class="sig-paren">(</span><em class="sig-param">orientation</em>, <em class="sig-param">inverse=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Resampling.html#orientation_to_permuation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Resampling.orientation_to_permuation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts the permuation from an orientation.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>orientation<span class="classifier">tuple or str</span></dt><dd><p>The orientation specification.</p>
+</dd>
+<dt>inverse<span class="classifier">bool</span></dt><dd><p>If True, return inverse permutation.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>permuation<span class="classifier">tuple of ints</span></dt><dd><p>The premutation sequence.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">None()</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Resampling.resample">
+<code class="sig-name descname">resample</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">sink=None</em>, <em class="sig-param">orientation=None</em>, <em class="sig-param">sink_shape=None</em>, <em class="sig-param">source_resolution=None</em>, <em class="sig-param">sink_resolution=None</em>, <em class="sig-param">interpolation='linear'</em>, <em class="sig-param">axes_order=None</em>, <em class="sig-param">method='shared'</em>, <em class="sig-param">processes=None</em>, <em class="sig-param">verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Resampling.html#resample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Resampling.resample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resample data of source in new shape/resolution and orientation.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">str or array</span></dt><dd><p>The source to be resampled.</p>
+</dd>
+<dt>sink<span class="classifier">str or None</span></dt><dd><p>The sink for the resampled image.</p>
+</dd>
+<dt>orientation<span class="classifier">tuple or None:</span></dt><dd><p>The orientation specified by permuation and change in sign of (1,2,3).</p>
+</dd>
+<dt>sink_shape<span class="classifier">tuple or None</span></dt><dd><p>The target shape of the resampled sink.</p>
+</dd>
+<dt>source_resolution<span class="classifier">tuple or None</span></dt><dd><p>The resolution of the source (in length per pixel).</p>
+</dd>
+<dt>sink_resolution<span class="classifier">tuple or None</span></dt><dd><p>The resolution of the resampled source (in length per pixel).</p>
+</dd>
+<dt>interpolation<span class="classifier">str</span></dt><dd><p>The method to use for interpolating to the resmapled array.</p>
+</dd>
+<dt>axis_order<span class="classifier">str, list of tuples of int or None</span></dt><dd><p>The axes pairs along which to resample the data at each step.
+If None, this is detertmined automatically. For a FileList source,
+setting the first tuple should point to axis not indicating files.
+If ‘size’ the axis order is determined automatically to maximally reduce
+the size of the array in each resmapling step.
+If ‘order’ the axis order is chosed automatically to optimize io speed.</p>
+</dd>
+<dt>method<span class="classifier">‘shared’ or ‘memmap’</span></dt><dd><p>Method to handle intermediate resampling results. If ‘shared’ use shared
+memory, otherwise use a memory map on disk.</p>
+</dd>
+<dt>processes<span class="classifier">int, None or ‘serial’</span></dt><dd><p>Number of processes to use for parallel resampling, if None use maximal
+processes avaialable, if ‘serial’ process in serial.</p>
+</dd>
+<dt>verbose<span class="classifier">bool</span></dt><dd><p>If True, display progress information.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>sink<span class="classifier">array or str</span></dt><dd><p>The data or filename of resampled sink.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>Resolutions are assumed to be given for the axes of the intrinsic
+orientation of the data and reference (as when viewed by ImageJ).</p></li>
+<li><p>Orientation: permuation of 1,2,3 with potential sign, indicating which
+axes map onto the reference axes, a negative sign indicates reversal
+of that particular axes.</p></li>
+<li><p>Only a minimal set of information to determine the resampling parameter
+has to be given, e.g. source_shape and sink_shape.</p></li>
+<li><p>The resampling is done by iterating two dimensional resampling steps.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Resampling.resample_factor">
+<code class="sig-name descname">resample_factor</code><span class="sig-paren">(</span><em class="sig-param">source_shape</em>, <em class="sig-param">sink_shape=None</em>, <em class="sig-param">source_resolution=None</em>, <em class="sig-param">sink_resolution=None</em>, <em class="sig-param">orientation=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Resampling.html#resample_factor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Resampling.resample_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate scaling factors for resampling.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source_shape<span class="classifier">tuple</span></dt><dd><p>The shape the source.</p>
+</dd>
+<dt>sink_shape<span class="classifier">tuple or None</span></dt><dd><p>The shape of the resmapled sink.</p>
+</dd>
+<dt>source_resolution<span class="classifier">tuple or None</span></dt><dd><p>The resolution of the source.</p>
+</dd>
+<dt>sink_resolution<span class="classifier">tuple or None</span></dt><dd><p>The resolution of the sink.</p>
+</dd>
+<dt>orientation<span class="classifier">tuple or str</span></dt><dd><p>The re-orientation specification.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>factor<span class="classifier">tuple</span></dt><dd><p>The resampling factor along the axes of the source.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">None()</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Resampling.resample_inverse">
+<code class="sig-name descname">resample_inverse</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">sink=None</em>, <em class="sig-param">resample_source=None</em>, <em class="sig-param">resample_sink=None</em>, <em class="sig-param">orientation=None</em>, <em class="sig-param">source_shape=None</em>, <em class="sig-param">source_resolution=None</em>, <em class="sig-param">sink_shape=None</em>, <em class="sig-param">sink_resolution=None</em>, <em class="sig-param">axes_order=None</em>, <em class="sig-param">method='memmap'</em>, <em class="sig-param">interpolation='linear'</em>, <em class="sig-param">processes=None</em>, <em class="sig-param">verbose=True</em>, <em class="sig-param">**args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Resampling.html#resample_inverse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Resampling.resample_inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resample data inversely to <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a> routine.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">str, array</span></dt><dd><p>Source to be inversly resampled (e.g. sink in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>).</p>
+</dd>
+<dt>sink<span class="classifier">str or None</span></dt><dd><p>Sink to write the inversly resampled image to.</p>
+</dd>
+<dt>resample_source<span class="classifier">str, array or None</span></dt><dd><p>Optional source in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>resmaple_sink: str, array or None</dt><dd><p>Optional sink used in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>orientation<span class="classifier">tuple</span></dt><dd><p>Orientation as specified as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>source_shape<span class="classifier">tuple or None</span></dt><dd><p>Optional value of source_shape as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>source_resolution<span class="classifier">tuple or None</span></dt><dd><p>Optional value of source_resolution as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>sink_resolution<span class="classifier">tuple or None</span></dt><dd><p>Optional value of sink_resolution as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>processing_directory<span class="classifier">str or None</span></dt><dd><p>Optional directory in which to perform resmapling in parallel.
+If None, a temporary directry will be created.</p>
+</dd>
+<dt>axis_order<span class="classifier">list of tuples of int or None</span></dt><dd><p>The axes pairs along which to resample the data as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>method<span class="classifier">‘shared’ or ‘memmap’</span></dt><dd><p>Method to handle intermediate resampling results. If ‘shared’ use shared
+memory, otherwise use a memory map on disk.</p>
+</dd>
+<dt>interpolation<span class="classifier">str</span></dt><dd><p>Method to use for interpolating to the resmapled image.</p>
+</dd>
+<dt>processes int or None</dt><dd><p>Number of processes to use for parallel resampling.</p>
+</dd>
+<dt>verbose<span class="classifier">bool</span></dt><dd><p>If True, print progress information.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>resampled<span class="classifier">array or str</span></dt><dd><p>Data or file name of inversly resampled image.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>All arguments, except source and sink should be passed as <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>
+to invert the resmapling.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Resampling.resample_points">
+<code class="sig-name descname">resample_points</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">sink=None</em>, <em class="sig-param">resample_source=None</em>, <em class="sig-param">resample_sink=None</em>, <em class="sig-param">orientation=None</em>, <em class="sig-param">source_shape=None</em>, <em class="sig-param">sink_shape=None</em>, <em class="sig-param">source_resolution=None</em>, <em class="sig-param">sink_resolution=None</em>, <em class="sig-param">**args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Resampling.html#resample_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Resampling.resample_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resample points from original coordiantes to resampled ones.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">str or array</span></dt><dd><p>Points to be resampled.</p>
+</dd>
+<dt>sink<span class="classifier">str or None</span></dt><dd><p>Sink for the resmapled point coordinates.</p>
+</dd>
+<dt>orientation<span class="classifier">tuple</span></dt><dd><p>Orientation as specified in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>resample_source<span class="classifier">str, array or None</span></dt><dd><p>Optional source as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>resample_sink: str, array or None</dt><dd><p>Optional sink used in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>source_shape<span class="classifier">tuple or None</span></dt><dd><p>Optional value of source_shape as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>source_resolution<span class="classifier">tuple or None</span></dt><dd><p>Optional value of source_resolution as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>sink_resolution<span class="classifier">tuple or None</span></dt><dd><p>Optional value of sink_resolution as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>resmapled<span class="classifier">array or str</span></dt><dd><p>Sink for the resampled point coordinates.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The resampling of points here corresponds to he resampling of an image
+in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p></li>
+<li><p>The arguments should be passed exactly as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a> except soure
+and sink that point to the point sources.
+Use resample_source and resmaple_sink to pass the source and sink values
+used in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Resampling.resample_points_inverse">
+<code class="sig-name descname">resample_points_inverse</code><span class="sig-paren">(</span><em class="sig-param">source</em>, <em class="sig-param">sink=None</em>, <em class="sig-param">resample_source=None</em>, <em class="sig-param">resample_sink=None</em>, <em class="sig-param">orientation=None</em>, <em class="sig-param">source_shape=None</em>, <em class="sig-param">sink_shape=None</em>, <em class="sig-param">source_resolution=None</em>, <em class="sig-param">sink_resolution=None</em>, <em class="sig-param">**args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Resampling.html#resample_points_inverse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Resampling.resample_points_inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resample points from original coordiantes to resampled ones.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source<span class="classifier">str or array</span></dt><dd><p>Points to be resampled inversely.</p>
+</dd>
+<dt>sink<span class="classifier">str or None</span></dt><dd><p>Sink for the inversly resmapled points.</p>
+</dd>
+<dt>resample_source<span class="classifier">str, array or None</span></dt><dd><p>Optional source as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>resample_sink: str, array or None</dt><dd><p>Optional sink used in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>orientation<span class="classifier">tuple</span></dt><dd><p>Orientation as specified in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>source_shape<span class="classifier">tuple or None</span></dt><dd><p>Optional value of source_shape as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>source_resolution<span class="classifier">tuple or None</span></dt><dd><p>Optional value of source_resolution as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+<dt>sink_resolution<span class="classifier">tuple or None</span></dt><dd><p>Optional value of sink_resolution as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>resmapled<span class="classifier">array or str</span></dt><dd><p>Sink for the inversly resampled point coordinates.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The resampling of points here corresponds to the inverse resampling of
+an image in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>, i.e. to func:<cite>resample_inverse</cite></p></li>
+<li><p>The arguments should be passed exactly as in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a> except source
+and sink that point to the point sources.
+Use resample_source and resmaple_sink to pass the source and sink values
+used in <a class="reference internal" href="#ClearMap.Alignment.Resampling.resample" title="ClearMap.Alignment.Resampling.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a>.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="ClearMap.Alignment.Resampling.resample_shape">
+<code class="sig-name descname">resample_shape</code><span class="sig-paren">(</span><em class="sig-param">source_shape</em>, <em class="sig-param">sink_shape=None</em>, <em class="sig-param">source_resolution=None</em>, <em class="sig-param">sink_resolution=None</em>, <em class="sig-param">orientation=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Alignment/Resampling.html#resample_shape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ClearMap.Alignment.Resampling.resample_shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate scaling factors and data shapes for resampling.</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>source_shape<span class="classifier">tuple</span></dt><dd><p>The shape the source.</p>
+</dd>
+<dt>sink_shape<span class="classifier">tuple or None</span></dt><dd><p>The shape of the resmapled sink.</p>
+</dd>
+<dt>source_resolution<span class="classifier">tuple or None</span></dt><dd><p>The resolution of the source.</p>
+</dd>
+<dt>sink_resolution<span class="classifier">tuple or None</span></dt><dd><p>The resolution of the sink.</p>
+</dd>
+<dt>orientation<span class="classifier">tuple or str</span></dt><dd><p>The re-orientation specification.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>source_shape<span class="classifier">tuple</span></dt><dd><p>The shape of the source.</p>
+</dd>
+<dt>sink_shape<span class="classifier">tuple</span></dt><dd><p>The shape of the sink.</p>
+</dd>
+<dt>source_resolution<span class="classifier">tuple or None</span></dt><dd><p>The resolution of the source.</p>
+</dd>
+<dt>sink_resolution<span class="classifier">tuple or None</span></dt><dd><p>The resolution of the sink.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">None()</span></code></p>
+</div>
+</dd></dl>
+
+</div>
+
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../overview.html"><img src="../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

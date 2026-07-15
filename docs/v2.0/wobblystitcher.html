@@ -1,0 +1,438 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>WobblyStitcher &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/clearmap.js"></script>
+    <script src="_static/clearmap_sidebar.js"></script>
+    <script src="_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CellMap" href="cellmap.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="home.html"><img src="_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="home.html">Home</a></li>
+     <li class="link-list"><a href="overview.html">Overview</a></li>    
+     <li class="link-list"><a href="installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="cellmap.html" title="CellMap"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usage.html" title="Usage"
+             accesskey="P">previous</a> |</li>
+       <li><a href="home.html">Home</a>|&nbsp;</li>
+       <li><a href="overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="search.html">Search</a>|&nbsp;</li>
+       <li><a href="index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="index.html#clearmap-api">API </a> &raquo;</li>     
+ 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="index.html">ClearMap</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">WobblyStitcher</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method">Method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rigid-alignment">Rigid alignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optimal-rigid-placement">Optimal rigid placement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-rigid-alignment">Non-rigid alignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#final-placement">Final Placement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stitching">Stitching</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="previous chapter">Usage</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cellmap.html"
+                        title="next chapter">CellMap</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/wobblystitcher.rst"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="cellmap.html">CellMap Pipeline</a></h3>
+          <a href="cellmap.html">
+            <img src="_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="tubemap.html">
+            <img src="_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="media.html#gallery"> Gallery</a></h3>
+          <a href="media.html#gallery">
+            <img src="_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="media.html#videos">Social Media and Videos</a></h3>
+          <a href="media.html#videos">   
+            <img src="_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <div class="section" id="wobblystitcher">
+<h1>WobblyStitcher<a class="headerlink" href="#wobblystitcher" title="Permalink to this headline">¶</a></h1>
+<p><em>ClearMap</em> includes <em>WobblyStitcher</em> that enables non-rigid stitching of
+large volumetric datasets.</p>
+<p>The main purpose of <em>WobblyStitcher</em> is to remove stitching artifacts that
+arise from non-straight or <em>wobbly</em> stacks.</p>
+<p>When stitching wobbly stacks in a rigid way the wobbliness can
+lead to artifacts at different levels along the wobble axis:</p>
+<a class="reference internal image-reference" href="_images/WobblyStitcher_rigid.jpg"><img alt="_images/WobblyStitcher_rigid.jpg" class="align-center" src="_images/WobblyStitcher_rigid.jpg" style="width: 400px;" /></a>
+<p><em>ClearMap’s</em> <em>WobblyStitcher</em> compensates for this by aligning the stack
+non-rigidly along the wobble axis:</p>
+<a class="reference internal image-reference" href="_images/WobblyStitcher_non-rigid.jpg"><img alt="_images/WobblyStitcher_non-rigid.jpg" class="align-center" src="_images/WobblyStitcher_non-rigid.jpg" style="width: 400px;" /></a>
+<dl>
+<dt>In brief <em>WobblyStitcher</em> works by</dt><dd><blockquote>
+<div><ol class="arabic simple">
+<li><p>aligning pairs of stacks in the wobble axis using a maximal
+intensity projection (MIP),</p></li>
+<li><p>determining good alignments for the individual planes,</p></li>
+<li><p>tracing the best alignment for the planes,</p></li>
+<li><p>aligning all the planes in a globally optimal way.</p></li>
+</ol>
+</div></blockquote>
+<a class="reference internal image-reference" href="_images/WobblyStitcher_pipeline.jpg"><img alt="_images/WobblyStitcher_pipeline.jpg" class="align-center" src="_images/WobblyStitcher_pipeline.jpg" style="width: 300px;" /></a>
+</dd>
+</dl>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>Our method to acquire isotropic data via light-sheet imaging produces a
+large number of tiles that have to be aligned and stitched. For accurate
+reconstruction of the vasculature network at the vasculature capillary
+level a precise and robust alignment of large data sets is needed.</p>
+<p>Existing stitching tools for large data sets could not generate accurate
+stitching results for our data sets due to misalignments arising from
+the placement methods (TeraStitcher) or large data reading and writing
+(BigStitcher). Even for well-placed tiles, rigid stitching produced
+object duplications in sub-regions along the z-axis indicating x-y
+movements of the images along this axis. Those movements likely
+originate from imprecise stage movements and were found on different
+microscopes and are prevalent in other data sets from other labs
+(personal communication from Pablo Ariel, University of North Carolina).
+To solve these problems, we developed WobblyStitcher, an open-source
+software tool for robust and non-rigid stitching of terabyte data sets.</p>
+</div>
+<div class="section" id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>WobblyStitcher uses three main steps to stitch the data:</dt><dd><ol class="lowerroman simple">
+<li><p>alignment,</p></li>
+<li><p>placement,</p></li>
+<li><p>stitching.</p></li>
+</ol>
+</dd>
+</dl>
+<p>In the alignment step the non-rigid displacements between images are estimated
+along with additional quality measures of the alignment reliability. In the
+placement step a combination of tracking and optimization tools is used to
+robustly position individual tiles within a global image frame. Finally, the
+stitching step uses 3D interpolation methods in the overlapping regions to
+compose the final volumetric image.</p>
+<dl class="simple">
+<dt>The 3D non-rigid alignment is done in three sub-steps:</dt><dd><ol class="loweralpha simple">
+<li><p>rigid alignment of the tiles along the axis orthogonal to the light
+sheet plane (z-axis),</p></li>
+<li><p>placement of the tiles along this axis, followed by</p></li>
+<li><p>non-rigid alignments within each plane (x-y planes).</p></li>
+</ol>
+</dd>
+</dl>
+<p>While a full non-rigid 3D alignment is possible by employing for example
+non-linear registration methods (e.g. <cite>elastix &lt;http://elastix.isi.uu.nl/&gt;</cite>)
+we did not find this necessary for our data sets. <em>WobblyStitcher</em> is
+targeted towards light-sheet images and optimized for fast processing
+of terabyte-sized data sets.</p>
+<div class="section" id="rigid-alignment">
+<h3>Rigid alignment<a class="headerlink" href="#rigid-alignment" title="Permalink to this headline">¶</a></h3>
+<p>In the first step, neighboring tiles are rigidly aligned along the
+z-axis. To speed up this step, a max-intensity projection (MIP) is
+calculated along the axis that connects the two tiles and the alignment
+is performed on the resulting 2d images. While WobblySticher implements
+full 3d rigid alignment, we did not find this necessary for our data
+sets in this step and opted for the faster MIP version.</p>
+<p>The n-dimensional rigid alignment is done via minimizing the mean square
+difference between the pixel intensities of two images <img class="math" src="_images/math/cb7e28b524eabd0caaca7d6c093b43eba81c4a63.png" alt="I_{i}"/> and
+<img class="math" src="_images/math/57decd2aac2df47faf477f9663b90929cd446356.png" alt="I_{j}"/> over all possible n-dimensional displacements <img class="math" src="_images/math/106b04b320e75010b1d8029e59244f234f75e6f9.png" alt="s"/> in
+the overlap region <img class="math" src="_images/math/ebb3c6487aae2e31ba4ccbaefeca5083fe70c84f.png" alt="O_{\text{ij}}(s)"/> as</p>
+<div class="math">
+<p><img src="_images/math/1018468e3841447e024dcb20639950b2c0d3f3e6.png" alt="s_{\text{ij}}^{8} = \mathop{\mathrm{argmin}}_s {S_{\text{ij}}(s)}"/></p>
+</div><p>with</p>
+<div class="math">
+<p><img src="_images/math/016746578647aa10c3e7f15aecd685b385f9af77.png" alt="S\left( s \right) = \frac{1}{N_{\text{ij}}(s)}\sum_{x \in O_{\text{ij}}(s)}^{}\left( I_{i}\left( x \right) - I_{j}(x + s) \right)^{2}"/></p>
+</div><p>where
+<img class="math" src="_images/math/ed469e4285bc5d3129c01e89e297f30173714189.png" alt="N_{\text{ij}}\left( s \right) = \left| O_{\text{ij}}(s) \right|\"/>
+is the number of pixels in the overlap. We set
+<img class="math" src="_images/math/1f746b32c1802a5b0ec303828db50b3a350c1c86.png" alt="S_{\text{ij}}\left( s \right) = \infty"/> if there is no overlap,
+i.e. <img class="math" src="_images/math/f024f6de39bdbc259cee516cb76dbcae68285404.png" alt="N_{\text{ij}}\left( s \right) = 0"/>. This estimate allows for
+a fast implementation via Fast Fourier Transform.</p>
+<p>WobblyStitcher implements correlation or normalized cross-correlation
+measures to estimate the shifts. In addition, other more sophisticated
+measures to estimate the displacements exists (Klein et al., 2010) but
+are not implemented in WobblyStitcher yet, as we did not find those
+necessary to align our data sets.</p>
+<p>Differences in high intensity voxels will contribute strongly to the
+error measure <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.png" alt="S"/> above and can induce unwanted fluctuations, thus
+WobblyStitcher gives an option to preprocess the images before
+calculating the alignment. Arbitrary preprocessing routines can be
+passed. For the brain vasculature preprocessing includes clipping at
+specified intensity values above a threshold <img class="math" src="_images/math/8101372c26881d0355212998cde02ca75598c736.png" alt="\theta_{h}"/> and
+below <img class="math" src="_images/math/97ccd1d0fa2f1f29a5e81abc284a792eec0ff8d4.png" alt="\theta_{l}"/> as well as normalizing the images by
+subtracting the mean and dividing by the standard deviation in the
+overlap regions.</p>
+<p>In addition, the alignment estimates <img class="math" src="_images/math/2b5fe1a5cdcc58c86c290bed182c9de8e48826c3.png" alt="s_{\text{ij}}^{*}"/> can be
+corrupted in regions without or very little foreground signal as
+background noise is aligned in this situation. WobblyStitcher provides
+the option to pass a validation routine to the alignment and to measure
+the quality of the alignment to prevent this problem. For the brain
+vasculature the validation is done on the raw data by requiring that the
+number of foreground pixels in the overlap region exceeds a certain
+fraction or minimal number of required valid pixels, i.e</p>
+<div class="math">
+<p><img src="_images/math/65d2390efe47dfe882f1a2bcc7e567c4e3ae2da2.png" alt="\left| \{\theta_{b} &lt; x &lt; \theta_{t}|x \in O_{\text{ij}}\left( 0 \right)\} \right| \geq n_{v}"/></p>
+</div><p>where <img class="math" src="_images/math/60fc7765a2597bbca45d560273978d514ea47595.png" alt="\theta_{b}"/> and <img class="math" src="_images/math/96ae8b14b8c416a260ff11d78af85179c6049300.png" alt="\theta_{t}"/> are intensity thresholds
+below or above pixels are considered as invalid for alignment.</p>
+<p>To measure the quality of the alignments the following measure is used</p>
+<div class="math">
+<p><img src="_images/math/d5523f067d124cc1614ae665e453fb43fd32ddd6.png" alt="q_{\text{ij}}^{*} = \left\{ \begin{array}{ll} - S(s_{\text{ij}}^{*}) &amp; \text{for\ valid\ alignments} \\  - \infty &amp; \text{else.} \end{array} \right."/></p>
+</div></div>
+<div class="section" id="optimal-rigid-placement">
+<h3>Optimal rigid placement<a class="headerlink" href="#optimal-rigid-placement" title="Permalink to this headline">¶</a></h3>
+<p>Having measured the displacements between all tiles along the z-axis a
+placement along this axis is performed. For this we use globally optimal
+placement strategy to find the position <img class="math" src="_images/math/eb0043fd60f5bc7448bb03170eaeb5b087d0bdf4.png" alt="p_{i}"/> for each tile
+<img class="math" src="_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/> by minimizing the error term</p>
+<div class="math">
+<p><img src="_images/math/e525a46177154b6f11dbdf72a7e2dfca9a0955c0.png" alt="E = \sum_{(i,j) \in P}^{}\left( p_{i} + s_{\text{ij}} - p_{j} \right)^{2}"/></p>
+</div><p>with respect to the positions <img class="math" src="_images/math/eb0043fd60f5bc7448bb03170eaeb5b087d0bdf4.png" alt="p_{i}"/>. Here <img class="math" src="_images/math/c2aa3dff9bffb099e9dff196fd36aed56ec16baf.png" alt="P"/> is the set
+of pairs of indices <img class="math" src="_images/math/c7cdf63906652ba5bbffe6f82d209c6de62222a0.png" alt="\left( i,j \right)\"/>of all neighboring
+tiles for which the alignment quality
+<img class="math" src="_images/math/981913fddef84ead035f1de5ad284360b9dbe5d7.png" alt="q_{\text{ij}}^{*} &gt; \theta_{q}"/> exceeded a certain quality
+threshold <img class="math" src="_images/math/d70d851b4370fb941befbf64d7895ecbfd0f1d71.png" alt="\theta_{q}"/>. The resulting set of equations is solved
+for the positions via the Penrose pseudo inverse. The equations can be
+solved separately in each coordinate dimension to speed up computation
+of full 3d rigid placements or to calculate the optimal alignment along
+a single axis. More importantly, thresholding the alignment quality can
+force the alignment graph (nodes given by the tiles and edges indicating
+valid alignment pairs of tiles) to become disconnected. WobblyStitcher
+accounts for this by optimizing each connected component individually.
+For the brain vasculature the quality threshold is set to
+<img class="math" src="_images/math/dd6d8110381fd703672525c724f073ada7c451c8.png" alt="\theta_{q} = - \infty"/> in the z-alignment step only separating
+empty tiles from the brain sample.</p>
+</div>
+<div class="section" id="non-rigid-alignment">
+<h3>Non-rigid alignment<a class="headerlink" href="#non-rigid-alignment" title="Permalink to this headline">¶</a></h3>
+<p>In the final step every pair of tiles is aligned non-rigidly in the x-y
+planes via a series of computations:</p>
+<p>First, the overlap region for each pair of neighboring and already
+z-aligned tiles is computed. The overlap region is validated via an
+optional validation routine passed to WobblySticher. For the brain
+vasculature we use foreground pixel counting as described above. The
+overlap regions are also preprocessed as a whole using normalization.</p>
+<p>Second, for each z-value in the overlap region slices of the tiles in
+the x-y plane are taken and the alignment error <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.png" alt="S"/> defined above
+computed for each slice. For the vasculature each slice is validated
+again separately using raw data slices and a higher threshold for the
+number of required valid pixels <img class="math" src="_images/math/2e551ede3cb7302773e3ad8e8ff9bc7d931bb0fe.png" alt="n_{v}"/>.</p>
+<p>Third, the best displacements along the z-axis of the two tiles are
+determined via tracking. The reason for this step is to achieve
+robustness against errors that can occur as multiple local minima can
+arise in the error landscape <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.png" alt="S"/> in data sets with repetitive
+structures near the overlap region. When considering global minima
+alone, this can create jumps in the displacements and errors in the
+alignments. WobblyStitcher first creates a list of all local minima in
+the error landscape <img class="math" src="_images/math/b988975be41fd13b4d091c10202ba19374643586.png" alt="S"/> (excluding pixel at the overlap border)
+together with their quality measure <img class="math" src="_images/math/a5fa84b363f309ebc8fe7db38304541732c7de9a.png" alt="q"/> for each x-y slice.
+Invalid marked slices will separate continuous segments of valid slices
+along z. For each continuous segment linear programming (Jonker and
+Volgenant, 1987) is used to track the local minima resulting in
+potential displacement paths through z. To find the full path in each
+segment the longest potential path with best quality measure is selected
+and all trajectories within that z-range of paths removed. Subsequently,
+the next longest path with minimal alignment error is selected etc.
+Valid slices that could not be assigned a displacement in this way will
+be marked as untraced and invalid.</p>
+<p>Fourth, an optional smoothing is applied to the segments of valid
+displacements along the z-axis. For the vasculature we use convolution
+with a Bartlett window to smooth the segments.</p>
+<p>The total result of this alignment procedure is that tiles become
+aligned in z and for each neighboring x-y plane a robust displacement is
+determined together with markers for validity, quality and traceability.</p>
+</div>
+<div class="section" id="final-placement">
+<h3>Final Placement<a class="headerlink" href="#final-placement" title="Permalink to this headline">¶</a></h3>
+<p>In this second step the tiles are placed non-rigidly considering the
+validity and quality of the displacement measure.</p>
+<p>WobblyStitcher first use the quality based global optimal alignment
+method described above to place the individual x-y planes in each
+z-slice of the entire data set. For each slice this results in optimal
+displacements of the connected components. We will refer to each of
+these connected components in a single plane as cluster for simplicity
+in the following.</p>
+<p>In the second placement step, clusters are aligned optimally in the
+entire image. To achieve this the connectivity structure between the
+clusters is determined first by constructing a graph with clusters as
+nodes and edges between two clusters if they are from subsequent
+z-planes and overlap in the x-y plane. The connected components of
+clusters in this graph are then aligned, by considering all
+displacements between the clusters and optimizing the error function:</p>
+<div class="math">
+<p><img src="_images/math/08a3662aa09fc9bd1249857f6f5ee561cb2ed21b.png" alt="E = \sum_{s}^{}{\sum_{i \in C_{s}}^{}{\sum_{j \in C_{s + 1}}^{}{\sum_{k \in C_{s,i} \cap \ C_{s + 1,j}}^{}\left( (p_{s,k} + d_{s,i}) - (p_{s + 1,k} + d_{s + 1,j}) \right)^{2}}}}"/></p>
+</div><p>with respect to the unknown displacements <img class="math" src="_images/math/31fcff819386c0dac53053c3de5d37d959c45a8e.png" alt="d_{s,i}"/> for cluster
+<img class="math" src="_images/math/5aa339d4daf45a810dda332e3c80a0698e526e04.png" alt="i"/> in slice <img class="math" src="_images/math/106b04b320e75010b1d8029e59244f234f75e6f9.png" alt="s"/>. Here <img class="math" src="_images/math/9a466f9b67c43a58b3733231251922805003d1a6.png" alt="C_{s}"/> is the set of clusters
+in slice s belonging to the connected component under consideration,
+<img class="math" src="_images/math/0c20855552622a55c6a38060a4d89fa71464ea18.png" alt="C_{s,i}"/> is the index set of all tiles of the cluster
+<img class="math" src="_images/math/2be996568cbebfcee27f906de71bd60d2f3131dd.png" alt="\text{i\ }"/>in slice <img class="math" src="_images/math/106b04b320e75010b1d8029e59244f234f75e6f9.png" alt="s"/>, and <img class="math" src="_images/math/780c9b18cd68195efa140a2b1e857580cbb9c8c3.png" alt="p_{s,k}"/> is the
+already optimized valid position of the slice <img class="math" src="_images/math/106b04b320e75010b1d8029e59244f234f75e6f9.png" alt="s"/> of tile
+<img class="math" src="_images/math/9630132210b904754c9ab272b61cb527d12263ca.png" alt="k"/>. The optimization is again performed via the pseudo inverse to
+solve for the displacements<img class="math" src="_images/math/0341f811eed9c792dc16f1a86f373149aaa2d7ec.png" alt="\ d_{s,i}"/>. This results in optimal
+cluster positions and consequently in optimal positions of the
+individual image planes.</p>
+<p>In a post-processing step, segments of untraceable or invalid slices of
+tiles that are neighboring valid slices in the z-axis are positioned
+using linear interpolation between the positions of the valid slices.
+Finally, the displacements along the z-axis are smoothed again via
+convolution with a Bartlett window.</p>
+<p>To speed up computation in large data sets WobblyStitcher implements the
+option to perform the alignment and placement only on a subset or
+sub-grid of z-planes and fill in the skipped slices via interpolation.</p>
+</div>
+<div class="section" id="stitching">
+<h3>Stitching<a class="headerlink" href="#stitching" title="Permalink to this headline">¶</a></h3>
+<p>In this final step the tiles are combined into a single image. Stitching
+is done in each z-slice separately by using the optimized positions of
+the individual tile slices and their shapes to determine the various
+regions of overlaps together with the tile slices contributing to each
+of those regions. In addition, for each pixel in each tile slice the
+distance to the border of that tile slice is determined and passed as a
+weight for each overlap region to the actual stitching function.
+WobblyStitcher implements a set of stitching functions, such as maximum,
+minimum or mean projections as well as interpolations using the pixel
+weights. Also custom defined stitching functions can be passed. For the
+vasculature we use a weighted mean using the distance to the border as a
+weight.</p>
+</div>
+</div>
+</div>
+
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="overview.html"><img src="_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

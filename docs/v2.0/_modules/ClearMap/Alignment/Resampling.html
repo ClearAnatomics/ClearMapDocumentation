@@ -1,0 +1,1221 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ClearMap.Alignment.Resampling &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/clearmap.js"></script>
+    <script src="../../../_static/clearmap_sidebar.js"></script>
+    <script src="../../../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../../../home.html"><img src="../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../../../home.html">Home</a></li>
+     <li class="link-list"><a href="../../../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../../../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+       <li><a href="../../../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../../../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../../../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../../../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../../../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../../../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../../../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../../../cellmap.html">
+            <img src="../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../../../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../../../tubemap.html">
+            <img src="../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../../../media.html#gallery"> Gallery</a></h3>
+          <a href="../../../media.html#gallery">
+            <img src="../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../../../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../../../media.html#videos">   
+            <img src="../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <h1>Source code for ClearMap.Alignment.Resampling</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Resampling</span>
+<span class="sd">==========</span>
+
+<span class="sd">This module provides methods to resample and reorient data. </span>
+
+<span class="sd">Resampling the data is usually necessary as the first step to match the </span>
+<span class="sd">resolution and orientation of the reference object. </span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+<span class="kn">import</span> <span class="nn">functools</span> <span class="k">as</span> <span class="nn">ft</span>
+<span class="kn">import</span> <span class="nn">concurrent.futures</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">ClearMap.IO.FileList</span> <span class="k">as</span> <span class="nn">fl</span>
+<span class="kn">import</span> <span class="nn">ClearMap.IO.Slice</span> <span class="k">as</span> <span class="nn">slc</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.ProcessWriter</span> <span class="k">as</span> <span class="nn">pw</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.ParallelTraceback</span> <span class="k">as</span> <span class="nn">ptb</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Utils.Timer</span> <span class="k">as</span> <span class="nn">tmr</span>
+
+<span class="c1">########################################################################################</span>
+<span class="c1">### Conversion</span>
+<span class="c1">########################################################################################</span>
+
+<div class="viewcode-block" id="format_orientation"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Resampling.html#ClearMap.Alignment.Resampling.format_orientation">[docs]</a><span class="k">def</span> <span class="nf">format_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">default</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Convert orientation to standard format.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  orientation : tuple or str</span>
+<span class="sd">    The orientation specification.</span>
+<span class="sd">  inverse : bool</span>
+<span class="sd">     If True, invert orientation.</span>
+<span class="sd">  default : object</span>
+<span class="sd">     The default value if orientation is None;</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  orientation : tuple of ints</span>
+<span class="sd">    The orientation sequence.</span>
+<span class="sd">  </span>
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  `Orientation`_</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">orientation</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">default</span><span class="p">;</span>
+      
+  <span class="c1">#fix named representations</span>
+  <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;left&#39;</span><span class="p">:</span>
+      <span class="c1">#orientation = (1,2,3);</span>
+      <span class="n">orientation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+  <span class="k">elif</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;right&#39;</span><span class="p">:</span>
+      <span class="n">orientation</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+      
+  <span class="k">if</span> <span class="n">orientation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">orientation</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;orientation should be &#39;left&#39;, &#39;right&#39; or a tuple of 3 intergers from 1 to 3, signed, found </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">orientation</span><span class="p">,))</span>
+  
+  <span class="k">if</span> <span class="n">inverse</span><span class="p">:</span>
+    <span class="n">orientation</span> <span class="o">=</span> <span class="n">inverse_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="n">orientation</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="inverse_orientation"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Resampling.html#ClearMap.Alignment.Resampling.inverse_orientation">[docs]</a><span class="k">def</span> <span class="nf">inverse_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns the inverse orientation taking axis inversions into account.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  orientation : tuple or str</span>
+<span class="sd">    The orientation specification.</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  orientation : tuple</span>
+<span class="sd">    The inverse orientation sequence.</span>
+<span class="sd">      </span>
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  `Orientation`_</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">orientation</span> <span class="o">=</span> <span class="n">format_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>  
+  
+  <span class="k">if</span> <span class="n">orientation</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span><span class="p">;</span>
+  
+  <span class="c1">#orientation is defined as permuting the axes and then inverrting the axis</span>
+  <span class="n">inv</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">o</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">orientation</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">o</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">inv</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">o</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">inv</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">o</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">inv</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="orientation_to_permuation"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Resampling.html#ClearMap.Alignment.Resampling.orientation_to_permuation">[docs]</a><span class="k">def</span> <span class="nf">orientation_to_permuation</span><span class="p">(</span><span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Extracts the permuation from an orientation.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  orientation : tuple or str</span>
+<span class="sd">    The orientation specification.</span>
+<span class="sd">  inverse : bool</span>
+<span class="sd">    If True, return inverse permutation.</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  permuation : tuple of ints</span>
+<span class="sd">    The premutation sequence.</span>
+<span class="sd">      </span>
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  `Orientation`_</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">orientation</span> <span class="o">=</span> <span class="n">format_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span> <span class="o">=</span> <span class="n">inverse</span><span class="p">);</span>
+  <span class="k">if</span> <span class="n">orientation</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">i</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">orientation</span><span class="p">);</span></div>
+
+
+<div class="viewcode-block" id="orient_resolution"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Resampling.html#ClearMap.Alignment.Resampling.orient_resolution">[docs]</a><span class="k">def</span> <span class="nf">orient_resolution</span><span class="p">(</span><span class="n">resolution</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Permutes a resolution tuple according to the given orientation.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">    resolution : tuple</span>
+<span class="sd">      The resolution specification.</span>
+<span class="sd">    orientation : tuple or str</span>
+<span class="sd">      The orientation specification.</span>
+<span class="sd">    inverse : bool</span>
+<span class="sd">      If True, invert the orientation.</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">    resolution : tuple</span>
+<span class="sd">      The re-oriented resolution sequence.</span>
+<span class="sd">      </span>
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  `Orientation`_</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span><span class="p">;</span>
+  
+  <span class="n">per</span> <span class="o">=</span> <span class="n">orientation_to_permuation</span><span class="p">(</span><span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span> <span class="o">=</span> <span class="n">inverse</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">resolution</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">per</span><span class="p">);</span></div>
+  
+
+<div class="viewcode-block" id="orient_shape"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Resampling.html#ClearMap.Alignment.Resampling.orient_shape">[docs]</a><span class="k">def</span> <span class="nf">orient_shape</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Permutes a shape according to the given orientation.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  shape : tuple</span>
+<span class="sd">    The shape specification.</span>
+<span class="sd">  orientation : tuple or str</span>
+<span class="sd">    The orientation specification.</span>
+<span class="sd">  inverse : bool</span>
+<span class="sd">    If True, invert the orientation.</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  shape : tuple</span>
+<span class="sd">    The oriented shape tuple.</span>
+<span class="sd">      </span>
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  `Orientation`_</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">orient_resolution</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span> <span class="o">=</span> <span class="n">inverse</span><span class="p">);</span></div>
+ 
+
+<div class="viewcode-block" id="resample_shape"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Resampling.html#ClearMap.Alignment.Resampling.resample_shape">[docs]</a><span class="k">def</span> <span class="nf">resample_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">source_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">orientation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Calculate scaling factors and data shapes for resampling.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source_shape : tuple</span>
+<span class="sd">    The shape the source.</span>
+<span class="sd">  sink_shape : tuple or None</span>
+<span class="sd">    The shape of the resmapled sink.</span>
+<span class="sd">  source_resolution : tuple or None</span>
+<span class="sd">    The resolution of the source.</span>
+<span class="sd">  sink_resolution : tuple or None</span>
+<span class="sd">    The resolution of the sink.</span>
+<span class="sd">  orientation : tuple or str</span>
+<span class="sd">    The re-orientation specification.</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  source_shape : tuple</span>
+<span class="sd">    The shape of the source.</span>
+<span class="sd">  sink_shape : tuple</span>
+<span class="sd">    The shape of the sink.</span>
+<span class="sd">  source_resolution : tuple or None</span>
+<span class="sd">    The resolution of the source.</span>
+<span class="sd">  sink_resolution : tuple or None</span>
+<span class="sd">    The resolution of the sink.</span>
+<span class="sd">  </span>
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  `Orientation`_</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">orientation</span> <span class="o">=</span> <span class="n">format_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>    
+  
+  <span class="c1">#determine shapes if not specified</span>
+  <span class="k">if</span> <span class="n">sink_shape</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">source_shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Source or sink shape must be defined!&#39;</span><span class="p">);</span>
+    
+  <span class="k">if</span> <span class="n">sink_shape</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">sink_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Sink shape or resolution must be defined!&#39;</span><span class="p">);</span>
+    
+  <span class="k">if</span> <span class="n">sink_resolution</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+    <span class="n">sink_shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">source_shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_shape</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">sink_shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">source_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">source_resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,)</span> <span class="o">*</span> <span class="n">ndim</span><span class="p">;</span>
+    <span class="k">if</span> <span class="n">sink_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink_resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,)</span> <span class="o">*</span> <span class="n">ndim</span><span class="p">;</span>
+      
+    <span class="c1">#orient resolution of source to resolution of sink to get sink shape</span>
+    <span class="n">source_resolutionO</span> <span class="o">=</span> <span class="n">orient_resolution</span><span class="p">(</span><span class="n">source_resolution</span><span class="p">,</span> <span class="n">orientation</span><span class="p">);</span>
+    <span class="n">source_shapeO</span>      <span class="o">=</span> <span class="n">orient_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">orientation</span><span class="p">);</span>
+    <span class="n">sink_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">source_shapeO</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span>  <span class="nb">float</span><span class="p">(</span><span class="n">source_resolutionO</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">sink_resolution</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">)]);</span>        
+  
+  <span class="k">if</span> <span class="n">source_shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">source_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">source_resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">*</span> <span class="n">ndim</span><span class="p">;</span>
+    <span class="k">if</span> <span class="n">sink_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink_resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">*</span> <span class="n">ndim</span><span class="p">;</span>
+    
+    <span class="c1">#orient resolution of source to resolution of sink to get sink shape</span>
+    <span class="n">source_resolutionO</span> <span class="o">=</span> <span class="n">orient_resolution</span><span class="p">(</span><span class="n">source_resolution</span><span class="p">,</span> <span class="n">orientation</span><span class="p">);</span>
+    <span class="n">source_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span>  <span class="nb">float</span><span class="p">(</span><span class="n">sink_resolution</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">source_resolutionO</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">)]);</span>  
+    <span class="n">source_shape</span> <span class="o">=</span> <span class="n">orient_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+     
+  <span class="c1">#calculate effecive resolutions</span>
+  <span class="k">if</span> <span class="n">source_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sink_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">source_resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">source_shapeO</span> <span class="o">=</span> <span class="n">orient_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">orientation</span><span class="p">);</span>
+      <span class="n">source_resolution</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">source_shapeO</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">sink_resolution</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">));</span>
+      <span class="n">source_resolution</span> <span class="o">=</span> <span class="n">orient_resolution</span><span class="p">(</span><span class="n">source_resolution</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="n">source_shapeO</span> <span class="o">=</span> <span class="n">orient_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">orientation</span><span class="p">);</span>
+  <span class="n">source_resolutionO</span> <span class="o">=</span> <span class="n">orient_resolution</span><span class="p">(</span><span class="n">source_resolution</span><span class="p">,</span> <span class="n">orientation</span><span class="p">);</span>
+  <span class="n">sink_resolution</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">source_shapeO</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">source_resolutionO</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">));</span>
+  
+  <span class="k">return</span> <span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="p">,</span> <span class="n">source_resolution</span><span class="p">,</span> <span class="n">sink_resolution</span>  </div>
+
+
+<div class="viewcode-block" id="resample_factor"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Resampling.html#ClearMap.Alignment.Resampling.resample_factor">[docs]</a><span class="k">def</span> <span class="nf">resample_factor</span><span class="p">(</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">source_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">orientation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Calculate scaling factors for resampling.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source_shape : tuple</span>
+<span class="sd">    The shape the source.</span>
+<span class="sd">  sink_shape : tuple or None</span>
+<span class="sd">    The shape of the resmapled sink.</span>
+<span class="sd">  source_resolution : tuple or None</span>
+<span class="sd">    The resolution of the source.</span>
+<span class="sd">  sink_resolution : tuple or None</span>
+<span class="sd">    The resolution of the sink.</span>
+<span class="sd">  orientation : tuple or str</span>
+<span class="sd">    The re-orientation specification.</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  factor : tuple</span>
+<span class="sd">    The resampling factor along the axes of the source.</span>
+<span class="sd">  </span>
+<span class="sd">  See Also</span>
+<span class="sd">  --------</span>
+<span class="sd">  `Orientation`_</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="p">,</span> <span class="n">source_resolution</span><span class="p">,</span> <span class="n">sink_resolution</span> <span class="o">=</span> \
+    <span class="n">resample_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="o">=</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="o">=</span><span class="n">sink_shape</span><span class="p">,</span>
+                   <span class="n">source_resolution</span><span class="o">=</span><span class="n">source_resolution</span><span class="p">,</span> <span class="n">sink_resolution</span><span class="o">=</span><span class="n">sink_resolution</span><span class="p">,</span> 
+                   <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">);</span>
+  
+  <span class="n">sink_shape_in_source_orientation</span> <span class="o">=</span> <span class="n">orient_shape</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="n">resample_factor</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">)];</span>
+  
+  <span class="k">return</span> <span class="n">resample_factor</span><span class="p">;</span></div>
+
+
+<span class="c1">########################################################################################</span>
+<span class="c1">### Resampling</span>
+<span class="c1">########################################################################################</span>
+
+<div class="viewcode-block" id="resample"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Resampling.html#ClearMap.Alignment.Resampling.resample">[docs]</a><span class="k">def</span> <span class="nf">resample</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">orientation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+             <span class="n">sink_shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">source_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+             <span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">axes_order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;shared&#39;</span><span class="p">,</span>
+             <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Resample data of source in new shape/resolution and orientation.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : str or array</span>
+<span class="sd">    The source to be resampled.</span>
+<span class="sd">  sink : str or None</span>
+<span class="sd">    The sink for the resampled image.</span>
+<span class="sd">  orientation : tuple or None:</span>
+<span class="sd">    The orientation specified by permuation and change in sign of (1,2,3).</span>
+<span class="sd">  sink_shape : tuple or None</span>
+<span class="sd">    The target shape of the resampled sink.</span>
+<span class="sd">  source_resolution : tuple or None</span>
+<span class="sd">    The resolution of the source (in length per pixel).</span>
+<span class="sd">  sink_resolution : tuple or None</span>
+<span class="sd">    The resolution of the resampled source (in length per pixel).</span>
+<span class="sd">  interpolation : str </span>
+<span class="sd">    The method to use for interpolating to the resmapled array.</span>
+<span class="sd">  axis_order : str, list of tuples of int or None</span>
+<span class="sd">    The axes pairs along which to resample the data at each step.</span>
+<span class="sd">    If None, this is detertmined automatically. For a FileList source, </span>
+<span class="sd">    setting the first tuple should point to axis not indicating files.</span>
+<span class="sd">    If &#39;size&#39; the axis order is determined automatically to maximally reduce </span>
+<span class="sd">    the size of the array in each resmapling step.</span>
+<span class="sd">    If &#39;order&#39; the axis order is chosed automatically to optimize io speed.</span>
+<span class="sd">  method : &#39;shared&#39; or &#39;memmap&#39;</span>
+<span class="sd">    Method to handle intermediate resampling results. If &#39;shared&#39; use shared </span>
+<span class="sd">    memory, otherwise use a memory map on disk.</span>
+<span class="sd">  processes : int, None or &#39;serial&#39;</span>
+<span class="sd">    Number of processes to use for parallel resampling, if None use maximal </span>
+<span class="sd">    processes avaialable, if &#39;serial&#39; process in serial.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    If True, display progress information.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : array or str</span>
+<span class="sd">    The data or filename of resampled sink.</span>
+
+<span class="sd">  Notes</span>
+<span class="sd">  -----</span>
+<span class="sd">  * Resolutions are assumed to be given for the axes of the intrinsic </span>
+<span class="sd">    orientation of the data and reference (as when viewed by ImageJ).</span>
+<span class="sd">  * Orientation: permuation of 1,2,3 with potential sign, indicating which </span>
+<span class="sd">    axes map onto the reference axes, a negative sign indicates reversal </span>
+<span class="sd">    of that particular axes.</span>
+<span class="sd">  * Only a minimal set of information to determine the resampling parameter </span>
+<span class="sd">    has to be given, e.g. source_shape and sink_shape.</span>
+<span class="sd">  * The resampling is done by iterating two dimensional resampling steps.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#TODO: write full nd resampling routine extending cv2 lib.</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">();</span>
+  
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+  <span class="n">source_shape</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">;</span>
+  <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_shape</span><span class="p">);</span>
+  <span class="n">dtype</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span><span class="p">;</span>
+  <span class="n">order</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">order</span><span class="p">;</span>
+  
+  <span class="n">orientation</span> <span class="o">=</span> <span class="n">format_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>
+  
+  <span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="p">,</span> <span class="n">source_resolution</span><span class="p">,</span> <span class="n">sink_resolution</span> <span class="o">=</span> \
+     <span class="n">resample_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="o">=</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="o">=</span><span class="n">sink_shape</span><span class="p">,</span> 
+                    <span class="n">source_resolution</span><span class="o">=</span><span class="n">source_resolution</span><span class="p">,</span> <span class="n">sink_resolution</span><span class="o">=</span><span class="n">sink_resolution</span><span class="p">,</span> 
+                    <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">);</span>
+  
+  <span class="n">sink_shape_in_source_orientation</span> <span class="o">=</span> <span class="n">orient_shape</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+                                   
+  <span class="n">interpolation</span> <span class="o">=</span> <span class="n">_interpolation_to_cv2</span><span class="p">(</span><span class="n">interpolation</span><span class="p">);</span>                                   
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">processes</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">processes</span> <span class="o">!=</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+    <span class="n">processes</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">();</span>
+  
+  <span class="c1">#detemine order of resampling</span>
+  <span class="n">axes_order</span><span class="p">,</span> <span class="n">shape_order</span> <span class="o">=</span> <span class="n">_axes_order</span><span class="p">(</span><span class="n">axes_order</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">);</span>
+  <span class="c1">#print(axes_order, shape_order) </span>
+  
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes_order</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;resampling: no resampling necessary, source has same size as sink!&#39;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="n">sink</span> <span class="o">!=</span> <span class="n">source</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">source</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">source</span><span class="p">;</span>
+  
+  <span class="c1">#resample</span>
+  <span class="n">n_steps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes_order</span><span class="p">);</span>
+  <span class="n">last_source</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+  <span class="n">delete_files</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">shape</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">),</span> <span class="n">axes_order</span><span class="p">,</span> <span class="n">shape_order</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">step</span> <span class="o">==</span> <span class="n">n_steps</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">orientation</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">resampled</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">sink_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">as_source</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span> 
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;shared&#39;</span><span class="p">:</span>
+        <span class="n">resampled</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">sma</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">as_source</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mktemp</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span><span class="p">;</span>
+        <span class="n">resampled</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">mmp</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">as_source</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+        <span class="n">delete_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">location</span><span class="p">);</span>
+    <span class="c1">#print(resampled)</span>
+
+    <span class="c1">#indices for non-resampled axes</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="nb">range</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">]);</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">indices</span><span class="p">)];</span>
+    <span class="n">n_indices</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+    
+    <span class="c1">#resample step</span>
+    <span class="n">last_source_virtual</span> <span class="o">=</span> <span class="n">last_source</span><span class="o">.</span><span class="n">as_virtual</span><span class="p">();</span>
+    <span class="n">resampled_virtual</span> <span class="o">=</span> <span class="n">resampled</span><span class="o">.</span><span class="n">as_virtual</span><span class="p">();</span>
+    <span class="n">_resample</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">_resample_2d</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">last_source_virtual</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">resampled_virtual</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> 
+                                         <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span><span class="p">,</span> <span class="n">n_indices</span><span class="o">=</span><span class="n">n_indices</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>                       
+    
+    <span class="k">if</span> <span class="n">processes</span> <span class="o">==</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span> 
+      <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+        <span class="n">_resample</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="c1">#print(processes);</span>
+      <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ProcessPoolExecutor</span><span class="p">(</span><span class="n">processes</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+        <span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_resample</span><span class="p">,</span> <span class="n">indices</span><span class="p">);</span>
+        
+    <span class="n">last_source</span> <span class="o">=</span> <span class="n">resampled</span><span class="p">;</span>
+  
+  <span class="c1">#fix orientation</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">orientation</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1">#permute</span>
+    <span class="n">per</span> <span class="o">=</span> <span class="n">orientation_to_permuation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>
+    <span class="n">resampled</span> <span class="o">=</span> <span class="n">resampled</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">per</span><span class="p">);</span>
+
+    <span class="c1">#reverse axes</span>
+    <span class="n">reslice</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+    <span class="n">slicing</span> <span class="o">=</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="n">ndim</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">o</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">orientation</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">o</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">slicing</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">reslice</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+    <span class="k">if</span> <span class="n">reslice</span><span class="p">:</span>
+      <span class="n">resampled</span> <span class="o">=</span> <span class="n">resampled</span><span class="p">[</span><span class="n">slicing</span><span class="p">];</span>
+      
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;resample: re-oriented shape </span><span class="si">%r</span><span class="s2">!&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">resampled</span><span class="o">.</span><span class="n">shape</span><span class="p">,))</span>
+  
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">resampled</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span> 
+    <span class="n">sink</span> <span class="o">=</span> <span class="n">resampled</span><span class="p">;</span>
+  
+  <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">delete_files</span><span class="p">:</span>
+      <span class="n">io</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Resampling&#39;</span><span class="p">)</span>
+    
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<span class="nd">@ptb</span><span class="o">.</span><span class="n">parallel_traceback</span>
+<span class="k">def</span> <span class="nf">_resample_2d</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">interpolation</span><span class="p">,</span> <span class="n">n_indices</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Resampling helper function to use for parallel resampling of image slices&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">pw</span><span class="o">.</span><span class="n">ProcessWriter</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Resampling: resampling axes </span><span class="si">%r</span><span class="s2">, slice </span><span class="si">%r</span><span class="s2"> / </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">n_indices</span><span class="p">))</span>
+  
+  <span class="c1">#slicing</span>
+  <span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">);</span>   
+  <span class="n">slicing</span> <span class="o">=</span> <span class="p">();</span>
+  <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+      <span class="n">slicing</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">slicing</span> <span class="o">+=</span> <span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">],);</span>
+      <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+  
+  <span class="c1">#resample planeresizeresizeresize</span>
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">sink</span><span class="o">.</span><span class="n">as_real</span><span class="p">()</span>
+  <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">as_real</span><span class="p">();</span>
+  <span class="c1">#print(source.shape, sink.shape, source[slicing].shape, sink[slicing].shape)</span>
+  <span class="c1">#print(shape, axes)</span>
+  <span class="n">sink</span><span class="p">[</span><span class="n">slicing</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">source</span><span class="p">[</span><span class="n">slicing</span><span class="p">],</span> <span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">shape</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]]),</span> <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span><span class="p">);</span>
+  <span class="c1">#note cv2 takes reverse shape order !</span>
+
+
+<span class="k">def</span> <span class="nf">_axes_order</span><span class="p">(</span><span class="n">axes_order</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span> 
+  <span class="sd">&quot;&quot;&quot;Helper to find axes order for subsequent 2d resampling steps.&quot;&quot;&quot;</span>
+
+  <span class="n">source_shape</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">;</span>
+  <span class="n">ndim</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">ndim</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="n">axes_order</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axes_order</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="n">axes_order</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axes_order</span><span class="p">];</span>
+    <span class="n">shape_order</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="n">last_shape</span> <span class="o">=</span> <span class="n">source_shape</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">axes</span> <span class="ow">in</span> <span class="n">axes_order</span><span class="p">:</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;resampling; expected a tuple of len 2 for axes_order entry, got </span><span class="si">%r</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="n">axes</span><span class="p">);</span>
+      <span class="n">last_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">s</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">axes</span> <span class="k">else</span> <span class="n">t</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">last_shape</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">)]);</span>
+      <span class="n">shape_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">last_shape</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">axes_order</span><span class="p">,</span> <span class="n">shape_order</span><span class="p">;</span>
+  
+  <span class="k">else</span><span class="p">:</span> <span class="c1">#determine automatically</span>
+    <span class="k">if</span> <span class="n">axes_order</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">axes_order</span> <span class="o">=</span> <span class="s1">&#39;order&#39;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="n">axes_order</span> <span class="o">==</span> <span class="s1">&#39;order&#39;</span> <span class="ow">and</span> <span class="n">order</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">fl</span><span class="o">.</span><span class="n">Source</span><span class="p">):</span>
+      <span class="n">axes_order</span> <span class="o">=</span> <span class="s1">&#39;size&#39;</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="n">axes_order</span> <span class="o">==</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="c1">#order to reduce size as much as possible in each sub-resampling step</span>
+      <span class="n">resample_axes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">,</span> <span class="n">source_shape</span><span class="p">)</span> <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span><span class="n">t</span><span class="p">]);</span>
+      <span class="n">resample_factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sink_shape_in_source_orientation</span><span class="p">,</span> <span class="n">source_shape</span><span class="p">)</span> <span class="k">if</span> <span class="n">s</span><span class="o">!=</span><span class="n">t</span><span class="p">]);</span>
+      
+      <span class="n">axes_order</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="n">shape_order</span> <span class="o">=</span> <span class="p">[];</span>
+      <span class="n">last_shape</span> <span class="o">=</span> <span class="n">source_shape</span><span class="p">;</span>
+      
+      <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span> 
+          <span class="c1">#take largest two resampling factors</span>
+          <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">resample_factors</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:];</span>
+          <span class="n">axes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">[</span><span class="n">ids</span><span class="p">]))</span>
+          <span class="n">last_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">s</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">axes</span> <span class="k">else</span> <span class="n">t</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">last_shape</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">)]);</span>
+          
+          <span class="n">axes_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">axes</span><span class="p">);</span>
+          <span class="n">shape_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">last_shape</span><span class="p">);</span>
+          
+          <span class="n">resample_axes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">s</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">)</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">]);</span>
+          <span class="n">resample_factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">s</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">resample_factors</span><span class="p">)</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">]);</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">axis</span> <span class="o">=</span> <span class="n">resample_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+          <span class="n">small_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">last_shape</span><span class="p">);</span>
+          <span class="n">small_axis</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">small_axis</span> <span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">axis</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="p">;</span>                              
+          <span class="k">if</span> <span class="n">axis</span> <span class="o">&lt;</span> <span class="n">small_axis</span><span class="p">:</span>
+            <span class="n">axes</span> <span class="o">=</span> <span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">small_axis</span><span class="p">);</span>
+          <span class="k">else</span><span class="p">:</span>
+            <span class="n">axes</span> <span class="o">=</span> <span class="p">(</span><span class="n">small_axis</span><span class="p">,</span> <span class="n">axis</span><span class="p">);</span>
+          <span class="n">last_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">s</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">axes</span> <span class="k">else</span> <span class="n">t</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">last_shape</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">)]);</span>
+          
+          <span class="n">axes_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">axes</span><span class="p">);</span>
+          <span class="n">shape_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">last_shape</span><span class="p">);</span>
+          
+          <span class="n">resample_axes</span> <span class="o">=</span> <span class="p">[];</span>
+      
+      <span class="k">return</span> <span class="n">axes_order</span><span class="p">,</span> <span class="n">shape_order</span><span class="p">;</span>
+    
+    <span class="k">elif</span> <span class="n">axes_order</span> <span class="o">==</span> <span class="s1">&#39;order&#39;</span><span class="p">:</span> <span class="c1">#order axes according to array order for faster io</span>
+    
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">fl</span><span class="o">.</span><span class="n">Source</span><span class="p">):</span>
+        <span class="c1"># FileList determine order according to file structure</span>
+        <span class="n">axes_list</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">axes_list</span><span class="p">;</span>
+        <span class="c1">#axes_file = source.axes_file;</span>
+
+        <span class="n">resample_axes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">,</span> <span class="n">source_shape</span><span class="p">)</span> <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span><span class="n">t</span><span class="p">]);</span>
+        <span class="n">resample_factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sink_shape_in_source_orientation</span><span class="p">,</span> <span class="n">source_shape</span><span class="p">)</span> <span class="k">if</span> <span class="n">s</span><span class="o">!=</span><span class="n">t</span><span class="p">]);</span>
+        
+        <span class="n">axes_order</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="n">shape_order</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="n">last_shape</span> <span class="o">=</span> <span class="n">source_shape</span><span class="p">;</span>
+        
+        <span class="c1">#modify factors to account for file structure</span>
+        <span class="n">resample_factors_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">f</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">,</span> <span class="n">resample_factors</span><span class="p">)</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axes_list</span><span class="p">];</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">resample_factors_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="n">max_resample_factor_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">resample_factors_list</span><span class="p">);</span>    
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">max_resample_factor_list</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">resample_factors_sort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">f</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axes_list</span> <span class="k">else</span> <span class="n">f</span> <span class="o">+</span> <span class="n">max_resample_factor_list</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">f</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">,</span><span class="n">resample_factors</span><span class="p">)])</span>
+        <span class="c1">#print(resample_factors_sort, resample_factors)</span>
+        
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span> 
+            <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">resample_factors_sort</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:];</span>
+            
+            <span class="n">axes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">[</span><span class="n">ids</span><span class="p">]))</span>
+            <span class="n">last_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">s</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">axes</span> <span class="k">else</span> <span class="n">t</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">last_shape</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">)]);</span>
+          
+            <span class="n">axes_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">axes</span><span class="p">);</span>
+            <span class="n">shape_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">last_shape</span><span class="p">);</span>
+            
+            <span class="n">resample_axes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">s</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">)</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">]);</span>
+            <span class="n">resample_factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">s</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">resample_factors</span><span class="p">)</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">]);</span>
+            <span class="n">resample_factors_sort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">s</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">resample_factors_sort</span><span class="p">)</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">]);</span>  
+          <span class="k">else</span><span class="p">:</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="n">resample_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="n">small_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">last_shape</span><span class="p">);</span>
+            <span class="n">small_axis</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">small_axis</span> <span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">axis</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="p">;</span>                              
+            <span class="k">if</span> <span class="n">axis</span> <span class="o">&lt;</span> <span class="n">small_axis</span><span class="p">:</span>
+              <span class="n">axes</span> <span class="o">=</span> <span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">small_axis</span><span class="p">);</span>
+            <span class="k">else</span><span class="p">:</span>
+              <span class="n">axes</span> <span class="o">=</span> <span class="p">(</span><span class="n">small_axis</span><span class="p">,</span> <span class="n">axis</span><span class="p">);</span>
+            <span class="n">last_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">s</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">axes</span> <span class="k">else</span> <span class="n">t</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">last_shape</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">)]);</span>
+            
+            <span class="n">axes_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">axes</span><span class="p">);</span>
+            <span class="n">shape_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">last_shape</span><span class="p">);</span>
+            
+            <span class="n">resample_axes</span> <span class="o">=</span> <span class="p">[];</span>
+        
+        <span class="k">return</span> <span class="n">axes_order</span><span class="p">,</span> <span class="n">shape_order</span><span class="p">;</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="c1">#not a FileList</span>
+        <span class="n">resample_axes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">,</span> <span class="n">source_shape</span><span class="p">)</span> <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span><span class="n">t</span><span class="p">]);</span>
+        
+        <span class="n">axes_order</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="n">shape_order</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="n">last_shape</span> <span class="o">=</span> <span class="n">source_shape</span><span class="p">;</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
+              <span class="n">slicing</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="kc">None</span><span class="p">);</span>
+            <span class="k">else</span><span class="p">:</span>
+              <span class="n">slicing</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+            <span class="n">axes</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">resample_axes</span><span class="p">[</span><span class="n">slicing</span><span class="p">]);</span>
+          <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
+              <span class="n">axes</span> <span class="o">=</span> <span class="p">(</span><span class="n">resample_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axes_order</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]);</span> 
+            <span class="k">else</span><span class="p">:</span>
+              <span class="n">axes</span> <span class="o">=</span> <span class="p">(</span><span class="n">axes_order</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">resample_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+          
+          <span class="n">axes_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">axes</span><span class="p">);</span>
+          <span class="n">last_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">s</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">axes</span> <span class="k">else</span> <span class="n">t</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">last_shape</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">)]);</span>
+          <span class="n">shape_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">last_shape</span><span class="p">);</span>
+          <span class="n">resample_axes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">resample_axes</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">]);</span>
+        
+        <span class="k">return</span> <span class="n">axes_order</span><span class="p">,</span> <span class="n">shape_order</span><span class="p">;</span>
+    
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;axes_order </span><span class="si">%r</span><span class="s2"> not &#39;size&#39;,&#39;order&#39; or list but </span><span class="si">%r</span><span class="s2">!&quot;</span> <span class="o">%</span> <span class="n">axes_order</span><span class="p">);</span>
+      
+
+
+<span class="k">def</span> <span class="nf">_interpolation_to_cv2</span><span class="p">(</span><span class="n">interpolation</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper to convert interpolation specification to CV2 format.&quot;&quot;&quot;</span>
+  
+  <span class="k">if</span> <span class="n">interpolation</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;nearest&#39;</span><span class="p">,</span> <span class="s1">&#39;nn&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_NEAREST</span><span class="p">]:</span>
+    <span class="n">interpolation</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_NEAREST</span><span class="p">;</span>
+  <span class="k">elif</span> <span class="n">interpolation</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_AREA</span><span class="p">]:</span>
+    <span class="n">interpolation</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_AREA</span><span class="p">;</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">interpolation</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_LINEAR</span><span class="p">;</span>
+      
+  <span class="k">return</span> <span class="n">interpolation</span><span class="p">;</span>
+
+
+
+
+<div class="viewcode-block" id="resample_inverse"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Resampling.html#ClearMap.Alignment.Resampling.resample_inverse">[docs]</a><span class="k">def</span> <span class="nf">resample_inverse</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                     <span class="n">resample_source</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">resample_sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                     <span class="n">orientation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                     <span class="n">source_shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">source_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                     <span class="n">sink_shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                     <span class="n">axes_order</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;memmap&#39;</span><span class="p">,</span>
+                     <span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span> 
+                     <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Resample data inversely to :func:`resample` routine.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : str, array</span>
+<span class="sd">    Source to be inversly resampled (e.g. sink in :func:`resample`).</span>
+<span class="sd">  sink : str or None</span>
+<span class="sd">    Sink to write the inversly resampled image to.</span>
+<span class="sd">  resample_source : str, array or None</span>
+<span class="sd">    Optional source in :func:`resample`.</span>
+<span class="sd">  resmaple_sink: str, array or None</span>
+<span class="sd">    Optional sink used in :func:`resample`.</span>
+<span class="sd">  orientation : tuple</span>
+<span class="sd">    Orientation as specified as in :func:`resample`.</span>
+<span class="sd">  source_shape : tuple or None</span>
+<span class="sd">    Optional value of source_shape as in :func:`resample`.</span>
+<span class="sd">  source_resolution : tuple or None</span>
+<span class="sd">    Optional value of source_resolution as in :func:`resample`.</span>
+<span class="sd">  sink_resolution : tuple or None</span>
+<span class="sd">    Optional value of sink_resolution as in :func:`resample`.</span>
+<span class="sd">  processing_directory : str or None</span>
+<span class="sd">    Optional directory in which to perform resmapling in parallel.</span>
+<span class="sd">    If None, a temporary directry will be created.</span>
+<span class="sd">  axis_order : list of tuples of int or None</span>
+<span class="sd">    The axes pairs along which to resample the data as in :func:`resample`.</span>
+<span class="sd">  method : &#39;shared&#39; or &#39;memmap&#39;</span>
+<span class="sd">    Method to handle intermediate resampling results. If &#39;shared&#39; use shared </span>
+<span class="sd">    memory, otherwise use a memory map on disk.</span>
+<span class="sd">  interpolation : str</span>
+<span class="sd">    Method to use for interpolating to the resmapled image. </span>
+<span class="sd">  processes int or None</span>
+<span class="sd">    Number of processes to use for parallel resampling.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    If True, print progress information.</span>
+<span class="sd">   </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  resampled : array or str</span>
+<span class="sd">     Data or file name of inversly resampled image.</span>
+
+<span class="sd">  Notes</span>
+<span class="sd">  -----</span>
+<span class="sd">  * All arguments, except source and sink should be passed as :func:`resample`</span>
+<span class="sd">    to invert the resmapling.</span>
+<span class="sd">  &quot;&quot;&quot;</span>   
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+  <span class="n">ndim</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">ndim</span><span class="p">;</span>
+  <span class="n">dtype</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">dtype</span><span class="p">;</span>
+  
+  <span class="c1">#orientation</span>
+  <span class="n">orientation</span> <span class="o">=</span> <span class="n">format_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>
+  <span class="n">orientation_inverse</span> <span class="o">=</span> <span class="n">inverse_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>
+  
+  <span class="c1">#original source info</span>
+  <span class="k">if</span> <span class="n">source_shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">source_resolution</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">resample_source</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Either source_shape, source_resolution or resample_source must to be given!&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">resample_source</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">source_shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">resample_source</span><span class="p">);</span>
+  
+  <span class="c1">#original sink info</span>
+  <span class="k">if</span> <span class="n">sink_shape</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">sink_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
+    <span class="k">if</span> <span class="n">resample_sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink_shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">sink_shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">resample_sink</span><span class="p">);</span>
+  
+  <span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="p">,</span> <span class="n">source_resolution</span><span class="p">,</span> <span class="n">sink_resolution</span> <span class="o">=</span> \
+      <span class="n">resample_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="o">=</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="o">=</span><span class="n">sink_shape</span><span class="p">,</span> 
+                     <span class="n">source_resolution</span><span class="o">=</span><span class="n">source_resolution</span><span class="p">,</span> <span class="n">sink_resolution</span><span class="o">=</span><span class="n">sink_resolution</span><span class="p">,</span> 
+                     <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">);</span>
+  
+  <span class="n">sink_shape_in_source_orientation</span> <span class="o">=</span> <span class="n">orient_shape</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="n">axes_order</span><span class="p">,</span> <span class="n">shape_order</span> <span class="o">=</span> <span class="n">_axes_order</span><span class="p">(</span><span class="n">axes_order</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">);</span>
+ 
+  <span class="n">interpolation</span> <span class="o">=</span> <span class="n">_interpolation_to_cv2</span><span class="p">(</span><span class="n">interpolation</span><span class="p">);</span>                                   
+
+  <span class="k">if</span> <span class="n">processes</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">processes</span> <span class="o">==</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span>
+      <span class="n">processes</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">mp</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">();</span>
+  
+  <span class="c1">#reversed orientation</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">orientation</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1">#reverse axes</span>
+    <span class="n">slicing</span> <span class="o">=</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="n">ndim</span><span class="p">;</span>
+    <span class="n">reslice</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">o</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">orientation</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">o</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">slicing</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">reslice</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+    <span class="k">if</span> <span class="n">reslice</span><span class="p">:</span>
+      <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="n">slicing</span><span class="p">];</span>   
+    
+    <span class="c1">#re-orient</span>
+    <span class="n">per</span> <span class="o">=</span> <span class="n">orientation_to_permuation</span><span class="p">(</span><span class="n">orientation_inverse</span><span class="p">);</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">per</span><span class="p">);</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">sma</span><span class="o">.</span><span class="n">as_shared</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+ 
+  <span class="c1">#reverse resampling steps</span>
+  <span class="n">axes_order</span> <span class="o">=</span> <span class="n">axes_order</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+  
+  <span class="n">shape_order</span> <span class="o">=</span> <span class="n">shape_order</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+  <span class="n">shape_order</span> <span class="o">=</span> <span class="n">shape_order</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+  <span class="n">shape_order</span> <span class="o">=</span> <span class="n">shape_order</span> <span class="o">+</span> <span class="p">[</span><span class="n">source_shape</span><span class="p">]</span>
+  <span class="c1">#print(axes_order, shape_order)</span>
+  
+  <span class="c1">#reverse resampling</span>
+  <span class="n">n_steps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes_order</span><span class="p">);</span>
+  <span class="n">last_source</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+  <span class="n">delete_files</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="c1">#print(last_source)</span>
+  <span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">shape</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">),</span> <span class="n">axes_order</span><span class="p">,</span> <span class="n">shape_order</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">step</span> <span class="o">==</span> <span class="n">n_steps</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+      <span class="n">resampled</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="s1">&#39;shared&#39;</span><span class="p">,</span> <span class="n">as_source</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span> 
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;shared&#39;</span><span class="p">:</span>
+        <span class="n">resampled</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">sma</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">as_source</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mktemp</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;.npy&#39;</span><span class="p">;</span>
+        <span class="n">resampled</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">mmp</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="n">as_source</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+        <span class="n">delete_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">location</span><span class="p">);</span>
+
+    <span class="c1">#indices for non-resampled axes</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="nb">range</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">]);</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">indices</span><span class="p">)];</span>
+    <span class="n">n_indices</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">);</span>
+    
+    <span class="c1">#resample step</span>
+    <span class="n">last_source_virtual</span> <span class="o">=</span> <span class="n">last_source</span><span class="o">.</span><span class="n">as_virtual</span><span class="p">();</span>
+    <span class="n">resampled_virtual</span> <span class="o">=</span> <span class="n">resampled</span><span class="o">.</span><span class="n">as_virtual</span><span class="p">();</span>
+    <span class="n">_resample</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">_resample_2d</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">last_source_virtual</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">resampled_virtual</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> 
+                                         <span class="n">interpolation</span><span class="o">=</span><span class="n">interpolation</span><span class="p">,</span> <span class="n">n_indices</span><span class="o">=</span><span class="n">n_indices</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>                       
+    
+    <span class="k">if</span> <span class="n">processes</span> <span class="o">==</span> <span class="s1">&#39;serial&#39;</span><span class="p">:</span> 
+      <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+        <span class="n">_resample</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ProcessPoolExecutor</span><span class="p">(</span><span class="n">processes</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+        <span class="n">executor</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_resample</span><span class="p">,</span> <span class="n">indices</span><span class="p">);</span>
+        
+    <span class="n">last_source</span> <span class="o">=</span> <span class="n">resampled</span><span class="p">;</span>
+  
+  <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">delete_files</span><span class="p">:</span>
+      <span class="n">io</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>  
+  
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">resampled</span><span class="o">.</span><span class="n">as_real</span><span class="p">();</span>
+      
+  <span class="k">return</span> <span class="n">sink</span><span class="p">;</span></div>
+
+
+<span class="c1">########################################################################################</span>
+<span class="c1">### Resample Points</span>
+<span class="c1">########################################################################################</span>
+
+<div class="viewcode-block" id="resample_points"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Resampling.html#ClearMap.Alignment.Resampling.resample_points">[docs]</a><span class="k">def</span> <span class="nf">resample_points</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">resample_source</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">resample_sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                    <span class="n">orientation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">source_shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="n">source_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Resample points from original coordiantes to resampled ones.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : str or array</span>
+<span class="sd">    Points to be resampled.</span>
+<span class="sd">  sink : str or None</span>
+<span class="sd">    Sink for the resmapled point coordinates.</span>
+<span class="sd">  orientation : tuple</span>
+<span class="sd">    Orientation as specified in :func:`resample`.</span>
+<span class="sd">  resample_source : str, array or None</span>
+<span class="sd">    Optional source as in :func:`resample`.</span>
+<span class="sd">  resample_sink: str, array or None</span>
+<span class="sd">    Optional sink used in :func:`resample`.</span>
+<span class="sd">  source_shape : tuple or None</span>
+<span class="sd">    Optional value of source_shape as in :func:`resample`.</span>
+<span class="sd">  source_resolution : tuple or None</span>
+<span class="sd">    Optional value of source_resolution as in :func:`resample`.</span>
+<span class="sd">  sink_resolution : tuple or None</span>
+<span class="sd">    Optional value of sink_resolution as in :func:`resample`.</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  resmapled : array or str</span>
+<span class="sd">    Sink for the resampled point coordinates.</span>
+
+<span class="sd">  Notes</span>
+<span class="sd">  -----</span>
+<span class="sd">  * The resampling of points here corresponds to he resampling of an image </span>
+<span class="sd">    in :func:`resample`.</span>
+<span class="sd">  * The arguments should be passed exactly as in :func:`resample` except soure</span>
+<span class="sd">    and sink that point to the point sources. </span>
+<span class="sd">    Use resample_source and resmaple_sink to pass the source and sink values</span>
+<span class="sd">    used in :func:`resample`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#orientation</span>
+  <span class="n">orientation</span> <span class="o">=</span> <span class="n">format_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>
+  
+  <span class="c1">#original source info</span>
+  <span class="k">if</span> <span class="n">source_shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">source_resolution</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">resample_source</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Either source_shape, source_resolution or resample_source must to be given!&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">resample_source</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">source_shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">resample_source</span><span class="p">);</span>
+
+  <span class="c1">#original sink info</span>
+  <span class="k">if</span> <span class="n">sink_shape</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">sink_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
+    <span class="k">if</span> <span class="n">resample_sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink_shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">sink_shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">resample_sink</span><span class="p">);</span>
+  
+  <span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="p">,</span> <span class="n">source_resolution</span><span class="p">,</span> <span class="n">sink_resolution</span> <span class="o">=</span> \
+      <span class="n">resample_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="o">=</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="o">=</span><span class="n">sink_shape</span><span class="p">,</span> 
+                     <span class="n">source_resolution</span><span class="o">=</span><span class="n">source_resolution</span><span class="p">,</span> <span class="n">sink_resolution</span><span class="o">=</span><span class="n">sink_resolution</span><span class="p">,</span> 
+                     <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">);</span>
+  
+  <span class="n">sink_shape_in_source_orientation</span> <span class="o">=</span> <span class="n">orient_shape</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="n">resample_factor</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">)];</span>
+  
+  <span class="n">points</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+  <span class="n">resampled</span> <span class="o">=</span> <span class="n">points</span><span class="p">[:]</span> <span class="o">*</span> <span class="n">resample_factor</span><span class="p">;</span>
+  
+  <span class="c1"># reorient points</span>
+  <span class="k">if</span> <span class="n">orientation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1">#permute</span>
+    <span class="n">per</span> <span class="o">=</span> <span class="n">orientation_to_permuation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>
+    <span class="n">resampled</span> <span class="o">=</span> <span class="n">resampled</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">per</span><span class="p">);</span>
+
+    <span class="c1">#reverse axes</span>
+    <span class="n">reslice</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+    <span class="n">slicing</span> <span class="o">=</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_shape</span><span class="p">);</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">o</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">orientation</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">o</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">slicing</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">reslice</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+    <span class="k">if</span> <span class="n">reslice</span><span class="p">:</span>
+      <span class="n">resampled</span> <span class="o">=</span> <span class="n">resampled</span><span class="p">[</span><span class="n">slicing</span><span class="p">];</span>
+  
+  <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">resampled</span><span class="p">);</span></div>
+
+
+<div class="viewcode-block" id="resample_points_inverse"><a class="viewcode-back" href="../../../Api/ClearMap.Alignment.Resampling.html#ClearMap.Alignment.Resampling.resample_points_inverse">[docs]</a><span class="k">def</span> <span class="nf">resample_points_inverse</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">resample_source</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">resample_sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                            <span class="n">orientation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">source_shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                            <span class="n">source_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sink_resolution</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Resample points from original coordiantes to resampled ones.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : str or array</span>
+<span class="sd">    Points to be resampled inversely.</span>
+<span class="sd">  sink : str or None</span>
+<span class="sd">    Sink for the inversly resmapled points.</span>
+<span class="sd">  resample_source : str, array or None</span>
+<span class="sd">    Optional source as in :func:`resample`.</span>
+<span class="sd">  resample_sink: str, array or None</span>
+<span class="sd">    Optional sink used in :func:`resample`.</span>
+<span class="sd">  orientation : tuple</span>
+<span class="sd">    Orientation as specified in :func:`resample`.</span>
+<span class="sd">  source_shape : tuple or None</span>
+<span class="sd">    Optional value of source_shape as in :func:`resample`.</span>
+<span class="sd">  source_resolution : tuple or None</span>
+<span class="sd">    Optional value of source_resolution as in :func:`resample`.</span>
+<span class="sd">  sink_resolution : tuple or None</span>
+<span class="sd">    Optional value of sink_resolution as in :func:`resample`.</span>
+<span class="sd">      </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  resmapled : array or str</span>
+<span class="sd">    Sink for the inversly resampled point coordinates.</span>
+
+<span class="sd">  Notes</span>
+<span class="sd">  -----</span>
+<span class="sd">  * The resampling of points here corresponds to the inverse resampling of </span>
+<span class="sd">    an image in :func:`resample`, i.e. to func:`resample_inverse`</span>
+<span class="sd">  * The arguments should be passed exactly as in :func:`resample` except source</span>
+<span class="sd">    and sink that point to the point sources. </span>
+<span class="sd">    Use resample_source and resmaple_sink to pass the source and sink values</span>
+<span class="sd">    used in :func:`resample`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#orientation</span>
+  <span class="n">orientation</span> <span class="o">=</span> <span class="n">format_orientation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>
+  
+  <span class="c1">#original source info</span>
+  <span class="k">if</span> <span class="n">source_shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">source_resolution</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">resample_source</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Either source_shape, source_resolution or resample_source must to be given!&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">resample_source</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">source_shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">resample_source</span><span class="p">);</span>
+
+  <span class="c1">#original sink info</span>
+  <span class="k">if</span> <span class="n">sink_shape</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">sink_resolution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> 
+    <span class="k">if</span> <span class="n">resample_sink</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">sink_shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">sink_shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">resample_sink</span><span class="p">);</span>
+  
+  <span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="p">,</span> <span class="n">source_resolution</span><span class="p">,</span> <span class="n">sink_resolution</span> <span class="o">=</span> \
+      <span class="n">resample_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="o">=</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="o">=</span><span class="n">sink_shape</span><span class="p">,</span> 
+                     <span class="n">source_resolution</span><span class="o">=</span><span class="n">source_resolution</span><span class="p">,</span> <span class="n">sink_resolution</span><span class="o">=</span><span class="n">sink_resolution</span><span class="p">,</span> 
+                     <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">);</span>
+  
+  <span class="n">sink_shape_in_source_orientation</span> <span class="o">=</span> <span class="n">orient_shape</span><span class="p">(</span><span class="n">sink_shape</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+  
+  <span class="n">resample_factor</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape_in_source_orientation</span><span class="p">)];</span>
+  
+  <span class="n">points</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+ 
+  <span class="c1"># reorient points</span>
+  <span class="k">if</span> <span class="n">orientation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1">#reverse axes</span>
+    <span class="n">reslice</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+    <span class="n">slicing</span> <span class="o">=</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_shape</span><span class="p">);</span>
+    <span class="k">for</span> <span class="n">d</span><span class="p">,</span><span class="n">o</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">orientation</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">o</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">slicing</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">reslice</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+    <span class="k">if</span> <span class="n">reslice</span><span class="p">:</span>
+      <span class="n">points</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">slicing</span><span class="p">];</span>
+
+    <span class="c1">#permute</span>
+    <span class="n">per</span> <span class="o">=</span> <span class="n">orientation_to_permuation</span><span class="p">(</span><span class="n">orientation</span><span class="p">);</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">per</span><span class="p">);</span>
+  
+  <span class="n">points</span> <span class="o">=</span> <span class="n">points</span><span class="p">[:]</span> <span class="o">/</span> <span class="n">resample_factor</span><span class="p">;</span>
+  
+  <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">points</span><span class="p">);</span>     </div>
+
+
+<span class="c1">########################################################################################</span>
+<span class="c1">### Test</span>
+<span class="c1">########################################################################################</span>
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Tests&quot;&quot;&quot;</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Settings</span> <span class="k">as</span> <span class="nn">settings</span> 
+  <span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">p3d</span><span class="p">;</span>
+  
+  <span class="kn">import</span> <span class="nn">ClearMap.Alignment.Resampling</span> <span class="k">as</span> <span class="nn">res</span>
+  <span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+  <span class="n">reload</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+  
+  <span class="n">r</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resample_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">),</span> <span class="n">sink_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">30</span><span class="p">));</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;resampled source_shape=</span><span class="si">%r</span><span class="s1">, sink_shape=</span><span class="si">%r</span><span class="s1">, source_resolution=</span><span class="si">%r</span><span class="s1">, sink_resolution=</span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">r</span><span class="p">)</span>
+ 
+  <span class="n">r</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resample_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">),</span> <span class="n">source_resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">sink_resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;resampled source_shape=</span><span class="si">%r</span><span class="s1">, sink_shape=</span><span class="si">%r</span><span class="s1">, source_resolution=</span><span class="si">%r</span><span class="s1">, sink_resolution=</span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">r</span><span class="p">)</span>
+  
+  
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">test_data_path</span><span class="p">,</span> <span class="s1">&#39;Resampling/test.tif&#39;</span><span class="p">)</span>
+  <span class="n">sink</span>   <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">test_data_path</span><span class="p">,</span> <span class="s2">&quot;Resampling/resampled.npy&quot;</span><span class="p">)</span>
+  
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">test_data_path</span><span class="p">,</span> <span class="s1">&#39;Tif/sequence/sequence&lt;Z,4&gt;.tif&#39;</span><span class="p">)</span>
+  <span class="n">sink</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">test_data_path</span><span class="p">,</span> <span class="s2">&quot;Resampling/resampled_sequence.tif&quot;</span><span class="p">)</span>  
+  
+  
+  <span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="p">,</span> <span class="n">source_res</span><span class="p">,</span> <span class="n">sink_res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resample_shape</span><span class="p">(</span><span class="n">source_shape</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">source</span><span class="p">),</span> <span class="n">source_resolution</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">),</span> <span class="n">sink_resolution</span><span class="o">=</span><span class="p">(</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">1.6</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+  <span class="n">axes_order</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">_axes_order</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">source_shape</span><span class="p">,</span> <span class="n">sink_shape</span><span class="p">);</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">axes_order</span><span class="p">)</span>
+  <span class="n">resampled</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">source_resolution</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">),</span> <span class="n">sink_resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">1.6</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">orientation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="kc">None</span><span class="p">);</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">resampled</span><span class="p">)</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+  
+  <span class="n">inverse</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resample_inverse</span><span class="p">(</span><span class="n">resampled</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">resample_source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">source_resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">sink_resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">orientation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="s1">&#39;serial&#39;</span><span class="p">)</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">source</span><span class="p">,</span> <span class="n">inverse</span><span class="p">])</span>
+
+  
+  <span class="n">resampled</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">source_resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">sink_resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">orientation</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">processes</span><span class="o">=</span><span class="kc">None</span><span class="p">);</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">resampled</span><span class="p">)</span>
+  
+  <span class="n">inverse</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resample_inverse</span><span class="p">(</span><span class="n">resampled</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">resample_source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">source_resolution</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">sink_resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">orientation</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">processes</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">source</span><span class="p">,</span> <span class="n">inverse</span><span class="p">])</span>
+  
+  <span class="n">resampled</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">source_resolution</span><span class="o">=</span><span class="p">(</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">1.6</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">sink_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span> <span class="n">orientation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+  <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">resampled</span><span class="p">)</span>
+  
+  
+  <span class="c1"># ponints</span>
+  <span class="n">points</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">);</span>
+  <span class="n">resampled_points</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resample_points</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">resample_source</span><span class="o">=</span><span class="n">source</span> <span class="p">,</span> <span class="n">resample_sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">resampled_points</span><span class="p">)</span>
+
+  <span class="n">inverse_points</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">resample_points_inverse</span><span class="p">(</span><span class="n">resampled_points</span><span class="p">,</span> <span class="n">resample_source</span><span class="o">=</span><span class="n">source</span> <span class="p">,</span> <span class="n">resample_sink</span><span class="o">=</span><span class="n">sink</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">inverse_points</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">inverse_points</span><span class="p">))</span>
+</pre></div>
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../../../overview.html"><img src="../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

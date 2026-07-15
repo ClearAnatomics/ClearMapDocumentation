@@ -1,0 +1,457 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ClearMap.Alignment.Stitching.Tracking &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/clearmap.js"></script>
+    <script src="../../../../_static/clearmap_sidebar.js"></script>
+    <script src="../../../../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../../../../home.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../../../../home.html">Home</a></li>
+     <li class="link-list"><a href="../../../../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../../../../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+       <li><a href="../../../../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../../../../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../../../../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../../../../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../../../../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../../../../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../../../../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../../../../cellmap.html">
+            <img src="../../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../../../../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../../../../tubemap.html">
+            <img src="../../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../../../../media.html#gallery"> Gallery</a></h3>
+          <a href="../../../../media.html#gallery">
+            <img src="../../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../../../../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../../../../media.html#videos">   
+            <img src="../../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <h1>Source code for ClearMap.Alignment.Stitching.Tracking</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Tracking</span>
+<span class="sd">========</span>
+
+<span class="sd">Simple particle tracker based on liner programming.</span>
+
+<span class="sd">Note</span>
+<span class="sd">----</span>
+<span class="sd">This module is used by :mod:`~ClearMap.Alignment.Stitching.StitchingWobbly`</span>
+<span class="sd">to trace wobbly stacks.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">scipy.spatial.distance</span> <span class="k">as</span> <span class="nn">ssd</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tracker</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="track_positions"><a class="viewcode-back" href="../../../../Api/ClearMap.Alignment.Stitching.Tracking.html#ClearMap.Alignment.Stitching.Tracking.track_positions">[docs]</a><span class="k">def</span> <span class="nf">track_positions</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">new_trajectory_cost</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cutoff</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Track positions of multiple particles.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  positionss : array</span>
+<span class="sd">    The particle positions as a list.</span>
+<span class="sd">  new_trajectory_cost : float or None</span>
+<span class="sd">    The cost for a new trajectory, if None, maximal distance+1</span>
+<span class="sd">  cutoff : float or None:</span>
+<span class="sd">    The maximal distance allowed to connect particles.</span>
+<span class="sd">     </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  trajectories : list</span>
+<span class="sd">    The trajectories as a list of list of (time,particle) tuples.</span>
+<span class="sd">    </span>
+<span class="sd">  References</span>
+<span class="sd">  ----------</span>
+<span class="sd">  A shortest augmenting path algorithm for dense and sparse linear assignment problems</span>
+<span class="sd">  Jonker, R, Volgenant, A, Computing 1987  </span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  
+  <span class="c1">#positions: list of list of tuples of of minima [[(min_x1,1,min_y1,2,...),...], [(min_x2,1,...),...],...])</span>
+  <span class="n">n_steps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  
+  <span class="c1">#match steps</span>
+  <span class="n">matches</span> <span class="o">=</span> <span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">new_trajectory_cost</span><span class="o">=</span><span class="n">new_trajectory_cost</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)];</span>
+  
+  <span class="c1">#build trajectories</span>
+  <span class="n">n_pre</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+  <span class="n">trajectories</span> <span class="o">=</span> <span class="p">[[(</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_pre</span><span class="p">)];</span>
+  <span class="n">active</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_pre</span><span class="p">)];</span>                          
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>   
+    <span class="c1">#n_pre = len(positions[t]);</span>
+    <span class="n">n_post</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">[</span><span class="n">t</span><span class="p">]);</span>
+     
+    <span class="n">pre</span> <span class="o">=</span> <span class="p">[</span><span class="n">trajectories</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">active</span><span class="p">];</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">matches</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    <span class="c1">#if len(active) != len(positions[t-1]):</span>
+    <span class="c1">#  raise ValueError()</span>
+             
+    <span class="n">post</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pre</span><span class="p">];</span>
+                        
+    <span class="n">p_post</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="n">p_end</span> <span class="o">=</span> <span class="p">[];</span>              
+    <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">post</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="n">n_post</span><span class="p">:</span>
+        <span class="n">p_end</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+      <span class="k">else</span><span class="p">:</span> <span class="c1"># extend trajectory</span>
+        <span class="n">trajectories</span><span class="p">[</span><span class="n">active</span><span class="p">[</span><span class="n">a</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">t</span><span class="p">,</span><span class="n">p</span><span class="p">));</span>
+        <span class="n">p_post</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    
+    <span class="c1">#end trajectories</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">p_end</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+      <span class="k">del</span> <span class="n">active</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+     
+    <span class="c1">#start new one</span>
+    <span class="n">new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_post</span><span class="p">),</span> <span class="n">p_post</span><span class="p">);</span>                        
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">new</span><span class="p">:</span>
+      <span class="n">active</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trajectories</span><span class="p">));</span>
+      <span class="n">trajectories</span><span class="o">.</span><span class="n">append</span><span class="p">([(</span><span class="n">t</span><span class="p">,</span><span class="n">p</span><span class="p">)])</span>
+      
+    <span class="c1">#print &#39;-------&#39;</span>
+    <span class="c1">#print &#39;pre=%d,%r, post=%d,%r&#39; % (len(pre), pre, len(post), post);</span>
+    <span class="c1">#print &#39;n_pre, n_post = %d, %d&#39; % (len(positions[t-1]), len(positions[t]))                                     </span>
+    <span class="c1">#print &#39;match=%r&#39; % (m,)                               </span>
+    <span class="c1">#print &#39;p_post = %r, p_end = %r, new = %r&#39; % (p_post, p_end, new)                       </span>
+    <span class="c1">#print &#39;active=%d,%r&#39; % (len(active), active)</span>
+    <span class="c1">#print &#39;new pre = %r&#39; %  ([trajectories[a][-1][1] for a in active],)</span>
+    <span class="c1">#if len(active) != n_post:</span>
+    <span class="c1">#  raise ValueError();                            </span>
+                                  
+  <span class="k">return</span> <span class="n">trajectories</span><span class="p">;</span></div>
+         
+
+<div class="viewcode-block" id="match"><a class="viewcode-back" href="../../../../Api/ClearMap.Alignment.Stitching.Tracking.html#ClearMap.Alignment.Stitching.Tracking.match">[docs]</a><span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">positions_pre</span><span class="p">,</span> <span class="n">positions_post</span><span class="p">,</span> <span class="n">new_trajectory_cost</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cutoff</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Matches two set of positions.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  positions_pre : array</span>
+<span class="sd">    The initial particle positions.</span>
+<span class="sd">  positions_post : array</span>
+<span class="sd">    The final particle positions.</span>
+<span class="sd">  new_trajectory_cost : float or None</span>
+<span class="sd">    The cost for a new trajectory, if None, maximal distance+1</span>
+<span class="sd">  cutoff : float or None:</span>
+<span class="sd">    The maximal distance allowed to connect particles.</span>
+<span class="sd">     </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  match : dict</span>
+<span class="sd">    The optimal association as a dictionary {index_pre : index_post}.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1">#create distance matrices</span>
+  <span class="n">cost</span> <span class="o">=</span> <span class="n">ssd</span><span class="o">.</span><span class="n">cdist</span><span class="p">(</span><span class="n">positions_pre</span><span class="p">,</span> <span class="n">positions_post</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">cutoff</span><span class="p">:</span>
+    <span class="n">cost</span><span class="p">[</span><span class="n">cost</span> <span class="o">&gt;</span> <span class="n">cutoff</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="n">new_trajectory_cost</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">new_trajectory_cost</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cost</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">;</span>
+  
+  <span class="n">cost</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">cost</span><span class="p">,</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)],</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">constant_values</span> <span class="o">=</span> <span class="n">new_trajectory_cost</span><span class="p">);</span>
+  
+  <span class="c1">#match points</span>
+  <span class="n">A</span> <span class="o">=</span> <span class="n">optimal_association_matrix</span><span class="p">(</span><span class="n">cost</span><span class="p">);</span>
+  
+  <span class="k">return</span> <span class="p">{</span> <span class="n">i</span> <span class="p">:</span> <span class="n">j</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">A</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]))}</span></div>
+  
+
+<div class="viewcode-block" id="optimal_association_matrix"><a class="viewcode-back" href="../../../../Api/ClearMap.Alignment.Stitching.Tracking.html#ClearMap.Alignment.Stitching.Tracking.optimal_association_matrix">[docs]</a><span class="k">def</span> <span class="nf">optimal_association_matrix</span><span class="p">(</span><span class="n">cost</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Optimizes the association matrix A given the cost matrix cost.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  cost : array</span>
+<span class="sd">    The cost matrix, the last row and colum represent csot for</span>
+<span class="sd">    particle creation/destruction.</span>
+<span class="sd">     </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  association : array</span>
+<span class="sd">    The optimal association matrix.</span>
+<span class="sd">    </span>
+<span class="sd">  Note</span>
+<span class="sd">  ----</span>
+<span class="sd">  It is assumed that creation/deletion of objects are the last </span>
+<span class="sd">  row and column in cost.</span>
+<span class="sd">    </span>
+<span class="sd">  References</span>
+<span class="sd">  ----------</span>
+<span class="sd">  A shortest augmenting path algorithm for dense and sparse linear assignment problems</span>
+<span class="sd">  Jonker, R, Volgenant, A, Computing 1987 </span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  
+  <span class="n">A</span> <span class="o">=</span> <span class="n">_init_association_matrix</span><span class="p">(</span><span class="n">cost</span><span class="p">);</span>
+  
+  <span class="n">Cs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">cost</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">&lt;</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">);</span>
+                           
+  <span class="n">finished</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+  <span class="k">while</span> <span class="ow">not</span> <span class="n">finished</span><span class="p">:</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">finished</span> <span class="o">=</span> <span class="n">_do_one_move</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">Cs</span><span class="p">);</span>
+                             
+  <span class="k">return</span> <span class="n">A</span><span class="p">;</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Helper</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_init_association_matrix</span><span class="p">(</span><span class="n">cost</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Association matrix A&quot;&quot;&quot;</span> 
+  <span class="n">osize</span> <span class="o">=</span> <span class="n">cost</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">nsize</span> <span class="o">=</span> <span class="n">cost</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">osize</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">nsize</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">);</span>
+                    
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">osize</span><span class="p">):</span>
+    <span class="c1"># sort costs of real particles</span>
+    <span class="n">srtidx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">,:]);</span>
+    <span class="c1"># index of dummy particle</span>
+    <span class="n">dumidx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">srtidx</span><span class="o">==</span><span class="n">nsize</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+    
+    <span class="c1"># search for available particle of smallest cost or dummy</span>
+    <span class="c1"># particle must not be taken and cost must be less than dummy</span>
+    <span class="n">iidx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">[:,</span><span class="n">srtidx</span><span class="p">[</span><span class="n">iidx</span><span class="p">]])</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">iidx</span><span class="o">&lt;</span><span class="n">dumidx</span><span class="p">:</span> 
+      <span class="n">iidx</span> <span class="o">=</span> <span class="n">iidx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>                               
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">srtidx</span><span class="p">[</span><span class="n">iidx</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+  
+  <span class="c1"># set dummy particle for columns with no entry</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+  <span class="n">A</span><span class="p">[</span><span class="n">osize</span><span class="p">,</span><span class="n">s</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+  <span class="c1"># dummy always corresponds to dummy</span>
+  <span class="n">A</span><span class="p">[</span><span class="n">osize</span><span class="p">,</span><span class="n">nsize</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+  
+  <span class="c1">#import matplotlib.pyplot as plt   </span>
+  <span class="c1">#plt.figure(7); plt.clf();</span>
+  <span class="c1">#plt.subplot(1,2,1)            </span>
+  <span class="c1">#plt.imshow(A, origin = &#39;lower&#39;)            </span>
+  <span class="c1">#plt.subplot(1,2,2)</span>
+  <span class="c1">#plt.imshow(cost, origin=&#39;lower&#39;)</span>
+  
+  <span class="k">return</span> <span class="n">A</span><span class="p">;</span>
+
+
+<span class="k">def</span> <span class="nf">_do_one_move</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">Cs</span><span class="p">):</span>  
+  <span class="sd">&quot;&quot;&quot;Optimize single association in A.&quot;&quot;&quot;</span>
+  <span class="n">osize</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="n">nsize</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                 
+  <span class="c1"># find unmade links with finite cost</span>
+  <span class="n">todo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">A</span><span class="p">[:</span><span class="n">osize</span><span class="p">,</span> <span class="p">:</span><span class="n">nsize</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()))[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Cs</span><span class="p">);</span>    
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">todo</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">A</span><span class="p">,</span> <span class="kc">True</span>
+  <span class="c1"># determine induced changes and reduced cost cRed for each</span>
+  <span class="c1"># candidate link insertion</span>
+  <span class="n">iCand</span><span class="p">,</span> <span class="n">jCand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">todo</span><span class="p">,</span> <span class="p">(</span><span class="n">osize</span><span class="p">,</span> <span class="n">nsize</span><span class="p">));</span>                             
+  <span class="n">yCand</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">ic</span><span class="p">,:])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">ic</span> <span class="ow">in</span> <span class="n">iCand</span><span class="p">];</span>
+  <span class="n">xCand</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">A</span><span class="p">[:,</span><span class="n">jc</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">jc</span> <span class="ow">in</span> <span class="n">jCand</span><span class="p">];</span> 
+  <span class="n">cRed</span> <span class="o">=</span> <span class="p">[</span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">C</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">-</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">y</span><span class="p">]</span> <span class="o">-</span> <span class="n">C</span><span class="p">[</span><span class="n">x</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">iCand</span><span class="p">,</span><span class="n">jCand</span><span class="p">,</span> <span class="n">xCand</span><span class="p">,</span> <span class="n">yCand</span><span class="p">)];</span>
+  <span class="n">rMin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">cRed</span><span class="p">);</span>
+  <span class="n">rCost</span> <span class="o">=</span> <span class="n">cRed</span><span class="p">[</span><span class="n">rMin</span><span class="p">];</span>             
+              
+  <span class="c1"># if minimum is &lt; 0, link addition is favorable</span>
+  <span class="k">if</span> <span class="n">rCost</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">1e-10</span><span class="p">:</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">iCand</span><span class="p">[</span><span class="n">rMin</span><span class="p">],</span><span class="n">jCand</span><span class="p">[</span><span class="n">rMin</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">xCand</span><span class="p">[</span><span class="n">rMin</span><span class="p">],</span><span class="n">jCand</span><span class="p">[</span><span class="n">rMin</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">iCand</span><span class="p">[</span><span class="n">rMin</span><span class="p">],</span><span class="n">yCand</span><span class="p">[</span><span class="n">rMin</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">xCand</span><span class="p">[</span><span class="n">rMin</span><span class="p">],</span><span class="n">yCand</span><span class="p">[</span><span class="n">rMin</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">finished</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">finished</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+  
+  <span class="k">return</span> <span class="n">A</span><span class="p">,</span> <span class="n">finished</span><span class="p">;</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tests</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Alignment.Tracking</span> <span class="k">as</span> <span class="nn">trk</span>
+  <span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">reload</span>
+  <span class="n">reload</span><span class="p">(</span><span class="n">trk</span><span class="p">)</span>
+
+  <span class="kn">import</span> <span class="nn">ClearMap.Alignment.StitchingWobbly</span> <span class="k">as</span> <span class="nn">stw</span>
+  
+  <span class="n">positions</span> <span class="o">=</span> <span class="p">[[(</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">),(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)],</span> <span class="p">[(</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">10</span><span class="p">),(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)],[(</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">),(</span><span class="mi">31</span><span class="p">,</span><span class="mi">9</span><span class="p">)]]</span>
+  
+  <span class="n">tr</span> <span class="o">=</span> <span class="n">trk</span><span class="o">.</span><span class="n">track_positions</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">creation_destruction_cost</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cutoff</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+  
+  
+  <span class="c1"># realistic test</span>
+  <span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">stw</span><span class="o">.</span><span class="n">detect_local_minima</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">distance</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">correlation</span><span class="o">.</span><span class="n">transpose</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])]</span>
+  <span class="n">positions</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="mi">1230</span><span class="p">:];</span>
+
+  <span class="n">k</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">();</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">correlation</span><span class="p">[:,:,</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">[</span><span class="n">k</span><span class="p">]],[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">[</span><span class="n">k</span><span class="p">]],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+  
+  
+  <span class="n">tr</span> <span class="o">=</span> <span class="n">trk</span><span class="o">.</span><span class="n">track_positions</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">creation_destruction_cost</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">correlation</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="mi">2</span><span class="p">))),</span> <span class="n">cutoff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+  
+  <span class="n">tr</span> <span class="o">=</span> <span class="n">trk</span><span class="o">.</span><span class="n">track_positions</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">creation_destruction_cost</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">correlation</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="mi">2</span><span class="p">))),</span> <span class="n">cutoff</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+
+  <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+  <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">();</span>       
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tr</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">t</span><span class="p">])</span> 
+  
+  <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">();</span>
+  <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tr</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">positions</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="n">positions</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">t</span><span class="p">])</span>    
+    
+    
+  <span class="n">tr</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tr</span><span class="p">])]</span>
+
+  <span class="c1"># possibility to join with other trajectories ?</span>
+
+</pre></div>
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../../../../overview.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

@@ -4,7 +4,7 @@
 #
 __author__ = 'Christoph Kirst <christoph.kirst.ck@gmail.com>'
 __license__ = 'GPLv3 - GNU General Public License v3 (see LICENSE)'
-__copyright__ = 'Copyright © 2024 by Christoph Kirst, Charly Rousseau, and the ClearMap team'
+__copyright__ = 'Copyright © 2026 by Christoph Kirst, Charly Rousseau, and the ClearMap team'
 __webpage__ = 'https://idisco.info'
 __download__ = 'https://www.github.com/ChristophKirst/ClearMap2'
 
@@ -47,7 +47,7 @@ rst_epilog = f"""
 # =============================================================================
 project = ClearMap.__title__
 copyright = ClearMap.__copyright__
-version = ClearMap.__version__
+version = '.'.join(ClearMap.__version__.split('.')[:2])  # "3.1"  → Sphinx "version"
 release = ClearMap.__version__
 
 
@@ -63,28 +63,24 @@ release = ClearMap.__version__
 
 def post_process_documentation(app, exclude_dirs, paths_to_replace, replacement, extension='.html'):
     """
-    Browse doc_dir recursively and in each .rst file, replace any path from
-    `paths_to_replace` with `replacement`
+    Browse the build output recursively and in each HTML file replace any
+    path from ``paths_to_replace`` with ``replacement``.
 
     Parameters
     ----------
-    app: sphinx.application.Sphinx
-        The Sphinx application
-    exclude_dirs : list[str]
-        The list of directories to exclude
-    paths_to_replace : list[str]
-        The list of path that should be replaced by `replacement`
+    app : sphinx.application.Sphinx
+        The Sphinx application instance.
+    exclude_dirs : list of str
+        Directory name fragments to skip.
+    paths_to_replace : list of str
+        Absolute path strings to replace (e.g. ``/home/user/``).
     replacement : str
-        The replacement string
+        The replacement string (e.g. ``~/``).
     extension : str
-        The extension of the files to process
-
-    Returns
-    -------
-
+        File extension to process. Default is ``'.html'``.
     """
     print('-' * 80)
-    print(f'Post processing documentation in {app.srcdir} with {paths_to_replace} -> {replacement}')
+    print(f'Post-processing {app.outdir}: {paths_to_replace} -> {replacement!r}')
     print('-' * 80)
     for root, _, files in os.walk(app.outdir):
         # Skip directories in exclude_dirs
@@ -94,18 +90,18 @@ def post_process_documentation(app, exclude_dirs, paths_to_replace, replacement,
         else:
             print(f'Processing folder {root}')
         for file in files:
-            if file.endswith(extension):
-                # print(f'Processing file {file}')
-                src_file_path = os.path.join(root, file)
-                with open(src_file_path, 'r') as in_file, open(src_file_path, 'w') as out_file:
-                    file_content = in_file.read()
-                    for path in paths_to_replace:
-                        if path in file_content:
-                            print(f'\tWould replace {path} with {replacement} in {src_file_path}')
-                    else:
-                        print(f'\tNo replacement needed in {src_file_path}')
-                        # file_content = file_content.replace(path, replacement)
-                    # out_file.write(file_content)
+            if not file.endswith(extension):
+                continue
+            file_path = os.path.join(root, file)
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            new_content = content
+            for path in paths_to_replace:
+                new_content = new_content.replace(path, replacement)
+            if new_content != content:
+                print(f'  Patched: {file_path}')
+                with open(file_path, 'w', encoding='utf-8') as f:
+                    f.write(new_content)
 
 
 def cleanup(app, exception):
@@ -164,7 +160,12 @@ extensions = [
     'matplotlib.sphinxext.mathmpl',
     'sphinx_design',   # For grid design
     'sphinxcontrib.youtube',
-    'sphinx_carousel.carousel'
+    #'sphinx_carousel.carousel'
+]
+
+suppress_warnings = [
+    'autosummary.import_cycle',
+    #'autopackagesummary',   # "Summarised items should not include the current module"
 ]
 
 master_doc = 'index'
@@ -216,6 +217,7 @@ autosummary_mock_imports = [
     'ClearMap.Analysis.vasculature.flow.linearSystem',
     'ClearMap.ParallelProcessing.DataProcessing.statistics.StatisticsPointList',
     'ClearMap.ParallelProcessing.DataProcessing.statistics.StatisticsPointListCode',
+    'ClearMap.pipeline_orchestrators.processor_launcher',
     # 'ClearMap.Analysis.vasculature',
     # 'ClearMap.Analysis.vasculature.flow',
 ]
@@ -278,7 +280,8 @@ autosummary_imported_members = True
 # ============================ Napoleon (numpydoc) ============================
 # =============================================================================
 napoleon_custom_sections = [
-    "Arguments", "Returns", "References",
+    ("Arguments", "params"),  # Treat "Arguments" as "Parameters" in docstring (underlined)
+    "Returns", "References",
     "Note", "Examples",
     "Illumination correction", "Background removal",
     "Equalization", "DoG Filter",
@@ -324,8 +327,8 @@ StandaloneHTMLBuilder.supported_image_types = [
 html_css_files = [
     'css/custom.css',
 ]
-carousel_bootstrap_add_css_js = False
-carousel_bootstrap_prefix = ''
+# carousel_bootstrap_add_css_js = False
+# carousel_bootstrap_prefix = ''
 
 html_logo = str(Path(Settings.clearmap_path) / 'gui/creator/icons/logo.png')
 
@@ -341,7 +344,7 @@ html_theme = 'pydata_sphinx_theme'
 
 html_theme_options = {
     'body_max_width': 'auto',
-    'github_url': 'https://github.com/ChristophKirst/ClearMap2',
+    'github_url': 'https://github.com/ClearAnatomics/ClearMap',
     # 'twitter_url': 'https://twitter.com/clearmap_idisco',
     'icon_links': [
         # {'name': 'ClearMap', 'url': 'https://idisco.info', 'icon': html_logo},
@@ -350,13 +353,19 @@ html_theme_options = {
          'icon': 'fab fa-square-x-twitter',
          'type': 'fontawesome'},
     ],
-    "show_nav_level": 2,
+    'show_nav_level': 2,
     'logo': {
         'text': f'ClearMap {version}',
         'image_light': html_logo,
         'image_dark': html_logo,
-    }
+    },
+    'switcher': {
+        'json_url': 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json',
+        'version_match': version,
+    },
+    'navbar_end': ['version-switcher', 'navbar-icon-links'],
 }
+html_baseurl = f'https://clearanatomics.github.io/ClearMapDocumentation/v{version}/'
 
 html_static_path = ['static']
 banner_images = ['_static/ClearMap_banner.jpg', '_static/ClearMap_banner_brain_bw.jpg', '_static/TubeMap_raw.png']

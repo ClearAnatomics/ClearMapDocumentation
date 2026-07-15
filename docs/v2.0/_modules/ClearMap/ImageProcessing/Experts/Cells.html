@@ -1,0 +1,852 @@
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>ClearMap.ImageProcessing.Experts.Cells &#8212; ClearMap 2.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/clearmap.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_utils.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/clearmap_sidebar.css" />
+    
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../../_static/clearmap.js"></script>
+    <script src="../../../../_static/clearmap_sidebar.js"></script>
+    <script src="../../../../_static/clearmap_togglebutton.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!--[if lt IE 9]>
+  <script src="_static/css3-mediaqueries.js"></script>
+  <![endif]-->
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'/>
+   
+
+  </head><body>
+<div class="document">
+ <div class="imagecontainer">
+  <a href="../../../../home.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+  <div class="top-left">
+    <p style="font-size: 30px"> 
+       <a href="../../../../home.html" style="color: #ffffff; font-weight: bold"> ClearMap Documentation </a>
+    </p>
+  </div>
+  <div class="top-right">
+    <ul class="link-list">
+     <li class="link-list"><a href="../../../../home.html">Home</a></li>
+     <li class="link-list"><a href="../../../../overview.html">Overview</a></li>    
+     <li class="link-list"><a href="../../../../installation.html">Installation</a></li>
+     <li class="link-list"><a href="https://github.com/ChristophKirst/ClearMap2"> <img src="../../../../_static/GitHub-Mark.png" height=16px alt="Github"/> Source</a>
+    </ul>
+  </div>
+  <div class="bottom-right">
+    <a href="https://twitter.com/clearmap_idisco?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @clearmap_idisco</a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  </a>
+  </div>
+ </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+       <li><a href="../../../../home.html">Home</a>|&nbsp;</li>
+       <li><a href="../../../../overview.html">Overview</a>|&nbsp;</li>      
+       <li><a href="../../../../search.html">Search</a>|&nbsp;</li>
+       <li><a href="../../../../index.html">Documentation </a> |&nbsp;</li>
+       <li><a href="../../../../index.html#clearmap-api">API </a> &raquo;</li>     
+
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+<div class="document">
+    
+    <div class="documentwrapper">
+    
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><h3><a href="../../../../index.html">ClearMap</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../functionality.html">Functionality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../CellMap.html">CellMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tubemap.html">TubeMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../TubeMap.html">TubeMap Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../media.html">News and Media</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">ClearMap</a></li>
+</ul>
+ 
+
+<h3>Questions? Suggestions?</h3>
+<p>Open an issue at the
+  <a href="https://github.com/ChristophKirst/ClearMap2/issues">tracker</a>.</p>
+  
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+    
+    
+    <div class="sphinxsidebar_right" role="navigation" aria-label="right navigation">
+      <div class="sphinxsidebarwrapper_right">
+        <h3> <a href="../../../../cellmap.html">CellMap Pipeline</a></h3>
+          <a href="../../../../cellmap.html">
+            <img src="../../../../_static/CellMap_small_fast.gif" width=250px height=140px alt="CellMap"/></a>
+        <h3> <a href="../../../../tubemap.html">Tubemap Pipeline</a></h3>
+          <a href="../../../../tubemap.html">
+            <img src="../../../../_static/TubeMap_raw_movie_small.gif" width=250px height=140px alt="TubeMap"/></a>
+        <h3> <a href="../../../../media.html#gallery"> Gallery</a></h3>
+          <a href="../../../../media.html#gallery">
+            <img src="../../../../_static/TubeMap_graph_movie_small.gif" width=250px height=140px alt="Gallery"/></a> 
+        <h3> <a href="../../../../media.html#videos">Social Media and Videos</a></h3>
+          <a href="../../../../media.html#videos">   
+            <img src="../../../../_static/TEDx.png" width=250px height=70px alt="Videos"/></a>  
+      </div>
+    </div>
+      <!-- sidebar2 --> 
+    
+    
+    <div class="bodywrapper">       
+    <div class="body" role="main">
+          
+  <h1>Source code for ClearMap.ImageProcessing.Experts.Cells</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Cells</span>
+<span class="sd">=====</span>
+
+<span class="sd">Expert cell image processing pipeline.</span>
+
+<span class="sd">This module provides the basic routines for processing immmediate eaerely</span>
+<span class="sd">gene data. </span>
+
+<span class="sd">The routines are used in the :mod:`ClearMap.Scripts.CellMap` pipeline.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">__author__</span>    <span class="o">=</span> <span class="s1">&#39;Christoph Kirst &lt;christoph.kirst.ck@gmail.com&gt;&#39;</span>
+<span class="n">__license__</span>   <span class="o">=</span> <span class="s1">&#39;GPLv3 - GNU General Pulic License v3 (see LICENSE.txt)&#39;</span>
+<span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright © 2020 by Christoph Kirst&#39;</span>
+<span class="n">__webpage__</span>   <span class="o">=</span> <span class="s1">&#39;http://idisco.info&#39;</span>
+<span class="n">__download__</span>  <span class="o">=</span> <span class="s1">&#39;http://www.github.com/ChristophKirst/ClearMap2&#39;</span>
+      
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tempfile</span> <span class="k">as</span> <span class="nn">tmpf</span> 
+<span class="kn">import</span> <span class="nn">gc</span>            
+
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">scipy.ndimage</span> <span class="k">as</span> <span class="nn">ndi</span>
+<span class="kn">import</span> <span class="nn">scipy.ndimage.filters</span> <span class="k">as</span> <span class="nn">ndf</span>
+<span class="kn">import</span> <span class="nn">skimage.filters</span> <span class="k">as</span> <span class="nn">skif</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.IO.IO</span> <span class="k">as</span> <span class="nn">io</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.BlockProcessing</span> <span class="k">as</span> <span class="nn">bp</span>
+<span class="kn">import</span> <span class="nn">ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing</span> <span class="k">as</span> <span class="nn">ap</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.IlluminationCorrection</span> <span class="k">as</span> <span class="nn">ic</span>
+<span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Filter.StructureElement</span> <span class="k">as</span> <span class="nn">se</span>
+<span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Filter.FilterKernel</span> <span class="k">as</span> <span class="nn">fk</span>
+<span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.LocalStatistics</span> <span class="k">as</span> <span class="nn">ls</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Analysis.Measurements.MaximaDetection</span> <span class="k">as</span> <span class="nn">md</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Analysis.Measurements.ShapeDetection</span> <span class="k">as</span> <span class="nn">sd</span>
+<span class="kn">import</span> <span class="nn">ClearMap.Analysis.Measurements.MeasureExpression</span> <span class="k">as</span> <span class="nn">me</span>
+
+<span class="c1">#import ClearMap.ImageProcessing.Filter.Rank as rnk</span>
+
+<span class="c1">#import ClearMap.ImageProcessing.LightsheetCorrection as lc</span>
+<span class="c1">#import ClearMap.ImageProcessing.Differentiation.Hessian as hes</span>
+<span class="c1">#import ClearMap.ImageProcessing.Binary.Filling as bf</span>
+<span class="c1">#import ClearMap.ImageProcessing.Binary.Smoothing as bs</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Utils.Timer</span> <span class="k">as</span> <span class="nn">tmr</span>
+
+<span class="kn">import</span> <span class="nn">ClearMap.Utils.HierarchicalDict</span> <span class="k">as</span> <span class="nn">hdict</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Default parameter</span>
+<span class="c1">###############################################################################</span>
+
+<span class="n">default_cell_detection_parameter</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span> 
+  <span class="c1">#flatfield</span>
+  <span class="n">iullumination_correction</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">flatfield</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                  <span class="n">scaling</span> <span class="o">=</span> <span class="s1">&#39;mean&#39;</span><span class="p">),</span>
+                       
+  <span class="c1">#background removal</span>
+  <span class="n">background_correction</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span>
+                               <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;Disk&#39;</span><span class="p">,</span>
+                    <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">),</span>
+  
+  <span class="c1">#equalization</span>
+  <span class="n">equalization</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+  
+  <span class="c1">#difference of gaussians filter</span>
+  <span class="n">dog_filter</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="n">sigma2</span> <span class="o">=</span> <span class="kc">None</span><span class="p">),</span>
+  
+  <span class="c1">#extended maxima detection</span>
+  <span class="n">maxima_detection</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">h_max</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                          <span class="n">shape</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+                          <span class="n">threshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                          <span class="n">valid</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                          <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">),</span>
+
+  <span class="c1">#cell shape detection                                  </span>
+  <span class="n">shape_detection</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">threshold</span> <span class="o">=</span> <span class="mi">700</span><span class="p">,</span>
+                         <span class="n">save</span> <span class="o">=</span> <span class="kc">False</span><span class="p">),</span>
+  
+  <span class="c1">#cell intenisty detection                   </span>
+  <span class="n">intensity_detection</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span>
+                             <span class="n">shape</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+                             <span class="n">measure</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">,</span> <span class="s1">&#39;background&#39;</span><span class="p">]),</span> 
+<span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;Parameter for the cell detectrion pipeline. </span>
+<span class="sd">See :func:`detect_cells` for details.&quot;&quot;&quot;</span>
+
+
+<span class="n">default_cell_detection_processing_parameter</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+  <span class="n">size_max</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="n">size_min</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+  <span class="n">overlap</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+  <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+  <span class="n">optimization</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+  <span class="n">optimization_fix</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+  <span class="n">verbose</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="n">processes</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;Parallel processing parameter for the cell detection pipeline. </span>
+<span class="sd">See :func:`ClearMap.ParallelProcessing.BlockProcessing.process` for details.&quot;&quot;&quot;</span>       
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Cell detection</span>
+<span class="c1">###############################################################################</span>
+                   
+<div class="viewcode-block" id="detect_cells"><a class="viewcode-back" href="../../../../Api/ClearMap.ImageProcessing.Experts.Cells.html#ClearMap.ImageProcessing.Experts.Cells.detect_cells">[docs]</a><span class="k">def</span> <span class="nf">detect_cells</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">cell_detection_parameter</span> <span class="o">=</span> <span class="n">default_cell_detection_parameter</span><span class="p">,</span> <span class="n">processing_parameter</span> <span class="o">=</span> <span class="n">default_cell_detection_processing_parameter</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Cell detection pipeline.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : source specification</span>
+<span class="sd">    The source of the stitched raw data.</span>
+<span class="sd">  sink : sink specification or None</span>
+<span class="sd">    The sink to write the result to. If None, an array is returned.</span>
+<span class="sd">  cell_detection_parameter : dict</span>
+<span class="sd">    Parameter for the binarization. See below for details.</span>
+<span class="sd">  processing_parameter : dict</span>
+<span class="sd">    Parameter for the parallel processing. </span>
+<span class="sd">    See :func:`ClearMap.ParallelProcessing.BlockProcesing.process` for </span>
+<span class="sd">    description of all the parameter.</span>
+<span class="sd">  verbose : bool</span>
+<span class="sd">    If True, print progress output.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : Source</span>
+<span class="sd">    The result of the cell detection.</span>
+<span class="sd">  </span>
+<span class="sd">  Notes</span>
+<span class="sd">  -----</span>
+<span class="sd">  Effectively this function performs the following steps:</span>
+<span class="sd">    * illumination correction via :func:`~ClearMap.ImageProcessing.IlluminationCorrection.correct_illumination`</span>
+<span class="sd">    * background removal</span>
+<span class="sd">    * difference of Gaussians (DoG) filter</span>
+<span class="sd">    * maxima detection via :func:`~ClearMap.Analysis.Measurements.MaximaDetection.find_extended_maxima`</span>
+<span class="sd">    * cell shape detection via :func:`~ClearMap.Analysis.Measurements.ShapeDetection.detect_shape`</span>
+<span class="sd">    * cell intensity and size measurements via: :func:`~ClearMap.ImageProcessing.Measurements.ShapeDetection.find_intensity`,</span>
+<span class="sd">      :func:`~ClearMap.ImageProcessing.Measurements.ShapeDetection.find_size`. </span>
+
+<span class="sd">  </span>
+<span class="sd">  The parameters for each step are passed as sub-dictionaries to the </span>
+<span class="sd">    cell_detection_parameter dictionary.</span>
+<span class="sd">  </span>
+<span class="sd">  * If None is passed for one of the steps this step is skipped.</span>
+<span class="sd">  </span>
+<span class="sd">  * Each step also has an additional parameter &#39;save&#39; that enables saving of </span>
+<span class="sd">    the result of that step to a file to inspect the pipeline.</span>
+<span class="sd">  </span>
+<span class="sd">  </span>
+<span class="sd">  Illumination correction</span>
+<span class="sd">  -----------------------</span>
+<span class="sd">  illumination_correction : dict or None</span>
+<span class="sd">    Illumination correction step parameter.</span>
+
+<span class="sd">    flatfield : array or str </span>
+<span class="sd">      The flat field estimate for the image planes.</span>
+<span class="sd">    </span>
+<span class="sd">    background : array or None</span>
+<span class="sd">      A background level to assume for the flatfield correction.</span>
+<span class="sd">    </span>
+<span class="sd">    scaling : float, &#39;max&#39;, &#39;mean&#39; or None</span>
+<span class="sd">      Optional scaling after the flat field correction.</span>
+<span class="sd">    </span>
+<span class="sd">    save : str or None</span>
+<span class="sd">      Save the result of this step to the specified file if not None.</span>
+<span class="sd">          </span>
+<span class="sd">  See also :func:`ClearMap.ImageProcessing.IlluminationCorrection.correct_illumination`</span>
+<span class="sd">  </span>
+<span class="sd">  </span>
+<span class="sd">  Background removal</span>
+<span class="sd">  ------------------</span>
+<span class="sd">  background_correction : dict or None</span>
+<span class="sd">    Background removal step parameter.</span>
+
+<span class="sd">    shape : tuple</span>
+<span class="sd">      The shape of the structure lement to estimate the background.</span>
+<span class="sd">      This should be larger than the typical cell size.</span>
+<span class="sd">    </span>
+<span class="sd">    form : str</span>
+<span class="sd">      The form of the structur element (e.g. &#39;Disk&#39;)</span>
+<span class="sd">        </span>
+<span class="sd">    save : str or None</span>
+<span class="sd">      Save the result of this step to the specified file if not None.</span>
+<span class="sd">  </span>
+<span class="sd">  Equalization</span>
+<span class="sd">  ------------</span>
+<span class="sd">  equalization : dict or None</span>
+<span class="sd">    Equalization step parameter.</span>
+<span class="sd">    See also :func:`ClearMap.ImageProcessing.LocalStatistics.local_percentile`</span>
+<span class="sd">    </span>
+<span class="sd">    precentile : tuple</span>
+<span class="sd">      The lower and upper percentiles used to estimate the equalization.</span>
+<span class="sd">      The lower percentile is used for normalization, the upper to limit the</span>
+<span class="sd">      maximal boost to a maximal intensity above this percentile.</span>
+<span class="sd">    </span>
+<span class="sd">    max_value : float</span>
+<span class="sd">      The maximal intensity value in the equalized image.</span>
+<span class="sd">    </span>
+<span class="sd">    selem : tuple</span>
+<span class="sd">      The structural element size to estimate the percentiles. </span>
+<span class="sd">      Should be larger than the larger vessels.</span>
+<span class="sd">    </span>
+<span class="sd">    spacing : tuple</span>
+<span class="sd">      The spacing used to move the structural elements.</span>
+<span class="sd">      Larger spacings speed up processing but become locally less precise.</span>
+<span class="sd">        </span>
+<span class="sd">    interpolate : int</span>
+<span class="sd">      The order of the interpoltation used in constructing the full </span>
+<span class="sd">      background estimate in case a non-trivial spacing is used.</span>
+<span class="sd">      </span>
+<span class="sd">    save : str or None</span>
+<span class="sd">      Save the result of this step to the specified file if not None.</span>
+<span class="sd">  </span>
+<span class="sd">  </span>
+<span class="sd">  DoG Filter</span>
+<span class="sd">  ----------</span>
+<span class="sd">  dog_filter : dict or None</span>
+<span class="sd">    Difference of Gaussian filter step parameter.</span>
+
+<span class="sd">    shape : tuple</span>
+<span class="sd">      The shape of the filter.</span>
+<span class="sd">      This should be near the typical cell size.</span>
+<span class="sd">      </span>
+<span class="sd">    sigma : tuple or None</span>
+<span class="sd">       The std of the inner Gaussian.</span>
+<span class="sd">       If None, detemined automatically from shape.</span>
+<span class="sd">    </span>
+<span class="sd">    sigma2 : tuple or None</span>
+<span class="sd">       The std of the outer Gaussian.</span>
+<span class="sd">       If None, detemined automatically from shape.</span>
+<span class="sd">    </span>
+<span class="sd">    save : str or None</span>
+<span class="sd">      Save the result of this step to the specified file if not None.</span>
+<span class="sd">  </span>
+<span class="sd">  </span>
+<span class="sd">  Maxima detection</span>
+<span class="sd">  ----------------</span>
+<span class="sd">  maxima_detection : dict or None</span>
+<span class="sd">    Extended maxima detection step parameter.</span>
+
+<span class="sd">    h_max : float or None</span>
+<span class="sd">      The &#39;height&#39;for the extended maxima.</span>
+<span class="sd">      If None, simple local maxima detection isused.</span>
+
+<span class="sd">    shape : tuple</span>
+<span class="sd">      The shape of the structural element for extended maxima detection.</span>
+<span class="sd">      This should be near the typical cell size.</span>
+<span class="sd">    </span>
+<span class="sd">    threshold : float or None</span>
+<span class="sd">      Only maxima above this threshold are detected. If None, all maxima</span>
+<span class="sd">      are detected.</span>
+<span class="sd">      </span>
+<span class="sd">    valid : bool</span>
+<span class="sd">      If True, only detect cell centers in the valid range of the blocks with</span>
+<span class="sd">      overlap.</span>
+<span class="sd">    </span>
+<span class="sd">    save : str or None</span>
+<span class="sd">      Save the result of this step to the specified file if not None.</span>
+<span class="sd">  </span>
+<span class="sd">  </span>
+<span class="sd">  Shape detection</span>
+<span class="sd">  ---------------</span>
+<span class="sd">  shape_detection : dict or None</span>
+<span class="sd">    Shape detection step parameter.</span>
+
+<span class="sd">    threshold : float</span>
+<span class="sd">      Cell shape is expanded from maxima if pixles are above this threshold</span>
+<span class="sd">      and not closer to another maxima.</span>
+<span class="sd">    </span>
+<span class="sd">    save : str or None</span>
+<span class="sd">      Save the result of this step to the specified file if not None.</span>
+<span class="sd">  </span>
+<span class="sd">  </span>
+<span class="sd">  Intensity detection</span>
+<span class="sd">  -------------------</span>
+<span class="sd">  intensity_detection : dict or None</span>
+<span class="sd">    Intensity detection step parameter.</span>
+
+<span class="sd">    method : {&#39;max&#39;|&#39;min&#39;,&#39;mean&#39;|&#39;sum&#39;}</span>
+<span class="sd">      The method to use to measure the intensity of a cell.</span>
+<span class="sd">      </span>
+<span class="sd">    shape : tuple or None</span>
+<span class="sd">      If no cell shapes are detected a disk of this shape is used to measure</span>
+<span class="sd">      the cell intensity.</span>
+<span class="sd">    </span>
+<span class="sd">    save : str or None</span>
+<span class="sd">      Save the result of this step to the specified file if not None.</span>
+<span class="sd">  </span>
+<span class="sd">  References</span>
+<span class="sd">  ----------</span>
+<span class="sd">  [1] Renier, Adams, Kirst, Wu et al., &quot;Mapping of Brain Activity by Automated Volume Analysis of Immediate Early Genes.&quot;, Cell 165, 1789 (2016)</span>
+<span class="sd">  [1] Kirst et al., &quot;Mapping the Fine-Scale Organization and Plasticity of the Brain Vasculature&quot;, Cell 180, 780 (2020)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+    
+  <span class="c1">#initialize sink</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+  <span class="n">order</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+  
+  <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">cell_detection_parameter</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">par</span> <span class="o">=</span> <span class="n">cell_detection_parameter</span><span class="p">[</span><span class="n">key</span><span class="p">];</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">par</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+      <span class="n">filename</span> <span class="o">=</span> <span class="n">par</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+      <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
+        <span class="n">ap</span><span class="o">.</span><span class="n">initialize_sink</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">);</span>
+        
+  <span class="n">cell_detection_parameter</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">processing_parameter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;verbose&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">));</span>
+  
+  <span class="n">results</span><span class="p">,</span> <span class="n">blocks</span> <span class="o">=</span> <span class="n">bp</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">detect_cells_block</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">function_type</span><span class="o">=</span><span class="s1">&#39;block&#39;</span><span class="p">,</span> <span class="n">return_result</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_blocks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parameter</span><span class="o">=</span><span class="n">cell_detection_parameter</span><span class="p">,</span> <span class="o">**</span><span class="n">processing_parameter</span><span class="p">)</span>                   
+  
+  <span class="c1">#merge results</span>
+  <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">])</span>
+  
+  <span class="c1">#create column headers</span>
+  <span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">];</span>
+  <span class="n">dtypes</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">];</span>
+  <span class="k">if</span> <span class="n">cell_detection_parameter</span><span class="p">[</span><span class="s1">&#39;shape_detection&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">header</span> <span class="o">+=</span> <span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">];</span>
+    <span class="n">dtypes</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">int</span><span class="p">];</span>
+  <span class="n">measures</span> <span class="o">=</span> <span class="n">cell_detection_parameter</span><span class="p">[</span><span class="s1">&#39;intensity_detection&#39;</span><span class="p">][</span><span class="s1">&#39;measure&#39;</span><span class="p">];</span>
+  <span class="n">header</span> <span class="o">+=</span>  <span class="n">measures</span>
+  <span class="n">dtypes</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">measures</span><span class="p">)</span>
+
+  <span class="n">dt</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;names&#39;</span> <span class="p">:</span> <span class="n">header</span><span class="p">,</span> <span class="s1">&#39;formats&#39;</span> <span class="p">:</span> <span class="n">dtypes</span><span class="p">};</span>
+  <span class="n">cells</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dt</span><span class="p">);</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">h</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">header</span><span class="p">):</span>
+    <span class="n">cells</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[:,</span><span class="n">i</span><span class="p">];</span>
+  
+  <span class="c1">#save results  </span>
+  <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">cells</span><span class="p">);</span></div>
+
+
+<div class="viewcode-block" id="detect_cells_block"><a class="viewcode-back" href="../../../../Api/ClearMap.ImageProcessing.Experts.Cells.html#ClearMap.ImageProcessing.Experts.Cells.detect_cells_block">[docs]</a><span class="k">def</span> <span class="nf">detect_cells_block</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">parameter</span> <span class="o">=</span> <span class="n">default_cell_detection_parameter</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Detect cells in a Block.&quot;&quot;&quot;</span>
+  
+  <span class="c1">#initialize parameter and slicings</span>
+  <span class="n">verbose</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;verbose&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">);</span>
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;Block </span><span class="si">%s</span><span class="s1">: &#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">info</span><span class="p">(),);</span>
+    <span class="n">total_time</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
+  
+  <span class="n">base_slicing</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">base_slicing</span><span class="p">;</span>
+  <span class="n">valid_slicing</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">slicing</span><span class="p">;</span>
+  <span class="n">valid_lower</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">lower</span><span class="p">;</span>
+  <span class="n">valid_upper</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">valid</span><span class="o">.</span><span class="n">upper</span><span class="p">;</span>
+  <span class="n">lower</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">lower</span><span class="p">;</span>
+  
+  <span class="n">parameter_intensity</span>  <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;intensity_detection&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+  <span class="n">measure_to_array</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">();</span>
+  <span class="k">if</span> <span class="n">parameter_intensity</span><span class="p">:</span> 
+    <span class="n">parameter_intensity</span> <span class="o">=</span> <span class="n">parameter_intensity</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+    <span class="n">measure</span> <span class="o">=</span> <span class="n">parameter_intensity</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;measure&#39;</span><span class="p">,</span> <span class="p">[]);</span>
+    <span class="k">if</span> <span class="n">measure</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">measure</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">measure</span><span class="p">:</span>
+      <span class="n">measure_to_array</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="s1">&#39;source&#39;</span> <span class="ow">in</span> <span class="n">measure_to_array</span><span class="p">:</span>
+    <span class="n">measure_to_array</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">source</span><span class="p">;</span>
+  
+  
+  <span class="c1"># correct illumination</span>
+  <span class="n">parameter_illumination</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;illumination_correction&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>        
+  <span class="k">if</span> <span class="n">parameter_illumination</span><span class="p">:</span>
+    <span class="n">parameter_illumination</span> <span class="o">=</span> <span class="n">parameter_illumination</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
+      <span class="n">hdict</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">parameter_illumination</span><span class="p">,</span> <span class="n">head</span><span class="o">=</span><span class="n">prefix</span> <span class="o">+</span> <span class="s1">&#39;Illumination correction&#39;</span><span class="p">)</span>
+    <span class="n">save</span> <span class="o">=</span> <span class="n">parameter_illumination</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>   
+           
+    <span class="n">corrected</span> <span class="o">=</span> <span class="n">ic</span><span class="o">.</span><span class="n">correct_illumination</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="o">**</span><span class="n">parameter_illumination</span><span class="p">)</span>               
+    
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+      <span class="n">save</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">save</span><span class="p">);</span>
+      <span class="n">save</span><span class="p">[</span><span class="n">base_slicing</span><span class="p">]</span> <span class="o">=</span> <span class="n">corrected</span><span class="p">[</span><span class="n">valid_slicing</span><span class="p">];</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Illumination correction&#39;</span><span class="p">);</span>   
+  <span class="k">else</span><span class="p">:</span>
+   <span class="n">corrected</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">array</span><span class="p">);</span>           
+  
+  <span class="k">if</span> <span class="s1">&#39;illumination&#39;</span> <span class="ow">in</span> <span class="n">measure_to_array</span><span class="p">:</span>
+    <span class="n">measure_to_array</span><span class="p">[</span><span class="s1">&#39;illumination&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">corrected</span><span class="p">;</span> 
+  
+  <span class="c1">#background subtraction</span>
+  <span class="n">parameter_background</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;background_correction&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>        
+  <span class="k">if</span> <span class="n">parameter_background</span><span class="p">:</span>
+    <span class="n">parameter_background</span> <span class="o">=</span> <span class="n">parameter_background</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
+      <span class="n">hdict</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">parameter_background</span><span class="p">,</span> <span class="n">head</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s1">&#39;Background removal&#39;</span><span class="p">)</span>
+    <span class="n">save</span> <span class="o">=</span> <span class="n">parameter_background</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>   
+           
+    <span class="n">background</span> <span class="o">=</span> <span class="n">remove_background</span><span class="p">(</span><span class="n">corrected</span><span class="p">,</span> <span class="o">**</span><span class="n">parameter_background</span><span class="p">)</span>               
+    
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+      <span class="n">save</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">save</span><span class="p">);</span>
+      <span class="n">save</span><span class="p">[</span><span class="n">base_slicing</span><span class="p">]</span> <span class="o">=</span> <span class="n">corrected</span><span class="p">[</span><span class="n">valid_slicing</span><span class="p">];</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Illumination correction&#39;</span><span class="p">);</span>                          
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">background</span> <span class="o">=</span> <span class="n">corrected</span><span class="p">;</span>
+    
+  <span class="k">del</span> <span class="n">corrected</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="s1">&#39;background&#39;</span> <span class="ow">in</span> <span class="n">measure_to_array</span><span class="p">:</span>
+    <span class="n">measure_to_array</span><span class="p">[</span><span class="s1">&#39;background&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">background</span><span class="p">;</span> 
+  
+  <span class="c1"># equalize </span>
+  <span class="n">parameter_equalize</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;equalization&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+  <span class="k">if</span> <span class="n">parameter_equalize</span><span class="p">:</span> 
+    <span class="n">parameter_equalize</span> <span class="o">=</span> <span class="n">parameter_equalize</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
+      <span class="n">hdict</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">parameter_equalize</span><span class="p">,</span> <span class="n">head</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s1">&#39;Equalization:&#39;</span><span class="p">)</span>    
+    
+    <span class="n">save</span> <span class="o">=</span> <span class="n">parameter_equalize</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+    
+    <span class="n">equalized</span> <span class="o">=</span> <span class="n">equalize</span><span class="p">(</span><span class="n">background</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">parameter_equalize</span><span class="p">);</span>
+        
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+      <span class="n">save</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">save</span><span class="p">);</span>
+      <span class="n">save</span><span class="p">[</span><span class="n">base_slicing</span><span class="p">]</span> <span class="o">=</span> <span class="n">equalized</span><span class="p">[</span><span class="n">valid_slicing</span><span class="p">];</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Equalization&#39;</span><span class="p">);</span>
+  
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">equalized</span> <span class="o">=</span> <span class="n">background</span><span class="p">;</span>
+
+  <span class="k">del</span> <span class="n">background</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="s1">&#39;equalized&#39;</span> <span class="ow">in</span> <span class="n">measure_to_array</span><span class="p">:</span>
+    <span class="n">measure_to_array</span><span class="p">[</span><span class="s1">&#39;equalized&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">equalized</span><span class="p">;</span>
+  
+    
+  <span class="c1">#DoG filter</span>
+  <span class="n">parameter_dog_filter</span> <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dog_filter&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+  <span class="k">if</span> <span class="n">parameter_dog_filter</span><span class="p">:</span> 
+    <span class="n">parameter_dog_filter</span> <span class="o">=</span> <span class="n">parameter_dog_filter</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
+      <span class="n">hdict</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">parameter_dog_filter</span><span class="p">,</span> <span class="n">head</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s1">&#39;DoG filter:&#39;</span><span class="p">)</span>    
+    
+    <span class="n">save</span> <span class="o">=</span> <span class="n">parameter_dog_filter</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+    
+    <span class="n">dog</span> <span class="o">=</span> <span class="n">dog_filter</span><span class="p">(</span><span class="n">equalized</span><span class="p">,</span> <span class="o">**</span><span class="n">parameter_dog_filter</span><span class="p">);</span>
+        
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+      <span class="n">save</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">save</span><span class="p">);</span>
+      <span class="n">save</span><span class="p">[</span><span class="n">base_slicing</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog</span><span class="p">[</span><span class="n">valid_slicing</span><span class="p">];</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;DoG filter&#39;</span><span class="p">);</span>
+  
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">dog</span> <span class="o">=</span> <span class="n">equalized</span><span class="p">;</span>
+
+  <span class="k">del</span> <span class="n">equalized</span><span class="p">;</span>
+  
+  <span class="k">if</span> <span class="s1">&#39;dog&#39;</span> <span class="ow">in</span> <span class="n">measure_to_array</span><span class="p">:</span>
+    <span class="n">measure_to_array</span><span class="p">[</span><span class="s1">&#39;dog&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog</span><span class="p">;</span>
+  
+  
+  <span class="c1">#Maxima detection</span>
+  <span class="n">parameter_maxima</span>     <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;maxima_detection&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+  <span class="n">parameter_shape</span>      <span class="o">=</span> <span class="n">parameter</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;shape_detection&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">parameter_shape</span> <span class="ow">or</span> <span class="n">parameter_intensity</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">parameter_maxima</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="s1">&#39;Warning: maxima detection needed for shape and intensity detection!&#39;</span><span class="p">);</span>
+      <span class="n">parameter_maxima</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">();</span>
+  
+  <span class="k">if</span> <span class="n">parameter_maxima</span><span class="p">:</span> 
+    <span class="n">parameter_maxima</span> <span class="o">=</span> <span class="n">parameter_maxima</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
+      <span class="n">hdict</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">parameter_maxima</span><span class="p">,</span> <span class="n">head</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s1">&#39;Maxima detection:&#39;</span><span class="p">)</span>    
+    
+    <span class="n">save</span> <span class="o">=</span> <span class="n">parameter_maxima</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">parameter_maxima</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;valid&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+    
+    <span class="c1"># extended maxima</span>
+    <span class="n">maxima</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">find_maxima</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="o">**</span><span class="n">parameter_maxima</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">);</span>
+  
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+      <span class="n">save</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">save</span><span class="p">);</span>
+      <span class="n">save</span><span class="p">[</span><span class="n">base_slicing</span><span class="p">]</span> <span class="o">=</span> <span class="n">maxima</span><span class="p">[</span><span class="n">valid_slicing</span><span class="p">];</span>
+    
+    <span class="c1">#center of maxima</span>
+    <span class="k">if</span> <span class="n">parameter_maxima</span><span class="p">[</span><span class="s1">&#39;h_max&#39;</span><span class="p">]:</span>
+      <span class="n">centers</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">find_center_of_maxima</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">maxima</span><span class="o">=</span><span class="n">maxima</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">centers</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">maxima</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Maxima detection&#39;</span><span class="p">);</span>
+  
+    <span class="c1">#correct for valid region</span>
+    <span class="k">if</span> <span class="n">valid</span><span class="p">:</span>
+      <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">centers</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">);</span>
+      <span class="k">for</span> <span class="n">c</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">u</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">centers</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">valid_lower</span><span class="p">,</span> <span class="n">valid_upper</span><span class="p">):</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">c</span><span class="p">,</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">u</span><span class="p">));</span>
+      <span class="n">centers</span> <span class="o">=</span> <span class="n">centers</span><span class="p">[</span><span class="n">ids</span><span class="p">];</span>
+      <span class="k">del</span> <span class="n">ids</span><span class="p">;</span>
+  
+  <span class="k">del</span> <span class="n">dog</span><span class="p">,</span> <span class="n">maxima</span><span class="p">;</span>
+  
+  <span class="n">results</span> <span class="o">=</span> <span class="p">(</span><span class="n">centers</span><span class="p">,);</span>
+  
+  <span class="c1">#cell shape detection</span>
+  <span class="k">if</span> <span class="n">parameter_shape</span><span class="p">:</span> 
+    <span class="n">parameter_shape</span> <span class="o">=</span> <span class="n">parameter_shape</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
+      <span class="n">hdict</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">parameter_shape</span><span class="p">,</span> <span class="n">head</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s1">&#39;Shape detection:&#39;</span><span class="p">)</span>    
+    
+    <span class="n">save</span> <span class="o">=</span> <span class="n">parameter_shape</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+    
+    <span class="c1"># shape detection</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">sd</span><span class="o">.</span><span class="n">detect_shape</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="o">**</span><span class="n">parameter_shape</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="n">save</span><span class="p">:</span>
+      <span class="n">save</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">save</span><span class="p">);</span>
+      <span class="n">save</span><span class="p">[</span><span class="n">base_slicing</span><span class="p">]</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="n">valid_slicing</span><span class="p">];</span>
+
+    <span class="c1">#size detection</span>
+    <span class="n">max_label</span> <span class="o">=</span> <span class="n">centers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="n">sd</span><span class="o">.</span><span class="n">find_size</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">max_label</span><span class="o">=</span><span class="n">max_label</span><span class="p">);</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="n">sizes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Shape detection&#39;</span><span class="p">);</span>
+      
+    <span class="n">results</span> <span class="o">+=</span> <span class="p">(</span><span class="n">sizes</span><span class="p">,);</span>
+  
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="kc">None</span><span class="p">;</span>
+
+  <span class="c1">#cell intensity detection</span>
+  <span class="k">if</span> <span class="n">parameter_intensity</span><span class="p">:</span> 
+    <span class="n">parameter_intensity</span> <span class="o">=</span> <span class="n">parameter_intensity</span><span class="o">.</span><span class="n">copy</span><span class="p">();</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span> <span class="o">=</span> <span class="n">tmr</span><span class="o">.</span><span class="n">Timer</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
+      <span class="n">hdict</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">parameter_intensity</span><span class="p">,</span> <span class="n">head</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s1">&#39;Intensity detection:&#39;</span><span class="p">)</span>    
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">r</span> <span class="o">=</span> <span class="n">parameter_intensity</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;shape&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">measure</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">intensity</span> <span class="o">=</span> <span class="n">sd</span><span class="o">.</span><span class="n">find_intensity</span><span class="p">(</span><span class="n">measure_to_array</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">max_label</span><span class="o">=</span><span class="n">max_label</span><span class="p">,</span> <span class="o">**</span><span class="n">parameter_intensity</span><span class="p">);</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">intensity</span> <span class="o">=</span> <span class="n">me</span><span class="o">.</span><span class="n">measure_expression</span><span class="p">(</span><span class="n">measure_to_array</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="n">centers</span><span class="p">,</span> <span class="n">search_radius</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="o">**</span><span class="n">parameter_intensity</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+      
+      <span class="n">results</span> <span class="o">+=</span> <span class="p">(</span><span class="n">intensity</span><span class="p">,)</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+      <span class="n">timer</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Shape detection&#39;</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">valid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="n">valid</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">);</span>
+  
+  <span class="c1">#correct coordinate offsets of blocks</span>
+  <span class="n">results</span> <span class="o">=</span> <span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">lower</span><span class="p">,)</span> <span class="o">+</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">:];</span>
+  
+  <span class="c1">#correct shapes for merging</span>
+  <span class="n">results</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">r</span><span class="p">[:,</span><span class="kc">None</span><span class="p">]</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">);</span>
+  
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="n">total_time</span><span class="o">.</span><span class="n">print_elapsed_time</span><span class="p">(</span><span class="s1">&#39;Cell detection&#39;</span><span class="p">)</span>
+  
+  <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+  
+  <span class="k">return</span> <span class="n">results</span><span class="p">;</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Cell detection processing steps</span>
+<span class="c1">###############################################################################</span>
+
+<div class="viewcode-block" id="remove_background"><a class="viewcode-back" href="../../../../Api/ClearMap.ImageProcessing.Experts.Cells.html#ClearMap.ImageProcessing.Experts.Cells.remove_background">[docs]</a><span class="k">def</span> <span class="nf">remove_background</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;Disk&#39;</span><span class="p">):</span>
+  <span class="n">selem</span> <span class="o">=</span> <span class="n">se</span><span class="o">.</span><span class="n">structure_element</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">form</span><span class="o">=</span><span class="n">form</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">);</span>
+  <span class="n">removed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">source</span><span class="o">.</span><span class="n">dtype</span><span class="p">);</span>
+  <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+    <span class="c1">#img[:,:,z] = img[:,:,z] - grey_opening(img[:,:,z], structure = structureElement(&#39;Disk&#39;, (30,30)));</span>
+    <span class="c1">#img[:,:,z] = img[:,:,z] - morph.grey_opening(img[:,:,z], structure = self.structureELement(&#39;Disk&#39;, (150,150)));</span>
+    <span class="n">removed</span><span class="p">[:,:,</span><span class="n">z</span><span class="p">]</span> <span class="o">=</span> <span class="n">source</span><span class="p">[:,:,</span><span class="n">z</span><span class="p">]</span> <span class="o">-</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">source</span><span class="p">[:,:,</span><span class="n">z</span><span class="p">],</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_OPEN</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">removed</span><span class="p">;</span> </div>
+
+
+<div class="viewcode-block" id="equalize"><a class="viewcode-back" href="../../../../Api/ClearMap.ImageProcessing.Experts.Cells.html#ClearMap.ImageProcessing.Experts.Cells.equalize">[docs]</a><span class="k">def</span> <span class="nf">equalize</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">percentile</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">),</span> <span class="n">max_value</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">selem</span> <span class="o">=</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">spacing</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">interpolate</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="n">equalized</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">local_percentile</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">percentile</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">selem</span><span class="o">=</span><span class="n">selem</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="n">spacing</span><span class="p">,</span> <span class="n">interpolate</span><span class="o">=</span><span class="n">interpolate</span><span class="p">);</span>
+  <span class="n">normalize</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">equalized</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">maxima</span> <span class="o">=</span> <span class="n">equalized</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span>
+  <span class="n">ids</span> <span class="o">=</span> <span class="n">maxima</span> <span class="o">*</span> <span class="n">normalize</span> <span class="o">&gt;</span> <span class="n">max_value</span><span class="p">;</span>
+  <span class="n">normalize</span><span class="p">[</span><span class="n">ids</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_value</span> <span class="o">/</span> <span class="n">maxima</span><span class="p">[</span><span class="n">ids</span><span class="p">];</span>
+  <span class="n">equalized</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">float</span><span class="p">)</span> <span class="o">*</span> <span class="n">normalize</span><span class="p">;</span>                          
+  <span class="k">return</span> <span class="n">equalized</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="dog_filter"><a class="viewcode-back" href="../../../../Api/ClearMap.ImageProcessing.Experts.Cells.html#ClearMap.ImageProcessing.Experts.Cells.dog_filter">[docs]</a><span class="k">def</span> <span class="nf">dog_filter</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sigma2</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">fdog</span> <span class="o">=</span> <span class="n">fk</span><span class="o">.</span><span class="n">filter_kernel</span><span class="p">(</span><span class="n">ftype</span><span class="o">=</span><span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">sigma2</span><span class="o">=</span><span class="n">sigma2</span><span class="p">);</span>
+    <span class="n">fdog</span> <span class="o">=</span> <span class="n">fdog</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">);</span>
+    <span class="n">filtered</span> <span class="o">=</span> <span class="n">ndf</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">fdog</span><span class="p">);</span>
+    <span class="n">filtered</span><span class="p">[</span><span class="n">filtered</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">filtered</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">source</span><span class="p">;</span></div>
+
+
+<div class="viewcode-block" id="detect_maxima"><a class="viewcode-back" href="../../../../Api/ClearMap.ImageProcessing.Experts.Cells.html#ClearMap.ImageProcessing.Experts.Cells.detect_maxima">[docs]</a><span class="k">def</span> <span class="nf">detect_maxima</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">h_max</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+  <span class="c1"># extended maxima</span>
+  <span class="n">maxima</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">find_maxima</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">h_max</span><span class="o">=</span><span class="n">h_max</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">);</span>
+  
+  <span class="c1">#center of maxima</span>
+  <span class="k">if</span> <span class="n">h_max</span><span class="p">:</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">find_center_of_maxima</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">maxima</span><span class="o">=</span><span class="n">maxima</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">);</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">maxima</span><span class="p">)</span><span class="o">.</span><span class="n">array</span><span class="p">;</span>
+  
+  <span class="k">return</span> <span class="n">centers</span><span class="p">;</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Cell filtering</span>
+<span class="c1">###############################################################################</span>
+
+
+<div class="viewcode-block" id="filter_cells"><a class="viewcode-back" href="../../../../Api/ClearMap.ImageProcessing.Experts.Cells.html#ClearMap.ImageProcessing.Experts.Cells.filter_cells">[docs]</a><span class="k">def</span> <span class="nf">filter_cells</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">sink</span><span class="p">,</span> <span class="n">thresholds</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Filter a array of detected cells according to the thresholds.</span>
+<span class="sd">  </span>
+<span class="sd">  Arguments</span>
+<span class="sd">  ---------</span>
+<span class="sd">  source : str, array or Source</span>
+<span class="sd">    The source for the cell data.</span>
+<span class="sd">  sink : str, array or Source</span>
+<span class="sd">    The sink for the results.</span>
+<span class="sd">  thresholds : dict</span>
+<span class="sd">    Dictionary of the form {name : threshold} where name refers to the </span>
+<span class="sd">    column in the cell data and threshold can be None, a float </span>
+<span class="sd">    indicating a minimal threshold or a tuple (min,max) where min,max can be</span>
+<span class="sd">    None or a minimal and maximal threshold value.</span>
+<span class="sd">  </span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">  sink : str, array or Source</span>
+<span class="sd">    The thresholded cell data.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">source</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">as_source</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+  
+  <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">);</span>
+  <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">t</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">t</span><span class="p">:</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span>
+      <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">source</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+      <span class="k">if</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">source</span><span class="p">[</span><span class="n">k</span><span class="p">]);</span>
+  <span class="n">cells_filtered</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="n">ids</span><span class="p">];</span>
+
+  <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sink</span><span class="p">,</span> <span class="n">cells_filtered</span><span class="p">)</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">### Tests</span>
+<span class="c1">###############################################################################</span>
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Tests.&quot;&quot;&quot;</span>
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Visualization.Plot3d</span> <span class="k">as</span> <span class="nn">p3d</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.Tests.Files</span> <span class="k">as</span> <span class="nn">tsf</span>
+  <span class="kn">import</span> <span class="nn">ClearMap.ImageProcessing.Experts.Cells</span> <span class="k">as</span> <span class="nn">cells</span>
+</pre></div>
+ <!-- body -->
+    </div> <!-- body -->
+    </div> <!-- bodywrapper -->
+    
+
+     
+  <!-- mainrow --></div>
+<!-- document --></div>
+<div class="document" style="background-color: #ffffff; text-align: left; padding: 5px 0px 5px 0px">
+<p align="center">
+<a href="../../../../overview.html"><img src="../../../../_static/ClearMap_banner.jpg" height=150px width=150% border="0" alt="ClearMap"/></a>
+</p>
+</div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright Copyright © 2020 by Christoph Kirst.
+    </div>
+  </body>
+</html>

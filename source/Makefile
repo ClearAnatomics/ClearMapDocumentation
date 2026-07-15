@@ -8,6 +8,8 @@ PAPER         =
 BUILDDIR      = build
 APIDIR        = api
 PUBLISHDIR   =  ../docs
+# Autodetect the version of ClearMap from the package itself
+VERSION := $(shell python -c "import ClearMap; v=ClearMap.__version__.split('.'); print('.'.join(v[:2]))")
 # SPHINXOPTS    = -n  # TODO: remove this option
 
 # User-friendly check for sphinx-build
@@ -54,12 +56,12 @@ github: clean cleanapi html publish
 	@echo "ClearMap documentation for github pages build!" 
 
 publish:
-	rm -rf $(PUBLISHDIR)/html
-	mkdir $(PUBLISHDIR)/html
-	@echo "Moving files from $(BUILDDIR) to $(PUBLISHDIR)/html/"
-rsync -r $(BUILDDIR)/html/ $(PUBLISHDIR)/html/
+	rm -rf $(PUBLISHDIR)/$(VERSION)
+	mkdir $(PUBLISHDIR)/$(VERSION)
+	@echo "Moving files from $(BUILDDIR) to $(PUBLISHDIR)/$(VERSION)/"
+	rsync -r $(BUILDDIR)/html/ $(PUBLISHDIR)/$(VERSION)/
 	touch $(PUBLISHDIR)/.nojekyll
-	
+
 clean:
 	rm -rf $(BUILDDIR)/*
 
