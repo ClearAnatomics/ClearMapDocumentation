@@ -51,13 +51,14 @@ help:
 
 github: clean cleanapi html publish
 	@echo
-	@echo "ClearMap documentation for github pages build!"
+	@echo "ClearMap documentation for github pages build!" 
 
 publish:
 	rm -rf $(PUBLISHDIR)/html
 	mkdir $(PUBLISHDIR)/html
-	@echo "Moving files from $(BUILDDIR) to $(PUBLISHDIR)/html"
-	rsync -r $(BUILDDIR)/html $(PUBLISHDIR)/html
+	@echo "Moving files from $(BUILDDIR) to $(PUBLISHDIR)/html/"
+rsync -r $(BUILDDIR)/html/ $(PUBLISHDIR)/html/
+	touch $(PUBLISHDIR)/.nojekyll
 	
 clean:
 	rm -rf $(BUILDDIR)/*
@@ -69,9 +70,6 @@ html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
-	@echo "Cleaning"
-	python -c "from docutils import clean_html; clean_html('$(BUILDDIR)/html')"
-	@echo "Cleaning done!"
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
