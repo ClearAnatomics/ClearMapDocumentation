@@ -6,10 +6,13 @@ ClearMap Documentation
     :maxdepth: 2
 
     overview
+    getting_started
     installation
-    functionality
+    usage
+    package_organisation
     gui/index
     advanced/advanced_usage
+    api
     media
     references
 
@@ -26,33 +29,76 @@ ClearMap Documentation
 `Issues & Ideas <https://github.com/ChristophKirst/ClearMap2/issues>`__ |
 `License <../LICENSE>`__
 
-.. carousel::
-    :show_controls:
-    :show_indicators:
-    :show_captions_below:
-    :show_shadows:
-    :data-bs-interval: 4000
-    :data-bs-ride: carousel
+.. raw:: html
 
-    .. figure:: static/ClearMap_banner.jpg
+    <div id="cmCarousel" class="carousel slide scc-shadow-control"
+         data-bs-ride="carousel" data-bs-interval="4000">
 
-        ClearMap test text
+      <div class="carousel-indicators scc-top-indicator scc-shadow-indicator">
+        <button type="button" data-bs-target="#cmCarousel" data-bs-slide-to="0"
+                class="active" aria-current="true"></button>
+        <button type="button" data-bs-target="#cmCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#cmCarousel" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#cmCarousel" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#cmCarousel" data-bs-slide-to="4"></button>
+      </div>
 
-    .. figure:: static/stitching_banner.png
+      <div class="carousel-inner">
 
-        Custom stitching
+        <div class="carousel-item active">
+          <img src="_static/ClearMap_banner.jpg" class="d-block w-100" alt="ClearMap">
+          <div class="carousel-caption scc-below-control">
+            <h5>ClearMap</h5>
+            <p>High-performance volumetric image analysis</p>
+          </div>
+        </div>
 
-    .. figure:: static/sagittal_cell_count_banner.png
+        <div class="carousel-item">
+          <img src="_static/stitching_banner.png" class="d-block w-100" alt="Stitching">
+          <div class="carousel-caption scc-below-control">
+            <h5>Custom stitching</h5>
+            <p>Tile stitching for terabyte-scale datasets</p>
+          </div>
+        </div>
 
-        Cell counting
+        <div class="carousel-item">
+          <img src="_static/sagittal_cell_count_banner.png" class="d-block w-100" alt="Cell counting">
+          <div class="carousel-caption scc-below-control">
+            <h5>Cell counting</h5>
+            <p>Whole-brain cell detection and atlas mapping</p>
+          </div>
+        </div>
 
-    .. figure:: static/vasculature_banner_bright.png
+        <div class="carousel-item">
+          <img src="_static/vasculature_banner_bright.png" class="d-block w-100" alt="Vasculature">
+          <div class="carousel-caption scc-below-control">
+            <h5>Brain vasculature</h5>
+            <p>Graph-based vessel network analysis</p>
+          </div>
+        </div>
 
-        Brain vasculature
+        <div class="carousel-item">
+          <img src="_static/development_banner.png" class="d-block w-100" alt="Development">
+          <div class="carousel-caption scc-below-control">
+            <h5>Brain development</h5>
+            <p>Developmental atlas registration and comparison</p>
+          </div>
+        </div>
 
-    .. figure:: static/development_banner.png
+      </div>
 
-        Brain development
+      <button class="carousel-control-prev scc-top-control scc-shadow-control"
+              type="button" data-bs-target="#cmCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next scc-top-control scc-shadow-control"
+              type="button" data-bs-target="#cmCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+
+    </div>
 
 |
 
