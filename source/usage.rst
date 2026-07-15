@@ -140,7 +140,7 @@ Deprecated scripts
     :maxdepth: 2
 
     overview
-    functionality
+    package_organisation
     advanced/wobblystitcher
     cellmap
     tubemap

@@ -61,8 +61,7 @@ ClearMap 3.1 is organised into three layers:
     - :class:`~ClearMap.config.defaults_provider.DefaultsProvider`
       — three-level default precedence (user → packaged → code).
 
-**Workspace and assets** (:mod:`~ClearMap.IO.workspace2`,
-:mod:`~ClearMap.IO.workspace_asset`)
+**Workspace and assets** (:mod:`~ClearMap.IO.workspace2`, :mod:`~ClearMap.IO.workspace_asset`)
     Channel-centred workspace that maps *(channel, asset_type)* pairs to
     on-disk :class:`~ClearMap.IO.workspace_asset.Asset` objects.
 
