@@ -1,0 +1,1577 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.Analysis.colocalization.channel &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../../../../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/Analysis/colocalization/channel';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/_modules/ClearMap/Analysis/colocalization/channel.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ClearMap.Analysis.colocalization.channel</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.Analysis.colocalization.channel</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright Gaël Cousin &amp; Charly Rousseau</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Colocalization</span>
+<span class="sd">--------------</span>
+
+<span class="sd">This module allows to compare signal between different channels</span>
+
+<span class="sd">The basic idea is to exploit the data of:</span>
+<span class="sd">  - a binary mask per channel</span>
+<span class="sd">  - a dataframe with a representative point per connected component, given in pixel coords</span>
+<span class="sd">    with possibly extra measurement information for the nucleus in the respective channel,</span>
+<span class="sd">    eg some intensity measurement.</span>
+
+<span class="sd">The idea is to be able to determine if two detected nuclei in distinct channels</span>
+<span class="sd">correspond indeed to the same nucleus.</span>
+
+<span class="sd">.. note::</span>
+<span class="sd">    We have to rely on well aligned channel images for this module to work.</span>
+
+<span class="sd">The simplest method is to break symmetry and have a reference channel that</span>
+<span class="sd">marks all nuclei of the studied cell category (e.g. all cell type or neurons)</span>
+
+<span class="sd">Then, for each reference channel detected nucleus, decide if it is to be considered</span>
+<span class="sd">positive for the the other channels.</span>
+
+<span class="sd">This can be made relying on the following capabilities, given two channels</span>
+<span class="sd">- Compute the overlap of each connected component of a given channel with the</span>
+<span class="sd">other channel, component-wise or globally or, more generally</span>
+<span class="sd">- compute a matching score based on the information we have</span>
+
+<span class="sd">Ideally, all of this is to be made efficiently both with quick sequential code</span>
+<span class="sd">and parallelization techniques.</span>
+
+<span class="sd">.. warning::</span>
+<span class="sd">    The current version of this module deals only with 3d images.</span>
+<span class="sd">    See shape_detection.label_pixels_from_centers commented version for a 2d version.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cached_property</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.core.memmap</span><span class="w"> </span><span class="kn">import</span> <span class="n">memmap</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.ndimage</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ndi</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.transform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">neighbors</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">skimage.morphology</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">initialize_sink</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.IO.MMP</span><span class="w"> </span><span class="kn">import</span> <span class="n">Source</span> <span class="k">as</span> <span class="n">MemmapSource</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Utils.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClearMapValueError</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Analysis.colocalization</span><span class="w"> </span><span class="kn">import</span> <span class="n">bbox</span> <span class="k">as</span> <span class="n">bounding_boxes</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.config.config_handler</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigHandler</span>
+    <span class="n">machine_cfg</span> <span class="o">=</span> <span class="n">ConfigHandler</span><span class="o">.</span><span class="n">get_cfg_from_path</span><span class="p">(</span><span class="n">ConfigHandler</span><span class="o">.</span><span class="n">get_global_path</span><span class="p">(</span><span class="s1">&#39;machine&#39;</span><span class="p">))</span>
+    <span class="n">tmp_folder</span> <span class="o">=</span> <span class="n">machine_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;temp_folder&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">tmp_folder</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;TMP&#39;</span><span class="p">,</span> <span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;TMPDIR&#39;</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_folder</span>
+        <span class="n">tempfile</span><span class="o">.</span><span class="n">tempdir</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Force refresh of tempdir</span>
+    <span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">()</span>  <span class="c1"># Redefine tempdir to the new one</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No machine config file found, using default tempdir; </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="distances">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.distances">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">distances</span><span class="p">(</span><span class="n">points_1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">points_2</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the distances between the points in points_1 and those of points_2.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    points_1 : np.ndarray</span>
+<span class="sd">        array of points of shape (n_points_1,dim)</span>
+<span class="sd">    points_2 : np.ndarray</span>
+<span class="sd">        array of points of shape (n_points_2,dim)</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        distance matrix A: A[i,j] is the distance between the ith point in</span>
+<span class="sd">        points_1 and the jth point in points_2.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">points_1</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">points_2</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span></div>
+
+
+
+<div class="viewcode-block" id="bilabel_bincount">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.bilabel_bincount">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">bilabel_bincount</span><span class="p">(</span><span class="n">labels_1</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">,</span> <span class="n">labels_2</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Count the number of occurrences for all the conjunctions of labels.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    labels_1 : np.array</span>
+<span class="sd">        an array of labels</span>
+<span class="sd">    labels_2 : np.array</span>
+<span class="sd">        another array of labels, with the same shape as labels_1</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.array</span>
+<span class="sd">        The array counts such that counts[i,j] == np.count_nonzero((labels_1==i) * (labels_2==j)).</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># inspired by the join segmentation of skimage</span>
+    <span class="n">max_1</span> <span class="o">=</span> <span class="n">labels_1</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">max_2</span> <span class="o">=</span> <span class="n">labels_2</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="n">max_2</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># factor will also be the height of the output</span>
+    <span class="n">max_val</span> <span class="o">=</span> <span class="n">max_1</span> <span class="o">*</span> <span class="n">factor</span> <span class="o">+</span> <span class="n">max_2</span>
+    <span class="c1"># determine the cheapest dtype to hold the join</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">get_minimum_dtype</span><span class="p">(</span><span class="n">max_val</span><span class="p">)</span>
+
+    <span class="n">joined_labels</span> <span class="o">=</span> <span class="n">factor</span> <span class="o">*</span> <span class="n">labels_1</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span> <span class="o">+</span> <span class="n">labels_2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">joined_labels</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">minlength</span><span class="o">=</span><span class="p">(</span><span class="n">max_1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">max_2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># We return the counts recast in 2d</span>
+    <span class="k">return</span> <span class="n">counts</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">max_1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_minimum_dtype</span><span class="p">(</span><span class="n">max_val</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">sign_char</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">signed</span> <span class="k">else</span> <span class="s2">&quot;u&quot;</span>
+    <span class="k">for</span> <span class="n">bit_width</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">):</span>
+        <span class="k">if</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">bit_width</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">signed</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">max_val</span><span class="p">:</span>  <span class="c1"># -1 because signed</span>
+            <span class="n">dtype</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">sign_char</span><span class="si">}</span><span class="s1">int</span><span class="si">{</span><span class="n">bit_width</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;This software is not able to store the join labels.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Found minimum dtype for </span><span class="si">{</span><span class="n">max_val</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">dtype</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dtype</span>
+
+
+<span class="c1"># for comparison/test purposes</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_naive_bilabel_bincount</span><span class="p">(</span><span class="n">arr_a</span><span class="p">,</span> <span class="n">arr_b</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">arr_a</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">arr_b</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;uint8&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">((</span><span class="n">arr_a</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">arr_b</span> <span class="o">==</span> <span class="n">j</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_data_frame_ok</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">RangeIndex</span><span class="p">)</span>
+        <span class="ow">and</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">start</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="ow">and</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">stop</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="ow">and</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">step</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="ow">and</span> <span class="s2">&quot;index&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="contiguous_labels">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.contiguous_labels">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">contiguous_labels</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>  <span class="c1"># TODO: try optimization with return_index argument of np.unique</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">searchsorted</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">labels</span></div>
+
+
+
+<div class="viewcode-block" id="compress_dtype">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.compress_dtype">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compress_dtype</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">signed</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">get_minimum_dtype</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">signed</span><span class="o">=</span><span class="n">signed</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="cleanup">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.cleanup">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cleanup</span><span class="p">(</span><span class="n">binary_img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">coord_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">as_memmap</span><span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the labeled image giving exactly the connected components of binary_img</span>
+<span class="sd">    that correspond to a representative in dataframe.</span>
+<span class="sd">    This saves a lot of memory and time by not labeling the whole image.</span>
+<span class="sd">    To further save memory, use the as_memmap argument to store the result and temporary results in a memmap</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    binary_img: np.ndarray</span>
+<span class="sd">        The source binary image</span>
+<span class="sd">    df: pd.DataFrame</span>
+<span class="sd">        The dataframe containing the coordinates of the representatives</span>
+<span class="sd">    coord_names: List[str]</span>
+<span class="sd">        The names of the columns in the dataframe that contain the coordinates</span>
+<span class="sd">    as_memmap: bool</span>
+<span class="sd">        If True, the result will be a memmap object, otherwise a numpy array.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray | MemmapSource</span>
+<span class="sd">        The labeled image, with the same shape as binary_img.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">as_memmap</span><span class="p">:</span>
+        <span class="n">label_file_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">())</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="si">}</span><span class="s1">.npy&#39;</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">binary_img</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">initialize_sink</span><span class="p">(</span><span class="n">label_file_path</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;uint64&#39;</span><span class="p">,</span> <span class="n">return_buffer</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># FIXME: int64 or uint64 ??</span>
+        <span class="n">ndi</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">binary_img</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">labels</span><span class="o">.</span><span class="n">_array</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">labels</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">binary_img</span><span class="p">)</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">coord_names</span><span class="p">]</span>
+    <span class="c1"># FIXME: to memmap as well (shape can be computed as coords.shape[0], dtype uint64)</span>
+    <span class="n">relevant_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="o">*</span><span class="n">coords</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">transpose</span><span class="p">()])</span>
+    <span class="n">compressed_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">relevant_labels</span><span class="p">),</span> <span class="n">labels</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">as_memmap</span><span class="p">:</span>
+        <span class="n">label_file_path</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+    <span class="k">del</span> <span class="n">labels</span>
+
+    <span class="n">compressed_labels</span> <span class="o">=</span> <span class="n">contiguous_labels</span><span class="p">(</span><span class="n">compressed_labels</span><span class="p">)</span>  <span class="c1"># Can&#39;t compute shape so no memmap here</span>
+    <span class="n">compressed_labels</span> <span class="o">=</span> <span class="n">compress_dtype</span><span class="p">(</span><span class="n">compressed_labels</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">as_memmap</span><span class="p">:</span>
+        <span class="n">compressed_labels_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">())</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()</span><span class="si">}</span><span class="s1">.npy&#39;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">initialize_sink</span><span class="p">(</span><span class="n">compressed_labels_path</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">compressed_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+                              <span class="n">dtype</span><span class="o">=</span><span class="n">compressed_labels</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">return_buffer</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">compressed_labels</span>
+        <span class="k">return</span> <span class="n">out</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">compressed_labels</span></div>
+
+
+<div class="viewcode-block" id="get_minimum_dtype">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.get_minimum_dtype">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_minimum_dtype</span><span class="p">(</span><span class="n">max_val</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">bit_width</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">):</span>
+        <span class="k">if</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">bit_width</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">signed</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">max_val</span><span class="p">:</span>  <span class="c1"># -1 because signed</span>
+            <span class="n">dtype</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">signed</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;u&quot;</span><span class="si">}</span><span class="s1">int</span><span class="si">{</span><span class="n">bit_width</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No integer dtype is suitable to store values up to </span><span class="si">{</span><span class="n">max_val</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dtype</span></div>
+
+
+<span class="c1"># an efficie,t alternative to cleanup, yet it seems that it does not work properly if binary_img is read from a file.</span>
+<span class="c1"># replacing binary_img by binary_img.copy() in the function call fixes this strange bug.</span>
+<div class="viewcode-block" id="watershed_label">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.watershed_label">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">watershed_label</span><span class="p">(</span><span class="n">binary_img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">representatives</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="o">...</span><span class="p">],</span> <span class="n">label_values</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Label the connected components of binary image, assigning the values for a set of representatives.</span>
+
+<span class="sd">    Any connected component without a reprenstative is labeled 0.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    binary_img: np.ndaray</span>
+<span class="sd">        n-dimensional binary image (0= background,1=foreground)</span>
+<span class="sd">    representatives : tuple[np.ndarray,...]</span>
+<span class="sd">        n-tuple of flat integer arrays of the same size, say k. They give the n coordinates of the k representatives.</span>
+<span class="sd">    label_values : np.ndarray</span>
+<span class="sd">        flat size k array specifying the sought label for each representative in the output</span>
+<span class="sd">    connectivity : int | np.ndarray optional</span>
+<span class="sd">        a specification of the connectivity notion, as in skimage label or watershed</span>
+<span class="sd">    dtype : _type_, optional</span>
+<span class="sd">        dtype of the output. must be a uint or float dtype if specified. Defaults to None.</span>
+<span class="sd">        If None, the smallest suitable uint dtype is used.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray :</span>
+<span class="sd">        The labeling of binary_img with the specified labels, where all the connected components without any element</span>
+<span class="sd">        in repesentatives ares erased.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        An error is raised if negative label_values are passed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">values</span> <span class="o">=</span> <span class="n">label_values</span>
+    <span class="k">if</span> <span class="n">values</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No negative label value accepted.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">get_minimum_dtype</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">signed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">seeds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">binary_img</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">seeds</span><span class="p">[</span><span class="n">representatives</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span>
+    <span class="n">res</span><span class="o">=</span><span class="n">skimage</span><span class="o">.</span><span class="n">segmentation</span><span class="o">.</span><span class="n">watershed</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">seeds</span><span class="p">),</span> <span class="n">markers</span><span class="o">=</span><span class="n">seeds</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">binary_img</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">connectivity</span>
+    <span class="p">)</span>
+    <span class="k">return</span>  <span class="n">res</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="Channel">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Channel</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;In our context a channel is represented by a binary mask and some voxel coordinates in a dataframe.</span>
+<span class="sd">    The voxel coordinates should be a set of representatives for the partition of the True voxels in the binary mask</span>
+<span class="sd">    in connected components for the 1-connectivity (also termed as 6 connectivity in 3d). We admit the situation</span>
+<span class="sd">    where not all connected components have a representative but the points must belong to distinct components.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">channel_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">channel_names</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">binary_img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">dataframe</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">coord_names</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">),</span>
+        <span class="n">voxel_dims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">physical_origin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">channel_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">clean_image</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">already_clean</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Instantiate an object</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        binary_img : np.ndarray</span>
+<span class="sd">            _description_</span>
+<span class="sd">        dataframe : pd.DataFrame</span>
+<span class="sd">            the index must correspond to the row rank, no funky index names or subsets.</span>
+<span class="sd">        coord_names : tuple, optional</span>
+<span class="sd">            _description_, by default (&quot;x&quot;, &quot;y&quot;, &quot;z&quot;)</span>
+<span class="sd">        voxel_dims : _type_, optional</span>
+<span class="sd">            _description_, by default None</span>
+<span class="sd">        physical_origin : _type_, optional</span>
+<span class="sd">            _description_, by default None</span>
+<span class="sd">        channel_name : str, optional</span>
+<span class="sd">            _description_, by default &quot;&quot;</span>
+<span class="sd">        clean_image: bool</span>
+<span class="sd">            If connected components of binary_img corresponding to no representative in dataframe should be erased. Defaults to False.</span>
+<span class="sd">            This is a costly operation designed to be used only in blocks.</span>
+<span class="sd">        already_clean: bool</span>
+<span class="sd">            Bypass prior cleaning for the blocks if True. Defaults to False.</span>
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            _description_</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            _description_</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">_data_frame_ok</span><span class="p">(</span><span class="n">dataframe</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">dataframe</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Either the passed dataframe indexing is not a step 1 integer range starting from 0, or the &#39;index&#39; column name is used.&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">already_clean</span> <span class="o">=</span> <span class="n">already_clean</span>
+        <span class="k">if</span> <span class="n">clean_image</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">already_clean</span><span class="p">:</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">cleanup</span><span class="p">(</span><span class="n">binary_img</span><span class="p">,</span> <span class="n">dataframe</span><span class="p">,</span> <span class="n">coord_names</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">_array</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">binary_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="o">&gt;</span> <span class="mi">0</span>  <span class="c1"># FIXME: use memmap</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">binary_img</span> <span class="o">=</span> <span class="n">binary_img</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">coord_names</span> <span class="o">=</span> <span class="n">coord_names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coord_names</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">voxel_dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">voxel_dims</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span>
+        <span class="k">if</span> <span class="n">physical_origin</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">physical_origin</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">voxel_dims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">voxel_dims</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">physical_origin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">physical_origin</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">voxel_dims</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_origin</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The lengths of voxel_dims, physical_origin and coord_names do not match.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># we identify the channel by a name fo caching management</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">channel_name</span><span class="p">:</span>
+            <span class="n">channel_name</span> <span class="o">=</span> <span class="n">Channel</span><span class="o">.</span><span class="n">channel_count</span>
+            <span class="n">Channel</span><span class="o">.</span><span class="n">channel_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">channel_name</span> <span class="ow">in</span> <span class="n">Channel</span><span class="o">.</span><span class="n">channel_names</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The passed Channel name is already in use.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">channel_name</span>
+        <span class="n">Channel</span><span class="o">.</span><span class="n">channel_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">channel_name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_overlaps_dic</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__bounding_boxes_array</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__centers</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="p">,</span> <span class="n">MemmapSource</span><span class="p">):</span>
+            <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="o">.</span><span class="n">location</span><span class="p">)</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="p">,</span> <span class="n">memmap</span><span class="p">):</span>
+            <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">representative_points</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataframe</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">coord_names</span><span class="p">]</span>
+
+    <span class="c1"># @cached_property</span>
+<div class="viewcode-block" id="Channel.labels">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.labels">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">labels</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">):</span>  <span class="c1"># TODO optimize relabeling from representatives, eg with watershedding</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the labeled image from the binary mask&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">binary_img</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_labels</span></div>
+
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">index_label_correspondence</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the labels of nuclei in the nuclei index order</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.array</span>
+<span class="sd">            the flat array of the labels in the nuclei index order</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataframe</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">coord_names</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">()[</span><span class="o">*</span><span class="n">coords</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">transpose</span><span class="p">()])</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">label_index_correspondence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># beware that not all label corresponds to an index,</span>
+        <span class="c1"># if we do not have a complete set of reps in the dataframe.</span>
+        <span class="c1"># We set arbitrarily the index value 0 for the labels that will not be used.</span>
+        <span class="n">max_label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_label_correspondence</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_label_correspondence</span> <span class="o">==</span> <span class="n">label</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_label_correspondence</span>
+                    <span class="k">else</span> <span class="mi">0</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_label</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_shifted_index_label_correspondence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the index_label_correspondence shifted by 1</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[int]</span>
+<span class="sd">            the list L such that L[i]=index_label_correspondence[i]-1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index_label_correspondence</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+<div class="viewcode-block" id="Channel.nucleus">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.nucleus">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">nucleus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the nucleus associated to a given index, as a mask.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        index : int</span>
+<span class="sd">        index for the chosen representative point in self.dataframe</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_label_correspondence</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Channel.bounding_box">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.bounding_box">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">bounding_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">slice</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the bounding box of the ith nucleus.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        i : int</span>
+<span class="sd">            the index of the considered nucleus.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple[slice,...]</span>
+<span class="sd">            the tuple of slices (slice_0, slice_1, slice_2,...) that defines</span>
+<span class="sd">            the bounding box</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="nb">slice</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_bounding_boxes_array</span><span class="p">()[</span><span class="n">i</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)])</span> <span class="k">for</span> <span class="n">axis</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+    <span class="c1"># kept mainly for comparison and for the generic case of function below</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_naive_bounding_boxes_array</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataframe</span><span class="p">)):</span>
+            <span class="n">nuke</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nucleus</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+            <span class="n">locus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">nuke</span><span class="p">)</span>
+            <span class="n">stack</span> <span class="o">+=</span> <span class="p">[[[</span><span class="n">locus</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">locus</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">)]]</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span>
+
+    <span class="c1"># @cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_bounding_boxes_array</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return an array that specifies the bounding boxes for self.labels()</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            The array A of size len(self.dataframe) such that A[i] specifies the</span>
+<span class="sd">            bounding box of the blob of line i in self.dataframe.</span>
+<span class="sd">            For any axis, A[i][axis_index][0] is the least index value along axis</span>
+<span class="sd">            with index axis_index for a pixel of the ith nucleus and A[i][axis_index][1]</span>
+<span class="sd">            is the maximal reached index value for the same nucleus.</span>
+<span class="sd">            Beware that from this max, 1 must be added to obtain the stop attribute</span>
+<span class="sd">            for a slice defining the corresponding bounding box.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n_dims</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">()</span><span class="o">.</span><span class="n">ndim</span>
+        <span class="k">if</span> <span class="n">n_dims</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__bounding_boxes_array</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">__bounding_boxes_array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_naive_bounding_boxes_array</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__bounding_boxes_array</span>
+        <span class="c1"># optimized bounding_boxes, to avoid looping on all labels</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__bounding_boxes_array</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">n_dims</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">bounding_boxes</span><span class="o">.</span><span class="n">bbox_1d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">())</span>
+            <span class="k">elif</span> <span class="n">n_dims</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">bounding_boxes</span><span class="o">.</span><span class="n">bbox_2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">bounding_boxes</span><span class="o">.</span><span class="n">bbox_3d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__bounding_boxes_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ascontiguousarray</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index_label_correspondence</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__bounding_boxes_array</span>
+
+    <span class="c1"># @cached_property</span>
+<div class="viewcode-block" id="Channel.centers">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.centers">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">centers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__centers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">starts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bounding_boxes_array</span><span class="p">()[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+            <span class="n">stops</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bounding_boxes_array</span><span class="p">()[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__centers</span> <span class="o">=</span> <span class="p">(</span><span class="n">starts</span> <span class="o">+</span> <span class="n">stops</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__centers</span></div>
+
+
+<div class="viewcode-block" id="Channel.center">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.center">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">center</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the center of the bounding box of the ith nucleus.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        i : int</span>
+<span class="sd">            the index of the considered nucleus.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple[int,...]</span>
+<span class="sd">            the tuple of coords for the central voxel</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centers</span><span class="p">()[</span><span class="n">i</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="Channel.centers_df">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.centers_df">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">centers_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;center of bounding box&quot;</span><span class="p">):</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">coord_name</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">coord_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coord_names</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">centers</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span></div>
+
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sizes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the list of the sizes of nuclei in the order of our dataframe.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            The 1D array of sizes of nuclei (ints) in the order of our dataframe.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">())[</span><span class="bp">self</span><span class="o">.</span><span class="n">index_label_correspondence</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Channel.masked_sizes">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.masked_sizes">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">masked_sizes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the list of the sizes of the non-masked part of each nucleus</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[int]</span>
+<span class="sd">            The list of counts of True pixels in mask for each nucleus, in the</span>
+<span class="sd">            order of our dataframe.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">((</span><span class="n">mask</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">())</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">minlength</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)[</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">index_label_correspondence</span>
+        <span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Channel.overlap_rates">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.overlap_rates">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">overlap_rates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the rate of positive pixels for other_channel in each nucleus</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other_channel : Channel</span>
+<span class="sd">            The Channel to compare with self</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.array</span>
+<span class="sd">            The array of rates, in the order of self.dataframe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">masked_sizes</span><span class="p">(</span><span class="n">other_channel</span><span class="o">.</span><span class="n">binary_img</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_blobwise_overlaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute and store the matrix M of overlaps where M[i,j] is the overlap between blob</span>
+<span class="sd">        of index i for self and the blob of index j for other_channel.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">counts</span> <span class="o">=</span> <span class="n">bilabel_bincount</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">(),</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">labels</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_overlaps_dic</span><span class="p">[</span><span class="n">other_channel</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reorder_counts</span><span class="p">(</span><span class="n">other_channel</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_reorder_counts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_channel</span><span class="p">,</span> <span class="n">counts</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">counts</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">index_label_correspondence</span><span class="p">,</span> <span class="p">:][:,</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">index_label_correspondence</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Channel.blobwise_overlaps">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.blobwise_overlaps">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">blobwise_overlaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the matrix of overlaps.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other_channel : Channel</span>
+<span class="sd">            The channel to compare with self.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            The matrix M such that M[i,j] is the overlap count in voxels for blob</span>
+<span class="sd">            of index i for self and the blob of index j for other_channel.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voxel_dims</span> <span class="o">!=</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">voxel_dims</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">physical_origin</span> <span class="o">!=</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">physical_origin</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The blobwise overlap is implemented only for two Channels with same voxel_dims and physical_origin.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overlaps_dic</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overlaps_dic</span><span class="p">[</span><span class="n">other_channel</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">_overlaps_dic</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">_overlaps_dic</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_blobwise_overlaps</span><span class="p">(</span><span class="n">other_channel</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overlaps_dic</span><span class="p">[</span><span class="n">other_channel</span><span class="o">.</span><span class="n">name</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Channel.max_blobwise_overlaps">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.max_blobwise_overlaps">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">max_blobwise_overlaps</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">other_channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">,</span> <span class="n">return_max_indices</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;For each nucleus of self, compute the max overlap with a single nucleus of other_channel.</span>
+<span class="sd">            if return_max_indices is True, nuclei indices that realize the max are also returned.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other_channel: Channel</span>
+<span class="sd">            channel to compare with self</span>
+<span class="sd">        return_max_indices: bool</span>
+<span class="sd">            whether to return the indices of the nuclei of other_channel that realize the maxima (i.e. argmax).</span>
+<span class="sd">             (default True)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            the max overlap (in voxels) for each nucleus in the order of self.dataframe</span>
+
+<span class="sd">        np.ndarray</span>
+<span class="sd">            the array of nucleus indices of other_channel that realize the maxima.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">counts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">blobwise_overlaps</span><span class="p">(</span><span class="n">other_channel</span><span class="p">)</span>
+        <span class="c1"># we handle the case of no blob for other_channel by adding a virtual empty blob</span>
+        <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">counts</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">counts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))])</span>
+
+        <span class="k">if</span> <span class="n">return_max_indices</span><span class="p">:</span>
+            <span class="n">argmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">maxima</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">argmax</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="n">argmax</span><span class="p">:</span>
+                <span class="n">argmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="n">counts</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Returning nan argmax due to empty other_channel blob list.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">maxima</span><span class="p">,</span> <span class="n">argmax</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Channel.max_blobwise_overlap_rates">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.max_blobwise_overlap_rates">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">max_blobwise_overlap_rates</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">other_channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">,</span> <span class="n">return_max_indices</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;For each nucleus of self, compute the max overlap rate with a single nucleus of other_channel.</span>
+<span class="sd">            if return_max_indices is True, nuclei indices that realize the max are also returned.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other_channel: Channel</span>
+<span class="sd">            channel to compare with self</span>
+<span class="sd">        return_max_indices: bool</span>
+<span class="sd">            Whether to return the indices of the nuclei of other_channel that realize the maxima (i.e. argmax).</span>
+<span class="sd">                (default True)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            the max overlap rate for each nucleus in the order of self.dataframe</span>
+
+<span class="sd">        np.ndarray</span>
+<span class="sd">            the array of nucleus indices of other_channel that realize the maxima.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">return_max_indices</span><span class="p">:</span>
+            <span class="n">maxima</span><span class="p">,</span> <span class="n">argmax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_blobwise_overlaps</span><span class="p">(</span><span class="n">other_channel</span><span class="p">,</span> <span class="n">return_max_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">maxima</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">,</span> <span class="n">argmax</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">maxima</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_blobwise_overlaps</span><span class="p">(</span><span class="n">other_channel</span><span class="p">,</span> <span class="n">return_max_indices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">maxima</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span></div>
+
+
+<div class="viewcode-block" id="Channel.centers_distances">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.centers_distances">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">centers_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return array of distances between centers across the two channels.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other_channel : Channel</span>
+<span class="sd">            Channel to compare with self</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            distance matrix A: A[index_1,index_2] is the distance between the centers</span>
+<span class="sd">            of the nucleus indexed by index_1 in self.dataframe and  the nucleus</span>
+<span class="sd">            indexed by index_2 in other_channel.dataframe.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">physical_centers_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">centers</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voxel_dims</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">physical_origin</span>
+        <span class="n">physical_centers_2</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">other_channel</span><span class="o">.</span><span class="n">centers</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="n">other_channel</span><span class="o">.</span><span class="n">voxel_dims</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)))</span> <span class="o">+</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">physical_origin</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">distances</span><span class="p">(</span><span class="n">physical_centers_1</span><span class="p">,</span> <span class="n">physical_centers_2</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Channel.closest_center_distances">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.closest_center_distances">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">closest_center_distances</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">other_channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">,</span> <span class="n">return_min_indices</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the distances to the closest centers in `other_channel` for each center in `self`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other_channel : Channel</span>
+<span class="sd">            _description_</span>
+<span class="sd">        return_min_indices : bool, optional.</span>
+<span class="sd">          Defaults to True.</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            similar to max_blobwise_overlap</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">distances_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">centers_distances</span><span class="p">(</span><span class="n">other_channel</span><span class="p">)</span>  <span class="c1"># TODO cache distances as overlaps</span>
+        <span class="n">argmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distances_</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">minima</span> <span class="o">=</span> <span class="n">distances_</span><span class="p">[:,</span> <span class="n">argmin</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">return_min_indices</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">minima</span><span class="p">,</span> <span class="n">argmin</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">minima</span></div>
+
+
+<div class="viewcode-block" id="Channel.compare">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.Channel.compare">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_channel</span><span class="p">:</span> <span class="n">Channel</span><span class="p">,</span> <span class="n">blob_diameter</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">size_min</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">size_max</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                <span class="n">processes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a final colocalization report</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other_channel : Channel</span>
+<span class="sd">            _description_</span>
+<span class="sd">        blob_diameter : int</span>
+<span class="sd">            an upper bound for the sought blobs diameters, in PHYSICAL units</span>
+<span class="sd">        size_min : int</span>
+<span class="sd">            min size in voxels for a block dimension</span>
+<span class="sd">        size_max : int</span>
+<span class="sd">            max size in voxels for a block dimension</span>
+<span class="sd">        processes : int | None, optional</span>
+<span class="sd">            positive integer or None, the number of processes to use for block processing.</span>
+<span class="sd">            Defaults to None, if None the number of processes will equal the computer&#39;s number</span>
+<span class="sd">            of processors.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pd.DataFrame</span>
+<span class="sd">            A colocalization report in pandas dataframe format</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voxel_dims</span> <span class="o">!=</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">voxel_dims</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The two considered channels must have the same voxel_dims.&quot;</span><span class="p">)</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">voxel_dims</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">coord_names</span> <span class="o">!=</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">coord_names</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The comparison of Channels with different coord_names is not implemented.&quot;</span><span class="p">)</span>
+
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Analysis.colocalization.parallelism</span><span class="w"> </span><span class="kn">import</span> <span class="n">compare</span>
+        <span class="k">return</span> <span class="n">compare</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">binary_img</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dataframe</span><span class="p">,</span>
+            <span class="n">other_channel</span><span class="o">.</span><span class="n">binary_img</span><span class="p">,</span>
+            <span class="n">other_channel</span><span class="o">.</span><span class="n">dataframe</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+            <span class="n">coord_names</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">coord_names</span><span class="p">,</span>
+            <span class="n">blob_diameter</span><span class="o">=</span><span class="n">blob_diameter</span><span class="p">,</span>
+            <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span>
+            <span class="n">size_min</span><span class="o">=</span><span class="n">size_min</span><span class="p">,</span>
+            <span class="n">size_max</span><span class="o">=</span><span class="n">size_max</span><span class="p">,</span>
+            <span class="n">are_already_clean</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">already_clean</span><span class="p">,</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">already_clean</span><span class="p">),</span>
+        <span class="p">)</span></div>
+
+
+    <span class="c1"># for comparison/testing purposes</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_naive_compare</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_channel</span><span class="p">):</span>
+        <span class="n">max_overlaps</span><span class="p">,</span> <span class="n">max_overlaps_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_blobwise_overlaps</span><span class="p">(</span><span class="n">other_channel</span><span class="p">,</span> <span class="n">return_max_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">centers_df_0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">centers_df</span><span class="p">()</span>
+        <span class="n">c0_result</span> <span class="o">=</span> <span class="n">centers_df_0</span>
+        <span class="n">blobwise_overlap_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;max blobwise overlap (in voxels)&quot;</span><span class="p">:</span> <span class="n">max_overlaps</span><span class="p">,</span>
+                <span class="s2">&quot;max relative blobwise overlap&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_blobwise_overlap_rates</span><span class="p">(</span>
+                    <span class="n">other_channel</span><span class="p">,</span> <span class="n">return_max_indices</span><span class="o">=</span><span class="kc">False</span>
+                <span class="p">),</span>
+                <span class="s2">&quot;index of maximizing overlap blob&quot;</span><span class="p">:</span> <span class="n">max_overlaps_indices</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+        <span class="n">c0_result</span> <span class="o">=</span> <span class="n">c0_result</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">blobwise_overlap_df</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="s2">&quot;1:1&quot;</span><span class="p">)</span>
+
+        <span class="c1"># cook the max overlap center dataframe</span>
+        <span class="n">centers_df_1</span> <span class="o">=</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">centers_df</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;maximizing blob bbox center&quot;</span><span class="p">)</span>
+        <span class="n">max_overlap_coords</span> <span class="o">=</span> <span class="n">centers_df_1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">max_overlaps_indices</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataframe</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+        <span class="n">c0_result</span> <span class="o">=</span> <span class="n">c0_result</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">max_overlap_coords</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="s2">&quot;1:1&quot;</span><span class="p">)</span>
+        <span class="n">c1_result</span> <span class="o">=</span> <span class="n">other_channel</span><span class="o">.</span><span class="n">centers_df</span><span class="p">()</span>
+        <span class="c1"># compute closest point</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;center of bounding box&quot;</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">description</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">coord_name</span> <span class="k">for</span> <span class="n">coord_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coord_names</span><span class="p">]</span>
+        <span class="n">points_0</span> <span class="o">=</span> <span class="n">c0_result</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voxel_dims</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">points_1</span> <span class="o">=</span> <span class="n">c1_result</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voxel_dims</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">learner</span> <span class="o">=</span> <span class="n">neighbors</span><span class="o">.</span><span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;brute&quot;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">learner</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">points_1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">points_1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">distances_</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">learner</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">points_0</span><span class="p">)</span>
+            <span class="n">c0_result</span><span class="p">[</span><span class="s2">&quot;closest blob distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">distances_</span>
+            <span class="n">c0_result</span><span class="p">[</span><span class="s2">&quot;closest blob bbox center index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">indices</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="n">c0_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;closest blob center &quot;</span> <span class="o">+</span> <span class="n">coord</span> <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coord_names</span><span class="p">]</span>
+            <span class="n">c0_result</span><span class="p">[</span><span class="n">c0_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">c1_result</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">indices</span><span class="o">.</span><span class="n">flatten</span><span class="p">()]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c0_result</span><span class="p">[</span><span class="s2">&quot;closest blob distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+            <span class="n">c0_result</span><span class="p">[</span><span class="s2">&quot;closest blob bbox center index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+            <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;closest blob center &quot;</span> <span class="o">+</span> <span class="n">coord</span> <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">coord_names</span><span class="p">]</span>
+            <span class="n">c0_result</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+        <span class="k">return</span> <span class="n">c0_result</span></div>
+
+
+
+<span class="c1"># random Channel generation</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_random_shape</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+    <span class="n">dice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dice</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">radius</span> <span class="o">/</span> <span class="mf">1.8</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">dice</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">octahedron</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">dice</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">ball</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">ClearMapValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The dice should not have rolled that way. (</span><span class="si">{</span><span class="n">dice</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="n">locus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">locus</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+    <span class="n">rand_rot</span> <span class="o">=</span> <span class="n">Rotation</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="n">new_width</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.8</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint8&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span>
+    <span class="n">new_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">new_width</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">centered</span> <span class="o">=</span> <span class="n">points</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">radius</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">new_centered</span> <span class="o">=</span> <span class="n">rand_rot</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">centered</span><span class="p">)</span>
+    <span class="n">new_locus</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">new_centered</span> <span class="o">+</span> <span class="n">new_center</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint64&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span> <span class="o">=</span> <span class="n">new_locus</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">new_locus</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">new_locus</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">new_width</span><span class="p">,)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+    <span class="n">result</span><span class="p">[</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">ndi</span><span class="o">.</span><span class="n">binary_closing</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">structure</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,)</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">new_center</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_random_blobs</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">num_points</span><span class="p">,</span> <span class="n">min_radius</span><span class="p">,</span> <span class="n">max_radius</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Only 3dim shapes are accepted&quot;</span><span class="p">)</span>
+    <span class="n">radii</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">min_radius</span><span class="p">,</span> <span class="n">max_radius</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_points</span><span class="p">,))</span>
+    <span class="n">centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_points</span><span class="p">,))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <span class="n">margin</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">max_radius</span>
+    <span class="n">centers</span> <span class="o">+=</span> <span class="n">margin</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">tuple</span><span class="p">([</span><span class="n">size</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">margin</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_points</span><span class="p">):</span>
+        <span class="n">footprint</span><span class="p">,</span> <span class="n">fp_center</span> <span class="o">=</span> <span class="n">_random_shape</span><span class="p">(</span><span class="n">radii</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">locus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">footprint</span><span class="p">))</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+        <span class="n">locus</span> <span class="o">=</span> <span class="n">locus</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fp_center</span><span class="p">)</span> <span class="o">+</span> <span class="n">centers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">locus</span> <span class="o">=</span> <span class="n">locus</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+        <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span> <span class="o">=</span> <span class="n">locus</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">locus</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">locus</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="c1"># we make sure the added blob will not get connected to previous blobs (for 1-connectivity)</span>
+        <span class="n">candidate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">tuple</span><span class="p">([</span><span class="n">size</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">margin</span> <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+        <span class="n">candidate</span><span class="p">[</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">fattened</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">binary_dilation</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+        <span class="n">fattened_locus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">fattened</span><span class="p">)</span>
+        <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span> <span class="o">=</span> <span class="n">fattened_locus</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fattened_locus</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fattened_locus</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">if</span> <span class="mi">1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">result</span><span class="p">[</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span><span class="p">]:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="n">candidate</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="n">margin</span><span class="p">:</span><span class="o">-</span><span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">:</span><span class="o">-</span><span class="n">margin</span><span class="p">,</span> <span class="n">margin</span><span class="p">:</span><span class="o">-</span><span class="n">margin</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_random_channel_data</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">num_points</span><span class="p">,</span> <span class="n">min_radius</span><span class="p">,</span> <span class="n">max_radius</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">_random_blobs</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">num_points</span><span class="p">,</span> <span class="n">min_radius</span><span class="p">,</span> <span class="n">max_radius</span><span class="p">)</span>
+    <span class="n">labels</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">vals</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">indices</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">vals</span><span class="p">)]</span>
+    <span class="n">representatives</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">labels</span><span class="p">,</span> <span class="n">representatives</span>
+
+
+<div class="viewcode-block" id="random_channel">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.colocalization.channel.html#ClearMap.Analysis.colocalization.channel.random_channel">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">random_channel</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">num_points</span><span class="p">,</span> <span class="n">min_radius</span><span class="p">,</span> <span class="n">max_radius</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a random Channel of given shape.</span>
+<span class="sd">    The underlying image is obtained by successive attempts of blob additions.</span>
+<span class="sd">    If the candidate blob would be connected with existing blobs, it is rejected.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shape : tuple</span>
+<span class="sd">        3d shape for the Channel binary_image attribute</span>
+<span class="sd">    num_points : int</span>
+<span class="sd">        number of attempts to add a blob</span>
+<span class="sd">    min_radius : _type_</span>
+<span class="sd">        min radius for candidate blob, if on the boundary</span>
+<span class="sd">        the resulting blob could have smaller radius</span>
+<span class="sd">    max_radius : _type_</span>
+<span class="sd">        max radius for any blob in the final Channel,</span>
+<span class="sd">        as detected as 1-connected components</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">labels</span><span class="p">,</span> <span class="n">reps</span> <span class="o">=</span> <span class="n">_random_channel_data</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">num_points</span><span class="p">,</span> <span class="n">min_radius</span><span class="p">,</span> <span class="n">max_radius</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">c</span><span class="p">:</span> <span class="n">reps</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="s2">&quot;xyz&quot;</span><span class="p">)})</span>
+    <span class="k">return</span> <span class="n">Channel</span><span class="p">(</span><span class="n">labels</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

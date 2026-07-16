@@ -1,0 +1,1663 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>exceptions &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.Utils.exceptions';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/api/ClearMap.Utils.exceptions.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="install_utils" href="ClearMap.Utils.install_utils.html" />
+    <link rel="prev" title="events" href="ClearMap.Utils.events.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Alignment.html">ClearMap.Alignment</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.html">ClearMap.Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.html">ClearMap.IO</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.html">ClearMap.ImageProcessing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ParallelProcessing.html">ClearMap.ParallelProcessing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Scripts.html">ClearMap.Scripts</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.html">ClearMap.Utils</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Visualization.html">ClearMap.Visualization</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.config.html">ClearMap.config</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.gui.html">ClearMap.gui</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.pipeline_orchestrators.html">ClearMap.pipeline_orchestrators</a></li>
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../api.html" class="nav-link">ClearMap API</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="ClearMap.Utils.html" class="nav-link">ClearMap.Utils</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">exceptions</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="exceptions">
+<h1>exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+</tbody>
+</table>
+</div>
+<p id="module-ClearMap.Utils.exceptions">Custom exceptions for <code class="docutils literal notranslate"><span class="pre">ClearMap</span></code>.</p>
+<p>Every exception carries presentation metadata so the GUI can display
+user-friendly dialogs with actionable recovery options.</p>
+<section id="hierarchy-indentation-inheritance">
+<h2>Hierarchy (indentation = inheritance)<a class="headerlink" href="#hierarchy-indentation-inheritance" title="Link to this heading">#</a></h2>
+<p>ClearMapException
+├── ClearMapValueError  (also ValueError)
+│   └── ParamsOrientationError
+├── ClearMapRuntimeError  (also RuntimeError)
+├── ClearMapIoException  (also IOError)
+│   ├── SourceModuleNotFoundError
+│   ├── IncompatibleSource
+│   ├── MetadataError
+│   │   └── NotAnOmeFile
+│   └── NrrdError
+├── ClearMapWorkspaceError
+│   ├── ClearMapAssetError
+│   │   └── AssetNotFoundError  (also FileNotFoundError, via MissingRequirementException)
+│   ├── MissingChannelError
+│   └── MissingAssetError  (also KeyError, via MissingRequirementException)
+├── MissingRequirementException
+├── ClearMapConfigError
+│   ├── ConfigNotFoundError
+│   ├── ConfigParsingError
+│   ├── AggregatedValidationError
+│   └── PatchConflictError
+├── PlotGraphError
+├── ClearMapVRamException
+├── SmiError
+└── GroupStatsError</p>
+</section>
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.AggregatedValidationError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">AggregatedValidationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#AggregatedValidationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.AggregatedValidationError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapConfigError" title="ClearMap.Utils.exceptions.ClearMapConfigError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapConfigError</span></code></a></p>
+<p>Multiple validation errors collected during a single schema or
+semantic check pass.  <code class="docutils literal notranslate"><span class="pre">messages</span></code> holds one human-readable string
+per individual violation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.AggregatedValidationError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fatal'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.AggregatedValidationError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.AggregatedValidationError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Fix</span> <span class="pre">the</span> <span class="pre">errors</span> <span class="pre">listed</span> <span class="pre">below,</span> <span class="pre">then</span> <span class="pre">save</span> <span class="pre">again.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.AggregatedValidationError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.AggregatedValidationError.user_message">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">user_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.AggregatedValidationError.user_message" title="Link to this definition">#</a></dt>
+<dd><p>What goes into the dialog body.  Override for richer messages.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.AggregatedValidationError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Validation</span> <span class="pre">Errors'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.AggregatedValidationError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.AssetNotFoundError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">AssetNotFoundError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_sub_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_step_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">required_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workspace_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#AssetNotFoundError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.AssetNotFoundError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.MissingRequirementException" title="ClearMap.Utils.exceptions.MissingRequirementException"><code class="xref py py-class docutils literal notranslate"><span class="pre">MissingRequirementException</span></code></a>, <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapAssetError" title="ClearMap.Utils.exceptions.ClearMapAssetError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapAssetError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">FileNotFoundError</span></code></p>
+<p>The file backing a declared workspace asset (or its compressed variant) does not exist on disk.</p>
+<p>Unlike <a class="reference internal" href="#ClearMap.Utils.exceptions.MissingAssetError" title="ClearMap.Utils.exceptions.MissingAssetError"><code class="xref py py-class docutils literal notranslate"><span class="pre">MissingAssetError</span></code></a> (lookup failure), this means the
+workspace <em>does</em> reference the asset but the expected path is absent —
+typically because results were moved, deleted or never written.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.AssetNotFoundError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recoverable'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.AssetNotFoundError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.AssetNotFoundError.user_message">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">user_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.AssetNotFoundError.user_message" title="Link to this definition">#</a></dt>
+<dd><p>What goes into the dialog body.  Override for richer messages.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.AssetNotFoundError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Asset</span> <span class="pre">File</span> <span class="pre">Not</span> <span class="pre">Found'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.AssetNotFoundError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapAssetError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ClearMapAssetError</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ClearMapAssetError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapAssetError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapWorkspaceError" title="ClearMap.Utils.exceptions.ClearMapWorkspaceError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapWorkspaceError</span></code></a></p>
+<p>Raised when an <code class="docutils literal notranslate"><span class="pre">Asset</span></code> object is internally inconsistent. Typically caused by
+invalid <code class="docutils literal notranslate"><span class="pre">TypeSpec</span></code> or <code class="docutils literal notranslate"><span class="pre">ChannelSpec</span></code> definitions, or unresolved tags in a tiled
+file <code class="docutils literal notranslate"><span class="pre">Expression</span></code> (e.g., forbidden <code class="docutils literal notranslate"><span class="pre">&lt;S&gt;</span></code> tags before parametrization).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapAssetError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Asset</span> <span class="pre">Error'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapAssetError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapConfigError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ClearMapConfigError</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ClearMapConfigError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapConfigError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapException" title="ClearMap.Utils.exceptions.ClearMapException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapException</span></code></a></p>
+<p>A configuration file is invalid, missing, or internally inconsistent.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapConfigError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Check</span> <span class="pre">the</span> <span class="pre">configuration</span> <span class="pre">files</span> <span class="pre">for</span> <span class="pre">errors.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapConfigError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapConfigError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Configuration</span> <span class="pre">Error'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapConfigError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapException">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ClearMapException</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ClearMapException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapException" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Base for every ClearMap-specific exception.</p>
+<section id="class-attributes">
+<h2>Class attributes<a class="headerlink" href="#class-attributes" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>severity<span class="classifier">Severity</span></dt><dd><p>How the GUI should present this error.</p>
+</dd>
+<dt>user_title<span class="classifier">str</span></dt><dd><p>Short, user-facing heading shown in the dialog title bar.</p>
+</dd>
+<dt>user_hint<span class="classifier">str</span></dt><dd><p>Actionable advice shown below the error message.</p>
+</dd>
+</dl>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>user_message<span class="classifier">str</span></dt><dd><p>Derived from <code class="docutils literal notranslate"><span class="pre">str(self)</span></code>; subclasses may enrich it with
+structured fields (asset name, channel, etc.).</p>
+</dd>
+<dt>recovery_options<span class="classifier">tuple[RecoveryOption, …]</span></dt><dd><p>Buttons offered to the user.  Defaults come from
+<code class="docutils literal notranslate"><span class="pre">DEFAULT_RECOVERY_OPTIONS[self.severity]</span></code> but can be
+overridden per-class or per-instance.</p>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapException.recovery_options">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">recovery_options</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ClearMap.Utils.exceptions.RecoveryOption" title="ClearMap.Utils.exceptions.RecoveryOption"><span class="pre">RecoveryOption</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapException.recovery_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapException.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fatal'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapException.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapException.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapException.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapException.user_message">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">user_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapException.user_message" title="Link to this definition">#</a></dt>
+<dd><p>What goes into the dialog body.  Override for richer messages.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapException.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ClearMap</span> <span class="pre">Error'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapException.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapFileNotFoundError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ClearMapFileNotFoundError</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ClearMapFileNotFoundError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapFileNotFoundError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapIoException" title="ClearMap.Utils.exceptions.ClearMapIoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapIoException</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">FileNotFoundError</span></code></p>
+<p>Raised when a required file is not found on disk.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapFileNotFoundError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fatal'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapFileNotFoundError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapFileNotFoundError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'File</span> <span class="pre">Not</span> <span class="pre">Found'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapFileNotFoundError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapIoException">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ClearMapIoException</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ClearMapIoException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapIoException" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapException" title="ClearMap.Utils.exceptions.ClearMapException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapException</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">OSError</span></code></p>
+<p>Base exception for failures within the ClearMap.IO dispatcher when reading, writing,
+or initializing <code class="docutils literal notranslate"><span class="pre">Source</span></code> objects.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapIoException.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'I/O</span> <span class="pre">Error'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapIoException.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapPermissionError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ClearMapPermissionError</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ClearMapPermissionError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapPermissionError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapIoException" title="ClearMap.Utils.exceptions.ClearMapIoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapIoException</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">PermissionError</span></code></p>
+<p>Raised when there are insufficient permissions to read/write a file.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapPermissionError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fatal'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapPermissionError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapPermissionError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Check</span> <span class="pre">file</span> <span class="pre">permissions</span> <span class="pre">or</span> <span class="pre">ensure</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">opened</span> <span class="pre">in</span> <span class="pre">another</span> <span class="pre">program.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapPermissionError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapPermissionError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Permission</span> <span class="pre">Denied'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapPermissionError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapRuntimeError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ClearMapRuntimeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ClearMapRuntimeError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapRuntimeError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapException" title="ClearMap.Utils.exceptions.ClearMapException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapException</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeError</span></code></p>
+<p>An operation failed at runtime (external tool crashed, unexpected state, etc.).</p>
+<p>If triggered by a shell command, <code class="docutils literal notranslate"><span class="pre">command</span></code> holds the command line
+for diagnostics.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapRuntimeError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fatal'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapRuntimeError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapRuntimeError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Check</span> <span class="pre">the</span> <span class="pre">log</span> <span class="pre">files</span> <span class="pre">for</span> <span class="pre">more</span> <span class="pre">details.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapRuntimeError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapRuntimeError.user_message">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">user_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapRuntimeError.user_message" title="Link to this definition">#</a></dt>
+<dd><p>What goes into the dialog body.  Override for richer messages.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapRuntimeError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Runtime</span> <span class="pre">Error'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapRuntimeError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapVRamException">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ClearMapVRamException</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ClearMapVRamException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapVRamException" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapException" title="ClearMap.Utils.exceptions.ClearMapException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapException</span></code></a></p>
+<p>Not enough free GPU memory to launch a CUDA/OpenCL kernel.</p>
+<p>The user can free VRAM by closing other applications or reducing
+block sizes, then retry.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapVRamException.recovery_options">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">recovery_options</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ClearMap.Utils.exceptions.RecoveryOption" title="ClearMap.Utils.exceptions.RecoveryOption"><span class="pre">RecoveryOption</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapVRamException.recovery_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapVRamException.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recoverable'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapVRamException.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapVRamException.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Close</span> <span class="pre">other</span> <span class="pre">GPU</span> <span class="pre">applications,</span> <span class="pre">reduce</span> <span class="pre">the</span> <span class="pre">batch/block</span> <span class="pre">size,</span> <span class="pre">or</span> <span class="pre">switch</span> <span class="pre">to</span> <span class="pre">CPU</span> <span class="pre">processing</span> <span class="pre">if</span> <span class="pre">available.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapVRamException.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapVRamException.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Insufficient</span> <span class="pre">GPU</span> <span class="pre">Memory'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapVRamException.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapValueError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ClearMapValueError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ClearMapValueError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapValueError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapException" title="ClearMap.Utils.exceptions.ClearMapException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapException</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+<p>A parameter, argument or computed quantity is outside its valid domain.</p>
+<p>Carries the offending <code class="docutils literal notranslate"><span class="pre">value</span></code> and optionally what was <code class="docutils literal notranslate"><span class="pre">expected</span></code>
+so the dialog can show both to the user.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapValueError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fatal'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapValueError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapValueError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Check</span> <span class="pre">your</span> <span class="pre">parameters</span> <span class="pre">and</span> <span class="pre">try</span> <span class="pre">again.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapValueError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapValueError.user_message">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">user_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapValueError.user_message" title="Link to this definition">#</a></dt>
+<dd><p>What goes into the dialog body.  Override for richer messages.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapValueError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Invalid</span> <span class="pre">Value'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapValueError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapWorkspaceError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ClearMapWorkspaceError</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ClearMapWorkspaceError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapWorkspaceError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapException" title="ClearMap.Utils.exceptions.ClearMapException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapException</span></code></a></p>
+<p>Raised when the <code class="docutils literal notranslate"><span class="pre">Workspace2</span></code> instance detects an invalid state, such as a
+malformed folder layout (<code class="docutils literal notranslate"><span class="pre">resource_type_to_folder</span></code>), unregistered pipelines,
+or failed directory migrations.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapWorkspaceError.recovery_options">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">recovery_options</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ClearMap.Utils.exceptions.RecoveryOption" title="ClearMap.Utils.exceptions.RecoveryOption"><span class="pre">RecoveryOption</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapWorkspaceError.recovery_options" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapWorkspaceError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'If</span> <span class="pre">this</span> <span class="pre">persists,</span> <span class="pre">try</span> <span class="pre">&quot;Reset</span> <span class="pre">Workspace&quot;</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">Workspace</span> <span class="pre">menu</span> <span class="pre">to</span> <span class="pre">rebuild</span> <span class="pre">from</span> <span class="pre">configuration</span> <span class="pre">files.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapWorkspaceError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ClearMapWorkspaceError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Workspace</span> <span class="pre">Error'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ClearMapWorkspaceError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ConfigNotFoundError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ConfigNotFoundError</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ConfigNotFoundError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ConfigNotFoundError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapConfigError" title="ClearMap.Utils.exceptions.ClearMapConfigError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapConfigError</span></code></a></p>
+<p>The expected <code class="docutils literal notranslate"><span class="pre">.cfg</span></code> / <code class="docutils literal notranslate"><span class="pre">.yml</span></code> file does not exist at the resolved path.</p>
+<p>This usually means the experiment folder was never initialised or the
+file was manually deleted.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ConfigNotFoundError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Configuration</span> <span class="pre">File</span> <span class="pre">Not</span> <span class="pre">Found'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ConfigNotFoundError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ConfigParsingError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ConfigParsingError</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ConfigParsingError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ConfigParsingError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapConfigError" title="ClearMap.Utils.exceptions.ClearMapConfigError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapConfigError</span></code></a></p>
+<p>A configuration file exists but cannot be deserialised (malformed YAML,
+unknown anchors, encoding issues, etc.).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ConfigParsingError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'The</span> <span class="pre">configuration</span> <span class="pre">file</span> <span class="pre">contains</span> <span class="pre">invalid</span> <span class="pre">syntax</span> <span class="pre">or</span> <span class="pre">values.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ConfigParsingError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ConfigParsingError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Configuration</span> <span class="pre">Parsing</span> <span class="pre">Error'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ConfigParsingError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.GroupStatsError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">GroupStatsError</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#GroupStatsError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.GroupStatsError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapException" title="ClearMap.Utils.exceptions.ClearMapException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapException</span></code></a></p>
+<p>Group-level statistical analysis failed — typically because density
+maps across samples have mismatched shapes, duplicate sample IDs,
+or empty groups.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.GroupStatsError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Ensure</span> <span class="pre">all</span> <span class="pre">samples</span> <span class="pre">in</span> <span class="pre">each</span> <span class="pre">group</span> <span class="pre">have</span> <span class="pre">matching</span> <span class="pre">density</span> <span class="pre">maps</span> <span class="pre">with</span> <span class="pre">identical</span> <span class="pre">dimensions.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.GroupStatsError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.GroupStatsError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Group</span> <span class="pre">Statistics</span> <span class="pre">Error'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.GroupStatsError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.IncompatibleSource">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">IncompatibleSource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_vars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#IncompatibleSource"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.IncompatibleSource" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapIoException" title="ClearMap.Utils.exceptions.ClearMapIoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapIoException</span></code></a></p>
+<p>Two data sources that should be combinable differ in a critical property.</p>
+<p>Typically raised when trying to stack or overlay images whose shapes,
+dtypes or coordinate systems do not match.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.IncompatibleSource.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fatal'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.IncompatibleSource.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.IncompatibleSource.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Incompatible</span> <span class="pre">Data</span> <span class="pre">Source'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.IncompatibleSource.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MetadataError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MetadataError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#MetadataError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.MetadataError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapIoException" title="ClearMap.Utils.exceptions.ClearMapIoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapIoException</span></code></a></p>
+<p>Image metadata (resolution, channel count, etc.) could not be extracted.</p>
+<p>Usually means the file header is truncated, the format is unsupported,
+or the file is simply not an image.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MetadataError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fatal'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MetadataError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MetadataError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'The</span> <span class="pre">image</span> <span class="pre">metadata</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">read.</span> <span class="pre">Is</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">valid?'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MetadataError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MetadataError.user_message">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">user_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MetadataError.user_message" title="Link to this definition">#</a></dt>
+<dd><p>What goes into the dialog body.  Override for richer messages.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MetadataError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Metadata</span> <span class="pre">Error'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MetadataError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingAssetError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MissingAssetError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_sub_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_step_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">required_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workspace_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#MissingAssetError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingAssetError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.MissingRequirementException" title="ClearMap.Utils.exceptions.MissingRequirementException"><code class="xref py py-class docutils literal notranslate"><span class="pre">MissingRequirementException</span></code></a>, <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapWorkspaceError" title="ClearMap.Utils.exceptions.ClearMapWorkspaceError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapWorkspaceError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">KeyError</span></code></p>
+<p>Raised during workspace lookups when the requested asset type (e.g. ‘stitched’, ‘cells’)
+is not configured in the <code class="docutils literal notranslate"><span class="pre">AssetCollection</span></code> for the specified channel.</p>
+<p>This represents a logical missing definition in the workspace layout, not a missing physical file.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingAssetError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recoverable'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingAssetError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingAssetError.user_hint">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingAssetError.user_hint" title="Link to this definition">#</a></dt>
+<dd><p>str(object=’’) -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to ‘strict’.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingAssetError.user_message">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">user_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingAssetError.user_message" title="Link to this definition">#</a></dt>
+<dd><p>What goes into the dialog body.  Override for richer messages.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingAssetError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Missing</span> <span class="pre">Asset</span> <span class="pre">Definition'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingAssetError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingChannelError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MissingChannelError</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#MissingChannelError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingChannelError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapWorkspaceError" title="ClearMap.Utils.exceptions.ClearMapWorkspaceError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapWorkspaceError</span></code></a></p>
+<p>Raised when a pipeline or workspace query targets a channel ID that has not
+been added to the workspace’s <code class="docutils literal notranslate"><span class="pre">AssetCollection</span></code>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingChannelError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recoverable'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingChannelError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingChannelError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Add</span> <span class="pre">the</span> <span class="pre">channel</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">Sample</span> <span class="pre">Info</span> <span class="pre">tab,</span> <span class="pre">then</span> <span class="pre">retry.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingChannelError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingChannelError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Missing</span> <span class="pre">Channel'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingChannelError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingRequirementException">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">MissingRequirementException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_step_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">required_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">missing_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">found_items</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#MissingRequirementException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingRequirementException" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapException" title="ClearMap.Utils.exceptions.ClearMapException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapException</span></code></a></p>
+<p>Exception raised when a processing step is missing a required condition (i.e. another step has not been run yet)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingRequirementException.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recoverable'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingRequirementException.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingRequirementException.user_hint">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingRequirementException.user_hint" title="Link to this definition">#</a></dt>
+<dd><p>str(object=’’) -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to ‘strict’.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingRequirementException.user_message">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">user_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingRequirementException.user_message" title="Link to this definition">#</a></dt>
+<dd><p>What goes into the dialog body.  Override for richer messages.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.MissingRequirementException.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Missing</span> <span class="pre">Prerequisite'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.MissingRequirementException.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.NotAnOmeFile">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">NotAnOmeFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#NotAnOmeFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.NotAnOmeFile" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.MetadataError" title="ClearMap.Utils.exceptions.MetadataError"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataError</span></code></a></p>
+<p>A file expected to be OME-TIFF lacks the required OME-XML header.</p>
+<p>The file may be a plain TIFF, a BigTIFF or a completely different format.
+Recoverable because the caller can often fall back to non-OME parsing.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.NotAnOmeFile.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recoverable'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.NotAnOmeFile.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.NotAnOmeFile.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Use</span> <span class="pre">a</span> <span class="pre">valid</span> <span class="pre">OME-TIFF</span> <span class="pre">file,</span> <span class="pre">or</span> <span class="pre">select</span> <span class="pre">a</span> <span class="pre">different</span> <span class="pre">format.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.NotAnOmeFile.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.NotAnOmeFile.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Not</span> <span class="pre">an</span> <span class="pre">OME-TIFF</span> <span class="pre">File'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.NotAnOmeFile.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.NrrdError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">NrrdError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#NrrdError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.NrrdError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapIoException" title="ClearMap.Utils.exceptions.ClearMapIoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapIoException</span></code></a></p>
+<p>An NRRD file could not be parsed — missing header fields, unknown
+encoding, version mismatch or truncated data.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.NrrdError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fatal'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.NrrdError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.NrrdError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'The</span> <span class="pre">NRRD</span> <span class="pre">file</span> <span class="pre">appears</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">corrupted</span> <span class="pre">or</span> <span class="pre">unsupported.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.NrrdError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.NrrdError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'NRRD</span> <span class="pre">File</span> <span class="pre">Error'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.NrrdError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ParamsOrientationError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ParamsOrientationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#ParamsOrientationError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.ParamsOrientationError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapValueError" title="ClearMap.Utils.exceptions.ClearMapValueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapValueError</span></code></a></p>
+<p>The user-supplied sample orientation axes are invalid.</p>
+<p>A valid orientation is a permutation of <code class="docutils literal notranslate"><span class="pre">(±1,</span> <span class="pre">±2,</span> <span class="pre">±3)</span></code> with
+no repeated absolute values.  This error is recoverable because
+the user simply needs to correct the spinboxes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ParamsOrientationError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recoverable'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ParamsOrientationError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ParamsOrientationError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Each</span> <span class="pre">axis</span> <span class="pre">must</span> <span class="pre">be</span> <span class="pre">one</span> <span class="pre">of</span> <span class="pre">±1,</span> <span class="pre">±2,</span> <span class="pre">±3</span> <span class="pre">with</span> <span class="pre">no</span> <span class="pre">duplicates.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ParamsOrientationError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ParamsOrientationError.user_message">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">user_message</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ParamsOrientationError.user_message" title="Link to this definition">#</a></dt>
+<dd><p>What goes into the dialog body.  Override for richer messages.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.ParamsOrientationError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Invalid</span> <span class="pre">Orientation'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.ParamsOrientationError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.PatchConflictError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">PatchConflictError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">src_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#PatchConflictError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.PatchConflictError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapConfigError" title="ClearMap.Utils.exceptions.ClearMapConfigError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapConfigError</span></code></a></p>
+<p>Two concurrent or sequential config patches target the same key with
+incompatible intentions (e.g. one deletes a subtree while another
+updates a value inside it).</p>
+<p>Marked CRITICAL because the in-memory config may already be partially
+applied and the on-disk state could be out of sync.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.PatchConflictError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'critical'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.PatchConflictError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.PatchConflictError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'The</span> <span class="pre">workspace</span> <span class="pre">may</span> <span class="pre">be</span> <span class="pre">in</span> <span class="pre">an</span> <span class="pre">inconsistent</span> <span class="pre">state.\nIt</span> <span class="pre">is</span> <span class="pre">recommended</span> <span class="pre">to</span> <span class="pre">reset</span> <span class="pre">the</span> <span class="pre">workspace</span> <span class="pre">and</span> <span class="pre">reload.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.PatchConflictError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.PatchConflictError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Configuration</span> <span class="pre">Conflict'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.PatchConflictError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.PlotGraphError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">PlotGraphError</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#PlotGraphError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.PlotGraphError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapException" title="ClearMap.Utils.exceptions.ClearMapException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapException</span></code></a></p>
+<p>The requested graph visualisation cannot be rendered, usually because
+the vertex/edge count exceeds safe memory limits for the 3-D viewer.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.PlotGraphError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recoverable'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.PlotGraphError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.PlotGraphError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Reduce</span> <span class="pre">the</span> <span class="pre">data</span> <span class="pre">subset</span> <span class="pre">or</span> <span class="pre">apply</span> <span class="pre">stricter</span> <span class="pre">filters.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.PlotGraphError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.PlotGraphError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Cannot</span> <span class="pre">Display</span> <span class="pre">Graph'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.PlotGraphError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.SmiError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">SmiError</span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#SmiError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.SmiError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapException" title="ClearMap.Utils.exceptions.ClearMapException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapException</span></code></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> returned an error or could not be executed.</p>
+<p>GPU monitoring is non-essential, so the session can continue in
+degraded mode without hardware stats.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.SmiError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'degraded'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.SmiError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.SmiError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'nvidia-smi</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">reached.</span> <span class="pre">GPU</span> <span class="pre">monitoring</span> <span class="pre">will</span> <span class="pre">be</span> <span class="pre">disabled</span> <span class="pre">for</span> <span class="pre">this</span> <span class="pre">session.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.SmiError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.SmiError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GPU</span> <span class="pre">Query</span> <span class="pre">Failed'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.SmiError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.SourceModuleNotFoundError">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">SourceModuleNotFoundError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#SourceModuleNotFoundError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.SourceModuleNotFoundError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.Utils.exceptions.ClearMapIoException" title="ClearMap.Utils.exceptions.ClearMapIoException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClearMapIoException</span></code></a></p>
+<p>No reader module is registered for the given file extension.</p>
+<p>Raised by the I/O dispatcher when a file’s extension (e.g. <code class="docutils literal notranslate"><span class="pre">.xyz</span></code>) does not map
+to any registered backend module (like TIF, NRRD, NPY, etc.).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.SourceModuleNotFoundError.severity">
+<span class="sig-name descname"><span class="pre">severity</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.Utils.exceptions.Severity" title="ClearMap.Utils.exceptions.Severity"><span class="pre">Severity</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fatal'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.SourceModuleNotFoundError.severity" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.SourceModuleNotFoundError.user_hint">
+<span class="sig-name descname"><span class="pre">user_hint</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'The</span> <span class="pre">file</span> <span class="pre">extension</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">recognised.</span> <span class="pre">Check</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">path.'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.SourceModuleNotFoundError.user_hint" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.SourceModuleNotFoundError.user_title">
+<span class="sig-name descname"><span class="pre">user_title</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Unsupported</span> <span class="pre">File</span> <span class="pre">Format'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.SourceModuleNotFoundError.user_title" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.RecoveryOption">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RecoveryOption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tooltip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_destructive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#RecoveryOption"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.RecoveryOption" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>One button the user can click in the exception dialog.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.RecoveryOption.action">
+<span class="sig-name descname"><span class="pre">action</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.RecoveryOption.action" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.RecoveryOption.is_default">
+<span class="sig-name descname"><span class="pre">is_default</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.RecoveryOption.is_default" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.RecoveryOption.is_destructive">
+<span class="sig-name descname"><span class="pre">is_destructive</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.RecoveryOption.is_destructive" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.RecoveryOption.label">
+<span class="sig-name descname"><span class="pre">label</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.RecoveryOption.label" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.RecoveryOption.tooltip">
+<span class="sig-name descname"><span class="pre">tooltip</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.RecoveryOption.tooltip" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.Severity">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Severity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#Severity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.Severity" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>How badly the error affects the current session.</p>
+<p>The GUI dialog adapts its appearance and available actions accordingly:</p>
+<dl class="simple">
+<dt>RECOVERABLE</dt><dd><p>Retry or skip possible; no data is at risk.</p>
+</dd>
+<dt>DEGRADED</dt><dd><p>Processing can continue with reduced functionality.</p>
+</dd>
+<dt>FATAL</dt><dd><p>The current operation must stop, but the workspace is intact.</p>
+</dd>
+<dt>CRITICAL</dt><dd><p>The workspace / experiment may be corrupt; suggest reset.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.Severity.CRITICAL">
+<span class="sig-name descname"><span class="pre">CRITICAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'critical'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.Severity.CRITICAL" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.Severity.DEGRADED">
+<span class="sig-name descname"><span class="pre">DEGRADED</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'degraded'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.Severity.DEGRADED" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.Severity.FATAL">
+<span class="sig-name descname"><span class="pre">FATAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'fatal'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.Severity.FATAL" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.Severity.RECOVERABLE">
+<span class="sig-name descname"><span class="pre">RECOVERABLE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'recoverable'</span></span><a class="headerlink" href="#ClearMap.Utils.exceptions.Severity.RECOVERABLE" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.Utils.exceptions.get_caller_name">
+<span class="sig-name descname"><span class="pre">get_caller_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip_patterns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">('wrapper',</span> <span class="pre">'_decorator',</span> <span class="pre">'decorator',</span> <span class="pre">'__')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/ClearMap/Utils/exceptions.html#get_caller_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.Utils.exceptions.get_caller_name" title="Link to this definition">#</a></dt>
+<dd><p>Walk up the call stack and return the first meaningful caller name.
+Skips frames whose <code class="docutils literal notranslate"><span class="pre">co_name</span></code> contains any of <em>skip_patterns</em>
+(typically wrappers, decorators and dunder methods).
+Returns <code class="docutils literal notranslate"><span class="pre">'&lt;unknown&gt;'</span></code> when no suitable frame is found.</p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ClearMap.Utils.events.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">events</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ClearMap.Utils.install_utils.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">install_utils</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchy-indentation-inheritance">Hierarchy (indentation = inheritance)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.AggregatedValidationError"><code class="docutils literal notranslate"><span class="pre">AggregatedValidationError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.AggregatedValidationError.severity"><code class="docutils literal notranslate"><span class="pre">AggregatedValidationError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.AggregatedValidationError.user_hint"><code class="docutils literal notranslate"><span class="pre">AggregatedValidationError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.AggregatedValidationError.user_message"><code class="docutils literal notranslate"><span class="pre">AggregatedValidationError.user_message</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.AggregatedValidationError.user_title"><code class="docutils literal notranslate"><span class="pre">AggregatedValidationError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.AssetNotFoundError"><code class="docutils literal notranslate"><span class="pre">AssetNotFoundError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.AssetNotFoundError.severity"><code class="docutils literal notranslate"><span class="pre">AssetNotFoundError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.AssetNotFoundError.user_message"><code class="docutils literal notranslate"><span class="pre">AssetNotFoundError.user_message</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.AssetNotFoundError.user_title"><code class="docutils literal notranslate"><span class="pre">AssetNotFoundError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapAssetError"><code class="docutils literal notranslate"><span class="pre">ClearMapAssetError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapAssetError.user_title"><code class="docutils literal notranslate"><span class="pre">ClearMapAssetError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapConfigError"><code class="docutils literal notranslate"><span class="pre">ClearMapConfigError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapConfigError.user_hint"><code class="docutils literal notranslate"><span class="pre">ClearMapConfigError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapConfigError.user_title"><code class="docutils literal notranslate"><span class="pre">ClearMapConfigError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapException"><code class="docutils literal notranslate"><span class="pre">ClearMapException</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapException.recovery_options"><code class="docutils literal notranslate"><span class="pre">ClearMapException.recovery_options</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapException.severity"><code class="docutils literal notranslate"><span class="pre">ClearMapException.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapException.user_hint"><code class="docutils literal notranslate"><span class="pre">ClearMapException.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapException.user_message"><code class="docutils literal notranslate"><span class="pre">ClearMapException.user_message</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapException.user_title"><code class="docutils literal notranslate"><span class="pre">ClearMapException.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">ClearMapFileNotFoundError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapFileNotFoundError.severity"><code class="docutils literal notranslate"><span class="pre">ClearMapFileNotFoundError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapFileNotFoundError.user_title"><code class="docutils literal notranslate"><span class="pre">ClearMapFileNotFoundError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapIoException"><code class="docutils literal notranslate"><span class="pre">ClearMapIoException</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapIoException.user_title"><code class="docutils literal notranslate"><span class="pre">ClearMapIoException.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapPermissionError"><code class="docutils literal notranslate"><span class="pre">ClearMapPermissionError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapPermissionError.severity"><code class="docutils literal notranslate"><span class="pre">ClearMapPermissionError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapPermissionError.user_hint"><code class="docutils literal notranslate"><span class="pre">ClearMapPermissionError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapPermissionError.user_title"><code class="docutils literal notranslate"><span class="pre">ClearMapPermissionError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapRuntimeError"><code class="docutils literal notranslate"><span class="pre">ClearMapRuntimeError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapRuntimeError.severity"><code class="docutils literal notranslate"><span class="pre">ClearMapRuntimeError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapRuntimeError.user_hint"><code class="docutils literal notranslate"><span class="pre">ClearMapRuntimeError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapRuntimeError.user_message"><code class="docutils literal notranslate"><span class="pre">ClearMapRuntimeError.user_message</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapRuntimeError.user_title"><code class="docutils literal notranslate"><span class="pre">ClearMapRuntimeError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapVRamException"><code class="docutils literal notranslate"><span class="pre">ClearMapVRamException</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapVRamException.recovery_options"><code class="docutils literal notranslate"><span class="pre">ClearMapVRamException.recovery_options</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapVRamException.severity"><code class="docutils literal notranslate"><span class="pre">ClearMapVRamException.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapVRamException.user_hint"><code class="docutils literal notranslate"><span class="pre">ClearMapVRamException.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapVRamException.user_title"><code class="docutils literal notranslate"><span class="pre">ClearMapVRamException.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapValueError"><code class="docutils literal notranslate"><span class="pre">ClearMapValueError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapValueError.severity"><code class="docutils literal notranslate"><span class="pre">ClearMapValueError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapValueError.user_hint"><code class="docutils literal notranslate"><span class="pre">ClearMapValueError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapValueError.user_message"><code class="docutils literal notranslate"><span class="pre">ClearMapValueError.user_message</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapValueError.user_title"><code class="docutils literal notranslate"><span class="pre">ClearMapValueError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapWorkspaceError"><code class="docutils literal notranslate"><span class="pre">ClearMapWorkspaceError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapWorkspaceError.recovery_options"><code class="docutils literal notranslate"><span class="pre">ClearMapWorkspaceError.recovery_options</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapWorkspaceError.user_hint"><code class="docutils literal notranslate"><span class="pre">ClearMapWorkspaceError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ClearMapWorkspaceError.user_title"><code class="docutils literal notranslate"><span class="pre">ClearMapWorkspaceError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ConfigNotFoundError"><code class="docutils literal notranslate"><span class="pre">ConfigNotFoundError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ConfigNotFoundError.user_title"><code class="docutils literal notranslate"><span class="pre">ConfigNotFoundError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ConfigParsingError"><code class="docutils literal notranslate"><span class="pre">ConfigParsingError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ConfigParsingError.user_hint"><code class="docutils literal notranslate"><span class="pre">ConfigParsingError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ConfigParsingError.user_title"><code class="docutils literal notranslate"><span class="pre">ConfigParsingError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.GroupStatsError"><code class="docutils literal notranslate"><span class="pre">GroupStatsError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.GroupStatsError.user_hint"><code class="docutils literal notranslate"><span class="pre">GroupStatsError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.GroupStatsError.user_title"><code class="docutils literal notranslate"><span class="pre">GroupStatsError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.IncompatibleSource"><code class="docutils literal notranslate"><span class="pre">IncompatibleSource</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.IncompatibleSource.severity"><code class="docutils literal notranslate"><span class="pre">IncompatibleSource.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.IncompatibleSource.user_title"><code class="docutils literal notranslate"><span class="pre">IncompatibleSource.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MetadataError"><code class="docutils literal notranslate"><span class="pre">MetadataError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MetadataError.severity"><code class="docutils literal notranslate"><span class="pre">MetadataError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MetadataError.user_hint"><code class="docutils literal notranslate"><span class="pre">MetadataError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MetadataError.user_message"><code class="docutils literal notranslate"><span class="pre">MetadataError.user_message</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MetadataError.user_title"><code class="docutils literal notranslate"><span class="pre">MetadataError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingAssetError"><code class="docutils literal notranslate"><span class="pre">MissingAssetError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingAssetError.severity"><code class="docutils literal notranslate"><span class="pre">MissingAssetError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingAssetError.user_hint"><code class="docutils literal notranslate"><span class="pre">MissingAssetError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingAssetError.user_message"><code class="docutils literal notranslate"><span class="pre">MissingAssetError.user_message</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingAssetError.user_title"><code class="docutils literal notranslate"><span class="pre">MissingAssetError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingChannelError"><code class="docutils literal notranslate"><span class="pre">MissingChannelError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingChannelError.severity"><code class="docutils literal notranslate"><span class="pre">MissingChannelError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingChannelError.user_hint"><code class="docutils literal notranslate"><span class="pre">MissingChannelError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingChannelError.user_title"><code class="docutils literal notranslate"><span class="pre">MissingChannelError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingRequirementException"><code class="docutils literal notranslate"><span class="pre">MissingRequirementException</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingRequirementException.severity"><code class="docutils literal notranslate"><span class="pre">MissingRequirementException.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingRequirementException.user_hint"><code class="docutils literal notranslate"><span class="pre">MissingRequirementException.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingRequirementException.user_message"><code class="docutils literal notranslate"><span class="pre">MissingRequirementException.user_message</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.MissingRequirementException.user_title"><code class="docutils literal notranslate"><span class="pre">MissingRequirementException.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.NotAnOmeFile"><code class="docutils literal notranslate"><span class="pre">NotAnOmeFile</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.NotAnOmeFile.severity"><code class="docutils literal notranslate"><span class="pre">NotAnOmeFile.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.NotAnOmeFile.user_hint"><code class="docutils literal notranslate"><span class="pre">NotAnOmeFile.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.NotAnOmeFile.user_title"><code class="docutils literal notranslate"><span class="pre">NotAnOmeFile.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.NrrdError"><code class="docutils literal notranslate"><span class="pre">NrrdError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.NrrdError.severity"><code class="docutils literal notranslate"><span class="pre">NrrdError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.NrrdError.user_hint"><code class="docutils literal notranslate"><span class="pre">NrrdError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.NrrdError.user_title"><code class="docutils literal notranslate"><span class="pre">NrrdError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ParamsOrientationError"><code class="docutils literal notranslate"><span class="pre">ParamsOrientationError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ParamsOrientationError.severity"><code class="docutils literal notranslate"><span class="pre">ParamsOrientationError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ParamsOrientationError.user_hint"><code class="docutils literal notranslate"><span class="pre">ParamsOrientationError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ParamsOrientationError.user_message"><code class="docutils literal notranslate"><span class="pre">ParamsOrientationError.user_message</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.ParamsOrientationError.user_title"><code class="docutils literal notranslate"><span class="pre">ParamsOrientationError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.PatchConflictError"><code class="docutils literal notranslate"><span class="pre">PatchConflictError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.PatchConflictError.severity"><code class="docutils literal notranslate"><span class="pre">PatchConflictError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.PatchConflictError.user_hint"><code class="docutils literal notranslate"><span class="pre">PatchConflictError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.PatchConflictError.user_title"><code class="docutils literal notranslate"><span class="pre">PatchConflictError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.PlotGraphError"><code class="docutils literal notranslate"><span class="pre">PlotGraphError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.PlotGraphError.severity"><code class="docutils literal notranslate"><span class="pre">PlotGraphError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.PlotGraphError.user_hint"><code class="docutils literal notranslate"><span class="pre">PlotGraphError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.PlotGraphError.user_title"><code class="docutils literal notranslate"><span class="pre">PlotGraphError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.SmiError"><code class="docutils literal notranslate"><span class="pre">SmiError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.SmiError.severity"><code class="docutils literal notranslate"><span class="pre">SmiError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.SmiError.user_hint"><code class="docutils literal notranslate"><span class="pre">SmiError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.SmiError.user_title"><code class="docutils literal notranslate"><span class="pre">SmiError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.SourceModuleNotFoundError"><code class="docutils literal notranslate"><span class="pre">SourceModuleNotFoundError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.SourceModuleNotFoundError.severity"><code class="docutils literal notranslate"><span class="pre">SourceModuleNotFoundError.severity</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.SourceModuleNotFoundError.user_hint"><code class="docutils literal notranslate"><span class="pre">SourceModuleNotFoundError.user_hint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.SourceModuleNotFoundError.user_title"><code class="docutils literal notranslate"><span class="pre">SourceModuleNotFoundError.user_title</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.RecoveryOption"><code class="docutils literal notranslate"><span class="pre">RecoveryOption</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.RecoveryOption.action"><code class="docutils literal notranslate"><span class="pre">RecoveryOption.action</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.RecoveryOption.is_default"><code class="docutils literal notranslate"><span class="pre">RecoveryOption.is_default</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.RecoveryOption.is_destructive"><code class="docutils literal notranslate"><span class="pre">RecoveryOption.is_destructive</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.RecoveryOption.label"><code class="docutils literal notranslate"><span class="pre">RecoveryOption.label</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.RecoveryOption.tooltip"><code class="docutils literal notranslate"><span class="pre">RecoveryOption.tooltip</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.Severity"><code class="docutils literal notranslate"><span class="pre">Severity</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.Severity.CRITICAL"><code class="docutils literal notranslate"><span class="pre">Severity.CRITICAL</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.Severity.DEGRADED"><code class="docutils literal notranslate"><span class="pre">Severity.DEGRADED</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.Severity.FATAL"><code class="docutils literal notranslate"><span class="pre">Severity.FATAL</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.Severity.RECOVERABLE"><code class="docutils literal notranslate"><span class="pre">Severity.RECOVERABLE</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.Utils.exceptions.get_caller_name"><code class="docutils literal notranslate"><span class="pre">get_caller_name()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.Utils.exceptions.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

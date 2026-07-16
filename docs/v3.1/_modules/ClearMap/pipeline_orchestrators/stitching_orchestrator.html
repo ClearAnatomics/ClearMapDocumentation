@@ -1,0 +1,1283 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.pipeline_orchestrators.stitching_orchestrator &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../../../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/pipeline_orchestrators/stitching_orchestrator';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/_modules/ClearMap/pipeline_orchestrators/stitching_orchestrator.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ClearMap.pipeline_orchestrators.stitching_orchestrator</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.pipeline_orchestrators.stitching_orchestrator</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures.process</span><span class="w"> </span><span class="kn">import</span> <span class="n">BrokenProcessPool</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Alignment.Stitching</span><span class="w"> </span><span class="kn">import</span> <span class="n">stitching_wobbly</span> <span class="k">as</span> <span class="n">stitching_wobbly</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Alignment.Stitching</span><span class="w"> </span><span class="kn">import</span> <span class="n">stitching_rigid</span> <span class="k">as</span> <span class="n">stitching_rigid</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.IO</span><span class="w"> </span><span class="kn">import</span> <span class="n">IO</span> <span class="k">as</span> <span class="n">clearmap_io</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.IO.metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">define_auto_stitching_params</span><span class="p">,</span> <span class="n">parse_ome_info</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Utils.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">MissingRequirementException</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Utils.tag_expression</span><span class="w"> </span><span class="kn">import</span> <span class="n">Expression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Utils.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_stopped</span><span class="p">,</span> <span class="n">sanitize_n_processes</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.config.config_coordinator</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigCoordinator</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.generic_orchestrators</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineOrchestrator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.sample_info_management</span><span class="w"> </span><span class="kn">import</span> <span class="n">SampleManager</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.gui.widgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProgressWatcher</span>
+
+
+<div class="viewcode-block" id="StitchingProcessor">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">StitchingProcessor</span><span class="p">(</span><span class="n">PipelineOrchestrator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This class is used to manage the stitching process</span>
+<span class="sd">    Handle image stitching operations.</span>
+<span class="sd">    Manage stitching configurations and processes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">config_name</span> <span class="o">=</span> <span class="s1">&#39;stitching&#39;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_manager</span><span class="p">:</span> <span class="n">SampleManager</span><span class="p">,</span> <span class="n">cfg_coordinator</span><span class="p">:</span> <span class="n">ConfigCoordinator</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">cfg_coordinator</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="p">:</span> <span class="n">SampleManager</span> <span class="o">=</span> <span class="n">sample_manager</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress_watcher</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;ProgressWatcher&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_place_re</span> <span class="o">=</span> <span class="s1">&#39;done constructing constraints for component&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_align_lyt_re</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Alignment: Wobbly alignment&#39;</span><span class="p">,</span>
+                                                <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Alignment:\sWobbly alignment \(\d+, \d+\)-&gt;\(\d+, \d+\) &quot;</span>
+                                                           <span class="sa">r</span><span class="s2">&quot;along axis [0-3] done: elapsed time: \d+:\d</span><span class="si">{2}</span><span class="s2">:\d</span><span class="si">{2}</span><span class="s2">.\d+&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_stitch_re</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Stitching: stitching&#39;</span><span class="p">,</span>
+                                             <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Stitching: stitching wobbly slice \d+/\d+&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__rigid_stitching_align_re</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;done&#39;</span><span class="p">,</span>
+                                           <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Alignment: aligning \(\d+, \d+\) with \(\d+, \d+\), alignment&quot;</span>
+                                                      <span class="sa">r</span><span class="s2">&quot; pair \d+/\d+ done, shift = \(-?\d+, -?\d+, -?\d+\),&quot;</span>
+                                                      <span class="sa">r</span><span class="s2">&quot; quality = -\d+\.\d+e\+\d+!&quot;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">sample_manager</span><span class="p">)</span>
+
+<div class="viewcode-block" id="StitchingProcessor.setup">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.setup">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_manager</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SampleManager</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">convert_tiles</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span> <span class="o">=</span> <span class="n">sample_manager</span> <span class="k">if</span> <span class="n">sample_manager</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">get_config_view</span><span class="p">(</span><span class="s1">&#39;stitching&#39;</span><span class="p">):</span>
+            <span class="c1"># Config not yet loaded (e.g. processor created before boot_open).</span>
+            <span class="c1"># workspace stays None; setup_complete stays False.</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Stitching config not set in config coordinator; StitchingProcessor setup incomplete.&#39;</span><span class="p">,</span>
+                          <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">setup_complete</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">workspace</span>
+            <span class="k">if</span> <span class="n">convert_tiles</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">convert_tiles</span><span class="p">()</span>  <span class="c1"># TODO: check if needed</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setup_complete</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setup_complete</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Sample manager not set up yet, stitching processor setup incomplete&#39;</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+    <span class="nd">@check_stopped</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">convert_tiles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert list of input files to numpy files for efficiency reasons&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">stitchable_channels</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">convert_tiles_channel</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">_force</span><span class="o">=</span><span class="n">_force</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+
+<div class="viewcode-block" id="StitchingProcessor.convert_tiles_channel">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.convert_tiles_channel">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">convert_tiles_channel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">_force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">][</span><span class="n">channel</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;use_npy&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="ow">or</span> <span class="n">_force</span><span class="p">:</span>
+            <span class="n">asset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span>
+            <span class="n">n_procs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;performance&#39;</span><span class="p">][</span><span class="s1">&#39;file_conversion&#39;</span><span class="p">][</span><span class="s1">&#39;n_processes&#39;</span><span class="p">]</span>
+            <span class="n">n_procs</span> <span class="o">=</span> <span class="n">sanitize_n_processes</span><span class="p">(</span><span class="n">n_procs</span><span class="p">)</span>
+            <span class="n">file_list</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">file_list</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">file_list</span> <span class="ow">or</span> <span class="n">Path</span><span class="p">(</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s1">&#39;.tif&#39;</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">asset</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;.npy&#39;</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">n_procs</span><span class="p">,</span> <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+                <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File conversion of </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s1"> to numpy canceled&#39;</span><span class="p">)</span>
+                    <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="StitchingProcessor.get_stitching_order">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.get_stitching_order">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_stitching_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of trees (each tree is a list of channels in hierarchical order).</span>
+<span class="sd">        Raises a ValueError if any channel is unreachable or if there is a cycle.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span>
+        <span class="n">channels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>  <span class="c1"># All channels</span>
+        <span class="n">root_channels</span> <span class="o">=</span> <span class="p">[</span><span class="n">ch</span> <span class="k">for</span> <span class="n">ch</span><span class="p">,</span> <span class="n">cfg</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                         <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;layout_channel&#39;</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span> <span class="o">==</span> <span class="n">ch</span><span class="p">]</span>
+        <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">forest</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">traverse_tree</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+            <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">root</span><span class="p">]</span>
+            <span class="n">tree</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+                <span class="n">node</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">tree</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+                <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+                <span class="c1"># Find immediate children whose layout_channel == node</span>
+                <span class="k">for</span> <span class="n">ch</span><span class="p">,</span> <span class="n">c_cfg</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">ch</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span> <span class="ow">and</span> <span class="n">c_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;layout_channel&#39;</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span> <span class="o">==</span> <span class="n">node</span><span class="p">:</span>
+                        <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">tree</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">tree_is_stitchable</span><span class="p">(</span><span class="n">root_channel</span><span class="p">,</span> <span class="n">strict</span><span class="p">):</span>
+            <span class="n">cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">root_channel</span><span class="p">)</span>
+            <span class="n">has_layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">root_channel</span><span class="p">,</span> <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;placed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;run&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">has_layout</span><span class="p">):</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot stitch tree with root `</span><span class="si">{</span><span class="n">root_channel</span><span class="si">}</span><span class="s2">`:&quot;</span>
+                       <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">root_channel</span><span class="si">}</span><span class="s2"> does not have a layout and is not set for stitching.&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">strict</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">for</span> <span class="n">root</span> <span class="ow">in</span> <span class="n">root_channels</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">tree_is_stitchable</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">strict</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">root</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                <span class="n">forest</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">traverse_tree</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+
+        <span class="n">unassigned</span> <span class="o">=</span> <span class="n">channels</span> <span class="o">-</span> <span class="n">visited</span>
+        <span class="k">if</span> <span class="n">unassigned</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unreachable or extra channels found: </span><span class="si">{</span><span class="n">unassigned</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">forest</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_pick_overlap_px</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stitching</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prefer declared overlap (px); else derived; return ints if both axes present.&quot;&quot;&quot;</span>
+        <span class="n">ov</span> <span class="o">=</span> <span class="p">(</span><span class="n">stitching</span> <span class="ow">or</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;overlap_px&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="n">dec</span> <span class="o">=</span> <span class="n">ov</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;declared&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">der</span> <span class="o">=</span> <span class="n">ov</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;derived&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">ox</span> <span class="o">=</span> <span class="n">dec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">dec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">der</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">oy</span> <span class="o">=</span> <span class="n">dec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">dec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">der</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">ox</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">oy</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">ox</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">oy</span><span class="p">))</span>
+
+<div class="viewcode-block" id="StitchingProcessor.create_layout_from_ome">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.create_layout_from_ome">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_layout_from_ome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build and persist a real WobblyLayout for &#39;channel&#39; from OME TileConfiguration.</span>
+<span class="sd">        Marks the channel as &#39;use_existing_layout&#39; so rigid placement can be skipped.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">raw_asset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.tif&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">raw_asset</span><span class="o">.</span><span class="n">file_list</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No tiles found for channel &#39;</span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">first_tif</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">raw_asset</span><span class="o">.</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">ome_info</span> <span class="o">=</span> <span class="n">parse_ome_info</span><span class="p">(</span><span class="n">first_tif</span><span class="p">)</span>
+
+        <span class="c1"># Map this channel to OME TileConfiguration channel index</span>
+        <span class="n">ch_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">infer_channel_index_from_name</span><span class="p">(</span><span class="n">first_tif</span><span class="p">)</span>
+        <span class="n">tile_cfg</span> <span class="o">=</span> <span class="n">ome_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tile_configuration&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">ch_idx</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tile_cfg</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot map channel &#39;</span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s2">&#39; to OME TileConfiguration channel index; &quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot;available: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">tile_cfg</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">mapping</span> <span class="o">=</span> <span class="n">tile_cfg</span><span class="p">[</span><span class="n">ch_idx</span><span class="p">]</span>  <span class="c1"># {(ix, iy): {&#39;filename&#39;, &#39;relative_x&#39;, &#39;relative_y&#39;, ...}}</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">mapping</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empty TileConfiguration for channel index </span><span class="si">{</span><span class="n">ch_idx</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Grid size from indices (unzip)</span>
+        <span class="n">keys_sorted</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">keys_sorted</span><span class="p">)</span>  <span class="c1"># safe because mapping is not empty</span>
+        <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="c1"># Basename -&gt; full path (all tiles for this channel)</span>
+        <span class="n">basename_to_full</span> <span class="o">=</span> <span class="p">{</span><span class="n">Path</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">Path</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">raw_asset</span><span class="o">.</span><span class="n">file_list</span><span class="p">}</span>
+
+        <span class="c1"># Build sources/tile_positions/positions in row-major (ix,iy) order</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">tile_positions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># (x, y, z=0)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">ix</span><span class="p">,</span> <span class="n">iy</span><span class="p">)</span> <span class="ow">in</span> <span class="n">keys_sorted</span><span class="p">:</span>
+            <span class="n">rec</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">[(</span><span class="n">ix</span><span class="p">,</span> <span class="n">iy</span><span class="p">)]</span>
+            <span class="n">base</span> <span class="o">=</span> <span class="n">rec</span><span class="p">[</span><span class="s1">&#39;filename&#39;</span><span class="p">]</span>
+            <span class="n">sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">basename_to_full</span><span class="p">[</span><span class="n">base</span><span class="p">]))</span>
+            <span class="n">tile_positions</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">ix</span><span class="p">,</span> <span class="n">iy</span><span class="p">))</span>
+            <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">float</span><span class="p">(</span><span class="n">rec</span><span class="p">[</span><span class="s1">&#39;relative_x&#39;</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">rec</span><span class="p">[</span><span class="s1">&#39;relative_y&#39;</span><span class="p">]),</span> <span class="mf">0.0</span><span class="p">))</span>  <span class="c1"># z=0 for 2D tiling</span>
+
+        <span class="c1"># Overlap in pixels (int,int) or None</span>
+        <span class="n">overlaps_px</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pick_overlap_px</span><span class="p">(</span><span class="n">ome_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stitching&#39;</span><span class="p">))</span>
+
+        <span class="c1"># Real WobblyLayout</span>
+        <span class="n">lyt</span> <span class="o">=</span> <span class="n">stitching_wobbly</span><span class="o">.</span><span class="n">WobblyLayout</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">,</span> <span class="n">tile_shape</span><span class="o">=</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">),</span>
+                                            <span class="n">tile_positions</span><span class="o">=</span><span class="n">tile_positions</span><span class="p">,</span>
+                                            <span class="n">positions</span><span class="o">=</span><span class="n">positions</span><span class="p">,</span> <span class="n">overlaps</span><span class="o">=</span><span class="n">overlaps_px</span><span class="p">,</span>
+                                            <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Axis = which axis &quot;wobbles&quot;</span>
+        <span class="n">lyt</span><span class="o">.</span><span class="n">lower_to_origin</span><span class="p">()</span>  <span class="c1"># Just in case</span>
+
+        <span class="n">placed_asset_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;placed&#39;</span><span class="p">)</span>
+        <span class="n">lyt</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">placed_asset_path</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">submit_patch</span><span class="p">({</span><span class="s1">&#39;stitching&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;channels&#39;</span><span class="p">:</span> <span class="p">{</span><span class="n">channel</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;use_existing_layout&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}}}},</span>
+                                          <span class="n">sample_manager</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StitchingProcessor.stack_columns">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.stack_columns">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stack_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+        <span class="n">asset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span>
+        <span class="n">exp</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">expression</span>
+
+        <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">tag_range</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+        <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">tag_range</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+        <span class="n">z_expression</span> <span class="o">=</span> <span class="s1">&#39;_xyz-Table Z&lt;Z,4&gt;&#39;</span>    <span class="c1"># REFACTOR: brittle, find better way</span>
+        <span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">n_tags</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="n">column_expression</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">})</span>
+                    <span class="n">dest</span> <span class="o">=</span> <span class="n">column_expression</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">z_expression</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                    <span class="n">clearmap_io</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">column_expression</span><span class="p">,</span> <span class="n">dest</span><span class="p">)</span>
+            <span class="c1"># squash Z axis</span>
+            <span class="n">asset</span><span class="o">.</span><span class="n">expression</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">string</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">z_expression</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>  <span class="c1"># overwrite expression</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">set_channel_expression</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">asset</span><span class="o">.</span><span class="n">expression</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StitchingProcessor.prepare_all_channels_raw_data">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.prepare_all_channels_raw_data">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">prepare_all_channels_raw_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prepare all pipeline-ready channels that don&#39;t yet have their working asset.</span>
+<span class="sd">        Tiled channels → convert tiles to npy. Non-tiled → stack/copy to stitched volume.</span>
+<span class="sd">        Idempotent unless force=True.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        force : bool</span>
+<span class="sd">            If True, re-prepare even if the working asset already exists.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[str]</span>
+<span class="sd">            Channel names that were prepared.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">prepared</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">pipeline_ready_channels</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">is_tiled</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">force</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">has_npy</span><span class="p">(</span><span class="n">ch</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">convert_tiles_channel</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+                    <span class="n">prepared</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">force</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">ch</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">:</span>  <span class="c1"># WARNING: self.workspace might not yet exist</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">copy_or_stack</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+                    <span class="n">prepared</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">prepared</span></div>
+
+
+<div class="viewcode-block" id="StitchingProcessor.copy_or_stack">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.copy_or_stack">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy_or_stack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Copy or stack or convert to npy the channel data in case there is no X/Y tiling</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        channel : str</span>
+<span class="sd">            The channel to copy or stack</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">clearmap_io</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">),</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not copy / stack </span><span class="si">{</span><span class="n">channel</span><span class="si">=}</span><span class="s1">, files not found; </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StitchingProcessor.stitch">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.stitch">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stitch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Get the channels in dependency order (based on layout_channel)</span>
+        <span class="k">for</span> <span class="n">stitching_tree</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_stitching_order</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">stitching_tree</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stack_columns</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>  <span class="c1"># If x/y/z, stack first</span>
+                <span class="n">channel_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">][</span><span class="n">channel</span><span class="p">]</span>
+
+                <span class="n">has_layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;placed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span>
+                <span class="k">if</span> <span class="n">channel_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;use_existing_layout&#39;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_layout</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">MissingRequirementException</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Channel </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s1"> set to use existing layout,&#39;</span>
+                                                          <span class="sa">f</span><span class="s1">&#39; but no layout found&#39;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_stitch_layout_wobbly</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span> <span class="k">return</span>
+                    <span class="k">continue</span>
+
+                <span class="k">if</span> <span class="n">channel</span> <span class="o">==</span> <span class="n">channel_cfg</span><span class="p">[</span><span class="s1">&#39;layout_channel&#39;</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">channel_cfg</span><span class="p">[</span><span class="s1">&#39;rigid&#39;</span><span class="p">][</span><span class="s1">&#39;skip&#39;</span><span class="p">]:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">align_channel_rigid</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span> <span class="k">return</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">channel_cfg</span><span class="p">[</span><span class="s1">&#39;wobbly&#39;</span><span class="p">][</span><span class="s1">&#39;skip&#39;</span><span class="p">]:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">stitch_channel_wobbly</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">place_layout_rigid</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span> <span class="k">return</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_stitch_layout_wobbly</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_stitch_layout_wobbly</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+                    <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="StitchingProcessor.channel_was_stitched_rigid">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.channel_was_stitched_rigid">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">channel_was_stitched_rigid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;aligned_axis&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">n_rigid_steps_to_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="ow">not</span> <span class="n">cfg</span><span class="p">[</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;rigid&#39;</span><span class="p">][</span><span class="s1">&#39;skip&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="s1">&#39;rigid&#39;</span> <span class="ow">in</span> <span class="n">cfg</span><span class="p">[</span><span class="n">channel</span><span class="p">]]</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># @check_stopped</span>
+    <span class="c1"># @requires_assets([FilePath(&#39;raw&#39;)])</span>
+<div class="viewcode-block" id="StitchingProcessor.align_channel_rigid">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.align_channel_rigid">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">align_channel_rigid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">_force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">check_has_all_tiles</span><span class="p">(</span><span class="n">channel</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">use_npy</span><span class="p">(</span><span class="n">channel</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">convert_tiles_channel</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">check_has_all_tiles</span><span class="p">(</span><span class="n">channel</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">MissingRequirementException</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Channel </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s1"> missing tiles&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MissingRequirementException</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Channel </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s1"> missing tiles&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_watcher_step</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Stitching </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s1"> rigid&#39;</span><span class="p">)</span>
+        <span class="n">rigid_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">][</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;rigid&#39;</span><span class="p">]</span>
+
+        <span class="n">raw_asset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">raw_asset</span><span class="o">.</span><span class="n">is_expression</span><span class="p">:</span>
+            <span class="n">params_file</span> <span class="o">=</span> <span class="n">raw_asset</span><span class="o">.</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">params_file</span> <span class="o">=</span> <span class="n">raw_asset</span><span class="o">.</span><span class="n">existing_path</span>
+        <span class="n">overlaps</span><span class="p">,</span> <span class="n">projection_thickness</span> <span class="o">=</span> <span class="n">define_auto_stitching_params</span><span class="p">(</span><span class="n">params_file</span><span class="p">,</span> <span class="n">rigid_cfg</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_wobbly_layout</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">overlaps</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rigid_cfg</span><span class="p">[</span><span class="s1">&#39;background_pixels&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">background_params</span> <span class="o">=</span> <span class="n">rigid_cfg</span><span class="p">[</span><span class="s1">&#39;background_level&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">background_params</span> <span class="o">=</span> <span class="p">(</span><span class="n">rigid_cfg</span><span class="p">[</span><span class="s1">&#39;background_level&#39;</span><span class="p">],</span>
+                                 <span class="n">rigid_cfg</span><span class="p">[</span><span class="s1">&#39;background_pixels&#39;</span><span class="p">])</span>
+        <span class="n">max_shifts</span> <span class="o">=</span> <span class="p">[</span><span class="n">rigid_cfg</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;max_shifts_</span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="s1">&#39;xyz&#39;</span><span class="p">]</span>
+        <span class="n">n_procs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;performance&#39;</span><span class="p">][</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;n_processes&#39;</span><span class="p">]</span>
+        <span class="n">n_procs</span> <span class="o">=</span> <span class="n">sanitize_n_processes</span><span class="p">(</span><span class="n">n_procs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">alignments</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__rigid_stitching_align_re</span><span class="p">,</span> <span class="s1">&#39;Align layout rigid&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">align_layout_rigid_mip</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">projection_thickness</span><span class="p">,</span> <span class="n">max_shifts</span><span class="o">=</span><span class="n">max_shifts</span><span class="p">,</span>
+                                                   <span class="n">ranges</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">background</span><span class="o">=</span><span class="n">background_params</span><span class="p">,</span>
+                                                   <span class="n">clip</span><span class="o">=</span><span class="mi">25000</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="n">n_procs</span><span class="p">,</span> <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stitching canceled&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># FIXME: see if appropriate solution</span>
+            <span class="k">return</span>  <span class="c1"># WARNING: do not run stitching_wobbly if rigid failed</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;optimization&#39;</span><span class="p">,</span> <span class="n">min_quality</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">lower_to_origin</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+
+        <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">save_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;aligned_axis&#39;</span><span class="p">),</span>
+                                    <span class="n">layout</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StitchingProcessor.place_layout_rigid">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.place_layout_rigid">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">place_layout_rigid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">load_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span>
+                                                          <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;aligned_axis&#39;</span><span class="p">))</span>
+        <span class="n">layout</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;optimization&#39;</span><span class="p">,</span> <span class="n">min_quality</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">lower_to_origin</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">save_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;aligned&#39;</span><span class="p">),</span>
+                                    <span class="n">layout</span><span class="p">)</span></div>
+
+
+    <span class="c1"># @requires_assets([FilePath(&#39;raw&#39;)])  # TODO: optional requires npy + requires that channel is kwarg</span>
+<div class="viewcode-block" id="StitchingProcessor.get_wobbly_layout">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.get_wobbly_layout">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_wobbly_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">overlaps</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">overlaps</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">rigid_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">][</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;rigid&#39;</span><span class="p">]</span>
+            <span class="n">first_tile_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">)</span><span class="o">.</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">overlaps</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">define_auto_stitching_params</span><span class="p">(</span><span class="n">first_tile_path</span><span class="p">,</span> <span class="n">rigid_cfg</span><span class="p">)</span>
+        <span class="n">extension</span> <span class="o">=</span> <span class="s1">&#39;.npy&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">use_npy</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>  <span class="c1"># TODO: optional requires</span>
+        <span class="n">raw_expr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="n">extension</span><span class="p">))</span>
+        <span class="n">tag_names</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">Expression</span><span class="p">(</span><span class="n">raw_expr</span><span class="p">)</span><span class="o">.</span><span class="n">tag_names</span><span class="p">()))</span>  <span class="c1"># sort alphabetically to ensure consistent order</span>
+        <span class="c1"># Drop irrelevant axes if e.g. scanning only rows or columns</span>
+        <span class="n">overlaps</span> <span class="o">=</span> <span class="p">[</span><span class="n">overlap</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">overlap</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">((</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">),</span> <span class="n">overlaps</span><span class="p">)</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">tag_names</span><span class="p">]</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">stitching_wobbly</span><span class="o">.</span><span class="n">WobblyLayout</span><span class="p">(</span><span class="n">expression</span><span class="o">=</span><span class="n">raw_expr</span><span class="p">,</span> <span class="n">tile_axes</span><span class="o">=</span><span class="n">tag_names</span><span class="p">,</span> <span class="n">overlaps</span><span class="o">=</span><span class="n">overlaps</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">layout</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">n_wobbly_steps_to_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">stitchable_channels</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">stitchable_channels</span><span class="p">:</span>
+            <span class="n">cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">][</span><span class="n">channel</span><span class="p">]</span>
+            <span class="k">if</span> <span class="s1">&#39;wobbly&#39;</span> <span class="ow">in</span> <span class="n">cfg</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;wobbly&#39;</span><span class="p">][</span><span class="s1">&#39;skip&#39;</span><span class="p">]:</span>
+                <span class="n">out</span> <span class="o">+=</span> <span class="mi">3</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__align_layout_wobbly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
+        <span class="n">wobbly_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">][</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;wobbly&#39;</span><span class="p">]</span>
+        <span class="n">max_shifts</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">wobbly_cfg</span><span class="p">[</span><span class="s1">&#39;max_shifts_x&#39;</span><span class="p">],</span>
+            <span class="n">wobbly_cfg</span><span class="p">[</span><span class="s1">&#39;max_shifts_y&#39;</span><span class="p">],</span>
+            <span class="n">wobbly_cfg</span><span class="p">[</span><span class="s1">&#39;max_shifts_z&#39;</span><span class="p">],</span>
+        <span class="p">]</span>
+        <span class="n">stack_validation_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">method</span><span class="o">=</span><span class="s1">&#39;foreground&#39;</span><span class="p">,</span>
+            <span class="n">valid_range</span><span class="o">=</span><span class="n">wobbly_cfg</span><span class="p">[</span><span class="s2">&quot;stack_valid_range&quot;</span><span class="p">],</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">wobbly_cfg</span><span class="p">[</span><span class="s2">&quot;stack_pixel_size&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">slice_validation_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">method</span><span class="o">=</span><span class="s1">&#39;foreground&#39;</span><span class="p">,</span>
+            <span class="n">valid_range</span><span class="o">=</span><span class="n">wobbly_cfg</span><span class="p">[</span><span class="s2">&quot;slice_valid_range&quot;</span><span class="p">],</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">wobbly_cfg</span><span class="p">[</span><span class="s2">&quot;slice_pixel_size&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">n_pairs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">alignments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="n">n_pairs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_align_lyt_re</span><span class="p">,</span> <span class="s1">&#39;Align layout wobbly&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">n_processes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;performance&#39;</span><span class="p">][</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;n_processes&#39;</span><span class="p">]</span>
+            <span class="n">n_processes</span> <span class="o">=</span> <span class="n">sanitize_n_processes</span><span class="p">(</span><span class="n">n_processes</span><span class="p">)</span>
+            <span class="n">stitching_wobbly</span><span class="o">.</span><span class="n">align_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">axis_range</span><span class="o">=</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">max_shifts</span><span class="o">=</span><span class="n">max_shifts</span><span class="p">,</span> <span class="n">axis_mip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">stack_validation_params</span><span class="o">=</span><span class="n">stack_validation_params</span><span class="p">,</span>
+                                          <span class="n">prepare</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;normalization&#39;</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                                          <span class="n">slice_validation_params</span><span class="o">=</span><span class="n">slice_validation_params</span><span class="p">,</span>
+                                          <span class="n">prepare_slice</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">find_shifts</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;tracing&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span>
+                                          <span class="n">processes</span><span class="o">=</span><span class="n">n_processes</span><span class="p">,</span> <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wobbly stitching canceled&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__place_layout_wobbly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">alignments</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span>  <span class="c1"># WARNING: bad estimation</span>
+                                         <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_place_re</span><span class="p">,</span> <span class="s1">&#39;Place layout wobbly&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">n_processes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;performance&#39;</span><span class="p">][</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;n_processes&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;darwin&#39;</span><span class="p">):</span>  <span class="c1"># No parallel on MacOS</span>
+                <span class="n">n_processes</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">n_processes</span> <span class="o">=</span> <span class="n">sanitize_n_processes</span><span class="p">(</span><span class="n">n_processes</span><span class="p">)</span>
+            <span class="n">stitching_wobbly</span><span class="o">.</span><span class="n">place_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">min_quality</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
+                                          <span class="n">method</span><span class="o">=</span><span class="s1">&#39;optimization&#39;</span><span class="p">,</span>
+                                          <span class="n">smooth</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;window&#39;</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;bartlett&#39;</span><span class="p">,</span> <span class="n">window_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                                                      <span class="n">binary</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+                                          <span class="n">smooth_optimized</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;window&#39;</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="s1">&#39;bartlett&#39;</span><span class="p">,</span>
+                                                                <span class="n">window_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+                                          <span class="n">fix_isolated</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lower_to_origin</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                          <span class="n">processes</span><span class="o">=</span><span class="n">n_processes</span><span class="p">,</span> <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wobbly stitching canceled&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_stitch_layout_wobbly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+        <span class="n">layout_channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">][</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;layout_channel&#39;</span><span class="p">]</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">load_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">layout_channel</span><span class="p">,</span>
+                                                           <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;placed&#39;</span><span class="p">))</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ref_asset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">alignment_reference_channel</span><span class="p">)</span>
+            <span class="n">n_slices</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_asset</span><span class="o">.</span><span class="n">file_list</span><span class="p">)</span>  <span class="c1"># TODO: find better proxy</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">n_slices</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">)</span><span class="o">.</span><span class="n">file_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prepare_watcher_for_substep</span><span class="p">(</span><span class="n">n_slices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__wobbly_stitching_stitch_re</span><span class="p">,</span>
+                                         <span class="s1">&#39;Stitch layout wobbly&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_replace_layout_sources</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">layout_channel</span><span class="p">)</span>
+            <span class="n">n_processes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;performance&#39;</span><span class="p">][</span><span class="s1">&#39;stitching&#39;</span><span class="p">][</span><span class="s1">&#39;n_processes&#39;</span><span class="p">]</span>
+            <span class="n">n_processes</span> <span class="o">=</span> <span class="n">sanitize_n_processes</span><span class="p">(</span><span class="n">n_processes</span><span class="p">)</span>
+            <span class="n">stitching_wobbly</span><span class="o">.</span><span class="n">stitch_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span>
+                                           <span class="n">sink</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">)),</span>
+                                           <span class="n">method</span><span class="o">=</span><span class="s1">&#39;interpolation&#39;</span><span class="p">,</span>
+                                           <span class="n">processes</span><span class="o">=</span><span class="n">n_processes</span><span class="p">,</span> <span class="n">workspace</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">BrokenProcessPool</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wobbly stitching canceled&#39;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_replace_layout_sources</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">layout_channel</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">channel</span> <span class="o">==</span> <span class="n">layout_channel</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="c1"># layout_channel_asset = self.get(&#39;raw&#39;, channel=layout_channel)</span>
+        <span class="n">channel_asset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">layout_channel</span> <span class="o">!=</span> <span class="n">channel</span><span class="p">:</span>
+            <span class="c1"># layout_extension = Path(layout.sources[0].location).suffix  # Use the actual extension that was used</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">use_npy</span><span class="p">(</span><span class="n">channel</span><span class="p">):</span>  <span class="c1"># FIXME: check if we need to copy layout first</span>
+                <span class="n">channel_pattern</span> <span class="o">=</span> <span class="n">channel_asset</span><span class="o">.</span><span class="n">with_extension</span><span class="p">(</span><span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.npy&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">channel_pattern</span> <span class="o">=</span> <span class="n">channel_asset</span><span class="o">.</span><span class="n">path</span>
+            <span class="n">layout</span><span class="o">.</span><span class="n">replace_source_location</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">channel_pattern</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;infer&#39;</span><span class="p">)</span>
+
+    <span class="nd">@check_stopped</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stitch_channel_wobbly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">_force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  <span class="c1"># Warning, will stitch channel on its own</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">get_layout_path</span><span class="p">(</span><span class="n">layout_sub_type</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">asset_sub_type</span><span class="o">=</span><span class="n">layout_sub_type</span><span class="p">)</span>
+<span class="c1"># FIXME: check if ui_to_cfg is needed</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel_was_stitched_rigid</span><span class="p">(</span><span class="n">channel</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">MissingRequirementException</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Channel </span><span class="si">{</span><span class="n">channel</span><span class="si">}</span><span class="s1"> not stitched rigid yet&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_watcher_step</span><span class="p">(</span><span class="s1">&#39;Stitching wobbly&#39;</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">load_layout</span><span class="p">(</span><span class="n">get_layout_path</span><span class="p">(</span><span class="s1">&#39;aligned_axis&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__align_layout_wobbly</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">layout</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">save_layout</span><span class="p">(</span><span class="n">get_layout_path</span><span class="p">(</span><span class="s1">&#39;aligned&#39;</span><span class="p">),</span> <span class="n">layout</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__place_layout_wobbly</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">save_layout</span><span class="p">(</span><span class="n">get_layout_path</span><span class="p">(</span><span class="s1">&#39;placed&#39;</span><span class="p">),</span> <span class="n">layout</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stitch_layout_wobbly</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopped</span><span class="p">:</span>
+            <span class="k">return</span>
+
+<div class="viewcode-block" id="StitchingProcessor.plot_stitching_results">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.plot_stitching_results">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_stitching_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;side-by-side&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Visualization.Qt</span><span class="w"> </span><span class="kn">import</span> <span class="n">Plot3d</span> <span class="k">as</span> <span class="n">plot_3d</span>
+        <span class="k">if</span> <span class="n">channels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">channels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">stitchable_channels</span>
+        <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">titles</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">:</span>
+            <span class="n">asset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">asset</span><span class="o">.</span><span class="n">exists</span><span class="p">:</span>
+                <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">asset</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+                <span class="n">titles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">c</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1"> stitched&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No stitched file for channel </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">paths</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MissingRequirementException</span><span class="p">(</span><span class="s1">&#39;No stitched files found&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">paths</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">paths</span> <span class="o">=</span> <span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;overlay&#39;</span><span class="p">:</span>
+            <span class="n">titles</span> <span class="o">=</span> <span class="s1">&#39; and &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
+            <span class="n">paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">paths</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;side-by-side&#39;</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unknown mode </span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">dvs</span> <span class="o">=</span> <span class="n">plot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">paths</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">titles</span><span class="p">,</span> <span class="n">arrange</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lut</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dvs</span></div>
+
+
+<div class="viewcode-block" id="StitchingProcessor.stitch_overlay">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.stitch_overlay">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">stitch_overlay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This creates a *dumb* overlay of the tiles</span>
+<span class="sd">        i.e. only using the fixed guess overlap</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        channel</span>
+<span class="sd">        color</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.array(dtype=uint8)</span>
+<span class="sd">            The overlay image</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Visualization.Color.Color</span><span class="w"> </span><span class="kn">import</span> <span class="n">gray_image_to_rgb</span>
+        <span class="n">asset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">sample_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">prefix</span><span class="p">)</span>
+        <span class="n">positions</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">positions</span>
+        <span class="n">tile_shape</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="s1">&#39;XYZ&#39;</span><span class="p">,</span> <span class="n">asset</span><span class="o">.</span><span class="n">tile_shape</span><span class="p">)}</span>  <span class="c1"># TODO: use asset.tile_grid_shape</span>
+        <span class="n">middle_z</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tile_shape</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">overlaps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_overlaps</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+        <span class="n">output_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_stitched_shape_from_overlaps</span><span class="p">(</span><span class="n">overlaps</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">tile_shape</span><span class="p">)</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">output_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">output_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">has_npy</span><span class="p">:</span>
+            <span class="n">files</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">variant</span><span class="p">(</span><span class="n">extension</span><span class="o">=</span><span class="s1">&#39;.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">file_list</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">files</span> <span class="o">=</span> <span class="n">asset</span><span class="o">.</span><span class="n">file_list</span>
+        <span class="k">for</span> <span class="n">tile_path</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">positions</span><span class="p">):</span>
+            <span class="n">tile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__read_tile_middle_plane</span><span class="p">(</span><span class="n">tile_path</span><span class="p">,</span> <span class="n">middle_z</span><span class="p">)</span>
+
+            <span class="n">starts</span> <span class="o">=</span> <span class="p">{</span><span class="n">ax</span><span class="p">:</span> <span class="n">pos</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">*</span> <span class="n">tile_shape</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">-</span> <span class="n">pos</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">*</span> <span class="n">overlaps</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="s1">&#39;XY&#39;</span><span class="p">}</span>
+            <span class="n">ends</span> <span class="o">=</span> <span class="p">{</span><span class="n">ax</span><span class="p">:</span> <span class="n">starts</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">+</span> <span class="n">tile_shape</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">starts</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[(</span><span class="n">pos</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">pos</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">])</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>  <span class="c1"># Alternate colors</span>
+            <span class="n">layer</span><span class="p">[</span><span class="n">starts</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]:</span> <span class="n">ends</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">starts</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]:</span> <span class="n">ends</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">tile</span>
+        <span class="k">if</span> <span class="n">color</span><span class="p">:</span>
+            <span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">gray_image_to_rgb</span><span class="p">(</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">pseudo_z_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">range_max</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+            <span class="n">layers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">gray_image_to_rgb</span><span class="p">(</span><span class="n">layers</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">pseudo_z_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">range_max</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+        <span class="n">output_image</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">layers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">color</span><span class="p">:</span>
+            <span class="n">output_image</span> <span class="o">=</span> <span class="n">output_image</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output_image</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__read_tile_middle_plane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tile_path</span><span class="p">,</span> <span class="n">middle_z</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">has_npy</span><span class="p">:</span>  <span class="c1"># use memmap</span>
+            <span class="n">tile</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">tile_path</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="n">middle_z</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tile</span> <span class="o">=</span> <span class="n">clearmap_io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">tile_path</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="n">middle_z</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">tile</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_stitched_shape_from_overlaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">overlaps</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">tile_shape</span><span class="p">):</span>
+        <span class="n">mosaic_shape</span> <span class="o">=</span> <span class="p">{</span><span class="n">ax</span><span class="p">:</span> <span class="nb">max</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="s1">&#39;XY&#39;</span><span class="p">}</span>  <span class="c1"># +1 because 0 indexing</span>
+        <span class="n">output_shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">tile_shape</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">*</span> <span class="n">mosaic_shape</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">-</span> <span class="n">overlaps</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">mosaic_shape</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="s1">&#39;XY&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">output_shape</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_overlaps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+        <span class="n">layout_channel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">][</span><span class="n">channel</span><span class="p">][</span><span class="s1">&#39;layout_channel&#39;</span><span class="p">]</span>
+        <span class="n">overlaps</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;channels&#39;</span><span class="p">][</span><span class="n">layout_channel</span><span class="p">][</span><span class="s1">&#39;rigid&#39;</span><span class="p">][</span><span class="sa">f</span><span class="s1">&#39;overlap_</span><span class="si">{</span><span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="s1">&#39;XY&#39;</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">overlaps</span>
+
+<div class="viewcode-block" id="StitchingProcessor.overlay_layout_plane">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.overlay_layout_plane">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">overlay_layout_plane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layout</span><span class="p">):</span>  <span class="c1"># REFACTOR: move to e.g. layout class</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Overlays the sources to check their placement.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        layout : Layout class</span>
+<span class="sd">          The layout with the sources to overlay.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        image : array</span>
+<span class="sd">          A color image.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Visualization.Color.Color</span><span class="w"> </span><span class="kn">import</span> <span class="n">gray_image_to_rgb</span>
+        <span class="n">dest_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">extent</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">full_lower</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">lower</span>
+        <span class="n">middle_z</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">sources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">color_layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dest_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">dest_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)]</span>
+        <span class="c1"># construct full image</span>
+        <span class="k">for</span> <span class="n">src</span> <span class="ow">in</span> <span class="n">layout</span><span class="o">.</span><span class="n">sources</span><span class="p">:</span>
+            <span class="n">tile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__read_tile_middle_plane</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">location</span><span class="p">,</span>
+                                                 <span class="n">middle_z</span><span class="p">)</span>  <span class="c1"># So as not to load the data into the list for memory efficiency</span>
+            <span class="n">is_odd</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">tile_position</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="n">color_layers</span><span class="p">[</span><span class="n">is_odd</span><span class="p">]</span>  <span class="c1"># Alternate colors</span>
+
+            <span class="n">current_slicing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__compute_overlay_slicing</span><span class="p">(</span><span class="n">full_lower</span><span class="p">,</span> <span class="n">src</span><span class="p">)</span>
+            <span class="n">layer</span><span class="p">[</span><span class="n">current_slicing</span><span class="p">]</span> <span class="o">=</span> <span class="n">tile</span>
+
+        <span class="n">cyan_image</span> <span class="o">=</span> <span class="n">gray_image_to_rgb</span><span class="p">(</span><span class="n">color_layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">pseudo_z_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">range_max</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+        <span class="n">magenta_image</span> <span class="o">=</span> <span class="n">gray_image_to_rgb</span><span class="p">(</span><span class="n">color_layers</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">pseudo_z_score</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">range_max</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+
+        <span class="c1"># TODO: normalise</span>
+        <span class="n">output_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">cyan_image</span> <span class="o">+</span> <span class="n">magenta_image</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">output_image</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__compute_overlay_slicing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">full_lower</span><span class="p">,</span> <span class="n">src</span><span class="p">):</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">lower</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">upper</span>
+        <span class="n">current_slicing</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">ll</span> <span class="o">-</span> <span class="n">fl</span><span class="p">,</span> <span class="n">uu</span> <span class="o">-</span> <span class="n">fl</span><span class="p">)</span> <span class="k">for</span> <span class="n">ll</span><span class="p">,</span> <span class="n">uu</span><span class="p">,</span> <span class="n">fl</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">full_lower</span><span class="p">))[:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">current_slicing</span>
+
+<div class="viewcode-block" id="StitchingProcessor.plot_layout">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor.plot_layout">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_layout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;aligned_axis&#39;</span><span class="p">):</span>
+        <span class="n">valid_sub_types</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;aligned_axis&quot;</span><span class="p">,</span> <span class="s2">&quot;aligned&quot;</span><span class="p">,</span> <span class="s2">&quot;placed&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">asset_sub_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_sub_types</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Expected on of </span><span class="si">{</span><span class="n">valid_sub_types</span><span class="si">}</span><span class="s1"> for asset_sub_type, got &quot;</span><span class="si">{</span><span class="n">asset_sub_type</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="n">stitching_rigid</span><span class="o">.</span><span class="n">load_layout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;layout&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">asset_sub_type</span><span class="o">=</span><span class="n">asset_sub_type</span><span class="p">))</span>
+        <span class="n">overlay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">overlay_layout_plane</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">overlay</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

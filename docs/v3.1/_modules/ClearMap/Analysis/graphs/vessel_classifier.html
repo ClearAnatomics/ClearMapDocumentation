@@ -1,0 +1,1522 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.Analysis.graphs.vessel_classifier &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../../../../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/Analysis/graphs/vessel_classifier';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/_modules/ClearMap/Analysis/graphs/vessel_classifier.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ClearMap.Analysis.graphs.vessel_classifier</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.Analysis.graphs.vessel_classifier</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">vessel_classifier</span>
+<span class="sd">=================</span>
+
+<span class="sd">Iterative artery/vein classification on a reduced vascular graph.</span>
+
+<span class="sd">The algorithm has four phases:</span>
+
+<span class="sd">    1. **Score** — each edge gets a continuous artery score and vein score</span>
+<span class="sd">       in [0, 1] based on radius, marker intensity, and binary mask.</span>
+<span class="sd">    2. **Seed** — high-confidence edges are assigned initial labels</span>
+<span class="sd">       (artery, vein, or capillary).</span>
+<span class="sd">    3. **Propagate** — labels spread outward from seeds along the graph.</span>
+<span class="sd">       Artery and vein labels propagate simultaneously and compete for</span>
+<span class="sd">       ambiguous edges. Propagation uses a decaying score threshold.</span>
+<span class="sd">    4. **Cleanup** — remove small connected components (fragments).</span>
+
+<span class="sd">All thresholds are collected in :class:`ClassificationConfig`.</span>
+
+<span class="sd">See Also</span>
+<span class="sd">--------</span>
+<span class="sd">:class:`~ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor`</span>
+<span class="sd">    Orchestrator that builds the graph and calls this classifier.</span>
+<span class="sd">[Kirst2020]_.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntEnum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Analysis.graphs</span><span class="w"> </span><span class="kn">import</span> <span class="n">graph_processing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Analysis.graphs.graph_gt</span><span class="w"> </span><span class="kn">import</span> <span class="n">Graph</span>
+
+
+<span class="c1"># ── vessel type enum ─────────────────────────────────────────────────────────</span>
+
+<div class="viewcode-block" id="VesselType">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.VesselType">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">VesselType</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Edge classification labels for vessel type assignment.</span>
+
+<span class="sd">    IntEnum so labels can be used directly as numpy array values</span>
+<span class="sd">    and in boolean comparisons without casting.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">UNLABELLED</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ARTERY</span>     <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">VEIN</span>       <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">CAPILLARY</span>  <span class="o">=</span> <span class="mi">3</span>
+
+<div class="viewcode-block" id="VesselType.competing_labels">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.VesselType.competing_labels">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">competing_labels</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="s1">&#39;VesselType&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The two vessel types that compete during propagation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">VEIN</span></div>
+
+
+<div class="viewcode-block" id="VesselType.competitor">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.VesselType.competitor">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">competitor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;VesselType&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the competing vessel type.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span>
+        <span class="k">if</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s1"> has no competitor&#39;</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="c1"># ── configuration ────────────────────────────────────────────────────────────</span>
+
+<div class="viewcode-block" id="ClassificationConfig">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.ClassificationConfig">[docs]</a>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ClassificationConfig</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    All thresholds for vessel classification.</span>
+
+<span class="sd">    Radius thresholds are unit-agnostic: they match whatever units</span>
+<span class="sd">    ``VesselSignals.radii`` uses (µm for current graphs, voxels for legacy).</span>
+
+<span class="sd">    The ``from_config`` factory resolves the correct source.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vein_intensity_range : tuple[float, float]</span>
+<span class="sd">        (low, high) intensity range on the artery channel that</span>
+<span class="sd">        characterises veins.  Edges *within* this range AND with</span>
+<span class="sd">        large radius are classified as restrictive veins.</span>
+<span class="sd">    restrictive_vein_radius : float</span>
+<span class="sd">        Minimum radius for an edge to qualify as a</span>
+<span class="sd">        *restrictive* (high-confidence) vein.</span>
+<span class="sd">    arteries_min_noise_edges : int</span>
+<span class="sd">        Minimum number of connected artery edges to survive</span>
+<span class="sd">        initial noise removal (step 1).</span>
+<span class="sd">    artery_intensity_min : float</span>
+<span class="sd">        Minimum artery marker intensity for tracing to continue.</span>
+<span class="sd">    artery_trace_radius : float</span>
+<span class="sd">        Minimum edge radius to continue artery tracing.</span>
+<span class="sd">    vein_trace_radius : float</span>
+<span class="sd">        Minimum edge radius to continue vein tracing.</span>
+<span class="sd">    vein_intensity_min : float</span>
+<span class="sd">        Minimum vein marker intensity to continue vein tracing.</span>
+<span class="sd">        Only used when a dedicated vein channel exists.</span>
+<span class="sd">    distance_to_surface_min : float</span>
+<span class="sd">        Minimum distance to brain surface (atlas voxels) for</span>
+<span class="sd">        tracing to continue.</span>
+<span class="sd">    max_artery_trace_iter : int</span>
+<span class="sd">        Maximum hysteresis iterations for artery tracing.</span>
+<span class="sd">    max_vein_trace_iter : int</span>
+<span class="sd">        Maximum hysteresis iterations for vein tracing.</span>
+<span class="sd">    min_artery_component_edges : int</span>
+<span class="sd">        Minimum edges in a connected artery component to survive</span>
+<span class="sd">        final cleanup (step 7).</span>
+<span class="sd">    min_vein_component_edges : int</span>
+<span class="sd">        Minimum edges in a connected vein component to survive</span>
+<span class="sd">        final cleanup (step 7).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># ── pre-filtering ────────────────────────────────────────────────────</span>
+    <span class="n">vein_intensity_range</span><span class="p">:</span>       <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span>
+    <span class="n">restrictive_vein_radius</span><span class="p">:</span>    <span class="nb">float</span>
+    <span class="n">permissive_vein_radius</span><span class="p">:</span>     <span class="nb">float</span>
+    <span class="n">final_vein_radius</span><span class="p">:</span>          <span class="nb">float</span>
+    <span class="n">arteries_min_noise_edges</span><span class="p">:</span>   <span class="nb">int</span>
+
+    <span class="c1"># ── signal thresholds (used in scoring AND as propagation floors) ────</span>
+    <span class="n">artery_intensity_min</span><span class="p">:</span>       <span class="nb">float</span>
+    <span class="n">artery_trace_radius</span><span class="p">:</span>        <span class="nb">float</span>
+    <span class="n">vein_trace_radius</span><span class="p">:</span>          <span class="nb">float</span>
+    <span class="n">vein_intensity_min</span><span class="p">:</span>         <span class="nb">float</span>
+    <span class="n">distance_to_surface_min</span><span class="p">:</span>    <span class="nb">float</span>
+    <span class="n">max_artery_trace_iter</span><span class="p">:</span>      <span class="nb">int</span>
+    <span class="n">max_vein_trace_iter</span><span class="p">:</span>        <span class="nb">int</span>
+
+    <span class="c1"># ── scoring ──────────────────────────────────────────────────────────</span>
+    <span class="n">artery_seed_threshold</span><span class="p">:</span>      <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.7</span>
+    <span class="n">vein_seed_threshold</span><span class="p">:</span>        <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.6</span>
+
+    <span class="c1"># ── cleanup ──────────────────────────────────────────────────────────</span>
+    <span class="n">min_artery_component_edges</span><span class="p">:</span> <span class="nb">int</span>   <span class="o">=</span> <span class="mi">30</span>
+    <span class="n">min_vein_component_edges</span><span class="p">:</span>   <span class="nb">int</span>   <span class="o">=</span> <span class="mi">30</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">max_propagation_iter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Total propagation budget derived from existing tracing iterations.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_artery_trace_iter</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_vein_trace_iter</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">initial_threshold</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Starting score threshold for propagation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">artery_seed_threshold</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vein_seed_threshold</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.7</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">propagation_floor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Score floor — propagation never accepts below this.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_threshold</span> <span class="o">*</span> <span class="mf">0.3</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">threshold_decay</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Per-iteration decay. Reaches floor at last iteration.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">initial_threshold</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">propagation_floor</span><span class="p">)</span>
+                <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_propagation_iter</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">seed_thresholds</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">VesselType</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Per-type seed thresholds.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">artery_seed_threshold</span><span class="p">,</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">:</span>   <span class="bp">self</span><span class="o">.</span><span class="n">vein_seed_threshold</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">min_component_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">VesselType</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Per-type minimum component sizes for cleanup.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_artery_component_edges</span><span class="p">,</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">:</span>   <span class="bp">self</span><span class="o">.</span><span class="n">min_vein_component_edges</span><span class="p">,</span>
+        <span class="p">}</span>
+
+<div class="viewcode-block" id="ClassificationConfig.from_config">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.ClassificationConfig.from_config">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">legacy_thresholds</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="n">use_legacy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ClassificationConfig&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build from the ``vessel_type_postprocessing`` config subtree.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg : dict</span>
+<span class="sd">            The ``vessel_type_postprocessing`` config subtree.</span>
+<span class="sd">        legacy_thresholds : dict or None</span>
+<span class="sd">            ``VesselGraphProcessor._LEGACY_THRESHOLDS`` dict.</span>
+<span class="sd">            Required when ``use_legacy=True``.</span>
+<span class="sd">        use_legacy : bool</span>
+<span class="sd">            If True, read voxel-space thresholds from ``legacy_thresholds``</span>
+<span class="sd">            instead of µm values from config.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pre</span> <span class="o">=</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;pre_filtering&#39;</span><span class="p">]</span>
+        <span class="n">tr</span>  <span class="o">=</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;tracing&#39;</span><span class="p">]</span>
+        <span class="n">cap</span> <span class="o">=</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;capillaries_removal&#39;</span><span class="p">]</span>
+        <span class="n">sc</span>  <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;scoring&#39;</span><span class="p">,</span> <span class="p">{})</span>
+
+        <span class="c1"># ── shared kwargs (identical regardless of legacy mode) ──────────</span>
+        <span class="n">shared</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">vein_intensity_range</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">pre</span><span class="p">[</span><span class="s1">&#39;vein_intensity_range_on_arteries_ch&#39;</span><span class="p">]),</span>
+            <span class="n">arteries_min_noise_edges</span><span class="o">=</span><span class="n">pre</span><span class="p">[</span><span class="s1">&#39;arteries_min_noise_edges&#39;</span><span class="p">],</span>
+            <span class="n">artery_intensity_min</span><span class="o">=</span><span class="n">tr</span><span class="p">[</span><span class="s1">&#39;artery_intensity_min&#39;</span><span class="p">],</span>
+            <span class="n">vein_intensity_min</span><span class="o">=</span><span class="n">tr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;vein_intensity_min&#39;</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">),</span>
+            <span class="n">distance_to_surface_min</span><span class="o">=</span><span class="n">tr</span><span class="p">[</span><span class="s1">&#39;distance_to_surface_min&#39;</span><span class="p">],</span>
+            <span class="n">max_artery_trace_iter</span><span class="o">=</span><span class="n">tr</span><span class="p">[</span><span class="s1">&#39;max_arteries_iterations&#39;</span><span class="p">],</span>
+            <span class="n">max_vein_trace_iter</span><span class="o">=</span><span class="n">tr</span><span class="p">[</span><span class="s1">&#39;max_veins_iterations&#39;</span><span class="p">],</span>
+            <span class="n">artery_seed_threshold</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;artery_seed_threshold&#39;</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span>
+            <span class="n">vein_seed_threshold</span><span class="o">=</span><span class="n">sc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;vein_seed_threshold&#39;</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span>
+            <span class="n">min_artery_component_edges</span><span class="o">=</span><span class="n">cap</span><span class="p">[</span><span class="s1">&#39;min_artery_component_edges&#39;</span><span class="p">],</span>
+            <span class="n">min_vein_component_edges</span><span class="o">=</span><span class="n">cap</span><span class="p">[</span><span class="s1">&#39;min_vein_component_edges&#39;</span><span class="p">],</span>
+        <span class="p">)</span>
+
+        <span class="c1"># ── unit-dependent kwargs ────────────────────────────────────────</span>
+        <span class="k">if</span> <span class="n">use_legacy</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">legacy_thresholds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;legacy_thresholds required when use_legacy=True&#39;</span><span class="p">)</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">legacy_thresholds</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+                <span class="o">**</span><span class="n">shared</span><span class="p">,</span>
+                <span class="n">restrictive_vein_radius</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;restrictive_vein_radius_vx&#39;</span><span class="p">],</span>
+                <span class="n">permissive_vein_radius</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;permissive_vein_radius_vx&#39;</span><span class="p">],</span>
+                <span class="n">final_vein_radius</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;final_vein_radius_vx&#39;</span><span class="p">],</span>
+                <span class="n">artery_trace_radius</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;artery_trace_radius_vx&#39;</span><span class="p">],</span>
+                <span class="n">vein_trace_radius</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;vein_trace_radius_vx&#39;</span><span class="p">],</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="o">**</span><span class="n">shared</span><span class="p">,</span>
+            <span class="n">restrictive_vein_radius</span><span class="o">=</span><span class="n">pre</span><span class="p">[</span><span class="s1">&#39;restrictive_vein_radius_um&#39;</span><span class="p">],</span>
+            <span class="n">permissive_vein_radius</span><span class="o">=</span><span class="n">pre</span><span class="p">[</span><span class="s1">&#39;permissive_vein_radius_um&#39;</span><span class="p">],</span>
+            <span class="n">final_vein_radius</span><span class="o">=</span><span class="n">pre</span><span class="p">[</span><span class="s1">&#39;final_vein_radius_um&#39;</span><span class="p">],</span>
+            <span class="n">artery_trace_radius</span><span class="o">=</span><span class="n">tr</span><span class="p">[</span><span class="s1">&#39;artery_trace_radius_um&#39;</span><span class="p">],</span>
+            <span class="n">vein_trace_radius</span><span class="o">=</span><span class="n">tr</span><span class="p">[</span><span class="s1">&#39;vein_trace_radius_um&#39;</span><span class="p">],</span>
+        <span class="p">)</span></div>
+</div>
+
+
+<span class="c1"># ── signal bundle ────────────────────────────────────────────────────────────</span>
+
+<div class="viewcode-block" id="VesselSignals">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.VesselSignals">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">VesselSignals</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    All per-edge arrays needed by the classifier.</span>
+
+<span class="sd">    ``radii`` and all ``ClassificationConfig`` radius thresholds are</span>
+<span class="sd">    guaranteed to be in the same units.  The caller resolves units</span>
+<span class="sd">    before constructing this object.</span>
+
+<span class="sd">    Fields are ``None`` when the corresponding channel does not exist.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">radii</span><span class="p">:</span>                <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>                    <span class="c1"># (n_edges,) — radii in whichever unit was supplied (should match thresholds)</span>
+    <span class="n">artery_binary</span><span class="p">:</span>        <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># (n_edges,) — bool, from binary mask</span>
+    <span class="n">artery_intensity</span><span class="p">:</span>     <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># (n_edges,) — float, raw marker signal</span>
+    <span class="n">vein_binary</span><span class="p">:</span>          <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># (n_edges,) — bool, from binary mask</span>
+    <span class="n">vein_intensity</span><span class="p">:</span>       <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># (n_edges,) — float, raw marker signal</span>
+    <span class="n">distance_to_surface</span><span class="p">:</span>  <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># (n_edges,) — atlas voxels</span></div>
+
+
+
+<span class="c1"># ── classification metrics ───────────────────────────────────────────────────</span>
+
+<div class="viewcode-block" id="ClassificationMetrics">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.ClassificationMetrics">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ClassificationMetrics</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Diagnostic metrics produced after classification.</span>
+
+<span class="sd">    Intended for logging, QA dashboards, and sanity checks.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n_edges</span><span class="p">:</span>              <span class="nb">int</span>   <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">counts</span><span class="p">:</span>               <span class="nb">dict</span>  <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># {VesselType: int}</span>
+    <span class="n">fractions</span><span class="p">:</span>            <span class="nb">dict</span>  <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># {VesselType: float}</span>
+
+    <span class="n">seed_counts</span><span class="p">:</span>          <span class="nb">dict</span>  <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># {VesselType: int}</span>
+
+    <span class="n">propagation_iterations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">propagated_counts</span><span class="p">:</span>    <span class="nb">dict</span>  <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># {VesselType: int}</span>
+
+    <span class="n">n_seed_conflicts</span><span class="p">:</span>     <span class="nb">int</span>   <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">n_direct_contacts</span><span class="p">:</span>    <span class="nb">int</span>   <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">fragments_removed</span><span class="p">:</span>    <span class="nb">dict</span>  <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># {VesselType: int}</span>
+
+    <span class="n">score_stats</span><span class="p">:</span>          <span class="nb">dict</span>  <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># {VesselType: {&#39;mean&#39;: float, &#39;min&#39;: float}}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__post_init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="p">}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fractions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fractions</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="p">}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed_counts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">seed_counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="p">}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">propagated_counts</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">propagated_counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">competing_labels</span><span class="p">()}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fragments_removed</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fragments_removed</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">competing_labels</span><span class="p">()}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">score_stats</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">score_stats</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">}</span>
+                                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">competing_labels</span><span class="p">()}</span>
+
+<div class="viewcode-block" id="ClassificationMetrics.record_seed_counts">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.ClassificationMetrics.record_seed_counts">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">record_seed_counts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Snapshot label distribution after seeding phase.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">seed_counts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="n">t</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="ClassificationMetrics.record_final_counts">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.ClassificationMetrics.record_final_counts">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">record_final_counts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+                             <span class="n">scores</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">VesselType</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute final distribution, propagated counts, and score statistics.&quot;&quot;&quot;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="p">:</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">==</span> <span class="n">t</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fractions</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">/</span> <span class="n">n</span>
+
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">competing_labels</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">propagated_counts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed_counts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">==</span> <span class="n">t</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">score_stats</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()),</span>
+                    <span class="s1">&#39;min&#39;</span><span class="p">:</span>  <span class="nb">float</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span>
+                <span class="p">}</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sanity_warnings</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a list of human-readable warnings if metrics look suspicious.&quot;&quot;&quot;</span>
+        <span class="n">warnings</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_edges</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_direct_contacts</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">precent</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_direct_contacts</span> <span class="o">/</span> <span class="n">n</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_direct_contacts</span><span class="si">}</span><span class="s1"> direct artery-vein contacts &#39;</span>
+                            <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="n">precent</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%). Biologically these should be separated by capillaries.&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fractions</span><span class="p">[</span><span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Artery fraction unusually high (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fractions</span><span class="p">[</span><span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">]</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1">).&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fractions</span><span class="p">[</span><span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Vein fraction unusually high (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fractions</span><span class="p">[</span><span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">]</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1">).&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fractions</span><span class="p">[</span><span class="n">VesselType</span><span class="o">.</span><span class="n">CAPILLARY</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.3</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Capillary fraction unusually low (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fractions</span><span class="p">[</span><span class="n">VesselType</span><span class="o">.</span><span class="n">CAPILLARY</span><span class="p">]</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1">).&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed_counts</span><span class="p">[</span><span class="n">VesselType</span><span class="o">.</span><span class="n">UNLABELLED</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_edges</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">seed_counts</span><span class="p">[</span><span class="n">VesselType</span><span class="o">.</span><span class="n">UNLABELLED</span><span class="p">]</span><span class="si">}</span><span class="s1"> edges unlabelled after seeding. &#39;</span>
+                            <span class="sa">f</span><span class="s1">&#39;Seed thresholds may be too strict.&#39;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">competing_labels</span><span class="p">():</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">score_stats</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s1">&#39;min&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Some </span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1"> edges have very low scores &#39;</span>
+                                <span class="sa">f</span><span class="s1">&#39;(min=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">score_stats</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="s2">&quot;min&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">).&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">warnings</span>
+
+<div class="viewcode-block" id="ClassificationMetrics.summary">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.ClassificationMetrics.summary">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Human-readable summary for logging.&quot;&quot;&quot;</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Classification results (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_edges</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> edges):&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">v_type</span> <span class="ow">in</span> <span class="p">(</span><span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">,</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">,</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">CAPILLARY</span><span class="p">):</span>
+            <span class="n">extra</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="k">if</span> <span class="n">v_type</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">propagated_counts</span><span class="p">:</span>
+                <span class="n">extra</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  [seeds: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">seed_counts</span><span class="p">[</span><span class="n">v_type</span><span class="p">]</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">, &#39;</span>
+                         <span class="sa">f</span><span class="s1">&#39;propagated: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">propagated_counts</span><span class="p">[</span><span class="n">v_type</span><span class="p">]</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">]&#39;</span><span class="p">)</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">v_type</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">:</span><span class="s1">12s</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="p">[</span><span class="n">v_type</span><span class="p">]</span><span class="si">:</span><span class="s1">&gt;8,</span><span class="si">}</span><span class="s1">  &#39;</span>
+                         <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fractions</span><span class="p">[</span><span class="n">v_type</span><span class="p">]</span><span class="si">:</span><span class="s1">6.1%</span><span class="si">}</span><span class="s1">)</span><span class="si">{</span><span class="n">extra</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="sa">f</span><span class="s1">&#39;  Propagation iterations: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">propagation_iterations</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                      <span class="sa">f</span><span class="s1">&#39;  Seed conflicts: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_seed_conflicts</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                      <span class="sa">f</span><span class="s1">&#39;  Direct artery-vein contacts: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">n_direct_contacts</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                      <span class="sa">f</span><span class="s1">&#39;  Fragments removed: &#39;</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                          <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">t</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s1">=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">fragments_removed</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+                          <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">competing_labels</span><span class="p">()),</span>
+                      <span class="p">])</span>
+        <span class="n">warns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sanity_warnings</span>
+        <span class="k">if</span> <span class="n">warns</span><span class="p">:</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;  ⚠ Warnings:&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">warns</span><span class="p">:</span>
+                <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;    - </span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="c1"># ── scoring helpers ──────────────────────────────────────────────────────────</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_sigmoid</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">centre</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Smooth step function mapping values to [0, 1].</span>
+
+<span class="sd">    ``centre`` is the inflection point (output = 0.5).</span>
+<span class="sd">    ``width`` controls steepness — larger = gentler transition.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">values</span> <span class="o">-</span> <span class="n">centre</span><span class="p">)</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_normalise_intensity</span><span class="p">(</span><span class="n">intensity</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">floor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                          <span class="n">ceiling</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Map intensity to [0, 1] with ``floor`` → 0 and ``ceiling`` → 1.</span>
+
+<span class="sd">    If ``ceiling`` is None, uses the 99th percentile of the data.</span>
+<span class="sd">    Values below floor are clipped to 0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ceiling</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ceiling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">intensity</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">intensity</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">1.0</span>
+    <span class="n">span</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ceiling</span> <span class="o">-</span> <span class="n">floor</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">((</span><span class="n">intensity</span> <span class="o">-</span> <span class="n">floor</span><span class="p">)</span> <span class="o">/</span> <span class="n">span</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_in_range_soft</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">lo</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">hi</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                    <span class="n">margin</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Soft membership function for the interval [lo, hi].</span>
+
+<span class="sd">    **Why not a hard range check?**</span>
+
+<span class="sd">    A hard ``(values &gt;= lo) &amp; (values &lt;= hi)`` produces a binary mask</span>
+<span class="sd">    with sharp transitions at the boundaries. This is problematic when</span>
+<span class="sd">    used as a score component because:</span>
+
+<span class="sd">    - An edge with artery intensity 2501 (just above ``hi=2500``) gets</span>
+<span class="sd">      score 0.0, while 2499 gets score 1.0. The biological signal does</span>
+<span class="sd">      not have this kind of precision.</span>
+<span class="sd">    - The sharp boundary creates unstable classification at the edges</span>
+<span class="sd">      of the intensity range — small noise pushes edges in and out.</span>
+
+<span class="sd">    The soft version uses two opposing sigmoids that multiply together:</span>
+
+<span class="sd">    ::</span>
+
+<span class="sd">        1.0 ─────────╮               ╭─────────</span>
+<span class="sd">                       ╲             ╱</span>
+<span class="sd">        0.5             ╲           ╱</span>
+<span class="sd">                         ╲         ╱</span>
+<span class="sd">        0.0 ──────────────╰───────╯──────────────</span>
+<span class="sd">                         lo       hi</span>
+
+<span class="sd">    The ``margin`` parameter (fraction of ``hi - lo``) controls how</span>
+<span class="sd">    gradual the transition is. At ``margin=0.1`` the transition zone</span>
+<span class="sd">    is about 10% of the range width on each side.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    values : np.ndarray</span>
+<span class="sd">        Input values to evaluate.</span>
+<span class="sd">    lo, hi : float</span>
+<span class="sd">        Boundaries of the target range.</span>
+<span class="sd">    margin : float</span>
+<span class="sd">        Width of the sigmoid transition as a fraction of (hi - lo).</span>
+<span class="sd">        Larger = gentler transition.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        Soft membership scores in [0, 1]. Values well inside [lo, hi]</span>
+<span class="sd">        score ~1.0, values well outside score ~0.0.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">below</span> <span class="o">=</span> <span class="n">_sigmoid</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">centre</span><span class="o">=</span><span class="n">lo</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">margin</span> <span class="o">*</span> <span class="p">(</span><span class="n">hi</span> <span class="o">-</span> <span class="n">lo</span><span class="p">))</span>
+    <span class="n">above</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">_sigmoid</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">centre</span><span class="o">=</span><span class="n">hi</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">margin</span> <span class="o">*</span> <span class="p">(</span><span class="n">hi</span> <span class="o">-</span> <span class="n">lo</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">below</span> <span class="o">*</span> <span class="n">above</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_marker_score</span><span class="p">(</span><span class="n">intensity</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">binary</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span>
+                   <span class="n">floor</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Combine intensity and binary mask into a single [0, 1] marker score.</span>
+
+<span class="sd">    The intensity is normalised to [0, 1] using ``floor`` as the zero point.</span>
+<span class="sd">    The binary mask contributes 1.0 where True.</span>
+<span class="sd">    The result is the element-wise maximum of the two contributions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">intensity</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">_normalise_intensity</span><span class="p">(</span><span class="n">intensity</span><span class="p">,</span> <span class="n">floor</span><span class="o">=</span><span class="n">floor</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">binary</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">binary</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">score</span>
+
+
+<span class="c1"># ── classifier ───────────────────────────────────────────────────────────────</span>
+
+<div class="viewcode-block" id="VesselClassifier">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.VesselClassifier">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">VesselClassifier</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Score-then-propagate vessel classifier for reduced vascular graphs.</span>
+
+<span class="sd">    Usage</span>
+<span class="sd">    -----</span>
+<span class="sd">    ::</span>
+
+<span class="sd">        signals = VesselSignals(...)</span>
+<span class="sd">        cfg     = ClassificationConfig.from_config(config_dict)</span>
+<span class="sd">        vc      = VesselClassifier(graph, cfg, signals)</span>
+<span class="sd">        metrics = vc.classify()</span>
+<span class="sd">        print(metrics.summary())</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph : Graph</span>
+<span class="sd">        The annotated, reduced graph.  Modified **in place**.</span>
+<span class="sd">    config : ClassificationConfig</span>
+<span class="sd">        All classification thresholds.</span>
+<span class="sd">    signals : VesselSignals</span>
+<span class="sd">        Pre-collected per-edge signal arrays.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">:</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">ClassificationConfig</span><span class="p">,</span> <span class="n">signals</span><span class="p">:</span> <span class="n">VesselSignals</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span>   <span class="o">=</span> <span class="n">graph</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span>     <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">signals</span> <span class="o">=</span> <span class="n">signals</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="n">ClassificationMetrics</span><span class="p">(</span><span class="n">n_edges</span><span class="o">=</span><span class="n">graph</span><span class="o">.</span><span class="n">n_edges</span><span class="p">)</span>
+
+    <span class="c1"># ── public entry point ───────────────────────────────────────────────</span>
+
+<div class="viewcode-block" id="VesselClassifier.classify">
+<a class="viewcode-back" href="../../../../api/ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.VesselClassifier.classify">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">classify</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ClassificationMetrics</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Run the full classification pipeline:</span>
+<span class="sd">        score → seed → propagate → cleanup.</span>
+
+<span class="sd">        After this call the graph has two boolean edge properties:</span>
+
+<span class="sd">        * ``&#39;artery&#39;`` — True for edges classified as artery</span>
+<span class="sd">        * ``&#39;vein&#39;``   — True for edges classified as vein</span>
+
+<span class="sd">        Edges that are neither artery nor vein are implicitly capillaries.</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ClassificationMetrics</span>
+<span class="sd">            Diagnostic metrics and sanity check results.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Phase 1 — score every edge</span>
+        <span class="n">artery_score</span><span class="p">,</span> <span class="n">vein_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_edge_scores</span><span class="p">()</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">:</span> <span class="n">artery_score</span><span class="p">,</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">:</span> <span class="n">vein_score</span><span class="p">}</span>
+
+        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seed_labels</span><span class="p">(</span><span class="n">artery_score</span><span class="p">,</span> <span class="n">vein_score</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">record_seed_counts</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_propagate_labels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+        <span class="c1"># Everything still unlabelled becomes capillary</span>
+        <span class="n">labels</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">UNLABELLED</span><span class="p">]</span> <span class="o">=</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">CAPILLARY</span>
+
+        <span class="n">labels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cleanup</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># Write results to graph</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_labels_to_properties</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+        <span class="c1"># Compute final metrics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">record_final_counts</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">n_direct_contacts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count_direct_contacts</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_relabel_small_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">vessel_type</span><span class="p">:</span> <span class="n">VesselType</span><span class="p">,</span>
+                                  <span class="n">min_edges</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">new_kind</span><span class="p">:</span> <span class="n">VesselType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Find connected components of ``vessel_type`` smaller than ``min_edges``</span>
+<span class="sd">        and relabel them as ``new_kind``.</span>
+
+<span class="sd">        Uses the edge-graph trick (see ``_remove_seed_noise``) to find</span>
+<span class="sd">        connected components of edges sharing the same label.</span>
+
+<span class="sd">        Returns the number of edges relabelled.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">==</span> <span class="n">vessel_type</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="k">return</span> <span class="mi">0</span>
+
+        <span class="n">sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">sub_graph</span><span class="p">(</span><span class="n">edge_filter</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">sub_edge</span><span class="p">,</span> <span class="n">edge_map</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">edge_graph</span><span class="p">(</span><span class="n">return_edge_map</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">components</span><span class="p">,</span> <span class="n">sizes</span> <span class="o">=</span> <span class="n">sub_edge</span><span class="o">.</span><span class="n">label_components</span><span class="p">(</span><span class="n">return_vertex_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">edge_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">components</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">sizes</span> <span class="o">&lt;</span> <span class="n">min_edges</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>   <span class="c1"># indices ?? in G space</span>
+        <span class="n">too_few</span> <span class="o">=</span> <span class="n">edge_map</span><span class="p">[</span><span class="n">edge_mask</span><span class="p">]</span>  <span class="c1"># mask in L(G) space</span>
+        <span class="n">labels</span><span class="p">[</span><span class="n">too_few</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_kind</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">too_few</span><span class="p">)</span>
+
+    <span class="c1"># ── phase 1: scoring ─────────────────────────────────────────────────</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_edge_scores</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute per-edge artery and vein scores in [0, 1].</span>
+
+<span class="sd">        Three cases depending on which channels are available:</span>
+
+<span class="sd">        Case 1 — vessels only (no specific markers)</span>
+<span class="sd">            Cannot distinguish arteries from veins by signal.</span>
+<span class="sd">            Returns zero scores for both — everything stays capillary.</span>
+<span class="sd">            A warning is emitted.</span>
+
+<span class="sd">        Case 2 — vessels + arteries (most common)</span>
+<span class="sd">            Artery score = radius × artery marker.</span>
+<span class="sd">            Vein score   = radius × in_vein_range (anti-correlation proxy:</span>
+<span class="sd">                           low artery signal in a large vessel → probably vein).</span>
+
+<span class="sd">        Case 3 — triple labelling (vessels + arteries + veins)</span>
+<span class="sd">            Artery score = radius × artery marker.</span>
+<span class="sd">            Vein score   = radius × max(direct vein marker,</span>
+<span class="sd">                                        anti-correlation proxy).</span>
+<span class="sd">            The max combines direct evidence (vein channel) with indirect</span>
+<span class="sd">            evidence (low artery channel) — whichever is stronger wins.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signals</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span>
+        <span class="n">n_edges</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">radii</span><span class="p">)</span>
+
+        <span class="n">has_artery</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">artery_binary</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">has_vein</span>   <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">vein_binary</span>   <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+        <span class="c1"># Radii contribution</span>
+        <span class="n">artery_radius_score</span> <span class="o">=</span> <span class="n">_sigmoid</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">radii</span><span class="p">,</span> <span class="n">centre</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">artery_trace_radius</span><span class="p">)</span>
+        <span class="n">vein_radius_score</span>   <span class="o">=</span> <span class="n">_sigmoid</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">radii</span><span class="p">,</span> <span class="n">centre</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">vein_trace_radius</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">has_artery</span><span class="p">:</span>
+            <span class="c1"># Case 1 — no markers, cannot classify vessel types by signal</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;No artery channel available. Vessel type classification &#39;</span>
+                          <span class="s1">&#39;requires at least an artery marker channel. &#39;</span>
+                          <span class="s1">&#39;All edges will be classified as capillary.&#39;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_edges</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_edges</span><span class="p">)</span>
+
+        <span class="c1"># Labeling contribution</span>
+
+        <span class="c1"># Cases 2 and 3 — artery channel available</span>
+        <span class="n">artery_marker_score</span> <span class="o">=</span> <span class="n">_marker_score</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">artery_intensity</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">artery_binary</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">artery_intensity_min</span><span class="p">,</span> <span class="n">n_edges</span><span class="p">)</span>
+        <span class="c1"># combine</span>
+        <span class="n">artery_score</span> <span class="o">=</span> <span class="n">artery_radius_score</span> <span class="o">*</span> <span class="n">artery_marker_score</span>
+
+        <span class="c1"># Anti-correlation: low artery signal → positive vein evidence</span>
+        <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">vein_intensity_range</span>
+        <span class="n">in_vein_range</span> <span class="o">=</span> <span class="n">_in_range_soft</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">artery_intensity</span><span class="p">,</span> <span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">)</span>
+        <span class="c1"># combine</span>
+        <span class="n">vein_score</span> <span class="o">=</span> <span class="n">vein_radius_score</span> <span class="o">*</span> <span class="n">in_vein_range</span>
+
+        <span class="k">if</span> <span class="n">has_vein</span><span class="p">:</span>
+            <span class="c1"># Case 3 — direct vein evidence + optional anti-correlation proxy</span>
+            <span class="n">vein_marker_score</span> <span class="o">=</span> <span class="n">_marker_score</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">vein_intensity</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">vein_binary</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">vein_intensity_min</span><span class="p">,</span> <span class="n">n_edges</span><span class="p">)</span>
+            <span class="c1"># Direct vein signal OR inferred from low artery signal</span>
+            <span class="c1"># combine with signal</span>
+            <span class="n">vein_score</span> <span class="o">=</span> <span class="n">vein_radius_score</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">vein_marker_score</span><span class="p">,</span> <span class="n">in_vein_range</span><span class="p">)</span>  <span class="c1"># Avoids classifiying small vessels with label as veins</span>
+
+        <span class="k">return</span> <span class="n">artery_score</span><span class="p">,</span> <span class="n">vein_score</span>
+
+    <span class="c1"># ── phase 2: seeding ─────────────────────────────────────────────────</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_seed_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">artery_score</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+                     <span class="n">vein_score</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assign initial labels to high-confidence edges.</span>
+
+<span class="sd">        Order:</span>
+<span class="sd">        1. Capillaries — too small for either vessel type</span>
+<span class="sd">        2. Score-based artery/vein seeds (non-conflicting)</span>
+<span class="sd">        3. Conflict resolution — higher score wins</span>
+<span class="sd">        4. Large-radius vein fallback — huge + not artery → vein</span>
+<span class="sd">        5. Noise removal — tiny artery components removed</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        labels : np.ndarray</span>
+<span class="sd">            dtype int8, values from VesselType enum.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cfg</span>    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span>
+        <span class="n">n</span>      <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">artery_score</span><span class="p">)</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">UNLABELLED</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+
+        <span class="c1"># 1. Definite capillaries — too small for either vessel type</span>
+        <span class="n">capillary_radius</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">artery_trace_radius</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">vein_trace_radius</span><span class="p">)</span>
+        <span class="n">labels</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">radii</span> <span class="o">&lt;</span> <span class="n">capillary_radius</span><span class="p">]</span> <span class="o">=</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">CAPILLARY</span>
+
+        <span class="c1"># 2. Score-based seeds (non-conflicting only)</span>
+        <span class="n">artery_seed</span> <span class="o">=</span> <span class="n">artery_score</span> <span class="o">&gt;=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">artery_seed_threshold</span>
+        <span class="n">vein_seed</span>   <span class="o">=</span> <span class="n">vein_score</span>   <span class="o">&gt;=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">vein_seed_threshold</span>
+        <span class="n">conflict</span> <span class="o">=</span> <span class="n">artery_seed</span> <span class="o">&amp;</span> <span class="n">vein_seed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">n_seed_conflicts</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">conflict</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+        <span class="n">unlabelled</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">==</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">UNLABELLED</span>
+        <span class="n">labels</span><span class="p">[</span><span class="n">artery_seed</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">conflict</span> <span class="o">&amp;</span> <span class="n">unlabelled</span><span class="p">]</span> <span class="o">=</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span>
+        <span class="n">labels</span><span class="p">[</span><span class="n">vein_seed</span>   <span class="o">&amp;</span> <span class="o">~</span><span class="n">conflict</span> <span class="o">&amp;</span> <span class="n">unlabelled</span><span class="p">]</span> <span class="o">=</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span>
+
+        <span class="c1"># 3. Conflicts — higher score wins</span>
+        <span class="n">labels</span><span class="p">[</span><span class="n">conflict</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">artery_score</span> <span class="o">&gt;=</span> <span class="n">vein_score</span><span class="p">)]</span> <span class="o">=</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span>
+        <span class="n">labels</span><span class="p">[</span><span class="n">conflict</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">vein_score</span> <span class="o">&gt;</span> <span class="n">artery_score</span><span class="p">)]</span>  <span class="o">=</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span>
+
+        <span class="c1"># 4. Large-radius vein: whatever is still unlabelled, very large and low artery scores → vein</span>
+        <span class="n">unlabelled</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">==</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">UNLABELLED</span>
+        <span class="n">large_non_artery</span> <span class="o">=</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">radii</span> <span class="o">&gt;=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">restrictive_vein_radius</span><span class="p">)</span> <span class="o">&amp;</span>
+                            <span class="p">(</span><span class="n">artery_score</span> <span class="o">&lt;</span> <span class="n">cfg</span><span class="o">.</span><span class="n">artery_seed_threshold</span><span class="p">)</span> <span class="o">&amp;</span>
+                            <span class="n">unlabelled</span><span class="p">)</span>
+        <span class="n">labels</span><span class="p">[</span><span class="n">large_non_artery</span><span class="p">]</span> <span class="o">=</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span>
+
+        <span class="c1"># 5. Noise removal on artery seeds</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_relabel_small_components</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">,</span> <span class="n">min_edges</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">arteries_min_noise_edges</span><span class="p">,</span>
+                                       <span class="n">new_kind</span><span class="o">=</span><span class="n">VesselType</span><span class="o">.</span><span class="n">UNLABELLED</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">labels</span>
+
+    <span class="c1"># ── phase 3: propagation ─────────────────────────────────────────────</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_propagate_labels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">scores</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">VesselType</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Simultaneously propagate artery and vein labels outward from seeds.</span>
+
+<span class="sd">        **Why the edge-graph indirection?**</span>
+
+<span class="sd">        Our labels live on *edges* of the reduced graph. But</span>
+<span class="sd">        ``propagate_labels`` (in graph_processing) works by dilating</span>
+<span class="sd">        *vertex* labels on a graph. We need the same &quot;dilate by one</span>
+<span class="sd">        step&quot; semantics but for edges instead of vertices.</span>
+
+<span class="sd">        The solution is the same edge-graph trick used in</span>
+<span class="sd">        ``_remove_seed_noise``:</span>
+
+<span class="sd">        - Build the edge graph of our reduced graph.</span>
+<span class="sd">        - In the edge graph, each vertex represents an original edge.</span>
+<span class="sd">        - Two edge-graph vertices are connected if their original edges</span>
+<span class="sd">          share a vertex (i.e. are adjacent in the vessel network).</span>
+<span class="sd">        - Propagating vertex labels on the edge graph is equivalent to</span>
+<span class="sd">          propagating edge labels on the original graph.</span>
+
+<span class="sd">        **What space are we in?**</span>
+
+<span class="sd">        The reduced graph has ~10M edges. Each edge represents an</span>
+<span class="sd">        entire vessel segment (a chain of degree-2 vertices that was</span>
+<span class="sd">        squeezed during graph reduction). So one &quot;edge&quot; here is not</span>
+<span class="sd">        a single voxel — it is an entire vessel segment with</span>
+<span class="sd">        properties like radius, artery_score, etc. that were</span>
+<span class="sd">        aggregated from the underlying geometry.</span>
+
+<span class="sd">        we attach all needed arrays (e.g. scores)</span>
+<span class="sd">        as edge properties on the original graph.</span>
+<span class="sd">         When graph-tool builds the edge graph (line graph),</span>
+<span class="sd">        edge properties become vertex properties automatically.</span>
+<span class="sd">        ``propagate_labels`` then reads them by name from the edge graph.</span>
+
+<span class="sd">        ::</span>
+
+<span class="sd">            Reduced graph (our input)</span>
+<span class="sd">            ─────────────────────────</span>
+<span class="sd">            Vertices = branch points (few M)</span>
+<span class="sd">            Edges    = vessel segments (~10M)</span>
+<span class="sd">            Properties on edges: radii, artery_score, vein_score, labels</span>
+
+<span class="sd">                    ↓  build edge graph</span>
+
+<span class="sd">            Edge graph (propagation space)</span>
+<span class="sd">            ──────────────────────────────</span>
+<span class="sd">            Vertices = vessel segments (~10M)</span>
+<span class="sd">            Edges    = adjacency between segments</span>
+<span class="sd">            Properties on vertices: same arrays, remapped via edge_map</span>
+
+<span class="sd">                    ↓  propagate_labels()</span>
+
+<span class="sd">            Updated labels in edge-graph space</span>
+
+<span class="sd">                    ↓  map back via edge_map</span>
+
+<span class="sd">            Updated labels on reduced graph edges</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        labels : np.ndarray</span>
+<span class="sd">            Updated label array with VesselType.CAPILLARY for remaining</span>
+<span class="sd">            unlabelled edges.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span>
+
+        <span class="c1"># Attach all propagation inputs as edge properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_propagation_properties</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">scores</span><span class="p">)</span>
+
+        <span class="c1"># Build edge graph — all edge properties become vertex properties</span>
+        <span class="n">edge_graph</span><span class="p">,</span> <span class="n">edge_map</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">edge_graph</span><span class="p">(</span><span class="n">return_edge_map</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">competing_pairs</span> <span class="o">=</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">competitor</span><span class="p">()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">competing_labels</span><span class="p">()}</span>
+
+        <span class="n">surface_masks</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">:</span> <span class="s1">&#39;_propagation_surface&#39;</span><span class="p">,</span>  <span class="c1"># property name</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">:</span>   <span class="kc">None</span><span class="p">,</span>                     <span class="c1"># no surface constraint</span>
+        <span class="p">}</span>
+
+        <span class="n">min_radii</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">:</span> <span class="n">cfg</span><span class="o">.</span><span class="n">artery_trace_radius</span><span class="p">,</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">:</span>   <span class="n">cfg</span><span class="o">.</span><span class="n">vein_trace_radius</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">label_priority</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">:</span>   <span class="mi">1</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">score_properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">:</span> <span class="s1">&#39;_propagation_score_artery&#39;</span><span class="p">,</span>
+            <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">:</span>   <span class="s1">&#39;_propagation_score_vein&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">result_labels</span><span class="p">,</span> <span class="n">n_iter</span> <span class="o">=</span> <span class="n">graph_processing</span><span class="o">.</span><span class="n">propagate_labels</span><span class="p">(</span>
+            <span class="n">edge_graph</span><span class="p">,</span>
+            <span class="n">label_property</span><span class="o">=</span><span class="s1">&#39;_propagation_labels&#39;</span><span class="p">,</span> <span class="n">score_properties</span><span class="o">=</span><span class="n">score_properties</span><span class="p">,</span>
+            <span class="n">competing_pairs</span><span class="o">=</span><span class="n">competing_pairs</span><span class="p">,</span>
+            <span class="n">radii_property</span><span class="o">=</span><span class="s1">&#39;_propagation_radii&#39;</span><span class="p">,</span> <span class="n">min_radii</span><span class="o">=</span><span class="n">min_radii</span><span class="p">,</span>
+            <span class="n">surface_mask_properties</span><span class="o">=</span><span class="n">surface_masks</span><span class="p">,</span>
+            <span class="n">label_priority</span><span class="o">=</span><span class="n">label_priority</span><span class="p">,</span>
+            <span class="n">max_iterations</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">max_propagation_iter</span><span class="p">,</span> <span class="n">initial_threshold</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">initial_threshold</span><span class="p">,</span>
+            <span class="n">threshold_growth</span><span class="o">=</span><span class="mf">1.15</span><span class="p">,</span> <span class="n">threshold_ceiling</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">propagation_floor</span><span class="p">,</span>
+            <span class="n">unlabelled_value</span><span class="o">=</span><span class="n">VesselType</span><span class="o">.</span><span class="n">UNLABELLED</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">propagation_iterations</span> <span class="o">=</span> <span class="n">n_iter</span>
+
+        <span class="c1"># Map back from edge-graph to original edge space</span>
+        <span class="c1"># caller will decide what to do with unlabelled edges</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">n_edges</span><span class="p">,</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">UNLABELLED</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">edge_map</span><span class="p">]</span> <span class="o">=</span> <span class="n">result_labels</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">edge_map</span><span class="p">)]</span>
+
+        <span class="c1"># Cleanup temporary properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_remove_propagation_properties</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_propagation_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+                                     <span class="n">scores</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">VesselType</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Attach all arrays needed by propagation as temporary edge</span>
+<span class="sd">        properties on the original graph.</span>
+
+<span class="sd">        When graph-tool builds the edge graph (line graph), these</span>
+<span class="sd">        become vertex properties automatically — no manual index</span>
+<span class="sd">        mapping needed.</span>
+
+<span class="sd">        Property names are prefixed with ``_propagation_`` to avoid</span>
+<span class="sd">        collisions with permanent graph properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signals</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">define_edge_property</span><span class="p">(</span><span class="s1">&#39;_propagation_labels&#39;</span><span class="p">,</span>
+                                         <span class="n">labels</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">define_edge_property</span><span class="p">(</span><span class="s1">&#39;_propagation_score_artery&#39;</span><span class="p">,</span>
+                                         <span class="n">scores</span><span class="p">[</span><span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">define_edge_property</span><span class="p">(</span><span class="s1">&#39;_propagation_score_vein&#39;</span><span class="p">,</span>
+                                         <span class="n">scores</span><span class="p">[</span><span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">define_edge_property</span><span class="p">(</span><span class="s1">&#39;_propagation_radii&#39;</span><span class="p">,</span>
+                                         <span class="n">s</span><span class="o">.</span><span class="n">radii</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">distance_to_surface</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">surface</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">distance_to_surface</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">distance_to_surface_min</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">surface</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">n_edges</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">define_edge_property</span><span class="p">(</span><span class="s1">&#39;_propagation_surface&#39;</span><span class="p">,</span>
+                                         <span class="n">surface</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_remove_propagation_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove temporary edge properties added for propagation.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">edge_properties</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_propagation_&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">remove_edge_property</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+
+    <span class="c1"># ── phase 4: cleanup ─────────────────────────────────────────────────</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Remove small connected components of each competing vessel type.&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">vessel_type</span><span class="p">,</span> <span class="n">min_size</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">min_component_edges</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">n_removed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_relabel_small_components</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">vessel_type</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">new_kind</span><span class="o">=</span><span class="n">VesselType</span><span class="o">.</span><span class="n">CAPILLARY</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">fragments_removed</span><span class="p">[</span><span class="n">vessel_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_removed</span>
+
+        <span class="k">return</span> <span class="n">labels</span>
+
+    <span class="c1"># ── write results ────────────────────────────────────────────────────</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_labels_to_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write the unified label array back as boolean edge properties.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">define_edge_property</span><span class="p">(</span><span class="s1">&#39;artery&#39;</span><span class="p">,</span> <span class="n">labels</span> <span class="o">==</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">define_edge_property</span><span class="p">(</span><span class="s1">&#39;vein&#39;</span><span class="p">,</span>   <span class="n">labels</span> <span class="o">==</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span><span class="p">)</span>
+
+    <span class="c1"># ── diagnostics ──────────────────────────────────────────────────────</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_count_direct_contacts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">labels</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Count vertices where an artery edge and a vein edge meet.</span>
+
+<span class="sd">        Biologically arteries and veins should always be separated</span>
+<span class="sd">        by capillaries. A nonzero count indicates classification</span>
+<span class="sd">        ambiguity at transition zones.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">edge_connectivity</span><span class="p">()</span>
+        <span class="n">n_vertices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">n_vertices</span>
+
+        <span class="n">is_artery</span> <span class="o">=</span> <span class="n">labels</span> <span class="o">==</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">ARTERY</span>
+        <span class="n">is_vein</span>   <span class="o">=</span> <span class="n">labels</span> <span class="o">==</span> <span class="n">VesselType</span><span class="o">.</span><span class="n">VEIN</span>
+
+        <span class="n">touches_artery</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_vertices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="n">touches_vein</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_vertices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+        <span class="n">artery_edges</span> <span class="o">=</span> <span class="n">ec</span><span class="p">[</span><span class="n">is_artery</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">artery_edges</span><span class="p">):</span>
+            <span class="n">touches_artery</span><span class="p">[</span><span class="n">artery_edges</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">touches_artery</span><span class="p">[</span><span class="n">artery_edges</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">vein_edges</span> <span class="o">=</span> <span class="n">ec</span><span class="p">[</span><span class="n">is_vein</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">vein_edges</span><span class="p">):</span>
+            <span class="n">touches_vein</span><span class="p">[</span><span class="n">vein_edges</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">touches_vein</span><span class="p">[</span><span class="n">vein_edges</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="nb">int</span><span class="p">((</span><span class="n">touches_artery</span> <span class="o">&amp;</span> <span class="n">touches_vein</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

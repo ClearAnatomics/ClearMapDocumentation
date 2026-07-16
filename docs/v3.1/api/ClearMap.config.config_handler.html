@@ -1,0 +1,1518 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>config_handler &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.config.config_handler';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/api/ClearMap.config.config_handler.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="config_repository" href="ClearMap.config.config_repository.html" />
+    <link rel="prev" title="config_coordinator" href="ClearMap.config.config_coordinator.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Alignment.html">ClearMap.Alignment</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.html">ClearMap.Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.html">ClearMap.IO</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.html">ClearMap.ImageProcessing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ParallelProcessing.html">ClearMap.ParallelProcessing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Scripts.html">ClearMap.Scripts</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.html">ClearMap.Utils</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Visualization.html">ClearMap.Visualization</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.config.html">ClearMap.config</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.gui.html">ClearMap.gui</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.pipeline_orchestrators.html">ClearMap.pipeline_orchestrators</a></li>
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../api.html" class="nav-link">ClearMap API</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="ClearMap.config.html" class="nav-link">ClearMap.config</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">config_handler</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="config-handler">
+<h1>config_handler<a class="headerlink" href="#config-handler" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+</tbody>
+</table>
+</div>
+<p id="module-ClearMap.config.config_handler">This module provides a class to load/write configuration files from the ClearMap configuration directory.</p>
+<p>The configuration files are used to store the parameters for the ClearMap processing steps.
+Supported formats are .cfg (ConfigObj), .yml/.yaml (YAML) and .json (JSON).
+Other formats (TOML, INI, XML, etc.)  could be supported in the future through
+a simple plugin function to this module.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ConfigAlternativesRegistry</span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigAlternativesRegistry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Registry of alternative names for configuration files.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.get_channel_sections">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_channel_sections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigAlternativesRegistry.get_channel_sections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.get_channel_sections" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.get_alternatives">
+<span class="sig-name descname"><span class="pre">get_alternatives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigAlternativesRegistry.get_alternatives"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.get_alternatives" title="Link to this definition">#</a></dt>
+<dd><p>Get the list of alternative names for a given configuration name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cfg_name</strong> (<em>str</em>) – The base name of the configuration file (without params and extension).</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>list[str]</dt><dd><p>A list of alternative names for the configuration file.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If no alternatives are found for the given configuration name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.get_spec">
+<span class="sig-name descname"><span class="pre">get_spec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ClearMap.config.config_handler.ConfigSpec" title="ClearMap.config.config_handler.ConfigSpec"><span class="pre">ConfigSpec</span></a></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigAlternativesRegistry.get_spec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.get_spec" title="Link to this definition">#</a></dt>
+<dd><p>Get the ConfigSpec for a given configuration name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cfg_name</strong> (<em>str</em>) – The base name of the configuration file (without params and extension).</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>ConfigSpec</dt><dd><p>The configuration specification.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>KeyError</strong> – If no specification is found for the given configuration name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.is_global_cfg">
+<span class="sig-name descname"><span class="pre">is_global_cfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigAlternativesRegistry.is_global_cfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.is_global_cfg" title="Link to this definition">#</a></dt>
+<dd><p>Check if the given config name is a global config (i.e. machine, display, preferences).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.is_legacy_cfg">
+<span class="sig-name descname"><span class="pre">is_legacy_cfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigAlternativesRegistry.is_legacy_cfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.is_legacy_cfg" title="Link to this definition">#</a></dt>
+<dd><p>Check if the given config name is a legacy config (i.e. alignment, processing).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.is_local_file">
+<span class="sig-name descname"><span class="pre">is_local_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigAlternativesRegistry.is_local_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.is_local_file" title="Link to this definition">#</a></dt>
+<dd><p>Check if the given config name is a tab file (i.e. has alternatives).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.pipeline_to_section_name">
+<span class="sig-name descname"><span class="pre">pipeline_to_section_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipeline_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigAlternativesRegistry.pipeline_to_section_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.pipeline_to_section_name" title="Link to this definition">#</a></dt>
+<dd><p>Convert a pipeline name to a configuration section name.
+E.g. ‘TubeMap’ -&gt; ‘vasculature’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pipeline_name</strong> (<em>str</em>) – The name of the pipeline.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>str</dt><dd><p>The corresponding configuration section name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.to_canonical">
+<span class="sig-name descname"><span class="pre">to_canonical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigAlternativesRegistry.to_canonical"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.to_canonical" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.alternative_names">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">alternative_names</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.alternative_names" title="Link to this definition">#</a></dt>
+<dd><p>Get all alternative names registered.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>list[str]</dt><dd><p>A list of all alternative configuration names.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_config_names">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">canonical_config_names</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_config_names" title="Link to this definition">#</a></dt>
+<dd><p>Get the canonical configuration names (first in each alternative group).</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>list[str]</dt><dd><p>A list of canonical configuration names.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_global_config_names">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">canonical_global_config_names</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_global_config_names" title="Link to this definition">#</a></dt>
+<dd><p>Get the canonical configuration names for global sections.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>list[str]</dt><dd><p>A list of canonical configuration names for global sections.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_group_config_names">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">canonical_group_config_names</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_group_config_names" title="Link to this definition">#</a></dt>
+<dd><p>Get the canonical configuration names for group sections.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>list[str]</dt><dd><p>A list of canonical configuration names for group sections.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_pipeline_config_names">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">canonical_pipeline_config_names</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_pipeline_config_names" title="Link to this definition">#</a></dt>
+<dd><p>Get the canonical configuration names for pipeline sections.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>list[str]</dt><dd><p>A list of canonical configuration names for pipeline sections.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ConfigHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Resolves logical config names to files and loads them via readers;
+writes using writer_functions (atomic).</p>
+<section id="class-attributes">
+<h2>Class Attributes<a class="headerlink" href="#class-attributes" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>loader_functions: Dict[str, Callable[[Path, bool], Optional[ConfigProxy]]]</dt><dd><p>A dictionary mapping file extensions to their corresponding loader functions.</p>
+</dd>
+<dt>writer_functions: Dict[str, Callable[[Path, dict], None]]</dt><dd><p>A dictionary mapping file extensions to their corresponding writer functions.</p>
+</dd>
+<dt>user_defaults_dir: Path</dt><dd><p>The default directory where configuration files are located.</p>
+</dd>
+<dt>supported_exts: tuple</dt><dd><p>A tuple of supported file extensions for configuration files.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.src_dir">
+<span class="sig-name descname"><span class="pre">src_dir</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.src_dir" title="Link to this definition">#</a></dt>
+<dd><p>The source directory where configuration files are located.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.dump">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.dump"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.dump" title="Link to this definition">#</a></dt>
+<dd><p>Write the given data to the specified path using the appropriate writer function.
+The function is determined by the file extension.
+The write is atomic (writes to a temp file then renames).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Path</em>) – The path to the output configuration file</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – The data to write</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If no writer function is found for the given file extension.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_cfg_from_path">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_cfg_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ClearMap.config.config_handler.ConfigProxy" title="ClearMap.config.config_handler.ConfigProxy"><span class="pre">ConfigProxy</span></a></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_cfg_from_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_cfg_from_path" title="Link to this definition">#</a></dt>
+<dd><p>Load a configuration file from the given path using the appropriate loader function.
+The function is determined by the file extension.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The file must exist.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cfg_path</strong> (<em>str</em><em> | </em><em>Path</em>) – The path to the configuration file. Must exist.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>ConfigProxy</dt><dd><p>The configuration file as a ConfigProxy object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_default_cfg">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_default_cfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_default_cfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_default_cfg" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_default_path">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_default_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">must_exist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_package</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_default_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_default_path" title="Link to this definition">#</a></dt>
+<dd><p>Get the path to the default configuration file with the given name.
+Several extensions are tried in order of preference.
+If None is found, the first possible option is returned if must_exist is False or
+a FileNotFoundError is raised if must_exist is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg_name</strong> (<em>str</em>) – The name (without params and extension) of the configuration file</p></li>
+<li><p><strong>must_exist</strong> (<em>bool</em>) – Whether the file must exist. If missing and True, a FileNotFoundError is raised</p></li>
+<li><p><strong>base_dir</strong> (<em>Optional</em><em>[</em><em>Path</em><em>]</em>) – The base directory to look for the default config file.
+If specified, this overrides the from_package parameter.</p></li>
+<li><p><strong>version</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – The version string in the major.minor format to use for the folder structure.
+If None, the current ClearMap version is used.</p></li>
+<li><p><strong>from_package</strong> (<em>bool</em>) – <p>If True, look for the default config in the ClearMap package directory.
+Otherwise, look in the user’s ~/.clearmap directory.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This only affects the default path if no base_dir is specified.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Path</dt><dd><p>The path to the default configuration file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_global_canonical_path">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_global_canonical_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_global_canonical_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_global_canonical_path" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_global_path">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_global_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">must_exist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_global_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_global_path" title="Link to this definition">#</a></dt>
+<dd><p>Get the path to the global configuration file with the given name.
+Several extensions are tried in order of preference.
+If None is found, the first possible option is returned if must_exist is False or
+a FileNotFoundError is raised if must_exist is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg_name</strong> (<em>str</em>) – The name (without params and extension) of the configuration file</p></li>
+<li><p><strong>must_exist</strong> (<em>bool</em>) – Whether the file must exist. If missing and True, a FileNotFoundError is raised</p></li>
+<li><p><strong>base_dir</strong> (<em>Optional</em><em>[</em><em>Path</em><em>]</em>) – The base directory to look for the global config file.
+If None, the user’s ~/.clearmap directory is used.</p></li>
+<li><p><strong>version</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – The version string in the major.minor format to use for the folder structure.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Path</dt><dd><p>The path to the global configuration file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_new_cfg_writer">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_new_cfg_writer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">must_not_exist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ClearMap.config.config_handler.ConfigProxy" title="ClearMap.config.config_handler.ConfigProxy"><span class="pre">ConfigProxy</span></a></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_new_cfg_writer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_new_cfg_writer" title="Link to this definition">#</a></dt>
+<dd><p>Create a new, empty ConfigProxy for cfg_path, without reading from disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg_path</strong> (<em>str</em><em> | </em><em>Path</em>) – Target config path (may or may not exist).</p></li>
+<li><p><strong>must_not_exist</strong> (<em>bool</em>) – If True, raise if the file already exists.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>ConfigProxy</dt><dd><p>An empty ConfigProxy bound to cfg_path with the proper writer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_patched_cfg_from_path">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_patched_cfg_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ClearMap.config.config_handler.ConfigProxy" title="ClearMap.config.config_handler.ConfigProxy"><span class="pre">ConfigProxy</span></a></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_patched_cfg_from_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_patched_cfg_from_path" title="Link to this definition">#</a></dt>
+<dd><p>Load a configuration file from the given path and patch it with the default configuration.
+The default configuration is loaded from the ClearMap package directory.
+The function is determined by the file extension.
+The file must exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cfg_path</strong> (<em>str</em><em> | </em><em>Path</em>) – The path to the configuration file. Must exist.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>ConfigProxy</dt><dd><p>The patched configuration file as a ConfigProxy object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_user_defaults_canonical_path">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">get_user_defaults_canonical_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_user_defaults_canonical_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_user_defaults_canonical_path" title="Link to this definition">#</a></dt>
+<dd><p>Canonical path for a user default config for the <em>current</em> ClearMap version.</p>
+<ul class="simple">
+<li><p>No scanning / fallback across versions</p></li>
+<li><p>Uses current clearmap_version</p></li>
+<li><p>Always uses the given ext (default: .yml for 3.1+)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.resolve_write_path">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">resolve_write_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.resolve_write_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.resolve_write_path" title="Link to this definition">#</a></dt>
+<dd><p>Resolve the <em>target</em> path to write a config by name.
+- Tab/experiment sections -&gt; experiment base_dir
+- Global sections (machine/display/preferences) -&gt; user global directory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.is_global">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_global</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.is_global"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.is_global" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.is_local">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_local</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.is_local"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.is_local" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.normalise_cfg_name">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">normalise_cfg_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.normalise_cfg_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.normalise_cfg_name" title="Link to this definition">#</a></dt>
+<dd><p>Normalise config name by stripping params and version suffix.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.strip_params">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">strip_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'_params'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.strip_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.strip_params" title="Link to this definition">#</a></dt>
+<dd><p>Strip params from config name, e.g. _v2_params from sample_v2_params</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.strip_version_suffix">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">strip_version_suffix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.strip_version_suffix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.strip_version_suffix" title="Link to this definition">#</a></dt>
+<dd><p>Strip version suffix from config name, e.g. _v2_3 from sample_v2_3_params</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_canonical_path">
+<span class="sig-name descname"><span class="pre">get_canonical_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_canonical_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_canonical_path" title="Link to this definition">#</a></dt>
+<dd><p>Get the canonical path to the configuration file with the given name.
+The path is determined based on whether the config is local (tab/experiment)
+or global (machine/display/preferences).
+The rest is determined by the current ClearMap version and layout as well as preferred extension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cfg_name</strong> (<em>str</em>) – The name (without params and extension) of the configuration file.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Path</dt><dd><p>The canonical path to the configuration file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_cfg">
+<span class="sig-name descname"><span class="pre">get_cfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">must_exist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ClearMap.config.config_handler.ConfigProxy" title="ClearMap.config.config_handler.ConfigProxy"><span class="pre">ConfigProxy</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_cfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_cfg" title="Link to this definition">#</a></dt>
+<dd><p>Get the configuration file with the given name.
+Several extensions are tried in order of preference.
+If None is found, None is returned if must_exist is False or
+a FileNotFoundError is raised if must_exist is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg_name</strong> (<em>str</em>) – The name (without params and extension) of the configuration file</p></li>
+<li><p><strong>must_exist</strong> (<em>bool</em>) – Whether the file must exist. If missing and True, a FileNotFoundError is raised</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>ConfigProxy | None</dt><dd><p>The configuration file as a ConfigProxy object or None if not found and must_exist is False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_cfg_path">
+<span class="sig-name descname"><span class="pre">get_cfg_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">must_exist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_cfg_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_cfg_path" title="Link to this definition">#</a></dt>
+<dd><p>Get the path to the configuration file with the given name.
+Several extensions are tried in order of preference.
+If None is found, the canonical path is returned if must_exist is False or
+a FileNotFoundError is raised if must_exist is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg_name</strong> (<em>str</em>) – The name (without params and extension) of the configuration file.
+If present, they will be stripped.</p></li>
+<li><p><strong>must_exist</strong> (<em>bool</em>) – Whether the file must exist. If missing and True, a FileNotFoundError is raised.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Path</dt><dd><p>The path to the configuration file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.get_local_canonical_path">
+<span class="sig-name descname"><span class="pre">get_local_canonical_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigHandler.get_local_canonical_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.get_local_canonical_path" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.loader_functions">
+<span class="sig-name descname"><span class="pre">loader_functions</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.config.config_handler.ConfigProxy" title="ClearMap.config.config_handler.ConfigProxy"><span class="pre">ConfigProxy</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'.cfg':</span> <span class="pre">&lt;function</span> <span class="pre">get_configobj_cfg&gt;,</span> <span class="pre">'.ini':</span> <span class="pre">&lt;function</span> <span class="pre">get_configobj_cfg&gt;,</span> <span class="pre">'.json':</span> <span class="pre">&lt;function</span> <span class="pre">get_json_cfg&gt;,</span> <span class="pre">'.yaml':</span> <span class="pre">&lt;function</span> <span class="pre">get_yml_cfg&gt;,</span> <span class="pre">'.yml':</span> <span class="pre">&lt;function</span> <span class="pre">get_yml_cfg&gt;}</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.loader_functions" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id0">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">src_dir</span></span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.supported_exts">
+<span class="sig-name descname"><span class="pre">supported_exts</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('.yml',</span> <span class="pre">'.yaml',</span> <span class="pre">'.cfg',</span> <span class="pre">'.ini',</span> <span class="pre">'.json')</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.supported_exts" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.user_defaults_dir">
+<span class="sig-name descname"><span class="pre">user_defaults_dir</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('/home/charly.rousseau/.clearmap')</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.user_defaults_dir" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.user_global_dir">
+<span class="sig-name descname"><span class="pre">user_global_dir</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PosixPath('/home/charly.rousseau/.clearmap/config')</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.user_global_dir" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigHandler.writer_functions">
+<span class="sig-name descname"><span class="pre">writer_functions</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'.cfg':</span> <span class="pre">&lt;function</span> <span class="pre">to_configobj&gt;,</span> <span class="pre">'.ini':</span> <span class="pre">&lt;function</span> <span class="pre">to_configobj&gt;,</span> <span class="pre">'.json':</span> <span class="pre">&lt;function</span> <span class="pre">to_json&gt;,</span> <span class="pre">'.yaml':</span> <span class="pre">&lt;function</span> <span class="pre">to_yml&gt;,</span> <span class="pre">'.yml':</span> <span class="pre">&lt;function</span> <span class="pre">to_yml&gt;}</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigHandler.writer_functions" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigProxy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ConfigProxy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.config.config_handler.ConfigProxy" title="ClearMap.config.config_handler.ConfigProxy"><span class="pre">ConfigProxy</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_dumper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigProxy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigProxy" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>Dict-like wrapper that remembers filename and provides write()/reload().
+Used to return from get_*_cfg functions.
+This is basically just a dict with I/O methods attached.
+Compatible with ConfigObj interface for yml/json/cfg files.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigProxy.reload">
+<span class="sig-name descname"><span class="pre">reload</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ClearMap.config.config_handler.ConfigProxy" title="ClearMap.config.config_handler.ConfigProxy"><span class="pre">ConfigProxy</span></a></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigProxy.reload"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigProxy.reload" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigProxy.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigProxy.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigProxy.write" title="Link to this definition">#</a></dt>
+<dd><p>Backwards-compatible signature. If outfile is given (a file-like),
+we still write to our filename atomically, ignoring outfile (kept for compatibility).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigProxy.filename">
+<span class="sig-name descname"><span class="pre">filename</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigProxy.filename" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigSpec">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ConfigSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ClearMap.config.config_handler.Scope" title="ClearMap.config.config_handler.Scope"><span class="pre">ClearMap.config.config_handler.Scope</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">subdir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#ConfigSpec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.ConfigSpec" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigSpec.names">
+<span class="sig-name descname"><span class="pre">names</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigSpec.names" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigSpec.scope">
+<span class="sig-name descname"><span class="pre">scope</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.config.config_handler.Scope" title="ClearMap.config.config_handler.Scope"><span class="pre">Scope</span></a></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigSpec.scope" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.ConfigSpec.subdir">
+<span class="sig-name descname"><span class="pre">subdir</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#ClearMap.config.config_handler.ConfigSpec.subdir" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.FlowList">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">FlowList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="Positional-only parameter separator (PEP 570)"><span class="pre">/</span></abbr></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#FlowList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.FlowList" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+<p>Marker type for inline (flow-style) sequences.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.Scope">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">Scope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#Scope"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.Scope" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.Scope.EXPERIMENT">
+<span class="sig-name descname"><span class="pre">EXPERIMENT</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'experiment'</span></span><a class="headerlink" href="#ClearMap.config.config_handler.Scope.EXPERIMENT" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.Scope.GLOBAL">
+<span class="sig-name descname"><span class="pre">GLOBAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'global'</span></span><a class="headerlink" href="#ClearMap.config.config_handler.Scope.GLOBAL" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.Scope.GROUP">
+<span class="sig-name descname"><span class="pre">GROUP</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'group'</span></span><a class="headerlink" href="#ClearMap.config.config_handler.Scope.GROUP" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.flatten_list">
+<span class="sig-name descname"><span class="pre">flatten_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#flatten_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.flatten_list" title="Link to this definition">#</a></dt>
+<dd><p>Flatten a list of lists of item groups into a single list.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.get_cfg_reader_function">
+<span class="sig-name descname"><span class="pre">get_cfg_reader_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.config.config_handler.ConfigProxy" title="ClearMap.config.config_handler.ConfigProxy"><span class="pre">ConfigProxy</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#get_cfg_reader_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.get_cfg_reader_function" title="Link to this definition">#</a></dt>
+<dd><p>Get the appropriate configuration reader function for the given file path.
+The function is determined by the file extension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cfg_path</strong> (<em>Path</em><em> | </em><em>str</em>) – The path to the configuration file.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Callable[[Path, bool], Optional[ConfigProxy]]</dt><dd><p>The configuration reader function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.get_configobj_cfg">
+<span class="sig-name descname"><span class="pre">get_configobj_cfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">must_exist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ClearMap.config.config_handler.ConfigProxy" title="ClearMap.config.config_handler.ConfigProxy"><span class="pre">ConfigProxy</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#get_configobj_cfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.get_configobj_cfg" title="Link to this definition">#</a></dt>
+<dd><p>Load a .cfg/.ini file using ConfigObj and return as ConfigProxy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg_path</strong> (<em>Path</em><em> | </em><em>str</em>) – Path to the .cfg/.ini file</p></li>
+<li><p><strong>must_exist</strong> (<em>bool</em>) – If True, raise an error if the file does not exist.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>ConfigProxy | None</dt><dd><p>The configuration as a ConfigProxy object, or None if the file does not exist and must_exist is False.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="ClearMap.Utils.exceptions.html#ClearMap.Utils.exceptions.ConfigParsingError" title="ClearMap.Utils.exceptions.ConfigParsingError"><strong>ConfigParsingError</strong></a> – If the file cannot be parsed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.get_configs">
+<span class="sig-name descname"><span class="pre">get_configs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processing_params_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">machine_cfg_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#get_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.get_configs" title="Link to this definition">#</a></dt>
+<dd><p>Get the machine, sample and processing configurations from the given paths.
+If machine_cfg_path is None, the default machine config path is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg_path</strong> (<em>str</em><em> | </em><em>Path</em>) – Path to the sample configuration file</p></li>
+<li><p><strong>processing_params_path</strong> (<em>str</em><em> | </em><em>Path</em>) – Path to the processing parameters configuration file</p></li>
+<li><p><strong>machine_cfg_path</strong> (<em>str</em><em> | </em><em>Path</em><em> | </em><em>None</em>) – Path to the machine configuration file. If None, the default machine config path is used.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Tuple[ConfigProxy, ConfigProxy, ConfigProxy]</dt><dd><p>A tuple containing the machine, sample and processing configurations as ConfigProxy objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.get_json_cfg">
+<span class="sig-name descname"><span class="pre">get_json_cfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">must_exist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ClearMap.config.config_handler.ConfigProxy" title="ClearMap.config.config_handler.ConfigProxy"><span class="pre">ConfigProxy</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#get_json_cfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.get_json_cfg" title="Link to this definition">#</a></dt>
+<dd><p>Load a .json file using the json module and return as ConfigProxy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg_path</strong> (<em>Path</em>) – Path to the .json file</p></li>
+<li><p><strong>must_exist</strong> (<em>bool</em>) – If True, raise an error if the file does not exist.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>ConfigProxy | None</dt><dd><p>The configuration as a ConfigProxy object, or None if the file does not exist and must_exist is False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.get_yml_cfg">
+<span class="sig-name descname"><span class="pre">get_yml_cfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">must_exist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#ClearMap.config.config_handler.ConfigProxy" title="ClearMap.config.config_handler.ConfigProxy"><span class="pre">ConfigProxy</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#get_yml_cfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.get_yml_cfg" title="Link to this definition">#</a></dt>
+<dd><p>Load a .yml/.yaml file using PyYAML and return as ConfigProxy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cfg_path</strong> (<em>Path</em>) – Path to the .yml/.yaml file</p></li>
+<li><p><strong>must_exist</strong> (<em>bool</em>) – If True, raise an error if the file does not exist.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>ConfigProxy | None</dt><dd><p>The configuration as a ConfigProxy object, or None if the file does not exist and must_exist is False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.is_all_scalars">
+<span class="sig-name descname"><span class="pre">is_all_scalars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#is_all_scalars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.is_all_scalars" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.mark_inline_sequences">
+<span class="sig-name descname"><span class="pre">mark_inline_sequences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_items</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#mark_inline_sequences"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.mark_inline_sequences" title="Link to this definition">#</a></dt>
+<dd><p>Inline short sequences of scalars; convert tuples to lists (portable YAML).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.patch_cfg">
+<span class="sig-name descname"><span class="pre">patch_cfg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_cfg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#patch_cfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.patch_cfg" title="Link to this definition">#</a></dt>
+<dd><p>Recursively patch cfg with missing keys from default_cfg.
+:param cfg: The configuration to patch.
+:type cfg: dict-like
+:param default_cfg: The default configuration to use for patching.
+:type default_cfg: dict-like</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.prioritize_top_keys">
+<span class="sig-name descname"><span class="pre">prioritize_top_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('clearmap_version',</span> <span class="pre">'clearmap_schema')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#prioritize_top_keys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.prioritize_top_keys" title="Link to this definition">#</a></dt>
+<dd><p>Return a shallowly-reordered top-level mapping.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.represent_flow_list">
+<span class="sig-name descname"><span class="pre">represent_flow_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dumper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#represent_flow_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.represent_flow_list" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.scan_folder_for_experiments">
+<span class="sig-name descname"><span class="pre">scan_folder_for_experiments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_dir_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">('configs_backup',</span> <span class="pre">'config_snapshots')</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Set</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#scan_folder_for_experiments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.scan_folder_for_experiments" title="Link to this definition">#</a></dt>
+<dd><p>Discover experiment folders under <cite>folder</cite> by scanning recursively for sample config files.</p>
+<p>A folder is considered an experiment root if it contains a config file whose base name
+matches one of the ‘sample’ alternatives and whose extension is supported by ConfigHandler.</p>
+<p>Excludes any match located under directories listed in <cite>exclude_dir_names</cite>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.to_configobj">
+<span class="sig-name descname"><span class="pre">to_configobj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#to_configobj"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.to_configobj" title="Link to this definition">#</a></dt>
+<dd><p>Write a dict to a .cfg/.ini file using ConfigObj.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Path</em>) – Path to the output .cfg/.ini file</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – Data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#to_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.to_json" title="Link to this definition">#</a></dt>
+<dd><p>Write a dict to a .json file using the json module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Path</em>) – Path to the output .json file</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – Data to write</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ClearMap.config.config_handler.to_yml">
+<span class="sig-name descname"><span class="pre">to_yml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/config/config_handler.html#to_yml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.config.config_handler.to_yml" title="Link to this definition">#</a></dt>
+<dd><p>Write a dict to a .yml/.yaml file using PyYAML.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>Path</em>) – Path to the output .yml/.yaml file</p></li>
+<li><p><strong>data</strong> (<em>dict</em>) – Data to write</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If PyYAML is not installed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ClearMap.config.config_coordinator.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">config_coordinator</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ClearMap.config.config_repository.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">config_repository</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.get_channel_sections"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.get_channel_sections()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.get_alternatives"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.get_alternatives()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.get_spec"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.get_spec()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.is_global_cfg"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.is_global_cfg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.is_legacy_cfg"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.is_legacy_cfg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.is_local_file"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.is_local_file()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.pipeline_to_section_name"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.pipeline_to_section_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.to_canonical"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.to_canonical()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.alternative_names"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.alternative_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_config_names"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.canonical_config_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_global_config_names"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.canonical_global_config_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_group_config_names"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.canonical_group_config_names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigAlternativesRegistry.canonical_pipeline_config_names"><code class="docutils literal notranslate"><span class="pre">ConfigAlternativesRegistry.canonical_pipeline_config_names</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler"><code class="docutils literal notranslate"><span class="pre">ConfigHandler</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.src_dir"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.src_dir</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.dump"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.dump()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_cfg_from_path"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_cfg_from_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_default_cfg"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_default_cfg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_default_path"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_default_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_global_canonical_path"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_global_canonical_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_global_path"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_global_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_new_cfg_writer"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_new_cfg_writer()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_patched_cfg_from_path"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_patched_cfg_from_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_user_defaults_canonical_path"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_user_defaults_canonical_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.resolve_write_path"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.resolve_write_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.is_global"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.is_global()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.is_local"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.is_local()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.normalise_cfg_name"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.normalise_cfg_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.strip_params"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.strip_params()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.strip_version_suffix"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.strip_version_suffix()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_canonical_path"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_canonical_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_cfg"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_cfg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_cfg_path"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_cfg_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.get_local_canonical_path"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.get_local_canonical_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.loader_functions"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.loader_functions</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.src_dir</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.supported_exts"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.supported_exts</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.user_defaults_dir"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.user_defaults_dir</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.user_global_dir"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.user_global_dir</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigHandler.writer_functions"><code class="docutils literal notranslate"><span class="pre">ConfigHandler.writer_functions</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigProxy"><code class="docutils literal notranslate"><span class="pre">ConfigProxy</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigProxy.reload"><code class="docutils literal notranslate"><span class="pre">ConfigProxy.reload()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigProxy.write"><code class="docutils literal notranslate"><span class="pre">ConfigProxy.write()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigProxy.filename"><code class="docutils literal notranslate"><span class="pre">ConfigProxy.filename</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigSpec"><code class="docutils literal notranslate"><span class="pre">ConfigSpec</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigSpec.names"><code class="docutils literal notranslate"><span class="pre">ConfigSpec.names</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigSpec.scope"><code class="docutils literal notranslate"><span class="pre">ConfigSpec.scope</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.ConfigSpec.subdir"><code class="docutils literal notranslate"><span class="pre">ConfigSpec.subdir</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.FlowList"><code class="docutils literal notranslate"><span class="pre">FlowList</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.Scope"><code class="docutils literal notranslate"><span class="pre">Scope</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.Scope.EXPERIMENT"><code class="docutils literal notranslate"><span class="pre">Scope.EXPERIMENT</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.Scope.GLOBAL"><code class="docutils literal notranslate"><span class="pre">Scope.GLOBAL</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.Scope.GROUP"><code class="docutils literal notranslate"><span class="pre">Scope.GROUP</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.flatten_list"><code class="docutils literal notranslate"><span class="pre">flatten_list()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.get_cfg_reader_function"><code class="docutils literal notranslate"><span class="pre">get_cfg_reader_function()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.get_configobj_cfg"><code class="docutils literal notranslate"><span class="pre">get_configobj_cfg()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.get_configs"><code class="docutils literal notranslate"><span class="pre">get_configs()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.get_json_cfg"><code class="docutils literal notranslate"><span class="pre">get_json_cfg()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.get_yml_cfg"><code class="docutils literal notranslate"><span class="pre">get_yml_cfg()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.is_all_scalars"><code class="docutils literal notranslate"><span class="pre">is_all_scalars()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.mark_inline_sequences"><code class="docutils literal notranslate"><span class="pre">mark_inline_sequences()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.patch_cfg"><code class="docutils literal notranslate"><span class="pre">patch_cfg()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.prioritize_top_keys"><code class="docutils literal notranslate"><span class="pre">prioritize_top_keys()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.represent_flow_list"><code class="docutils literal notranslate"><span class="pre">represent_flow_list()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.scan_folder_for_experiments"><code class="docutils literal notranslate"><span class="pre">scan_folder_for_experiments()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.to_configobj"><code class="docutils literal notranslate"><span class="pre">to_configobj()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.to_json"><code class="docutils literal notranslate"><span class="pre">to_json()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.config.config_handler.to_yml"><code class="docutils literal notranslate"><span class="pre">to_yml()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.config.config_handler.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

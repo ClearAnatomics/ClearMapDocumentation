@@ -1,0 +1,1386 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.Alignment.Stitching.stitching_plots &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../../../../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/Alignment/Stitching/stitching_plots';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/_modules/ClearMap/Alignment/Stitching/stitching_plots.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ClearMap.Alignment.Stitching.stitching_plots</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.Alignment.Stitching.stitching_plots</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">stitching_plots</span>
+<span class="sd">===============</span>
+
+<span class="sd">Plot functions and Layout/Alignment plot mixins for rigid and wobbly stitching.</span>
+
+<span class="sd">Mixins are injected at runtime via ``@lazy_mixin``, so matplotlib is never</span>
+<span class="sd">imported on a headless cluster unless a plot method is actually called.</span>
+
+<span class="sd">Standalone functions duck-type on layout / source / alignment objects and only</span>
+<span class="sd">import from ``stitching_rigid`` / ``stitching_wobbly`` locally when they need to</span>
+<span class="sd">*construct* helper objects.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Alignment.Stitching.layout_graph_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_color_ids</span>
+
+
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+<span class="c1"># Rigid Layout mixin</span>
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+
+<div class="viewcode-block" id="LayoutPlotMixin">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.LayoutPlotMixin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LayoutPlotMixin</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot methods for :class:`Layout`, injected via ``@lazy_mixin``.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="LayoutPlotMixin.plot">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.LayoutPlotMixin.plot">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">98</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">coordinate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots overlayed sources to check their placement.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        colors : list of tuple of floats or color names</span>
+<span class="sd">          The optional RGB colors to use.</span>
+<span class="sd">        percentile : int</span>
+<span class="sd">          Use this percentile as upper cutoff in the resulting image to enhance contrast.</span>
+<span class="sd">        normalize : bool</span>
+<span class="sd">          If True normalize image to floats between 0 and 1.</span>
+<span class="sd">        color_ids : list of ints</span>
+<span class="sd">          Use specific color ids for the sources contributing to the layout.</span>
+<span class="sd">        coordinate : int or None</span>
+<span class="sd">          Optional coordinate at which to take a slice.</span>
+<span class="sd">        axis : int</span>
+<span class="sd">          Optional axis to take the slice in.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        image : array</span>
+<span class="sd">          A color image.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">coordinate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">layout</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice_along_axis</span><span class="p">(</span><span class="n">coordinate</span><span class="o">=</span><span class="n">coordinate</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">plot_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">percentile</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="n">normalize</span><span class="p">,</span> <span class="n">color_ids</span><span class="o">=</span><span class="n">color_ids</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LayoutPlotMixin.overlay">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.LayoutPlotMixin.overlay">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">overlay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">98</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">coordinate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">coordinate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">layout</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">slice_along_axis</span><span class="p">(</span><span class="n">coordinate</span><span class="o">=</span><span class="n">coordinate</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">overlay_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">percentile</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="n">normalize</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LayoutPlotMixin.plot_regions">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.LayoutPlotMixin.plot_regions">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_regions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">annotate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Overlays and plots regions to check the alignment of this layout.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        cmap : colormap</span>
+<span class="sd">          The color map to use to color the regions.</span>
+<span class="sd">        annotate : bool</span>
+<span class="sd">          Use annotation or not.</span>
+<span class="sd">        axes : tuple of ints</span>
+<span class="sd">          Axes to use if sources are larger than 2d.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">regions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">plot_regions</span><span class="p">(</span><span class="n">regions</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">annotate</span><span class="o">=</span><span class="n">annotate</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LayoutPlotMixin.plot_alignments">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.LayoutPlotMixin.plot_alignments">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_alignments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">annotate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Overlays and plots regions to check the alignment of this layout.</span>
+
+<span class="sd">        Arguments</span>
+<span class="sd">        ---------</span>
+<span class="sd">        cmap : colormap</span>
+<span class="sd">          The color map to use to color the regions.</span>
+<span class="sd">        annotate : bool</span>
+<span class="sd">          Use annotation or not.</span>
+<span class="sd">        axes : tuple of ints</span>
+<span class="sd">          Axes to use if sources are larger than 2d.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span>
+        <span class="k">return</span> <span class="n">plot_alignments</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alignments</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">annotate</span><span class="o">=</span><span class="n">annotate</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+<span class="c1"># Rigid Alignment mixin</span>
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+
+<div class="viewcode-block" id="AlignmentBasePlotMixin">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.AlignmentBasePlotMixin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AlignmentBasePlotMixin</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot methods for :class:`AlignmentBase`, injected via ``@lazy_mixin``.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AlignmentBasePlotMixin.plot">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.AlignmentBasePlotMixin.plot">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot the two sources overlayed.&quot;&quot;&quot;</span>
+        <span class="n">plot_sources</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AlignmentBasePlotMixin.overlay">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.AlignmentBasePlotMixin.overlay">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">overlay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a colour-overlay array of the two sources.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">overlay_sources</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sources</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AlignmentBasePlotMixin.plot_overlay">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.AlignmentBasePlotMixin.plot_overlay">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_overlay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Overlay and display with 3D viewer.&quot;&quot;&quot;</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">ClearMap.Visualization.Plot3d</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">p3d</span>
+        <span class="n">ovl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="s1">&#39;ids&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">ovl</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="AlignmentBasePlotMixin.overlay_overlap">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.AlignmentBasePlotMixin.overlay_overlap">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">overlay_overlap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_shifts</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the overlapping sub-arrays of pre and post.&quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Alignment.Stitching.stitching_rigid</span><span class="w"> </span><span class="kn">import</span> <span class="n">_overlap_with_shifts</span>
+        <span class="n">o1</span><span class="p">,</span> <span class="n">o2</span> <span class="o">=</span> <span class="n">_overlap_with_shifts</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">,</span> <span class="n">max_shifts</span><span class="o">=</span><span class="n">max_shifts</span><span class="p">)</span>
+        <span class="n">i1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">[</span><span class="n">o1</span><span class="o">.</span><span class="n">local_slicing</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">)]</span>
+        <span class="n">i2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">[</span><span class="n">o2</span><span class="o">.</span><span class="n">local_slicing</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">i1</span><span class="p">,</span> <span class="n">i2</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="AlignmentBasePlotMixin.plot_overlap">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.AlignmentBasePlotMixin.plot_overlap">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_overlap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display the overlap region with the 3D viewer.&quot;&quot;&quot;</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">ClearMap.Visualization.Plot3d</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">p3d</span>
+        <span class="k">return</span> <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">overlay_overlap</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)])</span></div>
+
+
+<div class="viewcode-block" id="AlignmentBasePlotMixin.overlay_mip">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.AlignmentBasePlotMixin.overlay_mip">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">overlay_mip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Overlay using max intensity projection.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">overlay_along_axis_mip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AlignmentBasePlotMixin.plot_mip">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.AlignmentBasePlotMixin.plot_mip">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_mip</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot using max intensity projection.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">plot_along_axis_mip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="AlignmentPlotMixin">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.AlignmentPlotMixin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AlignmentPlotMixin</span><span class="p">(</span><span class="n">AlignmentBasePlotMixin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot methods for :class:`Alignment`.</span>
+
+<span class="sd">    Overrides ``plot`` to shift post by the computed displacement before</span>
+<span class="sd">    overlaying.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AlignmentPlotMixin.plot">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.AlignmentPlotMixin.plot">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">post</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">post</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="n">d</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">displacement</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">plot_sources</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="n">post</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+<span class="c1"># Wobbly Alignment mixin</span>
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+
+<div class="viewcode-block" id="WobblyAlignmentPlotMixin">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.WobblyAlignmentPlotMixin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WobblyAlignmentPlotMixin</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot methods for :class:`WobblyAlignment`, injected via ``@lazy_mixin``.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="WobblyAlignmentPlotMixin.plot_overlay_wobbly">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.WobblyAlignmentPlotMixin.plot_overlay_wobbly">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_overlay_wobbly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display wobbly overlay with 3D viewer.&quot;&quot;&quot;</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">ClearMap.Visualization.Plot3d</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">p3d</span>
+        <span class="k">return</span> <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">overlay_wobbly</span><span class="p">()])</span></div>
+
+
+<div class="viewcode-block" id="WobblyAlignmentPlotMixin.overlay_mip_wobbly">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.WobblyAlignmentPlotMixin.overlay_mip_wobbly">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">overlay_mip_wobbly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mip_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                           <span class="n">percentile</span><span class="o">=</span><span class="mi">98</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Colour MIP overlay of the wobbly alignment.&quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Alignment.Stitching.stitching_rigid</span><span class="w"> </span><span class="kn">import</span> <span class="n">_mip_axis</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">ClearMap.Visualization.Color</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">col</span>
+
+        <span class="n">ovl_mip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">overlay_wobbly</span><span class="p">(</span><span class="n">overlap</span><span class="o">=</span><span class="n">overlap</span><span class="p">)</span>
+
+        <span class="c1"># max project</span>
+        <span class="k">if</span> <span class="n">mip_axis</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mip_axis</span> <span class="o">=</span> <span class="n">_mip_axis</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">post</span><span class="p">)</span>
+
+        <span class="n">ovl_mip</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">mip_axis</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">ovl_mip</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">ovl_mip</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">percentile</span><span class="p">)</span>
+            <span class="n">o</span><span class="p">[</span><span class="n">o</span> <span class="o">&gt;</span> <span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">]</span>
+
+        <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ovl_mip</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,))</span>
+        <span class="k">for</span> <span class="n">o</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ovl_mip</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+            <span class="n">image</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">o</span> <span class="o">/</span> <span class="n">o</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">c</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                <span class="n">image</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">c</span><span class="p">]</span> <span class="o">/=</span> <span class="n">image</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">image</span></div>
+
+
+<div class="viewcode-block" id="WobblyAlignmentPlotMixin.plot_mip_wobbly">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.WobblyAlignmentPlotMixin.plot_mip_wobbly">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_mip_wobbly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">overlap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mip_axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">98</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display wobbly MIP overlay with matplotlib.&quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">overlay_mip_wobbly</span><span class="p">(</span><span class="n">overlap</span><span class="o">=</span><span class="n">overlap</span><span class="p">,</span> <span class="n">mip_axis</span><span class="o">=</span><span class="n">mip_axis</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">percentile</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])[:,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span></div>
+</div>
+
+
+
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+<span class="c1"># Wobbly Layout mixin</span>
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+
+<div class="viewcode-block" id="WobblyLayoutPlotMixin">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.WobblyLayoutPlotMixin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">WobblyLayoutPlotMixin</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot methods for :class:`WobblyLayout`, injected via ``@lazy_mixin``.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="WobblyLayoutPlotMixin.plot_wobble">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.WobblyLayoutPlotMixin.plot_wobble">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_wobble</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plot per-alignment displacement curves.&quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+        <span class="n">axs</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alignments</span><span class="p">):</span>
+            <span class="n">invalid</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">status</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="n">VALID</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">displacements</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">invalid</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">lower_coordinate</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">upper_coordinate</span><span class="p">)</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">d</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">pre</span><span class="o">.</span><span class="n">identifier</span><span class="si">!r}</span><span class="s1">-</span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">identifier</span><span class="si">!r}</span><span class="s1">&#39;</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">d</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">on_pick</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">curve</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_lines</span><span class="p">():</span>
+                    <span class="k">if</span> <span class="n">curve</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">event</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="n">curve</span><span class="o">.</span><span class="n">get_label</span><span class="p">())</span>
+
+        <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">mpl_connect</span><span class="p">(</span><span class="s1">&#39;motion_notify_event&#39;</span><span class="p">,</span> <span class="n">on_pick</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="WobblyLayoutPlotMixin.alignment_info">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.WobblyLayoutPlotMixin.alignment_info">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">alignment_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tile_position</span><span class="p">,</span> <span class="n">coordinate</span><span class="p">,</span>
+                       <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_displacements</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Diagnostic: gather alignment info and optionally overlay a slice.&quot;&quot;&quot;</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">ClearMap.IO.Slice</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">slc</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Alignment.Stitching.stitching_wobbly</span><span class="w"> </span><span class="kn">import</span> <span class="n">WobblySource</span><span class="p">,</span> <span class="n">WobblyAlignment</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Alignment.Stitching.stitching_rigid</span><span class="w"> </span><span class="kn">import</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Layout</span>
+
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_from_tile_position</span><span class="p">(</span><span class="n">tile_position</span><span class="p">)</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">status_at_coordinate</span><span class="p">(</span><span class="n">coordinate</span><span class="p">)</span>
+
+        <span class="n">a_status</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">alignments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alignments_from_tile_position</span><span class="p">(</span><span class="n">tile_position</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alignments</span><span class="p">:</span>
+            <span class="n">a_status</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">a</span><span class="o">.</span><span class="n">pre</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">identifier</span><span class="p">,</span>
+                             <span class="n">a</span><span class="o">.</span><span class="n">status_at_coordinate</span><span class="p">(</span><span class="n">coordinate</span><span class="p">)))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Source status: </span><span class="si">{</span><span class="n">WobblySource</span><span class="o">.</span><span class="n">status_to_description</span><span class="p">[</span><span class="n">status</span><span class="p">]</span><span class="si">!r}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">a_status</span><span class="p">:</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="n">WobblyAlignment</span><span class="o">.</span><span class="n">status_to_description</span><span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Alignment status: </span><span class="si">{</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">!r}</span><span class="s1">-&gt;</span><span class="si">{</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">!r}</span><span class="s1">: </span><span class="si">{</span><span class="n">status</span><span class="w"> </span><span class="si">!r}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># plot overlay to all neighbours</span>
+        <span class="n">sliced_layout</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis</span>
+            <span class="n">ndim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span>
+            <span class="n">sources</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alignments</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">pre</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+                    <span class="n">sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pre</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">post</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+                    <span class="n">sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">post</span><span class="p">)</span>
+
+            <span class="n">sliced_sources</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">use_displacements</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="n">s</span><span class="p">:</span>
+                        <span class="n">position</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alignments</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="n">a</span><span class="o">.</span><span class="n">pre</span><span class="p">:</span>
+                                <span class="n">position</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="o">-</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">displacement</span><span class="p">)</span>
+                                <span class="k">break</span>
+                            <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="n">a</span><span class="o">.</span><span class="n">post</span><span class="p">:</span>
+                                <span class="n">position</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">displacement</span>
+                                <span class="k">break</span>
+                        <span class="n">position</span> <span class="o">=</span> <span class="n">position</span><span class="p">[:</span><span class="n">axis</span><span class="p">]</span> <span class="o">+</span> <span class="n">position</span><span class="p">[</span><span class="n">axis</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">position</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">wobble_at_coordinate</span><span class="p">(</span><span class="n">coordinate</span><span class="p">)</span>
+
+                <span class="n">slicing</span> <span class="o">=</span> <span class="p">((</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),)</span> <span class="o">*</span> <span class="n">axis</span>
+                           <span class="o">+</span> <span class="p">(</span><span class="n">coordinate</span> <span class="o">-</span> <span class="n">source</span><span class="o">.</span><span class="n">coordinate</span><span class="p">,)</span>
+                           <span class="o">+</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),)</span> <span class="o">*</span> <span class="p">(</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">axis</span><span class="p">))</span>
+                <span class="n">sliced_sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">Source</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">slc</span><span class="o">.</span><span class="n">Slice</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="o">.</span><span class="n">source</span><span class="o">.</span><span class="n">as_virtual</span><span class="p">(),</span> <span class="n">slicing</span><span class="o">=</span><span class="n">slicing</span><span class="p">),</span>
+                           <span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">,</span> <span class="n">tile_position</span><span class="o">=</span><span class="n">source</span><span class="o">.</span><span class="n">tile_position</span><span class="p">))</span>
+
+            <span class="n">sliced_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="n">sliced_sources</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                   <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
+            <span class="n">plot_layout</span><span class="p">(</span><span class="n">sliced_layout</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">sliced_layout</span></div>
+</div>
+
+
+
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+<span class="c1"># Standalone plot helpers — duck-typed, no stitching_rigid import at module level</span>
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+
+<div class="viewcode-block" id="plot_layout">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.plot_layout">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">98</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Overlays and plots sources in a layout to check alignment.</span>
+
+<span class="sd">    ..Note::</span>
+<span class="sd">        For 2-D layouts uses matplotlib; for 3-D uses Plot3d.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    layout : Layout class</span>
+<span class="sd">        The layout to use for plotting.</span>
+<span class="sd">    colors : list of colors or None</span>
+<span class="sd">        The optional RGB colors to use.</span>
+<span class="sd">    percentile : int</span>
+<span class="sd">        Use this percentile as upper cutoff in the resulting image to enhance contrast.</span>
+<span class="sd">    normalize : bool</span>
+<span class="sd">        If True normalize image to floats between 0 and 1.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    image : array</span>
+<span class="sd">        A color image of the overlayed sources.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">overlay_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">percentile</span><span class="p">,</span>
+                         <span class="n">normalize</span><span class="o">=</span><span class="n">normalize</span><span class="p">,</span> <span class="n">color_ids</span><span class="o">=</span><span class="n">color_ids</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])[:,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">ClearMap.Visualization.Plot3d</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">p3d</span>
+        <span class="n">p3d</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">img</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="overlay_layout">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.overlay_layout">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">overlay_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">98</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build a colour-overlay array of all sources in a layout.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    layout : Layout</span>
+<span class="sd">        The layout with the sources to overlay.</span>
+<span class="sd">    colors : list of colours, ``&#39;ids&#39;``, or None</span>
+<span class="sd">        RGB colours, or ``&#39;ids&#39;`` to return per-channel arrays.</span>
+<span class="sd">    percentile : int</span>
+<span class="sd">        Upper cutoff percentile for contrast enhancement.</span>
+<span class="sd">    normalize : bool</span>
+<span class="sd">        Normalize to [0, 1] floats.</span>
+<span class="sd">    color_ids : list of int or None</span>
+<span class="sd">        Explicit colour index per source.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    image : array</span>
+<span class="sd">        A colour image (or list of single-channel images when ``colors=&#39;ids&#39;``).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># full shape</span>
+    <span class="n">full_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">extent</span><span class="p">)</span>
+    <span class="n">full_lower</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">lower</span>
+
+    <span class="n">source_colors</span> <span class="o">=</span> <span class="n">layout_coloring</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">color_ids</span><span class="o">=</span><span class="n">color_ids</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">colors</span> <span class="o">==</span> <span class="s1">&#39;ids&#39;</span><span class="p">:</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">full_shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">source_colors</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">full_shape</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,))</span>
+
+    <span class="c1"># construct full image</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">sources</span>
+    <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">source_colors</span><span class="p">):</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">ll</span> <span class="o">-</span> <span class="n">fl</span><span class="p">,</span> <span class="n">uu</span> <span class="o">-</span> <span class="n">fl</span><span class="p">)</span> <span class="k">for</span> <span class="n">ll</span><span class="p">,</span> <span class="n">uu</span><span class="p">,</span> <span class="n">fl</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">full_lower</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">colors</span> <span class="o">==</span> <span class="s1">&#39;ids&#39;</span><span class="p">:</span>
+            <span class="n">image</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">r</span><span class="p">]</span> <span class="o">+=</span> <span class="n">s</span><span class="p">[:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),)</span>
+            <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
+                <span class="n">image</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">s</span><span class="p">[:],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="n">s</span><span class="p">[:]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">c</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">image</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">s</span><span class="p">[:],</span> <span class="n">c</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">percentile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">colors</span> <span class="o">==</span> <span class="s1">&#39;ids&#39;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">image</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">percentile</span><span class="p">)</span>
+                <span class="n">i</span><span class="p">[</span><span class="n">i</span> <span class="o">&gt;</span> <span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">percentile</span><span class="p">)</span>
+            <span class="n">image</span><span class="p">[</span><span class="n">image</span> <span class="o">&gt;</span> <span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+
+    <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">colors</span> <span class="o">==</span> <span class="s1">&#39;ids&#39;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">image</span><span class="p">:</span>
+                <span class="n">mx</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">mx</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">i</span> <span class="o">/=</span> <span class="n">mx</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                <span class="n">mx</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">mx</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">image</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span> <span class="o">/=</span> <span class="n">mx</span>
+
+    <span class="k">return</span> <span class="n">image</span></div>
+
+
+
+<div class="viewcode-block" id="layout_coloring">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.layout_coloring">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">layout_coloring</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Assign colours to sources based on adjacency colouring.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Visualization</span><span class="w"> </span><span class="kn">import</span> <span class="n">Color</span> <span class="k">as</span> <span class="n">col</span>
+
+    <span class="n">sources</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">sources</span>
+    <span class="n">nsources</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+
+    <span class="n">color_ids</span> <span class="o">=</span> <span class="n">get_color_ids</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">nsources</span><span class="p">,</span> <span class="n">color_ids</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">colors</span> <span class="o">==</span> <span class="s1">&#39;ids&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">color_ids</span>
+
+    <span class="n">ncols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">color_ids</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">colors</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ncols</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">colors</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+        <span class="k">elif</span> <span class="n">ncols</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="n">colors</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">colors</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.25</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>     <span class="mi">0</span>    <span class="p">],</span>
+                      <span class="p">[</span><span class="mi">0</span><span class="p">,</span>     <span class="mf">0.25</span><span class="p">,</span>  <span class="mi">0</span>    <span class="p">],</span>
+                      <span class="p">[</span><span class="mi">0</span><span class="p">,</span>     <span class="mi">0</span><span class="p">,</span>     <span class="mf">0.25</span> <span class="p">],</span>
+                      <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span>  <span class="mf">0.25</span><span class="p">,</span>  <span class="mi">0</span>    <span class="p">],</span>
+                      <span class="p">[</span><span class="mi">0</span><span class="p">,</span>     <span class="mf">0.25</span><span class="p">,</span>  <span class="mf">0.25</span> <span class="p">],</span>
+                      <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>     <span class="mf">0.25</span> <span class="p">],</span>
+                      <span class="p">[</span><span class="mf">0.125</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span>  <span class="mi">0</span>    <span class="p">],</span>
+                      <span class="p">[</span><span class="mf">0.125</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>     <span class="mf">0.25</span> <span class="p">]]</span>
+
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">as_int</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">colors</span><span class="p">[:</span><span class="n">ncols</span><span class="p">],</span> <span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">))),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="s1">&#39;wrap&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">colors</span><span class="p">[</span><span class="n">color_ids</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="plot_regions">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.plot_regions">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_regions</span><span class="p">(</span><span class="n">regions</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">annotate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Overlays and plots regions to check the alignment.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    regions : list of Region classes</span>
+<span class="sd">        The regions to plot.</span>
+<span class="sd">    sources : list of Source or None</span>
+<span class="sd">        Sources used for annotation ids.</span>
+<span class="sd">    cmap : colormap</span>
+<span class="sd">        The color map to use to color the regions.</span>
+<span class="sd">    annotate : bool</span>
+<span class="sd">        Use annotation or not.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+    <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">regions</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="k">if</span> <span class="n">sources</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">r</span><span class="o">.</span><span class="n">sources</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">regions</span><span class="p">])))</span>
+
+    <span class="n">sources_to_ids</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sources</span><span class="p">)}</span>
+
+    <span class="n">ndim</span> <span class="o">=</span> <span class="n">regions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span>
+    <span class="k">if</span> <span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Regions are plotted in 2d using axes </span><span class="si">{</span><span class="n">axes</span><span class="si">!r}</span><span class="s2"> but are </span><span class="si">{</span><span class="n">ndim</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">d!&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">rmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span>
+    <span class="n">rmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">regions</span><span class="p">):</span>
+        <span class="n">rec</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">lower</span><span class="p">)[</span><span class="n">axes</span><span class="p">],</span>
+                            <span class="n">r</span><span class="o">.</span><span class="n">upper</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">-</span> <span class="n">r</span><span class="o">.</span><span class="n">lower</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+                            <span class="n">r</span><span class="o">.</span><span class="n">upper</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">-</span> <span class="n">r</span><span class="o">.</span><span class="n">lower</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                            <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+                            <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">regions</span><span class="p">)))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">annotate</span><span class="p">:</span>
+            <span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">sources_to_ids</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sources</span><span class="p">]</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">ids</span><span class="p">)),</span> <span class="n">xy</span><span class="o">=</span><span class="n">rec</span><span class="o">.</span><span class="n">get_xy</span><span class="p">(),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                        <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                        <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round, pad=.5&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.92</span><span class="p">),</span>
+                                  <span class="n">ec</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">rmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">rmin</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">lower</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">rmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">rmax</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">upper</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="n">rmin</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">rmax</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]]))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="n">rmin</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">rmax</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]]))</span></div>
+
+
+
+<div class="viewcode-block" id="plot_alignments">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.plot_alignments">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_alignments</span><span class="p">(</span><span class="n">alignments</span><span class="p">,</span> <span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">annotate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">min_quality</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot alignment edges coloured by quality.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+    <span class="k">if</span> <span class="n">axes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">cmap</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">hot</span>
+
+    <span class="n">ndim</span> <span class="o">=</span> <span class="n">alignments</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span>
+    <span class="k">if</span> <span class="n">ndim</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Regions are plotted in 2d using axes </span><span class="si">{</span><span class="n">axes</span><span class="si">!r}</span><span class="s2"> but are </span><span class="si">{</span><span class="n">ndim</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">d!&quot;</span><span class="p">)</span>
+        <span class="n">ndim</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a</span><span class="o">.</span><span class="n">quality</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alignments</span><span class="p">])</span>
+
+    <span class="n">q_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">q_max</span> <span class="o">==</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+        <span class="n">q_max</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">q_min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">q_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">q_min</span> <span class="o">==</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+            <span class="n">q_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">q</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])</span>
+        <span class="n">q_min</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">min_quality</span><span class="p">,</span> <span class="n">q_min</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">q_max</span> <span class="o">&lt;=</span> <span class="n">q_min</span><span class="p">:</span>
+            <span class="n">q_max</span> <span class="o">=</span> <span class="n">q_min</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">sources</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Alignment.Stitching.stitching_rigid</span><span class="w"> </span><span class="kn">import</span> <span class="n">sources_from_alignments</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="n">sources_from_alignments</span><span class="p">(</span><span class="n">alignments</span><span class="p">)</span>
+
+    <span class="c1"># plot</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">rmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span>
+    <span class="n">rmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sources</span><span class="p">:</span>
+        <span class="c1"># plot the source boundary</span>
+        <span class="n">lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">)[</span><span class="n">axes</span><span class="p">]</span>
+        <span class="n">upper</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">)[</span><span class="n">axes</span><span class="p">]</span>
+
+        <span class="n">rec</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">lower</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">upper</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">lower</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                            <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rec</span><span class="p">)</span>
+        <span class="n">rmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">rmin</span><span class="p">,</span> <span class="n">lower</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">rmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">rmax</span><span class="p">,</span> <span class="n">upper</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="n">rmin</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">rmax</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]]))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="n">rmin</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">rmax</span><span class="p">[</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]]))</span>
+
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alignments</span><span class="p">:</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pre</span><span class="o">.</span><span class="n">lower</span><span class="p">)[</span><span class="n">axes</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">pre</span><span class="o">.</span><span class="n">upper</span><span class="p">)[</span><span class="n">axes</span><span class="p">])</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">lower</span><span class="p">)[</span><span class="n">axes</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">upper</span><span class="p">)[</span><span class="n">axes</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">quality</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">((</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">quality</span><span class="p">)</span> <span class="o">-</span> <span class="n">q_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">q_max</span> <span class="o">-</span> <span class="n">q_min</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p2</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p2</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">color</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">annotate</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">quality</span><span class="si">:</span><span class="s1">.2e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">p1</span> <span class="o">+</span> <span class="n">p2</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                        <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                        <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round, pad=.5&#39;</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.92</span><span class="p">),</span>
+                                  <span class="n">ec</span><span class="o">=</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span></div>
+
+
+
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+<span class="c1"># Convenience wrappers — construct SR objects, so local imports needed</span>
+<span class="c1"># ═══════════════════════════════════════════════════════════════════════════════</span>
+
+<div class="viewcode-block" id="plot_sources">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.plot_sources">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_sources</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">98</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Overlays and plots sources in a layout to check alignment.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    sources : list of Source</span>
+<span class="sd">        The sources to overlay.</span>
+<span class="sd">    colors : list of colors or None</span>
+<span class="sd">        The optional RGB colors to use.</span>
+<span class="sd">    percentile : int</span>
+<span class="sd">        Use this percentile as upper cutoff in the resulting image to enhance contrast.</span>
+<span class="sd">    normalize : bool</span>
+<span class="sd">        If True normalize image to floats between 0 and 1.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    image : array</span>
+<span class="sd">        A color image of the overlayed sources.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Alignment.Stitching.stitching_rigid</span><span class="w"> </span><span class="kn">import</span> <span class="n">Layout</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plot_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">percentile</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="n">normalize</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="overlay_sources">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.overlay_sources">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">overlay_sources</span><span class="p">(</span><span class="n">sources</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="mi">98</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Overlays the sources to check their placement.</span>
+
+<span class="sd">    Arguments</span>
+<span class="sd">    ---------</span>
+<span class="sd">    sources : list of Source</span>
+<span class="sd">        The sources to overlay.</span>
+<span class="sd">    colors : list of tuple of floats or color names</span>
+<span class="sd">        The optional RGB colors to use.</span>
+<span class="sd">    percentile : int</span>
+<span class="sd">        Use this percentile as upper cutoff in the resulting image to enhance contrast.</span>
+<span class="sd">    normalize : bool</span>
+<span class="sd">        If True normalize image to floats between 0 and 1.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    image : array</span>
+<span class="sd">        A color image.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Alignment.Stitching.stitching_rigid</span><span class="w"> </span><span class="kn">import</span> <span class="n">Layout</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="n">sources</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">overlay_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">percentile</span><span class="o">=</span><span class="n">percentile</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="n">normalize</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="layout_along_axis_mip">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.layout_along_axis_mip">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">layout_along_axis_mip</span><span class="p">(</span><span class="n">src1</span><span class="p">,</span> <span class="n">src2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_shifts</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build a Layout from MIP-projected sources.&quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Alignment.Stitching.stitching_rigid</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">Layout</span><span class="p">,</span> <span class="n">Source</span><span class="p">,</span> <span class="n">Slice</span><span class="p">,</span> <span class="n">_format_max_shifts</span><span class="p">,</span> <span class="n">_mip_axis</span><span class="p">,</span>
+                                                              <span class="n">max_intensity_projection</span><span class="p">)</span>
+
+    <span class="c1"># format the shifts</span>
+    <span class="n">ndim</span> <span class="o">=</span> <span class="n">src1</span><span class="o">.</span><span class="n">ndim</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">depth</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="n">depth</span> <span class="o">=</span> <span class="p">(</span><span class="n">depth</span><span class="p">,)</span> <span class="o">*</span> <span class="n">ndim</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">ranges</span> <span class="o">=</span> <span class="p">[</span><span class="n">ranges</span><span class="p">]</span> <span class="o">*</span> <span class="n">ndim</span>
+
+    <span class="n">max_shifts</span> <span class="o">=</span> <span class="n">_format_max_shifts</span><span class="p">(</span><span class="n">max_shifts</span><span class="p">,</span> <span class="n">ndim</span><span class="p">)</span>
+    <span class="n">mip_axis</span> <span class="o">=</span> <span class="n">_mip_axis</span><span class="p">(</span><span class="n">src1</span><span class="p">,</span> <span class="n">src2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_shifts</span><span class="o">=</span><span class="n">max_shifts</span><span class="p">)</span>
+    <span class="n">mip_depth</span> <span class="o">=</span> <span class="n">depth</span><span class="p">[</span><span class="n">mip_axis</span><span class="p">]</span>
+
+    <span class="c1"># reduce sources to ranges along non-mip axes</span>
+    <span class="k">if</span> <span class="n">ranges</span> <span class="o">!=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">ranges</span><span class="p">):</span>
+        <span class="n">sl1</span> <span class="o">=</span> <span class="p">()</span>
+        <span class="n">sl2</span> <span class="o">=</span> <span class="p">()</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">src1</span><span class="o">.</span><span class="n">position</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">src2</span><span class="o">.</span><span class="n">position</span>
+        <span class="k">for</span> <span class="n">d</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ranges</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="n">mip_axis</span> <span class="ow">and</span> <span class="n">r</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">sl1</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1</span><span class="p">[</span><span class="n">d</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p1</span><span class="p">[</span><span class="n">d</span><span class="p">]),)</span>
+                <span class="n">sl2</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2</span><span class="p">[</span><span class="n">d</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">p2</span><span class="p">[</span><span class="n">d</span><span class="p">]),)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sl1</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),)</span>
+                <span class="n">sl2</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">),)</span>
+
+        <span class="n">src1</span> <span class="o">=</span> <span class="n">Slice</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">src1</span><span class="p">,</span> <span class="n">slicing</span><span class="o">=</span><span class="n">sl1</span><span class="p">)</span>
+        <span class="n">src2</span> <span class="o">=</span> <span class="n">Slice</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">src2</span><span class="p">,</span> <span class="n">slicing</span><span class="o">=</span><span class="n">sl2</span><span class="p">)</span>
+
+    <span class="c1"># mip</span>
+    <span class="n">mip_depth</span> <span class="o">=</span> <span class="n">depth</span><span class="p">[</span><span class="n">mip_axis</span><span class="p">]</span>
+    <span class="n">max_shifts</span> <span class="o">=</span> <span class="n">max_shifts</span><span class="p">[:</span><span class="n">mip_axis</span><span class="p">]</span> <span class="o">+</span> <span class="n">max_shifts</span><span class="p">[</span><span class="n">mip_axis</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">src1</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">src2</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="c1"># max intensity projections</span>
+    <span class="n">sub1</span> <span class="o">=</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="n">ndim</span>
+    <span class="n">sub1</span><span class="p">[</span><span class="n">mip_axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">s1</span><span class="p">[</span><span class="n">mip_axis</span><span class="p">]</span> <span class="o">-</span> <span class="n">mip_depth</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">sub1</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">sub1</span><span class="p">)</span>
+
+    <span class="n">sub2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="n">ndim</span>
+    <span class="n">sub2</span><span class="p">[</span><span class="n">mip_axis</span><span class="p">]</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">mip_depth</span><span class="p">,</span> <span class="n">s2</span><span class="p">[</span><span class="n">mip_axis</span><span class="p">]))</span>
+    <span class="n">sub2</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">sub2</span><span class="p">)</span>
+
+    <span class="c1"># calculate max projection along axis</span>
+    <span class="n">mip1</span> <span class="o">=</span> <span class="n">max_intensity_projection</span><span class="p">(</span><span class="n">src1</span><span class="p">[</span><span class="n">sub1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="n">mip_axis</span><span class="p">)</span>
+    <span class="n">mip2</span> <span class="o">=</span> <span class="n">max_intensity_projection</span><span class="p">(</span><span class="n">src2</span><span class="p">[</span><span class="n">sub2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="n">mip_axis</span><span class="p">)</span>
+
+    <span class="c1"># add position information</span>
+    <span class="n">p1</span> <span class="o">=</span> <span class="n">src1</span><span class="o">.</span><span class="n">position</span><span class="p">[:</span><span class="n">mip_axis</span><span class="p">]</span> <span class="o">+</span> <span class="n">src1</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">mip_axis</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">src2</span><span class="o">.</span><span class="n">position</span><span class="p">[:</span><span class="n">mip_axis</span><span class="p">]</span> <span class="o">+</span> <span class="n">src2</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">mip_axis</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+
+    <span class="n">mip1</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="n">mip1</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">p1</span><span class="p">,</span> <span class="n">tile_position</span><span class="o">=</span><span class="n">src1</span><span class="o">.</span><span class="n">tile_position</span><span class="p">)</span>
+    <span class="n">mip2</span> <span class="o">=</span> <span class="n">Source</span><span class="p">(</span><span class="n">mip2</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">p2</span><span class="p">,</span> <span class="n">tile_position</span><span class="o">=</span><span class="n">src2</span><span class="o">.</span><span class="n">tile_position</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">Layout</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="n">mip1</span><span class="p">,</span> <span class="n">mip2</span><span class="p">])</span></div>
+
+
+
+<div class="viewcode-block" id="plot_along_axis_mip">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.plot_along_axis_mip">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_along_axis_mip</span><span class="p">(</span><span class="n">src1</span><span class="p">,</span> <span class="n">src2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_shifts</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot a MIP-projected alignment.&quot;&quot;&quot;</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">layout_along_axis_mip</span><span class="p">(</span><span class="n">src1</span><span class="p">,</span> <span class="n">src2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span>
+                                   <span class="n">max_shifts</span><span class="o">=</span><span class="n">max_shifts</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plot_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="overlay_along_axis_mip">
+<a class="viewcode-back" href="../../../../api/ClearMap.Alignment.Stitching.stitching_plots.html#ClearMap.Alignment.Stitching.stitching_plots.overlay_along_axis_mip">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">overlay_along_axis_mip</span><span class="p">(</span><span class="n">src1</span><span class="p">,</span> <span class="n">src2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_shifts</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build a colour overlay of a MIP-projected alignment.&quot;&quot;&quot;</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="n">layout_along_axis_mip</span><span class="p">(</span><span class="n">src1</span><span class="p">,</span> <span class="n">src2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span> <span class="n">max_shifts</span><span class="o">=</span><span class="n">max_shifts</span><span class="p">,</span> <span class="n">ranges</span><span class="o">=</span><span class="n">ranges</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">overlay_layout</span><span class="p">(</span><span class="n">layout</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

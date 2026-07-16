@@ -1,0 +1,67 @@
+.. _v3_migration:
+
+Migrating from ClearMap 2
+-------------------------
+
+ClearMap 3.1 is a substantial redesign of the backend.  The GUI is
+fully backwards-compatible with existing config files (with automatic
+migration), but scripted workflows need updating.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 35 35
+
+   * - Concept
+     - ClearMap 2
+     - ClearMap 3.1
+   * - Entry point
+     - ``ClearMap/Scripts/CellMap.py``
+       ``ClearMap/Scripts/TubeMap.py``
+     - ``ClearMap/Scripts/cell_map_new_api.py``
+       ``ClearMap/Scripts/tube_map_new_api.py``
+   * - Processing classes
+     - ``TabProcessor`` subclasses in ``ClearMap.processors``
+     - ``PipelineOrchestrator`` subclasses in
+       ``ClearMap.pipeline_orchestrators``
+   * - Workspace
+     - ``ClearMap.IO.Workspace`` (step-centred)
+     - :class:`~ClearMap.IO.workspace2.Workspace2` (channel-centred,
+       unlimited channels, YAML-persisted)
+   * - Config files
+     - ``sample_params.cfg``, ``cell_map_params.cfg`` …
+     - Single ``workspace.yml`` + per-pipeline YAML files,
+       managed automatically by the GUI or
+       :class:`~ClearMap.pipeline_orchestrators.sample_info_management.SampleManager`
+   * - Channel support
+     - Fixed two-channel layout (signal + autofluorescence)
+     - Arbitrary number of channels, each with its own data type
+       and pipeline assignment
+   * - GPU dependency
+     - Required for vasculature
+     - Required only for deep vessel filling; all other steps are CPU-only
+   * - conda environment
+     - ``ClearMapUi39``
+     - ``ClearMap3.1``
+
+Key API changes
+~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    # ClearMap 2 — direct script execution
+    # (edit variables at top of CellMap.py and run)
+
+    # ClearMap 3.1 — programmatic API
+    from ClearMap.pipeline_orchestrators.utils import init_sample_manager_and_processors
+    from ClearMap.pipeline_orchestrators.cell_map import CellDetector
+
+    orchestrators = init_sample_manager_and_processors('/path/to/experiment')
+    sm  = orchestrators['sample_manager']
+    reg = orchestrators['registration_processor']
+
+    for channel in sm.get_channels_by_pipeline('CellMap', as_list=True):
+        det = CellDetector(sm, config_coordinator=sm.cfg_coordinator,
+                           channel=channel, registration_processor=reg)
+        det.run_cell_detection()
+        det.post_process_cells()
+        det.voxelize()

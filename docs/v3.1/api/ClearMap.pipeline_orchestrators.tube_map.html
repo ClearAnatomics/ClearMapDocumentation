@@ -1,0 +1,1418 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>tube_map &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.pipeline_orchestrators.tube_map';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/api/ClearMap.pipeline_orchestrators.tube_map.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="utils" href="ClearMap.pipeline_orchestrators.utils.html" />
+    <link rel="prev" title="tract_map" href="ClearMap.pipeline_orchestrators.tract_map.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Alignment.html">ClearMap.Alignment</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.html">ClearMap.Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.html">ClearMap.IO</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.html">ClearMap.ImageProcessing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ParallelProcessing.html">ClearMap.ParallelProcessing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Scripts.html">ClearMap.Scripts</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.html">ClearMap.Utils</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Visualization.html">ClearMap.Visualization</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.config.html">ClearMap.config</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.gui.html">ClearMap.gui</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.pipeline_orchestrators.html">ClearMap.pipeline_orchestrators</a></li>
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../api.html" class="nav-link">ClearMap API</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="ClearMap.pipeline_orchestrators.html" class="nav-link">ClearMap.pipeline_orchestrators</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">tube_map</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tube-map">
+<h1>tube_map<a class="headerlink" href="#tube-map" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+</tbody>
+</table>
+</div>
+<p id="module-ClearMap.pipeline_orchestrators.tube_map">Vasculature binarization, graph construction, and vessel-type annotation.</p>
+<p>Two pipeline workers are defined here:</p>
+<dl>
+<dt><a class="reference internal" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor" title="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryVesselProcessor</span></code></a></dt><dd><p>Converts raw fluorescence volumes into a binary vascular mask.
+Steps (configurable order via the GUI pipeline widget):</p>
+<ol class="arabic simple">
+<li><p><strong>Binarize</strong> — multi-path thresholding
+(<a class="reference internal" href="ClearMap.ImageProcessing.Experts.Vasculature.html#module-ClearMap.ImageProcessing.Experts.Vasculature" title="ClearMap.ImageProcessing.Experts.Vasculature"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Vasculature</span></code></a>).</p></li>
+<li><p><strong>Smooth</strong> — topology-preserving binary smoothing.</p></li>
+<li><p><strong>Fill</strong> — parallel 3-D binary hole filling.</p></li>
+<li><p><strong>Deep fill</strong> — CNN-based hollow-tube filling
+(<a class="reference internal" href="ClearMap.ImageProcessing.machine_learning.vessel_filling.html#module-ClearMap.ImageProcessing.machine_learning.vessel_filling" title="ClearMap.ImageProcessing.machine_learning.vessel_filling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vessel_filling</span></code></a>).</p></li>
+</ol>
+<p>Multiple channels (e.g. all-vessels + arteries) are merged by
+<a class="reference internal" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.combine_binary" title="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.combine_binary"><code class="xref py py-meth docutils literal notranslate"><span class="pre">combine_binary()</span></code></a>.
+Step state is tracked by <a class="reference internal" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps" title="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps</span></code></a>.</p>
+</dd>
+<dt><a class="reference internal" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor" title="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">VesselGraphProcessor</span></code></a></dt><dd><p>Converts the combined binary mask into an annotated vascular graph:</p>
+<ol class="arabic simple">
+<li><p><strong>Skeletonize</strong> — topology-preserving 3-D thinning.</p></li>
+<li><p><strong>Build</strong> — raw graph from skeleton, radius measurement, artery/vein
+expression sampling.</p></li>
+<li><p><strong>Clean</strong> — clique removal.</p></li>
+<li><p><strong>Reduce</strong> — degree-2 vertex contraction; edge geometry stored.</p></li>
+<li><p><strong>Register</strong> — atlas-space transform, radius scaling, annotation,
+distance-to-surface labelling.</p></li>
+<li><p><strong>Post-process</strong> — iterative artery/vein hysteresis tracing.</p></li>
+</ol>
+<p>Step state is tracked by <a class="reference internal" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps" title="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">VesselGraphProcessorSteps</span></code></a>.</p>
+</dd>
+</dl>
+<section id="radius-units">
+<h2>Radius units<a class="headerlink" href="#radius-units" title="Link to this heading">#</a></h2>
+<p>The graph processor handles three legacy precision levels
+(<a class="reference internal" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel" title="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel"><code class="xref py py-class docutils literal notranslate"><span class="pre">VesselGraphProcessor.RadiusLevel</span></code></a>):</p>
+<ul class="simple">
+<li><p><strong>FULL</strong> — spacing + per-axis µm radii (current).</p></li>
+<li><p><strong>SCALAR_UM</strong> — spacing + scalar µm radii (intermediate legacy).</p></li>
+<li><p><strong>VOXELS</strong> — voxel-space radii only (old graphs, <code class="xref py py-class docutils literal notranslate"><span class="pre">DeprecationWarning</span></code> emitted).</p></li>
+</ul>
+</section>
+<section id="typical-usage">
+<h2>Typical usage<a class="headerlink" href="#typical-usage" title="Link to this heading">#</a></h2>
+<p>Both workers are accessed via
+<a class="reference internal" href="ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController" title="ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExperimentController</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">binary</span> <span class="o">=</span> <span class="n">exp_ctrl</span><span class="o">.</span><span class="n">get_worker</span><span class="p">(</span><span class="s1">&#39;vasculature&#39;</span><span class="p">,</span> <span class="n">substep</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="n">graph</span>  <span class="o">=</span> <span class="n">exp_ctrl</span><span class="o">.</span><span class="n">get_worker</span><span class="p">(</span><span class="s1">&#39;vasculature&#39;</span><span class="p">,</span> <span class="n">substep</span><span class="o">=</span><span class="s1">&#39;graph&#39;</span><span class="p">)</span>
+
+<span class="n">binary</span><span class="o">.</span><span class="n">binarize</span><span class="p">()</span>
+<span class="n">binary</span><span class="o">.</span><span class="n">postprocess</span><span class="p">(</span><span class="s1">&#39;vessels&#39;</span><span class="p">)</span>
+<span class="n">binary</span><span class="o">.</span><span class="n">combine_binary</span><span class="p">()</span>
+
+<span class="n">graph</span><span class="o">.</span><span class="n">skeletonize_and_build_graph</span><span class="p">(</span><span class="n">binary_processor</span><span class="o">=</span><span class="n">binary</span><span class="p">)</span>
+<span class="n">graph</span><span class="o">.</span><span class="n">clean_graph</span><span class="p">()</span>
+<span class="n">graph</span><span class="o">.</span><span class="n">reduce_graph</span><span class="p">()</span>
+<span class="n">graph</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
+<span class="n">graph</span><span class="o">.</span><span class="n">post_process</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="ClearMap.ImageProcessing.Experts.Vasculature.html#module-ClearMap.ImageProcessing.Experts.Vasculature" title="ClearMap.ImageProcessing.Experts.Vasculature"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Experts.Vasculature</span></code></a> : Binarization algorithms.
+<a class="reference internal" href="ClearMap.ImageProcessing.machine_learning.vessel_filling.html#module-ClearMap.ImageProcessing.machine_learning.vessel_filling" title="ClearMap.ImageProcessing.machine_learning.vessel_filling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.machine_learning.vessel_filling</span></code></a> : CNN vessel filling.
+<a class="reference internal" href="ClearMap.Analysis.graphs.graph_processing.html#module-ClearMap.Analysis.graphs.graph_processing" title="ClearMap.Analysis.graphs.graph_processing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.Analysis.graphs.graph_processing</span></code></a> : Graph construction and reduction.
+<a class="reference internal" href="ClearMap.Analysis.graphs.graph_gt.html#ClearMap.Analysis.graphs.graph_gt.Graph" title="ClearMap.Analysis.graphs.graph_gt.Graph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Graph</span></code></a> : Graph data structure.
+<a class="reference internal" href="../references.html#kirst2020" id="id1"><span>[Kirst2020]</span></a>.</p>
+</div>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">BinaryVesselProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.pipeline_orchestrators.sample_info_management.html#ClearMap.pipeline_orchestrators.sample_info_management.SampleManager" title="ClearMap.pipeline_orchestrators.sample_info_management.SampleManager"><span class="pre">SampleManager</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_coordinator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><span class="pre">ConfigCoordinator</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.pipeline_orchestrators.generic_orchestrators.html#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator" title="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PipelineOrchestrator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.setup_channel_operation">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">setup_channel_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.setup_channel_operation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.setup_channel_operation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.assert_input_shapes_match">
+<span class="sig-name descname"><span class="pre">assert_input_shapes_match</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.assert_input_shapes_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.assert_input_shapes_match" title="Link to this definition">#</a></dt>
+<dd><p>Ensure that the input shapes (stitched images of the different color channels) match
+before starting the binarization process since they must overlap.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>stitched may not exist when processor is created.
+if not, check again in the run/binarize method</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.assets_to_binarize">
+<span class="sig-name descname"><span class="pre">assets_to_binarize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.assets_to_binarize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.assets_to_binarize" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.binarize">
+<span class="sig-name descname"><span class="pre">binarize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.binarize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.binarize" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.binarize_channel">
+<span class="sig-name descname"><span class="pre">binarize_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.binarize_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.binarize_channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.channels_to_binarize">
+<span class="sig-name descname"><span class="pre">channels_to_binarize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.channels_to_binarize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.channels_to_binarize" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.combine_binary">
+<span class="sig-name descname"><span class="pre">combine_binary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.combine_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.combine_binary" title="Link to this definition">#</a></dt>
+<dd><p>Merge the binary images of the different vascular network components into a single mask</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.deep_fill_channel">
+<span class="sig-name descname"><span class="pre">deep_fill_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.deep_fill_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.deep_fill_channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.fill_channel">
+<span class="sig-name descname"><span class="pre">fill_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.fill_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.fill_channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_binarization_result">
+<span class="sig-name descname"><span class="pre">plot_binarization_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.plot_binarization_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_binarization_result" title="Link to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>channel str:</dt><dd><p>The channel to plot</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_combined">
+<span class="sig-name descname"><span class="pre">plot_combined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.plot_combined"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_combined" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_results">
+<span class="sig-name descname"><span class="pre">plot_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">steps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side_by_side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.plot_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_results" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_vessel_filling_results">
+<span class="sig-name descname"><span class="pre">plot_vessel_filling_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.plot_vessel_filling_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_vessel_filling_results" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.post_process_binary_combined">
+<span class="sig-name descname"><span class="pre">post_process_binary_combined</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.post_process_binary_combined"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.post_process_binary_combined" title="Link to this definition">#</a></dt>
+<dd><p>Postprocess the combined binary image (typically smooth and fill)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.postprocess">
+<span class="sig-name descname"><span class="pre">postprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.postprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.postprocess" title="Link to this definition">#</a></dt>
+<dd><p>Run post-processing steps (smooth, fill, deep_fill) for <em>channel</em> in
+the order declared by step_order in the config.</p>
+<p>Binarize is always the first step and is excluded here — it runs via
+binarize() / binarize_channel() before postprocess is called.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.run" title="Link to this definition">#</a></dt>
+<dd><p>Execute the full processing pipeline for this orchestrator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – Must be implemented by every concrete subclass.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_manager</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.setup" title="Link to this definition">#</a></dt>
+<dd><p>Attach a sample manager and mark this processor as ready.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_manager</strong> (<a class="reference internal" href="ClearMap.pipeline_orchestrators.sample_info_management.html#ClearMap.pipeline_orchestrators.sample_info_management.SampleManager" title="ClearMap.pipeline_orchestrators.sample_info_management.SampleManager"><em>SampleManager</em></a><em>, </em><em>optional</em>) – If provided, replaces the currently stored sample manager.
+When <code class="docutils literal notranslate"><span class="pre">None</span></code>, the previously stored instance is reused.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the config section identified by <a class="reference internal" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.config_name" title="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.config_name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">config_name</span></code></a> is absent.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.smooth_channel">
+<span class="sig-name descname"><span class="pre">smooth_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessor.smooth_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.smooth_channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.config_name">
+<span class="sig-name descname"><span class="pre">config_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'vasculature'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.config_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">BinaryVesselProcessorSteps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workspace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessorSteps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.pipeline_orchestrators.generic_orchestrators.html#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProcessorSteps</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.asset_from_step_name">
+<span class="sig-name descname"><span class="pre">asset_from_step_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessorSteps.asset_from_step_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.asset_from_step_name" title="Link to this definition">#</a></dt>
+<dd><p>Return the on-disk asset that corresponds to <em>step_name</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>step_name</strong> (<em>str</em>) – A member of <a class="reference internal" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.steps" title="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.steps"><code class="xref py py-attr docutils literal notranslate"><span class="pre">steps</span></code></a>.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Asset</dt><dd><p>The asset associated with that step.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – Must be implemented by every concrete subclass.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.consume_and_cleanup">
+<span class="sig-name descname"><span class="pre">consume_and_cleanup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessorSteps.consume_and_cleanup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.consume_and_cleanup" title="Link to this definition">#</a></dt>
+<dd><p>Delete the pending temp file once the next step has consumed its input.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.get_last_output">
+<span class="sig-name descname"><span class="pre">get_last_output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessorSteps.get_last_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.get_last_output" title="Link to this definition">#</a></dt>
+<dd><p>Return the last available output path, used by combine_binary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.get_source">
+<span class="sig-name descname"><span class="pre">get_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_asset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessorSteps.get_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.get_source" title="Link to this definition">#</a></dt>
+<dd><p>Walk backward from current_asset through the configured (non-lifecycle)
+step order and return the first available backing path.</p>
+<dl class="simple">
+<dt>Precedence per previous step:</dt><dd><ol class="arabic simple">
+<li><p>In-memory result stored by record_output  (is-not-None guard)</p></li>
+<li><p>On-disk asset</p></li>
+<li><p>Raw binary (fallback)</p></li>
+</ol>
+</dd>
+</dl>
+<p>Callers reconstruct the Source with clearmap_io.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.record_output">
+<span class="sig-name descname"><span class="pre">record_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#BinaryVesselProcessorSteps.record_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.record_output" title="Link to this definition">#</a></dt>
+<dd><p>Store the backing path of a completed step.</p>
+<p>Source objects are serialisable path handles — we extract .path so
+_outputs holds only plain Paths, never live Source instances.
+clearmap_io reconstructs on demand.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.binary">
+<span class="sig-name descname"><span class="pre">binary</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'binary'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.binary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.combined">
+<span class="sig-name descname"><span class="pre">combined</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'combined'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.combined" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.deep_filled">
+<span class="sig-name descname"><span class="pre">deep_filled</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'deep_filled'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.deep_filled" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.filled">
+<span class="sig-name descname"><span class="pre">filled</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'filled'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.filled" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.final">
+<span class="sig-name descname"><span class="pre">final</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'final'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.final" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.smoothed">
+<span class="sig-name descname"><span class="pre">smoothed</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'smoothed'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.smoothed" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.steps">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">steps</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.steps" title="Link to this definition">#</a></dt>
+<dd><p>Compute step order fresh on each access — reflects any GUI
+reordering committed to config since construction.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.stitched">
+<span class="sig-name descname"><span class="pre">stitched</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'stitched'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.stitched" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">VesselGraphProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.pipeline_orchestrators.sample_info_management.html#ClearMap.pipeline_orchestrators.sample_info_management.SampleManager" title="ClearMap.pipeline_orchestrators.sample_info_management.SampleManager"><span class="pre">SampleManager</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_coordinator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><span class="pre">ConfigCoordinator</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registration_processor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.pipeline_orchestrators.registration_orchestrator.html#ClearMap.pipeline_orchestrators.registration_orchestrator.RegistrationProcessor" title="ClearMap.pipeline_orchestrators.registration_orchestrator.RegistrationProcessor"><span class="pre">RegistrationProcessor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.pipeline_orchestrators.generic_orchestrators.html#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator" title="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PipelineOrchestrator</span></code></a></p>
+<dl class="simple">
+<dt>The graph contains the following edge properties:</dt><dd><ul class="simple">
+<li><p>artery_raw</p></li>
+<li><p>artery_binary</p></li>
+<li><p>artery</p></li>
+<li><p>vein</p></li>
+<li><p>radii</p></li>
+<li><p>distance_to_surface</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">RadiusLevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.RadiusLevel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel.FULL">
+<span class="sig-name descname"><span class="pre">FULL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'full'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel.FULL" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel.SCALAR_UM">
+<span class="sig-name descname"><span class="pre">SCALAR_UM</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scalar_um'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel.SCALAR_UM" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel.VOXELS">
+<span class="sig-name descname"><span class="pre">VOXELS</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'voxels'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel.VOXELS" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.reload_processing_config">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">reload_processing_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.reload_processing_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.reload_processing_config" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.requires_binary">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">requires_binary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset_sub_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.requires_binary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.requires_binary" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.requires_graph">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">requires_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.requires_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.requires_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.clean_graph">
+<span class="sig-name descname"><span class="pre">clean_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph_cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.clean_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.clean_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.get_filter">
+<span class="sig-name descname"><span class="pre">get_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph_step</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.get_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.get_filter" title="Link to this definition">#</a></dt>
+<dd><p>Get a filter object for the graph step</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>graph_step</strong> (<em>str</em>) – The graph step to filter (e.g. ‘annotated’, ‘reduced’)</p></li>
+<li><p><strong>filter_type</strong> (<em>str</em>) – The type of filter to apply (e.g. ‘vertex’, ‘edge’)</p></li>
+<li><p><strong>property_name</strong> (<em>str</em>) – The property name to filter on (e.g. ‘artery’, ‘vein’, ‘radii’)</p></li>
+<li><p><strong>value</strong> (<em>int</em><em> | </em><em>float</em><em> | </em><em>bool</em><em> | </em><em>str</em><em> | </em><em>tuple</em>) – <dl class="simple">
+<dt>The value to filter by. Can be:</dt><dd><ul>
+<li><p>int/float: exact match</p></li>
+<li><p>str: string match (e.g. ‘artery’, ‘vein’)</p></li>
+<li><p>bool: ‘True’ or ‘False’ for boolean properties</p></li>
+<li><p>tuple: range (min, max) for numerical properties. None means open-ended range.</p></li>
+</ul>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>GraphFilter</dt><dd><p>A filter object for the graph step</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.get_registration_sequence_channels">
+<span class="sig-name descname"><span class="pre">get_registration_sequence_channels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.get_registration_sequence_channels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.get_registration_sequence_channels" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.get_structure_sub_graph">
+<span class="sig-name descname"><span class="pre">get_structure_sub_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.get_structure_sub_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.get_structure_sub_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.plot_graph_chunk">
+<span class="sig-name descname"><span class="pre">plot_graph_chunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph_chunk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mesh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sub</span> <span class="pre">graph'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_max_vertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.plot_graph_chunk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.plot_graph_chunk" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.plot_graph_structure">
+<span class="sig-name descname"><span class="pre">plot_graph_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">structure_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.plot_graph_structure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.plot_graph_structure" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.plot_voxelization">
+<span class="sig-name descname"><span class="pre">plot_voxelization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.plot_voxelization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.plot_voxelization" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.post_process">
+<span class="sig-name descname"><span class="pre">post_process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.post_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.post_process" title="Link to this definition">#</a></dt>
+<dd><p>Iteratively refine arteries and veins based on one another.</p>
+<p>Delegates to <a class="reference internal" href="ClearMap.Analysis.graphs.vessel_classifier.html#ClearMap.Analysis.graphs.vessel_classifier.VesselClassifier" title="ClearMap.Analysis.graphs.vessel_classifier.VesselClassifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">VesselClassifier</span></code></a>
+which encapsulates the full iterative classification algorithm.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.pre_process">
+<span class="sig-name descname"><span class="pre">pre_process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.pre_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.pre_process" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.reduce_graph">
+<span class="sig-name descname"><span class="pre">reduce_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertex_to_edge_mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_to_edge_mappings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.reduce_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.reduce_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.register">
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph_cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.register" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.run" title="Link to this definition">#</a></dt>
+<dd><p>Execute the full processing pipeline for this orchestrator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – Must be implemented by every concrete subclass.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.save_graph">
+<span class="sig-name descname"><span class="pre">save_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.save_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.save_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_manager</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registration_processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.setup" title="Link to this definition">#</a></dt>
+<dd><p>Attach a sample manager and mark this processor as ready.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_manager</strong> (<a class="reference internal" href="ClearMap.pipeline_orchestrators.sample_info_management.html#ClearMap.pipeline_orchestrators.sample_info_management.SampleManager" title="ClearMap.pipeline_orchestrators.sample_info_management.SampleManager"><em>SampleManager</em></a><em>, </em><em>optional</em>) – If provided, replaces the currently stored sample manager.
+When <code class="docutils literal notranslate"><span class="pre">None</span></code>, the previously stored instance is reused.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the config section identified by <a class="reference internal" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.config_name" title="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.config_name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">config_name</span></code></a> is absent.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.skeletonize">
+<span class="sig-name descname"><span class="pre">skeletonize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">binary_processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.skeletonize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.skeletonize" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.skeletonize_and_build_graph">
+<span class="sig-name descname"><span class="pre">skeletonize_and_build_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph_cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binary_processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.skeletonize_and_build_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.skeletonize_and_build_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.unload_temporary_graphs">
+<span class="sig-name descname"><span class="pre">unload_temporary_graphs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.unload_temporary_graphs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.unload_temporary_graphs" title="Link to this definition">#</a></dt>
+<dd><p>To free up memory</p>
+<p class="rubric">Returns</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.visualize_graph_annotations">
+<span class="sig-name descname"><span class="pre">visualize_graph_annotations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunk_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mesh'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'reduced'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.visualize_graph_annotations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.visualize_graph_annotations" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.voxelize">
+<span class="sig-name descname"><span class="pre">voxelize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight_by_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vertex_degrees</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.voxelize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.voxelize" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.write_vertex_table">
+<span class="sig-name descname"><span class="pre">write_vertex_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessor.write_vertex_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.write_vertex_table" title="Link to this definition">#</a></dt>
+<dd><p>Write a table with vertex coordinates and properties</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.arteries_channel">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">arteries_channel</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.arteries_channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.binary_shape">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">binary_shape</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.binary_shape" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.config_name">
+<span class="sig-name descname"><span class="pre">config_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'vasculature'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.config_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_annotated">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">graph_annotated</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_annotated" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_cleaned">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">graph_cleaned</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_cleaned" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_raw">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">graph_raw</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_raw" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_reduced">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">graph_reduced</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_reduced" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_traced">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">graph_traced</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_traced" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.registration_processor">
+<span class="sig-name descname"><span class="pre">registration_processor</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="ClearMap.pipeline_orchestrators.registration_orchestrator.html#ClearMap.pipeline_orchestrators.registration_orchestrator.RegistrationProcessor" title="ClearMap.pipeline_orchestrators.registration_orchestrator.RegistrationProcessor"><span class="pre">RegistrationProcessor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.registration_processor" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.resampled_shape">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">resampled_shape</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.resampled_shape" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.sample_manager">
+<span class="sig-name descname"><span class="pre">sample_manager</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="ClearMap.pipeline_orchestrators.sample_info_management.html#ClearMap.pipeline_orchestrators.sample_info_management.SampleManager" title="ClearMap.pipeline_orchestrators.sample_info_management.SampleManager"><span class="pre">SampleManager</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.sample_manager" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.steps">
+<span class="sig-name descname"><span class="pre">steps</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps" title="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps"><span class="pre">VesselGraphProcessorSteps</span></a></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.steps" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.use_arteries_for_graph">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">use_arteries_for_graph</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.use_arteries_for_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.veins_channel">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">veins_channel</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.veins_channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.workspace">
+<span class="sig-name descname"><span class="pre">workspace</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Workspace2</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.workspace" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">VesselGraphProcessorSteps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workspace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ClearMap.IO.workspace2.Workspace2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_order_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessorSteps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.pipeline_orchestrators.generic_orchestrators.html#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProcessorSteps</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.asset_from_step_name">
+<span class="sig-name descname"><span class="pre">asset_from_step_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/tube_map.html#VesselGraphProcessorSteps.asset_from_step_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.asset_from_step_name" title="Link to this definition">#</a></dt>
+<dd><p>Return the on-disk asset that corresponds to <em>step_name</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>step_name</strong> (<em>str</em>) – A member of <code class="xref py py-attr docutils literal notranslate"><span class="pre">steps</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Asset</dt><dd><p>The asset associated with that step.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – Must be implemented by every concrete subclass.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_annotated">
+<span class="sig-name descname"><span class="pre">graph_annotated</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'annotated'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_annotated" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_cleaned">
+<span class="sig-name descname"><span class="pre">graph_cleaned</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cleaned'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_cleaned" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_raw">
+<span class="sig-name descname"><span class="pre">graph_raw</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'raw'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_raw" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_reduced">
+<span class="sig-name descname"><span class="pre">graph_reduced</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'reduced'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_reduced" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ClearMap.pipeline_orchestrators.tract_map.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">tract_map</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ClearMap.pipeline_orchestrators.utils.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">utils</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radius-units">Radius units</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-usage">Typical usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.setup_channel_operation"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.setup_channel_operation()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.assert_input_shapes_match"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.assert_input_shapes_match()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.assets_to_binarize"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.assets_to_binarize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.binarize"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.binarize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.binarize_channel"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.binarize_channel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.channels_to_binarize"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.channels_to_binarize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.combine_binary"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.combine_binary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.deep_fill_channel"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.deep_fill_channel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.fill_channel"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.fill_channel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_binarization_result"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.plot_binarization_result()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_combined"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.plot_combined()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_results"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.plot_results()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.plot_vessel_filling_results"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.plot_vessel_filling_results()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.post_process_binary_combined"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.post_process_binary_combined()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.postprocess"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.postprocess()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.run"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.setup"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.setup()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.smooth_channel"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.smooth_channel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor.config_name"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessor.config_name</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.asset_from_step_name"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.asset_from_step_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.consume_and_cleanup"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.consume_and_cleanup()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.get_last_output"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.get_last_output()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.get_source"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.get_source()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.record_output"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.record_output()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.binary"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.binary</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.combined"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.combined</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.deep_filled"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.deep_filled</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.filled"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.filled</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.final"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.final</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.smoothed"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.smoothed</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.steps"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.steps</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessorSteps.stitched"><code class="docutils literal notranslate"><span class="pre">BinaryVesselProcessorSteps.stitched</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.RadiusLevel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel.FULL"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.RadiusLevel.FULL</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel.SCALAR_UM"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.RadiusLevel.SCALAR_UM</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.RadiusLevel.VOXELS"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.RadiusLevel.VOXELS</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.reload_processing_config"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.reload_processing_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.requires_binary"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.requires_binary()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.requires_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.requires_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.clean_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.clean_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.get_filter"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.get_filter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.get_registration_sequence_channels"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.get_registration_sequence_channels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.get_structure_sub_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.get_structure_sub_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.plot_graph_chunk"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.plot_graph_chunk()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.plot_graph_structure"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.plot_graph_structure()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.plot_voxelization"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.plot_voxelization()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.post_process"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.post_process()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.pre_process"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.pre_process()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.reduce_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.reduce_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.register"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.register()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.run"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.save_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.save_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.setup"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.setup()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.skeletonize"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.skeletonize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.skeletonize_and_build_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.skeletonize_and_build_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.unload_temporary_graphs"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.unload_temporary_graphs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.visualize_graph_annotations"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.visualize_graph_annotations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.voxelize"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.voxelize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.write_vertex_table"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.write_vertex_table()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.arteries_channel"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.arteries_channel</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.binary_shape"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.binary_shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.config_name"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.config_name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_annotated"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.graph_annotated</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_cleaned"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.graph_cleaned</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_raw"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.graph_raw</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_reduced"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.graph_reduced</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.graph_traced"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.graph_traced</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.registration_processor"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.registration_processor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.resampled_shape"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.resampled_shape</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.sample_manager"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.sample_manager</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.steps"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.steps</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.use_arteries_for_graph"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.use_arteries_for_graph</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.veins_channel"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.veins_channel</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor.workspace"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessor.workspace</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessorSteps</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.asset_from_step_name"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessorSteps.asset_from_step_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_annotated"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessorSteps.graph_annotated</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_cleaned"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessorSteps.graph_cleaned</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_raw"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessorSteps.graph_raw</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessorSteps.graph_reduced"><code class="docutils literal notranslate"><span class="pre">VesselGraphProcessorSteps.graph_reduced</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.pipeline_orchestrators.tube_map.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

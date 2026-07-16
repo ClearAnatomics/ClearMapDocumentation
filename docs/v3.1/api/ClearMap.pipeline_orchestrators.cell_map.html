@@ -1,0 +1,1006 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>cell_map &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.pipeline_orchestrators.cell_map';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/api/ClearMap.pipeline_orchestrators.cell_map.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="colocalization" href="ClearMap.pipeline_orchestrators.colocalization.html" />
+    <link rel="prev" title="batch_process" href="ClearMap.pipeline_orchestrators.batch_process.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Alignment.html">ClearMap.Alignment</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.html">ClearMap.Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.html">ClearMap.IO</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.html">ClearMap.ImageProcessing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ParallelProcessing.html">ClearMap.ParallelProcessing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Scripts.html">ClearMap.Scripts</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.html">ClearMap.Utils</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Visualization.html">ClearMap.Visualization</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.config.html">ClearMap.config</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.gui.html">ClearMap.gui</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.pipeline_orchestrators.html">ClearMap.pipeline_orchestrators</a></li>
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../api.html" class="nav-link">ClearMap API</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="ClearMap.pipeline_orchestrators.html" class="nav-link">ClearMap.pipeline_orchestrators</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">cell_map</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cell-map">
+<h1>cell_map<a class="headerlink" href="#cell-map" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+</tbody>
+</table>
+</div>
+<p id="module-ClearMap.pipeline_orchestrators.cell_map">Per-channel cell detection, filtering, atlas alignment, and density mapping.</p>
+<p><a class="reference internal" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector" title="ClearMap.pipeline_orchestrators.cell_map.CellDetector"><code class="xref py py-class docutils literal notranslate"><span class="pre">CellDetector</span></code></a> is the pipeline worker for the CellMap pipeline, initially
+developped to analyze immediate early gene expression data from iDISCO+ cleared tissue <a class="reference internal" href="../references.html#renier2016" id="id1"><span>[Renier2016]</span></a>.</p>
+<a class="reference external image-reference" href="https://doi.org/10.1016/j.cell.2020.01.028"><img alt="../_images/cell_abstract_2016.jpg" src="../_images/cell_abstract_2016.jpg" style="width: 300px;" /></a>
+<figure class="align-default" id="id2">
+<img alt="../_images/CellMap_pipeline.png" src="../_images/CellMap_pipeline.png" />
+<figcaption>
+<p><span class="caption-number">Figure 25 </span><span class="caption-text">iDISCO+ and ClearMap: A Pipeline for Cell Detection, Registration, and
+Mapping in Intact Samples Using Light Sheet Microscopy.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><cite>CellDetector</cite> processes a single fluorescence channel through the following steps:</p>
+<ol class="arabic simple">
+<li><p><strong>Cell detection</strong> (<a class="reference internal" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.run_cell_detection" title="ClearMap.pipeline_orchestrators.cell_map.CellDetector.run_cell_detection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run_cell_detection()</span></code></a>) —
+background subtraction, maxima detection, and shape-based watershed
+segmentation via <a class="reference internal" href="ClearMap.ImageProcessing.Experts.Cells.html#module-ClearMap.ImageProcessing.Experts.Cells" title="ClearMap.ImageProcessing.Experts.Cells"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Cells</span></code></a>.
+Produces a raw cell table (<code class="docutils literal notranslate"><span class="pre">cells_raw</span></code>).</p></li>
+<li><p><strong>Filtering</strong> (<a class="reference internal" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.filter_cells" title="ClearMap.pipeline_orchestrators.cell_map.CellDetector.filter_cells"><code class="xref py py-meth docutils literal notranslate"><span class="pre">filter_cells()</span></code></a>) —
+thresholds on size and intensity; optional cortical-surface crust
+removal.  Produces a filtered table (<code class="docutils literal notranslate"><span class="pre">cells_filtered</span></code>).</p></li>
+<li><p><strong>Atlas alignment</strong> (<a class="reference internal" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.atlas_align" title="ClearMap.pipeline_orchestrators.cell_map.CellDetector.atlas_align"><code class="xref py py-meth docutils literal notranslate"><span class="pre">atlas_align()</span></code></a>) —
+transforms coordinates into atlas space via Elastix and annotates
+each cell with brain-region labels, hemisphere, and structure volume.
+Produces a per-cell Feather table.</p></li>
+<li><p><strong>Voxelization</strong> (<a class="reference internal" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.voxelize" title="ClearMap.pipeline_orchestrators.cell_map.CellDetector.voxelize"><code class="xref py py-meth docutils literal notranslate"><span class="pre">voxelize()</span></code></a>) —
+rasterises cell positions (with optional intensity weighting) into a
+density volume at atlas resolution for group statistics.</p></li>
+<li><p><strong>Statistics export</strong> (<a class="reference internal" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.export_collapsed_stats" title="ClearMap.pipeline_orchestrators.cell_map.CellDetector.export_collapsed_stats"><code class="xref py py-meth docutils literal notranslate"><span class="pre">export_collapsed_stats()</span></code></a>) —
+aggregates per-cell data into a per-structure CSV with counts, average
+size, and volumes for both hemispheres.</p></li>
+</ol>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<p>Parameters are read from the <code class="docutils literal notranslate"><span class="pre">cell_map</span></code> config section:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">detection.background_correction.diameter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">detection.maxima_detection.shape</span></code> / <code class="docutils literal notranslate"><span class="pre">h_max</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">detection.shape_detection.threshold</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cell_filtration.thresholds.size</span></code> / <code class="docutils literal notranslate"><span class="pre">intensity</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">voxelization.radii</span></code></p></li>
+</ul>
+</section>
+<section id="typical-usage">
+<h2>Typical usage<a class="headerlink" href="#typical-usage" title="Link to this heading">#</a></h2>
+<p>Instances are normally created via
+<a class="reference internal" href="ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController" title="ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExperimentController</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">detector</span> <span class="o">=</span> <span class="n">exp_ctrl</span><span class="o">.</span><span class="n">get_worker</span><span class="p">(</span><span class="s1">&#39;cell_map&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="s1">&#39;cfos&#39;</span><span class="p">)</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">run_cell_detection</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">filter_cells</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">atlas_align</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">voxelize</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">export_collapsed_stats</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For scripted use without the GUI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.sample_info_management</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_sample_manager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.cell_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">CellDetector</span>
+
+<span class="n">sm</span>  <span class="o">=</span> <span class="n">build_sample_manager</span><span class="p">(</span><span class="s1">&#39;/path/to/experiment&#39;</span><span class="p">)</span>
+<span class="n">det</span> <span class="o">=</span> <span class="n">CellDetector</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="p">,</span>
+                   <span class="n">channel</span><span class="o">=</span><span class="s1">&#39;cfos&#39;</span><span class="p">,</span> <span class="n">registration_processor</span><span class="o">=</span><span class="n">reg</span><span class="p">)</span>
+<span class="n">det</span><span class="o">.</span><span class="n">run_cell_detection</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="ClearMap.ImageProcessing.Experts.Cells.html#module-ClearMap.ImageProcessing.Experts.Cells" title="ClearMap.ImageProcessing.Experts.Cells"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.ImageProcessing.Experts.Cells</span></code></a></dt><dd><p>Low-level detection algorithms.</p>
+</dd>
+<dt><a class="reference internal" href="ClearMap.pipeline_orchestrators.registration_orchestrator.html#ClearMap.pipeline_orchestrators.registration_orchestrator.RegistrationProcessor" title="ClearMap.pipeline_orchestrators.registration_orchestrator.RegistrationProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegistrationProcessor</span></code></a></dt><dd><p>Required for atlas alignment.</p>
+</dd>
+<dt><a class="reference internal" href="ClearMap.Analysis.Measurements.Voxelization.html#module-ClearMap.Analysis.Measurements.Voxelization" title="ClearMap.Analysis.Measurements.Voxelization"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.Analysis.Measurements.Voxelization</span></code></a></dt><dd><p>Density-map generation.</p>
+</dd>
+</dl>
+</div>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">CellDetector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.pipeline_orchestrators.sample_info_management.html#ClearMap.pipeline_orchestrators.sample_info_management.SampleManager" title="ClearMap.pipeline_orchestrators.sample_info_management.SampleManager"><span class="pre">SampleManager</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_coordinator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><span class="pre">ConfigCoordinator</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registration_processor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.pipeline_orchestrators.generic_orchestrators.html#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChannelPipelineOrchestrator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.atlas_align">
+<span class="sig-name descname"><span class="pre">atlas_align</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.atlas_align"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.atlas_align" title="Link to this definition">#</a></dt>
+<dd><p>Atlas alignment and annotation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.convert_cm2_to_cm2_1_fmt">
+<span class="sig-name descname"><span class="pre">convert_cm2_to_cm2_1_fmt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.convert_cm2_to_cm2_1_fmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.convert_cm2_to_cm2_1_fmt" title="Link to this definition">#</a></dt>
+<dd><p>Atlas alignment and annotation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.create_test_dataset">
+<span class="sig-name descname"><span class="pre">create_test_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slicing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'debug'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.create_test_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.create_test_dataset" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.export_as_csv">
+<span class="sig-name descname"><span class="pre">export_as_csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.export_as_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.export_as_csv" title="Link to this definition">#</a></dt>
+<dd><p>Export the cell coordinates to csv</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 2.1: </span>Use <a class="reference internal" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.atlas_align" title="ClearMap.pipeline_orchestrators.cell_map.CellDetector.atlas_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">atlas_align()</span></code></a> and <cite>export_collapsed_stats</cite> instead.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.export_collapsed_stats">
+<span class="sig-name descname"><span class="pre">export_collapsed_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_regions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.export_collapsed_stats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.export_collapsed_stats" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.export_to_clearmap1_fmt">
+<span class="sig-name descname"><span class="pre">export_to_clearmap1_fmt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.export_to_clearmap1_fmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.export_to_clearmap1_fmt" title="Link to this definition">#</a></dt>
+<dd><p>ClearMap 1.0 export (will generate the files cells_ClearMap1_intensities, cells_ClearMap1_points_transformed,
+cells_ClearMap1_points necessaries to use the analysis script of ClearMap1.
+In ClearMap2 the ‘cells’ file contains already all this information)
+In order to align the coordinates when we have right and left hemispheres,
+if the orientation of the brain is left, will calculate the new coordinates for the Y axes,
+this change will not affect the orientation of the heatmaps, since these are generated from
+the ClearMap2 file ‘cells’</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 2.1: </span>Use <a class="reference internal" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.atlas_align" title="ClearMap.pipeline_orchestrators.cell_map.CellDetector.atlas_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">atlas_align()</span></code></a> and <cite>export_collapsed_stats</cite> instead.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.filter_cells">
+<span class="sig-name descname"><span class="pre">filter_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_from_surface_px</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.filter_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.filter_cells" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_cells_df">
+<span class="sig-name descname"><span class="pre">get_cells_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.get_cells_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_cells_df" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_coords">
+<span class="sig-name descname"><span class="pre">get_coords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'filtered'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aligned</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.get_coords"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_coords" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_n_blocks">
+<span class="sig-name descname"><span class="pre">get_n_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.get_n_blocks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_n_blocks" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_n_detected_cells">
+<span class="sig-name descname"><span class="pre">get_n_detected_cells</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.get_n_detected_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_n_detected_cells" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_n_filtered_cells">
+<span class="sig-name descname"><span class="pre">get_n_filtered_cells</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.get_n_filtered_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_n_filtered_cells" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_registration_sequence_channels">
+<span class="sig-name descname"><span class="pre">get_registration_sequence_channels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stop_channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'atlas'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.get_registration_sequence_channels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_registration_sequence_channels" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_voxelization_params">
+<span class="sig-name descname"><span class="pre">get_voxelization_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.get_voxelization_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_voxelization_params" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.list_valid_weighing_columns">
+<span class="sig-name descname"><span class="pre">list_valid_weighing_columns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.list_valid_weighing_columns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.list_valid_weighing_columns" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_background_subtracted_img">
+<span class="sig-name descname"><span class="pre">plot_background_subtracted_img</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.plot_background_subtracted_img"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_background_subtracted_img" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_cells_3d_scatter_w_atlas_colors">
+<span class="sig-name descname"><span class="pre">plot_cells_3d_scatter_w_atlas_colors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.plot_cells_3d_scatter_w_atlas_colors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_cells_3d_scatter_w_atlas_colors" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_filtered_cells">
+<span class="sig-name descname"><span class="pre">plot_filtered_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_filtered_cells" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_voxelized_counts">
+<span class="sig-name descname"><span class="pre">plot_voxelized_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_voxelized_counts" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_voxelized_intensities">
+<span class="sig-name descname"><span class="pre">plot_voxelized_intensities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrange</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.plot_voxelized_intensities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_voxelized_intensities" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.post_process_cells">
+<span class="sig-name descname"><span class="pre">post_process_cells</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.post_process_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.post_process_cells" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.preview_cell_detection">
+<span class="sig-name descname"><span class="pre">preview_cell_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'QWidget'</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arrange</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.preview_cell_detection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.preview_cell_detection" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.remove_crust">
+<span class="sig-name descname"><span class="pre">remove_crust</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.remove_crust"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.remove_crust" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.run_cell_detection">
+<span class="sig-name descname"><span class="pre">run_cell_detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tuning</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_maxima</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_as_binary_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.run_cell_detection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.run_cell_detection" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.set_voxelization_radii">
+<span class="sig-name descname"><span class="pre">set_voxelization_radii</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">voxelization_radii</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.set_voxelization_radii"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.set_voxelization_radii" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_manager</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registration_processor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.setup" title="Link to this definition">#</a></dt>
+<dd><p>Attach a sample manager and mark this processor as ready.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_manager</strong> (<a class="reference internal" href="ClearMap.pipeline_orchestrators.sample_info_management.html#ClearMap.pipeline_orchestrators.sample_info_management.SampleManager" title="ClearMap.pipeline_orchestrators.sample_info_management.SampleManager"><em>SampleManager</em></a><em>, </em><em>optional</em>) – If provided, replaces the currently stored sample manager.
+When <code class="docutils literal notranslate"><span class="pre">None</span></code>, the previously stored instance is reused.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the config section identified by <a class="reference internal" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.config_name" title="ClearMap.pipeline_orchestrators.cell_map.CellDetector.config_name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">config_name</span></code></a> is absent.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.transform_coordinates">
+<span class="sig-name descname"><span class="pre">transform_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.transform_coordinates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.transform_coordinates" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.voxelize">
+<span class="sig-name descname"><span class="pre">voxelize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/cell_map.html#CellDetector.voxelize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.voxelize" title="Link to this definition">#</a></dt>
+<dd><p>Unweighted voxelization (i.e. cell counts)
+This will draw a sphere of radius r around each cell and increment the voxel values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sub_step</strong> (<em>str</em><em> | </em><em>None</em>) – If specified, will use the coordinates from the specified sub_step (e.g. ‘aligned’)</p></li>
+<li><p><strong>weights_column</strong> (<em>str</em><em> | </em><em>None</em>) – If specified, this column in the cells table will be used to add weights to the
+voxelization spheres (e.g. for intensity voxelization).
+The column must be present in the cells table.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<p>coordinates, counts_file_path: np.array, str</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.config_name">
+<span class="sig-name descname"><span class="pre">config_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cell_map'</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.config_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.detected">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">detected</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.detected" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.cell_map.CellDetector.df_path">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">df_path</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.df_path" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ClearMap.pipeline_orchestrators.batch_process.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">batch_process</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ClearMap.pipeline_orchestrators.colocalization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">colocalization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-usage">Typical usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector"><code class="docutils literal notranslate"><span class="pre">CellDetector</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.atlas_align"><code class="docutils literal notranslate"><span class="pre">CellDetector.atlas_align()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.convert_cm2_to_cm2_1_fmt"><code class="docutils literal notranslate"><span class="pre">CellDetector.convert_cm2_to_cm2_1_fmt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.create_test_dataset"><code class="docutils literal notranslate"><span class="pre">CellDetector.create_test_dataset()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.export_as_csv"><code class="docutils literal notranslate"><span class="pre">CellDetector.export_as_csv()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.export_collapsed_stats"><code class="docutils literal notranslate"><span class="pre">CellDetector.export_collapsed_stats()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.export_to_clearmap1_fmt"><code class="docutils literal notranslate"><span class="pre">CellDetector.export_to_clearmap1_fmt()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.filter_cells"><code class="docutils literal notranslate"><span class="pre">CellDetector.filter_cells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_cells_df"><code class="docutils literal notranslate"><span class="pre">CellDetector.get_cells_df()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_coords"><code class="docutils literal notranslate"><span class="pre">CellDetector.get_coords()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_n_blocks"><code class="docutils literal notranslate"><span class="pre">CellDetector.get_n_blocks()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_n_detected_cells"><code class="docutils literal notranslate"><span class="pre">CellDetector.get_n_detected_cells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_n_filtered_cells"><code class="docutils literal notranslate"><span class="pre">CellDetector.get_n_filtered_cells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_registration_sequence_channels"><code class="docutils literal notranslate"><span class="pre">CellDetector.get_registration_sequence_channels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.get_voxelization_params"><code class="docutils literal notranslate"><span class="pre">CellDetector.get_voxelization_params()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.list_valid_weighing_columns"><code class="docutils literal notranslate"><span class="pre">CellDetector.list_valid_weighing_columns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_background_subtracted_img"><code class="docutils literal notranslate"><span class="pre">CellDetector.plot_background_subtracted_img()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_cells_3d_scatter_w_atlas_colors"><code class="docutils literal notranslate"><span class="pre">CellDetector.plot_cells_3d_scatter_w_atlas_colors()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_filtered_cells"><code class="docutils literal notranslate"><span class="pre">CellDetector.plot_filtered_cells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_voxelized_counts"><code class="docutils literal notranslate"><span class="pre">CellDetector.plot_voxelized_counts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.plot_voxelized_intensities"><code class="docutils literal notranslate"><span class="pre">CellDetector.plot_voxelized_intensities()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.post_process_cells"><code class="docutils literal notranslate"><span class="pre">CellDetector.post_process_cells()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.preview_cell_detection"><code class="docutils literal notranslate"><span class="pre">CellDetector.preview_cell_detection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.remove_crust"><code class="docutils literal notranslate"><span class="pre">CellDetector.remove_crust()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.run_cell_detection"><code class="docutils literal notranslate"><span class="pre">CellDetector.run_cell_detection()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.set_voxelization_radii"><code class="docutils literal notranslate"><span class="pre">CellDetector.set_voxelization_radii()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.setup"><code class="docutils literal notranslate"><span class="pre">CellDetector.setup()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.transform_coordinates"><code class="docutils literal notranslate"><span class="pre">CellDetector.transform_coordinates()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.voxelize"><code class="docutils literal notranslate"><span class="pre">CellDetector.voxelize()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.config_name"><code class="docutils literal notranslate"><span class="pre">CellDetector.config_name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.detected"><code class="docutils literal notranslate"><span class="pre">CellDetector.detected</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.cell_map.CellDetector.df_path"><code class="docutils literal notranslate"><span class="pre">CellDetector.df_path</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.pipeline_orchestrators.cell_map.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

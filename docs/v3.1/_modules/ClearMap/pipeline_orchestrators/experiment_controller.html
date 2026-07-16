@@ -1,0 +1,1448 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.pipeline_orchestrators.experiment_controller &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../../../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/pipeline_orchestrators/experiment_controller';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/_modules/ClearMap/pipeline_orchestrators/experiment_controller.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ClearMap.pipeline_orchestrators.experiment_controller</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.pipeline_orchestrators.experiment_controller</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">experiment_controller</span>
+<span class="sd">=====================</span>
+
+<span class="sd">Coordinator for application flow between configuration, workspace/sample state,</span>
+<span class="sd">and processing workers.</span>
+
+<span class="sd">This module wires together three main subsystems:</span>
+
+<span class="sd">- **ConfigCoordinator** — in-memory working model for all config files with</span>
+<span class="sd">  atomic commit and validation semantics.</span>
+<span class="sd">- **SampleManager** — runtime view of the sample + Workspace2 (assets on disk),</span>
+<span class="sd">  reconciled from config and updated via events.</span>
+<span class="sd">- **EventBus** — decoupled, typed pub/sub used by the UI and back-end.</span>
+
+<span class="sd">Responsibilities</span>
+<span class="sd">----------------</span>
+<span class="sd">- Boot an experiment (open/clone/new), seed defaults, run adjusters, validate,</span>
+<span class="sd">  and commit configuration.</span>
+<span class="sd">- Construct and cache worker instances (per pipeline and channel), reconcile</span>
+<span class="sd">  them when channels change, and expose a simple `get_worker(...)` API.</span>
+<span class="sd">- Bridge UI patches into `ConfigCoordinator.submit_patch(...)` so all edits are</span>
+<span class="sd">  validated and persisted atomically.</span>
+<span class="sd">- Optionally seal and snapshot the working config for reproducible runs.</span>
+<span class="sd">- Listen to UI/domain events (e.g., channel rename/changed) and keep worker</span>
+<span class="sd">  topology consistent.</span>
+
+<span class="sd">Thread-safety</span>
+<span class="sd">-------------</span>
+<span class="sd">- `ConfigCoordinator` provides its own locking; reads of `get_config_view()`</span>
+<span class="sd">  are safe against mid-edit states.</span>
+<span class="sd">- `EventBus` is thread-safe and resilient to dead weakrefs.</span>
+
+<span class="sd">Design Notes</span>
+<span class="sd">------------</span>
+<span class="sd">- All persistence flows through **ConfigCoordinator**</span>
+<span class="sd">- **SampleManager** keeps the Workspace2 in sync by subscribing to domain</span>
+<span class="sd">  events (e.g., `ChannelRenamed`) and by reading the validated config view.</span>
+<span class="sd">- Worker creation is **lazy**; reconciliation removes stale workers while new</span>
+<span class="sd">  ones are built on first access.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Utils.event_bus</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventBus</span><span class="p">,</span> <span class="n">BusSubscriberMixin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Utils.events</span><span class="w"> </span><span class="kn">import</span> <span class="n">WorkspaceChanged</span><span class="p">,</span> <span class="n">UiChannelRenamed</span><span class="p">,</span> <span class="n">UiChannelsChanged</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.config.config_adjusters.type_hints</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdjusterScope</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.config.config_coordinator</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigCoordinator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.config.defaults_provider</span><span class="w"> </span><span class="kn">import</span> <span class="n">DefaultsProvider</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.group_orchestrators</span><span class="w"> </span><span class="kn">import</span> <span class="n">DensityGroupAnalysisOrchestrator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.processor_launcher</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProcessorLauncher</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.sample_info_management</span><span class="w"> </span><span class="kn">import</span> <span class="n">SampleManager</span>
+
+
+<span class="c1"># REFACTOR: move to a common place</span>
+<span class="n">ChannelKey</span> <span class="o">=</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]]]</span>  <span class="c1"># str | (str,...) | None</span>
+<span class="n">RealChannelKey</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span>  <span class="c1"># str | (str,...) (skip None)</span>
+<span class="n">FactoryKey</span> <span class="o">=</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>           <span class="c1"># (pipeline, substep)</span>
+<span class="n">WorkerKey</span>  <span class="o">=</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">ChannelKey</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>    <span class="c1"># (channel_key, substep)</span>
+
+
+<div class="viewcode-block" id="AppMode">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AppMode">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AppMode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">EXPERIMENT</span> <span class="o">=</span> <span class="s1">&#39;experiment&#39;</span>  <span class="c1"># single sample</span>
+    <span class="n">GROUP</span>      <span class="o">=</span> <span class="s1">&#39;group&#39;</span>  <span class="c1"># cohort / study</span></div>
+
+
+
+<div class="viewcode-block" id="swap_old_channel">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.swap_old_channel">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">swap_old_channel</span><span class="p">(</span><span class="n">ch_key</span><span class="p">:</span> <span class="n">ChannelKey</span><span class="p">,</span> <span class="n">old_chan</span><span class="p">:</span> <span class="n">RealChannelKey</span><span class="p">,</span> <span class="n">new_chan</span><span class="p">:</span> <span class="n">RealChannelKey</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ChannelKey</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Swap old_chan by new_chan in ch_key if present.</span>
+<span class="sd">    If ch_key is a simple channel (str) or None -&gt; str.replace() or None</span>
+<span class="sd">    If ch_key is a tuple -&gt; replace old_chan by new_chan in the tuple</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ch_key: ChannelKey</span>
+<span class="sd">        ChannelKey to update</span>
+<span class="sd">    old_chan: RealChannelKey</span>
+<span class="sd">        Channel name to replace</span>
+<span class="sd">    new_chan: RealChannelKey</span>
+<span class="sd">        Channel name to use as replacement</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ChannelKey:</span>
+<span class="sd">        new_ch_key with old_chan replaced by new_chan, or None if key was None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">new_ch_key</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">ch_key</span> <span class="o">==</span> <span class="n">old_chan</span><span class="p">:</span>
+        <span class="n">new_ch_key</span> <span class="o">=</span> <span class="n">new_chan</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ch_key</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="n">old_chan</span> <span class="ow">in</span> <span class="n">ch_key</span><span class="p">:</span>
+        <span class="c1"># Compound channels, keep other channel and replace old by new</span>
+        <span class="n">new_ch_key</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">new_chan</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">old_chan</span> <span class="k">else</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ch_key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">new_ch_key</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_channel_was_removed</span><span class="p">(</span><span class="n">ch_key</span><span class="p">:</span> <span class="n">ChannelKey</span><span class="p">,</span> <span class="n">removed</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="n">RealChannelKey</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ch_key</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ch_key</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">removed</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ch_key</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ch_key</span> <span class="ow">in</span> <span class="n">removed</span>
+
+
+<div class="viewcode-block" id="ExperimentController">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ExperimentController</span><span class="p">(</span><span class="n">BusSubscriberMixin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Orchestrates experiment lifecycle, config edits, and worker topology.</span>
+
+<span class="sd">    This controller is the single entrypoint for app flow. It owns the</span>
+<span class="sd">    `ConfigCoordinator` and `SampleManager`, constructs per-pipeline workers,</span>
+<span class="sd">    applies UI patches through the coordinator, and reacts to bus events that</span>
+<span class="sd">    affect worker/channel state.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg_coordinator : ConfigCoordinator</span>
+<span class="sd">        Central configuration manager (working view + validation + commit).</span>
+<span class="sd">    sample_manager : SampleManager</span>
+<span class="sd">        Provides sample semantics and manages the Workspace2.</span>
+<span class="sd">    proc_launcher : ProcessorLauncher, optional</span>
+<span class="sd">        Used for sealing/snapshotting and launching processors.</span>
+<span class="sd">    evt_bus : EventBus</span>
+<span class="sd">        Event bus for decoupled UI/backend communication.</span>
+<span class="sd">    use_materializers : bool, default True</span>
+<span class="sd">        Reserved for future materialization hooks (kept for compatibility).</span>
+<span class="sd">    use_snapshots : bool, default False</span>
+<span class="sd">        When True, runs seal+snapshot before launching processors.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    _exp_dir : Optional[pathlib.Path]</span>
+<span class="sd">        Current experiment directory (None until `set_experiment_dir()`).</span>
+<span class="sd">    _workers : Dict[str, Dict[Tuple[ChannelKey, Optional[str]], object]]</span>
+<span class="sd">        Cached workers keyed by pipeline and (channel_key, substep).</span>
+<span class="sd">    _factories : Dict[Tuple[str, Optional[str]], Callable]</span>
+<span class="sd">        Factory registry: (pipeline, substep) -&gt; factory(sm, coord, channel_key).</span>
+
+<span class="sd">    Signals</span>
+<span class="sd">    -------</span>
+<span class="sd">    - UiChannelRenamed  -&gt; :meth:`on_channel_renamed`</span>
+<span class="sd">    - UiChannelsChanged -&gt; :meth:`on_channels_changed`</span>
+
+<span class="sd">    Published Events</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    - (optional) WorkspaceChanged(exp_dir=...) when the experiment directory is set.</span>
+<span class="sd">      Ensure the event class exists before enabling.</span>
+
+<span class="sd">    Key Operations</span>
+<span class="sd">    --------------</span>
+<span class="sd">    boot_open(exp_dir)</span>
+<span class="sd">        Load configs, seed defaults, run adjusters, validate, and commit.</span>
+<span class="sd">    boot_new(dest_dir, template_dir=None)</span>
+<span class="sd">        Create from defaults or clone template, then open.</span>
+<span class="sd">    apply_ui_patch(patch)</span>
+<span class="sd">        Validate+commit a UI patch via `ConfigCoordinator.submit_patch(...)`.</span>
+<span class="sd">    get_worker(pipeline, channel=None, substep=None)</span>
+<span class="sd">        Lazy construction of workers. Cached until reconciliation.</span>
+<span class="sd">    reconcile_workers_after_channel_change(before, after)</span>
+<span class="sd">        Remove stale workers after channel removals; new ones remain lazy.</span>
+<span class="sd">    seal_and_snapshot()</span>
+<span class="sd">        Ensure committed config; optionally write an immutable snapshot.</span>
+
+<span class="sd">    Invariants</span>
+<span class="sd">    ----------</span>
+<span class="sd">    - All config mutations go through `ConfigCoordinator.submit(...)` or</span>
+<span class="sd">      `submit_patch(...)`; direct edits to files are disallowed.</span>
+<span class="sd">    - `SampleManager` derives runtime state from committed config and bus events.</span>
+<span class="sd">    - Workers never mutate global config directly; they request patches through</span>
+<span class="sd">      controller-provided paths.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">cfg_coordinator</span><span class="p">:</span> <span class="n">ConfigCoordinator</span><span class="p">,</span> <span class="n">sample_manager</span><span class="p">:</span> <span class="n">SampleManager</span><span class="p">,</span>
+                 <span class="n">proc_launcher</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ProcessorLauncher</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">evt_bus</span><span class="p">:</span> <span class="n">EventBus</span><span class="p">,</span>
+                 <span class="n">use_materializers</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">use_snapshots</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span> <span class="o">=</span> <span class="n">cfg_coordinator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span> <span class="o">=</span> <span class="n">sample_manager</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">launcher</span> <span class="o">=</span> <span class="n">proc_launcher</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">evt_bus</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_materializers</span> <span class="o">=</span> <span class="n">use_materializers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_snapshots</span> <span class="o">=</span> <span class="n">use_snapshots</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="n">WorkerKey</span><span class="p">,</span> <span class="nb">object</span><span class="p">]]</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_factories</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># pipeline(/sub) -&gt; factory(sm, coord, key=None)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_factory_scope</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># &quot;global&quot; | &quot;per_channel&quot; | &quot;per_pair&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_register_default_factories</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hydrating</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">UiChannelRenamed</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_channel_renamed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">UiChannelsChanged</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_channels_changed</span><span class="p">)</span>
+        <span class="c1"># FIXME: also subscribe to dtype changed in config -&gt; reconcile workers (pipelines)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hydrating</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hydrating</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_register_default_factories</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># WARNING: Lazy imports for snappy boot and to avoid cycles</span>
+
+        <span class="c1"># simple/global</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">stitching_factory</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.stitching_orchestrator</span><span class="w"> </span><span class="kn">import</span> <span class="n">StitchingProcessor</span>
+            <span class="k">return</span> <span class="n">StitchingProcessor</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">registration_factory</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.registration_orchestrator</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegistrationProcessor</span>
+            <span class="k">return</span> <span class="n">RegistrationProcessor</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">)</span>
+        <span class="c1"># per-channel</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">cell_map_factory</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.cell_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">CellDetector</span>
+            <span class="k">return</span> <span class="n">CellDetector</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">registration_processor</span><span class="o">=</span><span class="n">reg_proc</span><span class="p">)</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">tract_map_factory</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.tract_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">TractMapProcessor</span>
+            <span class="k">return</span> <span class="n">TractMapProcessor</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">registration_processor</span><span class="o">=</span><span class="n">reg_proc</span><span class="p">)</span>
+        <span class="c1"># per-pair (key is a tuple)</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">colocalization_factory</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.colocalization</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColocalizationProcessor</span>
+            <span class="k">return</span> <span class="n">ColocalizationProcessor</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">channels</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">registration_processor</span><span class="o">=</span><span class="n">reg_proc</span><span class="p">)</span>
+        <span class="c1"># vasculature as substeps (single pipeline, two steps)</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">binary_vessel_processor_factory</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.tube_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">BinaryVesselProcessor</span>
+            <span class="k">return</span> <span class="n">BinaryVesselProcessor</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">vessel_graph_processor_factory</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.tube_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">VesselGraphProcessor</span>
+            <span class="k">return</span> <span class="n">VesselGraphProcessor</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">coord</span><span class="p">,</span> <span class="n">registration_processor</span><span class="o">=</span><span class="n">reg_proc</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_worker_factory</span><span class="p">(</span><span class="s1">&#39;stitching&#39;</span><span class="p">,</span>  <span class="n">stitching_factory</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s1">&#39;global&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_worker_factory</span><span class="p">(</span><span class="s1">&#39;registration&#39;</span><span class="p">,</span> <span class="n">registration_factory</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s1">&#39;global&#39;</span><span class="p">)</span>
+
+        <span class="c1"># pull registration_processor now for factories that depend on it  # OPTIMISE: find a way to avoid instantiating too early</span>
+        <span class="n">reg_proc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_worker</span><span class="p">(</span><span class="s1">&#39;registration&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_worker_factory</span><span class="p">(</span><span class="s1">&#39;cell_map&#39;</span><span class="p">,</span> <span class="n">cell_map_factory</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s1">&#39;per_channel&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_worker_factory</span><span class="p">(</span><span class="s1">&#39;tract_map&#39;</span><span class="p">,</span> <span class="n">tract_map_factory</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s1">&#39;per_channel&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_worker_factory</span><span class="p">(</span><span class="s1">&#39;colocalization&#39;</span><span class="p">,</span> <span class="n">colocalization_factory</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s1">&#39;per_pair&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_worker_factory</span><span class="p">(</span><span class="s1">&#39;vasculature&#39;</span><span class="p">,</span> <span class="n">binary_vessel_processor_factory</span><span class="p">,</span>
+                                     <span class="n">substep</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s1">&#39;global&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_worker_factory</span><span class="p">(</span><span class="s1">&#39;vasculature&#39;</span><span class="p">,</span> <span class="n">vessel_graph_processor_factory</span><span class="p">,</span>
+                                     <span class="n">substep</span><span class="o">=</span><span class="s1">&#39;graph&#39;</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s1">&#39;global&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ExperimentController.register_worker_factory">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.register_worker_factory">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">register_worker_factory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">factory</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">substep</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                <span class="n">scope</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;global&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Register a factory function that creates workers for a given pipeline</span>
+<span class="sd">        (and optionally substep). The factory will be called with (sample_manager, cfg_coordinator, channel_key).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pipeline : str</span>
+<span class="sd">            Name of the processing pipeline (e.g., &quot;registration&quot;, &quot;cell_map&quot;).</span>
+<span class="sd">        factory : Callable</span>
+<span class="sd">            Factory function to create the worker. (built with the ctor of the worker)</span>
+<span class="sd">        substep : Optional[str], default None</span>
+<span class="sd">            Optional substep identifier within the pipeline.</span>
+<span class="sd">        scope : str, default &quot;global&quot;</span>
+<span class="sd">            Scope of the worker: &quot;global&quot;, &quot;per_channel&quot;, or &quot;per_pair&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">substep</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_factories</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">factory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_factory_scope</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">scope</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.set_workers_progress_watcher">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.set_workers_progress_watcher">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_workers_progress_watcher</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">watcher</span><span class="p">):</span>  <span class="c1"># REFACTOR: define watcher signature</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Attach watcher to SampleManager and every existing worker.&quot;&quot;&quot;</span>
+        <span class="c1"># self.sample_manager.set_progress_watcher(watcher)</span>
+        <span class="k">for</span> <span class="n">pipeline_workers</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">worker</span> <span class="ow">in</span> <span class="n">pipeline_workers</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>  <span class="c1"># each worker keyed by (channel, substep)</span>
+                <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">worker</span><span class="p">,</span> <span class="s2">&quot;set_progress_watcher&quot;</span><span class="p">):</span>
+                    <span class="n">worker</span><span class="o">.</span><span class="n">set_progress_watcher</span><span class="p">(</span><span class="n">watcher</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">exp_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span>
+
+<div class="viewcode-block" id="ExperimentController.set_experiment_dir">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.set_experiment_dir">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_experiment_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Clear cached workers if directory changed (they hold old workspace refs)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span> <span class="o">!=</span> <span class="n">exp_dir</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">exp_dir</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">set_base_dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">WorkspaceChanged</span><span class="p">(</span><span class="n">exp_dir</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span><span class="p">)))</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_make_defaults_provider</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">DefaultsProvider</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build a DefaultsProvider pointing to packaged defaults &amp; schemas.</span>
+<span class="sd">        Adjust paths to match your repo layout if needed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
+        <span class="n">schemas_dir</span> <span class="o">=</span> <span class="n">base</span> <span class="o">/</span> <span class="s1">&#39;schemas&#39;</span>  <span class="c1"># put JSON Schemas here</span>
+        <span class="k">return</span> <span class="n">DefaultsProvider</span><span class="p">(</span><span class="n">schemas_dir</span><span class="o">=</span><span class="n">schemas_dir</span><span class="p">,</span> <span class="n">code_defaults</span><span class="o">=</span><span class="p">{},</span> <span class="n">tabs_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># TODO: check if tabs_only=True is OK</span>
+
+<div class="viewcode-block" id="ExperimentController.sample_path_exists">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.sample_path_exists">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sample_path_exists</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">config_exists_any</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.set_sample_id">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.set_sample_id">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_sample_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">set_base_dir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">submit_patch</span><span class="p">({</span><span class="s1">&#39;sample&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;sample_id&#39;</span><span class="p">:</span> <span class="n">sample_id</span><span class="p">}},</span>
+                                          <span class="n">sample_manager</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="p">,</span>
+                                          <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;ExperimentController.set_sample_id&#39;</span><span class="p">,)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_sample_cfg</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">sample_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">get_config_view</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">sample_cfg</span><span class="p">:</span> <span class="c1"># Load sample only because might be partial experiment</span>
+            <span class="n">sample_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sample_cfg</span>
+
+<div class="viewcode-block" id="ExperimentController.read_sample_version">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.read_sample_version">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read_sample_version</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_sample_cfg</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;clearmap_version&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.get_or_init_sample_id">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.get_or_init_sample_id">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_or_init_sample_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">sample_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_sample_cfg</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sample_id&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sample_id</span> <span class="ow">or</span> <span class="kc">None</span>  <span class="c1"># leave creation to UI prompt (app will call set_sample_id)</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.upgrade_configs">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.upgrade_configs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">upgrade_configs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">from_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">to_version</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert the config to the current ClearMap version in</span>
+<span class="sd">        the current exp_dir.</span>
+<span class="sd">        Reload all configs into the working model afterwards.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        from_version: str</span>
+<span class="sd">            The version the config is currently in.</span>
+<span class="sd">        to_version: str</span>
+<span class="sd">            The version to convert the config to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.config.convert_config_versions</span><span class="w"> </span><span class="kn">import</span> <span class="n">convert_versions</span>
+        <span class="n">convert_versions</span><span class="p">(</span><span class="n">from_version</span><span class="p">,</span> <span class="n">to_version</span><span class="p">,</span> <span class="n">exp_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">load_all</span><span class="p">()</span></div>
+
+
+    <span class="c1"># ---- boot / workspace ----------------------------------------------------</span>
+<div class="viewcode-block" id="ExperimentController.boot_open">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.boot_open">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">boot_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exp_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Open an existing experiment directory: load all configs, build working model,</span>
+<span class="sd">        materialize/validate/commit (to normalize), and build tabs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hydrating</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_experiment_dir</span><span class="p">(</span><span class="n">exp_dir</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Opening experiment at </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_relevant_sections</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">load_all</span><span class="p">()</span>
+
+            <span class="n">defaults_provider</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_defaults_provider</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">set_defaults_provider</span><span class="p">(</span><span class="n">defaults_provider</span><span class="p">)</span>
+
+            <span class="c1"># Ensure configs will never have missing fields</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">seed_missing_from_defaults</span><span class="p">(</span><span class="n">tabs_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1"># Normalize once (may add derived sections), then persist atomically</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">sample_manager</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="p">,</span> <span class="n">do_run_adjusters</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                        <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_hydrating</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">stitching_worker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_worker</span><span class="p">(</span><span class="s1">&#39;stitching&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">stitching_worker</span><span class="o">.</span><span class="n">prepare_all_channels_raw_data</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.boot_new">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.boot_new">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">boot_new</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dest_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">template_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new experiment from defaults or clone a template, then open it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dest_dir</span><span class="p">:</span>
+            <span class="n">dest_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span>  <span class="c1"># FIXME: check this fallback</span>
+        <span class="n">dest</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">dest_dir</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">template_dir</span><span class="p">:</span>
+            <span class="n">template_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">template_dir</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">clone_from</span><span class="p">(</span><span class="n">template_dir</span><span class="p">,</span> <span class="n">dest</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">copy_from_defaults</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boot_open</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.clone_from">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.clone_from">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clone_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">template_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">dest_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Explicit clone API (alias); then open the new experiment.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boot_new</span><span class="p">(</span><span class="n">dest_dir</span><span class="p">,</span> <span class="n">template_dir</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.ensure_config_present">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.ensure_config_present">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ensure_config_present</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ensure the named config file exists in the current experiment directory,</span>
+<span class="sd">        copying from defaults if needed. Returns the path or None if no</span>
+<span class="sd">        default exists for that name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name: str</span>
+<span class="sd">            Logical config name, e.g. &quot;sample&quot;, &quot;registration&quot;, etc.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Path | None</span>
+<span class="sd">            The path to the ensured config file, or None if no default exists.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">ensure_present</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.get_worker">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.get_worker">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_worker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">ChannelKey</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">substep</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">factory_key</span><span class="p">:</span> <span class="n">FactoryKey</span> <span class="o">=</span> <span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">substep</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">factory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_factories</span><span class="p">[</span><span class="n">factory_key</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No factory registered for pipeline &quot;</span><span class="si">{</span><span class="n">pipeline</span><span class="si">}</span><span class="s1">&quot; (</span><span class="si">{</span><span class="n">substep</span><span class="si">=}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+        <span class="n">scope</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_factory_scope</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">factory_key</span><span class="p">,</span> <span class="s1">&#39;global&#39;</span><span class="p">)</span>
+
+        <span class="n">worker_key</span><span class="p">:</span> <span class="n">WorkerKey</span> <span class="o">=</span> <span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">substep</span><span class="p">)</span>
+        <span class="n">pipeline_workers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">[</span><span class="n">pipeline</span><span class="p">]</span>  <span class="c1"># what if pipeline not registered yet?</span>
+        <span class="n">worker</span> <span class="o">=</span> <span class="n">pipeline_workers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">worker_key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">worker</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">worker</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># FIXME: add pipeline to workspace or inside worker ctor?</span>
+            <span class="k">if</span> <span class="n">scope</span> <span class="o">==</span> <span class="s1">&#39;global&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">channel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s1">&#39;Pipeline &quot;</span><span class="si">{</span><span class="n">pipeline</span><span class="si">}</span><span class="s1">&quot; is global (scope=global) but </span><span class="si">{</span><span class="n">channel</span><span class="si">=}</span><span class="s1"> was requested.&#39;</span><span class="p">)</span>
+                <span class="n">worker</span> <span class="o">=</span> <span class="n">factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">scope</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;per_channel&#39;</span><span class="p">,</span> <span class="s1">&#39;per_pair&#39;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">channel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pipeline &quot;</span><span class="si">{</span><span class="n">pipeline</span><span class="si">}</span><span class="s1">&quot; (</span><span class="si">{</span><span class="n">scope</span><span class="si">=}</span><span class="s1">) requires a channel key, got channel=None.&#39;</span><span class="p">)</span>
+                <span class="n">worker</span> <span class="o">=</span> <span class="n">factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="p">,</span> <span class="n">channel</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unknown worker scope &quot;</span><span class="si">{</span><span class="n">scope</span><span class="si">}</span><span class="s1">&quot; for pipeline &quot;</span><span class="si">{</span><span class="n">pipeline</span><span class="si">}</span><span class="s1">&quot;.&#39;</span><span class="p">)</span>
+
+            <span class="n">pipeline_workers</span><span class="p">[</span><span class="n">worker_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">worker</span>
+            <span class="k">return</span> <span class="n">worker</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.get_workers">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.get_workers">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_workers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">channels</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">ChannelKey</span><span class="p">],</span> <span class="n">substep</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">ch</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_worker</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="n">substep</span><span class="o">=</span><span class="n">substep</span><span class="p">)</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.worker_is_ready">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.worker_is_ready">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">worker_is_ready</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">worker_name</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">worker_name</span> <span class="o">!=</span> <span class="s1">&#39;sample&#39;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">workspace</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">registration_worker</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_worker</span><span class="p">(</span><span class="s1">&#39;registration&#39;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">needs_registering</span><span class="p">(</span><span class="n">registration_worker</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.reconcile_workers">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.reconcile_workers">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reconcile_workers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">desired_channels</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Iterable</span><span class="p">[</span><span class="n">ChannelKey</span><span class="p">]],</span>
+                          <span class="n">substep</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">keep_global</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="n">ChannelKey</span><span class="p">,</span> <span class="nb">object</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ensure all desired workers exist and remove obsolete ones for this (pipeline, substep).</span>
+<span class="sd">        desired_channels=None means &#39;global-only&#39; (i.e., {None} if keep_global).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">desired</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">desired_channels</span> <span class="ow">or</span> <span class="p">[])</span>
+
+        <span class="n">factory_key</span> <span class="o">=</span> <span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">substep</span><span class="p">)</span>
+        <span class="n">scope</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_factory_scope</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">factory_key</span><span class="p">,</span> <span class="s1">&#39;global&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">keep_global</span> <span class="ow">and</span> <span class="n">scope</span> <span class="o">==</span> <span class="s1">&#39;global&#39;</span><span class="p">:</span>
+            <span class="n">desired</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># build missing (lazy via get_worker)</span>
+        <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">desired</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_worker</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="n">substep</span><span class="o">=</span><span class="n">substep</span><span class="p">)</span>
+
+        <span class="n">pipeline_workers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="p">[</span><span class="n">pipeline</span><span class="p">]</span>
+
+        <span class="c1"># prune stale</span>
+        <span class="n">to_remove</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">current_substep</span><span class="p">),</span> <span class="n">_worker</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">pipeline_workers</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">current_substep</span> <span class="o">!=</span> <span class="n">substep</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">ch</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">desired</span><span class="p">:</span>
+                <span class="n">to_remove</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">ch</span><span class="p">,</span> <span class="n">current_substep</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">to_remove</span><span class="p">:</span>
+            <span class="n">pipeline_workers</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># return current (without substep key in API, map by channel)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">ch</span><span class="p">:</span> <span class="n">pipeline_workers</span><span class="p">[(</span><span class="n">ch</span><span class="p">,</span> <span class="n">substep</span><span class="p">)]</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">desired</span> <span class="k">if</span> <span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="n">substep</span><span class="p">)</span> <span class="ow">in</span> <span class="n">pipeline_workers</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.reconcile_workers_after_channel_change">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.reconcile_workers_after_channel_change">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reconcile_workers_after_channel_change</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">before</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">after</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prune workers that reference removed channels by delegating to reconcile_workers.</span>
+<span class="sd">        Creation of workers for *new* channels is left lazy (on first use).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">removed</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">(</span><span class="n">before</span> <span class="ow">or</span> <span class="p">[])</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">after</span> <span class="ow">or</span> <span class="p">[]))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">removed</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">for</span> <span class="n">pipeline</span><span class="p">,</span> <span class="n">workers</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># Keep all existing non-removed channel keys for this pipeline/substep</span>
+            <span class="n">by_sub</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">set</span><span class="p">[</span><span class="n">ChannelKey</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">ch_key</span><span class="p">,</span> <span class="n">substep</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">workers</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">_channel_was_removed</span><span class="p">(</span><span class="n">ch_key</span><span class="p">,</span> <span class="n">removed</span><span class="p">):</span>
+                    <span class="n">by_sub</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">substep</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ch_key</span><span class="p">)</span>
+
+            <span class="c1"># Reconcile per substep using the desired (filtered) set</span>
+            <span class="k">for</span> <span class="n">substep</span><span class="p">,</span> <span class="n">desired</span> <span class="ow">in</span> <span class="n">by_sub</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">scope</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_factory_scope</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">substep</span><span class="p">),</span> <span class="s1">&#39;global&#39;</span><span class="p">)</span>
+                <span class="n">keep_global</span> <span class="o">=</span> <span class="p">(</span><span class="n">scope</span> <span class="o">==</span> <span class="s1">&#39;global&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reconcile_workers</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">desired_channels</span><span class="o">=</span><span class="n">desired</span><span class="p">,</span>
+                                       <span class="n">substep</span><span class="o">=</span><span class="n">substep</span><span class="p">,</span> <span class="n">keep_global</span><span class="o">=</span><span class="n">keep_global</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.rename_workers_channels">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.rename_workers_channels">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rename_workers_channels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_chan</span><span class="p">:</span> <span class="n">RealChannelKey</span><span class="p">,</span> <span class="n">new_chan</span><span class="p">:</span> <span class="n">RealChannelKey</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">pipeline</span><span class="p">,</span> <span class="n">pipeline_workers</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># work on a copy of keys because we mutate the dict</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">ch_key</span><span class="p">,</span> <span class="n">substep</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">pipeline_workers</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+                <span class="n">new_ch_key</span> <span class="o">=</span> <span class="n">swap_old_channel</span><span class="p">(</span><span class="n">ch_key</span><span class="p">,</span> <span class="n">old_chan</span><span class="p">,</span> <span class="n">new_chan</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">new_ch_key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">worker</span> <span class="o">=</span> <span class="n">pipeline_workers</span><span class="o">.</span><span class="n">pop</span><span class="p">((</span><span class="n">ch_key</span><span class="p">,</span> <span class="n">substep</span><span class="p">))</span>
+                    <span class="n">pipeline_workers</span><span class="p">[(</span><span class="n">new_ch_key</span><span class="p">,</span> <span class="n">substep</span><span class="p">)]</span> <span class="o">=</span> <span class="n">worker</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.on_channel_renamed">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.on_channel_renamed">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_channel_renamed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">UiChannelRenamed</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># FIXME: shouldn&#39;t it be ChannelRenamed (sent by config coordinator AFTER)?</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Apply a rename everywhere (workers, config), then publish one snapshot event.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rename_workers_channels</span><span class="p">(</span><span class="n">evt</span><span class="o">.</span><span class="n">old</span><span class="p">,</span> <span class="n">evt</span><span class="o">.</span><span class="n">new</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.on_channels_changed">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.on_channels_changed">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_channels_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evt</span><span class="p">:</span> <span class="n">UiChannelsChanged</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handle add/remove; seed/drop per-channel sections, purge artifacts, then publish.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_refresh_relevant_sections</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reconcile_workers_after_channel_change</span><span class="p">(</span><span class="n">before</span><span class="o">=</span><span class="n">evt</span><span class="o">.</span><span class="n">before</span><span class="p">,</span> <span class="n">after</span><span class="o">=</span><span class="n">evt</span><span class="o">.</span><span class="n">after</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.channel_snapshot">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.channel_snapshot">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">channel_snapshot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Single “truth” event: current channel list + registration partner defaults,</span>
+<span class="sd">        derived centrally via the registration worker.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">channels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">channels</span>
+
+        <span class="c1"># derive partner defaults via registration rules (no UI logic here)</span>
+        <span class="n">partners</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">reg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_worker</span><span class="p">(</span><span class="s1">&#39;registration&#39;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">:</span>
+                <span class="n">partners</span><span class="p">[</span><span class="n">ch</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;align_with&#39;</span><span class="p">:</span> <span class="n">reg</span><span class="o">.</span><span class="n">get_align_with</span><span class="p">(</span><span class="n">ch</span><span class="p">),</span>
+                    <span class="s1">&#39;moving&#39;</span><span class="p">:</span> <span class="n">reg</span><span class="o">.</span><span class="n">get_moving_channel</span><span class="p">(</span><span class="n">ch</span><span class="p">),</span>
+                <span class="p">}</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="c1"># keep UI alive even if reg worker not ready</span>
+            <span class="n">partners</span> <span class="o">=</span> <span class="p">{</span><span class="n">ch</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;align_with&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;moving&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">channels</span><span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">channels</span><span class="p">,</span> <span class="n">partners</span>  <span class="c1"># , &#39;renamed&#39;: rename_map}</span></div>
+
+
+    <span class="c1"># ---- UI edits / persistence ---------------------------------------------</span>
+<div class="viewcode-block" id="ExperimentController.apply_ui_patch">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.apply_ui_patch">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_ui_patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patch</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Single write entrypoint: Params call this with a patch (persisted fields only).</span>
+<span class="sd">        We merge it, derive dependent sections, validate, and atomically commit.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">patch</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="c1"># print(f&#39;Applying UI patch keys: {list(patch.keys())}&#39;)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">submit_patch</span><span class="p">(</span><span class="n">patch</span><span class="p">,</span> <span class="n">sample_manager</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="p">,</span>
+                                          <span class="n">do_run_adjusters</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+        <span class="c1"># self.evt_bus.publish(ConfigChanged({&quot;rev&quot;: self.cfg_coordinator._rev}))</span>
+
+    <span class="c1"># ---- run path (snapshot + launch) ---------------------------------------</span>
+<div class="viewcode-block" id="ExperimentController.seal_and_snapshot">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.seal_and_snapshot">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">seal_and_snapshot</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Ensure the on-disk config is fully materialized &amp; valid; take an immutable snapshot</span>
+<span class="sd">        directory used by pipeline_orchestrators for reproducibility.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">sample_manager</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="p">,</span> <span class="n">do_run_adjusters</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                    <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_snapshots</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Workspace not set&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exp_dir</span>  <span class="c1"># legacy behavior: use working dir</span>
+
+        <span class="c1"># FIXME: this is redundant with ConfigCoordinator.snapshot_to()</span>
+        <span class="n">snap_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">launcher</span><span class="o">.</span><span class="n">seal_and_snapshot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="p">)</span>  <span class="c1"># expects coordinator to expose working view</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sealed snapshot at </span><span class="si">{</span><span class="n">snap_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">snap_dir</span></div>
+
+
+<div class="viewcode-block" id="ExperimentController.launch_processor">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.launch_processor">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">launch_processor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processor_class</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Typical run: seal snapshot, then launch processor with config-dir=&lt;snapshot&gt;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">snap</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">seal_and_snapshot</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">launcher</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">processor_class</span><span class="p">,</span> <span class="n">snap</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">)</span></div>
+
+
+    <span class="c1"># ---- read-only views for UI ---------------------------------------------</span>
+<div class="viewcode-block" id="ExperimentController.get_config_view">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.get_config_view">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_config_view</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Dict-like snapshot the UI can read to populate widgets.</span>
+<span class="sd">        Do not expose repository paths here—UI shouldn’t hit disk.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">get_config_view</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_refresh_relevant_sections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">sections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">compute_required_sections</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">set_active_sections</span><span class="p">(</span><span class="n">sections</span><span class="p">)</span>
+
+        <span class="c1"># Seed defaults only for active sections</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">seed_missing_from_defaults</span><span class="p">(</span><span class="n">tabs_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+
+<span class="c1">####################### Multi experiment controller ###########################</span>
+<div class="viewcode-block" id="AnalysisGroupController">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AnalysisGroupController</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Manages multiple ExperimentControllers, one per experiment root (src_dir).</span>
+<span class="sd">    Also acts as a factory/router to fetch workers tied to the correct sample.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_coordinator_factory</span><span class="p">,</span> <span class="n">event_bus</span><span class="p">,</span> <span class="n">exp_controller_factory</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        cfg_coordinator_factory: callable(base_dir: Path) -&gt; ConfigCoordinator</span>
+<span class="sd">        exp_controller_factory:  callable(sample_manager, cfg_coordinator, event_bus) -&gt; ExperimentController</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cfg_coordinator_factory</span>  <span class="o">=</span> <span class="n">cfg_coordinator_factory</span>  <span class="c1"># Built for each sample</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_exp_controller_factory</span>   <span class="o">=</span> <span class="n">exp_controller_factory</span>  <span class="c1"># Built for each sample</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bus</span> <span class="o">=</span> <span class="n">event_bus</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controllers</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Path</span><span class="p">,</span> <span class="n">ExperimentController</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_base_dir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_cfg_coordinator</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: Optional[ConfigCoordinator]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_worker</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;DensityGroupAnalysisOrchestrator&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_progress_watcher</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread_wrapper</span>   <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">group_cfg_coordinator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_cfg_coordinator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Group config not initialised (results_folder not set?)&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_cfg_coordinator</span>
+
+    <span class="c1"># ---------- external state ----------</span>
+<div class="viewcode-block" id="AnalysisGroupController.set_groups">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController.set_groups">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">groups</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]):</span>
+        <span class="n">normalised</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">groups</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_patch</span><span class="p">({</span><span class="s1">&#39;group_analysis&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="n">normalised</span><span class="p">}})</span></div>
+
+        <span class="c1"># FIXME: or [&#39;batch_processing&#39;]? We need prefix=</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">groups</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_view</span><span class="p">()[</span><span class="s1">&#39;group_analysis&#39;</span><span class="p">][</span><span class="s1">&#39;groups&#39;</span><span class="p">]</span>
+        <span class="c1"># FIXME: or [&#39;batch_processing&#39;]? We need prefix=</span>
+
+<div class="viewcode-block" id="AnalysisGroupController.set_group_base_dir">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController.set_group_base_dir">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_group_base_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results_folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_base_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">results_folder</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_cfg_coordinator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_cfg_coordinator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg_coordinator_factory</span><span class="p">(</span><span class="n">base_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_base_dir</span><span class="p">,</span>
+                                                                        <span class="n">scope</span><span class="o">=</span><span class="n">AdjusterScope</span><span class="o">.</span><span class="n">GROUP</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_cfg_coordinator</span><span class="o">.</span><span class="n">set_active_sections</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">infer_required_sections</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_cfg_coordinator</span><span class="o">.</span><span class="n">load_all</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_group_cfg_coordinator</span><span class="o">.</span><span class="n">seed_missing_from_defaults</span><span class="p">(</span><span class="n">tabs_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AnalysisGroupController.set_progress_watcher">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController.set_progress_watcher">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_progress_watcher</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">watcher</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_progress_watcher</span> <span class="o">=</span> <span class="n">watcher</span></div>
+
+
+<div class="viewcode-block" id="AnalysisGroupController.set_thread_wrapper">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController.set_thread_wrapper">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_thread_wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wrapper</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_thread_wrapper</span> <span class="o">=</span> <span class="n">wrapper</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">group_base_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_base_dir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;results_folder not set&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_base_dir</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_or_create_exp_controller</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_src_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ExperimentController&quot;</span><span class="p">:</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">sample_src_dir</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="c1"># Return if already cached</span>
+        <span class="k">if</span> <span class="n">root</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_controllers</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_controllers</span><span class="p">[</span><span class="n">root</span><span class="p">]</span>
+
+        <span class="c1"># Otherwise, create new, cache, and return</span>
+        <span class="n">cfg_coordinator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cfg_coordinator_factory</span><span class="p">(</span><span class="n">base_dir</span><span class="o">=</span><span class="n">root</span><span class="p">)</span>   <span class="c1"># isolated config view for this sample</span>
+        <span class="n">sample_mgr</span> <span class="o">=</span> <span class="n">SampleManager</span><span class="p">(</span><span class="n">config_coordinator</span><span class="o">=</span><span class="n">cfg_coordinator</span><span class="p">,</span> <span class="n">src_dir</span><span class="o">=</span><span class="n">root</span><span class="p">)</span>
+        <span class="n">exp_controller</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exp_controller_factory</span><span class="p">(</span><span class="n">cfg_coordinator</span><span class="o">=</span><span class="n">cfg_coordinator</span><span class="p">,</span> <span class="n">sample_manager</span><span class="o">=</span><span class="n">sample_mgr</span><span class="p">,</span>
+                                                      <span class="n">evt_bus</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bus</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_controllers</span><span class="p">[</span><span class="n">root</span><span class="p">]</span> <span class="o">=</span> <span class="n">exp_controller</span>
+        <span class="k">return</span> <span class="n">exp_controller</span>
+
+<div class="viewcode-block" id="AnalysisGroupController.get_worker">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController.get_worker">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_worker</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_src_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">substep</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">exp_controller</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_or_create_exp_controller</span><span class="p">(</span><span class="n">sample_src_dir</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">exp_controller</span><span class="o">.</span><span class="n">get_worker</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">substep</span><span class="o">=</span><span class="n">substep</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="AnalysisGroupController.get_sample_manager">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController.get_sample_manager">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_sample_manager</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_src_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SampleManager</span><span class="p">:</span>
+        <span class="n">exp_controller</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_or_create_exp_controller</span><span class="p">(</span><span class="n">sample_src_dir</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">exp_controller</span><span class="o">.</span><span class="n">sample_manager</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">density_orchestrator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;DensityGroupAnalysisOrchestrator&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_worker</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">analysis_worker</span> <span class="o">=</span> <span class="n">DensityGroupAnalysisOrchestrator</span><span class="p">(</span><span class="n">group_controller</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_infer_pipeline</span><span class="p">())</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_progress_watcher</span><span class="p">:</span>
+                <span class="n">analysis_worker</span><span class="o">.</span><span class="n">set_progress_watcher</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_progress_watcher</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_thread_wrapper</span><span class="p">:</span>
+                <span class="n">analysis_worker</span><span class="o">.</span><span class="n">set_thread_wrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_thread_wrapper</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_worker</span> <span class="o">=</span> <span class="n">analysis_worker</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_worker</span>
+
+    <span class="c1"># FIXME: check this</span>
+<div class="viewcode-block" id="AnalysisGroupController.infer_required_sections">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController.infer_required_sections">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">infer_required_sections</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;group_analysis&#39;</span><span class="p">,</span> <span class="s1">&#39;batch_processing&#39;</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="AnalysisGroupController.set_pipeline">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController.set_pipeline">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Single entry point for pipeline changes.</span>
+<span class="sd">        Updates config and orchestrator atomically.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">apply_patch</span><span class="p">({</span><span class="s1">&#39;group_analysis&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;pipeline&#39;</span><span class="p">:</span> <span class="n">pipeline</span><span class="p">}})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">density_orchestrator</span><span class="o">.</span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">pipeline</span>  <span class="c1"># setter handles invalidation</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_infer_pipeline</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read pipeline from group config.</span>
+<span class="sd">        Falls back to &#39;CellMap&#39; if not set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_config_view</span><span class="p">()</span>
+            <span class="n">pipeline</span> <span class="o">=</span> <span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;group_analysis&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pipeline&#39;</span><span class="p">)</span>
+                        <span class="ow">or</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;batch_processing&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pipeline&#39;</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">pipeline</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">pipeline</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;CellMap&#39;</span>  <span class="c1"># fallback</span>
+
+<div class="viewcode-block" id="AnalysisGroupController.get_config_view">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController.get_config_view">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_config_view</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">group_cfg_coordinator</span><span class="o">.</span><span class="n">get_config_view</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="AnalysisGroupController.apply_patch">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController.apply_patch">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_patch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patch</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">patch</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">group_cfg_coordinator</span><span class="o">.</span><span class="n">submit_patch</span><span class="p">(</span>
+            <span class="n">patch</span><span class="p">,</span> <span class="n">sample_manager</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># group scope: no SampleManager</span>
+            <span class="n">do_run_adjusters</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">commit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

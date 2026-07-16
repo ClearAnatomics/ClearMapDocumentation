@@ -1,0 +1,2002 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.config.config_handler &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../../../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/config/config_handler';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/_modules/ClearMap/config/config_handler.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ClearMap.config.config_handler</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.config.config_handler</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module provides a class to load/write configuration files from the ClearMap configuration directory.</span>
+
+<span class="sd">The configuration files are used to store the parameters for the ClearMap processing steps.</span>
+<span class="sd">Supported formats are .cfg (ConfigObj), .yml/.yaml (YAML) and .json (JSON).</span>
+<span class="sd">Other formats (TOML, INI, XML, etc.)  could be supported in the future through</span>
+<span class="sd">a simple plugin function to this module.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Set</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cached_property</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">configobj</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">packaging.version</span><span class="w"> </span><span class="kn">import</span> <span class="n">Version</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">importlib_metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">version</span> <span class="k">as</span> <span class="n">importlib_version</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.IO.FileUtils</span><span class="w"> </span><span class="kn">import</span> <span class="n">atomic_replace</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">_handle_configobj_failed_parse</span><span class="p">,</span> <span class="n">configobj_to_dict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..Utils.path_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">clean_path</span><span class="p">,</span> <span class="n">de_duplicate_path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..Utils.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">title_to_snake</span>
+
+<span class="n">clearmap_version</span> <span class="o">=</span> <span class="n">importlib_version</span><span class="p">(</span><span class="s1">&#39;ClearMap&#39;</span><span class="p">)</span>
+<span class="n">VERSION_SUFFIX</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;v</span><span class="si">{</span><span class="n">Version</span><span class="p">(</span><span class="n">clearmap_version</span><span class="p">)</span><span class="o">.</span><span class="n">major</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">Version</span><span class="p">(</span><span class="n">clearmap_version</span><span class="p">)</span><span class="o">.</span><span class="n">minor</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="c1"># FIXME: implement validation</span>
+
+
+<span class="n">INSTALL_CFG_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">()))</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>  <span class="c1"># Where this file resides (w cfgs)</span>
+<span class="n">CLEARMAP_CFG_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;~/.clearmap/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+
+
+<span class="c1"># Optional YAML dependency</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>  <span class="c1"># type: ignore</span>
+    <span class="n">_HAS_YAML</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">_HAS_YAML</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+<div class="viewcode-block" id="flatten_list">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.flatten_list">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">flatten_list</span><span class="p">(</span><span class="n">groups</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Flatten a list of lists of item groups into a single list.&quot;&quot;&quot;</span>
+    <span class="n">flat</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">names</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+        <span class="n">flat</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">flat</span></div>
+
+
+
+<div class="viewcode-block" id="Scope">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.Scope">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Scope</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">EXPERIMENT</span> <span class="o">=</span> <span class="s1">&#39;experiment&#39;</span>
+    <span class="n">GROUP</span> <span class="o">=</span> <span class="s1">&#39;group&#39;</span>
+    <span class="n">GLOBAL</span> <span class="o">=</span> <span class="s1">&#39;global&#39;</span></div>
+
+
+
+<div class="viewcode-block" id="ConfigSpec">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigSpec">[docs]</a>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ConfigSpec</span><span class="p">:</span>
+    <span class="n">names</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>       <span class="c1"># ordered alternatives</span>
+    <span class="n">scope</span><span class="p">:</span> <span class="n">Scope</span>                 <span class="c1"># EXPERIMENT or GLOBAL</span>
+    <span class="n">subdir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># optional subfolder, e.g. &quot;configs&quot; or &quot;settings&quot;</span></div>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">List of alternative names for configuration files.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">PIPELINE_SECTIONS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="s1">&#39;sample_info&#39;</span><span class="p">,</span> <span class="s1">&#39;sample info&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;stitching&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;registration&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;cell_map&#39;</span><span class="p">,</span> <span class="s1">&#39;cell_counter&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;tract_map&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;vasculature&#39;</span><span class="p">,</span> <span class="s1">&#39;tube_map&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;colocalization&#39;</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">GROUP_SECTIONS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;batch_processing&#39;</span><span class="p">,</span> <span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="s1">&#39;batch processing&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;group_analysis&#39;</span><span class="p">,</span> <span class="s1">&#39;group analysis&#39;</span><span class="p">],</span>
+<span class="p">]</span>
+
+<span class="n">GLOBAL_SECTIONS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;machine&#39;</span><span class="p">,</span> <span class="s1">&#39;preferences&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;display&#39;</span><span class="p">],</span>
+<span class="p">]</span>
+
+<span class="n">LEGACY_SECTIONS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;alignment&#39;</span><span class="p">,</span> <span class="s1">&#39;processing&#39;</span><span class="p">],</span>  <span class="c1"># legacy names for stitching/registration tab</span>
+<span class="p">]</span>
+
+
+<span class="n">_EXCLUDED_SAMPLE_SCAN_DIRS_DEFAULT</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;configs_backup&quot;</span><span class="p">,</span> <span class="s2">&quot;config_snapshots&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ConfigAlternativesRegistry">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigAlternativesRegistry">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ConfigAlternativesRegistry</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Registry of alternative names for configuration files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pipeline_groups</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">PIPELINE_SECTIONS</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_group_groups</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">GROUP_SECTIONS</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_global_groups</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">GLOBAL_SECTIONS</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_legacy_groups</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">LEGACY_SECTIONS</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_registry</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ConfigSpec</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># experiment and group specs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_extend_registry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pipeline_groups</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">Scope</span><span class="o">.</span><span class="n">EXPERIMENT</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_extend_registry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_group_groups</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">Scope</span><span class="o">.</span><span class="n">GROUP</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_extend_registry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_global_groups</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">Scope</span><span class="o">.</span><span class="n">GLOBAL</span><span class="p">)</span>
+        <span class="c1"># compatibility specs</span>
+        <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_legacy_groups</span><span class="p">:</span>  <span class="c1"># FIXME: we need a flag to mark these as deprecated</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">group</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_registry</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">ConfigSpec</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">group</span><span class="p">),</span> <span class="n">scope</span><span class="o">=</span><span class="n">Scope</span><span class="o">.</span><span class="n">EXPERIMENT</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_extend_registry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">scope</span><span class="p">:</span> <span class="n">Scope</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+            <span class="n">spec</span> <span class="o">=</span> <span class="n">ConfigSpec</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="n">group</span><span class="p">),</span> <span class="n">scope</span><span class="o">=</span><span class="n">scope</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">group</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_registry</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_normalise_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">cfg_name</span> <span class="o">=</span> <span class="n">ConfigHandler</span><span class="o">.</span><span class="n">strip_params</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="n">cfg_name</span> <span class="o">=</span> <span class="n">ConfigHandler</span><span class="o">.</span><span class="n">strip_version_suffix</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cfg_name</span>
+
+<div class="viewcode-block" id="ConfigAlternativesRegistry.get_spec">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigAlternativesRegistry.get_spec">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigSpec</span><span class="p">:</span>  <span class="c1"># REFACTOR: unused</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the ConfigSpec for a given configuration name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_name: str</span>
+<span class="sd">            The base name of the configuration file (without params and extension).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ConfigSpec</span>
+<span class="sd">            The configuration specification.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        KeyError</span>
+<span class="sd">            If no specification is found for the given configuration name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registry</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_normalise_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)]</span></div>
+
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">alternative_names</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get all alternative names registered.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[str]</span>
+<span class="sd">            A list of all alternative configuration names.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pipeline_groups</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_groups</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_groups</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_legacy_groups</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ConfigAlternativesRegistry.get_alternatives">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigAlternativesRegistry.get_alternatives">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_alternatives</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the list of alternative names for a given configuration name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_name: str</span>
+<span class="sd">            The base name of the configuration file (without params and extension).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[str]</span>
+<span class="sd">            A list of alternative names for the configuration file.</span>
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If no alternatives are found for the given configuration name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cfg_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalise_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="n">alternatives</span> <span class="o">=</span> <span class="p">[</span><span class="n">names</span> <span class="k">for</span> <span class="n">names</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">alternative_names</span> <span class="k">if</span> <span class="n">cfg_name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">alternatives</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not find any alternative for </span><span class="si">{</span><span class="n">cfg_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">alternatives</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="ConfigAlternativesRegistry.is_local_file">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigAlternativesRegistry.is_local_file">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_local_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the given config name is a tab file (i.e. has alternatives).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalise_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span> <span class="ow">in</span> <span class="n">flatten_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pipeline_groups</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_groups</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigAlternativesRegistry.is_global_cfg">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigAlternativesRegistry.is_global_cfg">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_global_cfg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the given config name is a global config (i.e. machine, display, preferences).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalise_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span> <span class="ow">in</span> <span class="n">flatten_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_global_groups</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigAlternativesRegistry.is_legacy_cfg">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigAlternativesRegistry.is_legacy_cfg">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_legacy_cfg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the given config name is a legacy config (i.e. alignment, processing).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalise_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span> <span class="ow">in</span> <span class="n">flatten_list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_legacy_groups</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigAlternativesRegistry.pipeline_to_section_name">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigAlternativesRegistry.pipeline_to_section_name">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pipeline_to_section_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert a pipeline name to a configuration section name.</span>
+<span class="sd">        E.g. &#39;TubeMap&#39; -&gt; &#39;vasculature&#39;</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pipeline_name: str</span>
+<span class="sd">            The name of the pipeline.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            The corresponding configuration section name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tentative_section_name</span> <span class="o">=</span> <span class="n">title_to_snake</span><span class="p">(</span><span class="n">pipeline_name</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">alternative_names</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">tentative_section_name</span> <span class="ow">in</span> <span class="n">group</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">group</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># return canonical name</span>
+        <span class="k">return</span> <span class="n">tentative_section_name</span>  <span class="c1"># assume name correct as is if all else fails</span></div>
+
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">canonical_config_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the canonical configuration names (first in each alternative group).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[str]</span>
+<span class="sd">            A list of canonical configuration names.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">names</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pipeline_groups</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_groups</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_groups</span><span class="p">)]</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">canonical_global_config_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the canonical configuration names for global sections.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[str]</span>
+<span class="sd">            A list of canonical configuration names for global sections.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">names</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_global_groups</span><span class="p">]</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">canonical_pipeline_config_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the canonical configuration names for pipeline sections.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[str]</span>
+<span class="sd">            A list of canonical configuration names for pipeline sections.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">names</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pipeline_groups</span><span class="p">]</span>
+
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">canonical_group_config_names</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># FIXME: USE</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the canonical configuration names for group sections.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[str]</span>
+<span class="sd">            A list of canonical configuration names for group sections.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">names</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_group_groups</span><span class="p">]</span>
+
+<div class="viewcode-block" id="ConfigAlternativesRegistry.to_canonical">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigAlternativesRegistry.to_canonical">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_canonical</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_alternatives</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="ConfigAlternativesRegistry.get_channel_sections">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigAlternativesRegistry.get_channel_sections">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_channel_sections</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>  <span class="c1"># REFACTOR: could use &#39;channels&#39; in schema root for schema in schemas</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="s2">&quot;stitching&quot;</span><span class="p">,</span> <span class="s2">&quot;registration&quot;</span><span class="p">,</span> <span class="s2">&quot;cell_map&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;colocalization&quot;</span><span class="p">,</span> <span class="s2">&quot;vasculature&quot;</span><span class="p">,</span> <span class="s2">&quot;tract_map&quot;</span><span class="p">,)</span></div>
+</div>
+
+
+
+<span class="n">ALTERNATIVES_REG</span> <span class="o">=</span> <span class="n">ConfigAlternativesRegistry</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="ConfigProxy">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigProxy">[docs]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ConfigProxy</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dict-like wrapper that remembers filename and provides write()/reload().</span>
+<span class="sd">    Used to return from get_*_cfg functions.</span>
+<span class="sd">    This is basically just a dict with I/O methods attached.</span>
+<span class="sd">    Compatible with ConfigObj interface for yml/json/cfg files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">_loader</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Path</span><span class="p">],</span> <span class="s2">&quot;ConfigProxy&quot;</span><span class="p">]</span>
+    <span class="n">_dumper</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span>
+
+<div class="viewcode-block" id="ConfigProxy.write">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigProxy.write">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outfile</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Backwards-compatible signature. If outfile is given (a file-like),</span>
+<span class="sd">        we still write to our filename atomically, ignoring outfile (kept for compatibility).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="si">}</span><span class="s1">.tmp&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dumper</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="n">atomic_replace</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigProxy.reload">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigProxy.reload">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reload</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ConfigProxy&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loader</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">))</span></div>
+</div>
+
+
+<span class="c1"># #################  WRITER FUNCTIONS  ####################</span>
+
+<div class="viewcode-block" id="to_configobj">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.to_configobj">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">to_configobj</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Write a dict to a .cfg/.ini file using ConfigObj.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path: Path</span>
+<span class="sd">        Path to the output .cfg/.ini file</span>
+<span class="sd">    data: dict</span>
+<span class="sd">        Data to write</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">configobj</span><span class="o">.</span><span class="n">ConfigObj</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;UTF8&#39;</span><span class="p">,</span> <span class="n">indent_type</span><span class="o">=</span><span class="s1">&#39;    &#39;</span><span class="p">,</span> <span class="n">unrepr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">cfg</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">write</span><span class="p">()</span></div>
+
+
+<span class="n">PRIORITY_KEYS</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;clearmap_version&#39;</span><span class="p">,</span> <span class="s1">&#39;clearmap_schema&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="prioritize_top_keys">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.prioritize_top_keys">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">prioritize_top_keys</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">first</span><span class="o">=</span><span class="n">PRIORITY_KEYS</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a shallowly-reordered top-level mapping.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obj</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">first</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="FlowList">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.FlowList">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FlowList</span><span class="p">(</span><span class="nb">list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Marker type for inline (flow-style) sequences.&quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="represent_flow_list">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.represent_flow_list">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">represent_flow_list</span><span class="p">(</span><span class="n">dumper</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">dumper</span><span class="o">.</span><span class="n">represent_sequence</span><span class="p">(</span><span class="s1">&#39;tag:yaml.org,2002:seq&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">flow_style</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_IndentedSafeDumper</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">SafeDumper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;SafeDumper that always indents block-sequence items under their parent key.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">increase_indent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indentless</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">increase_indent</span><span class="p">(</span><span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">,</span> <span class="n">indentless</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1"># never indentless</span>
+
+
+<span class="n">_IndentedSafeDumper</span><span class="o">.</span><span class="n">add_representer</span><span class="p">(</span><span class="n">FlowList</span><span class="p">,</span> <span class="n">represent_flow_list</span><span class="p">)</span>
+
+<span class="n">yaml</span><span class="o">.</span><span class="n">add_representer</span><span class="p">(</span><span class="n">FlowList</span><span class="p">,</span> <span class="n">represent_flow_list</span><span class="p">)</span>
+<span class="n">yaml</span><span class="o">.</span><span class="n">add_representer</span><span class="p">(</span><span class="n">FlowList</span><span class="p">,</span> <span class="n">represent_flow_list</span><span class="p">,</span> <span class="n">Dumper</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">SafeDumper</span><span class="p">)</span>
+
+<span class="n">_SCALARS</span> <span class="o">=</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+
+<div class="viewcode-block" id="is_all_scalars">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.is_all_scalars">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_all_scalars</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">_SCALARS</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="mark_inline_sequences">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.mark_inline_sequences">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">mark_inline_sequences</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">max_items</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inline short sequences of scalars; convert tuples to lists (portable YAML).&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">mark_inline_sequences</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">max_items</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="c1"># Treat both lists and tuples as sequences</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="c1"># Recurse into children first</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">mark_inline_sequences</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">max_items</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">]</span>
+        <span class="c1"># Decide flow/block</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_items</span> <span class="ow">and</span> <span class="n">is_all_scalars</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">FlowList</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>        <span class="c1"># -&gt; [a, b, c]</span>
+        <span class="k">return</span> <span class="n">items</span>                      <span class="c1"># -&gt; block style with dashes</span>
+
+    <span class="k">return</span> <span class="n">obj</span></div>
+
+
+<div class="viewcode-block" id="to_yml">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.to_yml">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">to_yml</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Write a dict to a .yml/.yaml file using PyYAML.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path: Path</span>
+<span class="sd">        Path to the output .yml/.yaml file</span>
+<span class="sd">    data: dict</span>
+<span class="sd">        Data to write</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    RuntimeError</span>
+<span class="sd">        If PyYAML is not installed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_HAS_YAML</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;PyYAML is not installed; cannot write YAML configs.&#39;</span><span class="p">)</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">pretty</span> <span class="o">=</span> <span class="n">mark_inline_sequences</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">max_items</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">pretty</span> <span class="o">=</span> <span class="n">prioritize_top_keys</span><span class="p">(</span><span class="n">pretty</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">pretty</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">Dumper</span><span class="o">=</span><span class="n">_IndentedSafeDumper</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">allow_unicode</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default_flow_style</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="to_json">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.to_json">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">to_json</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Write a dict to a .json file using the json module.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path: Path</span>
+<span class="sd">        Path to the output .json file</span>
+<span class="sd">    data: dict</span>
+<span class="sd">        Data to write</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+<span class="c1"># #################  READER FUNCTIONS  ####################</span>
+
+<div class="viewcode-block" id="get_configobj_cfg">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.get_configobj_cfg">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_configobj_cfg</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="n">must_exist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigProxy</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load a .cfg/.ini file using ConfigObj and return as ConfigProxy.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg_path: Path | str</span>
+<span class="sd">        Path to the .cfg/.ini file</span>
+<span class="sd">    must_exist: bool</span>
+<span class="sd">        If True, raise an error if the file does not exist.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ConfigProxy | None</span>
+<span class="sd">        The configuration as a ConfigProxy object, or None if the file does not exist and must_exist is False.</span>
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ConfigParsingError</span>
+<span class="sd">        If the file cannot be parsed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cfg_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">clean_path</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">))</span>  <span class="c1"># str to be future-proof. ConfigObj wants str</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cobj</span> <span class="o">=</span> <span class="n">configobj</span><span class="o">.</span><span class="n">ConfigObj</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;UTF8&quot;</span><span class="p">,</span> <span class="n">indent_type</span><span class="o">=</span><span class="s1">&#39;    &#39;</span><span class="p">,</span> <span class="n">unrepr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">file_error</span><span class="o">=</span><span class="n">must_exist</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">configobj</span><span class="o">.</span><span class="n">ConfigObjError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>  <span class="c1"># Parse error message for</span>
+                        <span class="c1"># &quot;Parsing failed with several errors. First error at line 19.&quot;</span>
+                        <span class="c1"># to reraise with more context</span>
+        <span class="k">if</span> <span class="s1">&#39;parsing failed&#39;</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+            <span class="n">_handle_configobj_failed_parse</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not read config file &quot;</span><span class="si">{</span><span class="n">cfg_path</span><span class="si">}</span><span class="s1">&quot;, some errors were encountered: &quot;</span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">ConfigProxy</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">),</span>
+        <span class="n">_loader</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">get_configobj_cfg</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">must_exist</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>  <span class="c1"># type: ignore</span>
+        <span class="n">_dumper</span><span class="o">=</span><span class="n">to_configobj</span>
+    <span class="p">)</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">configobj_to_dict</span><span class="p">(</span><span class="n">cobj</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">cfg</span></div>
+
+
+
+<div class="viewcode-block" id="get_yml_cfg">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.get_yml_cfg">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_yml_cfg</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">must_exist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigProxy</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load a .yml/.yaml file using PyYAML and return as ConfigProxy.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg_path: Path</span>
+<span class="sd">        Path to the .yml/.yaml file</span>
+<span class="sd">    must_exist: bool</span>
+<span class="sd">        If True, raise an error if the file does not exist.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ConfigProxy | None</span>
+<span class="sd">        The configuration as a ConfigProxy object, or None if the file does not exist and must_exist is False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_HAS_YAML</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;PyYAML is not installed; cannot read YAML configs.&#39;</span><span class="p">)</span>
+    <span class="n">cfg_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">clean_path</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cfg_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">must_exist</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;YAML config file </span><span class="si">{</span><span class="n">cfg_path</span><span class="si">}</span><span class="s1"> does not exist.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">with</span> <span class="n">cfg_path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;YAML root must be a mapping; got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s1"> in </span><span class="si">{</span><span class="n">cfg_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">ConfigProxy</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">),</span>
+        <span class="n">_loader</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">get_yml_cfg</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">must_exist</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>  <span class="c1"># type: ignore</span>
+        <span class="n">_dumper</span><span class="o">=</span><span class="n">to_yml</span><span class="p">)</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cfg</span></div>
+
+
+
+<div class="viewcode-block" id="get_json_cfg">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.get_json_cfg">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_json_cfg</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">must_exist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigProxy</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load a .json file using the json module and return as ConfigProxy.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg_path: Path</span>
+<span class="sd">        Path to the .json file</span>
+<span class="sd">    must_exist: bool</span>
+<span class="sd">        If True, raise an error if the file does not exist.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ConfigProxy | None</span>
+<span class="sd">        The configuration as a ConfigProxy object, or None if the file does not exist and must_exist is False.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cfg_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">clean_path</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cfg_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">must_exist</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;JSON config file </span><span class="si">{</span><span class="n">cfg_path</span><span class="si">}</span><span class="s1"> does not exist.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">with</span> <span class="n">cfg_path</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">if</span> <span class="n">cfg_path</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;JSON root must be a mapping; got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="si">}</span><span class="s1"> in </span><span class="si">{</span><span class="n">cfg_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">ConfigProxy</span><span class="p">(</span>
+        <span class="n">filename</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">),</span>
+        <span class="n">_loader</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">get_json_cfg</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">must_exist</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>  <span class="c1"># type: ignore</span>
+        <span class="n">_dumper</span><span class="o">=</span><span class="n">to_json</span>
+    <span class="p">)</span>
+    <span class="n">cfg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cfg</span></div>
+
+<span class="c1"># #################################################################</span>
+
+
+<div class="viewcode-block" id="patch_cfg">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.patch_cfg">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">patch_cfg</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">default_cfg</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Recursively patch cfg with missing keys from default_cfg.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg: dict-like</span>
+<span class="sd">        The configuration to patch.</span>
+<span class="sd">    default_cfg: dict-like</span>
+<span class="sd">        The default configuration to use for patching.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">default_cfg</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">cfg</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>  <span class="c1"># everything below will match by definition</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cannot merge dict into non-dict for key </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">.&#39;</span>
+                                     <span class="sa">f</span><span class="s1">&#39;Please first convert your config to a dict with e.g. configobj_to_dict.&#39;</span><span class="p">)</span>
+                <span class="n">patch_cfg</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">v</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="ConfigHandler">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ConfigHandler</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Resolves logical config names to files and loads them via readers;</span>
+<span class="sd">    writes using writer_functions (atomic).</span>
+
+
+
+<span class="sd">    Class Attributes</span>
+<span class="sd">    ----------------</span>
+<span class="sd">    loader_functions: Dict[str, Callable[[Path, bool], Optional[ConfigProxy]]]</span>
+<span class="sd">        A dictionary mapping file extensions to their corresponding loader functions.</span>
+<span class="sd">    writer_functions: Dict[str, Callable[[Path, dict], None]]</span>
+<span class="sd">        A dictionary mapping file extensions to their corresponding writer functions.</span>
+<span class="sd">    user_defaults_dir: Path</span>
+<span class="sd">        The default directory where configuration files are located.</span>
+<span class="sd">    supported_exts: tuple</span>
+<span class="sd">        A tuple of supported file extensions for configuration files.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    src_dir: Path</span>
+<span class="sd">        The source directory where configuration files are located.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Readers by extension</span>
+    <span class="n">loader_functions</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ConfigProxy</span><span class="p">]]]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;.yml&quot;</span><span class="p">:</span> <span class="n">get_yml_cfg</span><span class="p">,</span>
+        <span class="s2">&quot;.yaml&quot;</span><span class="p">:</span> <span class="n">get_yml_cfg</span><span class="p">,</span>
+        <span class="s2">&quot;.cfg&quot;</span><span class="p">:</span> <span class="n">get_configobj_cfg</span><span class="p">,</span>
+        <span class="s2">&quot;.ini&quot;</span><span class="p">:</span> <span class="n">get_configobj_cfg</span><span class="p">,</span>
+        <span class="s2">&quot;.json&quot;</span><span class="p">:</span> <span class="n">get_json_cfg</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="c1"># Writers by extension</span>
+    <span class="n">writer_functions</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">dict</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;.yml&quot;</span><span class="p">:</span> <span class="n">to_yml</span><span class="p">,</span>
+        <span class="s2">&quot;.yaml&quot;</span><span class="p">:</span> <span class="n">to_yml</span><span class="p">,</span>
+        <span class="s2">&quot;.cfg&quot;</span><span class="p">:</span> <span class="n">to_configobj</span><span class="p">,</span>
+        <span class="s2">&quot;.ini&quot;</span><span class="p">:</span> <span class="n">to_configobj</span><span class="p">,</span>
+        <span class="s2">&quot;.json&quot;</span><span class="p">:</span> <span class="n">to_json</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">supported_exts</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">loader_functions</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">user_defaults_dir</span> <span class="o">=</span> <span class="n">CLEARMAP_CFG_DIR</span>  <span class="c1"># Where to look for user defaults</span>
+    <span class="n">user_global_dir</span> <span class="o">=</span> <span class="n">CLEARMAP_CFG_DIR</span> <span class="o">/</span> <span class="s1">&#39;config&#39;</span>  <span class="c1"># Where to look for user global configs</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_dir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_src_dir</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">roots</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;experiment&quot;</span><span class="p">:</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">(),</span>  <span class="c1"># overridden by repository via src_dir setter</span>
+            <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">(),</span>  <span class="c1"># same as experiment for now</span>
+            <span class="s2">&quot;global&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_defaults_dir</span><span class="p">,</span>  <span class="c1"># ~/.clearmap</span>
+        <span class="p">}</span>  <span class="c1"># Before setting src_dir because setter uses it</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span> <span class="o">=</span> <span class="n">src_dir</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">src_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_src_dir</span>
+
+    <span class="nd">@src_dir</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">src_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_src_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">roots</span><span class="p">[</span><span class="s1">&#39;experiment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_src_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">roots</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_src_dir</span>
+
+<div class="viewcode-block" id="ConfigHandler.is_global">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.is_global">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_global</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">is_global_cfg</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.is_local">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.is_local">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_local</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">is_local_file</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.strip_params">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.strip_params">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">strip_params</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params_pattern</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;_params&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Strip params from config name, e.g. _v2_params from sample_v2_params&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">params_pattern</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.strip_version_suffix">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.strip_version_suffix">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">strip_version_suffix</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Strip version suffix from config name, e.g. _v2_3 from sample_v2_3_params&quot;&quot;&quot;</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;_v\d+_\d+$&#39;</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.normalise_cfg_name">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.normalise_cfg_name">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">normalise_cfg_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Normalise config name by stripping params and version suffix.&quot;&quot;&quot;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">ConfigHandler</span><span class="o">.</span><span class="n">strip_params</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">ConfigHandler</span><span class="o">.</span><span class="n">strip_version_suffix</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">name</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_layout_subdir_for_version</span><span class="p">(</span><span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">defaults</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="n">Version</span><span class="p">(</span><span class="s1">&#39;3.1&#39;</span><span class="p">):</span>  <span class="c1"># &gt;= 3.1 has “defaults/vX.Y/”</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;defaults&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">defaults</span> <span class="k">else</span> <span class="n">Path</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">prefix</span> <span class="o">/</span> <span class="sa">f</span><span class="s1">&#39;v</span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">major</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">v</span><span class="o">.</span><span class="n">minor</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Path</span><span class="p">()</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_filename_for</span><span class="p">(</span><span class="n">cfg_base</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ext</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">version</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">is_exp_local</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">cfg_base</span>  <span class="c1"># already stripped of *_params and version bits before</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="n">Version</span><span class="p">(</span><span class="s1">&#39;3.1&#39;</span><span class="p">):</span>  <span class="c1"># New layout: no prefix/suffix in filename</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">base</span><span class="si">}{</span><span class="n">ext</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Legacy (&lt;= 3.0)</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;default_&#39;</span> <span class="k">if</span> <span class="n">is_exp_local</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">suffix</span> <span class="o">=</span> <span class="s1">&#39;_params&#39;</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="n">Version</span><span class="p">(</span><span class="s1">&#39;3.0&#39;</span><span class="p">):</span>  <span class="c1"># v3.0 specifically had _v3_0 suffix</span>
+                <span class="n">suffix</span> <span class="o">+=</span> <span class="s1">&#39;_v3_0&#39;</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">prefix</span><span class="si">}{</span><span class="n">base</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}{</span><span class="n">ext</span><span class="si">}</span><span class="s1">&#39;</span>
+
+    <span class="c1"># ####### Canonical (where it should be in that version, don&#39;t scan) ##########</span>
+<div class="viewcode-block" id="ConfigHandler.get_local_canonical_path">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_local_canonical_path">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_local_canonical_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+        <span class="n">canonical_name</span> <span class="o">=</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">to_canonical</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="n">canonical_filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename_for</span><span class="p">(</span><span class="n">canonical_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">supported_exts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                <span class="n">version</span><span class="o">=</span><span class="n">clearmap_version</span><span class="p">,</span> <span class="n">is_exp_local</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span> <span class="o">/</span> <span class="n">canonical_filename</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.get_global_canonical_path">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_global_canonical_path">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_global_canonical_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+        <span class="n">canonical_name</span> <span class="o">=</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">to_canonical</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_name_to_shared_path</span><span class="p">(</span><span class="n">canonical_name</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">supported_exts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">root</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">user_global_dir</span><span class="p">,</span>
+                                        <span class="n">version</span><span class="o">=</span><span class="n">clearmap_version</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.get_user_defaults_canonical_path">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_user_defaults_canonical_path">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_user_defaults_canonical_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Canonical path for a user default config for the *current* ClearMap version.</span>
+
+<span class="sd">        - No scanning / fallback across versions</span>
+<span class="sd">        - Uses current clearmap_version</span>
+<span class="sd">        - Always uses the given ext (default: .yml for 3.1+)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">canonical</span> <span class="o">=</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">to_canonical</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">normalise_cfg_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_name_to_shared_path</span><span class="p">(</span><span class="n">canonical</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">supported_exts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                        <span class="n">root</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">user_defaults_dir</span><span class="p">,</span>
+                                        <span class="n">version</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">Version</span><span class="p">(</span><span class="n">clearmap_version</span><span class="p">)),</span>
+                                        <span class="n">defaults</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.get_canonical_path">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_canonical_path">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_canonical_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the canonical path to the configuration file with the given name.</span>
+<span class="sd">        The path is determined based on whether the config is local (tab/experiment)</span>
+<span class="sd">        or global (machine/display/preferences).</span>
+<span class="sd">        The rest is determined by the current ClearMap version and layout as well as preferred extension.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_name: str</span>
+<span class="sd">            The name (without params and extension) of the configuration file.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Path</span>
+<span class="sd">            The canonical path to the configuration file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cfg_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalise_cfg_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">is_global_cfg</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_global_canonical_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">is_local_file</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_canonical_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Config &quot;</span><span class="si">{</span><span class="n">cfg_name</span><span class="si">}</span><span class="s1">&quot; is neither local nor global (maybe legacy); &#39;</span>
+                             <span class="sa">f</span><span class="s1">&#39;cannot get canonical path.&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.resolve_write_path">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.resolve_write_path">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">resolve_write_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">base_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Resolve the *target* path to write a config by name.</span>
+<span class="sd">        - Tab/experiment sections -&gt; experiment base_dir</span>
+<span class="sd">        - Global sections (machine/display/preferences) -&gt; user global directory</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">base_dir</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_canonical_path</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></div>
+
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_name_to_shared_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ext</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+                             <span class="n">version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">defaults</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Helper to construct a *shared* (i.e. non experiment-local) config path from name + ext.</span>
+<span class="sd">        The path is either in the ClearMap package directory or in the user&#39;s ~/.clearmap directory.</span>
+
+<span class="sd">        This is typically used for both default (package or user) and global (user) configs.</span>
+
+<span class="sd">        The folder structure depends on the version and `defaults` flag:</span>
+<span class="sd">          - defaults=True  → .../defaults/vX.Y/&lt;name&gt;.&lt;ext&gt;  (&gt;= 3.1)</span>
+<span class="sd">          - defaults=False → .../vX.Y/&lt;name&gt;.&lt;ext&gt;           (&gt;= 3.1)</span>
+<span class="sd">          - &lt; 3.1          → root / legacy naming patterns</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_name: str</span>
+<span class="sd">            The name (without params and extension) of the configuration file</span>
+<span class="sd">        ext: str</span>
+<span class="sd">            The file extension</span>
+<span class="sd">        root: Path</span>
+<span class="sd">            The root directory to look for the default config file.</span>
+<span class="sd">        version: Optional[str]</span>
+<span class="sd">            The version string in the major.minor format to use for the folder structure.</span>
+<span class="sd">             If None, the current ClearMap version is used.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Version</span><span class="p">(</span><span class="n">version</span> <span class="ow">or</span> <span class="n">clearmap_version</span><span class="p">)</span>  <span class="c1"># default to latest layout</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">strip_params</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="n">is_exp_local</span> <span class="o">=</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">is_local_file</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+
+        <span class="n">sub_dir</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_layout_subdir_for_version</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">defaults</span><span class="o">=</span><span class="n">defaults</span><span class="p">)</span>
+        <span class="n">sub_dir</span> <span class="o">=</span> <span class="n">de_duplicate_path</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">sub_dir</span><span class="p">)</span>  <span class="c1"># avoid duplicate subdir suffix</span>
+
+        <span class="n">file_name</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_filename_for</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">is_exp_local</span><span class="o">=</span><span class="n">is_exp_local</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">root</span> <span class="o">/</span> <span class="n">sub_dir</span> <span class="o">/</span> <span class="n">file_name</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+    <span class="c1"># _find paths: ####### Scan FS for existing files ##########</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_find_local_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># TODO: check</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Scan the source directory for a *local* configuration file with the given name.</span>
+<span class="sd">        The names are resolved via the alternatives registry.</span>
+<span class="sd">        Several extensions are tried in order of preference.</span>
+<span class="sd">        If None is found, None is returned.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_name: str</span>
+<span class="sd">            The name (with or without params and extension) of the configuration file</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Path | None</span>
+<span class="sd">            The path to the configuration file, or None if not found.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cfg_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalise_cfg_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">variants</span> <span class="o">=</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">get_alternatives</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">variants</span> <span class="o">=</span> <span class="p">[</span><span class="n">cfg_name</span><span class="p">]</span>
+
+        <span class="n">src_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span>
+
+        <span class="c1"># Support for legacy file name patterns, newer to older</span>
+        <span class="n">search_patterns</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="k">lambda</span> <span class="n">base</span><span class="p">,</span> <span class="n">ext</span><span class="p">:</span> <span class="p">[</span><span class="n">src_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base</span><span class="si">}{</span><span class="n">ext</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span>  <span class="c1"># &gt;= 3.1 default_base.ext</span>
+            <span class="k">lambda</span> <span class="n">base</span><span class="p">,</span> <span class="n">ext</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">src_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">_v*_*</span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)),</span>  <span class="c1"># v3.0. WARNING: needs re if we want to limit to integers</span>
+            <span class="k">lambda</span> <span class="n">base</span><span class="p">,</span> <span class="n">ext</span><span class="p">:</span> <span class="p">[</span><span class="n">src_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">_params</span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">],</span> <span class="c1"># &lt;= 3.0 default_base_params.ext</span>
+            <span class="k">lambda</span> <span class="n">base</span><span class="p">,</span> <span class="n">ext</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">src_dir</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">_params_v*_*</span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>  <span class="c1"># Do we really have this ?</span>
+        <span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">alternative_name</span> <span class="ow">in</span> <span class="n">variants</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">extension</span>  <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">supported_exts</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">ptrn_func</span> <span class="ow">in</span> <span class="n">search_patterns</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">cfg_path</span> <span class="ow">in</span> <span class="n">ptrn_func</span><span class="p">(</span><span class="n">alternative_name</span><span class="p">,</span> <span class="n">extension</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">cfg_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                            <span class="k">return</span> <span class="n">cfg_path</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_find_shared_cfg_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+                              <span class="n">version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">defaults</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the path to a *shared* configuration file with the given name.</span>
+<span class="sd">        Several extensions are tried in order of preference.</span>
+<span class="sd">        If None is found, None is returned.</span>
+
+<span class="sd">        This is used for both default (package or user) and global (user) configs.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_name: str</span>
+<span class="sd">            The name (without params and extension) of the configuration file</span>
+<span class="sd">        must_exist: bool</span>
+<span class="sd">            Whether the file must exist. If missing and True, a FileNotFoundError is raised</span>
+<span class="sd">        root: Path</span>
+<span class="sd">            The base directory to look for the default config file.</span>
+<span class="sd">            If None, the directory is determined by from_package.</span>
+<span class="sd">            Typically, this would be either the ClearMap package directory or the user&#39;s ~/.clearmap directory.</span>
+<span class="sd">        version: Optional[str]</span>
+<span class="sd">            The version string in the major.minor format to use for the folder structure.</span>
+<span class="sd">             If None, the current ClearMap version is used.</span>
+<span class="sd">        defaults: bool</span>
+<span class="sd">            If True, look in the &#39;defaults&#39; subdirectory (for &gt;=v3.1).</span>
+<span class="sd">            Otherwise, look at the root of base_dir. (or what it resolves to)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Path</span>
+<span class="sd">            The path to the default configuration file</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        FileNotFoundError</span>
+<span class="sd">            If the file does not exist and must_exist is True.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cfg_name</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">normalise_cfg_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+
+        <span class="n">versions_to_try</span> <span class="o">=</span> <span class="p">[</span><span class="n">version</span><span class="p">]</span> <span class="k">if</span> <span class="n">version</span> <span class="k">else</span> <span class="p">(</span><span class="n">clearmap_version</span><span class="p">,</span> <span class="s1">&#39;3.0&#39;</span><span class="p">,</span> <span class="s1">&#39;2.1&#39;</span><span class="p">)</span>  <span class="c1"># Currently 3 kinds of layout (read up to vX.Y)</span>
+
+        <span class="n">paths_checked</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># FIXME: include this in caller errors</span>
+        <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">get_alternatives</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">supported_exts</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">ver</span> <span class="ow">in</span> <span class="n">versions_to_try</span><span class="p">:</span>
+                    <span class="n">candidate</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_name_to_shared_path</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">ext</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">ver</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="n">defaults</span><span class="p">)</span>
+                    <span class="n">paths_checked</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">candidate</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+                        <span class="k">return</span> <span class="n">candidate</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="c1"># ############## Get Paths: scan or canonical ###############</span>
+<div class="viewcode-block" id="ConfigHandler.get_cfg_path">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_cfg_path">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_cfg_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">must_exist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the path to the configuration file with the given name.</span>
+<span class="sd">        Several extensions are tried in order of preference.</span>
+<span class="sd">        If None is found, the canonical path is returned if must_exist is False or</span>
+<span class="sd">        a FileNotFoundError is raised if must_exist is True.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_name: str</span>
+<span class="sd">            The name (without params and extension) of the configuration file.</span>
+<span class="sd">            If present, they will be stripped.</span>
+<span class="sd">        must_exist: bool</span>
+<span class="sd">            Whether the file must exist. If missing and True, a FileNotFoundError is raised.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Path</span>
+<span class="sd">            The path to the configuration file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cfg_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalise_cfg_name</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">is_global_cfg</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Config &quot;</span><span class="si">{</span><span class="n">cfg_name</span><span class="si">}</span><span class="s1">&quot; is global; use get_global_path() instead of get_cfg_path().&#39;</span><span class="p">)</span>
+        <span class="n">cfg_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_local_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cfg_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">must_exist</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not find file </span><span class="si">{</span><span class="n">cfg_name</span><span class="si">}</span><span class="s1"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span><span class="si">}</span><span class="s1"> with variants:&#39;</span>
+                                        <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">get_alternatives</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_canonical_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cfg_path</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.get_global_path">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_global_path">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_global_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">must_exist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">base_dir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the path to the global configuration file with the given name.</span>
+<span class="sd">        Several extensions are tried in order of preference.</span>
+<span class="sd">        If None is found, the first possible option is returned if must_exist is False or</span>
+<span class="sd">        a FileNotFoundError is raised if must_exist is True.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_name: str</span>
+<span class="sd">            The name (without params and extension) of the configuration file</span>
+<span class="sd">        must_exist: bool</span>
+<span class="sd">            Whether the file must exist. If missing and True, a FileNotFoundError is raised</span>
+<span class="sd">        base_dir: Optional[Path]</span>
+<span class="sd">            The base directory to look for the global config file.</span>
+<span class="sd">            If None, the user&#39;s ~/.clearmap directory is used.</span>
+<span class="sd">        version: Optional[str]</span>
+<span class="sd">            The version string in the major.minor format to use for the folder structure.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Path</span>
+<span class="sd">            The path to the global configuration file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">base_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">base_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">cls</span><span class="o">.</span><span class="n">user_global_dir</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">version</span> <span class="ow">or</span> <span class="n">clearmap_version</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">must_exist</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_shared_cfg_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">global_path</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_shared_cfg_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">global_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">global_path</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">base_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not find global config </span><span class="si">{</span><span class="n">cfg_name</span><span class="si">}</span><span class="s1"> in </span><span class="si">{</span><span class="n">base_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">must_exist</span><span class="p">:</span>
+                    <span class="n">loader</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">get_global_canonical_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">legacy_root</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">user_defaults_dir</span>  <span class="c1"># Old user_global_dir was same as default</span>
+                    <span class="n">global_path</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_shared_cfg_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">legacy_root</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">global_path</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">must_exist</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not find global config &quot;</span><span class="si">{</span><span class="n">cfg_name</span><span class="si">}</span><span class="s1">&quot; in &quot;</span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s1">&quot; or &quot;</span><span class="si">{</span><span class="n">legacy_root</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">global_path</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.get_default_path">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_default_path">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_default_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">must_exist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">base_dir</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                         <span class="n">version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">from_package</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the path to the default configuration file with the given name.</span>
+<span class="sd">        Several extensions are tried in order of preference.</span>
+<span class="sd">        If None is found, the first possible option is returned if must_exist is False or</span>
+<span class="sd">        a FileNotFoundError is raised if must_exist is True.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_name: str</span>
+<span class="sd">            The name (without params and extension) of the configuration file</span>
+<span class="sd">        must_exist: bool</span>
+<span class="sd">            Whether the file must exist. If missing and True, a FileNotFoundError is raised</span>
+<span class="sd">        base_dir: Optional[Path]</span>
+<span class="sd">            The base directory to look for the default config file.</span>
+<span class="sd">            If specified, this overrides the from_package parameter.</span>
+<span class="sd">        version: Optional[str]</span>
+<span class="sd">            The version string in the major.minor format to use for the folder structure.</span>
+<span class="sd">            If None, the current ClearMap version is used.</span>
+<span class="sd">        from_package: bool</span>
+<span class="sd">            If True, look for the default config in the ClearMap package directory.</span>
+<span class="sd">            Otherwise, look in the user&#39;s ~/.clearmap directory.</span>
+
+<span class="sd">            .. warning::</span>
+<span class="sd">                This only affects the default path if no base_dir is specified.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Path</span>
+<span class="sd">            The path to the default configuration file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">version</span> <span class="ow">or</span> <span class="n">clearmap_version</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">base_dir</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">from_package</span>
+            <span class="ow">and</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">is_global_cfg</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="n">Version</span><span class="p">(</span><span class="n">version</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">Version</span><span class="p">(</span><span class="s1">&#39;3.1&#39;</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Config &quot;</span><span class="si">{</span><span class="n">cfg_name</span><span class="si">}</span><span class="s1">&quot; is global; use get_global_path() instead of get_default_path().&#39;</span><span class="p">)</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">base_dir</span><span class="p">)</span> <span class="k">if</span> <span class="n">base_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">(</span>
+            <span class="n">INSTALL_CFG_DIR</span> <span class="k">if</span> <span class="n">from_package</span> <span class="k">else</span> <span class="bp">cls</span><span class="o">.</span><span class="n">user_defaults_dir</span>
+        <span class="p">)</span>
+        <span class="n">default_path</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_find_shared_cfg_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">default_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">default_path</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">must_exist</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not find default config &quot;</span><span class="si">{</span><span class="n">cfg_name</span><span class="si">}</span><span class="s1">&quot; in &quot;</span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">canonical</span> <span class="o">=</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">to_canonical</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_name_to_shared_path</span><span class="p">(</span><span class="n">canonical</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">supported_exts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span>
+                                                <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+    <span class="c1"># ############# The configs themselves ###############</span>
+<div class="viewcode-block" id="ConfigHandler.get_cfg">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_cfg">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_cfg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">must_exist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigProxy</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the configuration file with the given name.</span>
+<span class="sd">        Several extensions are tried in order of preference.</span>
+<span class="sd">        If None is found, None is returned if must_exist is False or</span>
+<span class="sd">        a FileNotFoundError is raised if must_exist is True.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_name: str</span>
+<span class="sd">            The name (without params and extension) of the configuration file</span>
+<span class="sd">        must_exist: bool</span>
+<span class="sd">            Whether the file must exist. If missing and True, a FileNotFoundError is raised</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ConfigProxy | None</span>
+<span class="sd">            The configuration file as a ConfigProxy object or None if not found and must_exist is False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;/&#39;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">):</span>  <span class="c1"># Already a path</span>
+            <span class="n">cfg_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">is_local_file</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">):</span>
+                <span class="n">cfg_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cfg_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">,</span> <span class="n">must_exist</span><span class="o">=</span><span class="n">must_exist</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">is_global_cfg</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">):</span>
+                <span class="n">cfg_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_global_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">,</span> <span class="n">must_exist</span><span class="o">=</span><span class="n">must_exist</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cfg_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_default_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">,</span> <span class="n">must_exist</span><span class="o">=</span><span class="n">must_exist</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cfg_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">must_exist</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not find file </span><span class="si">{</span><span class="n">cfg_name</span><span class="si">}</span><span class="s1"> in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span><span class="si">}</span><span class="s1"> @ </span><span class="si">{</span><span class="n">cfg_path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_cfg_from_path</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.get_default_cfg">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_default_cfg">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_default_cfg</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg_name</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_cfg_from_path</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">get_default_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">,</span> <span class="n">from_package</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_cfg_from_path</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">get_default_path</span><span class="p">(</span><span class="n">cfg_name</span><span class="p">,</span> <span class="n">from_package</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.get_cfg_from_path">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_cfg_from_path">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_cfg_from_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigProxy</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load a configuration file from the given path using the appropriate loader function.</span>
+<span class="sd">        The function is determined by the file extension.</span>
+
+<span class="sd">        .. warning::</span>
+
+<span class="sd">            The file must exist.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_path: str | Path</span>
+<span class="sd">            The path to the configuration file. Must exist.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ConfigProxy</span>
+<span class="sd">            The configuration file as a ConfigProxy object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cfg_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">cfg_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Config file </span><span class="si">{</span><span class="n">cfg_path</span><span class="si">}</span><span class="s1"> does not exist.&#39;</span><span class="p">)</span>
+        <span class="n">ext</span> <span class="o">=</span> <span class="n">cfg_path</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">loader_functions</span><span class="p">[</span><span class="n">ext</span><span class="p">]</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="n">loader</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">,</span> <span class="n">must_exist</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cfg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not load config from </span><span class="si">{</span><span class="n">cfg_path</span><span class="si">}</span><span class="s1"> using loader for </span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cfg</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.get_new_cfg_writer">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_new_cfg_writer">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_new_cfg_writer</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">must_not_exist</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigProxy</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new, empty ConfigProxy for cfg_path, without reading from disk.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_path : str | Path</span>
+<span class="sd">            Target config path (may or may not exist).</span>
+<span class="sd">        must_not_exist : bool</span>
+<span class="sd">            If True, raise if the file already exists.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ConfigProxy</span>
+<span class="sd">            An empty ConfigProxy bound to cfg_path with the proper writer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">must_not_exist</span> <span class="ow">and</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">FileExistsError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Config file </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1"> already exists.&#39;</span><span class="p">)</span>
+
+        <span class="n">ext</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">dumper</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">writer_functions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dumper</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No writer for extension </span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ConfigProxy</span><span class="p">(</span>
+            <span class="n">filename</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span>
+            <span class="n">_loader</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_cfg_from_path</span><span class="p">(</span><span class="n">p</span><span class="p">),</span>  <span class="c1"># standard “read me back” loader</span>
+            <span class="n">_dumper</span><span class="o">=</span><span class="n">dumper</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.get_patched_cfg_from_path">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.get_patched_cfg_from_path">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_patched_cfg_from_path</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cfg_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ConfigProxy</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load a configuration file from the given path and patch it with the default configuration.</span>
+<span class="sd">        The default configuration is loaded from the ClearMap package directory.</span>
+<span class="sd">        The function is determined by the file extension.</span>
+<span class="sd">        The file must exist.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cfg_path: str | Path</span>
+<span class="sd">            The path to the configuration file. Must exist.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ConfigProxy</span>
+<span class="sd">            The patched configuration file as a ConfigProxy object.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cfg_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">)</span>
+        <span class="n">cfg</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_cfg_from_path</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">)</span>
+        <span class="n">config_name</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">strip_version_suffix</span><span class="p">(</span><span class="n">cfg_path</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span>
+        <span class="n">default_cfg</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_cfg_from_path</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">get_default_path</span><span class="p">(</span><span class="n">config_name</span><span class="p">))</span>
+        <span class="n">patch_cfg</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">default_cfg</span><span class="p">)</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cfg</span></div>
+
+
+<div class="viewcode-block" id="ConfigHandler.dump">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler.dump">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dump</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Write the given data to the specified path using the appropriate writer function.</span>
+<span class="sd">        The function is determined by the file extension.</span>
+<span class="sd">        The write is atomic (writes to a temp file then renames).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path: Path</span>
+<span class="sd">            The path to the output configuration file</span>
+<span class="sd">        data: dict</span>
+<span class="sd">            The data to write</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If no writer function is found for the given file extension.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ext</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">writer_fn</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">writer_functions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ext</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">writer_fn</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No writer for extension </span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">path</span><span class="o">.</span><span class="n">suffix</span><span class="si">}</span><span class="s1">.tmp&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">):</span>  <span class="c1"># ConfigProxy</span>
+            <span class="n">payload</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">payload</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="n">writer_fn</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">payload</span><span class="p">)</span>
+        <span class="n">atomic_replace</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="c1"># FIXME: DEPRECATED</span>
+<div class="viewcode-block" id="get_configs">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.get_configs">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_configs</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">processing_params_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">machine_cfg_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the machine, sample and processing configurations from the given paths.</span>
+<span class="sd">    If machine_cfg_path is None, the default machine config path is used.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg_path: str | Path</span>
+<span class="sd">        Path to the sample configuration file</span>
+<span class="sd">    processing_params_path: str | Path</span>
+<span class="sd">        Path to the processing parameters configuration file</span>
+<span class="sd">    machine_cfg_path: str | Path | None</span>
+<span class="sd">        Path to the machine configuration file. If None, the default machine config path is used.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tuple[ConfigProxy, ConfigProxy, ConfigProxy]</span>
+<span class="sd">        A tuple containing the machine, sample and processing configurations as ConfigProxy objects.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">machine_cfg_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">machine_cfg_path</span> <span class="o">=</span> <span class="n">ConfigHandler</span><span class="o">.</span><span class="n">get_global_path</span><span class="p">(</span><span class="s1">&#39;machine&#39;</span><span class="p">)</span>
+    <span class="n">sample_config</span> <span class="o">=</span> <span class="n">ConfigHandler</span><span class="o">.</span><span class="n">get_patched_cfg_from_path</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">)</span>
+    <span class="n">processing_config</span> <span class="o">=</span> <span class="n">ConfigHandler</span><span class="o">.</span><span class="n">get_patched_cfg_from_path</span><span class="p">(</span><span class="n">processing_params_path</span><span class="p">)</span>
+    <span class="n">machine_config</span> <span class="o">=</span> <span class="n">ConfigHandler</span><span class="o">.</span><span class="n">get_patched_cfg_from_path</span><span class="p">(</span><span class="n">machine_cfg_path</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">machine_config</span><span class="p">,</span> <span class="n">sample_config</span><span class="p">,</span> <span class="n">processing_config</span></div>
+
+
+<span class="c1"># REFACTOR: why is this not a class method of ConfigHandler?</span>
+<div class="viewcode-block" id="get_cfg_reader_function">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.get_cfg_reader_function">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_cfg_reader_function</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Path</span><span class="p">,</span> <span class="nb">bool</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ConfigProxy</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the appropriate configuration reader function for the given file path.</span>
+<span class="sd">    The function is determined by the file extension.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cfg_path: Path | str</span>
+<span class="sd">        The path to the configuration file.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Callable[[Path, bool], Optional[ConfigProxy]]</span>
+<span class="sd">        The configuration reader function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cfg_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">cfg_path</span><span class="p">)</span>
+    <span class="n">ext</span> <span class="o">=</span> <span class="n">cfg_path</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">read_cfg</span> <span class="o">=</span> <span class="n">ConfigHandler</span><span class="o">.</span><span class="n">loader_functions</span><span class="p">[</span><span class="n">ext</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">read_cfg</span></div>
+
+
+
+<div class="viewcode-block" id="scan_folder_for_experiments">
+<a class="viewcode-back" href="../../../api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.scan_folder_for_experiments">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">scan_folder_for_experiments</span><span class="p">(</span><span class="n">folder</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                                <span class="n">exclude_dir_names</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">_EXCLUDED_SAMPLE_SCAN_DIRS_DEFAULT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Discover experiment folders under `folder` by scanning recursively for sample config files.</span>
+
+<span class="sd">    A folder is considered an experiment root if it contains a config file whose base name</span>
+<span class="sd">    matches one of the &#39;sample&#39; alternatives and whose extension is supported by ConfigHandler.</span>
+
+<span class="sd">    Excludes any match located under directories listed in `exclude_dir_names`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">folder</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+        <span class="k">return</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="n">exclude_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">exclude_dir_names</span><span class="p">)</span>
+    <span class="n">supported_exts</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ConfigHandler</span><span class="o">.</span><span class="n">supported_exts</span><span class="p">)</span>
+
+    <span class="n">sample_alts</span> <span class="o">=</span> <span class="n">ALTERNATIVES_REG</span><span class="o">.</span><span class="n">get_alternatives</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
+    <span class="n">sample_bases</span> <span class="o">=</span> <span class="p">{</span><span class="n">ConfigHandler</span><span class="o">.</span><span class="n">normalise_cfg_name</span><span class="p">(</span><span class="n">title_to_snake</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sample_alts</span><span class="p">}</span>
+    <span class="n">sample_bases</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;sample&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_excluded</span><span class="p">(</span><span class="n">p_</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">part</span> <span class="ow">in</span> <span class="n">exclude_set</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">p_</span><span class="o">.</span><span class="n">parts</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_sample_cfg</span><span class="p">(</span><span class="n">p_</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p_</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">supported_exts</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="n">stem_norm</span> <span class="o">=</span> <span class="n">ConfigHandler</span><span class="o">.</span><span class="n">normalise_cfg_name</span><span class="p">(</span><span class="n">title_to_snake</span><span class="p">(</span><span class="n">p_</span><span class="o">.</span><span class="n">stem</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">stem_norm</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;default_&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="k">return</span> <span class="n">stem_norm</span> <span class="ow">in</span> <span class="n">sample_bases</span>
+
+    <span class="n">roots</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="n">Path</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">folder</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_excluded</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="ow">and</span> <span class="n">is_sample_cfg</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+            <span class="n">roots</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">roots</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

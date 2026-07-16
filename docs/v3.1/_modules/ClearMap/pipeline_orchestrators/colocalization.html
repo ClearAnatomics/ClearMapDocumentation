@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClearMap.pipeline_orchestrators.colocalization &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../../../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/ClearMap/pipeline_orchestrators/colocalization';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/_modules/ClearMap/pipeline_orchestrators/colocalization.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../../../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">ClearMap.pipeline_orchestrators.colocalization</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for ClearMap.pipeline_orchestrators.colocalization</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.IO.workspace2</span><span class="w"> </span><span class="kn">import</span> <span class="n">Workspace2</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Utils.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClearMapValueError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Utils.utilities</span><span class="w"> </span><span class="kn">import</span> <span class="n">sanitize_n_processes</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.config.config_coordinator</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigCoordinator</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Analysis.Measurements</span><span class="w"> </span><span class="kn">import</span> <span class="n">Voxelization</span> <span class="k">as</span> <span class="n">voxelization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Analysis.colocalization.channel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Channel</span> <span class="k">as</span> <span class="n">ColocalizationChannel</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.generic_orchestrators</span><span class="w"> </span><span class="kn">import</span> <span class="n">CompoundChannelPipelineOrchestrator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.sample_info_management</span><span class="w"> </span><span class="kn">import</span> <span class="n">SampleManager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.registration_orchestrator</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegistrationProcessor</span>
+
+
+<div class="viewcode-block" id="ColocalizationProcessor">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ColocalizationProcessor</span><span class="p">(</span><span class="n">CompoundChannelPipelineOrchestrator</span><span class="p">):</span>
+    <span class="n">colocalization_channels</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">ColocalizationChannel</span><span class="p">]</span>
+    <span class="n">config_name</span> <span class="o">=</span> <span class="s1">&#39;colocalization&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_manager</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SampleManager</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">config_coordinator</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ConfigCoordinator</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">channels</span> <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">registration_processor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RegistrationProcessor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config_coordinator</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span> <span class="o">=</span> <span class="n">sample_manager</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">channels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registration_processor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RegistrationProcessor</span><span class="p">]</span> <span class="o">=</span> <span class="n">registration_processor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="p">:</span> <span class="n">Workspace2</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">filtered_table</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">channels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ClearMapValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No channels specified. Please provide a pair of channels to compare. &#39;</span>
+                                     <span class="sa">f</span><span class="s1">&#39;They must match the ones in the sample_params file.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">channels</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ClearMapValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Please provide exactly two channels to compare. &#39;</span>
+                                     <span class="sa">f</span><span class="s1">&#39;They must match the ones in the sample_params file.&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">colocalization_channels</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ColocalizationChannel</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># The objects that compute the colocalization from the colocalization package</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_finalised</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">sample_manager</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">registration_processor</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ColocalizationProcessor.setup">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor.setup">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_manager</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SampleManager</span><span class="p">],</span> <span class="n">channel_names</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+              <span class="n">registration_processor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RegistrationProcessor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channels</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">channel_names</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">registration_processor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">registration_processor</span> <span class="o">=</span> <span class="n">registration_processor</span>
+        <span class="k">if</span> <span class="n">sample_manager</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span> <span class="o">=</span> <span class="n">sample_manager</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">sample_manager</span><span class="o">.</span><span class="n">workspace</span>
+
+            <span class="n">sample_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">sample_id</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">ensure_pipeline</span><span class="p">(</span><span class="s1">&#39;Colocalization&#39;</span><span class="p">,</span> <span class="n">channel_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">,</span> <span class="n">sample_id</span><span class="o">=</span><span class="n">sample_id</span><span class="p">,</span>
+                                           <span class="n">permute_channels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">create_channel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">finalise_setup</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ColocalizationProcessor.finalise_setup">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor.finalise_setup">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">finalise_setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">setup_finalised</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">finalised_channels</span> <span class="o">=</span> <span class="p">{</span><span class="n">chan</span><span class="p">:</span> <span class="kc">False</span> <span class="k">for</span> <span class="n">chan</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">channel</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">channels</span><span class="p">:</span>
+            <span class="n">resolution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">get_channel_resolution</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">colocalization_channels</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span> <span class="o">=</span> <span class="n">ColocalizationChannel</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">,</span> <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;shape&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">existing_path</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">get_cells_df</span><span class="p">(</span><span class="n">channel</span><span class="p">),</span>
+                    <span class="n">voxel_dims</span><span class="o">=</span><span class="n">resolution</span><span class="p">)</span>
+                <span class="n">finalised_channels</span><span class="p">[</span><span class="n">channel</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Colocalization </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">setup_finalised</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setup_finalised</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span><span class="n">finalised_channels</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="ColocalizationProcessor.get_cells_df">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor.get_cells_df">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_cells_df</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="ColocalizationProcessor.compute_colocalization">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor.compute_colocalization">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_colocalization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">):</span>
+        <span class="c1"># voxel_blob_diameter will also be used to compute the overlap</span>
+        <span class="n">voxel_blob_diameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;comparison&#39;</span><span class="p">][</span><span class="s1">&#39;particle_diameter&#39;</span><span class="p">]</span>
+        <span class="n">perf_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cfg_coordinator</span><span class="o">.</span><span class="n">get_config_view</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_name</span><span class="p">)[</span><span class="s1">&#39;performance&#39;</span><span class="p">]</span>
+        <span class="n">n_processes</span> <span class="o">=</span> <span class="n">sanitize_n_processes</span><span class="p">(</span><span class="n">perf_cfg</span><span class="p">[</span><span class="s1">&#39;n_processes&#39;</span><span class="p">])</span>
+
+        <span class="n">report</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colocalization_channels</span><span class="p">[</span><span class="n">channel_a</span><span class="p">]</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colocalization_channels</span><span class="p">[</span><span class="n">channel_b</span><span class="p">],</span>
+                                                                 <span class="n">blob_diameter</span><span class="o">=</span><span class="n">voxel_blob_diameter</span><span class="p">,</span>
+                                                                 <span class="n">size_min</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">voxel_blob_diameter</span><span class="p">,</span>
+                                                                 <span class="n">size_max</span><span class="o">=</span><span class="mi">6</span><span class="o">*</span><span class="n">voxel_blob_diameter</span><span class="p">,</span> <span class="c1">#  FIXME: add control for size_max</span>
+                                                                 <span class="n">processes</span><span class="o">=</span><span class="n">n_processes</span><span class="p">)</span>
+        <span class="n">report_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;colocalization&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="p">(</span><span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">),</span>
+                                    <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;report&#39;</span><span class="p">)</span>
+        <span class="n">report</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># WARNING: extract the index (no drop) to a separate column to allow saving to feather</span>
+        <span class="n">report</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="n">report_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ColocalizationProcessor.save_filtered_table">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor.save_filtered_table">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_filtered_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filtered_table</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">filtered_table</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;colocalization&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="p">(</span><span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">),</span>
+                                                         <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;filtered_report&#39;</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="ColocalizationProcessor.plot_nearest_neighbors">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor.plot_nearest_neighbors">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_nearest_neighbors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>  <span class="c1"># TODO: improve with line between particles</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_hex</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">pyqtgraph</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pg</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Visualization.Qt</span><span class="w"> </span><span class="kn">import</span> <span class="n">Plot3d</span> <span class="k">as</span> <span class="n">q_plot_3d</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.Visualization.Qt.widgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">Scatter3D</span>
+
+        <span class="n">channel_a_particle_coordinates</span><span class="p">,</span> <span class="n">channel_b_particle_coordinates</span><span class="p">,</span> <span class="n">channel_a_no_neighbour_coordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_table</span><span class="p">(</span>
+            <span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">)</span>
+
+        <span class="c1"># if physical coordinates</span>
+        <span class="c1"># channel_a_particle_coordinates *= self.sample_manager.config[&#39;channels&#39;][channel_a][&#39;resolution&#39;]</span>
+        <span class="c1"># channel_a_particle_coordinates *= self.sample_manager.config[&#39;channels&#39;][channel_b][&#39;resolution&#39;]</span>
+
+        <span class="n">lut</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;pink&#39;</span><span class="p">,</span> <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="s1">&#39;olive&#39;</span><span class="p">,</span> <span class="s1">&#39;grey&#39;</span><span class="p">]</span>
+        <span class="n">lut</span> <span class="o">=</span> <span class="p">[</span><span class="n">to_hex</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">lut</span><span class="p">]</span>
+        <span class="n">n_colocalized_particles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">channel_a_particle_coordinates</span><span class="p">)</span>
+        <span class="n">n_repeats</span> <span class="o">=</span> <span class="n">n_colocalized_particles</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">lut</span><span class="p">)</span>
+        <span class="n">colours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">lut</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">n_repeats</span><span class="p">))[:</span><span class="n">n_colocalized_particles</span><span class="p">]</span>
+
+        <span class="n">channel_a_particle_coordinates</span><span class="p">[</span><span class="s1">&#39;colour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">colours</span>
+        <span class="n">channel_a_particle_coordinates</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;+&#39;</span>
+        <span class="n">channel_b_particle_coordinates</span><span class="p">[</span><span class="s1">&#39;colour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">colours</span>
+        <span class="n">channel_b_particle_coordinates</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span>
+        <span class="n">channel_a_no_neighbour_coordinates</span><span class="p">[</span><span class="s1">&#39;colour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_hex</span><span class="p">(</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+        <span class="n">channel_a_no_neighbour_coordinates</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+
+        <span class="n">scatter_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">channel_a_particle_coordinates</span><span class="p">,</span>
+                                <span class="n">channel_b_particle_coordinates</span><span class="p">,</span>
+                                <span class="n">channel_a_no_neighbour_coordinates</span><span class="p">])</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">filtered_table</span> <span class="o">=</span> <span class="n">scatter_df</span>
+
+        <span class="n">channel_a_stitched</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel_a</span><span class="p">)</span>
+        <span class="n">channel_b_stitched</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;stitched&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel_b</span><span class="p">)</span>
+        <span class="n">dv</span> <span class="o">=</span> <span class="n">q_plot_3d</span><span class="o">.</span><span class="n">plot</span><span class="p">([[</span><span class="n">channel_a_stitched</span><span class="p">,</span> <span class="n">channel_b_stitched</span><span class="p">]],</span>
+                            <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Nearest Neighbours </span><span class="si">{</span><span class="n">channel_a</span><span class="si">}</span><span class="s1"> - </span><span class="si">{</span><span class="n">channel_b</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                            <span class="n">arrange</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">scatter</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">ScatterPlotItem</span><span class="p">()</span>
+        <span class="n">dv</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">scatter</span><span class="p">)</span>
+        <span class="n">dv</span><span class="o">.</span><span class="n">scatter</span> <span class="o">=</span> <span class="n">scatter</span>
+        <span class="n">dv</span><span class="o">.</span><span class="n">scatter_coords</span> <span class="o">=</span> <span class="n">Scatter3D</span><span class="p">(</span><span class="n">scatter_df</span><span class="p">,</span> <span class="n">z_radius</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">machine_config</span><span class="p">[</span><span class="s1">&#39;particle_plot_z_sphere_radius&#39;</span><span class="p">],</span>
+                                      <span class="n">marker_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;comparison&#39;</span><span class="p">][</span><span class="s1">&#39;particle_diameter&#39;</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">dv</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">dv</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="ColocalizationProcessor.filter_table">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor.filter_table">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">):</span>  <span class="c1"># TODO: add options for which criteria ?/</span>
+        <span class="n">report</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_feather</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;colocalization&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="p">(</span><span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">),</span>
+                                               <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;report&#39;</span><span class="p">))</span>  <span class="c1"># TODO: see if we cache</span>
+        <span class="n">maximum_distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;analysis&#39;</span><span class="p">][</span><span class="s1">&#39;max_particle_distance&#39;</span><span class="p">]</span>
+        <span class="n">within_distance_mask</span> <span class="o">=</span> <span class="n">report</span><span class="p">[</span><span class="s1">&#39;closest blob distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">&lt;</span> <span class="n">maximum_distance</span>
+        <span class="n">chan_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">colocalization_channels</span><span class="p">[</span><span class="n">channel_a</span><span class="p">]</span>
+        <span class="n">channel_a_particle_coordinates</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">within_distance_mask</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;center of bounding box </span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s1">&#39;</span>
+                                                                           <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">chan_a</span><span class="o">.</span><span class="n">coord_names</span><span class="p">]]</span>
+        <span class="n">channel_a_particle_coordinates</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chan_a</span><span class="o">.</span><span class="n">coord_names</span><span class="p">)</span>
+        <span class="n">channel_b_particle_coordinates</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">within_distance_mask</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;closest blob center </span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s1">&#39;</span>
+                                                                           <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">chan_a</span><span class="o">.</span><span class="n">coord_names</span><span class="p">]]</span>
+        <span class="n">channel_b_particle_coordinates</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chan_a</span><span class="o">.</span><span class="n">coord_names</span><span class="p">)</span>
+        <span class="c1"># outside_distance_particles = report[report[&#39;closest blob distance&#39;] &gt;= maximum_distance]</span>
+        <span class="n">channel_a_no_neighbour_coordinates</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">within_distance_mask</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;center of bounding box </span><span class="si">{</span><span class="n">ax</span><span class="si">}</span><span class="s1">&#39;</span>
+                                                                                <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">chan_a</span><span class="o">.</span><span class="n">coord_names</span><span class="p">]]</span>
+        <span class="n">channel_a_no_neighbour_coordinates</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chan_a</span><span class="o">.</span><span class="n">coord_names</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">channel_a_particle_coordinates</span><span class="p">,</span> <span class="n">channel_b_particle_coordinates</span><span class="p">,</span> <span class="n">channel_a_no_neighbour_coordinates</span></div>
+
+
+<div class="viewcode-block" id="ColocalizationProcessor.plot_overlaps">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor.plot_overlaps">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_overlaps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="ColocalizationProcessor.voxelize_filtered_table">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor.voxelize_filtered_table">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">voxelize_filtered_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">):</span>
+        <span class="n">coordinates</span><span class="p">,</span> <span class="n">voxelization_parameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_voxelization_params</span><span class="p">(</span><span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">)</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">voxelize_unweighted</span><span class="p">(</span><span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">voxelization_parameter</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ColocalizationProcessor.get_voxelization_params">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor.get_voxelization_params">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_voxelization_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">):</span>
+        <span class="n">voxelization_parameter</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;radius&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;voxelization&#39;</span><span class="p">][</span><span class="s1">&#39;radii&#39;</span><span class="p">],</span>
+            <span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="kc">True</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>  <span class="c1"># Path will use debug</span>
+            <span class="n">voxelization_parameter</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="p">(</span><span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">),</span>
+                                                       <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;shape&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">registration_processor</span><span class="o">.</span><span class="n">was_registered</span><span class="p">:</span>
+            <span class="n">voxelization_parameter</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;atlas&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="n">channel_a</span><span class="p">,</span>
+                                                       <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;annotation&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">voxelization_parameter</span><span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_manager</span><span class="o">.</span><span class="n">resampled_shape</span><span class="p">(</span><span class="n">channel_a</span><span class="p">)</span>
+        <span class="n">channel_a_particle_coordinates</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_table</span><span class="p">(</span><span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">)</span>
+        <span class="n">coordinates</span> <span class="o">=</span> <span class="n">channel_a_particle_coordinates</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">colocalization_channels</span><span class="p">[</span><span class="n">channel_a</span><span class="p">]</span><span class="o">.</span><span class="n">coord_names</span><span class="p">)]</span><span class="o">.</span><span class="n">values</span>
+        <span class="k">return</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">voxelization_parameter</span></div>
+
+
+<div class="viewcode-block" id="ColocalizationProcessor.voxelize_unweighted">
+<a class="viewcode-back" href="../../../api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor.voxelize_unweighted">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">voxelize_unweighted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">voxelization_parameter</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Voxelize un weighted i.e. for cell counts</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        channel_a: str</span>
+<span class="sd">            Name of the first channel</span>
+<span class="sd">        channel_b: str</span>
+<span class="sd">            Name of the second channel</span>
+<span class="sd">        coordinates: str, array or Source</span>
+<span class="sd">            Source of point of nxd coordinates.</span>
+<span class="sd">        voxelization_parameter:  dict</span>
+<span class="sd">            Dictionary to be passed to voxelization.voxelise (i.e. with these optional keys:</span>
+<span class="sd">                shape, dtype, weights, method, radius, kernel, processes, verbose</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        coordinates, counts_file_path: np.array, str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">counts_asset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="p">(</span><span class="n">channel_a</span><span class="p">,</span> <span class="n">channel_b</span><span class="p">),</span> <span class="n">asset_sub_type</span><span class="o">=</span><span class="s1">&#39;counts&#39;</span><span class="p">)</span>
+        <span class="n">counts_asset</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">missing_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_watcher_step</span><span class="p">(</span><span class="s1">&#39;Unweighted voxelisation&#39;</span><span class="p">)</span>
+        <span class="n">voxelization</span><span class="o">.</span><span class="n">voxelize</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="n">sink</span><span class="o">=</span><span class="n">counts_asset</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">voxelization_parameter</span><span class="p">)</span>  <span class="c1"># WARNING: prange</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_watcher_main_progress</span><span class="p">()</span>
+        <span class="c1"># uncrusted_coordinates = self.remove_crust(coordinates)  # WARNING: currently causing issues</span>
+        <span class="c1">#         density_path = self.get_path(&#39;density&#39;, channel=self.channel, asset_sub_type=&#39;counts_wcrust&#39;)</span>
+        <span class="c1">#         voxelization.voxelize(uncrusted_coordinates, sink=density_path, **voxelization_parameter)   # WARNING: prange</span>
+        <span class="k">return</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">counts_asset</span><span class="o">.</span><span class="n">path</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

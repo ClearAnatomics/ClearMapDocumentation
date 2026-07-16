@@ -1,0 +1,1071 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Package Organisation &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="_static/documentation_options.js?v=969bf561"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'package_organisation';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/package_organisation.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="WobblyStitcher" href="advanced/wobblystitcher.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="#">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="#">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Package Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/wobblystitcher.html">WobblyStitcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cellmap.html">CellMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tubemap.html">TubeMap</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="usage.html" class="nav-link">Usage</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Package Organisation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="package-organisation">
+<span id="id1"></span><h1>Package Organisation<a class="headerlink" href="#package-organisation" title="Link to this heading">#</a></h1>
+<p>ClearMap is designed for advanced and fast image processing of large
+(terabyte) 3-D datasets obtained from tissue clearing <a class="reference internal" href="references.html#kirst2020" id="id2"><span>[Kirst2020]</span></a>
+<a class="reference internal" href="references.html#renier2016" id="id3"><span>[Renier2016]</span></a>.</p>
+<p>The modular source management allows unified handling of various data
+sources (image files, memory maps, shared memory arrays, numpy arrays,
+GPU arrays, graph formats) and fast parallel 3-D image and graph
+processing as well as interactive visualisation of large 3-D images.</p>
+<p><a class="reference external" href="https://github.com/ClearAnatomics/ClearMap">ClearMap</a> is open-source
+software released under the GPL v3 licence.</p>
+<section id="architecture-overview">
+<h2>Architecture overview<a class="headerlink" href="#architecture-overview" title="Link to this heading">#</a></h2>
+<p>ClearMap 3.1 is organised into three layers:</p>
+<dl>
+<dt><strong>Pipeline orchestrators</strong> (<a class="reference internal" href="api/ClearMap.pipeline_orchestrators.html#module-ClearMap.pipeline_orchestrators" title="ClearMap.pipeline_orchestrators"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pipeline_orchestrators</span></code></a>)</dt><dd><p>High-level workers that implement each processing pipeline end-to-end.
+These are what the GUI drives and what advanced users call directly in
+scripts.  Each orchestrator reads its parameters from YAML config files
+and writes outputs through the workspace.</p>
+<p>Key classes:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.pipeline_orchestrators.sample_info_management.html#ClearMap.pipeline_orchestrators.sample_info_management.SampleManager" title="ClearMap.pipeline_orchestrators.sample_info_management.SampleManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">SampleManager</span></code></a>
+— root object for a single experiment (channel definitions, workspace
+reconciliation, channel queries).</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController" title="ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExperimentController</span></code></a>
+— wires config, sample manager, and all workers together; single
+entry point for UI patches.</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.pipeline_orchestrators.cell_map.html#ClearMap.pipeline_orchestrators.cell_map.CellDetector" title="ClearMap.pipeline_orchestrators.cell_map.CellDetector"><code class="xref py py-class docutils literal notranslate"><span class="pre">CellDetector</span></code></a>
+— cell detection, filtering, atlas alignment, voxelization.</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.pipeline_orchestrators.tube_map.html#ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor" title="ClearMap.pipeline_orchestrators.tube_map.BinaryVesselProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryVesselProcessor</span></code></a>
+/ <a class="reference internal" href="api/ClearMap.pipeline_orchestrators.tube_map.html#ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor" title="ClearMap.pipeline_orchestrators.tube_map.VesselGraphProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">VesselGraphProcessor</span></code></a>
+— vessel binarization, graph construction, and annotation.</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.pipeline_orchestrators.tract_map.html#ClearMap.pipeline_orchestrators.tract_map.TractMapProcessor" title="ClearMap.pipeline_orchestrators.tract_map.TractMapProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">TractMapProcessor</span></code></a>
+— myelinated-tract binarization and coordinate mapping.</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.pipeline_orchestrators.colocalization.html#ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor" title="ClearMap.pipeline_orchestrators.colocalization.ColocalizationProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColocalizationProcessor</span></code></a>
+— nearest-neighbour colocalization between channel pairs.</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.pipeline_orchestrators.registration_orchestrator.html#ClearMap.pipeline_orchestrators.registration_orchestrator.RegistrationProcessor" title="ClearMap.pipeline_orchestrators.registration_orchestrator.RegistrationProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegistrationProcessor</span></code></a>
+— resampling and Elastix-based atlas registration.</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.pipeline_orchestrators.stitching_orchestrator.html#ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor" title="ClearMap.pipeline_orchestrators.stitching_orchestrator.StitchingProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">StitchingProcessor</span></code></a>
+— rigid and wobbly stitching.</p></li>
+</ul>
+</dd>
+<dt><strong>Configuration system</strong> (<a class="reference internal" href="api/ClearMap.config.html#module-ClearMap.config" title="ClearMap.config"><code class="xref py py-mod docutils literal notranslate"><span class="pre">config</span></code></a>)</dt><dd><p>YAML-based configuration with in-memory working model, atomic commits,
+JSON-schema validation, and automatic derivation of dependent fields via
+config adjusters.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigCoordinator</span></code></a>
+— central coordinator (apply → adjust → validate → commit).</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.config.config_handler.html#ClearMap.config.config_handler.ConfigHandler" title="ClearMap.config.config_handler.ConfigHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigHandler</span></code></a>
+— file resolution and IO for YAML / ConfigObj / JSON.</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.config.defaults_provider.html#ClearMap.config.defaults_provider.DefaultsProvider" title="ClearMap.config.defaults_provider.DefaultsProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">DefaultsProvider</span></code></a>
+— three-level default precedence (user → packaged → code).</p></li>
+</ul>
+</dd>
+<dt><strong>Workspace and assets</strong> (<code class="xref py py-mod docutils literal notranslate"><span class="pre">workspace2</span></code>, <code class="xref py py-mod docutils literal notranslate"><span class="pre">workspace_asset</span></code>)</dt><dd><p>Channel-centred workspace that maps <em>(channel, asset_type)</em> pairs to
+on-disk <code class="xref py py-class docutils literal notranslate"><span class="pre">Asset</span></code> objects.</p>
+<ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Workspace2</span></code>
+— the workspace itself (persisted as <code class="docutils literal notranslate"><span class="pre">workspace.yml</span></code>).</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Asset</span></code>
+— a single logical file or folder.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#id4">Alignment</a> — stitching, resampling, and registration</p></li>
+<li><p><a class="reference internal" href="#analysis">Analysis</a> — measurements and statistical analysis</p></li>
+<li><p><a class="reference internal" href="#imageprocessing">ImageProcessing</a> — correcting and quantifying image data</p></li>
+<li><p><a class="reference internal" href="#io">IO</a> — reading and writing data</p></li>
+<li><p><a class="reference internal" href="#parallelprocessing">ParallelProcessing</a> — organising parallel processing</p></li>
+<li><p><a class="reference internal" href="#visualization">Visualization</a> — visualising data and results</p></li>
+</ul>
+</div></blockquote>
+<section id="alignment">
+<h3>Alignment<a class="headerlink" href="#alignment" title="Link to this heading">#</a></h3>
+<p id="id4">The <a class="reference internal" href="api/ClearMap.Alignment.html#module-ClearMap.Alignment" title="ClearMap.Alignment"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.Alignment</span></code></a> module includes methods for</p>
+<ul class="simple">
+<li><p>3d resampling:</p>
+<ul>
+<li><p><a class="reference internal" href="api/ClearMap.Alignment.Resampling.html#module-ClearMap.Alignment.Resampling" title="ClearMap.Alignment.Resampling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Resampling</span></code></a></p></li>
+</ul>
+</li>
+<li><p>3d alignment to reference atlases (e.g.
+<a class="reference external" href="https://portal.brain-map.org/">Allen Brain Institute Atlases</a>) via
+interfacing to
+<a class="reference external" href="https://github.com/SuperElastix/elastix">elastix</a>:</p>
+<ul>
+<li><p><a class="reference internal" href="api/ClearMap.Alignment.Elastix.html#module-ClearMap.Alignment.Elastix" title="ClearMap.Alignment.Elastix"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Elastix</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/ClearMap.Alignment.Annotation.html#module-ClearMap.Alignment.Annotation" title="ClearMap.Alignment.Annotation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Annotation</span></code></a></p></li>
+</ul>
+</li>
+<li><p>3d rigid and wobbly stitching via <a class="reference internal" href="advanced/wobblystitcher.html"><span class="doc">WobblyStitcher</span></a>:</p>
+<ul>
+<li><p><a class="reference internal" href="api/ClearMap.Alignment.Stitching.stitching_rigid.html#module-ClearMap.Alignment.Stitching.stitching_rigid" title="ClearMap.Alignment.Stitching.stitching_rigid"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stitching_rigid</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/ClearMap.Alignment.Stitching.stitching_wobbly.html#module-ClearMap.Alignment.Stitching.stitching_wobbly" title="ClearMap.Alignment.Stitching.stitching_wobbly"><code class="xref py py-mod docutils literal notranslate"><span class="pre">stitching_wobbly</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="analysis">
+<h3>Analysis<a class="headerlink" href="#analysis" title="Link to this heading">#</a></h3>
+<p>The <a class="reference internal" href="api/ClearMap.Analysis.html#module-ClearMap.Analysis" title="ClearMap.Analysis"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Analysis</span></code></a> module provides methods for the
+quantification and analysis of the data, including:</p>
+<ul>
+<li><p>graph and network analysis for very large graphs</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.Analysis.graphs.html#module-ClearMap.Analysis.graphs" title="ClearMap.Analysis.graphs"><code class="xref py py-mod docutils literal notranslate"><span class="pre">graphs</span></code></a></p></li>
+</ul>
+<p>enabling:</p>
+<ul class="simple">
+<li><p>graph preprocessing and cleanup</p></li>
+<li><p>graph branch reduction</p></li>
+<li><p>graph annotation</p></li>
+<li><p>graphs embedded in 3-D space</p></li>
+<li><p>3-D graphs with 3-D edge geometry</p></li>
+<li><p>graph vertex and edge label morphological operations</p></li>
+<li><p>sub-graph extraction</p></li>
+<li><p>network analysis</p></li>
+</ul>
+</li>
+<li><p>colocalization analysis between fluorescence channels</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.Analysis.colocalization.html#module-ClearMap.Analysis.colocalization" title="ClearMap.Analysis.colocalization"><code class="xref py py-mod docutils literal notranslate"><span class="pre">colocalization</span></code></a></p></li>
+</ul>
+</li>
+<li><p>measurement routines to quantify the results</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.Analysis.Measurements.html#module-ClearMap.Analysis.Measurements" title="ClearMap.Analysis.Measurements"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Measurements</span></code></a></p></li>
+</ul>
+<p>enabling:</p>
+<ul class="simple">
+<li><p>measurements of expression levels</p></li>
+<li><p>measurements of geometric shapes and radii</p></li>
+<li><p>maxima detection</p></li>
+<li><p>voxelization</p></li>
+</ul>
+</li>
+<li><p>statistics routines to analyse the results</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.Analysis.Statistics.html#module-ClearMap.Analysis.Statistics" title="ClearMap.Analysis.Statistics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Statistics</span></code></a></p></li>
+</ul>
+</li>
+<li><p>vasculature-specific analysis utilities</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.Analysis.vasculature.html#module-ClearMap.Analysis.vasculature" title="ClearMap.Analysis.vasculature"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vasculature</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="imageprocessing">
+<h3>ImageProcessing<a class="headerlink" href="#imageprocessing" title="Link to this heading">#</a></h3>
+<p>The <a class="reference internal" href="api/ClearMap.ImageProcessing.html#module-ClearMap.ImageProcessing" title="ClearMap.ImageProcessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ImageProcessing</span></code></a> module is the core of <em>ClearMap</em>
+and provides methods to process 3-D images of TB size, including:</p>
+<ul>
+<li><p>binary image processing</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Binary.html#module-ClearMap.ImageProcessing.Binary" title="ClearMap.ImageProcessing.Binary"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Binary</span></code></a></p></li>
+</ul>
+<p>with filling and discrete topology-based binary smoothing routines:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Binary.Filling.html#module-ClearMap.ImageProcessing.Binary.Filling" title="ClearMap.ImageProcessing.Binary.Filling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Filling</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Binary.Smoothing.html#module-ClearMap.ImageProcessing.Binary.Smoothing" title="ClearMap.ImageProcessing.Binary.Smoothing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Smoothing</span></code></a></p></li>
+</ul>
+</li>
+<li><p>clipping and normalisation</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Clipping.html#module-ClearMap.ImageProcessing.Clipping" title="ClearMap.ImageProcessing.Clipping"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Clipping</span></code></a></p></li>
+</ul>
+</li>
+<li><p>3-D local gradients and Hessian matrices</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Differentiation.html#module-ClearMap.ImageProcessing.Differentiation" title="ClearMap.ImageProcessing.Differentiation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Differentiation</span></code></a></p></li>
+</ul>
+<p>with 3-D tube filter and tubeness measures:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Differentiation.Hessian.html#module-ClearMap.ImageProcessing.Differentiation.Hessian" title="ClearMap.ImageProcessing.Differentiation.Hessian"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Hessian</span></code></a></p></li>
+</ul>
+</li>
+<li><p>3-D filtering</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Filter.html#module-ClearMap.ImageProcessing.Filter" title="ClearMap.ImageProcessing.Filter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Filter</span></code></a></p></li>
+</ul>
+<p>with 3-D rank filter library (&gt;30 filters):</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Filter.Rank.html#module-ClearMap.ImageProcessing.Filter.Rank" title="ClearMap.ImageProcessing.Filter.Rank"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Rank</span></code></a></p></li>
+</ul>
+</li>
+<li><p>skeletonization via parallel thinning</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Skeletonization.html#module-ClearMap.ImageProcessing.Skeletonization" title="ClearMap.ImageProcessing.Skeletonization"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Skeletonization</span></code></a></p></li>
+</ul>
+</li>
+<li><p>3-D tracing</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Tracing.html#module-ClearMap.ImageProcessing.Tracing" title="ClearMap.ImageProcessing.Tracing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Tracing</span></code></a></p></li>
+</ul>
+</li>
+<li><p>fast calculation of 3-D local image statistics</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.LocalStatistics.html#module-ClearMap.ImageProcessing.LocalStatistics" title="ClearMap.ImageProcessing.LocalStatistics"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LocalStatistics</span></code></a></p></li>
+</ul>
+</li>
+<li><p>hysteresis and seeded thresholding</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Thresholding.html#module-ClearMap.ImageProcessing.Thresholding" title="ClearMap.ImageProcessing.Thresholding"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Thresholding</span></code></a></p></li>
+</ul>
+</li>
+<li><p>light-sheet artifact removal</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.LightsheetCorrection.html#module-ClearMap.ImageProcessing.LightsheetCorrection" title="ClearMap.ImageProcessing.LightsheetCorrection"><code class="xref py py-mod docutils literal notranslate"><span class="pre">LightsheetCorrection</span></code></a></p></li>
+</ul>
+</li>
+<li><p>illumination correction</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.IlluminationCorrection.html#module-ClearMap.ImageProcessing.IlluminationCorrection" title="ClearMap.ImageProcessing.IlluminationCorrection"><code class="xref py py-mod docutils literal notranslate"><span class="pre">IlluminationCorrection</span></code></a></p></li>
+</ul>
+</li>
+<li><p>machine learning based image processing</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.machine_learning.html#module-ClearMap.ImageProcessing.machine_learning" title="ClearMap.ImageProcessing.machine_learning"><code class="xref py py-mod docutils literal notranslate"><span class="pre">machine_learning</span></code></a></p></li>
+</ul>
+<p>with vessel and tube filling deep convolutional neural network:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.machine_learning.vessel_filling.html#module-ClearMap.ImageProcessing.machine_learning.vessel_filling" title="ClearMap.ImageProcessing.machine_learning.vessel_filling"><code class="xref py py-mod docutils literal notranslate"><span class="pre">vessel_filling</span></code></a></p></li>
+</ul>
+</li>
+<li><p>expert processing pipelines for specific applications</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ImageProcessing.Experts.html#module-ClearMap.ImageProcessing.Experts" title="ClearMap.ImageProcessing.Experts"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Experts</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="io">
+<h3>IO<a class="headerlink" href="#io" title="Link to this heading">#</a></h3>
+<p>The <a class="reference internal" href="api/ClearMap.IO.html#module-ClearMap.IO" title="ClearMap.IO"><code class="xref py py-mod docutils literal notranslate"><span class="pre">IO</span></code></a> module provides a unified interface to read and
+write data in any format that ClearMap supports.  All format dispatch is
+handled by <a class="reference internal" href="api/ClearMap.IO.IO.html#module-ClearMap.IO.IO" title="ClearMap.IO.IO"><code class="xref py py-mod docutils literal notranslate"><span class="pre">IO</span></code></a> so calling code never needs to import
+format-specific modules directly. It is organised around the core concept
+of the Source which allow slicing and conversion to and from virtual sources,
+the cornerstone of ClearMaps parallel processing</p>
+<p>Sources and sinks:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.IO.Source.html#module-ClearMap.IO.Source" title="ClearMap.IO.Source"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Source</span></code></a> — base source class</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.IO.Slice.html#module-ClearMap.IO.Slice" title="ClearMap.IO.Slice"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Slice</span></code></a> — virtual sliced sources for parallel
+processing</p></li>
+</ul>
+<p>Workspace and assets (new in v3):</p>
+<ul class="simple">
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">workspace2</span></code> — channel-centred workspace</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">workspace_asset</span></code> — on-disk asset model</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.IO.assets_constants.html#module-ClearMap.IO.assets_constants" title="ClearMap.IO.assets_constants"><code class="xref py py-mod docutils literal notranslate"><span class="pre">assets_constants</span></code></a> — asset type registry</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.IO.assets_specs.html#module-ClearMap.IO.assets_specs" title="ClearMap.IO.assets_specs"><code class="xref py py-mod docutils literal notranslate"><span class="pre">assets_specs</span></code></a> — TypeSpec, ChannelSpec, StateManager</p></li>
+</ul>
+<p>Supported source types:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Module</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>tif</p></td>
+<td><p><a class="reference internal" href="api/ClearMap.IO.TIF.html#module-ClearMap.IO.TIF" title="ClearMap.IO.TIF"><code class="xref py py-mod docutils literal notranslate"><span class="pre">TIF</span></code></a></p></td>
+<td><p>tif images and stacks</p></td>
+</tr>
+<tr class="row-odd"><td><p>raw / mhd</p></td>
+<td><p><a class="reference internal" href="api/ClearMap.IO.MHD.html#module-ClearMap.IO.MHD" title="ClearMap.IO.MHD"><code class="xref py py-mod docutils literal notranslate"><span class="pre">MHD</span></code></a></p></td>
+<td><p>raw image files with optional mhd header file</p></td>
+</tr>
+<tr class="row-even"><td><p>nrrd</p></td>
+<td><p><a class="reference internal" href="api/ClearMap.IO.NRRD.html#module-ClearMap.IO.NRRD" title="ClearMap.IO.NRRD"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NRRD</span></code></a></p></td>
+<td><p>nearly raw raster data files</p></td>
+</tr>
+<tr class="row-odd"><td><p>csv</p></td>
+<td><p><a class="reference internal" href="api/ClearMap.IO.CSV.html#module-ClearMap.IO.CSV" title="ClearMap.IO.CSV"><code class="xref py py-mod docutils literal notranslate"><span class="pre">CSV</span></code></a></p></td>
+<td><p>text files as comma separated values</p></td>
+</tr>
+<tr class="row-even"><td><p>npy</p></td>
+<td><p><a class="reference internal" href="api/ClearMap.IO.NPY.html#module-ClearMap.IO.NPY" title="ClearMap.IO.NPY"><code class="xref py py-mod docutils literal notranslate"><span class="pre">NPY</span></code></a></p></td>
+<td><p>numpy binary file</p></td>
+</tr>
+<tr class="row-odd"><td><p>gt</p></td>
+<td><p><a class="reference internal" href="api/ClearMap.IO.GT.html#module-ClearMap.IO.GT" title="ClearMap.IO.GT"><code class="xref py py-mod docutils literal notranslate"><span class="pre">GT</span></code></a></p></td>
+<td><p>graph tool file</p></td>
+</tr>
+<tr class="row-even"><td><p>file list</p></td>
+<td><p><a class="reference internal" href="api/ClearMap.IO.FileList.html#module-ClearMap.IO.FileList" title="ClearMap.IO.FileList"><code class="xref py py-mod docutils literal notranslate"><span class="pre">FileList</span></code></a></p></td>
+<td><p>folder, file list or file expression for source files</p></td>
+</tr>
+<tr class="row-odd"><td><p>-</p></td>
+<td><p><a class="reference internal" href="api/ClearMap.IO.MMP.html#module-ClearMap.IO.MMP" title="ClearMap.IO.MMP"><code class="xref py py-mod docutils literal notranslate"><span class="pre">MMP</span></code></a></p></td>
+<td><p>memory mapped file</p></td>
+</tr>
+<tr class="row-even"><td><p>-</p></td>
+<td><p><a class="reference internal" href="api/ClearMap.IO.SMA.html#module-ClearMap.IO.SMA" title="ClearMap.IO.SMA"><code class="xref py py-mod docutils literal notranslate"><span class="pre">SMA</span></code></a></p></td>
+<td><p>shared memory array</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="parallelprocessing">
+<h3>ParallelProcessing<a class="headerlink" href="#parallelprocessing" title="Link to this heading">#</a></h3>
+<p>The <a class="reference internal" href="api/ClearMap.ParallelProcessing.html#module-ClearMap.ParallelProcessing" title="ClearMap.ParallelProcessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ParallelProcessing</span></code></a> module provides methods for
+distributed processing.</p>
+<ul>
+<li><p>large data arrays can be processed in blocks via a specialised
+<a class="reference internal" href="#io">IO</a> source</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ParallelProcessing.Block.html#module-ClearMap.ParallelProcessing.Block" title="ClearMap.ParallelProcessing.Block"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Block</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/ClearMap.ParallelProcessing.BlockProcessing.html#module-ClearMap.ParallelProcessing.BlockProcessing" title="ClearMap.ParallelProcessing.BlockProcessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">BlockProcessing</span></code></a></p></li>
+</ul>
+</li>
+<li><p>or via shared memory arrays</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ParallelProcessing.SharedMemoryArray.html#module-ClearMap.ParallelProcessing.SharedMemoryArray" title="ClearMap.ParallelProcessing.SharedMemoryArray"><code class="xref py py-mod docutils literal notranslate"><span class="pre">SharedMemoryArray</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/ClearMap.ParallelProcessing.SharedMemoryManager.html#module-ClearMap.ParallelProcessing.SharedMemoryManager" title="ClearMap.ParallelProcessing.SharedMemoryManager"><code class="xref py py-mod docutils literal notranslate"><span class="pre">SharedMemoryManager</span></code></a></p></li>
+</ul>
+</li>
+<li><p>numerical processing routines for TB data arrays are collected in</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ParallelProcessing.DataProcessing.html#module-ClearMap.ParallelProcessing.DataProcessing" title="ClearMap.ParallelProcessing.DataProcessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">DataProcessing</span></code></a></p></li>
+</ul>
+<p>including speed-ups for numpy array processing, convolution and
+measurement routines:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing.html#module-ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing" title="ClearMap.ParallelProcessing.DataProcessing.ArrayProcessing"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ArrayProcessing</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList.html#module-ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList" title="ClearMap.ParallelProcessing.DataProcessing.ConvolvePointList"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ConvolvePointList</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/ClearMap.ParallelProcessing.DataProcessing.DevolvePointList.html#module-ClearMap.ParallelProcessing.DataProcessing.DevolvePointList" title="ClearMap.ParallelProcessing.DataProcessing.DevolvePointList"><code class="xref py py-mod docutils literal notranslate"><span class="pre">DevolvePointList</span></code></a></p></li>
+<li><p><a class="reference internal" href="api/ClearMap.ParallelProcessing.DataProcessing.MeasurePointList.html#module-ClearMap.ParallelProcessing.DataProcessing.MeasurePointList" title="ClearMap.ParallelProcessing.DataProcessing.MeasurePointList"><code class="xref py py-mod docutils literal notranslate"><span class="pre">MeasurePointList</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="visualization">
+<h3>Visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="api/ClearMap.Visualization.html#module-ClearMap.Visualization" title="ClearMap.Visualization"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ClearMap.Visualization</span></code></a> comes with a large set of interactive
+visualisation functions using various backends:</p>
+<ul>
+<li><p><a class="reference internal" href="api/ClearMap.Visualization.Qt.html#module-ClearMap.Visualization.Qt" title="ClearMap.Visualization.Qt"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Qt</span></code></a></p>
+<p>providing:</p>
+<ul class="simple">
+<li><p>fast interactive 2-D slice plotting of 3-D TB datasets</p>
+<ul>
+<li><p><a class="reference internal" href="api/ClearMap.Visualization.Qt.DataViewer.html#module-ClearMap.Visualization.Qt.DataViewer" title="ClearMap.Visualization.Qt.DataViewer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">DataViewer</span></code></a></p></li>
+</ul>
+</li>
+<li><p>overlays and/or synchronised window display of multiple datasets</p>
+<ul>
+<li><p><a class="reference internal" href="api/ClearMap.Visualization.Qt.Plot3d.html#module-ClearMap.Visualization.Qt.Plot3d" title="ClearMap.Visualization.Qt.Plot3d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Plot3d</span></code></a></p></li>
+</ul>
+</li>
+<li><p>scatter overlays with depth display and atlas-region colouring</p>
+<ul>
+<li><p><a class="reference internal" href="api/ClearMap.Visualization.Qt.widgets.html#ClearMap.Visualization.Qt.widgets.Scatter3D" title="ClearMap.Visualization.Qt.widgets.Scatter3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scatter3D</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="api/ClearMap.Visualization.Vispy.html#module-ClearMap.Visualization.Vispy" title="ClearMap.Visualization.Vispy"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Vispy</span></code></a></p>
+<p>providing:</p>
+<ul class="simple">
+<li><p>3-D volume rendering, list and line plots</p>
+<ul>
+<li><p><a class="reference internal" href="api/ClearMap.Visualization.Vispy.Plot3d.html#module-ClearMap.Visualization.Vispy.Plot3d" title="ClearMap.Visualization.Vispy.Plot3d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">Plot3d</span></code></a></p></li>
+</ul>
+</li>
+<li><p>3-D graph plots as lines or mesh with edge geometries</p>
+<ul>
+<li><p><a class="reference internal" href="api/ClearMap.Visualization.Vispy.plot_graph_3d.html#module-ClearMap.Visualization.Vispy.plot_graph_3d" title="ClearMap.Visualization.Vispy.plot_graph_3d"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plot_graph_3d</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="gui">
+<h3>GUI<a class="headerlink" href="#gui" title="Link to this heading">#</a></h3>
+<p>The <a class="reference internal" href="api/ClearMap.gui.html#module-ClearMap.gui" title="ClearMap.gui"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gui</span></code></a> package provides a PyQt5-based graphical user
+interface that exposes every pipeline step without requiring scripting.
+See <a class="reference internal" href="gui/index.html#gui"><span class="std std-ref">GUI usage</span></a> for a full walkthrough.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api/ClearMap.gui.app.html#module-ClearMap.gui.app" title="ClearMap.gui.app"><code class="xref py py-mod docutils literal notranslate"><span class="pre">app</span></code></a> — main window and application entry point</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.gui.tabs.html#module-ClearMap.gui.tabs" title="ClearMap.gui.tabs"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tabs</span></code></a> — concrete tab classes for each pipeline step</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.gui.params.html#module-ClearMap.gui.params" title="ClearMap.gui.params"><code class="xref py py-mod docutils literal notranslate"><span class="pre">params</span></code></a> — parameter-link objects (UI ↔ YAML config)</p></li>
+<li><p><a class="reference internal" href="api/ClearMap.gui.widgets.html#module-ClearMap.gui.widgets" title="ClearMap.gui.widgets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">widgets</span></code></a> — custom Qt widgets (scatter, progress, etc.)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="usage.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Usage</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="advanced/wobblystitcher.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">WobblyStitcher</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-overview">Architecture overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alignment">Alignment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis">Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imageprocessing">ImageProcessing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#io">IO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelprocessing">ParallelProcessing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gui">GUI</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="_sources/package_organisation.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

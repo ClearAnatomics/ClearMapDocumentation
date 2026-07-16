@@ -1,0 +1,1635 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>generic_orchestrators &#8212; ClearMap 3.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=c7243815" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+    <script src="../_static/documentation_options.js?v=969bf561"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/ClearMap.pipeline_orchestrators.generic_orchestrators';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.19.0';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '3.1';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://clearanatomics.github.io/ClearMapDocumentation/v3.1/api/ClearMap.pipeline_orchestrators.generic_orchestrators.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="group_orchestrators" href="ClearMap.pipeline_orchestrators.group_orchestrators.html" />
+    <link rel="prev" title="experiment_controller" href="ClearMap.pipeline_orchestrators.experiment_controller.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="3.1" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">ClearMap 3.1</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class=" current active">
+  <a class="nav-link dropdown-item nav-internal" href="../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../overview.html">
+    Overview
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../getting_started.html">
+    Introduction
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../installation.html">
+    Installation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../usage.html">
+    Usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../package_organisation.html">
+    Package Organisation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../gui/index.html">
+    GUI usage
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../advanced/advanced_usage.html">
+    ClearMap pipelines
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../api.html">
+    ClearMap API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../media.html">
+    News and Media
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../references.html">
+    References
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ClearAnatomics/ClearMap" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/clearmap_idisco" title="X" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-square-x-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">X</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar"><svg class="pst-icon svg-inline--fa" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Alignment.html">ClearMap.Alignment</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Analysis.html">ClearMap.Analysis</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.IO.html">ClearMap.IO</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ImageProcessing.html">ClearMap.ImageProcessing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.ParallelProcessing.html">ClearMap.ParallelProcessing</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Scripts.html">ClearMap.Scripts</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Utils.html">ClearMap.Utils</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.Visualization.html">ClearMap.Visualization</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.config.html">ClearMap.config</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.gui.html">ClearMap.gui</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="ClearMap.pipeline_orchestrators.html">ClearMap.pipeline_orchestrators</a></li>
+
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../api.html" class="nav-link">ClearMap API</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="ClearMap.pipeline_orchestrators.html" class="nav-link">ClearMap.pipeline_orchestrators</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">generic_orchestrators</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="generic-orchestrators">
+<h1>generic_orchestrators<a class="headerlink" href="#generic-orchestrators" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+</tbody>
+</table>
+</div>
+<p id="module-ClearMap.pipeline_orchestrators.generic_orchestrators">Base classes for all ClearMap processing workers.</p>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
+<p>The orchestrator hierarchy has three layers:</p>
+<p><strong>Configuration + asset access</strong></p>
+<p><a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase" title="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">OrchestratorBase</span></code></a> owns the
+<a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigCoordinator</span></code></a> reference and
+exposes read-only config views, workspace asset retrieval via
+<a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get" title="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a> / <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get_path" title="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get_path"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_path()</span></code></a>, and
+progress-watcher plumbing.  Everything else in <code class="docutils literal notranslate"><span class="pre">pipeline_orchestrators/</span></code>
+inherits from it.</p>
+<p><strong>Single-experiment pipelines</strong></p>
+<p><a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator" title="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PipelineOrchestrator</span></code></a> adds stop/cancel logic and the
+<code class="docutils literal notranslate"><span class="pre">wrap_in_thread</span></code> interface used by the GUI.</p>
+<p><a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChannelPipelineOrchestrator</span></code></a> further narrows the scope to a single
+channel: its <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.config" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.config"><code class="xref py py-attr docutils literal notranslate"><span class="pre">config</span></code></a> property
+automatically returns the section for <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.channel" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.channel"><code class="xref py py-attr docutils literal notranslate"><span class="pre">channel</span></code></a>,
+and <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.patch_channel" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.patch_channel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">patch_channel()</span></code></a> scopes config writes
+to that channel without the caller having to know the full key path.</p>
+<p><a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator" title="ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompoundChannelPipelineOrchestrator</span></code></a> is the equivalent for pipelines
+that operate on a pair (or tuple) of channels, such as colocalization.</p>
+<p><strong>Step tracking</strong></p>
+<p><a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProcessorSteps</span></code></a> is an independent ABC that tracks which pipeline
+steps have already produced on-disk outputs.  It is composed into concrete
+orchestrators that expose a binarization or graph-construction pipeline
+so the GUI can resume from the last completed step without re-running
+everything.</p>
+<p><strong>Multi-experiment / group analyses</strong></p>
+<p><a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase" title="ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">GroupOrchestratorBase</span></code></a> sits outside the single-sample hierarchy.
+It holds a reference to an
+<a class="reference internal" href="ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController" title="ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnalysisGroupController</span></code></a>
+and provides per-sample worker and sample-manager access, plus progress and
+threading plumbing.</p>
+</section>
+<section id="relationship-to-the-gui">
+<h2>Relationship to the GUI<a class="headerlink" href="#relationship-to-the-gui" title="Link to this heading">#</a></h2>
+<p>The GUI never calls processing code directly.  Instead, each
+<code class="docutils literal notranslate"><span class="pre">pipeline_orchestrators/</span></code> tab creates and caches one or more workers
+(subclasses of the classes here) via
+<a class="reference internal" href="ClearMap.pipeline_orchestrators.experiment_controller.html#id3" title="ClearMap.pipeline_orchestrators.experiment_controller.ExperimentController.get_worker"><code class="xref py py-class docutils literal notranslate"><span class="pre">get_worker</span></code></a>.
+Config edits made in the GUI flow through
+<a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigCoordinator</span></code></a> and are
+visible to workers on the next <code class="docutils literal notranslate"><span class="pre">self.config</span></code> access without reconstruction.</p>
+<p>Typical advanced-user pattern:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.sample_info_management</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_sample_manager</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ClearMap.pipeline_orchestrators.cell_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">CellDetector</span>
+
+<span class="n">sm</span> <span class="o">=</span> <span class="n">build_sample_manager</span><span class="p">(</span><span class="s1">&#39;/path/to/experiment&#39;</span><span class="p">)</span>
+<span class="n">detector</span> <span class="o">=</span> <span class="n">CellDetector</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">cfg_coordinator</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="s1">&#39;cfos&#39;</span><span class="p">)</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">run_cell_detection</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">filter_cells</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">atlas_align</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<dl class="py exception">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.CanceledProcessing">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">CanceledProcessing</span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#CanceledProcessing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CanceledProcessing" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BrokenProcessPool</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ChannelPipelineOrchestrator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><span class="pre">ConfigCoordinator</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#ChannelPipelineOrchestrator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator" title="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PipelineOrchestrator</span></code></a></p>
+<p>Tab processor that is processing a single channel.</p>
+<p>The config is expected to have a ‘channels’ section with the channel name as key.
+When accessed, the config property returns the section for the current channel.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.channel_cfg_view">
+<span class="sig-name descname"><span class="pre">channel_cfg_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#ChannelPipelineOrchestrator.channel_cfg_view"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.channel_cfg_view" title="Link to this definition">#</a></dt>
+<dd><p>Read-only view of the config section for the current channel.
+Raises if no channel is set or section missing.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;ClearMap.pipeline_orchestrators.generic_orchestrators._CurrentChannelSentinel</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_sub_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#ChannelPipelineOrchestrator.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.get" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve a workspace asset by type and channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>asset_type</strong> (<em>str</em>) – Logical asset type, e.g. <code class="docutils literal notranslate"><span class="pre">'stitched'</span></code>, <code class="docutils literal notranslate"><span class="pre">'cells'</span></code>, <code class="docutils literal notranslate"><span class="pre">'atlas'</span></code>.</p></li>
+<li><p><strong>channel</strong> (<em>str</em><em>, </em><em>optional</em>) – Channel name.  Defaults to <code class="docutils literal notranslate"><span class="pre">'current'</span></code>, which concrete subclasses
+resolve to their active channel.</p></li>
+<li><p><strong>asset_sub_type</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Optional sub-type qualifier, e.g. <code class="docutils literal notranslate"><span class="pre">'raw'</span></code>, <code class="docutils literal notranslate"><span class="pre">'filtered'</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Asset</dt><dd><p>The workspace asset object.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="ClearMap.Utils.exceptions.html#ClearMap.Utils.exceptions.ClearMapRuntimeError" title="ClearMap.Utils.exceptions.ClearMapRuntimeError"><strong>ClearMapRuntimeError</strong></a> – If the workspace has not been initialised yet.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.patch_channel">
+<span class="sig-name descname"><span class="pre">patch_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#ChannelPipelineOrchestrator.patch_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.patch_channel" title="Link to this definition">#</a></dt>
+<dd><p>Submit a config patch scoped to the current channel.</p>
+<p>The patch is automatically nested under
+<code class="docutils literal notranslate"><span class="pre">{config_name}.channels.{channel}</span></code> before being forwarded to the
+coordinator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patch</strong> (<em>dict</em>) – Flat-or-nested dict of values to update for this channel.</p></li>
+<li><p><strong>origin</strong> (<em>str</em><em>, </em><em>optional</em>) – Human-readable description of the call site, used for audit
+logging.  Inferred from the call stack when empty.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.channel">
+<span class="sig-name descname"><span class="pre">channel</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.config">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.config" title="Link to this definition">#</a></dt>
+<dd><p>Read-only view of the config section for the current channel.
+Raises if no channel is set or section missing.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.config_name">
+<span class="sig-name descname"><span class="pre">config_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.config_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">CompoundChannelPipelineOrchestrator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><span class="pre">ConfigCoordinator</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#CompoundChannelPipelineOrchestrator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator" title="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PipelineOrchestrator</span></code></a></p>
+<p>Tab processor that is processing a compound channels (made of several source channels)</p>
+<p>The config is expected to have a ‘channels’ section with the channel names as keys.
+When accessed, the config property returns the section for all channels.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&lt;ClearMap.pipeline_orchestrators.generic_orchestrators._CurrentChannelSentinel</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_sub_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#CompoundChannelPipelineOrchestrator.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.get" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve a workspace asset by type and channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>asset_type</strong> (<em>str</em>) – Logical asset type, e.g. <code class="docutils literal notranslate"><span class="pre">'stitched'</span></code>, <code class="docutils literal notranslate"><span class="pre">'cells'</span></code>, <code class="docutils literal notranslate"><span class="pre">'atlas'</span></code>.</p></li>
+<li><p><strong>channel</strong> (<em>str</em><em>, </em><em>optional</em>) – Channel name.  Defaults to <code class="docutils literal notranslate"><span class="pre">'current'</span></code>, which concrete subclasses
+resolve to their active channel.</p></li>
+<li><p><strong>asset_sub_type</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Optional sub-type qualifier, e.g. <code class="docutils literal notranslate"><span class="pre">'raw'</span></code>, <code class="docutils literal notranslate"><span class="pre">'filtered'</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Asset</dt><dd><p>The workspace asset object.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="ClearMap.Utils.exceptions.html#ClearMap.Utils.exceptions.ClearMapRuntimeError" title="ClearMap.Utils.exceptions.ClearMapRuntimeError"><strong>ClearMapRuntimeError</strong></a> – If the workspace has not been initialised yet.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.patch_channel">
+<span class="sig-name descname"><span class="pre">patch_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#CompoundChannelPipelineOrchestrator.patch_channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.patch_channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.channels">
+<span class="sig-name descname"><span class="pre">channels</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.channels" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.config">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.config" title="Link to this definition">#</a></dt>
+<dd><p>Read-only view of the config section for the current channel.
+Raises if no channel is set or section missing.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.config_name">
+<span class="sig-name descname"><span class="pre">config_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.config_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">GroupOrchestratorBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_controller</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.pipeline_orchestrators.experiment_controller.html#ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController" title="ClearMap.pipeline_orchestrators.experiment_controller.AnalysisGroupController"><span class="pre">AnalysisGroupController</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#GroupOrchestratorBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base for multi-experiment/group analyses.
+Depends on AnalysisGroupController (not a single ExperimentController).
+Provides progress + threading plumbing and per-sample worker access.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.get_sample_manager_for">
+<span class="sig-name descname"><span class="pre">get_sample_manager_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_src_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#GroupOrchestratorBase.get_sample_manager_for"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.get_sample_manager_for" title="Link to this definition">#</a></dt>
+<dd><p>Return the SampleManager for a specific experiment directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_src_dir</strong> (<em>str</em><em> or </em><em>Path</em>) – Root directory of the experiment.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<p>SampleManager</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.get_worker_for_sample">
+<span class="sig-name descname"><span class="pre">get_worker_for_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_src_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pipeline</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">substep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#GroupOrchestratorBase.get_worker_for_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.get_worker_for_sample" title="Link to this definition">#</a></dt>
+<dd><p>Return the pipeline worker for a specific sample directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sample_src_dir</strong> (<em>str</em><em> or </em><em>Path</em>) – Root directory of the experiment.</p></li>
+<li><p><strong>pipeline</strong> (<em>str</em>) – Pipeline name, e.g. <code class="docutils literal notranslate"><span class="pre">'cell_map'</span></code>, <code class="docutils literal notranslate"><span class="pre">'registration'</span></code>.</p></li>
+<li><p><strong>channel</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Channel key (required for per-channel pipelines).</p></li>
+<li><p><strong>substep</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Substep key (required for multi-substep pipelines such as vasculature).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>PipelineOrchestrator</dt><dd><p>The worker for that sample + pipeline combination.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#GroupOrchestratorBase.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.run" title="Link to this definition">#</a></dt>
+<dd><p>Execute the group-level analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – Must be implemented by concrete subclasses.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.set_progress_watcher">
+<span class="sig-name descname"><span class="pre">set_progress_watcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#GroupOrchestratorBase.set_progress_watcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.set_progress_watcher" title="Link to this definition">#</a></dt>
+<dd><p>Attach a progress watcher for GUI progress-bar updates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>watcher</strong> (<a class="reference internal" href="ClearMap.gui.widgets.html#ClearMap.gui.widgets.ProgressWatcher" title="ClearMap.gui.widgets.ProgressWatcher"><em>ProgressWatcher</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.set_thread_wrapper">
+<span class="sig-name descname"><span class="pre">set_thread_wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wrapper_callable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#GroupOrchestratorBase.set_thread_wrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.set_thread_wrapper" title="Link to this definition">#</a></dt>
+<dd><p>Inject the GUI thread-wrapping helper (to keep the UI responsive).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>wrapper_callable</strong> (<em>Callable</em>) – Typically <code class="docutils literal notranslate"><span class="pre">main_window.wrap_in_thread</span></code>.  Falls back to
+synchronous execution when not set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.channel">
+<span class="sig-name descname"><span class="pre">channel</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.groups">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">groups</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.groups" title="Link to this definition">#</a></dt>
+<dd><p>Mapping of group name → list of experiment source-directory paths.</p>
+<p class="rubric">Returns</p>
+<p>dict[str, list[str]]</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.results_folder">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">results_folder</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Path</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.results_folder" title="Link to this definition">#</a></dt>
+<dd><p>Root directory where group-level outputs are written.</p>
+<p class="rubric">Returns</p>
+<p>Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="docutils literal notranslate"><span class="pre">results_folder</span></code> has not been set via the group controller.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">OrchestratorBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><span class="pre">ConfigCoordinator</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#OrchestratorBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ClearMap.Utils.event_bus.html#ClearMap.Utils.event_bus.BusSubscriberMixin" title="ClearMap.Utils.event_bus.BusSubscriberMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">BusSubscriberMixin</span></code></a></p>
+<p>Minimal base shared by all ClearMap processors and managers.</p>
+<p>Owns the <a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigCoordinator</span></code></a>
+reference and provides read-only config views, workspace access, and
+optional logging plumbing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>coordinator</strong> (<a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><em>ConfigCoordinator</em></a>) – Central configuration manager.  All config reads and patch submissions
+go through this object.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.cfg_coordinator">
+<span class="sig-name descname"><span class="pre">cfg_coordinator</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.cfg_coordinator" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator">ConfigCoordinator</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.workspace">
+<span class="sig-name descname"><span class="pre">workspace</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.workspace" title="Link to this definition">#</a></dt>
+<dd><p>Set by concrete subclasses after the sample is loaded.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Workspace2 or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.registration_processor">
+<span class="sig-name descname"><span class="pre">registration_processor</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.registration_processor" title="Link to this definition">#</a></dt>
+<dd><p>Injected when atlas-space operations are needed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="ClearMap.pipeline_orchestrators.registration_orchestrator.html#ClearMap.pipeline_orchestrators.registration_orchestrator.RegistrationProcessor" title="ClearMap.pipeline_orchestrators.registration_orchestrator.RegistrationProcessor">RegistrationProcessor</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.setup_complete">
+<span class="sig-name descname"><span class="pre">setup_complete</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.setup_complete" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> once the subclass has finished its own <code class="docutils literal notranslate"><span class="pre">setup()</span></code> call.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.filename">
+<span class="sig-name descname"><span class="pre">filename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#OrchestratorBase.filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.filename" title="Link to this definition">#</a></dt>
+<dd><p>A shortcut to get the file path from the workspace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>list</em>) – Any positional argument accepted by workspace.filename</p></li>
+<li><p><strong>kwargs</strong> (<em>dict</em>) – Any keyword argument accepted by workspace.filename</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>str</dt><dd><p>The file path as a string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'current'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_sub_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#OrchestratorBase.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get" title="Link to this definition">#</a></dt>
+<dd><p>Retrieve a workspace asset by type and channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>asset_type</strong> (<em>str</em>) – Logical asset type, e.g. <code class="docutils literal notranslate"><span class="pre">'stitched'</span></code>, <code class="docutils literal notranslate"><span class="pre">'cells'</span></code>, <code class="docutils literal notranslate"><span class="pre">'atlas'</span></code>.</p></li>
+<li><p><strong>channel</strong> (<em>str</em><em>, </em><em>optional</em>) – Channel name.  Defaults to <code class="docutils literal notranslate"><span class="pre">'current'</span></code>, which concrete subclasses
+resolve to their active channel.</p></li>
+<li><p><strong>asset_sub_type</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Optional sub-type qualifier, e.g. <code class="docutils literal notranslate"><span class="pre">'raw'</span></code>, <code class="docutils literal notranslate"><span class="pre">'filtered'</span></code>.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Asset</dt><dd><p>The workspace asset object.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="ClearMap.Utils.exceptions.html#ClearMap.Utils.exceptions.ClearMapRuntimeError" title="ClearMap.Utils.exceptions.ClearMapRuntimeError"><strong>ClearMapRuntimeError</strong></a> – If the workspace has not been initialised yet.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get_alignment_ref_channel_reg_cfg">
+<span class="sig-name descname"><span class="pre">get_alignment_ref_channel_reg_cfg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#OrchestratorBase.get_alignment_ref_channel_reg_cfg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get_alignment_ref_channel_reg_cfg" title="Link to this definition">#</a></dt>
+<dd><p>Return the registration config for the alignment reference channel.</p>
+<p>Delegates to <code class="docutils literal notranslate"><span class="pre">self.registration_processor.ref_channel_cfg</span></code>.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Mapping[str, Any]</dt><dd><p>Read-only view of the reference channel’s registration section.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="docutils literal notranslate"><span class="pre">registration_processor</span></code> has not been injected.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get_path">
+<span class="sig-name descname"><span class="pre">get_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">asset_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'current'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asset_sub_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#OrchestratorBase.get_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get_path" title="Link to this definition">#</a></dt>
+<dd><p>Shortcut that returns the filesystem path of a workspace asset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>asset_type</strong> (<em>str</em>) – Logical asset type.</p></li>
+<li><p><strong>channel</strong> (<em>str</em><em>, </em><em>optional</em>) – Channel name.</p></li>
+<li><p><strong>asset_sub_type</strong> (<em>str</em><em> or </em><em>None</em><em>, </em><em>optional</em>) – Optional sub-type qualifier.</p></li>
+<li><p><strong>**kwargs</strong> – Forwarded to <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get" title="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Path</dt><dd><p>The path of the requested asset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.reload_config">
+<span class="sig-name descname"><span class="pre">reload_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#OrchestratorBase.reload_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.reload_config" title="Link to this definition">#</a></dt>
+<dd><p>Deprecated no-op: configs are managed in-memory by the coordinator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.setup_if_needed">
+<span class="sig-name descname"><span class="pre">setup_if_needed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#OrchestratorBase.setup_if_needed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.setup_if_needed" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">cfg_coordinator</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><span class="pre">ConfigCoordinator</span></a></span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.config">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.config" title="Link to this definition">#</a></dt>
+<dd><p>Always-fresh, read-only snapshot of this processor’s config section.</p>
+<p>The section is identified by <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.config_name" title="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.config_name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">config_name</span></code></a>.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>MappingProxyType</dt><dd><p>Immutable view; request again to get the latest values after a patch.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.config_name">
+<span class="sig-name descname"><span class="pre">config_name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.config_name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.machine_config">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">machine_config</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.machine_config" title="Link to this definition">#</a></dt>
+<dd><p>Read-only view of the <code class="docutils literal notranslate"><span class="pre">machine</span></code> (global params) config section (verbosity, start_folder, font_size…).</p>
+<p class="rubric">Returns</p>
+<p>Mapping[str, Any]</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.registration_config">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">registration_config</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.registration_config" title="Link to this definition">#</a></dt>
+<dd><p>Read-only view of the <code class="docutils literal notranslate"><span class="pre">registration</span></code> config section.</p>
+<p class="rubric">Returns</p>
+<p>Mapping[str, Any]</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">registration_processor</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="s"><span class="pre">'RegistrationProcessor'</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#id1" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">setup_complete</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#id2" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.verbose">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.verbose" title="Link to this definition">#</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> when the machine verbosity is set to <code class="docutils literal notranslate"><span class="pre">'debug'</span></code>.</p>
+<p class="rubric">Returns</p>
+<p>bool</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">workspace</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Workspace2</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">PipelineOrchestrator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coordinator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator"><span class="pre">ConfigCoordinator</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#PipelineOrchestrator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase" title="ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">OrchestratorBase</span></code></a></p>
+<p>Generic tab processor class.
+This class is inherited by all pipeline_orchestrators in ClearMap</p>
+<dl class="simple">
+<dt>Base methods:</dt><dd><ul class="simple">
+<li><p>config access and mutation,</p></li>
+<li><p>asset retrieval through workspace</p></li>
+<li><p>progress watcher handling</p></li>
+<li><p>process stopping</p></li>
+<li><p>run (to be implemented in child classes)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.cfg_coordinator">
+<span class="sig-name descname"><span class="pre">cfg_coordinator</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.cfg_coordinator" title="Link to this definition">#</a></dt>
+<dd><p>The configuration coordinator to manage the configuration files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="ClearMap.config.config_coordinator.html#ClearMap.config.config_coordinator.ConfigCoordinator" title="ClearMap.config.config_coordinator.ConfigCoordinator">ConfigCoordinator</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.stopped">
+<span class="sig-name descname"><span class="pre">stopped</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.stopped" title="Link to this definition">#</a></dt>
+<dd><p>Flag to indicate if the process has been stopped.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.progress_watcher">
+<span class="sig-name descname"><span class="pre">progress_watcher</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.progress_watcher" title="Link to this definition">#</a></dt>
+<dd><p>The progress watcher to monitor the progress of the processing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="ClearMap.gui.widgets.html#ClearMap.gui.widgets.ProgressWatcher" title="ClearMap.gui.widgets.ProgressWatcher">ProgressWatcher</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.workspace">
+<span class="sig-name descname"><span class="pre">workspace</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.workspace" title="Link to this definition">#</a></dt>
+<dd><p>The workspace to manage the assets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="ClearMap.IO.Workspace.html#ClearMap.IO.Workspace.Workspace" title="ClearMap.IO.Workspace.Workspace">Workspace</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.prepare_watcher_for_substep">
+<span class="sig-name descname"><span class="pre">prepare_watcher_for_substep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counter_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">increment_main</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#PipelineOrchestrator.prepare_watcher_for_substep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.prepare_watcher_for_substep" title="Link to this definition">#</a></dt>
+<dd><p>Prepare the progress watcher for the coming processing step. The watcher will in turn signal changes to the
+progress bar</p>
+<p class="rubric">Arguments</p>
+<dl class="simple">
+<dt>counter_size: int</dt><dd><p>The progress bar maximum</p>
+</dd>
+<dt>pattern: str or re.Pattern or (str, re.Pattern) or None</dt><dd><p>The string to search for in the log to signal an increment of 1</p>
+</dd>
+<dt>title: str</dt><dd><p>The title of the step for the progress bar</p>
+</dd>
+<dt>increment_main: bool</dt><dd><p>Whether a new step should be added to the main progress bar</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#PipelineOrchestrator.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.run" title="Link to this definition">#</a></dt>
+<dd><p>Execute the full processing pipeline for this orchestrator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – Must be implemented by every concrete subclass.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.set_progress_watcher">
+<span class="sig-name descname"><span class="pre">set_progress_watcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#PipelineOrchestrator.set_progress_watcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.set_progress_watcher" title="Link to this definition">#</a></dt>
+<dd><p>Attach a progress watcher that drives progress-bar updates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>watcher</strong> (<a class="reference internal" href="ClearMap.gui.widgets.html#ClearMap.gui.widgets.ProgressWatcher" title="ClearMap.gui.widgets.ProgressWatcher"><em>ProgressWatcher</em></a>) – Watcher instance whose <code class="docutils literal notranslate"><span class="pre">increment</span></code>, <code class="docutils literal notranslate"><span class="pre">increment_main_progress</span></code>
+and <code class="docutils literal notranslate"><span class="pre">main_step_name</span></code> interface will be used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.set_watcher_step">
+<span class="sig-name descname"><span class="pre">set_watcher_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#PipelineOrchestrator.set_watcher_step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.set_watcher_step" title="Link to this definition">#</a></dt>
+<dd><p>Update the displayed step name in the progress dialog.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>step_name</strong> (<em>str</em>) – Human-readable name of the current processing step.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.setup">
+<span class="sig-name descname"><span class="pre">setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_manager</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ClearMap.pipeline_orchestrators.sample_info_management.html#ClearMap.pipeline_orchestrators.sample_info_management.SampleManager" title="ClearMap.pipeline_orchestrators.sample_info_management.SampleManager"><span class="pre">SampleManager</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#PipelineOrchestrator.setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.setup" title="Link to this definition">#</a></dt>
+<dd><p>Attach a sample manager and mark this processor as ready.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sample_manager</strong> (<a class="reference internal" href="ClearMap.pipeline_orchestrators.sample_info_management.html#ClearMap.pipeline_orchestrators.sample_info_management.SampleManager" title="ClearMap.pipeline_orchestrators.sample_info_management.SampleManager"><em>SampleManager</em></a><em>, </em><em>optional</em>) – If provided, replaces the currently stored sample manager.
+When <code class="docutils literal notranslate"><span class="pre">None</span></code>, the previously stored instance is reused.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the config section identified by <code class="xref py py-attr docutils literal notranslate"><span class="pre">config_name</span></code> is absent.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.setup_if_needed">
+<span class="sig-name descname"><span class="pre">setup_if_needed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#PipelineOrchestrator.setup_if_needed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.setup_if_needed" title="Link to this definition">#</a></dt>
+<dd><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This assumes self.channel is set if needed!
+and self.registration_processor is set if needed!</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.stop_process">
+<span class="sig-name descname"><span class="pre">stop_process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#PipelineOrchestrator.stop_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.stop_process" title="Link to this definition">#</a></dt>
+<dd><p>Request cancellation of the current processing step.</p>
+<p>Sets <a class="reference internal" href="#id5" title="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.stopped"><code class="xref py py-attr docutils literal notranslate"><span class="pre">stopped</span></code></a> to <code class="docutils literal notranslate"><span class="pre">True</span></code> and attempts to shut down any running
+executor or subprocess attached to the workspace.  Raises
+<a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CanceledProcessing" title="ClearMap.pipeline_orchestrators.generic_orchestrators.CanceledProcessing"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CanceledProcessing</span></code></a> when a subprocess is terminated.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.update_watcher_main_progress">
+<span class="sig-name descname"><span class="pre">update_watcher_main_progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#PipelineOrchestrator.update_watcher_main_progress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.update_watcher_main_progress" title="Link to this definition">#</a></dt>
+<dd><p>Increment the main (top-level) progress bar by <em>val</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>val</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of main steps completed.  Default is 1.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.update_watcher_progress">
+<span class="sig-name descname"><span class="pre">update_watcher_progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#PipelineOrchestrator.update_watcher_progress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.update_watcher_progress" title="Link to this definition">#</a></dt>
+<dd><p>Increment the sub-step progress bar by <em>val</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>val</strong> (<em>int</em>) – Number of units to add.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">progress_watcher</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="s"><span class="pre">'ProgressWatcher'</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.sample_manager">
+<span class="sig-name descname"><span class="pre">sample_manager</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="s"><span class="pre">'SampleManager'</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.sample_manager" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">stopped</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></span><a class="headerlink" href="#id5" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">ProcessorSteps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">workspace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ClearMap.IO.workspace2.Workspace2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_order_provider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#ProcessorSteps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Ordered sequence of processing steps with disk-level asset tracking.</p>
+<p>Step order is resolved fresh on every access via an injected provider
+callable, so GUI-driven reordering takes effect immediately without
+processor reconstruction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>workspace</strong> (<em>Workspace2</em>) – The workspace that owns the on-disk assets.</p></li>
+<li><p><strong>channel</strong> (<em>str</em><em> or </em><em>Sequence</em><em>[</em><em>str</em><em>]</em>) – Channel name(s) this step sequence operates on.</p></li>
+<li><p><strong>step_order_provider</strong> (<em>Callable</em><em>[</em><em>[</em><em>]</em><em>, </em><em>tuple</em><em>[</em><em>str</em><em>, </em><em>...</em><em>]</em><em>] or </em><em>None</em>) – Optional callable that returns the current step order.  When provided
+it is called on every access to <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps"><code class="xref py py-attr docutils literal notranslate"><span class="pre">steps</span></code></a>, allowing the GUI to
+reorder steps without reconstructing the processor.  Falls back to
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_default_steps</span></code> when <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.asset_from_step_name">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">asset_from_step_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ClearMap.IO.workspace_asset.Asset</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#ProcessorSteps.asset_from_step_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.asset_from_step_name" title="Link to this definition">#</a></dt>
+<dd><p>Return the on-disk asset that corresponds to <em>step_name</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>step_name</strong> (<em>str</em>) – A member of <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps"><code class="xref py py-attr docutils literal notranslate"><span class="pre">steps</span></code></a>.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Asset</dt><dd><p>The asset associated with that step.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – Must be implemented by every concrete subclass.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.get_asset">
+<span class="sig-name descname"><span class="pre">get_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_before</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ClearMap.IO.workspace_asset.Asset</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#ProcessorSteps.get_asset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.get_asset" title="Link to this definition">#</a></dt>
+<dd><p>Return the Asset for <code class="docutils literal notranslate"><span class="pre">step</span></code>, optionally walking back if absent and <code class="docutils literal notranslate"><span class="pre">step_back</span></code> is True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>step</strong> (<em>str</em>) – Target step name.</p></li>
+<li><p><strong>step_back</strong> (<em>bool</em>) – If True and the asset does not exist, walk backwards through
+all preceding steps until one is found.</p></li>
+<li><p><strong>n_before</strong> (<em>int</em>) – If &gt; 0, resolve to the step <code class="docutils literal notranslate"><span class="pre">n_before</span></code> positions earlier
+before checking existence.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>Asset</dt><dd><p>The asset corresponding to the step name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.get_next_steps">
+<span class="sig-name descname"><span class="pre">get_next_steps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#ProcessorSteps.get_next_steps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.get_next_steps" title="Link to this definition">#</a></dt>
+<dd><p>Return all steps that follow <em>step_name</em> in the pipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>step_name</strong> (<em>str</em>) – A member of <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps"><code class="xref py py-attr docutils literal notranslate"><span class="pre">steps</span></code></a>.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>list of str</dt><dd><p>Steps after <em>step_name</em>, in execution order.  Empty list when
+<em>step_name</em> is the last step.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.remove_next_steps_files">
+<span class="sig-name descname"><span class="pre">remove_next_steps_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_step_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#ProcessorSteps.remove_next_steps_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.remove_next_steps_files" title="Link to this definition">#</a></dt>
+<dd><p>Delete on-disk outputs for all steps that follow <em>target_step_name</em>.</p>
+<p>Useful when a step is re-run and downstream outputs are therefore stale.
+Warns before each deletion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>target_step_name</strong> (<em>str</em>) – The step <em>after</em> which all existing outputs will be deleted.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.step_exists">
+<span class="sig-name descname"><span class="pre">step_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/ClearMap/pipeline_orchestrators/generic_orchestrators.html#ProcessorSteps.step_exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.step_exists" title="Link to this definition">#</a></dt>
+<dd><p>Check whether the output asset for <em>step_name</em> exists on disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>step_name</strong> (<em>str</em>) – A member of <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps"><code class="xref py py-attr docutils literal notranslate"><span class="pre">steps</span></code></a>.</p>
+</dd>
+</dl>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>bool</dt><dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if the corresponding asset exists.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.channel">
+<span class="sig-name descname"><span class="pre">channel</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.channel" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.existing_steps">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">existing_steps</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.existing_steps" title="Link to this definition">#</a></dt>
+<dd><p>Steps whose output asset already exists on disk.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>list of str</dt><dd><p>Subset of <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps"><code class="xref py py-attr docutils literal notranslate"><span class="pre">steps</span></code></a> for which <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.step_exists" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.step_exists"><code class="xref py py-meth docutils literal notranslate"><span class="pre">step_exists()</span></code></a> is <code class="docutils literal notranslate"><span class="pre">True</span></code>,
+in step order.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.last_step">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">last_step</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.last_step" title="Link to this definition">#</a></dt>
+<dd><p>The last step whose output exists on disk, or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>str or None</dt><dd><p>Last element of <a class="reference internal" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.existing_steps" title="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.existing_steps"><code class="xref py py-attr docutils literal notranslate"><span class="pre">existing_steps</span></code></a>, or <code class="docutils literal notranslate"><span class="pre">None</span></code> when no step
+has been run yet.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">steps</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps" title="Link to this definition">#</a></dt>
+<dd><p>Ordered step names, resolved fresh on every access.</p>
+<p class="rubric">Returns</p>
+<dl class="simple">
+<dt>tuple of str</dt><dd><p>Step names in execution order, either from the injected provider
+or from <code class="docutils literal notranslate"><span class="pre">_default_steps</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.workspace">
+<span class="sig-name descname"><span class="pre">workspace</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClearMap.IO.workspace2.Workspace2</span></span><a class="headerlink" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.workspace" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ClearMap.pipeline_orchestrators.experiment_controller.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">experiment_controller</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ClearMap.pipeline_orchestrators.group_orchestrators.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">group_orchestrators</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-to-the-gui">Relationship to the GUI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CanceledProcessing"><code class="docutils literal notranslate"><span class="pre">CanceledProcessing</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator"><code class="docutils literal notranslate"><span class="pre">ChannelPipelineOrchestrator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.channel_cfg_view"><code class="docutils literal notranslate"><span class="pre">ChannelPipelineOrchestrator.channel_cfg_view()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.get"><code class="docutils literal notranslate"><span class="pre">ChannelPipelineOrchestrator.get()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.patch_channel"><code class="docutils literal notranslate"><span class="pre">ChannelPipelineOrchestrator.patch_channel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.channel"><code class="docutils literal notranslate"><span class="pre">ChannelPipelineOrchestrator.channel</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.config"><code class="docutils literal notranslate"><span class="pre">ChannelPipelineOrchestrator.config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ChannelPipelineOrchestrator.config_name"><code class="docutils literal notranslate"><span class="pre">ChannelPipelineOrchestrator.config_name</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator"><code class="docutils literal notranslate"><span class="pre">CompoundChannelPipelineOrchestrator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.get"><code class="docutils literal notranslate"><span class="pre">CompoundChannelPipelineOrchestrator.get()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.patch_channel"><code class="docutils literal notranslate"><span class="pre">CompoundChannelPipelineOrchestrator.patch_channel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.channels"><code class="docutils literal notranslate"><span class="pre">CompoundChannelPipelineOrchestrator.channels</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.config"><code class="docutils literal notranslate"><span class="pre">CompoundChannelPipelineOrchestrator.config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.CompoundChannelPipelineOrchestrator.config_name"><code class="docutils literal notranslate"><span class="pre">CompoundChannelPipelineOrchestrator.config_name</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase"><code class="docutils literal notranslate"><span class="pre">GroupOrchestratorBase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.get_sample_manager_for"><code class="docutils literal notranslate"><span class="pre">GroupOrchestratorBase.get_sample_manager_for()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.get_worker_for_sample"><code class="docutils literal notranslate"><span class="pre">GroupOrchestratorBase.get_worker_for_sample()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.run"><code class="docutils literal notranslate"><span class="pre">GroupOrchestratorBase.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.set_progress_watcher"><code class="docutils literal notranslate"><span class="pre">GroupOrchestratorBase.set_progress_watcher()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.set_thread_wrapper"><code class="docutils literal notranslate"><span class="pre">GroupOrchestratorBase.set_thread_wrapper()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.channel"><code class="docutils literal notranslate"><span class="pre">GroupOrchestratorBase.channel</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.groups"><code class="docutils literal notranslate"><span class="pre">GroupOrchestratorBase.groups</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.GroupOrchestratorBase.results_folder"><code class="docutils literal notranslate"><span class="pre">GroupOrchestratorBase.results_folder</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.cfg_coordinator"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.cfg_coordinator</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.workspace"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.workspace</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.registration_processor"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.registration_processor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.setup_complete"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.setup_complete</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.filename"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.filename()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.get()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get_alignment_ref_channel_reg_cfg"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.get_alignment_ref_channel_reg_cfg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.get_path"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.get_path()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.reload_config"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.reload_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.setup_if_needed"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.setup_if_needed()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.cfg_coordinator</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.config"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.config_name"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.config_name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.machine_config"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.machine_config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.registration_config"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.registration_config</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.registration_processor</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.setup_complete</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.OrchestratorBase.verbose"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.verbose</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><code class="docutils literal notranslate"><span class="pre">OrchestratorBase.workspace</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.cfg_coordinator"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.cfg_coordinator</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.stopped"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.stopped</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.progress_watcher"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.progress_watcher</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.workspace"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.workspace</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.prepare_watcher_for_substep"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.prepare_watcher_for_substep()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.run"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.set_progress_watcher"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.set_progress_watcher()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.set_watcher_step"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.set_watcher_step()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.setup"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.setup()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.setup_if_needed"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.setup_if_needed()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.stop_process"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.stop_process()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.update_watcher_main_progress"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.update_watcher_main_progress()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.update_watcher_progress"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.update_watcher_progress()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.progress_watcher</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.PipelineOrchestrator.sample_manager"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.sample_manager</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><code class="docutils literal notranslate"><span class="pre">PipelineOrchestrator.stopped</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps"><code class="docutils literal notranslate"><span class="pre">ProcessorSteps</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.asset_from_step_name"><code class="docutils literal notranslate"><span class="pre">ProcessorSteps.asset_from_step_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.get_asset"><code class="docutils literal notranslate"><span class="pre">ProcessorSteps.get_asset()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.get_next_steps"><code class="docutils literal notranslate"><span class="pre">ProcessorSteps.get_next_steps()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.remove_next_steps_files"><code class="docutils literal notranslate"><span class="pre">ProcessorSteps.remove_next_steps_files()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.step_exists"><code class="docutils literal notranslate"><span class="pre">ProcessorSteps.step_exists()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.channel"><code class="docutils literal notranslate"><span class="pre">ProcessorSteps.channel</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.existing_steps"><code class="docutils literal notranslate"><span class="pre">ProcessorSteps.existing_steps</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.last_step"><code class="docutils literal notranslate"><span class="pre">ProcessorSteps.last_step</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.steps"><code class="docutils literal notranslate"><span class="pre">ProcessorSteps.steps</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ClearMap.pipeline_orchestrators.generic_orchestrators.ProcessorSteps.workspace"><code class="docutils literal notranslate"><span class="pre">ProcessorSteps.workspace</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../_sources/api/ClearMap.pipeline_orchestrators.generic_orchestrators.rst">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Copyright © 2020 by Christoph Kirst.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.19.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
