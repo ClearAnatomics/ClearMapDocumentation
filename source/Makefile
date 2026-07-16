@@ -56,10 +56,10 @@ github: clean cleanapi html publish
 	@echo "ClearMap documentation for github pages build!" 
 
 publish:
-	rm -rf $(PUBLISHDIR)/$(VERSION)
-	mkdir $(PUBLISHDIR)/$(VERSION)
-	@echo "Moving files from $(BUILDDIR) to $(PUBLISHDIR)/$(VERSION)/"
-	rsync -r $(BUILDDIR)/html/ $(PUBLISHDIR)/$(VERSION)/
+	rm -rf $(PUBLISHDIR)/v$(VERSION)
+	mkdir $(PUBLISHDIR)/v$(VERSION)
+	@echo "Moving files from $(BUILDDIR) to $(PUBLISHDIR)/v$(VERSION)/"
+	rsync -r $(BUILDDIR)/html/ $(PUBLISHDIR)/v$(VERSION)/
 	touch $(PUBLISHDIR)/.nojekyll
 
 clean:
