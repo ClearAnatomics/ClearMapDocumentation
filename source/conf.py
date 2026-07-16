@@ -363,7 +363,7 @@ html_theme_options = {
         'json_url': 'https://clearanatomics.github.io/ClearMapDocumentation/switcher.json',
         'version_match': version,
     },
-    'navbar_end': ['version-switcher', 'navbar-icon-links'],
+    'navbar_end': ['theme-switcher', 'version-switcher', 'navbar-icon-links'],
 }
 html_baseurl = f'https://clearanatomics.github.io/ClearMapDocumentation/v{version}/'
 

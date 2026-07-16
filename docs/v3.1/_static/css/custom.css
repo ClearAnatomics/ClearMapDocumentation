@@ -3,20 +3,6 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/*html[data-theme="light"] {*/
-/*    --pst-color-primary: black;*/
-/*    --pst-color-secondary: gray;*/
-/*}*/
-
-/*html[data-theme="dark"] {*/
-/*    !*--pst-color-secondary: gray;*!*/
-/*    !*--pst-color-heading-color: gray;*!*/
-/*    !*--pst-color-accent-bg: gray;*!*/
-/*    !*--pst-color-attention-bg: gray;*!*/
-/*    !*--pst-color-background: gray;*!*/
-/*    !*--pst-color-danger-bg: gray;*!*/
-/*}*/
-
 :root {
   /* Use softer blue from bootstrap's default info color */
   --pst-color-info: 23, 162, 184;
@@ -70,17 +56,17 @@ table {
 }
 
 .fa-square-x-twitter::before {
-  content: "\u1D54F"; /* Replace 'fXXX' with the unicode of your icon */
+  content: "\u1D54F";
 }
 
 /* ================================================================
    Carousel
    ================================================================ */
 
-/* Caption text colour */
+/* Caption text — inherit from theme */
 .carousel h5,
 .carousel p {
-    color: revert;
+    color: inherit;
 }
 
 .carousel h5 {
@@ -114,38 +100,41 @@ table {
     padding: 0.75rem 0;
     font-family: var(--bs-font-sans-serif);
     color: var(--pst-color-text-base);
+    background: transparent !important;  /* Override bg-dark from carousel HTML */
 }
 
-/* Shadows — light theme */
-:not(.carousel-dark) .scc-shadow-control {
-    filter:
-        drop-shadow(0 0 0.4rem var(--bs-dark))
-        drop-shadow(0 0 0.4rem var(--bs-dark))
-        drop-shadow(0 0 0.4rem var(--bs-dark))
-        drop-shadow(0 0 0.4rem var(--bs-dark));
-}
+/* ----------------------------------------------------------------
+   Carousel nav shadows
+   Glow uses the OPPOSITE of the control colour so arrows/dots
+   remain visible on any image.
+   light theme: controls are dark → glow is light (--bs-light)
+   dark theme:  controls are light → glow is dark (--bs-dark)
+   ---------------------------------------------------------------- */
 
-/* Shadows — dark theme */
-.carousel-dark .scc-shadow-control {
+/* Light theme — light glow behind dark controls */
+html[data-theme="light"] .scc-shadow-control,
+:not([data-theme="dark"]) .scc-shadow-control {
     filter:
-        drop-shadow(0 0 0.4rem var(--bs-light))
-        drop-shadow(0 0 0.4rem var(--bs-light))
         drop-shadow(0 0 0.4rem var(--bs-light))
         drop-shadow(0 0 0.4rem var(--bs-light));
 }
 
-:not(.carousel-dark) .scc-shadow-indicator {
+html[data-theme="light"] .scc-shadow-indicator,
+:not([data-theme="dark"]) .scc-shadow-indicator {
     filter:
-        drop-shadow(-0.6rem 0 0.4rem var(--bs-dark))
-        drop-shadow( 0.6rem 0 0.4rem var(--bs-dark))
-        drop-shadow(-0.6rem 0 0.4rem var(--bs-dark))
-        drop-shadow( 0.6rem 0 0.4rem var(--bs-dark));
-}
-
-.carousel-dark .scc-shadow-indicator {
-    filter:
-        drop-shadow(-0.6rem 0 0.4rem var(--bs-light))
-        drop-shadow( 0.6rem 0 0.4rem var(--bs-light))
         drop-shadow(-0.6rem 0 0.4rem var(--bs-light))
         drop-shadow( 0.6rem 0 0.4rem var(--bs-light));
+}
+
+/* Dark theme — dark glow behind light controls */
+html[data-theme="dark"] .scc-shadow-control {
+    filter:
+        drop-shadow(0 0 0.4rem var(--bs-dark))
+        drop-shadow(0 0 0.4rem var(--bs-dark));
+}
+
+html[data-theme="dark"] .scc-shadow-indicator {
+    filter:
+        drop-shadow(-0.6rem 0 0.4rem var(--bs-dark))
+        drop-shadow( 0.6rem 0 0.4rem var(--bs-dark));
 }
